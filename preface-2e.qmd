@@ -1,0 +1,31 @@
+# Preface to the second edition {.unnumbered}
+
+Welcome to the second edition of "R for Data Science"!
+This is a major reworking of the first edition, removing material we no longer think is useful, adding material we wish we included in the first edition, and generally updating the text and code to reflect changes in best practices.
+We're also very excited to welcome a new co-author: Mine Çetinkaya-Rundel, a noted data science educator and one of our colleagues at Posit (the company formerly known as RStudio).
+
+A brief summary of the biggest changes follows:
+
+-   The first part of the book has been renamed to "Whole game".
+    The goal of this section is to give you the rough details of the "whole game" of data science before we dive into the details.
+
+-   The second part of the book is "Visualize".
+    This part gives data visualization tools and best practices a more thorough coverage compared to the first edition.
+    The best place to get all the details is still the [ggplot2 book](http://ggplot2-book.org/), but now R4DS covers more of the most important techniques.
+
+-   The third part of the book is now called "Transform" and gains new chapters on numbers, logical vectors, and missing values.
+    These were previously parts of the data transformation chapter, but needed much more room to cover all the details.
+
+-   The fourth part of the book is called "Import".
+    It's a new set of chapters that goes beyond reading flat text files to working with spreadsheets, getting data out of databases, working with big data, rectangling hierarchical data, and scraping data from web sites.
+
+-   The "Program" part remains, but has been rewritten from top-to-bottom to focus on the most important parts of function writing and iteration.
+    Function writing now includes details on how to wrap tidyverse functions (dealing with the challenges of tidy evaluation), since this has become much easier and more important over the last few years.
+    We've added a new chapter on important base R functions that you're likely to see in wild-caught R code.
+
+-   The modeling part has been removed.
+    We never had enough room to fully do modelling justice, and there are now much better resources available.
+    We generally recommend using the [tidymodels](https://www.tidymodels.org/) packages and reading [Tidy Modeling with R](https://www.tmwr.org/) by Max Kuhn and Julia Silge.
+
+-   The "Communicate" part remains, but has been thoroughly updated to feature [Quarto](https://quarto.org/) instead of R Markdown.
+    This edition of the book has been written in Quarto, and it's clearly the tool of the future.
