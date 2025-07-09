@@ -1,21 +1,17 @@
-# Workflow: basics {#sec-workflow-basics}
+# 工作流程：基础 {#sec-workflow-basics}
 
 ```{r}
 #| echo: false
 source("_common.R")
 ```
 
-You now have some experience running R code.
-We didn't give you many details, but you've obviously figured out the basics, or you would've thrown this book away in frustration!
-Frustration is natural when you start programming in R because it is such a stickler for punctuation, and even one character out of place can cause it to complain.
-But while you should expect to be a little frustrated, take comfort in that this experience is typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.
+你现在已经有了一些运行 R 代码的经验。我们没有给你很多细节，但你显然已经掌握了基础知识，否则你早就沮丧地把这本书扔掉了！当你开始用 R 编程时，感到沮丧是正常的，因为它对标点符号的要求非常严格，即使一个字符放错了位置也会导致它报错。但是，尽管你应该预料到会有些沮丧，但请放心，这种经历是典型且暂时的：每个人都会遇到，而克服它的唯一方法就是不断尝试。
 
-Before we go any further, let's ensure you've got a solid foundation in running R code and that you know some of the most helpful RStudio features.
+在继续之前，让我们确保你已经牢固掌握了运行 R 代码的基础，并且了解一些最有用的 RStudio 功能。
 
-## Coding basics
+## 编码基础
 
-Let's review some basics we've omitted so far in the interest of getting you plotting as quickly as possible.
-You can use R to do basic math calculations:
+让我们回顾一些我们为了让你尽快开始绘图而省略的基础知识。你可以使用 R 进行基本的数学计算：
 
 ```{r}
 1 / 200 * 30
@@ -23,77 +19,63 @@ You can use R to do basic math calculations:
 sin(pi / 2)
 ```
 
-You can create new objects with the assignment operator `<-`:
+你可以使用赋值运算符 `<-` 创建新对象：
 
 ```{r}
 x <- 3 * 4
 ```
 
-Note that the value of `x` is not printed, it's just stored.
-If you want to view the value, type `x` in the console.
+注意，`x` 的值没有被打印出来，它只是被存储了。如果你想查看这个值，可以在控制台中输入 `x`。
 
-You can **c**ombine multiple elements into a vector with `c()`:
+你可以使用 `c()` 将多个元素**合** (c) 并成一个向量：
 
 ```{r}
 primes <- c(2, 3, 5, 7, 11, 13)
 ```
 
-And basic arithmetic on vectors is applied to every element of the vector:
+对向量的基本算术运算会应用于向量的每个元素：
 
 ```{r}
 primes * 2
 primes - 1
 ```
 
-All R statements where you create objects, **assignment** statements, have the same form:
+所有你用来创建对象的 R 语句，即**赋值** (assignment) 语句，都具有相同的形式：
 
 ```{r}
 #| eval: false
 object_name <- value
 ```
 
-When reading that code, say "object name gets value" in your head.
+在读这段代码时，在脑海里默念“对象名 gets 值”。
 
-You will make lots of assignments, and `<-` is a pain to type.
-You can save time with RStudio's keyboard shortcut: Alt + - (the minus sign).
-Notice that RStudio automatically surrounds `<-` with spaces, which is a good code formatting practice.
-Code can be miserable to read on a good day, so giveyoureyesabreak and use spaces.
+你会进行大量的赋值操作，而输入 `<-` 很麻烦。你可以使用 RStudio 的键盘快捷键来节省时间：Alt + -（减号）。注意 RStudio 会自动在 `<-` 周围加上空格，这是一个很好的代码格式化习惯。好的代码有时读起来也很费劲，所以请多使用空格，让你的眼睛休息一下。
 
-## Comments
+## 注释
 
-R will ignore any text after `#` for that line.
-This allows you to write **comments**, text that is ignored by R but read by other humans.
-We'll sometimes include comments in examples explaining what's happening with the code.
+R 会忽略那一行中 `#` 之后的所有文本。这允许你编写**注释** (comments)，即被 R 忽略但供其他人类阅读的文本。我们有时会在示例中包含注释，以解释代码的作用。
 
-Comments can be helpful for briefly describing what the following code does.
+注释对于简要描述后续代码的功能非常有帮助。
 
 ```{r}
-# create vector of primes
+# 创建一个素数向量
 primes <- c(2, 3, 5, 7, 11, 13)
 
-# multiply primes by 2
+# 将素数乘以 2
 primes * 2
 ```
 
-With short pieces of code like this, leaving a comment for every single line of code might not be necessary.
-But as the code you're writing gets more complex, comments can save you (and your collaborators) a lot of time figuring out what was done in the code.
+对于像这样简短的代码，为每一行代码都留注释可能没有必要。但是随着你编写的代码变得越来越复杂，注释可以为你（和你的合作者）节省大量时间来理解代码中的操作。
 
-Use comments to explain the *why* of your code, not the *how* or the *what*.
-The *what* and *how* of your code are always possible to figure out, even if it might be tedious, by carefully reading it.
-If you describe every step in the comments, and then change the code, you will have to remember to update the comments as well or it will be confusing when you return to your code in the future.
+使用注释来解释你代码的*原因* (why)，而不是*方式* (how) 或*内容* (what)。代码的*内容*和*方式*总是可以通过仔细阅读来弄清楚，尽管可能很繁琐。如果你在注释中描述了每一步，然后又更改了代码，你就必须记得也要更新注释，否则将来你再看代码时会感到困惑。
 
-Figuring out *why* something was done is much more difficult, if not impossible.
-For example, `geom_smooth()` has an argument called `span`, which controls the smoothness of the curve, with larger values yielding a smoother curve.
-Suppose you decide to change the value of `span` from its default of 0.75 to 0.9: it's easy for a future reader to understand *what* is happening, but unless you note your thinking in a comment, no one will understand *why* you changed the default.
+弄清楚*为什么*这么做要困难得多，甚至是不可能的。例如，`geom_smooth()` 有一个名为 `span` 的参数，它控制曲线的平滑度，值越大曲线越平滑。假设你决定将 `span` 的值从默认的 0.75 改为 0.9：未来的读者很容易理解*发生了什么*，但除非你在注释中记录下你的想法，否则没人会明白你*为什么*要更改默认值。
 
-For data analysis code, use comments to explain your overall plan of attack and record important insights as you encounter them.
-There's no way to re-capture this knowledge from the code itself.
+对于数据分析代码，使用注释来解释你的整体攻击计划，并在遇到重要见解时记录下来。没有办法从代码本身重新捕获这些知识。
 
-## What's in a name? {#sec-whats-in-a-name}
+## 名字里有什么？{#sec-whats-in-a-name}
 
-Object names must start with a letter and can only contain letters, numbers, `_`, and `.`.
-You want your object names to be descriptive, so you'll need to adopt a convention for multiple words.
-We recommend **snake_case**, where you separate lowercase words with `_`.
+对象名必须以字母开头，并且只能包含字母、数字、`_` 和 `.`。你希望你的对象名具有描述性，所以你需要为多个单词采用一种命名约定。我们推荐**蛇形命名法** (snake\_case)，即用 `_` 分隔小写单词。
 
 ```{r}
 #| eval: false
@@ -103,36 +85,31 @@ some.people.use.periods
 And_aFew.People_RENOUNCEconvention
 ```
 
-We'll return to names again when we discuss code style in @sec-workflow-style.
+我们将在 @sec-workflow-style 讨论代码风格时再次回到命名问题。
 
-You can inspect an object by typing its name:
+你可以通过输入对象名来查看它：
 
 ```{r}
 x
 ```
 
-Make another assignment:
+再进行一次赋值：
 
 ```{r}
 this_is_a_really_long_name <- 2.5
 ```
 
-To inspect this object, try out RStudio's completion facility: type "this", press TAB, add characters until you have a unique prefix, then press return.
+要查看这个对象，试试 RStudio 的自动补全功能：输入 "this"，按 TAB 键，继续添加字符直到你有一个唯一的前缀，然后按回车。
 
-Let's assume you made a mistake, and that the value of `this_is_a_really_long_name` should be 3.5, not 2.5.
-You can use another keyboard shortcut to help you fix it.
-For example, you can press ↑ to bring the last command you typed and edit it.
-Or, type "this" then press Cmd/Ctrl + ↑ to list all the commands you've typed that start with those letters.
-Use the arrow keys to navigate, then press enter to retype the command.
-Change 2.5 to 3.5 and rerun.
+假设你犯了一个错误，`this_is_a_really_long_name` 的值应该是 3.5，而不是 2.5。你可以使用另一个键盘快捷键来帮助你修正。例如，你可以按 ↑ 键调出你输入的最后一条命令并进行编辑。或者，输入 "this" 然后按 Cmd/Ctrl + ↑ 来列出你输入过的所有以这些字母开头的命令。使用箭头键导航，然后按回车键重新输入命令。将 2.5 改为 3.5 并重新运行。
 
-Make yet another assignment:
+再进行一次赋值：
 
 ```{r}
 r_rocks <- 2^3
 ```
 
-Let's try to inspect it:
+让我们试着查看它：
 
 ```{r}
 #| eval: false
@@ -142,74 +119,59 @@ R_rocks
 #> Error: object 'R_rocks' not found
 ```
 
-This illustrates the implied contract between you and R: R will do the tedious computations for you, but in exchange, you must be completely precise in your instructions.
-If not, you're likely to get an error that says the object you're looking for was not found.
-Typos matter; R can't read your mind and say, "oh, they probably meant `r_rocks` when they typed `r_rock`".
-Case matters; similarly, R can't read your mind and say, "oh, they probably meant `r_rocks` when they typed `R_rocks`".
+这说明了你和 R 之间的隐含契约：R 会为你做繁琐的计算，但作为交换，你的指令必须完全精确。否则，你很可能会得到一个错误，说找不到你正在寻找的对象。拼写错误很重要；R 无法读懂你的心思说，“哦，他们输入 `r_rock` 时可能指的是 `r_rocks`”。大小写也很重要；同样，R 无法读懂你的心思说，“哦，他们输入 `R_rocks` 时可能指的是 `r_rocks`”。
 
-## Calling functions
+## 调用函数
 
-R has a large collection of built-in functions that are called like this:
+R 有大量内置函数，调用方式如下：
 
 ```{r}
 #| eval: false
 function_name(argument1 = value1, argument2 = value2, ...)
 ```
 
-Let's try using `seq()`, which makes regular **seq**uences of numbers, and while we're at it, learn more helpful features of RStudio.
-Type `se` and hit TAB.
-A popup shows you possible completions.
-Specify `seq()` by typing more (a `q`) to disambiguate or by using ↑/↓ arrows to select.
-Notice the floating tooltip that pops up, reminding you of the function's arguments and purpose.
-If you want more help, press F1 to get all the details in the help tab in the lower right pane.
+让我们试着用 `seq()` 来创建规则的数字**序** (seq) 列，同时学习更多 RStudio 的实用功能。输入 `se` 然后按 TAB 键。一个弹出窗口会显示可能的补全选项。通过输入更多字符（一个 `q`）来明确指定 `seq()`，或者使用 ↑/↓ 箭头来选择。注意弹出的浮动工具提示，它会提醒你函数参数和用途。如果你需要更多帮助，按 F1 键可以在右下角的帮助标签页中获取所有详细信息。
 
-When you've selected the function you want, press TAB again.
-RStudio will add matching opening (`(`) and closing (`)`) parentheses for you.
-Type the name of the first argument, `from`, and set it equal to `1`.
-Then, type the name of the second argument, `to`, and set it equal to `10`.
-Finally, hit return.
+当你选定了想要的函数后，再次按 TAB 键。RStudio 会为你添加匹配的开括号 (`(`) 和闭括号 (`)`)。输入第一个参数的名称 `from`，并将其设置为 `1`。然后，输入第二个参数的名称 `to`，并将其设置为 `10`。最后，按回车键。
 
 ```{r}
 seq(from = 1, to = 10)
 ```
 
-We often omit the names of the first several arguments in function calls, so we can rewrite this as follows:
+我们通常会省略函数调用中前几个参数的名称，所以我们可以这样重写：
 
 ```{r}
 seq(1, 10)
 ```
 
-Type the following code and notice that RStudio provides similar assistance with the paired quotation marks:
+输入以下代码，注意 RStudio 对成对的引号也提供了类似的辅助：
 
 ```{r}
 x <- "hello world"
 ```
 
-Quotation marks and parentheses must always come in a pair.
-RStudio does its best to help you, but it's still possible to mess up and end up with a mismatch.
-If this happens, R will show you the continuation character "+":
+引号和括号必须总是成对出现。RStudio 会尽力帮助你，但你仍然可能搞砸，导致不匹配。如果发生这种情况，R 会显示续行符 "+":
 
-```         
+```
 > x <- "hello
 +
 ```
 
-The `+` tells you that R is waiting for more input; it doesn't think you're done yet.
-Usually, this means you've forgotten either a `"` or a `)`. Either add the missing pair, or press ESCAPE to abort the expression and try again.
+`+` 告诉你 R 正在等待更多输入；它认为你还没有完成。通常，这意味着你忘了一个 `"` 或一个 `)`。要么加上缺失的配对符号，要么按 ESCAPE 键中止表达式并重试。
 
-Note that the environment tab in the upper right pane displays all of the objects that you've created:
+注意，右上角的环境 (environment) 标签页显示了你创建的所有对象：
 
 ```{r}
 #| echo: false
 #| fig-alt: |
-#|   Environment tab of RStudio which shows r_rocks, this_is_a_really_long_name, 
-#|   x, and y in the Global Environment.
+#|   RStudio 的环境标签页，在全局环境中显示了 r_rocks、this_is_a_really_long_name、
+#|   x 和 y。
 knitr::include_graphics("screenshots/rstudio-env.png")
 ```
 
-## Exercises
+## 练习
 
-1.  Why does this code not work?
+1.  为什么这段代码不工作？
 
     ```{r}
     #| error: true
@@ -217,10 +179,10 @@ knitr::include_graphics("screenshots/rstudio-env.png")
     my_varıable
     ```
 
-    Look carefully!
-    (This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)
+    仔细看！
+    （这可能看起来像一个无意义的练习，但训练你的大脑注意最微小的差异在编程时会大有裨益。）
 
-2.  Tweak each of the following R commands so that they run correctly:
+2.  调整以下每个 R 命令，使它们能够正确运行：
 
     ```{r}
     #| eval: false
@@ -231,14 +193,14 @@ knitr::include_graphics("screenshots/rstudio-env.png")
       geom_smooth(method = "lm)
     ```
 
-3.  Press Option + Shift + K / Alt + Shift + K.
-    What happens?
-    How can you get to the same place using the menus?
+3.  按 Option + Shift + K / Alt + Shift + K。
+    发生了什么？
+    如何通过菜单达到同样的位置？
 
-4.  Let's revisit an exercise from the @sec-ggsave.
-    Run the following lines of code.
-    Which of the two plots is saved as `mpg-plot.png`?
-    Why?
+4.  让我们重温 @sec-ggsave 中的一个练习。
+    运行以下代码行。
+    哪一个图被保存为 `mpg-plot.png`？
+    为什么？
 
     ```{r}
     #| eval: false
@@ -249,7 +211,6 @@ knitr::include_graphics("screenshots/rstudio-env.png")
     ggsave(filename = "mpg-plot.png", plot = my_bar_plot)
     ```
 
-## Summary
+## 小结
 
-Now that you've learned a little more about how R code works, and some tips to help you understand your code when you come back to it in the future.
-In the next chapter, we'll continue your data science journey by teaching you about dplyr, the tidyverse package that helps you transform data, whether it's selecting important variables, filtering down to rows of interest, or computing summary statistics.
+现在你已经对 R 代码如何工作有了更多了解，也学到了一些技巧，帮助你在未来回顾代码时能更好地理解。在下一章中，我们将继续你的数据科学之旅，教你关于 dplyr 的知识，它是 tidyverse 中帮助你转换数据的包，无论是选择重要变量、筛选感兴趣的行，还是计算汇总统计数据。

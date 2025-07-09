@@ -1,31 +1,31 @@
-# Preface to the second edition {.unnumbered}
+# 第 2 版前言 {.unnumbered}
 
-Welcome to the second edition of "R for Data Science"!
-This is a major reworking of the first edition, removing material we no longer think is useful, adding material we wish we included in the first edition, and generally updating the text and code to reflect changes in best practices.
-We're also very excited to welcome a new co-author: Mine Çetinkaya-Rundel, a noted data science educator and one of our colleagues at Posit (the company formerly known as RStudio).
+欢迎阅读《R 数据科学》第 2 版！
+这是对第 1 版的重大修订，我们删除了不再认为有用的内容，添加了希望在第 1 版中就包含的内容，并全面更新了文本和代码以反映最佳实践的变化。
+我们也非常高兴地欢迎一位新作者：Mine Çetinkaya-Rundel，她是一位著名的数据科学教育家，也是我们在 Posit（前身为 RStudio 的公司）的同事。
 
-A brief summary of the biggest changes follows:
+以下是主要变化的简要总结：
 
--   The first part of the book has been renamed to "Whole game".
-    The goal of this section is to give you the rough details of the "whole game" of data science before we dive into the details.
+-   本书的第一部分已重命名为“全局概览” (Whole game)。
+    本部分的目标是在我们深入细节之前，让你对数据科学的“全局”有一个大致的了解。
 
--   The second part of the book is "Visualize".
-    This part gives data visualization tools and best practices a more thorough coverage compared to the first edition.
-    The best place to get all the details is still the [ggplot2 book](http://ggplot2-book.org/), but now R4DS covers more of the most important techniques.
+-   本书的第二部分是“可视化” (Visualize)。
+    与第 1 版相比，这部分更详尽地介绍了数据可视化的工具和最佳实践。
+    要了解所有细节，最好的资源仍然是 [《ggplot2》](http://ggplot2-book.org/) 这本书，但现在 R4DS 涵盖了更多最重要的技术。
 
--   The third part of the book is now called "Transform" and gains new chapters on numbers, logical vectors, and missing values.
-    These were previously parts of the data transformation chapter, but needed much more room to cover all the details.
+-   本书的第三部分现在称为“转换” (Transform)，并增加了关于数值、逻辑向量和缺失值的新章节。
+    这些内容以前是数据转换章节的一部分，但需要更多的篇幅来涵盖所有细节。
 
--   The fourth part of the book is called "Import".
-    It's a new set of chapters that goes beyond reading flat text files to working with spreadsheets, getting data out of databases, working with big data, rectangling hierarchical data, and scraping data from web sites.
+-   本书的第四部分称为“导入” (Import)。
+    这是一组全新的章节，内容超出了读取纯文本文件的范围，涵盖了处理电子表格、从数据库获取数据、处理大数据、整理层次化数据以及从网站抓取数据。
 
--   The "Program" part remains, but has been rewritten from top-to-bottom to focus on the most important parts of function writing and iteration.
-    Function writing now includes details on how to wrap tidyverse functions (dealing with the challenges of tidy evaluation), since this has become much easier and more important over the last few years.
-    We've added a new chapter on important base R functions that you're likely to see in wild-caught R code.
+-   “编程” (Program) 部分仍然保留，但已从头到尾重写，重点关注函数编写和迭代的最重要部分。
+    函数编写现在包含了如何包装 tidyverse 函数的细节（处理整洁评估 (tidy evaluation) 的挑战），因为在过去几年中，这变得更加容易和重要。
+    我们还增加了一个新章节，介绍你可能在实际 R 代码中看到的重要基础 R 函数。
 
--   The modeling part has been removed.
-    We never had enough room to fully do modelling justice, and there are now much better resources available.
-    We generally recommend using the [tidymodels](https://www.tidymodels.org/) packages and reading [Tidy Modeling with R](https://www.tmwr.org/) by Max Kuhn and Julia Silge.
+-   “建模” (Modeling) 部分已被移除。
+    我们始终没有足够的篇幅来充分讲解建模，而且现在有更好的资源可用。
+    我们通常建议使用 [tidymodels](https://www.tidymodels.org/) 系列包，并阅读 Max Kuhn 和 Julia Silge 撰写的 [《Tidy Modeling with R》](https://www.tmwr.org/)。
 
--   The "Communicate" part remains, but has been thoroughly updated to feature [Quarto](https://quarto.org/) instead of R Markdown.
-    This edition of the book has been written in Quarto, and it's clearly the tool of the future.
+-   “沟通” (Communicate) 部分仍然保留，但已全面更新，使用 [Quarto](https://quarto.org/) 代替 R Markdown。
+    本书的这一版就是用 Quarto 编写的，它显然是未来的工具。

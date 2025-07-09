@@ -1,40 +1,31 @@
-# Data visualization {#sec-data-visualization}
+# 数据可视化 {#sec-data-visualization}
 
 ```{r}
 #| echo: false
 source("_common.R")
 ```
 
-## Introduction
+## 引言
 
-> "The simple graph has brought more information to the data analyst's mind than any other device." --- John Tukey
+> “简单的图形为数据分析师带来的信息比任何其他设备都多。” --- 约翰·图基 (John Tukey)
+> > "The simple graph has brought more information to the data analyst's mind than any other device." --- John Tukey
 
-R has several systems for making graphs, but ggplot2 is one of the most elegant and most versatile.
-ggplot2 implements the **grammar of graphics**, a coherent system for describing and building graphs.
-With ggplot2, you can do more and faster by learning one system and applying it in many places.
+R 有好几个图形系统，但 ggplot2 是其中最优雅、最通用的一个。ggplot2 实现了**图形语法** (grammar of graphics)，这是一套用于描述和构建图形的连贯体系。通过学习一个系统并将其应用于许多地方，你可以用 ggplot2 更快地完成更多工作。
 
-This chapter will teach you how to visualize your data using **ggplot2**.
-We will start by creating a simple scatterplot and use that to introduce aesthetic mappings and geometric objects -- the fundamental building blocks of ggplot2.
-We will then walk you through visualizing distributions of single variables as well as visualizing relationships between two or more variables.
-We'll finish off with saving your plots and troubleshooting tips.
+本章将教你如何使用 **ggplot2** 来可视化数据。我们将从创建一个简单的散点图开始，并用它来介绍美学映射 (aesthetic mappings) 和几何对象 (geometric objects)——ggplot2 的基本构建模块。然后，我们将引导你可视化单个变量的分布以及两个或多个变量之间的关系。最后，我们会介绍如何保存你的图形以及一些故障排除技巧。
 
-### Prerequisites
+### 先决条件
 
-This chapter focuses on ggplot2, one of the core packages in the tidyverse.
-To access the datasets, help pages, and functions used in this chapter, load the tidyverse by running:
+本章重点介绍 ggplot2，它是 tidyverse 中的核心包之一。要访问本章中使用的数据集、帮助页面和函数，请通过运行以下代码加载 tidyverse：
 
 ```{r}
 #| label: setup
 library(tidyverse)
 ```
 
-That one line of code loads the core tidyverse; the packages that you will use in almost every data analysis.
-It also tells you which functions from the tidyverse conflict with functions in base R (or from other packages you might have loaded)[^data-visualize-1].
+这一行代码加载了 tidyverse 的核心包；这些包几乎在每次数据分析中都会用到。它还会告诉你 tidyverse 中的哪些函数与 R 基础包 (base R)（或其他你可能已加载的包）中的函数存在冲突[^1]。
 
-[^data-visualize-1]: You can eliminate that message and force conflict resolution to happen on demand by using the conflicted package, which becomes more important as you load more packages.
-    You can learn more about conflicted at <https://conflicted.r-lib.org>.
-
-If you run this code and get the error message `there is no package called 'tidyverse'`, you'll need to first install it, then run `library()` once again.
+如果你运行此代码并收到错误消息 `there is no package called 'tidyverse'`，你需要先安装它，然后再运行一次 `library()`。
 
 ```{r}
 #| eval: false
@@ -42,98 +33,70 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-You only need to install a package once, but you need to load it every time you start a new session.
+你只需要安装一次包，但每次启动新会话时都需要加载它。
 
-In addition to tidyverse, we will also use the **palmerpenguins** package, which includes the `penguins` dataset containing body measurements for penguins on three islands in the Palmer Archipelago, and the ggthemes package, which offers a colorblind safe color palette.
+除了 tidyverse，我们还将使用 **palmerpenguins** 包，其中包含 `penguins` 数据集，该数据集包含了帕尔默群岛 (Palmer Archipelago) 上三个岛屿的企鹅身体测量数据，以及 ggthemes 包，它提供了一个色盲安全的调色板。
 
 ```{r}
 library(palmerpenguins)
 library(ggthemes)
 ```
 
-## First steps
+## 初步探索
 
-Do penguins with longer flippers weigh more or less than penguins with shorter flippers?
-You probably already have an answer, but try to make your answer precise.
-What does the relationship between flipper length and body mass look like?
-Is it positive?
-Negative?
-Linear?
-Nonlinear?
-Does the relationship vary by the species of the penguin?
-How about by the island where the penguin lives?
-Let's create visualizations that we can use to answer these questions.
+鳍状肢 (flipper) 较长的企鹅比鳍状肢较短的企鹅重还是轻？你可能已经有了答案，但请尝试让你的答案更精确。鳍状肢长度和体重之间的关系是怎样的？是正相关？负相关？线性的？非线性的？这种关系是否因企鹅的物种而异？又是否因企鹅居住的岛屿而异？让我们创建一些可视化图形来回答这些问题。
 
-### The `penguins` data frame
+### `penguins` 数据框
 
-You can test your answers to those questions with the `penguins` **data frame** found in palmerpenguins (a.k.a. `palmerpenguins::penguins`).
-A data frame is a rectangular collection of variables (in the columns) and observations (in the rows).
-`penguins` contains `r nrow(penguins)` observations collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER[^data-visualize-2].
+你可以使用 palmerpenguins 包中的 `penguins` **数据框** (data frame)（也写作 `palmerpenguins::penguins`）来检验你对这些问题的答案。数据框是变量（在列中）和观测（在行中）的矩形集合。`penguins` 包含了由 Kristen Gorman 博士和帕尔默站，南极 LTER 收集并提供的 `r nrow(penguins)` 个观测值[^2]。
 
-[^data-visualize-2]: Horst AM, Hill AP, Gorman KB (2020).
-    palmerpenguins: Palmer Archipelago (Antarctica) penguin data.
-    R package version 0.1.0.
-    <https://allisonhorst.github.io/palmerpenguins/>.
-    doi: 10.5281/zenodo.3960218.
+为了让讨论更容易，我们来定义一些术语：
 
-To make the discussion easier, let's define some terms:
+  - **变量** (variable) 是你可以测量的数量、质量或属性。
 
--   A **variable** is a quantity, quality, or property that you can measure.
+  - **值** (value) 是你在测量时变量的状态。变量的值可能在每次测量中发生变化。
 
--   A **value** is the state of a variable when you measure it.
-    The value of a variable may change from measurement to measurement.
+  - **观测** (observation) 是在相似条件下进行的一组测量（通常你会在同一时间对同一对象进行一次观测中的所有测量）。一个观测会包含多个值，每个值都与一个不同的变量相关联。我们有时会将一个观测称为一个数据点。
 
--   An **observation** is a set of measurements made under similar conditions (you usually make all of the measurements in an observation at the same time and on the same object).
-    An observation will contain several values, each associated with a different variable.
-    We'll sometimes refer to an observation as a data point.
+  - **表格数据** (tabular data) 是一组值，每个值都与一个变量和一个观测相关联。如果每个值都放在自己的“单元格”中，每个变量都在自己的列中，每个观测都在自己的行中，那么表格数据就是*整洁* (tidy) 的。
 
--   **Tabular data** is a set of values, each associated with a variable and an observation.
-    Tabular data is *tidy* if each value is placed in its own "cell", each variable in its own column, and each observation in its own row.
+在此背景下，一个变量指的是所有企鹅的一个属性，而一个观测指的是一只企鹅的所有属性。
 
-In this context, a variable refers to an attribute of all the penguins, and an observation refers to all the attributes of a single penguin.
-
-Type the name of the data frame in the console and R will print a preview of its contents.
-Note that it says `tibble` on top of this preview.
-In the tidyverse, we use special data frames called **tibbles** that you will learn more about soon.
+在控制台中输入数据框的名称，R 将打印其内容的预览。注意，此预览的顶部写着 `tibble`。在 tidyverse 中，我们使用一种特殊的数据框，称为 **tibble**，你很快就会学到更多关于它的知识。
 
 ```{r}
 penguins
 ```
 
-This data frame contains `r ncol(penguins)` columns.
-For an alternative view, where you can see all variables and the first few observations of each variable, use `glimpse()`.
-Or, if you're in RStudio, run `View(penguins)` to open an interactive data viewer.
+这个数据框包含 `r ncol(penguins)` 列。要获得另一种视图，在那里你可以看到所有变量以及每个变量的前几个观测值，请使用 `glimpse()`。或者，如果你在 RStudio 中，运行 `View(penguins)` 来打开一个交互式数据查看器。
 
 ```{r}
 glimpse(penguins)
 ```
 
-Among the variables in `penguins` are:
+在 `penguins` 的变量中包括：
 
-1.  `species`: a penguin's species (Adelie, Chinstrap, or Gentoo).
+1.  `species`: 企鹅的物种（阿德利企鹅 (Adelie)、帽带企鹅 (Chinstrap) 或巴布亚企鹅 (Gentoo)）。
 
-2.  `flipper_length_mm`: length of a penguin's flipper, in millimeters.
+2.  `flipper_length_mm`: 企鹅鳍状肢的长度，单位为毫米。
 
-3.  `body_mass_g`: body mass of a penguin, in grams.
+3.  `body_mass_g`: 企鹅的体重，单位为克。
 
-To learn more about `penguins`, open its help page by running `?penguins`.
+要了解更多关于 `penguins` 的信息，请运行 `?penguins` 打开其帮助页面。
 
-### Ultimate goal {#sec-ultimate-goal}
+### 最终目标 {#sec-ultimate-goal}
 
-Our ultimate goal in this chapter is to recreate the following visualization displaying the relationship between flipper lengths and body masses of these penguins, taking into consideration the species of the penguin.
+我们在本章的最终目标是重新创建以下可视化图形，它展示了这些企鹅的鳍状肢长度和体重之间的关系，同时考虑了企鹅的物种。
 
 ```{r}
 #| echo: false
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins, with a
-#|   best fit line of the relationship between these two variables
-#|   overlaid. The plot displays a positive, fairly linear, and relatively
-#|   strong relationship between these two variables. Species (Adelie,
-#|   Chinstrap, and Gentoo) are represented with different colors and
-#|   shapes. The relationship between body mass and flipper length is
-#|   roughly the same for these three species, and Gentoo penguins are
-#|   larger than penguins from the other two species.
+#|   企鹅体重与鳍状肢长度的散点图，叠加了表示这两个变量关系的
+#|   最佳拟合线。该图显示了这两个变量之间存在正向、相当线性且
+#|   相对较强的关系。物种（Adelie、Chinstrap 和 Gentoo）用不同的颜色
+#|   和形状表示。这三个物种的体重和鳍状肢长度之间的关系大致相同，
+#|   Gentoo 企鹅比其他两个物种的企鹅更大。
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point(aes(color = species, shape = species)) +
     geom_smooth(method = "lm") +
@@ -148,57 +111,42 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     scale_color_colorblind()
 ```
 
-### Creating a ggplot
+### 创建 ggplot 图形
 
-Let's recreate this plot step-by-step.
+让我们一步步地重新创建这个图形。
 
-With ggplot2, you begin a plot with the function `ggplot()`, defining a plot object that you then add **layers** to.
-The first argument of `ggplot()` is the dataset to use in the graph and so `ggplot(data = penguins)` creates an empty graph that is primed to display the `penguins` data, but since we haven't told it how to visualize it yet, for now it's empty.
-This is not a very exciting plot, but you can think of it like an empty canvas you'll paint the remaining layers of your plot onto.
+使用 ggplot2 时，你用 `ggplot()` 函数开始一个图形，定义一个图形对象，然后向其添加**图层** (layers)。`ggplot()` 的第一个参数是要在图形中使用的数据集，因此 `ggplot(data = penguins)` 创建了一个空的图形，准备好显示 `penguins` 数据，但由于我们还没有告诉它如何可视化，所以目前它是空的。这不是一个非常激动人心的图形，但你可以把它想象成一块空的画布，你将在上面绘制图形的其余图层。
 
 ```{r}
 #| fig-alt: |
-#|   A blank, gray plot area.
+#|   一个空白的灰色绘图区域。
 ggplot(data = penguins)
 ```
 
-Next, we need to tell `ggplot()` how the information from our data will be visually represented.
-The `mapping` argument of the `ggplot()` function defines how variables in your dataset are mapped to visual properties (**aesthetics**) of your plot.
-The `mapping` argument is always defined in the `aes()` function, and the `x` and `y` arguments of `aes()` specify which variables to map to the x and y axes.
-For now, we will only map flipper length to the `x` aesthetic and body mass to the `y` aesthetic.
-ggplot2 looks for the mapped variables in the `data` argument, in this case, `penguins`.
+接下来，我们需要告诉 `ggplot()` 如何将我们数据中的信息进行可视化呈现。`ggplot()` 函数的 `mapping` 参数定义了数据集中的变量如何映射到你图形的视觉属性（**美学** (aesthetics)）上。`mapping` 参数总是在 `aes()` 函数中定义，`aes()` 的 `x` 和 `y` 参数指定了将哪些变量映射到 x 轴和 y 轴。现在，我们只将鳍状肢长度映射到 `x` 美学，将体重映射到 `y` 美学。ggplot2 会在 `data` 参数（在这里是 `penguins`）中寻找被映射的变量。
 
-The following plot shows the result of adding these mappings.
+下图显示了添加这些映射后的结果。
 
 ```{r}
 #| fig-alt: |
-#|   The plot shows flipper length on the x-axis, with values that range from
-#|   170 to 230, and body mass on the y-axis, with values that range from 3000
-#|   to 6000.
+#|   该图在 x 轴上显示鳍状肢长度，取值范围从 170 到 230，
+#|   在 y 轴上显示体重，取值范围从 3000 到 6000。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
 )
 ```
 
-Our empty canvas now has more structure -- it's clear where flipper lengths will be displayed (on the x-axis) and where body masses will be displayed (on the y-axis).
-But the penguins themselves are not yet on the plot.
-This is because we have not yet articulated, in our code, how to represent the observations from our data frame on our plot.
+我们的空画布现在有了更多的结构——很清楚鳍状肢长度将显示在哪里（x 轴上），体重将显示在哪里（y 轴上）。但是企鹅本身还没有在图上。这是因为我们还没有在代码中明确说明如何在图上表示我们数据框中的观测值。
 
-To do so, we need to define a **geom**: the geometrical object that a plot uses to represent data.
-These geometric objects are made available in ggplot2 with functions that start with `geom_`.
-People often describe plots by the type of geom that the plot uses.
-For example, bar charts use bar geoms (`geom_bar()`), line charts use line geoms (`geom_line()`), boxplots use boxplot geoms (`geom_boxplot()`), scatterplots use point geoms (`geom_point()`), and so on.
+为此，我们需要定义一个**几何对象** (geom)：即图形用来表示数据的几何对象。这些几何对象在 ggplot2 中通过以 `geom_` 开头的函数提供。人们通常用图形使用的几何对象类型来描述图形。例如，条形图使用条形几何对象 (`geom_bar()`)，折线图使用线形几何对象 (`geom_line()`)，箱线图使用箱线图几何对象 (`geom_boxplot()`)，散点图使用点几何对象 (`geom_point()`) 等等。
 
-The function `geom_point()` adds a layer of points to your plot, which creates a scatterplot.
-ggplot2 comes with many geom functions that each adds a different type of layer to a plot.
-You'll learn a whole bunch of geoms throughout the book, particularly in @sec-layers.
+函数 `geom_point()` 会在你的图形上添加一个点图层，从而创建一个散点图。ggplot2 带有许多几何对象函数，每个函数都会向图形添加不同类型的图层。在本书中，你将学到很多几何对象，特别是在 @sec-layers 中。
 
 ```{r}
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. The plot
-#|   displays a positive, linear, and relatively strong relationship between
-#|   these two variables.
+#|   企鹅体重与鳍状肢长度的散点图。该图显示了这两个变量之间
+#|   存在正向、线性和相对较强的关系。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
@@ -206,38 +154,26 @@ ggplot(
     geom_point()
 ```
 
-Now we have something that looks like what we might think of as a "scatterplot".
-It doesn't yet match our "ultimate goal" plot, but using this plot we can start answering the question that motivated our exploration: "What does the relationship between flipper length and body mass look like?" The relationship appears to be positive (as flipper length increases, so does body mass), fairly linear (the points are clustered around a line instead of a curve), and moderately strong (there isn't too much scatter around such a line).
-Penguins with longer flippers are generally larger in terms of their body mass.
+现在我们得到了一个看起来像是我们所认为的“散点图”的东西。它还不完全符合我们的“最终目标”图形，但使用这个图，我们可以开始回答激发我们探索的问题：“鳍状肢长度和体重之间的关系是怎样的？” 这种关系看起来是正相关的（随着鳍状肢长度的增加，体重也随之增加），相当线性的（数据点聚集在一条直线周围而不是一条曲线），并且强度中等（围绕这样一条直线的散布点不多）。鳍状肢较长的企鹅通常体重也较重。
 
-Before we add more layers to this plot, let's pause for a moment and review the warning message we got:
+在向此图添加更多图层之前，让我们暂停一下，回顾一下我们收到的警告消息：
 
 > Removed 2 rows containing missing values (`geom_point()`).
 
-We're seeing this message because there are two penguins in our dataset with missing body mass and/or flipper length values and ggplot2 has no way of representing them on the plot without both of these values.
-Like R, ggplot2 subscribes to the philosophy that missing values should never silently go missing.
-This type of warning is probably one of the most common types of warnings you will see when working with real data -- missing values are a very common issue and you'll learn more about them throughout the book, particularly in @sec-missing-values.
-For the remaining plots in this chapter we will suppress this warning so it's not printed alongside every single plot we make.
+我们看到这条消息是因为我们的数据集中有两只企鹅的体重和/或鳍状肢长度的值是缺失的，而 ggplot2 在没有这两个值的情况下无法在图上表示它们。和 R 一样，ggplot2 遵循的理念是，缺失值永远不应该被悄悄地忽略。这种类型的警告可能是你在处理真实数据时会看到的最常见的警告之一——缺失值是一个非常常见的问题，你将在本书中，特别是在 @sec-missing-values 中学到更多关于它们的内容。在本章余下的图形中，我们将抑制此警告，这样它就不会在我们制作的每个图形旁边打印出来。
 
-### Adding aesthetics and layers {#sec-adding-aesthetics-layers}
+### 添加美学和图层 {#sec-adding-aesthetics-layers}
 
-Scatterplots are useful for displaying the relationship between two numerical variables, but it's always a good idea to be skeptical of any apparent relationship between two variables and ask if there may be other variables that explain or change the nature of this apparent relationship.
-For example, does the relationship between flipper length and body mass differ by species?
-Let's incorporate species into our plot and see if this reveals any additional insights into the apparent relationship between these variables.
-We will do this by representing species with different colored points.
+散点图对于显示两个数值变量之间的关系很有用，但对两个变量之间的任何明显关系持怀疑态度总是一个好主意，并追问是否存在其他变量可以解释或改变这种明显关系的性质。例如，鳍状肢长度和体重之间的关系是否因物种而异？让我们将物种信息融入到我们的图形中，看看这是否能揭示关于这些变量之间明显关系的任何额外见解。我们将通过用不同颜色的点来代表不同物种来实现这一点。
 
-To achieve this, will we need to modify the aesthetic or the geom?
-If you guessed "in the aesthetic mapping, inside of `aes()`", you're already getting the hang of creating data visualizations with ggplot2!
-And if not, don't worry.
-Throughout the book you will make many more ggplots and have many more opportunities to check your intuition as you make them.
+为了实现这一点，我们需要修改美学还是几何对象？如果你猜的是“在美学映射中，即 `aes()` 内部”，那么你已经开始掌握用 ggplot2 创建数据可视化的窍门了！如果没猜对，也别担心。在本书中，你将制作更多的 ggplot 图形，并有更多机会在制作它们时检验你的直觉。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. The plot
-#|   displays a positive, fairly linear, and relatively strong relationship
-#|   between these two variables. Species (Adelie, Chinstrap, and Gentoo)
-#|   are represented with different colors.
+#|   企鹅体重与鳍状肢长度的散点图。该图显示了这两个变量之间
+#|   存在正向、相当线性和相对较强的关系。物种（Adelie、
+#|   Chinstrap 和 Gentoo）用不同的颜色表示。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)
@@ -245,23 +181,18 @@ ggplot(
     geom_point()
 ```
 
-When a categorical variable is mapped to an aesthetic, ggplot2 will automatically assign a unique value of the aesthetic (here a unique color) to each unique level of the variable (each of the three species), a process known as **scaling**.
-ggplot2 will also add a legend that explains which values correspond to which levels.
+当一个分类变量被映射到一个美学上时，ggplot2 会自动为该变量的每个唯一水平（这里是三个物种中的每一个）分配一个唯一的美学值（这里是一种独特的颜色），这个过程称为**标度变换** (scaling)。ggplot2 还会添加一个图例，解释哪个值对应哪个水平。
 
-Now let's add one more layer: a smooth curve displaying the relationship between body mass and flipper length.
-Before you proceed, refer back to the code above, and think about how we can add this to our existing plot.
+现在让我们再添加一个图层：一条显示体重和鳍状肢长度之间关系的光滑曲线。在继续之前，请回顾上面的代码，并思考我们如何能将它添加到我们现有的图形中。
 
-Since this is a new geometric object representing our data, we will add a new geom as a layer on top of our point geom: `geom_smooth()`.
-And we will specify that we want to draw the line of best fit based on a `l`inear `m`odel with `method = "lm"`.
+由于这是一个代表我们数据的新几何对象，我们将在点几何对象图层之上添加一个新的几何对象图层：`geom_smooth()`。并且我们将指定我们想要基于一个`l`inear `m`odel（线性模型）来绘制最佳拟合线，通过设置 `method = "lm"`。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. Overlaid
-#|   on the scatterplot are three smooth curves displaying the
-#|   relationship between these variables for each species (Adelie,
-#|   Chinstrap, and Gentoo). Different penguin species are plotted in
-#|   different colors for the points and the smooth curves.
+#|   企鹅体重与鳍状肢长度的散点图。散点图上叠加了三条光滑曲线，
+#|   显示了每个物种（Adelie、Chinstrap 和 Gentoo）的这两个变量之间的关系。
+#|   不同的企鹅物种用不同颜色的点和光滑曲线绘制。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)
@@ -270,20 +201,16 @@ ggplot(
     geom_smooth(method = "lm")
 ```
 
-We have successfully added lines, but this plot doesn't look like the plot from @sec-ultimate-goal, which only has one line for the entire dataset as opposed to separate lines for each of the penguin species.
+我们成功地添加了线条，但这个图看起来不像 @sec-ultimate-goal 中的那个图，后者只有一条针对整个数据集的线，而不是为每个企鹅物种分别画线。
 
-When aesthetic mappings are defined in `ggplot()`, at the *global* level, they're passed down to each of the subsequent geom layers of the plot.
-However, each geom function in ggplot2 can also take a `mapping` argument, which allows for aesthetic mappings at the *local* level that are added to those inherited from the global level.
-Since we want points to be colored based on species but don't want the lines to be separated out for them, we should specify `color = species` for `geom_point()` only.
+当美学映射在 `ggplot()` 中定义时，即在*全局* (global) 层面，它们会被传递到图形的每个后续几何对象图层中。然而，ggplot2 中的每个几何对象函数也可以接受一个 `mapping` 参数，这允许在*局部* (local) 层面进行美学映射，这些映射会添加到从全局层面继承的映射之上。由于我们希望点的颜色根据物种来定，但又不希望线条也因此分开，我们应该只为 `geom_point()` 指定 `color = species`。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. Overlaid
-#|   on the scatterplot is a single line of best fit displaying the
-#|   relationship between these variables for each species (Adelie,
-#|   Chinstrap, and Gentoo). Different penguin species are plotted in
-#|   different colors for the points only.
+#|   企鹅体重与鳍状肢长度的散点图。散点图上叠加了一条单一的最佳拟合线，
+#|   显示了每个物种（Adelie、Chinstrap 和 Gentoo）的这两个变量之间的关系。
+#|   不同的企鹅物种仅用不同颜色的点来绘制。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
@@ -292,21 +219,16 @@ ggplot(
     geom_smooth(method = "lm")
 ```
 
-Voila!
-We have something that looks very much like our ultimate goal, though it's not yet perfect.
-We still need to use different shapes for each species of penguins and improve labels.
+瞧！我们得到了一个非常像我们最终目标的图形，尽管它还不完美。我们仍然需要为每种企鹅使用不同的形状并改进标签。
 
-It's generally not a good idea to represent information using only colors on a plot, as people perceive colors differently due to color blindness or other color vision differences.
-Therefore, in addition to color, we can also map `species` to the `shape` aesthetic.
+通常，仅在图上使用颜色来表示信息不是一个好主意，因为由于色盲或其他色觉差异，人们对颜色的感知是不同的。因此，除了颜色，我们还可以将 `species` 映射到 `shape`（形状）美学上。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. Overlaid
-#|   on the scatterplot is a single line of best fit displaying the
-#|   relationship between these variables for each species (Adelie,
-#|   Chinstrap, and Gentoo). Different penguin species are plotted in
-#|   different colors and shapes for the points only.
+#|   企鹅体重与鳍状肢长度的散点图。散点图上叠加了一条单一的最佳拟合线，
+#|   显示了每个物种（Adelie、Chinstrap 和 Gentoo）的这两个变量之间的关系。
+#|   不同的企鹅物种仅用不同颜色和形状的点来绘制。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
@@ -315,24 +237,18 @@ ggplot(
     geom_smooth(method = "lm")
 ```
 
-Note that the legend is automatically updated to reflect the different shapes of the points as well.
+注意，图例也会自动更新以反映点的不同形状。
 
-And finally, we can improve the labels of our plot using the `labs()` function in a new layer.
-Some of the arguments to `labs()` might be self explanatory: `title` adds a title and `subtitle` adds a subtitle to the plot.
-Other arguments match the aesthetic mappings, `x` is the x-axis label, `y` is the y-axis label, and `color` and `shape` define the label for the legend.
-In addition, we can improve the color palette to be colorblind safe with the `scale_color_colorblind()` function from the ggthemes package.
+最后，我们可以在一个新的图层中使用 `labs()` 函数来改进我们图形的标签。`labs()` 的一些参数可能是不言自明的：`title` 为图形添加标题，`subtitle` 添加副标题。其他参数与美学映射相匹配，`x` 是 x 轴标签，`y` 是 y 轴标签，`color` 和 `shape` 定义了图例的标签。此外，我们可以使用 ggthemes 包中的 `scale_color_colorblind()` 函数来改进调色板，使其对色盲友好。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins, with a
-#|   line of best fit displaying the relationship between these two variables
-#|   overlaid. The plot displays a positive, fairly linear, and relatively
-#|   strong relationship between these two variables. Species (Adelie,
-#|   Chinstrap, and Gentoo) are represented with different colors and
-#|   shapes. The relationship between body mass and flipper length is
-#|   roughly the same for these three species, and Gentoo penguins are
-#|   larger than penguins from the other two species.
+#|   企鹅体重与鳍状肢长度的散点图，叠加了表示这两个变量关系的
+#|   最佳拟合线。该图显示了这两个变量之间存在正向、相当线性且
+#|   相对较强的关系。物种（Adelie、Chinstrap 和 Gentoo）用不同的颜色
+#|   和形状表示。这三个物种的体重和鳍状肢长度之间的关系大致相同，
+#|   Gentoo 企鹅比其他两个物种的企鹅更大。
 ggplot(
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
@@ -348,97 +264,83 @@ ggplot(
     scale_color_colorblind()
 ```
 
-We finally have a plot that perfectly matches our "ultimate goal"!
+我们终于得到了一个与我们的“最终目标”完全匹配的图形！
 
-### Exercises
+### 练习
 
-1.  How many rows are in `penguins`?
-    How many columns?
+1.  `penguins` 中有多少行？有多少列？
 
-2.  What does the `bill_depth_mm` variable in the `penguins` data frame describe?
-    Read the help for `?penguins` to find out.
+2.  `penguins` 数据框中的 `bill_depth_mm` 变量描述了什么？阅读 `?penguins` 的帮助文档来找出答案。
 
-3.  Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm`.
-    That is, make a scatterplot with `bill_depth_mm` on the y-axis and `bill_length_mm` on the x-axis.
-    Describe the relationship between these two variables.
+3.  制作一个 `bill_depth_mm` 与 `bill_length_mm` 的散点图。也就是说，制作一个 y 轴为 `bill_depth_mm`，x 轴为 `bill_length_mm` 的散点图。描述这两个变量之间的关系。
 
-4.  What happens if you make a scatterplot of `species` vs. `bill_depth_mm`?
-    What might be a better choice of geom?
+4.  如果你制作一个 `species` 与 `bill_depth_mm` 的散点图会发生什么？什么可能是更好的几何对象选择？
 
-5.  Why does the following give an error and how would you fix it?
+5.  为什么以下代码会产生错误？你将如何修复它？
 
     ```{r}
-#| eval: false
-ggplot(data = penguins) +
-    geom_point()
+    #| eval: false
+    ggplot(data = penguins) +
+        geom_point()
     ```
 
-6.  What does the `na.rm` argument do in `geom_point()`?
-    What is the default value of the argument?
-    Create a scatterplot where you successfully use this argument set to `TRUE`.
+6.  `geom_point()` 中的 `na.rm` 参数有什么作用？该参数的默认值是什么？创建一个散点图，在其中成功地将此参数设置为 `TRUE`。
 
-7.  Add the following caption to the plot you made in the previous exercise: "Data come from the palmerpenguins package." Hint: Take a look at the documentation for `labs()`.
+7.  为你上一个练习中制作的图形添加以下标题：“Data come from the palmerpenguins package.” 提示：查看 `labs()` 的文档。
 
-8.  Recreate the following visualization.
-    What aesthetic should `bill_depth_mm` be mapped to?
-    And should it be mapped at the global level or at the geom level?
+8.  重新创建以下可视化图形。`bill_depth_mm` 应该映射到哪个美学上？它应该在全局层面还是在几何对象层面进行映射？
 
     ```{r}
-#| echo: false
-#| warning: false
-#| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins, colored
-#|   by bill depth. A smooth curve of the relationship between body mass
-#|   and flipper length is overlaid. The relationship is positive,
-#|   fairly linear, and moderately strong.
-ggplot(
-    data = penguins,
-    mapping = aes(x = flipper_length_mm, y = body_mass_g)
-) +
-    geom_point(aes(color = bill_depth_mm)) +
-    geom_smooth()
-    ```
-
-9.  Run this code in your head and predict what the output will look like.
-    Then, run the code in R and check your predictions.
-
-    ```{r}
-#| eval: false
-ggplot(
-    data = penguins,
-    mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
-) +
-    geom_point() +
-    geom_smooth(se = FALSE)
-    ```
-
-10. Will these two graphs look different?
-    Why/why not?
-
-    ```{r}
-#| eval: false
-ggplot(
-    data = penguins,
-    mapping = aes(x = flipper_length_mm, y = body_mass_g)
-) +
-    geom_point() +
-    geom_smooth()
-
-ggplot() +
-    geom_point(
+    #| echo: false
+    #| warning: false
+    #| fig-alt: |
+    #|   企鹅体重与鳍状肢长度的散点图，按喙深着色。叠加了一条表示
+    #|   体重与鳍状肢长度关系的光滑曲线。这种关系是正向的、
+    #|   相当线性的，并且强度中等。
+    ggplot(
         data = penguins,
         mapping = aes(x = flipper_length_mm, y = body_mass_g)
     ) +
-    geom_smooth(
-        data = penguins,
-        mapping = aes(x = flipper_length_mm, y = body_mass_g)
-    )
+        geom_point(aes(color = bill_depth_mm)) +
+        geom_smooth()
     ```
 
-## ggplot2 calls {#sec-ggplot2-calls}
+9.  在脑海中运行这段代码，并预测输出会是什么样子。然后，在 R 中运行代码并检查你的预测。
 
-As we move on from these introductory sections, we'll transition to a more concise expression of ggplot2 code.
-So far we've been very explicit, which is helpful when you are learning:
+    ```{r}
+    #| eval: false
+    ggplot(
+        data = penguins,
+        mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+    ) +
+        geom_point() +
+        geom_smooth(se = FALSE)
+    ```
+
+10. 这两个图形看起来会有所不同吗？为什么/为什么不？
+
+    ```{r}
+    #| eval: false
+    ggplot(
+        data = penguins,
+        mapping = aes(x = flipper_length_mm, y = body_mass_g)
+    ) +
+        geom_point() +
+        geom_smooth()
+    ggplot() +
+        geom_point(
+            data = penguins,
+            mapping = aes(x = flipper_length_mm, y = body_mass_g)
+        ) +
+        geom_smooth(
+            data = penguins,
+            mapping = aes(x = flipper_length_mm, y = body_mass_g)
+        )
+    ```
+
+## ggplot2 调用 {#sec-ggplot2-calls}
+
+随着我们从这些介绍性部分继续前进，我们将过渡到更简洁的 ggplot2 代码表达方式。到目前为止，我们一直写得非常明确，这在你学习时很有帮助：
 
 ```{r}
 #| eval: false
@@ -449,12 +351,9 @@ ggplot(
     geom_point()
 ```
 
-Typically, the first one or two arguments to a function are so important that you should know them by heart.
-The first two arguments to `ggplot()` are `data` and `mapping`, in the remainder of the book, we won't supply those names.
-That saves typing, and, by reducing the amount of extra text, makes it easier to see what's different between plots.
-That's a really important programming concern that we'll come back to in @sec-functions.
+通常，一个函数的前一两个参数是如此重要，以至于你应该熟记于心。`ggplot()` 的前两个参数是 `data` 和 `mapping`，在本书的其余部分，我们将不再提供这些名称。这样可以节省打字时间，并且通过减少额外的文本量，更容易看出不同图形之间的差异。这是一个非常重要的编程问题，我们将在 @sec-functions 中再次讨论。
 
-Rewriting the previous plot more concisely yields:
+更简洁地重写之前的图形代码如下：
 
 ```{r}
 #| eval: false
@@ -462,7 +361,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point()
 ```
 
-In the future, you'll also learn about the pipe, `|>`, which will allow you to create that plot with:
+将来，你还会学到管道符号 `|>`，它将允许你用以下方式创建该图形：
 
 ```{r}
 #| eval: false
@@ -471,328 +370,266 @@ penguins |>
     geom_point()
 ```
 
-## Visualizing distributions
+## 可视化分布
 
-How you visualize the distribution of a variable depends on the type of variable: categorical or numerical.
+如何可视化一个变量的分布取决于该变量的类型：分类变量或数值变量。
 
-### A categorical variable
+### 分类变量
 
-A variable is **categorical** if it can only take one of a small set of values.
-To examine the distribution of a categorical variable, you can use a bar chart.
-The height of the bars displays how many observations occurred with each `x` value.
+如果一个变量只能取一小组值中的一个，那么它就是**分类的** (categorical)。要检查分类变量的分布，你可以使用条形图。条形的高度显示了每个 `x` 值出现了多少次观测。
 
 ```{r}
 #| fig-alt: |
-#|   A bar chart of frequencies of species of penguins: Adelie
-#|   (approximately 150), Chinstrap (approximately 90), Gentoo
-#|   (approximately 125).
+#|   企鹅物种频率的条形图：Adelie（约 150），
+#|   Chinstrap（约 90），Gentoo（约 125）。
 ggplot(penguins, aes(x = species)) +
     geom_bar()
 ```
 
-In bar plots of categorical variables with non-ordered levels, like the penguin `species` above, it's often preferable to reorder the bars based on their frequencies.
-Doing so requires transforming the variable to a factor (how R handles categorical data) and then reordering the levels of that factor.
+对于具有无序水平的分类变量的条形图，比如上面的企鹅 `species`，通常最好根据它们的频率对条形进行重新排序。这样做需要将变量转换为因子（R 处理分类数据的方式），然后重新排序该因子的水平。
 
 ```{r}
 #| fig-alt: |
-#|   A bar chart of frequencies of species of penguins, where the bars are
-#|   ordered in decreasing order of their heights (frequencies): Adelie
-#|   (approximately 150), Gentoo (approximately 125), Chinstrap
-#|   (approximately 90).
+#|   企鹅物种频率的条形图，其中的条形按其高度（频率）
+#|   的降序排列：Adelie（约 150），Gentoo（约 125），
+#|   Chinstrap（约 90）。
 ggplot(penguins, aes(x = fct_infreq(species))) +
     geom_bar()
 ```
 
-You will learn more about factors and functions for dealing with factors (like `fct_infreq()` shown above) in @sec-factors.
+你将在 @sec-factors 中学到更多关于因子以及处理因子的函数（如上面展示的 `fct_infreq()`）的知识。
 
-### A numerical variable
+### 数值变量
 
-A variable is **numerical** (or quantitative) if it can take on a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
-Numerical variables can be continuous or discrete.
+如果一个变量可以取广泛的数值，并且对这些值进行加、减或求平均是有意义的，那么它就是**数值的** (numerical)（或定量的）。数值变量可以是连续的或离散的。
 
-One commonly used visualization for distributions of continuous variables is a histogram.
+对于连续变量的分布，一种常用的可视化方法是直方图。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A histogram of body masses of penguins. The distribution is unimodal
-#|   and right skewed, ranging between approximately 2500 to 6500 grams.
+#|   企鹅体重的直方图。分布是单峰的且右偏，
+#|   范围大约在 2500 到 6500 克之间。
 ggplot(penguins, aes(x = body_mass_g)) +
     geom_histogram(binwidth = 200)
 ```
 
-A histogram divides the x-axis into equally spaced bins and then uses the height of a bar to display the number of observations that fall in each bin.
-In the graph above, the tallest bar shows that 39 observations have a `body_mass_g` value between 3,500 and 3,700 grams, which are the left and right edges of the bar.
+直方图将 x 轴划分为等宽的区间（bins），然后用条形的高度来显示落入每个区间内的观测数量。在上图中，最高的条形显示有 39 个观测的 `body_mass_g` 值在 3,500 到 3,700 克之间，这是该条形的左右边界。
 
-You can set the width of the intervals in a histogram with the binwidth argument, which is measured in the units of the `x` variable.
-You should always explore a variety of binwidths when working with histograms, as different binwidths can reveal different patterns.
-In the plots below a binwidth of 20 is too narrow, resulting in too many bars, making it difficult to determine the shape of the distribution.
-Similarly, a binwidth of 2,000 is too high, resulting in all data being binned into only three bars, and also making it difficult to determine the shape of the distribution.
-A binwidth of 200 provides a sensible balance.
+你可以用 `binwidth` 参数来设置直方图中区间的宽度，该参数以 `x` 变量的单位来度量。在使用直方图时，你应该总是探索各种不同的 `binwidth`，因为不同的 `binwidth` 可以揭示不同的模式。在下面的图形中，20 的 `binwidth` 太窄，导致条形过多，难以确定分布的形状。同样，2,000 的 `binwidth` 太高，导致所有数据只被分到三个条形中，也使其难以确定分布的形状。200 的 `binwidth` 提供了一个合理的平衡。
 
 ```{r}
 #| warning: false
 #| layout-ncol: 2
 #| fig-width: 3
 #| fig-alt: |
-#|   Two histograms of body masses of penguins, one with binwidth of 20
-#|   (left) and one with binwidth of 2000 (right). The histogram with binwidth
-#|   of 20 shows lots of ups and downs in the heights of the bins, creating a
-#|   jagged outline. The histogram  with binwidth of 2000 shows only three bins.
+#|   企鹅体重的两个直方图，一个的组距 (binwidth) 为 20（左），另一个为 2000（右）。
+#|   组距为 20 的直方图显示了条形高度的许多起伏，形成了一个锯齿状的轮廓。
+#|   组距为 2000 的直方图只显示了三个条形。
 ggplot(penguins, aes(x = body_mass_g)) +
     geom_histogram(binwidth = 20)
 ggplot(penguins, aes(x = body_mass_g)) +
     geom_histogram(binwidth = 2000)
 ```
 
-An alternative visualization for distributions of numerical variables is a density plot.
-A density plot is a smoothed-out version of a histogram and a practical alternative, particularly for continuous data that comes from an underlying smooth distribution.
-We won't go into how `geom_density()` estimates the density (you can read more about that in the function documentation), but let's explain how the density curve is drawn with an analogy.
-Imagine a histogram made out of wooden blocks.
-Then, imagine that you drop a cooked spaghetti string over it.
-The shape the spaghetti will take draped over blocks can be thought of as the shape of the density curve.
-It shows fewer details than a histogram but can make it easier to quickly glean the shape of the distribution, particularly with respect to modes and skewness.
+数值变量分布的另一种可视化方法是密度图。密度图是直方图的平滑版本，是一个实用的替代方案，特别是对于来自潜在平滑分布的连续数据。我们不会深入探讨 `geom_density()` 是如何估计密度的（你可以在函数文档中阅读更多相关内容），但让我们用一个类比来解释密度曲线是如何绘制的。想象一个用木块制成的直方图。然后，想象你把一根煮熟的意大利面条扔在上面。面条在木块上形成的形状可以被认为是密度曲线的形状。它比直方图显示的细节少，但可以更容易地快速了解分布的形状，特别是在众数和偏度方面。
 
 ```{r}
 #| fig-alt: |
-#|   A density plot of body masses of penguins. The distribution is unimodal
-#|   and right skewed, ranging between approximately 2500 to 6500 grams.
+#|   企鹅体重的密度图。分布是单峰的且右偏，
+#|   范围大约在 2500 到 6500 克之间。
 ggplot(penguins, aes(x = body_mass_g)) +
     geom_density()
 ```
 
-### Exercises
+### 练习
 
-1.  Make a bar plot of `species` of `penguins`, where you assign `species` to the `y` aesthetic.
-    How is this plot different?
+1.  制作一个 `penguins` 的 `species` 条形图，其中你将 `species` 分配给 `y` 美学。这个图有什么不同？
 
-2.  How are the following two plots different?
-    Which aesthetic, `color` or `fill`, is more useful for changing the color of bars?
+2.  以下两个图有何不同？哪个美学，`color` 还是 `fill`，对于改变条形的颜色更有用？
 
     ```{r}
-#| eval: false
-ggplot(penguins, aes(x = species)) +
-    geom_bar(color = "red")
+    #| eval: false
+    ggplot(penguins, aes(x = species)) +
+        geom_bar(color = "red")
 
-ggplot(penguins, aes(x = species)) +
-    geom_bar(fill = "red")
+    ggplot(penguins, aes(x = species)) +
+        geom_bar(fill = "red")
     ```
 
-3.  What does the `bins` argument in `geom_histogram()` do?
+3.  `geom_histogram()` 中的 `bins` 参数有什么作用？
 
-4.  Make a histogram of the `carat` variable in the `diamonds` dataset that is available when you load the tidyverse package.
-    Experiment with different binwidths.
-    What binwidth reveals the most interesting patterns?
+4.  当你加载 tidyverse 包时，`diamonds` 数据集是可用的，请为其中的 `carat` 变量制作一个直方图。尝试不同的组距 (`binwidth`)。哪个组距揭示了最有趣的模式？
 
-## Visualizing relationships
+## 可视化关系
 
-To visualize a relationship we need to have at least two variables mapped to aesthetics of a plot.
-In the following sections you will learn about commonly used plots for visualizing relationships between two or more variables and the geoms used for creating them.
+要可视化一个关系，我们需要至少将两个变量映射到图形的美学上。在接下来的部分中，你将学习用于可视化两个或多个变量之间关系的常用图形以及用于创建它们的几何对象。
 
-### A numerical and a categorical variable
+### 一个数值变量和一个分类变量
 
-To visualize the relationship between a numerical and a categorical variable we can use side-by-side box plots.
-A **boxplot** is a type of visual shorthand for measures of position (percentiles) that describe a distribution.
-It is also useful for identifying potential outliers.
-As shown in @fig-eda-boxplot, each boxplot consists of:
+要可视化数值变量和分类变量之间的关系，我们可以使用并排的箱线图。**箱线图** (boxplot) 是一种描述分布位置度量（百分位数）的视觉简写。它对于识别潜在的异常值也很有用。如 @fig-eda-boxplot 所示，每个箱线图都包含：
 
--   A box that indicates the range of the middle half of the data, a distance known as the interquartile range (IQR), stretching from the 25th percentile of the distribution to the 75th percentile.
-    In the middle of the box is a line that displays the median, i.e. 50th percentile, of the distribution.
-    These three lines give you a sense of the spread of the distribution and whether or not the distribution is symmetric about the median or skewed to one side.
+  - 一个箱体，表示数据中间一半的范围，这个距离称为四分位距 (IQR)，从分布的第 25 百分位数延伸到第 75 百分位数。箱体中间有一条线显示中位数，即分布的第 50 百分位数。这三条线让你能感觉到分布的离散程度以及分布是否关于中位数对称或偏向一侧。
 
--   Visual points that display observations that fall more than 1.5 times the IQR from either edge of the box.
-    These outlying points are unusual so are plotted individually.
+  - 一些视觉点，显示那些距离箱体任一边缘超过 1.5 倍 IQR 的观测值。这些离群点是不寻常的，因此被单独绘制出来。
 
--   A line (or whisker) that extends from each end of the box and goes to the farthest non-outlier point in the distribution.
+  - 一条从箱体两端延伸出去的线（或须），一直延伸到分布中最远的非离群点。
+
 
 ```{r}
 #| label: fig-eda-boxplot
 #| echo: false
 #| fig-cap: |
-#|   Diagram depicting how a boxplot is created.
+#|   一个描述如何创建箱线图的示意图。
 #| fig-alt: |
-#|   A diagram depicting how a boxplot is created following the steps outlined
-#|   above.
+#|   一个描述如何按照上述步骤创建箱线图的示意图。
 knitr::include_graphics("images/EDA-boxplot.png")
 ```
 
-Let's take a look at the distribution of body mass by species using `geom_boxplot()`:
+让我们用 `geom_boxplot()` 来看一下按物种划分的体重分布：
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   Side-by-side box plots of distributions of body masses of Adelie,
-#|   Chinstrap, and Gentoo penguins. The distribution of Adelie and
-#|   Chinstrap penguins' body masses appear to be symmetric with
-#|   medians around 3750 grams. The median body mass of Gentoo penguins
-#|   is much higher, around 5000 grams, and the distribution of the
-#|   body masses of these penguins appears to be somewhat right skewed.
+#|   Adelie、Chinstrap 和 Gentoo 企鹅体重的并排箱线图。Adelie 和
+#|   Chinstrap 企鹅的体重分布似乎是对称的，中位数在 3750 克左右。
+#|   Gentoo 企鹅的中位数体重高得多，约为 5000 克，并且这些企鹅的
+#|   体重分布似乎有些右偏。
 ggplot(penguins, aes(x = species, y = body_mass_g)) +
     geom_boxplot()
 ```
 
-Alternatively, we can make density plots with `geom_density()`.
+或者，我们可以用 `geom_density()` 制作密度图。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A density plot of body masses of penguins by species of penguins. Each
-#|   species (Adelie, Chinstrap, and Gentoo) is represented with different
-#|   colored outlines for the density curves.
+#|   按企鹅物种划分的企鹅体重密度图。每个物种（Adelie、Chinstrap 和
+#|   Gentoo）的密度曲线用不同颜色的轮廓表示。
 ggplot(penguins, aes(x = body_mass_g, color = species)) +
     geom_density(linewidth = 0.75)
 ```
 
-We've also customized the thickness of the lines using the `linewidth` argument in order to make them stand out a bit more against the background.
+我们还使用 `linewidth` 参数自定义了线条的粗细，以便让它们在背景中更突出一些。
 
-Additionally, we can map `species` to both `color` and `fill` aesthetics and use the `alpha` aesthetic to add transparency to the filled density curves.
-This aesthetic takes values between 0 (completely transparent) and 1 (completely opaque).
-In the following plot it's *set* to 0.5.
+此外，我们可以将 `species` 映射到 `color` 和 `fill` 两种美学上，并使用 `alpha` 美学为填充的密度曲线添加透明度。这个美学取值在 0（完全透明）和 1（完全不透明）之间。在下面的图中，它被*设置*为 0.5。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A density plot of body masses of penguins by species of penguins. Each
-#|   species (Adelie, Chinstrap, and Gentoo) is represented in different
-#|   colored outlines for the density curves. The density curves are also
-#|   filled with the same colors, with some transparency added.
+#|   按企鹅物种划分的企鹅体重密度图。每个物种（Adelie、Chinstrap 和
+#|   Gentoo）的密度曲线用不同颜色的轮廓表示。这些密度曲线也用
+#|   相同的颜色填充，并增加了一些透明度。
 ggplot(penguins, aes(x = body_mass_g, color = species, fill = species)) +
     geom_density(alpha = 0.5)
 ```
 
-Note the terminology we have used here:
+注意我们在这里使用的术语：
 
--   We *map* variables to aesthetics if we want the visual attribute represented by that aesthetic to vary based on the values of that variable.
--   Otherwise, we *set* the value of an aesthetic.
+- 如果想让某个视觉属性根据某个变量的值而变化，我们就将该变量*映射* (map) 到该美学上。
+- 否则，我们就*设置* (set) 一个美学的值。
 
-### Two categorical variables
+### 两个分类变量
 
-We can use stacked bar plots to visualize the relationship between two categorical variables.
-For example, the following two stacked bar plots both display the relationship between `island` and `species`, or specifically, visualizing the distribution of `species` within each island.
+我们可以使用堆叠条形图来可视化两个分类变量之间的关系。例如，以下两个堆叠条形图都显示了 `island` 和 `species` 之间的关系，或者具体来说，是可视化每个岛屿内 `species` 的分布。
 
-The first plot shows the frequencies of each species of penguins on each island.
-The plot of frequencies shows that there are equal numbers of Adelies on each island.
-But we don't have a good sense of the percentage balance within each island.
+第一个图显示了每个岛上每种企鹅的频率。频率图显示，每个岛上的 Adelie 企鹅数量相等。但我们对每个岛屿内的百分比平衡没有很好的感觉。
 
 ```{r}
 #| fig-alt: |
-#|   Bar plots of penguin species by island (Biscoe, Dream, and Torgersen)
+#|   按岛屿（Biscoe、Dream 和 Torgersen）划分的企鹅物种条形图
 ggplot(penguins, aes(x = island, fill = species)) +
     geom_bar()
 ```
 
-The second plot, a relative frequency plot created by setting `position = "fill"` in the geom, is more useful for comparing species distributions across islands since it's not affected by the unequal numbers of penguins across the islands.
-Using this plot we can see that Gentoo penguins all live on Biscoe island and make up roughly 75% of the penguins on that island, Chinstrap all live on Dream island and make up roughly 50% of the penguins on that island, and Adelie live on all three islands and make up all of the penguins on Torgersen.
+第二个图是一个相对频率图，通过在几何对象中设置 `position = "fill"` 创建，它在比较不同岛屿间的物种分布时更有用，因为它不受各岛屿企鹅数量不等的影响。使用这个图我们可以看到，Gentoo 企鹅都生活在 Biscoe 岛，约占该岛企鹅数量的 75%；Chinstrap 企鹅都生活在 Dream 岛，约占该岛企鹅数量的 50%；而 Adelie 企鹅生活在所有三个岛屿上，并且构成了 Torgersen 岛上所有的企鹅。
 
 ```{r}
 #| fig-alt: |
-#|   Bar plots of penguin species by island (Biscoe, Dream, and Torgersen)
-#|   the bars are scaled to the same height, making it a relative frequencies
-#|   plot
+#|   按岛屿（Biscoe、Dream 和 Torgersen）划分的企鹅物种条形图，
+#|   条形被缩放到相同的高度，使其成为一个相对频率图
 ggplot(penguins, aes(x = island, fill = species)) +
     geom_bar(position = "fill")
 ```
 
-In creating these bar charts, we map the variable that will be separated into bars to the `x` aesthetic, and the variable that will change the colors inside the bars to the `fill` aesthetic.
+在创建这些条形图时，我们将要被分成条形的变量映射到 `x` 美学上，将改变条形内部颜色的变量映射到 `fill` 美学上。
 
-### Two numerical variables
+### 两个数值变量
 
-So far you've learned about scatterplots (created with `geom_point()`) and smooth curves (created with `geom_smooth()`) for visualizing the relationship between two numerical variables.
-A scatterplot is probably the most commonly used plot for visualizing the relationship between two numerical variables.
+到目前为止，你已经学习了用于可视化两个数值变量之间关系的散点图（用 `geom_point()` 创建）和光滑曲线（用 `geom_smooth()` 创建）。散点图可能是可视化两个数值变量之间关系最常用的图形。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. The plot
-#|   displays a positive, linear, relatively strong relationship between
-#|   these two variables.
+#|   企鹅体重与鳍状肢长度的散点图。该图显示了这两个变量之间
+#|   存在正向、线性和相对较强的关系。
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point()
 ```
 
-### Three or more variables
+### 三个或更多变量
 
-As we saw in @sec-adding-aesthetics-layers, we can incorporate more variables into a plot by mapping them to additional aesthetics.
-For example, in the following scatterplot the colors of points represent species and the shapes of points represent islands.
+正如我们在 @sec-adding-aesthetics-layers 中看到的，我们可以通过将更多变量映射到额外的美学上，将它们融入到图形中。例如，在下面的散点图中，点的颜色代表物种，点的形状代表岛屿。
 
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. The plot
-#|   displays a positive, linear, relatively strong relationship between
-#|   these two variables. The points are colored based on the species of the
-#|   penguins and the shapes of the points represent islands (round points are
-#|   Biscoe island, triangles are Dream island, and squared are Torgersen
-#|   island). The plot is very busy and it's difficult to distinguish the shapes
-#|   of the points.
+#|   企鹅体重与鳍状肢长度的散点图。该图显示了这两个变量之间
+#|   存在正向、线性和相对较强的关系。点根据企鹅的物种着色，
+#|   点的形状代表岛屿（圆形点是 Biscoe 岛，三角形是 Dream 岛，
+#|   方形是 Torgersen 岛）。该图非常拥挤，难以区分点的形状。
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point(aes(color = species, shape = island))
 ```
 
-However adding too many aesthetic mappings to a plot makes it cluttered and difficult to make sense of.
-Another way, which is particularly useful for categorical variables, is to split your plot into **facets**, subplots that each display one subset of the data.
+然而，向一个图中添加太多的美学映射会使其变得杂乱无章，难以理解。另一种方法，特别是对于分类变量很有用，就是将你的图分割成**分面** (facets)，即每个子图显示数据的一个子集。
 
-To facet your plot by a single variable, use `facet_wrap()`.
-The first argument of `facet_wrap()` is a formula[^data-visualize-3], which you create with `~` followed by a variable name.
-The variable that you pass to `facet_wrap()` should be categorical.
-
-[^data-visualize-3]: Here "formula" is the name of the thing created by `~`, not a synonym for "equation".
+要按单个变量对图进行分面，请使用 `facet_wrap()`。`facet_wrap()` 的第一个参数是一个公式 (formula)[^3]，你通过 `~` 后跟一个变量名来创建。你传递给 `facet_wrap()` 的变量应该是分类变量。
 
 ```{r}
 #| warning: false
 #| fig-width: 8
 #| fig-asp: 0.33
 #| fig-alt: |
-#|   A scatterplot of body mass vs. flipper length of penguins. The shapes and
-#|   colors of points represent species. Penguins from each island are on a
-#|   separate facet. Within each facet, the relationship between body mass and
-#|   flipper length is positive, linear, relatively strong.
+#|   企鹅体重与鳍状肢长度的散点图。点的形状和颜色代表物种。
+#|   每个岛屿的企鹅都在一个单独的分面中。在每个分面内，
+#|   体重和鳍状肢长度之间的关系是正向的、线性的、相对较强的。
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point(aes(color = species, shape = species)) +
     facet_wrap(~island)
 ```
 
-You will learn about many other geoms for visualizing distributions of variables and relationships between them in @sec-layers.
+你将在 @sec-layers 中学习到许多其他用于可视化变量分布及其之间关系的几何对象。
 
-### Exercises
+### 练习
 
-1.  The `mpg` data frame that is bundled with the ggplot2 package contains `r nrow(mpg)` observations collected by the US Environmental Protection Agency on `r mpg |> distinct(model) |> nrow()` car models.
-    Which variables in `mpg` are categorical?
-    Which variables are numerical?
-    (Hint: Type `?mpg` to read the documentation for the dataset.) How can you see this information when you run `mpg`?
+1.  ggplot2 包中附带的 `mpg` 数据框包含由美国环境保护署收集的 `r mpg |> distinct(model) |> nrow()` 种车型的 `r nrow(mpg)` 个观测值。`mpg` 中的哪些变量是分类变量？哪些变量是数值变量？（提示：输入 `?mpg` 以阅读该数据集的文档。）当你运行 `mpg` 时，如何看到这些信息？
 
-2.  Make a scatterplot of `hwy` vs. `displ` using the `mpg` data frame.
-    Next, map a third, numerical variable to `color`, then `size`, then both `color` and `size`, then `shape`.
-    How do these aesthetics behave differently for categorical vs. numerical variables?
+2.  使用 `mpg` 数据框制作一个 `hwy` 与 `displ` 的散点图。接下来，将第三个数值变量映射到 `color`，然后是 `size`，然后是 `color` 和 `size`，然后是 `shape`。这些美学对于分类变量与数值变量的行为有何不同？
 
-3.  In the scatterplot of `hwy` vs. `displ`, what happens if you map a third variable to `linewidth`?
+3.  在 `hwy` 与 `displ` 的散点图中，如果将第三个变量映射到 `linewidth` 会发生什么？
 
-4.  What happens if you map the same variable to multiple aesthetics?
+4.  如果将同一个变量映射到多个美学上会发生什么？
 
-5.  Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm` and color the points by `species`.
-    What does adding coloring by species reveal about the relationship between these two variables?
-    What about faceting by `species`?
+5.  制作一个 `bill_depth_mm` 与 `bill_length_mm` 的散点图，并按 `species` 为点着色。按物种着色揭示了这两个变量之间关系的哪些信息？按 `species` 进行分面呢？
 
-6.  Why does the following yield two separate legends?
-    How would you fix it to combine the two legends?
+6.  为什么以下代码会产生两个独立的图例？你将如何修复它以合并这两个图例？
 
     ```{r}
-#| warning: false
-#| fig-show: hide
-ggplot(
-    data = penguins,
-    mapping = aes(
-        x = bill_length_mm, y = bill_depth_mm,
-        color = species, shape = species
-    )
-) +
-    geom_point() +
-    labs(color = "Species")
+    #| warning: false
+    #| fig-show: hide
+    ggplot(
+        data = penguins,
+        mapping = aes(
+            x = bill_length_mm, y = bill_depth_mm,
+            color = species, shape = species
+        )
+    ) +
+        geom_point() +
+        labs(color = "Species")
     ```
 
-7.  Create the two following stacked bar plots.
-    Which question can you answer with the first one?
-    Which question can you answer with the second one?
+7.  创建以下两个堆叠条形图。你可以用第一个图回答哪个问题？你可以用第二个图回答哪个问题？
 
     ```{r}
 #| fig-show: hide
@@ -802,10 +639,9 @@ ggplot(penguins, aes(x = species, fill = island)) +
     geom_bar(position = "fill")
     ```
 
-## Saving your plots {#sec-ggsave}
+## 保存你的图形 {#sec-ggsave}
 
-Once you've made a plot, you might want to get it out of R by saving it as an image that you can use elsewhere.
-That's the job of `ggsave()`, which will save the plot most recently created to disk:
+制作完一个图形后，你可能希望将其从 R 中导出，保存为一张图片以便在其他地方使用。这就是 `ggsave()` 的工作，它会将最近创建的图形保存到磁盘上：
 
 ```{r}
 #| fig-show: hide
@@ -820,48 +656,34 @@ ggsave(filename = "penguin-plot.png")
 file.remove("penguin-plot.png")
 ```
 
-This will save your plot to your working directory, a concept you'll learn more about in @sec-workflow-scripts-projects.
+这会将你的图形保存到你的工作目录中，这个概念你将在 @sec-workflow-scripts-projects 中学到更多。
 
-If you don't specify the `width` and `height` they will be taken from the dimensions of the current plotting device.
-For reproducible code, you'll want to specify them.
-You can learn more about `ggsave()` in the documentation.
+如果你不指定 `width` 和 `height`，它们将取自当前绘图设备的尺寸。为了代码的可重现性，你最好指定它们。你可以在文档中了解更多关于 `ggsave()` 的信息。
 
-Generally, however, we recommend that you assemble your final reports using Quarto, a reproducible authoring system that allows you to interleave your code and your prose and automatically include your plots in your write-ups.
-You will learn more about Quarto in @sec-quarto.
+然而，通常我们建议你使用 Quarto 来组织你的最终报告，它是一个可重现的创作系统，允许你将代码和文字交织在一起，并自动将你的图形包含在你的报告中。你将在 @sec-quarto 中学到更多关于 Quarto 的知识。
 
-### Exercises
+### 练习
 
-1.  Run the following lines of code.
-    Which of the two plots is saved as `mpg-plot.png`?
-    Why?
+1.  运行以下代码行。哪一个图被保存为 `mpg-plot.png`？为什么？
 
     ```{r}
-#| eval: false
-ggplot(mpg, aes(x = class)) +
-    geom_bar()
-ggplot(mpg, aes(x = cty, y = hwy)) +
-    geom_point()
-ggsave("mpg-plot.png")
+    #| eval: false
+    ggplot(mpg, aes(x = class)) +
+        geom_bar()
+    ggplot(mpg, aes(x = cty, y = hwy)) +
+        geom_point()
+    ggsave("mpg-plot.png")
     ```
 
-2.  What do you need to change in the code above to save the plot as a PDF instead of a PNG?
-    How could you find out what types of image files would work in `ggsave()`?
+2.  你需要如何更改上面的代码才能将图保存为 PDF 而不是 PNG？你如何找出 `ggsave()` 支持哪些类型的图像文件？
 
-## Common problems
+## 常见问题
 
-As you start to run R code, you're likely to run into problems.
-Don't worry --- it happens to everyone.
-We have all been writing R code for years, but every day we still write code that doesn't work on the first try!
+当你开始运行 R 代码时，你很可能会遇到问题。别担心——这发生在每个人身上。我们都写了很多年的 R 代码，但每天我们仍然会写出第一次尝试时就行不通的代码！
 
-Start by carefully comparing the code that you're running to the code in the book.
-R is extremely picky, and a misplaced character can make all the difference.
-Make sure that every `(` is matched with a `)` and every `"` is paired with another `"`.
-Sometimes you'll run the code and nothing happens.
-Check the left-hand of your console: if it's a `+`, it means that R doesn't think you've typed a complete expression and it's waiting for you to finish it.
-In this case, it's usually easy to start from scratch again by pressing ESCAPE to abort processing the current command.
+首先，仔细比较你正在运行的代码和书中的代码。R 非常挑剔，一个放错位置的字符都可能造成天壤之别。确保每个 `(` 都与一个 `)` 匹配，每个 `"` 都与另一个 `"` 配对。有时你运行代码后什么也没发生。检查你的控制台左侧：如果它是一个 `+`，这意味着 R 认为你还没有输入一个完整的表达式，正在等待你完成它。在这种情况下，通常很容易通过按 ESCAPE 键中止当前命令的处理来重新开始。
 
-One common problem when creating ggplot2 graphics is to put the `+` in the wrong place: it has to come at the end of the line, not the start.
-In other words, make sure you haven't accidentally written code like this:
+创建 ggplot2 图形时的一个常见问题是把 `+` 放在了错误的位置：它必须放在行的末尾，而不是开头。换句话说，确保你没有意外地写出像下面这样的代码：
 
 ```{r}
 #| eval: false
@@ -869,23 +691,27 @@ ggplot(data = mpg)
 +geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-If you're still stuck, try the help.
-You can get help about any R function by running `?function_name` in the console, or highlighting the function name and pressing F1 in RStudio.
-Don't worry if the help doesn't seem that helpful - instead skip down to the examples and look for code that matches what you're trying to do.
+如果你仍然卡住，可以尝试查看帮助。你可以通过在控制台中运行 `?function_name` 来获取任何 R 函数的帮助，或者在 RStudio 中高亮函数名并按 F1。如果帮助看起来不是那么有用，也别担心——直接跳到示例部分，寻找与你想要做的相匹配的代码。
 
-If that doesn't help, carefully read the error message.
-Sometimes the answer will be buried there!
-But when you're new to R, even if the answer is in the error message, you might not yet know how to understand it.
-Another great tool is Google: try googling the error message, as it's likely someone else has had the same problem, and has gotten help online.
+如果那也帮不了你，就仔细阅读错误消息。有时答案就藏在那里！但是当你刚接触 R 时，即使答案在错误消息中，你也可能还不知道如何理解它。另一个很棒的工具是 Google：尝试用谷歌搜索错误消息，因为很可能其他人也遇到过同样的问题，并且在网上得到了帮助。
 
-## Summary
+## 小结
 
-In this chapter, you've learned the basics of data visualization with ggplot2.
-We started with the basic idea that underpins ggplot2: a visualization is a mapping from variables in your data to aesthetic properties like position, color, size and shape.
-You then learned about increasing the complexity and improving the presentation of your plots layer-by-layer.
-You also learned about commonly used plots for visualizing the distribution of a single variable as well as for visualizing relationships between two or more variables, by leveraging additional aesthetic mappings and/or splitting your plot into small multiples using faceting.
+在本章中，你学习了用 ggplot2 进行数据可视化的基础知识。我们从支撑 ggplot2 的基本思想开始：可视化是从数据中的变量到诸如位置、颜色、大小和形状等美学属性的映射。然后，你学习了如何逐层增加图形的复杂性并改进其呈现方式。你还学习了用于可视化单个变量分布以及可视化两个或多个变量之间关系的常用图形，方法是利用额外的美学映射和/或使用分面将你的图形拆分为小的倍数图。
 
-We'll use visualizations again and again throughout this book, introducing new techniques as we need them as well as do a deeper dive into creating visualizations with ggplot2 in @sec-layers through @sec-communication.
+在本书中，我们将反复使用可视化，在需要时引入新的技术，并在 @sec-layers 到 @sec-communication 中更深入地探讨用 ggplot2 创建可视化。
 
-With the basics of visualization under your belt, in the next chapter we're going to switch gears a little and give you some practical workflow advice.
-We intersperse workflow advice with data science tools throughout this part of the book because it'll help you stay organized as you write increasing amounts of R code.
+掌握了可视化的基础知识后，在下一章中，我们将稍微转换一下思路，给你一些实用的工作流程建议。在本书的这一部分，我们将工作流程建议与数据科学工具穿插在一起，因为这有助于你在编写越来越多的 R 代码时保持条理。
+
+[^1]:
+    你可以使用 conflicted 包来消除该消息并强制按需解决冲突，当你加载更多包时，这一点变得更加重要。你可以在 [https://conflicted.r-lib.org](https://conflicted.r-lib.org) 了解更多关于 conflicted 的信息。
+
+[^2]:
+    Horst AM, Hill AP, Gorman KB (2020).
+    palmerpenguins: Palmer Archipelago (Antarctica) penguin data.
+    R package version 0.1.0.
+    [https://allisonhorst.github.io/palmerpenguins/](https://allisonhorst.github.io/palmerpenguins/).
+    doi: 10.5281/zenodo.3960218.
+
+[^3]:
+    这里的“公式”(formula) 是指由 `~` 创建的东西的名称，而不是“方程式”(equation) 的同义词。

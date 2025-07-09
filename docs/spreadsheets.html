@@ -141,25 +141,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text">欢迎</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./preface-2e.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface to the second edition</span></a>
+ <span class="menu-text">第 2 版前言</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">引言</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./whole-game.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Whole game</span></a>
+ <span class="menu-text">全局概览</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -168,31 +168,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">数据可视化</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflow-basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflow: basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">工作流程：基础</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">数据转换</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflow-style.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Workflow: code style</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">工作流：代码风格</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data tidying</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数据整理</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -935,9 +935,9 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <p>A quick note about the name of the package: googlesheets4 uses v4 of the <a href="https://developers.google.com/sheets/api/">Sheets API v4</a> to provide an R interface to Google Sheets, hence the name.</p>
 </section><section id="getting-started-1" class="level3" data-number="20.3.2"><h3 data-number="20.3.2" class="anchored" data-anchor-id="getting-started-1">
 <span class="header-section-number">20.3.2</span> Getting started</h3>
-<p>The main function of the googlesheets4 package is <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>, which reads a Google Sheet from a URL or a file id. This function also goes by the name <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">range_read()</a></code>.</p>
-<p>You can also create a brand new sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_create.html">gs4_create()</a></code> or write to an existing sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">sheet_write()</a></code> and friends.</p>
-<p>In this section we’ll work with the same datasets as the ones in the Excel section to highlight similarities and differences between workflows for reading data from Excel and Google Sheets. readxl and googlesheets4 packages are both designed to mimic the functionality of the readr package, which provides the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function you’ve seen in <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a>. Therefore, many of the tasks can be accomplished with simply swapping out <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> for <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>. However you’ll also see that Excel and Google Sheets don’t behave in exactly the same way, therefore other tasks may require further updates to the function calls.</p>
+<p>The main function of the googlesheets4 package is <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code>, which reads a Google Sheet from a URL or a file id. This function also goes by the name <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">range_read()</a></code>.</p>
+<p>You can also create a brand new sheet with <code><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_create.html">gs4_create()</a></code> or write to an existing sheet with <code><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_write.html">sheet_write()</a></code> and friends.</p>
+<p>In this section we’ll work with the same datasets as the ones in the Excel section to highlight similarities and differences between workflows for reading data from Excel and Google Sheets. readxl and googlesheets4 packages are both designed to mimic the functionality of the readr package, which provides the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function you’ve seen in <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a>. Therefore, many of the tasks can be accomplished with simply swapping out <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> for <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code>. However you’ll also see that Excel and Google Sheets don’t behave in exactly the same way, therefore other tasks may require further updates to the function calls.</p>
 </section><section id="reading-google-sheets" class="level3" data-number="20.3.3"><h3 data-number="20.3.3" class="anchored" data-anchor-id="reading-google-sheets">
 <span class="header-section-number">20.3.3</span> Reading Google Sheets</h3>
 <p><a href="#fig-students-googlesheets" class="quarto-xref">Figure&nbsp;<span>20.5</span></a> shows what the spreadsheet we’re going to read into R looks like in Google Sheets. This is the same dataset as in <a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a>, except it’s stored in a Google Sheet instead of Excel.</p>
@@ -953,13 +953,13 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 </div>
 </div>
 </div>
-<p>The first argument to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> is the URL of the file to read, and it returns a tibble:<br><a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w" class="uri">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w</a>. These URLs are not pleasant to work with, so you’ll often want to identify a sheet by its ID.</p>
+<p>The first argument to <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code> is the URL of the file to read, and it returns a tibble:<br><a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w" class="uri">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w</a>. These URLs are not pleasant to work with, so you’ll often want to identify a sheet by its ID.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w"</span></span>
-<span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">students_sheet_id</span><span class="op">)</span></span>
+<span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">students_sheet_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from students.</span></span>
 <span><span class="co">#&gt; ✔ Range Sheet1.</span></span>
 <span><span class="va">students</span></span>
@@ -973,9 +973,9 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch &lt;chr&gt; </span></span>
 <span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Just like we did with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can supply column names, NA strings, and column types to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>.</p>
+<p>Just like we did with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can supply column names, NA strings, and column types to <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet</a></span><span class="op">(</span></span>
 <span>    <span class="va">students_sheet_id</span>,</span>
 <span>    col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>    skip <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -1000,7 +1000,7 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <p>It’s also possible to read individual sheets from Google Sheets as well. Let’s read the “Torgersen Island” sheet from the <a href="https://pos.it/r4ds-penguins">penguins Google Sheet</a>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"</span></span>
-<span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from penguins.</span></span>
 <span><span class="co">#&gt; ✔ Range ''Torgersen Island''.</span></span>
 <span><span class="co">#&gt; # A tibble: 52 × 8</span></span>
@@ -1015,15 +1015,15 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;list&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can obtain a list of all sheets within a Google Sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names()</a></code>:</p>
+<p>You can obtain a list of all sheets within a Google Sheet with <code><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_properties.html">sheet_names()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_properties.html">sheet_names</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, just like with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can read in a portion of a Google Sheet by defining a <code>range</code> in <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>. Note that we’re also using the <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example()</a></code> function below to locate an example Google Sheet that comes with the googlesheets4 package.</p>
+<p>Finally, just like with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can read in a portion of a Google Sheet by defining a <code>range</code> in <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code>. Note that we’re also using the <code><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_examples.html">gs4_example()</a></code> function below to locate an example Google Sheet that comes with the googlesheets4 package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span></span>
-<span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">deaths_url</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_examples.html">gs4_example</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span></span>
+<span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">deaths_url</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from deaths.</span></span>
 <span><span class="co">#&gt; ✔ Range A5:F15.</span></span>
 <span><span class="va">deaths</span></span>
@@ -1041,22 +1041,22 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 </div>
 </section><section id="writing-to-google-sheets" class="level3" data-number="20.3.4"><h3 data-number="20.3.4" class="anchored" data-anchor-id="writing-to-google-sheets">
 <span class="header-section-number">20.3.4</span> Writing to Google Sheets</h3>
-<p>You can write from R to Google Sheets with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code>. The first argument is the data frame to write, and the second argument is the name (or other identifier) of the Google Sheet to write to:</p>
+<p>You can write from R to Google Sheets with <code><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_write.html">write_sheet()</a></code>. The first argument is the data frame to write, and the second argument is the name (or other identifier) of the Google Sheet to write to:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you’d like to write your data to a specific (work)sheet inside a Google Sheet, you can specify that with the <code>sheet</code> argument as well.</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span>, sheet <span class="op">=</span> <span class="st">"Sales"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span>, sheet <span class="op">=</span> <span class="st">"Sales"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="authentication" class="level3" data-number="20.3.5"><h3 data-number="20.3.5" class="anchored" data-anchor-id="authentication">
 <span class="header-section-number">20.3.5</span> Authentication</h3>
-<p>While you can read from a public Google Sheet without authenticating with your Google account and with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth()</a></code>, reading a private sheet or writing to a sheet requires authentication so that googlesheets4 can view and manage <em>your</em> Google Sheets.</p>
-<p>When you attempt to read in a sheet that requires authentication, googlesheets4 will direct you to a web browser with a prompt to sign in to your Google account and grant permission to operate on your behalf with Google Sheets. However, if you want to specify a specific Google account, authentication scope, etc. you can do so with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html">gs4_auth()</a></code>, e.g., <code>gs4_auth(email = "mine@example.com")</code>, which will force the use of a token associated with a specific email. For further authentication details, we recommend reading the documentation googlesheets4 auth vignette: <a href="https://googlesheets4.tidyverse.org/articles/auth.html" class="uri">https://googlesheets4.tidyverse.org/articles/auth.html</a>.</p>
+<p>While you can read from a public Google Sheet without authenticating with your Google account and with <code><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_deauth.html">gs4_deauth()</a></code>, reading a private sheet or writing to a sheet requires authentication so that googlesheets4 can view and manage <em>your</em> Google Sheets.</p>
+<p>When you attempt to read in a sheet that requires authentication, googlesheets4 will direct you to a web browser with a prompt to sign in to your Google account and grant permission to operate on your behalf with Google Sheets. However, if you want to specify a specific Google account, authentication scope, etc. you can do so with <code><a href="https://rdrr.io/pkg/googlesheets4/man/gs4_auth.html">gs4_auth()</a></code>, e.g., <code>gs4_auth(email = "mine@example.com")</code>, which will force the use of a token associated with a specific email. For further authentication details, we recommend reading the documentation googlesheets4 auth vignette: <a href="https://googlesheets4.tidyverse.org/articles/auth.html" class="uri">https://googlesheets4.tidyverse.org/articles/auth.html</a>.</p>
 </section><section id="exercises-1" class="level3" data-number="20.3.6"><h3 data-number="20.3.6" class="anchored" data-anchor-id="exercises-1">
 <span class="header-section-number">20.3.6</span> Exercises</h3>
 <ol type="1">
-<li><p>Read the <code>students</code> dataset from earlier in the chapter from Excel and also from Google Sheets, with no additional arguments supplied to the <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> and <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> functions. Are the resulting data frames in R exactly the same? If not, how are they different?</p></li>
+<li><p>Read the <code>students</code> dataset from earlier in the chapter from Excel and also from Google Sheets, with no additional arguments supplied to the <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> and <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code> functions. Are the resulting data frames in R exactly the same? If not, how are they different?</p></li>
 <li><p>Read the Google Sheet titled survey from <a href="https://pos.it/r4ds-survey" class="uri">https://pos.it/r4ds-survey</a>, with <code>survey_id</code> as a character variable and <code>n_pets</code> as a numerical variable.</p></li>
 <li>
 <p>Read the Google Sheet titled roster from <a href="https://pos.it/r4ds-roster" class="uri">https://pos.it/r4ds-roster</a>. The resulting data frame should be called <code>roster</code> and should look like the following.</p>
@@ -1080,8 +1080,8 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 </li>
 </ol></section></section><section id="summary" class="level2" data-number="20.4"><h2 data-number="20.4" class="anchored" data-anchor-id="summary">
 <span class="header-section-number">20.4</span> Summary</h2>
-<p>Microsoft Excel and Google Sheets are two of the most popular spreadsheet systems. Being able to interact with data stored in Excel and Google Sheets files directly from R is a superpower! In this chapter you learned how to read data into R from spreadsheets from Excel with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> from the readxl package and from Google Sheets with <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> from the googlesheets4 package. These functions work very similarly to each other and have similar arguments for specifying column names, NA strings, rows to skip on top of the file you’re reading in, etc. Additionally, both functions make it possible to read a single sheet from a spreadsheet as well.</p>
-<p>On the other hand, writing to an Excel file requires a different package and function (<code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">writexl::write_xlsx()</a></code>) while you can write to a Google Sheet with the googlesheets4 package, with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code>.</p>
+<p>Microsoft Excel and Google Sheets are two of the most popular spreadsheet systems. Being able to interact with data stored in Excel and Google Sheets files directly from R is a superpower! In this chapter you learned how to read data into R from spreadsheets from Excel with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> from the readxl package and from Google Sheets with <code><a href="https://rdrr.io/pkg/googlesheets4/man/range_read.html">read_sheet()</a></code> from the googlesheets4 package. These functions work very similarly to each other and have similar arguments for specifying column names, NA strings, rows to skip on top of the file you’re reading in, etc. Additionally, both functions make it possible to read a single sheet from a spreadsheet as well.</p>
+<p>On the other hand, writing to an Excel file requires a different package and function (<code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">writexl::write_xlsx()</a></code>) while you can write to a Google Sheet with the googlesheets4 package, with <code><a href="https://rdrr.io/pkg/googlesheets4/man/sheet_write.html">write_sheet()</a></code>.</p>
 <p>In the next chapter, you’ll learn about a different data source and how to read data from that source into R: databases.</p>
 
 
