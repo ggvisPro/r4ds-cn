@@ -5,7 +5,8 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>1&nbsp; 数据可视化 – R 数据科学 2e （中文版）</title>
+<title>1&nbsp; 数据可视化 – R 数据科学 2e
+（中文版）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -198,19 +199,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflow-scripts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Workflow: scripts and projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">工作流：脚本和项目</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-import.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data import</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">数据导入</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflow-help.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Workflow: getting help</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">工作流：获取帮助</span></span></a>
   </div>
 </li>
       </ul>
@@ -440,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </li>
   <li>
-<a href="#sec-ggsave" id="toc-sec-ggsave" class="nav-link" data-scroll-target="#sec-ggsave"><span class="header-section-number">1.6</span> 保存你的图形</a>
+<a href="#sec-ggsave" id="toc-sec-ggsave" class="nav-link" data-scroll-target="#sec-ggsave"><span class="header-section-number">1.6</span> 保存图形</a>
   <ul class="collapse">
 <li><a href="#%E7%BB%83%E4%B9%A0-3" id="toc-练习-3" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-3"><span class="header-section-number">1.6.1</span> 练习</a></li>
   </ul>
@@ -468,7 +469,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="引言" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="引言">
 <span class="header-section-number">1.1</span> 引言</h2>
 <blockquote class="blockquote">
-<p>“简单的图形为数据分析师带来的信息比任何其他设备都多。” — 约翰·图基 (John Tukey) &gt; “The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey</p>
+<p>“The simple graph has brought more information to the data analyst’s mind than any other device.”<br>
+— John Tukey<br>
+“简单的图形为数据分析师带来的信息比任何其他设备都多。”<br>
+— 约翰·图基</p>
 </blockquote>
 <p>R 有好几个图形系统，但 ggplot2 是其中最优雅、最通用的一个。ggplot2 实现了<strong>图形语法</strong> (grammar of graphics)，这是一套用于描述和构建图形的连贯体系。通过学习一个系统并将其应用于许多地方，你可以用 ggplot2 更快地完成更多工作。</p>
 <p>本章将教你如何使用 <strong>ggplot2</strong> 来可视化数据。我们将从创建一个简单的散点图开始，并用它来介绍美学映射 (aesthetic mappings) 和几何对象 (geometric objects)——ggplot2 的基本构建模块。然后，我们将引导你可视化单个变量的分布以及两个或多个变量之间的关系。最后，我们会介绍如何保存你的图形以及一些故障排除技巧。</p>
@@ -588,7 +592,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 <p>我们的空画布现在有了更多的结构——很清楚鳍状肢长度将显示在哪里（x 轴上），体重将显示在哪里（y 轴上）。但是企鹅本身还没有在图上。这是因为我们还没有在代码中明确说明如何在图上表示我们数据框中的观测值。</p>
 <p>为此，我们需要定义一个<strong>几何对象</strong> (geom)：即图形用来表示数据的几何对象。这些几何对象在 ggplot2 中通过以 <code>geom_</code> 开头的函数提供。人们通常用图形使用的几何对象类型来描述图形。例如，条形图使用条形几何对象 (<code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>)，折线图使用线形几何对象 (<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>)，箱线图使用箱线图几何对象 (<code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>)，散点图使用点几何对象 (<code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>) 等等。</p>
-<p>函数 <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> 会在你的图形上添加一个点图层，从而创建一个散点图。ggplot2 带有许多几何对象函数，每个函数都会向图形添加不同类型的图层。在本书中，你将学到很多几何对象，特别是在 <a href="layers.html" class="quarto-xref"><span>Chapter 9</span></a> 中。</p>
+<p>函数 <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> 会在图形上添加一个点图层，从而创建一个散点图。ggplot2 带有许多几何对象函数，每个函数都会向图形添加不同类型的图层。在本书中，你将学到很多几何对象，特别是在 <a href="layers.html" class="quarto-xref"><span>Chapter 9</span></a> 中。</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">penguins</span>,</span>
@@ -615,7 +619,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </section><section id="sec-adding-aesthetics-layers" class="level3" data-number="1.2.4"><h3 data-number="1.2.4" class="anchored" data-anchor-id="sec-adding-aesthetics-layers">
 <span class="header-section-number">1.2.4</span> 添加美学和图层</h3>
 <p>散点图对于显示两个数值变量之间的关系很有用，但对两个变量之间的任何明显关系持怀疑态度总是一个好主意，并追问是否存在其他变量可以解释或改变这种明显关系的性质。例如，鳍状肢长度和体重之间的关系是否因物种而异？让我们将物种信息融入到我们的图形中，看看这是否能揭示关于这些变量之间明显关系的任何额外见解。我们将通过用不同颜色的点来代表不同物种来实现这一点。</p>
-<p>为了实现这一点，我们需要修改美学还是几何对象？如果你猜的是“在美学映射中，即 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> 内部”，那么你已经开始掌握用 ggplot2 创建数据可视化的窍门了！如果没猜对，也别担心。在本书中，你将制作更多的 ggplot 图形，并有更多机会在制作它们时检验你的直觉。</p>
+<p>为了实现这一点，我们需要修改美学还是几何对象？如果你猜的是“在美学映射中，即 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> 内部”，那么你已经开始掌握用 ggplot2 创建数据可视化的窍门了！如果没猜对，也别担心。在本书中，你将制作更多的 ggplot 图形，并有更多机会在制作它们时检验直觉。</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">penguins</span>,</span>
@@ -984,7 +988,7 @@ Figure&nbsp;1.1: 一个描述如何创建箱线图的示意图。
 </div>
 </div>
 </div>
-<p>然而，向一个图中添加太多的美学映射会使其变得杂乱无章，难以理解。另一种方法，特别是对于分类变量很有用，就是将你的图分割成<strong>分面</strong> (facets)，即每个子图显示数据的一个子集。</p>
+<p>然而，向一个图中添加太多的美学映射会使其变得杂乱无章，难以理解。另一种方法，特别是对于分类变量很有用，就是将图分割成<strong>分面</strong> (facets)，即每个子图显示数据的一个子集。</p>
 <p>要按单个变量对图进行分面，请使用 <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>。<code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> 的第一个参数是一个公式 (formula)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，你通过 <code>~</code> 后跟一个变量名来创建。你传递给 <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> 的变量应该是分类变量。</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1024,13 +1028,13 @@ Figure&nbsp;1.1: 一个描述如何创建箱线图的示意图。
 <p>创建以下两个堆叠条形图。你可以用第一个图回答哪个问题？你可以用第二个图回答哪个问题？</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"fill"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 </ol></section></section><section id="sec-ggsave" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="sec-ggsave">
-<span class="header-section-number">1.6</span> 保存你的图形</h2>
+<span class="header-section-number">1.6</span> 保存图形</h2>
 <p>制作完一个图形后，你可能希望将其从 R 中导出，保存为一张图片以便在其他地方使用。这就是 <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> 的工作，它会将最近创建的图形保存到磁盘上：</p>
 <div class="cell">
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1039,7 +1043,7 @@ Figure&nbsp;1.1: 一个描述如何创建箱线图的示意图。
 </div>
 <p>这会将你的图形保存到你的工作目录中，这个概念你将在 <a href="workflow-scripts.html" class="quarto-xref"><span>Chapter 6</span></a> 中学到更多。</p>
 <p>如果你不指定 <code>width</code> 和 <code>height</code>，它们将取自当前绘图设备的尺寸。为了代码的可重现性，你最好指定它们。你可以在文档中了解更多关于 <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> 的信息。</p>
-<p>然而，通常我们建议你使用 Quarto 来组织你的最终报告，它是一个可重现的创作系统，允许你将代码和文字交织在一起，并自动将你的图形包含在你的报告中。你将在 <a href="quarto.html" class="quarto-xref"><span>Chapter 28</span></a> 中学到更多关于 Quarto 的知识。</p>
+<p>然而，通常我们建议你使用 Quarto 来组织你的最终报告，它是一个可重现的创作系统，允许你将代码和文字交织在一起，并自动将图形包含在你的报告中。你将在 <a href="quarto.html" class="quarto-xref"><span>Chapter 28</span></a> 中学到更多关于 Quarto 的知识。</p>
 <section id="练习-3" class="level3" data-number="1.6.1"><h3 data-number="1.6.1" class="anchored" data-anchor-id="练习-3">
 <span class="header-section-number">1.6.1</span> 练习</h3>
 <ol type="1">

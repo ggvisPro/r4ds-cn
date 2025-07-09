@@ -8,15 +8,15 @@ source("_common.R")
 ## 引言
 
 > "Happy families are all alike; every unhappy family is unhappy in its own way."\
-> --- Leo Tolstoy
+> --- Leo Tolstoy\
 > "幸福的家庭都是相似的；不幸的家庭各有各的不幸。" \ 
-> --- 列夫·托尔斯泰 (Leo Tolstoy)
+> --- 列夫·托尔斯泰
 
 
 > "Tidy datasets are all alike, but every messy dataset is messy in its own way."\
-> --- Hadley Wickham
+> --- Hadley Wickham\
 > "整洁的数据集都是相似的，但每个凌乱的数据集各有各的凌乱。" \
-> --- 哈德利·威克姆 (Hadley Wickham)
+> --- 哈德利·威克姆
 
 
 在本章中，你将学习一种使用名为**整洁数据** (tidy data) 的系统来在 R 中一致地组织数据的方法。将数据转换成这种格式需要一些前期工作，但从长远来看，这些工作是值得的。一旦你有了整洁的数据和 tidyverse 中各个包提供的整洁工具，你将花更少的时间在不同表示形式之间转换数据，从而能将更多时间用于你所关心的数据问题上。

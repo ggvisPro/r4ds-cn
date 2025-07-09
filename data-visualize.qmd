@@ -7,8 +7,10 @@ source("_common.R")
 
 ## 引言
 
-> “简单的图形为数据分析师带来的信息比任何其他设备都多。” --- 约翰·图基 (John Tukey)
-> > "The simple graph has brought more information to the data analyst's mind than any other device." --- John Tukey
+> "The simple graph has brought more information to the data analyst's mind than any other device." \
+> --- John Tukey\
+> “简单的图形为数据分析师带来的信息比任何其他设备都多。” \
+> --- 约翰·图基
 
 R 有好几个图形系统，但 ggplot2 是其中最优雅、最通用的一个。ggplot2 实现了**图形语法** (grammar of graphics)，这是一套用于描述和构建图形的连贯体系。通过学习一个系统并将其应用于许多地方，你可以用 ggplot2 更快地完成更多工作。
 
@@ -141,7 +143,7 @@ ggplot(
 
 为此，我们需要定义一个**几何对象** (geom)：即图形用来表示数据的几何对象。这些几何对象在 ggplot2 中通过以 `geom_` 开头的函数提供。人们通常用图形使用的几何对象类型来描述图形。例如，条形图使用条形几何对象 (`geom_bar()`)，折线图使用线形几何对象 (`geom_line()`)，箱线图使用箱线图几何对象 (`geom_boxplot()`)，散点图使用点几何对象 (`geom_point()`) 等等。
 
-函数 `geom_point()` 会在你的图形上添加一个点图层，从而创建一个散点图。ggplot2 带有许多几何对象函数，每个函数都会向图形添加不同类型的图层。在本书中，你将学到很多几何对象，特别是在 @sec-layers 中。
+函数 `geom_point()` 会在图形上添加一个点图层，从而创建一个散点图。ggplot2 带有许多几何对象函数，每个函数都会向图形添加不同类型的图层。在本书中，你将学到很多几何对象，特别是在 @sec-layers 中。
 
 ```{r}
 #| fig-alt: |
@@ -166,7 +168,7 @@ ggplot(
 
 散点图对于显示两个数值变量之间的关系很有用，但对两个变量之间的任何明显关系持怀疑态度总是一个好主意，并追问是否存在其他变量可以解释或改变这种明显关系的性质。例如，鳍状肢长度和体重之间的关系是否因物种而异？让我们将物种信息融入到我们的图形中，看看这是否能揭示关于这些变量之间明显关系的任何额外见解。我们将通过用不同颜色的点来代表不同物种来实现这一点。
 
-为了实现这一点，我们需要修改美学还是几何对象？如果你猜的是“在美学映射中，即 `aes()` 内部”，那么你已经开始掌握用 ggplot2 创建数据可视化的窍门了！如果没猜对，也别担心。在本书中，你将制作更多的 ggplot 图形，并有更多机会在制作它们时检验你的直觉。
+为了实现这一点，我们需要修改美学还是几何对象？如果你猜的是“在美学映射中，即 `aes()` 内部”，那么你已经开始掌握用 ggplot2 创建数据可视化的窍门了！如果没猜对，也别担心。在本书中，你将制作更多的 ggplot 图形，并有更多机会在制作它们时检验直觉。
 
 ```{r}
 #| warning: false
@@ -407,7 +409,7 @@ ggplot(penguins, aes(x = fct_infreq(species))) +
 
 ```{r}
 #| warning: false
-#| fig-alt: |
+#| fig-alt: 
 #|   企鹅体重的直方图。分布是单峰的且右偏，
 #|   范围大约在 2500 到 6500 克之间。
 ggplot(penguins, aes(x = body_mass_g)) +
@@ -422,7 +424,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 #| warning: false
 #| layout-ncol: 2
 #| fig-width: 3
-#| fig-alt: |
+#| fig-alt: 
 #|   企鹅体重的两个直方图，一个的组距 (binwidth) 为 20（左），另一个为 2000（右）。
 #|   组距为 20 的直方图显示了条形高度的许多起伏，形成了一个锯齿状的轮廓。
 #|   组距为 2000 的直方图只显示了三个条形。
@@ -435,7 +437,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 数值变量分布的另一种可视化方法是密度图。密度图是直方图的平滑版本，是一个实用的替代方案，特别是对于来自潜在平滑分布的连续数据。我们不会深入探讨 `geom_density()` 是如何估计密度的（你可以在函数文档中阅读更多相关内容），但让我们用一个类比来解释密度曲线是如何绘制的。想象一个用木块制成的直方图。然后，想象你把一根煮熟的意大利面条扔在上面。面条在木块上形成的形状可以被认为是密度曲线的形状。它比直方图显示的细节少，但可以更容易地快速了解分布的形状，特别是在众数和偏度方面。
 
 ```{r}
-#| fig-alt: |
+#| fig-alt: 
 #|   企鹅体重的密度图。分布是单峰的且右偏，
 #|   范围大约在 2500 到 6500 克之间。
 ggplot(penguins, aes(x = body_mass_g)) +
@@ -582,7 +584,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
     geom_point(aes(color = species, shape = island))
 ```
 
-然而，向一个图中添加太多的美学映射会使其变得杂乱无章，难以理解。另一种方法，特别是对于分类变量很有用，就是将你的图分割成**分面** (facets)，即每个子图显示数据的一个子集。
+然而，向一个图中添加太多的美学映射会使其变得杂乱无章，难以理解。另一种方法，特别是对于分类变量很有用，就是将图分割成**分面** (facets)，即每个子图显示数据的一个子集。
 
 要按单个变量对图进行分面，请使用 `facet_wrap()`。`facet_wrap()` 的第一个参数是一个公式 (formula)[^3]，你通过 `~` 后跟一个变量名来创建。你传递给 `facet_wrap()` 的变量应该是分类变量。
 
@@ -603,7 +605,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ### 练习
 
-1.  ggplot2 包中附带的 `mpg` 数据框包含由美国环境保护署收集的 `r mpg |> distinct(model) |> nrow()` 种车型的 `r nrow(mpg)` 个观测值。`mpg` 中的哪些变量是分类变量？哪些变量是数值变量？（提示：输入 `?mpg` 以阅读该数据集的文档。）当你运行 `mpg` 时，如何看到这些信息？
+1.  ggplot2 包中附带的 `mpg` 数据框包含由美国环境保护署收集的 `r mpg |> dplyr::distinct(model) |> nrow()` 种车型的 `r nrow(mpg)` 个观测值。`mpg` 中的哪些变量是分类变量？哪些变量是数值变量？（提示：输入 `?mpg` 以阅读该数据集的文档。）当你运行 `mpg` 时，如何看到这些信息？
 
 2.  使用 `mpg` 数据框制作一个 `hwy` 与 `displ` 的散点图。接下来，将第三个数值变量映射到 `color`，然后是 `size`，然后是 `color` 和 `size`，然后是 `shape`。这些美学对于分类变量与数值变量的行为有何不同？
 
@@ -632,14 +634,14 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 7.  创建以下两个堆叠条形图。你可以用第一个图回答哪个问题？你可以用第二个图回答哪个问题？
 
     ```{r}
-#| fig-show: hide
-ggplot(penguins, aes(x = island, fill = species)) +
-    geom_bar(position = "fill")
-ggplot(penguins, aes(x = species, fill = island)) +
-    geom_bar(position = "fill")
+    #| fig-show: hide
+    ggplot(penguins, aes(x = island, fill = species)) +
+        geom_bar(position = "fill")
+    ggplot(penguins, aes(x = species, fill = island)) +
+        geom_bar(position = "fill")
     ```
 
-## 保存你的图形 {#sec-ggsave}
+## 保存图形 {#sec-ggsave}
 
 制作完一个图形后，你可能希望将其从 R 中导出，保存为一张图片以便在其他地方使用。这就是 `ggsave()` 的工作，它会将最近创建的图形保存到磁盘上：
 
@@ -660,7 +662,7 @@ file.remove("penguin-plot.png")
 
 如果你不指定 `width` 和 `height`，它们将取自当前绘图设备的尺寸。为了代码的可重现性，你最好指定它们。你可以在文档中了解更多关于 `ggsave()` 的信息。
 
-然而，通常我们建议你使用 Quarto 来组织你的最终报告，它是一个可重现的创作系统，允许你将代码和文字交织在一起，并自动将你的图形包含在你的报告中。你将在 @sec-quarto 中学到更多关于 Quarto 的知识。
+然而，通常我们建议你使用 Quarto 来组织你的最终报告，它是一个可重现的创作系统，允许你将代码和文字交织在一起，并自动将图形包含在你的报告中。你将在 @sec-quarto 中学到更多关于 Quarto 的知识。
 
 ### 练习
 

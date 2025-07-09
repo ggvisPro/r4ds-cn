@@ -1,23 +1,23 @@
-# Data import {#sec-data-import}
+# 数据导入 {#sec-data-import}
 
 ```{r}
 #| echo: false
 source("_common.R")
 ```
 
-## Introduction
+## 引言
 
-Working with data provided by R packages is a great way to learn data science tools, but you want to apply what you've learned to your own data at some point.
-In this chapter, you'll learn the basics of reading data files into R.
+使用 R 包提供的数据是学习数据科学工具的好方法，但总有一天，你会希望将所学知识应用到自己的数据上。
+在本章中，你将学习将数据文件读入 R 的基础知识。
 
-Specifically, this chapter will focus on reading plain-text rectangular files.
-We'll start with practical advice for handling features like column names, types, and missing data.
-You will then learn about reading data from multiple files at once and writing data from R to a file.
-Finally, you'll learn how to handcraft data frames in R.
+具体来说，本章将重点介绍如何读取纯文本矩形文件。
+我们将从处理列名、类型和缺失数据等特性的实用建议开始。
+然后，你将学习如何一次性从多个文件中读取数据，以及如何将数据从 R 写入文件。
+最后，你将学习如何在 R 中手动创建数据框。
 
-### Prerequisites
+### 先决条件
 
-In this chapter, you'll learn how to load flat files in R with the **readr** package, which is part of the core tidyverse.
+在本章中，你将学习如何使用 **readr** 包将纯文本文件加载到 R 中，该包是核心 tidyverse 的一部分。
 
 ```{r}
 #| label: setup
@@ -25,12 +25,12 @@ In this chapter, you'll learn how to load flat files in R with the **readr** pac
 library(tidyverse)
 ```
 
-## Reading data from a file
+## 从文件中读取数据
 
-To begin, we'll focus on the most common rectangular data file type: CSV, which is short for comma-separated values.
-Here is what a simple CSV file looks like.
-The first row, commonly called the header row, gives the column names, and the following six rows provide the data.
-The columns are separated, aka delimited, by commas.
+首先，我们将重点关注最常见的矩形数据文件类型：CSV，即逗号分隔值 (comma-separated values) 的缩写。
+下面是一个简单的 CSV 文件的样子。
+第一行，通常称为标题行 (header row)，给出了列名，接下来的六行提供了数据。
+这些列由逗号分隔，也称为定界 (delimited)。
 
 ```{r}
 #| echo: false
@@ -39,50 +39,50 @@ The columns are separated, aka delimited, by commas.
 read_lines("data/students.csv") |> cat(sep = "\n")
 ```
 
-@tbl-students-table shows a representation of the same data as a table.
+@tbl-students-table 以表格形式展示了相同的数据。
 
 ```{r}
 #| label: tbl-students-table
 #| echo: false
 #| message: false
-#| tbl-cap: Data from the students.csv file as a table.
+#| tbl-cap: 来自 students.csv 文件的数据表格。
 read_csv("data/students.csv") |>
-    knitr::kable()
+  knitr::kable()
 ```
 
-We can read this file into R using `read_csv()`.
-The first argument is the most important: the path to the file.
-You can think about the path as the address of the file: the file is called `students.csv` and it lives in the `data` folder.
+我们可以使用 `read_csv()` 将这个文件读入 R。
+第一个参数是最重要的：文件的路径。
+你可以将路径看作是文件的地址：文件名为 `students.csv`，它位于 `data` 文件夹中。
 
 ```{r}
 #| message: true
 students <- read_csv("data/students.csv")
 ```
 
-The code above will work if you have the `students.csv` file in a `data` folder in your project.
-You can download the `students.csv` file from <https://pos.it/r4ds-students-csv> or you can read it directly from that URL with:
+如果你的项目中的 `data` 文件夹里有 `students.csv` 文件，上面的代码就能正常工作。
+你可以从 [https://pos.it/r4ds-students-csv](https://pos.it/r4ds-students-csv) 下载 `students.csv` 文件，或者用下面的代码直接从那个 URL 读取它：
 
 ```{r}
 #| eval: false
 students <- read_csv("https://pos.it/r4ds-students-csv")
 ```
 
-When you run `read_csv()`, it prints out a message telling you the number of rows and columns of data, the delimiter that was used, and the column specifications (names of columns organized by the type of data the column contains).
-It also prints out some information about retrieving the full column specification and how to quiet this message.
-This message is an integral part of readr, and we'll return to it in @sec-col-types.
+当你运行 `read_csv()` 时，它会打印一条消息，告诉你数据的行数和列数、使用的分隔符以及列的规格（按列所含数据类型组织的列名）。
+它还会打印一些关于检索完整列规格和如何静默此消息的信息。
+这条消息是 readr 的一个组成部分，我们将在 @sec-col-types 中再次讨论它。
 
-### Practical advice
+### 实用建议
 
-Once you read data in, the first step usually involves transforming it in some way to make it easier to work with in the rest of your analysis.
-Let's take another look at the `students` data with that in mind.
+一旦你读入数据，第一步通常是进行某种方式的转换，以便在后续分析中更容易处理。
+让我们带着这个想法再看一次 `students` 数据。
 
 ```{r}
 students
 ```
 
-In the `favourite.food` column, there are a bunch of food items, and then the character string `N/A`, which should have been a real `NA` that R will recognize as "not available".
-This is something we can address using the `na` argument.
-By default, `read_csv()` only recognizes empty strings (`""`) in this dataset as `NA`s, and we want it to also recognize the character string `"N/A"`.
+在 `favourite.food` 列中，有一堆食物项目，然后是字符串 `N/A`，这本应是一个真正的 `NA`，R 会将其识别为“不可用”(not available)。
+这是我们可以使用 `na` 参数来解决的问题。
+默认情况下，`read_csv()` 在这个数据集中只识别空字符串 (`""`) 为 `NA`，我们希望它也能识别字符串 `"N/A"`。
 
 ```{r}
 #| message: false
@@ -91,202 +91,198 @@ students <- read_csv("data/students.csv", na = c("N/A", ""))
 students
 ```
 
-You might also notice that the `Student ID` and `Full Name` columns are surrounded by backticks.
-That's because they contain spaces, breaking R's usual rules for variable names; they're **non-syntactic** names.
-To refer to these variables, you need to surround them with backticks, `` ` ``:
+你可能还会注意到 `Student ID` 和 `Full Name` 这两列被反引号包围。
+这是因为它们包含空格，破坏了 R 的常规变量命名规则；它们是**非语法** (non-syntactic) 名称。
+要引用这些变量，你需要用反引号 `` ` `` 将它们包围起来：
 
 ```{r}
-students |>
-    rename(
-        student_id = `Student ID`,
-        full_name = `Full Name`
-    )
+students |> 
+  rename(
+    student_id = `Student ID`,
+    full_name = `Full Name`
+  )
 ```
 
-An alternative approach is to use `janitor::clean_names()` to use some heuristics to turn them all into snake case at once[^data-import-1].
-
-[^data-import-1]: The [janitor](http://sfirke.github.io/janitor/) package is not part of the tidyverse, but it offers handy functions for data cleaning and works well within data pipelines that use `|>`.
+另一种方法是使用 `janitor::clean_names()`，它会运用一些启发式方法一次性将所有列名转换为蛇形命名法 (snake case)[^1]。
 
 ```{r}
 #| message: false
 students |> janitor::clean_names()
 ```
 
-Another common task after reading in data is to consider variable types.
-For example, `meal_plan` is a categorical variable with a known set of possible values, which in R should be represented as a factor:
+读入数据后的另一个常见任务是考虑变量类型。
+例如，`meal_plan` 是一个分类变量，具有一组已知的可能值，在 R 中应表示为因子 (factor)：
 
 ```{r}
 students |>
-    janitor::clean_names() |>
-    mutate(meal_plan = factor(meal_plan))
+  janitor::clean_names() |>
+  mutate(meal_plan = factor(meal_plan))
 ```
 
-Note that the values in the `meal_plan` variable have stayed the same, but the type of variable denoted underneath the variable name has changed from character (`<chr>`) to factor (`<fct>`).
-You'll learn more about factors in @sec-factors.
+注意，`meal_plan` 变量中的值保持不变，但变量名下方表示的变量类型已从字符 (`<chr>`) 变为因子 (`<fct>`)。
+你将在 @sec-factors 中学到更多关于因子的知识。
 
-Before you analyze these data, you'll probably want to fix the `age` column.
-Currently, `age` is a character variable because one of the observations is typed out as `five` instead of a numeric `5`.
-We discuss the details of fixing this issue in @sec-import-spreadsheets.
+在分析这些数据之前，你可能想修复 `age` 列。
+目前，`age` 是一个字符变量，因为其中一个观测值被输入为 `five` 而不是数字 `5`。
+我们将在 @sec-import-spreadsheets 中讨论修复这个问题的细节。
 
 ```{r}
 students <- students |>
-    janitor::clean_names() |>
-    mutate(
-        meal_plan = factor(meal_plan),
-        age = parse_number(if_else(age == "five", "5", age))
-    )
+  janitor::clean_names() |>
+  mutate(
+    meal_plan = factor(meal_plan),
+    age = parse_number(if_else(age == "five", "5", age))
+  )
 
 students
 ```
 
-A new function here is `if_else()`, which has three arguments.
-The first argument `test` should be a logical vector.
-The result will contain the value of the second argument, `yes`, when `test` is `TRUE`, and the value of the third argument, `no`, when it is `FALSE`.
-Here we're saying if `age` is the character string `"five"`, make it `"5"`, and if not leave it as `age`.
-You will learn more about `if_else()` and logical vectors in @sec-logicals.
+这里有一个新函数 `if_else()`，它有三个参数。
+第一个参数 `test` 应该是一个逻辑向量。
+当 `test` 为 `TRUE` 时，结果将包含第二个参数 `yes` 的值；当 `test` 为 `FALSE` 时，结果将包含第三个参数 `no` 的值。
+这里我们是说，如果 `age` 是字符串 `"five"`，就把它变成 `"5"`，如果不是，就保持 `age` 不变。
+你将在 @sec-logicals 中学到更多关于 `if_else()` 和逻辑向量的知识。
 
-### Other arguments
+### 其他参数
 
-There are a couple of other important arguments that we need to mention, and they'll be easier to demonstrate if we first show you a handy trick: `read_csv()` can read text strings that you've created and formatted like a CSV file:
+我们还需要提到几个其他重要的参数，如果我们先向你展示一个方便的技巧，会更容易演示：`read_csv()` 可以读取你创建并格式化为 CSV 文件那样的文本字符串：
 
 ```{r}
 #| message: false
 read_csv(
-    "a,b,c
+  "a,b,c
   1,2,3
   4,5,6"
 )
 ```
 
-Usually, `read_csv()` uses the first line of the data for the column names, which is a very common convention.
-But it's not uncommon for a few lines of metadata to be included at the top of the file.
-You can use `skip = n` to skip the first `n` lines or use `comment = "#"` to drop all lines that start with (e.g.) `#`:
+通常，`read_csv()` 使用数据的第一行作为列名，这是一个非常普遍的惯例。
+但文件顶部包含几行元数据的情况也并不少见。
+你可以使用 `skip = n` 来跳过前 `n` 行，或者使用 `comment = "#"` 来删除所有以（例如）`#` 开头的行：
 
 ```{r}
 #| message: false
 read_csv(
-    "The first line of metadata
-  The second line of metadata
+  "元数据的第一行
+  元数据的第二行
   x,y,z
   1,2,3",
-    skip = 2
+  skip = 2
 )
 
 read_csv(
-    "# A comment I want to skip
+  "# 我想跳过的一条注释
   x,y,z
   1,2,3",
-    comment = "#"
+  comment = "#"
 )
 ```
 
-In other cases, the data might not have column names.
-You can use `col_names = FALSE` to tell `read_csv()` not to treat the first row as headings and instead label them sequentially from `X1` to `Xn`:
+在其他情况下，数据可能没有列名。
+你可以使用 `col_names = FALSE` 来告诉 `read_csv()` 不要将第一行作为标题，而是按顺序将它们标记为 `X1` 到 `Xn`：
 
 ```{r}
 #| message: false
 read_csv(
-    "1,2,3
+  "1,2,3
   4,5,6",
-    col_names = FALSE
+  col_names = FALSE
 )
 ```
 
-Alternatively, you can pass `col_names` a character vector which will be used as the column names:
+或者，你可以给 `col_names` 传递一个字符向量，它将被用作列名：
 
 ```{r}
 #| message: false
 read_csv(
-    "1,2,3
+  "1,2,3
   4,5,6",
-    col_names = c("x", "y", "z")
+  col_names = c("x", "y", "z")
 )
 ```
 
-These arguments are all you need to know to read the majority of CSV files that you'll encounter in practice.
-(For the rest, you'll need to carefully inspect your `.csv` file and read the documentation for `read_csv()`'s many other arguments.)
+这些参数就是你在实践中读取大多数 CSV 文件所需要知道的全部内容了。
+（至于其余情况，你需要仔细检查你的 `.csv` 文件，并阅读 `read_csv()` 许多其他参数的文档。）
 
-### Other file types
+### 其他文件类型
 
-Once you've mastered `read_csv()`, using readr's other functions is straightforward; it's just a matter of knowing which function to reach for:
+一旦你掌握了 `read_csv()`，使用 readr 的其他函数就很直接了；这只是知道该用哪个函数的问题：
 
--   `read_csv2()` reads semicolon-separated files.
-    These use `;` instead of `,` to separate fields and are common in countries that use `,` as the decimal marker.
+  - `read_csv2()` 读取分号分隔的文件。
+    这些文件使用 `;` 而不是 `,` 来分隔字段，在那些使用 `,` 作为小数点的国家很常见。
 
--   `read_tsv()` reads tab-delimited files.
+  - `read_tsv()` 读取制表符分隔的文件。
 
--   `read_delim()` reads in files with any delimiter, attempting to automatically guess the delimiter if you don't specify it.
+  - `read_delim()` 读取任何分隔符的文件，如果你不指定分隔符，它会尝试自动猜测。
 
--   `read_fwf()` reads fixed-width files.
-    You can specify fields by their widths with `fwf_widths()` or by their positions with `fwf_positions()`.
+  - `read_fwf()` 读取固定宽度文件。
+    你可以用 `fwf_widths()` 按宽度指定字段，或用 `fwf_positions()` 按位置指定字段。
 
--   `read_table()` reads a common variation of fixed-width files where columns are separated by white space.
+  - `read_table()` 读取一种常见的固定宽度文件变体，其中列由空白分隔。
 
--   `read_log()` reads Apache-style log files.
+  - `read_log()` 读取 Apache 风格的日志文件。
 
-### Exercises
+### 练习
 
-1.  What function would you use to read a file where fields were separated with "\|"?
+1.  你会用哪个函数来读取字段由 “|” 分隔的文件？
 
-2.  Apart from `file`, `skip`, and `comment`, what other arguments do `read_csv()` and `read_tsv()` have in common?
+2.  除了 `file`、`skip` 和 `comment`，`read_csv()` 和 `read_tsv()` 还有哪些共同的参数？
 
-3.  What are the most important arguments to `read_fwf()`?
+3.  `read_fwf()` 最重要的参数是什么？
 
-4.  Sometimes strings in a CSV file contain commas.
-    To prevent them from causing problems, they need to be surrounded by a quoting character, like `"` or `'`. By default, `read_csv()` assumes that the quoting character will be `"`.
-    To read the following text into a data frame, what argument to `read_csv()` do you need to specify?
-
-    ```{r}
-#| eval: false
-"x,y\n1,'a,b'"
-    ```
-
-5.  Identify what is wrong with each of the following inline CSV files.
-    What happens when you run the code?
+4.  有时 CSV 文件中的字符串包含逗号。
+    为了防止它们引起问题，它们需要被引号字符包围，比如 `"` 或 `'`。默认情况下，`read_csv()` 假设引号字符是 `"`。
+    要将以下文本读入一个数据框，你需要为 `read_csv()` 指定哪个参数？
 
     ```{r}
-#| eval: false
-read_csv("a,b\n1,2,3\n4,5,6")
-read_csv("a,b,c\n1,2\n1,2,3,4")
-read_csv("a,b\n\"1")
-read_csv("a,b\n1,2\na,b")
-read_csv("a;b\n1;3")
+    #| eval: false
+    "x,y\n1,'a,b'"
     ```
 
-6.  Practice referring to non-syntactic names in the following data frame by:
-
-    a.  Extracting the variable called `1`.
-    b.  Plotting a scatterplot of `1` vs. `2`.
-    c.  Creating a new column called `3`, which is `2` divided by `1`.
-    d.  Renaming the columns to `one`, `two`, and `three`.
+5.  找出以下每个内联 CSV 文件有什么问题。
+    当你运行这些代码时会发生什么？
 
     ```{r}
-annoying <- tibble(
-    `1` = 1:10,
-    `2` = `1` * 2 + rnorm(length(`1`))
-)
+    #| eval: false
+    read_csv("a,b\n1,2,3\n4,5,6")
+    read_csv("a,b,c\n1,2\n1,2,3,4")
+    read_csv("a,b\n\"1")
+    read_csv("a,b\n1,2\na,b")
+    read_csv("a;b\n1;3")
     ```
 
-## Controlling column types {#sec-col-types}
+6.  在下面的数据框中练习引用非语法名称：
 
-A CSV file doesn't contain any information about the type of each variable (i.e. whether it's a logical, number, string, etc.), so readr will try to guess the type.
-This section describes how the guessing process works, how to resolve some common problems that cause it to fail, and, if needed, how to supply the column types yourself.
-Finally, we'll mention a few general strategies that are useful if readr is failing catastrophically and you need to get more insight into the structure of your file.
+    a.  提取名为 `1` 的变量。
+    b.  绘制 `1` 与 `2` 的散点图。
+    c.  创建一个名为 `3` 的新列，它是 `2` 除以 `1` 的结果。
+    d.  将列重命名为 `one`、`two` 和 `three`。
 
-### Guessing types
+    ```{r}
+    annoying <- tibble(
+      `1` = 1:10,
+      `2` = `1` * 2 + rnorm(length(`1`))
+    )
+    ```
 
-readr uses a heuristic to figure out the column types.
-For each column, it pulls the values of 1,000[^data-import-2] rows spaced evenly from the first row to the last, ignoring missing values.
-It then works through the following questions:
+## 控制列类型 {#sec-col-types}
 
-[^data-import-2]: You can override the default of 1000 with the `guess_max` argument.
+CSV 文件不包含关于每个变量类型的信息（即它是逻辑值、数字、字符串等），所以 readr 会尝试猜测类型。
+本节描述了猜测过程是如何工作的，如何解决一些导致它失败的常见问题，以及如果需要，如何自己提供列类型。
+最后，我们将提到一些通用的策略，如果 readr 彻底失败，而你需要更深入地了解你的文件结构，这些策略会很有用。
 
--   Does it contain only `F`, `T`, `FALSE`, or `TRUE` (ignoring case)? If so, it's a logical.
--   Does it contain only numbers (e.g., `1`, `-4.5`, `5e6`, `Inf`)? If so, it's a number.
--   Does it match the ISO8601 standard? If so, it's a date or date-time. (We'll return to date-times in more detail in @sec-creating-datetimes).
--   Otherwise, it must be a string.
+### 猜测类型
 
-You can see that behavior in action in this simple example:
+readr 使用一种启发式方法来判断列类型。
+对于每一列，它从第一行到最后一行均匀地抽取 1000 行[^2] 的值，并忽略缺失值。
+然后它会按顺序考虑以下问题：
+
+  - 它是否只包含 `F`、`T`、`FALSE` 或 `TRUE`（忽略大小写）？如果是，它就是一个逻辑值 (logical)。
+  - 它是否只包含数字（例如，`1`、`-4.5`、`5e6`、`Inf`）？如果是，它就是一个数字 (number)。
+  - 它是否符合 ISO8601 标准？如果是，它就是一个日期或日期时间。(我们将在 @sec-creating-datetimes 中更详细地回到日期时间)。
+  - 否则，它必须是一个字符串 (string)。
+
+你可以在这个简单的例子中看到这种行为：
 
 ```{r}
 #| message: false
@@ -298,14 +294,14 @@ read_csv("
 ")
 ```
 
-This heuristic works well if you have a clean dataset, but in real life, you'll encounter a selection of weird and beautiful failures.
+如果你的数据集很干净，这个启发式方法效果很好，但在现实生活中，你会遇到各种各样稀奇古怪的失败情况。
 
-### Missing values, column types, and problems
+### 缺失值、列类型和问题
 
-The most common way column detection fails is that a column contains unexpected values, and you get a character column instead of a more specific type.
-One of the most common causes for this is a missing value, recorded using something other than the `NA` that readr expects.
+列检测最常见的失败方式是某一列包含了意料之外的值，导致你得到一个字符列而不是更具体的类型。
+最常见的原因之一是缺失值，它被记录为 readr 不期望的其他形式，而不是 `NA`。
 
-Take this simple 1 column CSV file as an example:
+以这个简单的单列 CSV 文件为例：
 
 ```{r}
 simple_csv <- "
@@ -316,52 +312,52 @@ simple_csv <- "
   30"
 ```
 
-If we read it without any additional arguments, `x` becomes a character column:
+如果我们不带任何额外参数来读取它，`x` 会变成一个字符列：
 
 ```{r}
 #| message: false
 read_csv(simple_csv)
 ```
 
-In this very small case, you can easily see the missing value `.`.
-But what happens if you have thousands of rows with only a few missing values represented by `.`s sprinkled among them?
-One approach is to tell readr that `x` is a numeric column, and then see where it fails.
-You can do that with the `col_types` argument, which takes a named list where the names match the column names in the CSV file:
+在这个非常小的情况下，你可以轻易看到缺失值 `.`。
+但是，如果你有成千上万行，其中只有少数几个由 `.` 表示的缺失值散布其中，会发生什么呢？
+一种方法是告诉 readr `x` 是一个数值列，然后看它在哪里失败。
+你可以通过 `col_types` 参数来做到这一点，该参数接受一个命名列表，其中名称与 CSV 文件中的列名匹配：
 
 ```{r}
 df <- read_csv(
-    simple_csv,
-    col_types = list(x = col_double())
+  simple_csv, 
+  col_types = list(x = col_double())
 )
 ```
 
-Now `read_csv()` reports that there was a problem, and tells us we can find out more with `problems()`:
+现在 `read_csv()` 报告说有问题，并告诉我们可以用 `problems()` 了解更多信息：
 
 ```{r}
 problems(df)
 ```
 
-This tells us that there was a problem in row 3, col 1 where readr expected a double but got a `.`.
-That suggests this dataset uses `.` for missing values.
-So then we set `na = "."`, the automatic guessing succeeds, giving us the numeric column that we want:
+这告诉我们，在第 3 行第 1 列有一个问题，readr 期望一个双精度数 (double)，但得到了一个 `.`。
+这表明这个数据集使用 `.` 来表示缺失值。
+所以我们设置 `na = "."`，自动猜测就成功了，得到了我们想要的数值列：
 
 ```{r}
 #| message: false
 read_csv(simple_csv, na = ".")
 ```
 
-### Column types
+### 列类型
 
-readr provides a total of nine column types for you to use:
+readr 总共提供了九种列类型供你使用：
 
--   `col_logical()` and `col_double()` read logicals and real numbers. They're relatively rarely needed (except as above), since readr will usually guess them for you.
--   `col_integer()` reads integers. We seldom distinguish integers and doubles in this book because they're functionally equivalent, but reading integers explicitly can occasionally be useful because they occupy half the memory of doubles.
--   `col_character()` reads strings. This can be useful to specify explicitly when you have a column that is a numeric identifier, i.e., long series of digits that identifies an object but doesn't make sense to apply mathematical operations to. Examples include phone numbers, social security numbers, credit card numbers, etc.
--   `col_factor()`, `col_date()`, and `col_datetime()` create factors, dates, and date-times respectively; you'll learn more about those when we get to those data types in @sec-factors and @sec-dates-and-times.
--   `col_number()` is a permissive numeric parser that will ignore non-numeric components, and is particularly useful for currencies. You'll learn more about it in @sec-numbers.
--   `col_skip()` skips a column so it's not included in the result, which can be useful for speeding up reading the data if you have a large CSV file and you only want to use some of the columns.
+  - `col_logical()` 和 `col_double()` 读取逻辑值和实数。它们相对来说很少需要（除非像上面那样），因为 readr 通常会为你猜到它们。
+  - `col_integer()` 读取整数。本书中我们很少区分整数和双精度数，因为它们在功能上是等效的，但明确读取整数偶尔会很有用，因为它们占用的内存是双精度数的一半。
+  - `col_character()` 读取字符串。当你的某一列是数值标识符时，明确指定它会很有用，即一长串数字，它标识一个对象，但对其进行数学运算没有意义。例子包括电话号码、社会安全号码、信用卡号码等。
+  - `col_factor()`、`col_date()` 和 `col_datetime()` 分别创建因子、日期和日期时间；当我们在 @sec-factors 和 @sec-dates-and-times 中讲到这些数据类型时，你将学到更多关于它们的内容。
+  - `col_number()` 是一个宽容的数值解析器，会忽略非数值部分，对货币特别有用。你将在 @sec-numbers 中学到更多关于它的知识。
+  - `col_skip()` 会跳过一列，使其不被包含在结果中，这在你有大型 CSV 文件并且只想使用其中一部分列时，可以加快数据读取速度。
 
-It's also possible to override the default column by switching from `list()` to `cols()` and specifying `.default`:
+也可以通过从 `list()` 切换到 `cols()` 并指定 `.default` 来覆盖默认的列类型：
 
 ```{r}
 another_csv <- "
@@ -369,25 +365,25 @@ x,y,z
 1,2,3"
 
 read_csv(
-    another_csv,
-    col_types = cols(.default = col_character())
+  another_csv, 
+  col_types = cols(.default = col_character())
 )
 ```
 
-Another useful helper is `cols_only()` which will read in only the columns you specify:
+另一个有用的辅助函数是 `cols_only()`，它只会读入你指定的列：
 
 ```{r}
 read_csv(
-    another_csv,
-    col_types = cols_only(x = col_character())
+  another_csv,
+  col_types = cols_only(x = col_character())
 )
 ```
 
-## Reading data from multiple files {#sec-readr-directory}
+## 从多个文件中读取数据 {#sec-readr-directory}
 
-Sometimes your data is split across multiple files instead of being contained in a single file.
-For example, you might have sales data for multiple months, with each month's data in a separate file: `01-sales.csv` for January, `02-sales.csv` for February, and `03-sales.csv` for March.
-With `read_csv()` you can read these data in at once and stack them on top of each other in a single data frame.
+有时你的数据分散在多个文件中，而不是包含在单个文件中。
+例如，你可能有多個月的销售数据，每个月的数据都在一个单独的文件中：`01-sales.csv` 代表一月，`02-sales.csv` 代表二月，`03-sales.csv` 代表三月。
+使用 `read_csv()`，你可以一次性读取这些数据，并将它们堆叠在一个单一的数据框中。
 
 ```{r}
 #| message: false
@@ -395,44 +391,44 @@ sales_files <- c("data/01-sales.csv", "data/02-sales.csv", "data/03-sales.csv")
 read_csv(sales_files, id = "file")
 ```
 
-Once again, the code above will work if you have the CSV files in a `data` folder in your project.
-You can download these files from <https://pos.it/r4ds-01-sales>, <https://pos.it/r4ds-02-sales>, and <https://pos.it/r4ds-03-sales> or you can read them directly with:
+同样，如果你的项目中的 `data` 文件夹里有这些 CSV 文件，上面的代码就能正常工作。
+你可以从 [https://pos.it/r4ds-01-sales](https://pos.it/r4ds-01-sales)、[https://pos.it/r4ds-02-sales](https://pos.it/r4ds-02-sales) 和 [https://pos.it/r4ds-03-sales](https://pos.it/r4ds-03-sales) 下载这些文件，或者用下面的代码直接读取它们：
 
 ```{r}
 #| eval: false
 sales_files <- c(
-    "https://pos.it/r4ds-01-sales",
-    "https://pos.it/r4ds-02-sales",
-    "https://pos.it/r4ds-03-sales"
+  "https://pos.it/r4ds-01-sales",
+  "https://pos.it/r4ds-02-sales",
+  "https://pos.it/r4ds-03-sales"
 )
 read_csv(sales_files, id = "file")
 ```
 
-The `id` argument adds a new column called `file` to the resulting data frame that identifies the file the data come from.
-This is especially helpful in circumstances where the files you're reading in do not have an identifying column that can help you trace the observations back to their original sources.
+`id` 参数会在结果数据框中添加一个名为 `file` 的新列，用于标识数据来自哪个文件。
+这在读取的文件本身没有标识列，无法帮助你将观测值追溯到其原始来源的情况下特别有用。
 
-If you have many files you want to read in, it can get cumbersome to write out their names as a list.
-Instead, you can use the base `list.files()` function to find the files for you by matching a pattern in the file names.
-You'll learn more about these patterns in @sec-regular-expressions.
+如果你有很多文件要读取，将它们的名字写成一个列表可能会很麻烦。
+相反，你可以使用基础 R 的 `list.files()` 函数，通过匹配文件名中的一个模式来为你找到文件。
+你将在 @sec-regular-expressions 中学到更多关于这些模式的知识。
 
 ```{r}
 sales_files <- list.files("data", pattern = "sales\\.csv$", full.names = TRUE)
 sales_files
 ```
 
-## Writing to a file {#sec-writing-to-a-file}
+## 写入文件 {#sec-writing-to-a-file}
 
-readr also comes with two useful functions for writing data back to disk: `write_csv()` and `write_tsv()`.
-The most important arguments to these functions are `x` (the data frame to save) and `file` (the location to save it).
-You can also specify how missing values are written with `na`, and if you want to `append` to an existing file.
+readr 也附带了两个有用的函数，用于将数据写回磁盘：`write_csv()` 和 `write_tsv()`。
+这些函数最重要的参数是 `x`（要保存的数据框）和 `file`（保存的位置）。
+你还可以用 `na` 指定如何写入缺失值，以及如果你想 `append`到一个现有文件。
 
 ```{r}
 #| eval: false
 write_csv(students, "students.csv")
 ```
 
-Now let's read that csv file back in.
-Note that the variable type information that you just set up is lost when you save to CSV because you're starting over with reading from a plain text file again:
+现在让我们把那个 csv 文件读回来。
+注意，当你保存为 CSV 时，你刚刚设置的变量类型信息会丢失，因为你又从一个纯文本文件开始读取了：
 
 ```{r}
 #| warning: false
@@ -442,38 +438,38 @@ write_csv(students, "students-2.csv")
 read_csv("students-2.csv")
 ```
 
-This makes CSVs a little unreliable for caching interim results---you need to recreate the column specification every time you load in.
-There are two main alternatives:
+这使得 CSV 对于缓存中间结果有点不可靠——你每次加载时都需要重新创建列规格。
+主要有两种替代方案：
 
-1.  `write_rds()` and `read_rds()` are uniform wrappers around the base functions `readRDS()` and `saveRDS()`.
-    These store data in R's custom binary format called RDS.
-    This means that when you reload the object, you are loading the *exact same* R object that you stored.
-
-    ```{r}
-write_rds(students, "students.rds")
-read_rds("students.rds")
-    ```
-
-2.  The arrow package allows you to read and write parquet files, a fast binary file format that can be shared across programming languages.
-    We'll return to arrow in more depth in @sec-arrow.
+1.  `write_rds()` 和 `read_rds()` 是对基础函数 `readRDS()` 和 `saveRDS()` 的统一包装。
+    它们以 R 的自定义二进制格式 RDS 存储数据。
+    这意味着当你重新加载对象时，你加载的是你存储的**完全相同**的 R 对象。
 
     ```{r}
-#| eval: false
-library(arrow)
-write_parquet(students, "students.parquet")
-read_parquet("students.parquet")
-#> # A tibble: 6 × 5
-#>   student_id full_name        favourite_food     meal_plan             age
-#>        <dbl> <chr>            <chr>              <fct>               <dbl>
-#> 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-#> 2          2 Barclay Lynn     French fries       Lunch only              5
-#> 3          3 Jayendra Lyne    NA                 Breakfast and lunch     7
-#> 4          4 Leon Rossini     Anchovies          Lunch only             NA
-#> 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-#> 6          6 Güvenç Attila    Ice cream          Lunch only              6
+    write_rds(students, "students.rds")
+    read_rds("students.rds")
     ```
 
-Parquet tends to be much faster than RDS and is usable outside of R, but does require the arrow package.
+2.  arrow 包允许你读写 parquet 文件，这是一种快速的二进制文件格式，可以在不同编程语言之间共享。
+    我们将在 @sec-arrow 中更深入地讨论 arrow。
+
+    ```{r}
+    #| eval: false
+    library(arrow)
+    write_parquet(students, "students.parquet")
+    read_parquet("students.parquet")
+    #> # A tibble: 6 × 5
+    #>   student_id full_name        favourite_food     meal_plan               age
+    #>        <dbl> <chr>            <chr>              <fct>                 <dbl>
+    #> 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only                4
+    #> 2          2 Barclay Lynn     French fries       Lunch only                5
+    #> 3          3 Jayendra Lyne    NA                 Breakfast and lunch       7
+    #> 4          4 Leon Rossini     Anchovies          Lunch only               NA
+    #> 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch       5
+    #> 6          6 Güvenç Attila    Ice cream          Lunch only                6
+    ```
+
+Parquet 通常比 RDS 快得多，并且可以在 R 之外使用，但需要 arrow 包。
 
 ```{r}
 #| include: false
@@ -481,38 +477,44 @@ file.remove("students-2.csv")
 file.remove("students.rds")
 ```
 
-## Data entry
+## 数据录入
 
-Sometimes you'll need to assemble a tibble "by hand" doing a little data entry in your R script.
-There are two useful functions to help you do this which differ in whether you layout the tibble by columns or by rows.
-`tibble()` works by column:
+有时你需要“手动”组装一个 tibble，在你的 R 脚本中进行少量的数据录入。
+有两个有用的函数可以帮助你做到这一点，它们的区别在于你是按列还是按行来布局 tibble。
+`tibble()` 是按列工作的：
 
 ```{r}
 tibble(
-    x = c(1, 2, 5),
-    y = c("h", "m", "g"),
-    z = c(0.08, 0.83, 0.60)
+  x = c(1, 2, 5), 
+  y = c("h", "m", "g"),
+  z = c(0.08, 0.83, 0.60)
 )
 ```
 
-Laying out the data by column can make it hard to see how the rows are related, so an alternative is `tribble()`, short for **tr**ansposed t**ibble**, which lets you lay out your data row by row.
-`tribble()` is customized for data entry in code: column headings start with `~` and entries are separated by commas.
-This makes it possible to lay out small amounts of data in an easy to read form:
+按列布局数据可能很难看出行与行之间的关系，所以另一种选择是 `tribble()`，即**转置的 tibble** (transposed tibble) 的缩写，它让你逐行布局你的数据。
+`tribble()` 是为在代码中进行数据录入而定制的：列标题以 `~` 开头，条目由逗号分隔。
+这使得可以用一种易于阅读的形式来布局少量数据：
 
 ```{r}
 tribble(
-    ~x, ~y, ~z,
-    1, "h", 0.08,
-    2, "m", 0.83,
-    5, "g", 0.60
+  ~x, ~y, ~z,
+  1, "h", 0.08,
+  2, "m", 0.83,
+  5, "g", 0.60
 )
 ```
 
-## Summary
+## 总结
 
-In this chapter, you've learned how to load CSV files with `read_csv()` and to do your own data entry with `tibble()` and `tribble()`.
-You've learned how csv files work, some of the problems you might encounter, and how to overcome them.
-We'll come to data import a few times in this book: @sec-import-spreadsheets from Excel and Google Sheets, @sec-import-databases will show you how to load data from databases, @sec-arrow from parquet files, @sec-rectangling from JSON, and @sec-scraping from websites.
+在本章中，你学会了如何使用 `read_csv()` 加载 CSV 文件，以及如何使用 `tibble()` 和 `tribble()` 进行你自己的数据录入。
+你了解了 CSV 文件的工作原理，你可能会遇到的一些问题，以及如何克服它们。
+在本书中，我们会几次回到数据导入这个话题：@sec-import-spreadsheets 讲从 Excel 和 Google Sheets 导入，@sec-import-databases 将向你展示如何从数据库加载数据，@sec-arrow 从 parquet 文件，@sec-rectangling 从 JSON，以及 @sec-scraping 从网站。
 
-We're just about at the end of this section of the book, but there's one important last topic to cover: how to get help.
-So in the next chapter, you'll learn some good places to look for help, how to create a reprex to maximize your chances of getting good help, and some general advice on keeping up with the world of R.
+我们即将结束本书的这一部分，但还有一个重要的最后话题要讲：如何获得帮助。
+所以在下一章中，你将学到一些寻求帮助的好地方，如何创建一个 reprex (可复现示例) 来最大化你获得良好帮助的机会，以及一些关于跟上 R 世界发展的一般性建议。
+
+[^1]:
+    [janitor](http://sfirke.github.io/janitor/) 包不属于 tidyverse，但它提供了便捷的数据清理函数，并且能很好地在使 用 `|>` 的数据管道中工作。
+
+[^2]:
+    你可以用 `guess_max` 参数覆盖默认的 1000 行。
