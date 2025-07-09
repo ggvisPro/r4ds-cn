@@ -285,13 +285,13 @@ Now that you've selected the elements of interest, you'll need to extract the da
 [^webscraping-6]: rvest also provides `html_text()` but you should almost always use `html_text2()` since it does a better job of converting nested HTML to text.
 
 ```{r}
-characters |> 
-  html_element("b") |> 
-  html_text2()
+characters |>
+    html_element("b") |>
+    html_text2()
 
-characters |> 
-  html_element(".weight") |> 
-  html_text2()
+characters |>
+    html_element(".weight") |>
+    html_text2()
 ```
 
 Note that any escapes will be automatically handled; you'll only ever see HTML escapes in the source HTML, not in the data returned by rvest.
@@ -304,10 +304,10 @@ html <- minimal_html("
   <p><a href='https://en.wikipedia.org/wiki/Dog'>dogs</a></p>
 ")
 
-html |> 
-  html_elements("p") |> 
-  html_element("a") |> 
-  html_attr("href")
+html |>
+    html_elements("p") |>
+    html_element("a") |>
+    html_attr("href")
 ```
 
 `html_attr()` always returns a string, so if you're extracting numbers or dates, you'll need to do some post-processing.
@@ -336,9 +336,9 @@ It returns a list containing one tibble for each table found on the page.
 Use `html_element()` to identify the table you want to extract:
 
 ```{r}
-html |> 
-  html_element(".mytable") |> 
-  html_table()
+html |>
+    html_element(".mytable") |>
+    html_table()
 ```
 
 Note that `x` and `y` have automatically been converted to numbers.
@@ -411,29 +411,33 @@ Extracting the individual elements is straightforward since the data is always f
 It's just a matter of finding the right selector:
 
 ```{r}
-section |> html_element("h2") |> html_text2()
+section |>
+    html_element("h2") |>
+    html_text2()
 
-section |> html_element(".director") |> html_text2()
+section |>
+    html_element(".director") |>
+    html_text2()
 ```
 
 Once we've done that for each component, we can wrap all the results up into a tibble:
 
 ```{r}
 tibble(
-  title = section |> 
-    html_element("h2") |> 
-    html_text2(),
-  released = section |> 
-    html_element("p") |> 
-    html_text2() |> 
-    str_remove("Released: ") |> 
-    parse_date(),
-  director = section |> 
-    html_element(".director") |> 
-    html_text2(),
-  intro = section |> 
-    html_element(".crawl") |> 
-    html_text2()
+    title = section |>
+        html_element("h2") |>
+        html_text2(),
+    released = section |>
+        html_element("p") |>
+        html_text2() |>
+        str_remove("Released: ") |>
+        parse_date(),
+    director = section |>
+        html_element(".director") |>
+        html_text2(),
+    intro = section |>
+        html_element(".crawl") |>
+        html_text2()
 )
 ```
 
@@ -447,7 +451,7 @@ At the time we wrote this chapter, the page looked like @fig-scraping-imdb.
 ```{r}
 #| label: fig-scraping-imdb
 #| echo: false
-#| fig-cap: | 
+#| fig-cap: |
 #|   Screenshot of the IMDb top movies web page taken on 2022-12-05.
 #| fig-alt: |
 #|   The screenshot shows a table with columns "Rank and Title",
@@ -463,9 +467,9 @@ This data has a clear tabular structure so it's worth starting with `html_table(
 url <- "https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"
 html <- read_html(url)
 
-table <- html |> 
-  html_element("table") |> 
-  html_table()
+table <- html |>
+    html_element("table") |>
+    html_table()
 table
 ```
 
@@ -477,21 +481,21 @@ Then we'll remove the new lines and extra spaces, and then apply `separate_wider
 
 ```{r}
 ratings <- table |>
-  select(
-    rank_title_year = `Rank & Title`,
-    rating = `IMDb Rating`
-  ) |> 
-  mutate(
-    rank_title_year = str_replace_all(rank_title_year, "\n +", " ")
-  ) |> 
-  separate_wider_regex(
-    rank_title_year,
-    patterns = c(
-      rank = "\\d+", "\\. ",
-      title = ".+", " +\\(",
-      year = "\\d+", "\\)"
+    select(
+        rank_title_year = `Rank & Title`,
+        rating = `IMDb Rating`
+    ) |>
+    mutate(
+        rank_title_year = str_replace_all(rank_title_year, "\n +", " ")
+    ) |>
+    separate_wider_regex(
+        rank_title_year,
+        patterns = c(
+            rank = "\\d+", "\\. ",
+            title = ".+", " +\\(",
+            year = "\\d+", "\\)"
+        )
     )
-  )
 ratings
 ```
 
@@ -500,30 +504,30 @@ If you do so, you'll discover that we can add a little extra data by using one o
 This is one of the reasons it's worth spending a little time spelunking the source of the page; you might find extra data, or might find a parsing route that's slightly easier.
 
 ```{r}
-html |> 
-  html_elements("td strong") |> 
-  head() |> 
-  html_attr("title")
+html |>
+    html_elements("td strong") |>
+    head() |>
+    html_attr("title")
 ```
 
 We can combine this with the tabular data and again apply `separate_wider_regex()` to extract out the bit of data we care about:
 
 ```{r}
 ratings |>
-  mutate(
-    rating_n = html |> html_elements("td strong") |> html_attr("title")
-  ) |> 
-  separate_wider_regex(
-    rating_n,
-    patterns = c(
-      "[0-9.]+ based on ",
-      number = "[0-9,]+",
-      " user ratings"
+    mutate(
+        rating_n = html |> html_elements("td strong") |> html_attr("title")
+    ) |>
+    separate_wider_regex(
+        rating_n,
+        patterns = c(
+            "[0-9.]+ based on ",
+            number = "[0-9,]+",
+            " user ratings"
+        )
+    ) |>
+    mutate(
+        number = parse_number(number)
     )
-  ) |> 
-  mutate(
-    number = parse_number(number)
-  )
 ```
 
 ## Dynamic sites

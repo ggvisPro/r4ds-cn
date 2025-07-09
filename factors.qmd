@@ -40,13 +40,13 @@ Using a string to record this variable has two problems:
 1.  There are only twelve possible months, and there's nothing saving you from typos:
 
     ```{r}
-    x2 <- c("Dec", "Apr", "Jam", "Mar")
+x2 <- c("Dec", "Apr", "Jam", "Mar")
     ```
 
 2.  It doesn't sort in a useful way:
 
     ```{r}
-    sort(x1)
+sort(x1)
     ```
 
 You can fix both of these problems with a factor.
@@ -54,8 +54,8 @@ To create a factor you must start by creating a list of the valid **levels**:
 
 ```{r}
 month_levels <- c(
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 )
 ```
 
@@ -131,7 +131,7 @@ One way to view them is with `count()`:
 
 ```{r}
 gss_cat |>
-  count(race)
+    count(race)
 ```
 
 When working with factors, the two most common operations are changing the order of the levels, and changing the values of the levels.
@@ -161,14 +161,14 @@ For example, imagine you want to explore the average number of hours spent watch
 #|   The y-axis is ordered seemingly aribtrarily making it hard to get
 #|   any sense of overall pattern.
 relig_summary <- gss_cat |>
-  group_by(relig) |>
-  summarize(
-    tvhours = mean(tvhours, na.rm = TRUE),
-    n = n()
-  )
+    group_by(relig) |>
+    summarize(
+        tvhours = mean(tvhours, na.rm = TRUE),
+        n = n()
+    )
 
 ggplot(relig_summary, aes(x = tvhours, y = relig)) +
-  geom_point()
+    geom_point()
 ```
 
 It is hard to read this plot because there's no overall pattern.
@@ -185,7 +185,7 @@ We can improve it by reordering the levels of `relig` using `fct_reorder()`.
 #|   increasing order of tvhours. "Other eastern" has the fewest tvhours
 #|   under 2, and "Don't know" has the highest (over 5).
 ggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) +
-  geom_point()
+    geom_point()
 ```
 
 Reordering religion makes it much easier to see that people in the "Don't know" category watch much more TV, and Hinduism & Other Eastern religions watch much less.
@@ -196,11 +196,11 @@ For example, you could rewrite the plot above as:
 ```{r}
 #| eval: false
 relig_summary |>
-  mutate(
-    relig = fct_reorder(relig, tvhours)
-  ) |>
-  ggplot(aes(x = tvhours, y = relig)) +
-  geom_point()
+    mutate(
+        relig = fct_reorder(relig, tvhours)
+    ) |>
+    ggplot(aes(x = tvhours, y = relig)) +
+    geom_point()
 ```
 
 What if we create a similar plot looking at how average age varies across reported income level?
@@ -212,14 +212,14 @@ What if we create a similar plot looking at how average age varies across report
 #|   sense. One section of the y-axis goes from $6000-6999, then <$1000,
 #|   then $8000-9999.
 rincome_summary <- gss_cat |>
-  group_by(rincome) |>
-  summarize(
-    age = mean(age, na.rm = TRUE),
-    n = n()
-  )
+    group_by(rincome) |>
+    summarize(
+        age = mean(age, na.rm = TRUE),
+        n = n()
+    )
 
 ggplot(rincome_summary, aes(x = age, y = fct_reorder(rincome, age))) +
-  geom_point()
+    geom_point()
 ```
 
 Here, arbitrarily reordering the levels isn't a good idea!
@@ -237,7 +237,7 @@ It takes a factor, `.f`, and then any number of levels that you want to move to 
 #|   between income and age, and the income band with the highethst average
 #|   age is "Not applicable".
 ggplot(rincome_summary, aes(x = age, y = fct_relevel(rincome, "Not applicable"))) +
-  geom_point()
+    geom_point()
 ```
 
 Why do you think the average age for "Not applicable" is so high?
@@ -261,21 +261,21 @@ This makes the plot easier to read because the colors of the line at the far rig
 #|     age, married forms an upside down U shape, and widowed starts off
 #|     low but increases steeply after age 60.
 by_age <- gss_cat |>
-  filter(!is.na(age)) |>
-  count(age, marital) |>
-  group_by(age) |>
-  mutate(
-    prop = n / sum(n)
-  )
+    filter(!is.na(age)) |>
+    count(age, marital) |>
+    group_by(age) |>
+    mutate(
+        prop = n / sum(n)
+    )
 
 ggplot(by_age, aes(x = age, y = prop, color = marital)) +
-  geom_line(linewidth = 1) +
-  scale_color_brewer(palette = "Set1")
+    geom_line(linewidth = 1) +
+    scale_color_brewer(palette = "Set1")
 
 ggplot(by_age, aes(x = age, y = prop, color = fct_reorder2(marital, age, prop))) +
-  geom_line(linewidth = 1) +
-  scale_color_brewer(palette = "Set1") +
-  labs(color = "marital")
+    geom_line(linewidth = 1) +
+    scale_color_brewer(palette = "Set1") +
+    labs(color = "marital")
 ```
 
 Finally, for bar plots, you can use `fct_infreq()` to order levels in decreasing frequency: this is the simplest type of reordering because it doesn't need any extra variables.
@@ -287,9 +287,9 @@ Combine it with `fct_rev()` if you want them in increasing frequency so that in 
 #|   no answer (~0), separated (~1,000), widowed (~2,000), divorced
 #|   (~3,000), never married (~5,000), married (~10,000).
 gss_cat |>
-  mutate(marital = marital |> fct_infreq() |> fct_rev()) |>
-  ggplot(aes(x = marital)) +
-  geom_bar()
+    mutate(marital = marital |> fct_infreq() |> fct_rev()) |>
+    ggplot(aes(x = marital)) +
+    geom_bar()
 ```
 
 ### Exercises
@@ -319,17 +319,17 @@ Like most rename and recoding functions in the tidyverse, the new values go on t
 
 ```{r}
 gss_cat |>
-  mutate(
-    partyid = fct_recode(partyid,
-      "Republican, strong"    = "Strong republican",
-      "Republican, weak"      = "Not str republican",
-      "Independent, near rep" = "Ind,near rep",
-      "Independent, near dem" = "Ind,near dem",
-      "Democrat, weak"        = "Not str democrat",
-      "Democrat, strong"      = "Strong democrat"
-    )
-  ) |>
-  count(partyid)
+    mutate(
+        partyid = fct_recode(partyid,
+            "Republican, strong"    = "Strong republican",
+            "Republican, weak"      = "Not str republican",
+            "Independent, near rep" = "Ind,near rep",
+            "Independent, near dem" = "Ind,near dem",
+            "Democrat, weak"        = "Not str democrat",
+            "Democrat, strong"      = "Strong democrat"
+        )
+    ) |>
+    count(partyid)
 ```
 
 `fct_recode()` will leave the levels that aren't explicitly mentioned as is, and will warn you if you accidentally refer to a level that doesn't exist.
@@ -339,19 +339,19 @@ To combine groups, you can assign multiple old levels to the same new level:
 ```{r}
 #| results: false
 gss_cat |>
-  mutate(
-    partyid = fct_recode(partyid,
-      "Republican, strong"    = "Strong republican",
-      "Republican, weak"      = "Not str republican",
-      "Independent, near rep" = "Ind,near rep",
-      "Independent, near dem" = "Ind,near dem",
-      "Democrat, weak"        = "Not str democrat",
-      "Democrat, strong"      = "Strong democrat",
-      "Other"                 = "No answer",
-      "Other"                 = "Don't know",
-      "Other"                 = "Other party"
+    mutate(
+        partyid = fct_recode(partyid,
+            "Republican, strong"    = "Strong republican",
+            "Republican, weak"      = "Not str republican",
+            "Independent, near rep" = "Ind,near rep",
+            "Independent, near dem" = "Ind,near dem",
+            "Democrat, weak"        = "Not str democrat",
+            "Democrat, strong"      = "Strong democrat",
+            "Other"                 = "No answer",
+            "Other"                 = "Don't know",
+            "Other"                 = "Other party"
+        )
     )
-  )
 ```
 
 Use this technique with care: if you group together categories that are truly different you will end up with misleading results.
@@ -361,15 +361,15 @@ For each new variable, you can provide a vector of old levels:
 
 ```{r}
 gss_cat |>
-  mutate(
-    partyid = fct_collapse(partyid,
-      "other" = c("No answer", "Don't know", "Other party"),
-      "rep" = c("Strong republican", "Not str republican"),
-      "ind" = c("Ind,near rep", "Independent", "Ind,near dem"),
-      "dem" = c("Not str democrat", "Strong democrat")
-    )
-  ) |>
-  count(partyid)
+    mutate(
+        partyid = fct_collapse(partyid,
+            "other" = c("No answer", "Don't know", "Other party"),
+            "rep" = c("Strong republican", "Not str republican"),
+            "ind" = c("Ind,near rep", "Independent", "Ind,near dem"),
+            "dem" = c("Not str democrat", "Strong democrat")
+        )
+    ) |>
+    count(partyid)
 ```
 
 Sometimes you just want to lump together the small groups to make a plot or table simpler.
@@ -378,8 +378,8 @@ That's the job of the `fct_lump_*()` family of functions.
 
 ```{r}
 gss_cat |>
-  mutate(relig = fct_lump_lowfreq(relig)) |>
-  count(relig)
+    mutate(relig = fct_lump_lowfreq(relig)) |>
+    count(relig)
 ```
 
 In this case it's not very helpful: it is true that the majority of Americans in this survey are Protestant, but we'd probably like to see some more details!
@@ -387,8 +387,8 @@ Instead, we can use the `fct_lump_n()` to specify that we want exactly 10 groups
 
 ```{r}
 gss_cat |>
-  mutate(relig = fct_lump_n(relig, n = 10)) |>
-  count(relig, sort = TRUE)
+    mutate(relig = fct_lump_n(relig, n = 10)) |>
+    count(relig, sort = TRUE)
 ```
 
 Read the documentation to learn about `fct_lump_min()` and `fct_lump_prop()` which are useful in other cases.

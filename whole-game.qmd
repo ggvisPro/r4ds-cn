@@ -11,7 +11,7 @@ We want to show you the "whole game" of data science giving you just enough of a
 The later parts of the book will hit each of these topics in more depth, increasing the range of data science challenges that you can tackle.
 
 ```{r}
-#| label: fig-ds-whole-game 
+#| label: fig-ds-whole-game
 #| echo: false
 #| out.width: NULL
 #| fig-cap: |
@@ -20,7 +20,7 @@ The later parts of the book will hit each of these topics in more depth, increas
 #| fig-alt: |
 #|   A diagram displaying the data science cycle: Import -> Tidy ->
 #|   Understand  (which has the phases Transform -> Visualize -> Model in a
-#|   cycle) -> Communicate. Surrounding all of these is Program 
+#|   cycle) -> Communicate. Surrounding all of these is Program
 #|   Import, Tidy, Transform, and Visualize is highlighted.
 knitr::include_graphics("diagrams/data-science/whole-game.png", dpi = 270)
 ```

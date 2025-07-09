@@ -46,21 +46,21 @@ There are five main types of things that you can subset a vector with, i.e., tha
     Subsetting with positive integers keeps the elements at those positions:
 
     ```{r}
-    x <- c("one", "two", "three", "four", "five")
-    x[c(3, 2, 5)]
+x <- c("one", "two", "three", "four", "five")
+x[c(3, 2, 5)]
     ```
 
     By repeating a position, you can actually make a longer output than input, making the term "subsetting" a bit of a misnomer.
 
     ```{r}
-    x[c(1, 1, 5, 5, 5, 2)]
+x[c(1, 1, 5, 5, 5, 2)]
     ```
 
 2.  **A vector of negative integers**.
     Negative values drop the elements at the specified positions:
 
     ```{r}
-    x[c(-1, -3, -5)]
+x[c(-1, -3, -5)]
     ```
 
 3.  **A logical vector**.
@@ -68,13 +68,13 @@ There are five main types of things that you can subset a vector with, i.e., tha
     This is most often useful in conjunction with the comparison functions.
 
     ```{r}
-    x <- c(10, 3, NA, 5, 8, 1, NA)
+x <- c(10, 3, NA, 5, 8, 1, NA)
 
-    # All non-missing values of x
-    x[!is.na(x)]
+# All non-missing values of x
+x[!is.na(x)]
 
-    # All even (or missing!) values of x
-    x[x %% 2 == 0]
+# All even (or missing!) values of x
+x[x %% 2 == 0]
     ```
 
     Unlike `filter()`, `NA` indices will be included in the output as `NA`s.
@@ -83,8 +83,8 @@ There are five main types of things that you can subset a vector with, i.e., tha
     If you have a named vector, you can subset it with a character vector:
 
     ```{r}
-    x <- c(abc = 1, def = 2, xyz = 5)
-    x[c("xyz", "def")]
+x <- c(abc = 1, def = 2, xyz = 5)
+x[c("xyz", "def")]
     ```
 
     As with subsetting with positive integers, you can use a character vector to duplicate individual entries.
@@ -104,16 +104,16 @@ Here are a couple of examples:
 
 ```{r}
 df <- tibble(
-  x = 1:3, 
-  y = c("a", "e", "f"), 
-  z = runif(3)
+    x = 1:3,
+    y = c("a", "e", "f"),
+    z = runif(3)
 )
 
 # Select first row and second column
 df[1, 2]
 
 # Select all rows and columns x and y
-df[, c("x" , "y")]
+df[, c("x", "y")]
 
 # Select rows where `x` is greater than 1 and all columns
 df[df$x > 1, ]
@@ -139,7 +139,7 @@ df2[, "x"]
 One way to avoid this ambiguity with `data.frame`s is to explicitly specify `drop = FALSE`:
 
 ```{r}
-df1[, "x" , drop = FALSE]
+df1[, "x", drop = FALSE]
 ```
 
 ### dplyr equivalents
@@ -149,16 +149,16 @@ Several dplyr verbs are special cases of `[`:
 -   `filter()` is equivalent to subsetting the rows with a logical vector, taking care to exclude missing values:
 
     ```{r}
-    #| results: false
-    df <- tibble(
-      x = c(2, 3, 1, 1, NA), 
-      y = letters[1:5], 
-      z = runif(5)
-    )
-    df |> filter(x > 1)
+#| results: false
+df <- tibble(
+    x = c(2, 3, 1, 1, NA),
+    y = letters[1:5],
+    z = runif(5)
+)
+df |> filter(x > 1)
 
-    # same as
-    df[!is.na(df$x) & df$x > 1, ]
+# same as
+df[!is.na(df$x) & df$x > 1, ]
     ```
 
     Another common technique in the wild is to use `which()` for its side-effect of dropping missing values: `df[which(df$x > 1), ]`.
@@ -166,11 +166,11 @@ Several dplyr verbs are special cases of `[`:
 -   `arrange()` is equivalent to subsetting the rows with an integer vector, usually created with `order()`:
 
     ```{r}
-    #| results: false
-    df |> arrange(x, y)
+#| results: false
+df |> arrange(x, y)
 
-    # same as
-    df[order(df$x, df$y), ]
+# same as
+df[order(df$x, df$y), ]
     ```
 
     You can use `order(decreasing = TRUE)` to sort all columns in descending order or `-rank(col)` to sort columns in decreasing order individually.
@@ -178,11 +178,11 @@ Several dplyr verbs are special cases of `[`:
 -   Both `select()` and `relocate()` are similar to subsetting the columns with a character vector:
 
     ```{r}
-    #| results: false
-    df |> select(x, z)
+#| results: false
+df |> select(x, z)
 
-    # same as
-    df[, c("x", "z")]
+# same as
+df[, c("x", "z")]
     ```
 
 Base R also provides a function that combines the features of `filter()` and `select()`[^base-r-2] called `subset()`:
@@ -190,9 +190,9 @@ Base R also provides a function that combines the features of `filter()` and `se
 [^base-r-2]: But it doesn't handle grouped data frames differently and it doesn't support selection helper functions like `starts_with()`.
 
 ```{r}
-df |> 
-  filter(x > 1) |> 
-  select(y, z)
+df |>
+    filter(x > 1) |>
+    select(y, z)
 ```
 
 ```{r}
@@ -226,8 +226,8 @@ In this section, we'll show you how to use `[[` and `$` to pull columns out of d
 
 ```{r}
 tb <- tibble(
-  x = 1:4,
-  y = c(10, 4, 1, 21)
+    x = 1:4,
+    y = c(10, 4, 1, 21)
 )
 
 # by position
@@ -262,9 +262,13 @@ dplyr also provides an equivalent to `[[`/`$` that we didn't mention in @sec-dat
 That means we could rewrite the above code to use the pipe:
 
 ```{r}
-diamonds |> pull(carat) |> max()
+diamonds |>
+    pull(carat) |>
+    max()
 
-diamonds |> pull(cut) |> levels()
+diamonds |>
+    pull(cut) |>
+    levels()
 ```
 
 ### Tibbles
@@ -296,10 +300,10 @@ Let's illustrate the differences with a list named `l`:
 
 ```{r}
 l <- list(
-  a = 1:3, 
-  b = "a string", 
-  c = pi, 
-  d = list(-1, -5)
+    a = 1:3,
+    b = "a string",
+    c = pi,
+    d = list(-1, -5)
 )
 ```
 
@@ -307,11 +311,11 @@ l <- list(
     It doesn't matter how many elements you extract, the result will always be a list.
 
     ```{r}
-    str(l[1:2])
+str(l[1:2])
 
-    str(l[1])
+str(l[1])
 
-    str(l[4])
+str(l[4])
     ```
 
     Like with vectors, you can subset with a logical, integer, or character vector.
@@ -320,11 +324,11 @@ l <- list(
     They remove a level of hierarchy from the list.
 
     ```{r}
-    str(l[[1]])
+str(l[[1]])
 
-    str(l[[4]])
+str(l[[4]])
 
-    str(l$a)
+str(l$a)
     ```
 
 The difference between `[` and `[[` is particularly important for lists because `[[` drills down into the list while `[` returns a new, smaller list.
@@ -343,9 +347,9 @@ If this pepper shaker is your list `pepper`, then, `pepper[1]` is a pepper shake
 #|   (Middle) `pepper[1]`.
 #|   (Right) `pepper[[1]]`
 #| fig-alt: |
-#|   Three photos. On the left is a photo of a glass pepper shaker. Instead of 
+#|   Three photos. On the left is a photo of a glass pepper shaker. Instead of
 #|   the pepper shaker containing pepper, it contains a single packet of pepper.
-#|   In the middle is a photo of a single packet of pepper. On the right is a 
+#|   In the middle is a photo of a single packet of pepper. On the right is a
 #|   photo of the contents of a packet of pepper.
 knitr::include_graphics("diagrams/pepper.png")
 ```
@@ -405,9 +409,9 @@ The distinction between `sapply()` and `vapply()` is really important when they'
 Another important member of the apply family is `tapply()` which computes a single grouped summary:
 
 ```{r}
-diamonds |> 
-  group_by(cut) |> 
-  summarize(price = mean(price))
+diamonds |>
+    group_by(cut) |>
+    summarize(price = mean(price))
 
 tapply(diamonds$price, diamonds$cut, mean)
 ```
@@ -428,7 +432,7 @@ The basic structure of a `for` loop looks like this:
 ```{r}
 #| eval: false
 for (element in vector) {
-  # do something with element
+    # do something with element
 }
 ```
 
@@ -445,7 +449,7 @@ We could have used a `for` loop:
 ```{r}
 #| eval: false
 for (path in paths) {
-  append_file(path)
+    append_file(path)
 }
 ```
 
@@ -473,7 +477,7 @@ Using the indices is important because it allows us to link to each position in 
 
 ```{r}
 for (i in seq_along(paths)) {
-  files[[i]] <- readxl::read_excel(paths[[i]])
+    files[[i]] <- readxl::read_excel(paths[[i]])
 }
 ```
 
@@ -488,7 +492,7 @@ Rather than making a list and saving the results as we go, a simpler approach is
 ```{r}
 out <- NULL
 for (path in paths) {
-  out <- rbind(out, readxl::read_excel(path))
+    out <- rbind(out, readxl::read_excel(path))
 }
 ```
 
@@ -510,10 +514,10 @@ Here's a quick example from the diamonds dataset:
 #| layout-ncol: 2
 #| fig-alt: |
 #|   On the left, histogram of carats of diamonds, ranging from 0 to 5 carats.
-#|   The distribution is unimodal and right-skewed. On the right, scatter 
-#|   plot of price vs. carat of diamonds, showing a positive relationship 
-#|   that fans out as both price and carat increases. The scatter plot 
-#|   shows very few diamonds bigger than 3 carats compared to diamonds between 
+#|   The distribution is unimodal and right-skewed. On the right, scatter
+#|   plot of price vs. carat of diamonds, showing a positive relationship
+#|   that fans out as both price and carat increases. The scatter plot
+#|   shows very few diamonds bigger than 3 carats compared to diamonds between
 #|   0 to 3 carats.
 # Left
 hist(diamonds$carat)

@@ -121,9 +121,9 @@ Since `str_detect()` returns a logical vector of the same length as the initial 
 For example, this code finds all the most popular names containing a lower-case "x":
 
 ```{r}
-babynames |> 
-  filter(str_detect(name, "x")) |> 
-  count(name, wt = n, sort = TRUE)
+babynames |>
+    filter(str_detect(name, "x")) |>
+    count(name, wt = n, sort = TRUE)
 ```
 
 We can also use `str_detect()` with `summarize()` by pairing it with `sum()` or `mean()`: `sum(str_detect(x, pattern))` tells you the number of observations that match and `mean(str_detect(x, pattern))` tells you the proportion that match.
@@ -134,14 +134,14 @@ It looks like they've radically increased in popularity lately!
 
 ```{r}
 #| fig-alt: |
-#|   A time series showing the proportion of baby names that contain the letter x. 
-#|   The proportion declines gradually from 8 per 1000 in 1880 to 4 per 1000 in 
+#|   A time series showing the proportion of baby names that contain the letter x.
+#|   The proportion declines gradually from 8 per 1000 in 1880 to 4 per 1000 in
 #|   1980, then increases rapidly to 16 per 1000 in 2019.
-babynames |> 
-  group_by(year) |> 
-  summarize(prop_x = mean(str_detect(name, "x"))) |> 
-  ggplot(aes(x = year, y = prop_x)) + 
-  geom_line()
+babynames |>
+    group_by(year) |>
+    summarize(prop_x = mean(str_detect(name, "x"))) |>
+    ggplot(aes(x = year, y = prop_x)) +
+    geom_line()
 ```
 
 There are two functions that are closely related to `str_detect()`: `str_subset()` and `str_which()`.
@@ -170,12 +170,12 @@ It's natural to use `str_count()` with `mutate()`.
 The following example uses `str_count()` with character classes to count the number of vowels and consonants in each name.
 
 ```{r}
-babynames |> 
-  count(name) |> 
-  mutate(
-    vowels = str_count(name, "[aeiou]"),
-    consonants = str_count(name, "[^aeiou]")
-  )
+babynames |>
+    count(name) |>
+    mutate(
+        vowels = str_count(name, "[aeiou]"),
+        consonants = str_count(name, "[^aeiou]")
+    )
 ```
 
 If you look closely, you'll notice that there's something off with our calculations: "Aaban" contains three "a"s, but our summary reports only two vowels.
@@ -192,13 +192,13 @@ If you get stuck trying one approach, it can often be useful to switch gears and
 In this case, since we're applying two functions to the name, I think it's easier to transform it first:
 
 ```{r}
-babynames |> 
-  count(name) |> 
-  mutate(
-    name = str_to_lower(name),
-    vowels = str_count(name, "[aeiou]"),
-    consonants = str_count(name, "[^aeiou]")
-  )
+babynames |>
+    count(name) |>
+    mutate(
+        name = str_to_lower(name),
+        vowels = str_count(name, "[aeiou]"),
+        consonants = str_count(name, "[^aeiou]")
+    )
 ```
 
 ### Replace values
@@ -233,14 +233,14 @@ Here we have some data derived from `babynames` where we have the name, gender, 
 
 ```{r}
 df <- tribble(
-  ~str,
-  "<Sheryl>-F_34",
-  "<Kisha>-F_45", 
-  "<Brandon>-N_33",
-  "<Sharon>-F_38", 
-  "<Penny>-F_58",
-  "<Justin>-M_41", 
-  "<Patricia>-F_84", 
+    ~str,
+    "<Sheryl>-F_34",
+    "<Kisha>-F_45",
+    "<Brandon>-N_33",
+    "<Sharon>-F_38",
+    "<Penny>-F_58",
+    "<Justin>-M_41",
+    "<Patricia>-F_84",
 )
 ```
 
@@ -248,18 +248,18 @@ To extract this data using `separate_wider_regex()` we just need to construct a 
 If we want the contents of that piece to appear in the output, we give it a name:
 
 ```{r}
-df |> 
-  separate_wider_regex(
-    str,
-    patterns = c(
-      "<", 
-      name = "[A-Za-z]+", 
-      ">-", 
-      gender = ".",
-      "_",
-      age = "[0-9]+"
+df |>
+    separate_wider_regex(
+        str,
+        patterns = c(
+            "<",
+            name = "[A-Za-z]+",
+            ">-",
+            gender = ".",
+            "_",
+            age = "[0-9]+"
+        )
     )
-  )
 ```
 
 If the match fails, you can use `too_few = "debug"` to figure out what went wrong, just like `separate_wider_delim()` and `separate_wider_position()`.
@@ -476,9 +476,9 @@ You can also use back references in `str_replace()`.
 For example, this code switches the order of the second and third words in `sentences`:
 
 ```{r}
-sentences |> 
-  str_replace("(\\w+) (\\w+) (\\w+)", "\\1 \\3 \\2") |> 
-  str_view()
+sentences |>
+    str_replace("(\\w+) (\\w+) (\\w+)", "\\1 \\3 \\2") |>
+    str_view()
 ```
 
 If you want to extract the matches for each group you can use `str_match()`.
@@ -487,18 +487,18 @@ But `str_match()` returns a matrix, so it's not particularly easy to work with[^
 [^regexps-8]: Mostly because we never discuss matrices in this book!
 
 ```{r}
-sentences |> 
-  str_match("the (\\w+) (\\w+)") |> 
-  head()
+sentences |>
+    str_match("the (\\w+) (\\w+)") |>
+    head()
 ```
 
 You could convert to a tibble and name the columns:
 
 ```{r}
-sentences |> 
-  str_match("the (\\w+) (\\w+)") |> 
-  as_tibble(.name_repair = "minimal") |> 
-  set_names("match", "word1", "word2")
+sentences |>
+    str_match("the (\\w+) (\\w+)") |>
+    as_tibble(.name_repair = "minimal") |>
+    set_names("match", "word1", "word2")
 ```
 
 But then you've basically recreated your own version of `separate_wider_regex()`.
@@ -571,17 +571,17 @@ If you're doing a lot of work with multiline strings (i.e. strings that contain 
 -   `dotall = TRUE` lets `.` match everything, including `\n`:
 
     ```{r}
-    x <- "Line 1\nLine 2\nLine 3"
-    str_view(x, ".Line")
-    str_view(x, regex(".Line", dotall = TRUE))
+x <- "Line 1\nLine 2\nLine 3"
+str_view(x, ".Line")
+str_view(x, regex(".Line", dotall = TRUE))
     ```
 
 -   `multiline = TRUE` makes `^` and `$` match the start and end of each line rather than the start and end of the complete string:
 
     ```{r}
-    x <- "Line 1\nLine 2\nLine 3"
-    str_view(x, "^Line")
-    str_view(x, regex("^Line", multiline = TRUE))
+x <- "Line 1\nLine 2\nLine 3"
+str_view(x, "^Line")
+str_view(x, regex("^Line", multiline = TRUE))
     ```
 
 Finally, if you're writing a complicated regular expression and you're worried you might not understand it in the future, you might try `comments = TRUE`.
@@ -592,7 +592,7 @@ This allows you to use comments and whitespace to make complex regular expressio
 
 ```{r}
 phone <- regex(
-  r"(
+    r"(
     \(?     # optional opening parens
     (\d{3}) # area code
     [)\-]?  # optional closing parens or dash
@@ -600,8 +600,8 @@ phone <- regex(
     (\d{3}) # another three numbers
     [\ -]?  # optional space or dash
     (\d{4}) # four more numbers
-  )", 
-  comments = TRUE
+  )",
+    comments = TRUE
 )
 
 str_extract(c("514-791-8141", "(123) 456 7890", "123456"), phone)
@@ -730,11 +730,11 @@ It's much simpler to combine five calls to `str_detect()`:
 
 ```{r}
 words[
-  str_detect(words, "a") &
-  str_detect(words, "e") &
-  str_detect(words, "i") &
-  str_detect(words, "o") &
-  str_detect(words, "u")
+    str_detect(words, "a") &
+        str_detect(words, "e") &
+        str_detect(words, "i") &
+        str_detect(words, "o") &
+        str_detect(words, "u")
 ]
 ```
 

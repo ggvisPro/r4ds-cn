@@ -17,7 +17,7 @@ Programming is a cross-cutting skill needed for all data science work: you must 
 #|   Programming is the water in which all the other components swim.
 #| fig-alt: |
 #|   Our model of the data science process with program (import, tidy,
-#|   transform, visualize, model, and communicate, i.e. everything) 
+#|   transform, visualize, model, and communicate, i.e. everything)
 #|   highlighted in blue.
 knitr::include_graphics("diagrams/data-science/program.png", dpi = 270)
 ```

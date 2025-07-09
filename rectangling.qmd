@@ -91,7 +91,7 @@ As lists get even larger and more complex, `str()` eventually starts to fail, an
 ```{r}
 #| label: fig-view-collapsed
 #| fig.cap: >
-#|   The RStudio view lets you interactively explore a complex list.  
+#|   The RStudio view lets you interactively explore a complex list.
 #|   The viewer opens showing only the top level of the list.
 #| fig.alt: >
 #|   A screenshot of RStudio showing the list-viewer. It shows the
@@ -120,7 +120,7 @@ knitr::include_graphics("screenshots/View-2.png", dpi = 220)
 ```{r}
 #| label: fig-view-expand-2
 #| fig.cap: >
-#|   You can repeat this operation as many times as needed to get to the 
+#|   You can repeat this operation as many times as needed to get to the
 #|   data you're interested in. Note the bottom-left corner: if you click
 #|   an element of the list, RStudio will give you the subsetting code
 #|   needed to access it, in this case `x5[[2]][[2]][[2]]`.
@@ -142,9 +142,9 @@ Here's a simple example of a list-column:
 
 ```{r}
 df <- tibble(
-  x = 1:2, 
-  y = c("a", "b"),
-  z = list(list(1, 2), list(3, 4, 5))
+    x = 1:2,
+    y = c("a", "b"),
+    z = list(list(1, 2), list(3, 4, 5))
 )
 df
 ```
@@ -152,8 +152,8 @@ df
 There's nothing special about lists in a tibble; they behave like any other column:
 
 ```{r}
-df |> 
-  filter(x == 1)
+df |>
+    filter(x == 1)
 ```
 
 Computing with list-columns is harder, but that's because computing with lists is harder in general; we'll come back to that in @sec-iteration.
@@ -176,8 +176,8 @@ You can force `data.frame()` to treat a list as a list of rows by wrapping it in
 
 ```{r}
 data.frame(
-  x = I(list(1:2, 3:5)), 
-  y = c("1, 2", "3, 4, 5")
+    x = I(list(1:2, 3:5)),
+    y = c("1, 2", "3, 4, 5")
 )
 ```
 
@@ -196,10 +196,10 @@ Named list-columns naturally unnest into columns: each named element becomes a n
 
 ```{r}
 df1 <- tribble(
-  ~x, ~y,
-  1, list(a = 11, b = 12),
-  2, list(a = 21, b = 22),
-  3, list(a = 31, b = 32),
+    ~x, ~y,
+    1, list(a = 11, b = 12),
+    2, list(a = 21, b = 22),
+    3, list(a = 31, b = 32),
 )
 ```
 
@@ -209,10 +209,10 @@ Unnamed list-columns naturally unnest into rows: you'll get one row for each chi
 
 ```{r}
 df2 <- tribble(
-  ~x, ~y,
-  1, list(11, 12, 13),
-  2, list(21),
-  3, list(31, 32),
+    ~x, ~y,
+    1, list(11, 12, 13),
+    2, list(21),
+    3, list(31, 32),
 )
 ```
 
@@ -224,16 +224,16 @@ The following sections explain how they work.
 When each row has the same number of elements with the same names, like `df1`, it's natural to put each component into its own column with `unnest_wider()`:
 
 ```{r}
-df1 |> 
-  unnest_wider(y)
+df1 |>
+    unnest_wider(y)
 ```
 
 By default, the names of the new columns come exclusively from the names of the list elements, but you can use the `names_sep` argument to request that they combine the column name and the element name.
 This is useful for disambiguating repeated names.
 
 ```{r}
-df1 |> 
-  unnest_wider(y, names_sep = "_")
+df1 |>
+    unnest_wider(y, names_sep = "_")
 ```
 
 ### `unnest_longer()`
@@ -241,8 +241,8 @@ df1 |>
 When each row contains an unnamed list, it's most natural to put each element into its own row with `unnest_longer()`:
 
 ```{r}
-df2 |> 
-  unnest_longer(y)
+df2 |>
+    unnest_longer(y)
 ```
 
 Note how `x` is duplicated for each element inside of `y`: we get one row of output for each element inside the list-column.
@@ -250,10 +250,10 @@ But what happens if one of the elements is empty, as in the following example?
 
 ```{r}
 df6 <- tribble(
-  ~x, ~y,
-  "a", list(1, 2),
-  "b", list(3),
-  "c", list()
+    ~x, ~y,
+    "a", list(1, 2),
+    "b", list(3),
+    "c", list()
 )
 df6 |> unnest_longer(y)
 ```
@@ -268,9 +268,9 @@ For example, take the following dataset where the list-column `y` contains two n
 
 ```{r}
 df4 <- tribble(
-  ~x, ~y,
-  "a", list(1),
-  "b", list("a", TRUE, 5)
+    ~x, ~y,
+    "a", list(1),
+    "b", list("a", TRUE, 5)
 )
 ```
 
@@ -279,8 +279,8 @@ So what happens?
 How does `unnest_longer()` produce five rows while keeping everything in `y`?
 
 ```{r}
-df4 |> 
-  unnest_longer(y)
+df4 |>
+    unnest_longer(y)
 ```
 
 As you can see, the output contains a list-column, but every element of the list-column contains a single element.
@@ -316,11 +316,11 @@ These functions are good to know about as you might encounter them when reading 
     (Hint: carefully read the docs).
 
     ```{r}
-    df4 <- tribble(
-      ~x, ~y, ~z,
-      "a", list("y-a-1", "y-a-2"), list("z-a-1", "z-a-2"),
-      "b", list("y-b-1", "y-b-2", "y-b-3"), list("z-b-1", "z-b-2", "z-b-3")
-    )
+df4 <- tribble(
+    ~x, ~y, ~z,
+    "a", list("y-a-1", "y-a-2"), list("z-a-1", "z-a-2"),
+    "b", list("y-b-1", "y-b-2", "y-b-3"), list("z-b-1", "z-b-2", "z-b-3")
+)
     ```
 
 ## Case studies
@@ -346,37 +346,37 @@ Each row contains an unnamed list with either 26 or 30 rows.
 Since these are unnamed, we'll start with `unnest_longer()` to put each child in its own row:
 
 ```{r}
-repos |> 
-  unnest_longer(json)
+repos |>
+    unnest_longer(json)
 ```
 
 At first glance, it might seem like we haven't improved the situation: while we have more rows (176 instead of 6) each element of `json` is still a list.
 However, there's an important difference: now each element is a **named** list so we can use `unnest_wider()` to put each element into its own column:
 
 ```{r}
-repos |> 
-  unnest_longer(json) |> 
-  unnest_wider(json) 
+repos |>
+    unnest_longer(json) |>
+    unnest_wider(json)
 ```
 
 This has worked but the result is a little overwhelming: there are so many columns that tibble doesn't even print all of them!
 We can see them all with `names()`; and here we look at the first 10:
 
 ```{r}
-repos |> 
-  unnest_longer(json) |> 
-  unnest_wider(json) |> 
-  names() |> 
-  head(10)
+repos |>
+    unnest_longer(json) |>
+    unnest_wider(json) |>
+    names() |>
+    head(10)
 ```
 
 Let's pull out a few that look interesting:
 
 ```{r}
-repos |> 
-  unnest_longer(json) |> 
-  unnest_wider(json) |> 
-  select(id, full_name, owner, description)
+repos |>
+    unnest_longer(json) |>
+    unnest_wider(json) |>
+    select(id, full_name, owner, description)
 ```
 
 You can use this to work back to understand how `gh_repos` was structured: each child was a GitHub user containing a list of up to 30 GitHub repositories that they created.
@@ -385,22 +385,22 @@ You can use this to work back to understand how `gh_repos` was structured: each 
 
 ```{r}
 #| error: true
-repos |> 
-  unnest_longer(json) |> 
-  unnest_wider(json) |> 
-  select(id, full_name, owner, description) |> 
-  unnest_wider(owner)
+repos |>
+    unnest_longer(json) |>
+    unnest_wider(json) |>
+    select(id, full_name, owner, description) |>
+    unnest_wider(owner)
 ```
 
 Uh oh, this list column also contains an `id` column and we can't have two `id` columns in the same data frame.
 As suggested, lets use `names_sep` to resolve the problem:
 
 ```{r}
-repos |> 
-  unnest_longer(json) |> 
-  unnest_wider(json) |> 
-  select(id, full_name, owner, description) |> 
-  unnest_wider(owner, names_sep = "_")
+repos |>
+    unnest_longer(json) |>
+    unnest_wider(json) |>
+    select(id, full_name, owner, description) |>
+    unnest_wider(owner, names_sep = "_")
 ```
 
 This gives another wide dataset, but you can get the sense that `owner` appears to contain a lot of additional data about the person who "owns" the repository.
@@ -419,47 +419,47 @@ chars
 The `json` column contains named elements, so we'll start by widening it:
 
 ```{r}
-chars |> 
-  unnest_wider(json)
+chars |>
+    unnest_wider(json)
 ```
 
 And selecting a few columns to make it easier to read:
 
 ```{r}
-characters <- chars |> 
-  unnest_wider(json) |> 
-  select(id, name, gender, culture, born, died, alive)
+characters <- chars |>
+    unnest_wider(json) |>
+    select(id, name, gender, culture, born, died, alive)
 characters
 ```
 
 This dataset contains also many list-columns:
 
 ```{r}
-chars |> 
-  unnest_wider(json) |> 
-  select(id, where(is.list))
+chars |>
+    unnest_wider(json) |>
+    select(id, where(is.list))
 ```
 
 Let's explore the `titles` column.
 It's an unnamed list-column, so we'll unnest it into rows:
 
 ```{r}
-chars |> 
-  unnest_wider(json) |> 
-  select(id, titles) |> 
-  unnest_longer(titles)
+chars |>
+    unnest_wider(json) |>
+    select(id, titles) |>
+    unnest_longer(titles)
 ```
 
 You might expect to see this data in its own table because it would be easy to join to the characters data as needed.
 Let's do that, which requires little cleaning: removing the rows containing empty strings and renaming `titles` to `title` since each row now only contains a single title.
 
 ```{r}
-titles <- chars |> 
-  unnest_wider(json) |> 
-  select(id, titles) |> 
-  unnest_longer(titles) |> 
-  filter(titles != "") |> 
-  rename(title = titles)
+titles <- chars |>
+    unnest_wider(json) |>
+    select(id, titles) |>
+    unnest_longer(titles) |>
+    filter(titles != "") |>
+    rename(title = titles)
 titles
 ```
 
@@ -477,8 +477,8 @@ gmaps_cities
 `json` is a list-column with internal names, so we start with an `unnest_wider()`:
 
 ```{r}
-gmaps_cities |> 
-  unnest_wider(json)
+gmaps_cities |>
+    unnest_wider(json)
 ```
 
 This gives us the `status` and the `results`.
@@ -486,20 +486,20 @@ We'll drop the status column since they're all `OK`; in a real analysis, you'd a
 `results` is an unnamed list, with either one or two elements (we'll see why shortly) so we'll unnest it into rows:
 
 ```{r}
-gmaps_cities |> 
-  unnest_wider(json) |> 
-  select(-status) |> 
-  unnest_longer(results)
+gmaps_cities |>
+    unnest_wider(json) |>
+    select(-status) |>
+    unnest_longer(results)
 ```
 
 Now `results` is a named list, so we'll use `unnest_wider()`:
 
 ```{r}
-locations <- gmaps_cities |> 
-  unnest_wider(json) |> 
-  select(-status) |> 
-  unnest_longer(results) |> 
-  unnest_wider(results)
+locations <- gmaps_cities |>
+    unnest_wider(json) |>
+    select(-status) |>
+    unnest_longer(results) |>
+    unnest_wider(results)
 locations
 ```
 
@@ -509,42 +509,42 @@ There are a few different places we could go from here.
 We might want to determine the exact location of the match, which is stored in the `geometry` list-column:
 
 ```{r}
-locations |> 
-  select(city, formatted_address, geometry) |> 
-  unnest_wider(geometry)
+locations |>
+    select(city, formatted_address, geometry) |>
+    unnest_wider(geometry)
 ```
 
 That gives us new `bounds` (a rectangular region) and `location` (a point).
 We can unnest `location` to see the latitude (`lat`) and longitude (`lng`):
 
 ```{r}
-locations |> 
-  select(city, formatted_address, geometry) |> 
-  unnest_wider(geometry) |> 
-  unnest_wider(location)
+locations |>
+    select(city, formatted_address, geometry) |>
+    unnest_wider(geometry) |>
+    unnest_wider(location)
 ```
 
 Extracting the bounds requires a few more steps:
 
 ```{r}
-locations |> 
-  select(city, formatted_address, geometry) |> 
-  unnest_wider(geometry) |> 
-  # focus on the variables of interest
-  select(!location:viewport) |>
-  unnest_wider(bounds)
+locations |>
+    select(city, formatted_address, geometry) |>
+    unnest_wider(geometry) |>
+    # focus on the variables of interest
+    select(!location:viewport) |>
+    unnest_wider(bounds)
 ```
 
 We then rename `southwest` and `northeast` (the corners of the rectangle) so we can use `names_sep` to create short but evocative names:
 
 ```{r}
-locations |> 
-  select(city, formatted_address, geometry) |> 
-  unnest_wider(geometry) |> 
-  select(!location:viewport) |>
-  unnest_wider(bounds) |> 
-  rename(ne = northeast, sw = southwest) |> 
-  unnest_wider(c(ne, sw), names_sep = "_") 
+locations |>
+    select(city, formatted_address, geometry) |>
+    unnest_wider(geometry) |>
+    select(!location:viewport) |>
+    unnest_wider(bounds) |>
+    rename(ne = northeast, sw = southwest) |>
+    unnest_wider(c(ne, sw), names_sep = "_")
 ```
 
 Note how we unnest two columns simultaneously by supplying a vector of variable names to `unnest_wider()`.
@@ -553,15 +553,15 @@ Once you've discovered the path to get to the components you're interested in, y
 
 ```{r}
 #| results: false
-locations |> 
-  select(city, formatted_address, geometry) |> 
-  hoist(
-    geometry,
-    ne_lat = c("bounds", "northeast", "lat"),
-    sw_lat = c("bounds", "southwest", "lat"),
-    ne_lng = c("bounds", "northeast", "lng"),
-    sw_lng = c("bounds", "southwest", "lng"),
-  )
+locations |>
+    select(city, formatted_address, geometry) |>
+    hoist(
+        geometry,
+        ne_lat = c("bounds", "northeast", "lat"),
+        sw_lat = c("bounds", "southwest", "lat"),
+        ne_lng = c("bounds", "northeast", "lng"),
+        sw_lng = c("bounds", "southwest", "lng"),
+    )
 ```
 
 If these case studies have whetted your appetite for more real-life rectangling, you can see a few more examples in `vignette("rectangling", package = "tidyr")`.
@@ -582,16 +582,16 @@ If these case studies have whetted your appetite for more real-life rectangling,
     Why does it work for `got_chars` but might not work in general?
 
     ```{r}
-    #| results: false
-    tibble(json = got_chars) |> 
-      unnest_wider(json) |> 
-      select(id, where(is.list)) |> 
-      pivot_longer(
-        where(is.list), 
-        names_to = "name", 
+#| results: false
+tibble(json = got_chars) |>
+    unnest_wider(json) |>
+    select(id, where(is.list)) |>
+    pivot_longer(
+        where(is.list),
+        names_to = "name",
         values_to = "value"
-      ) |>  
-      unnest_longer(value)
+    ) |>
+    unnest_longer(value)
     ```
 
 5.  In `gmaps_cities`, what does `address_components` contain?
@@ -654,8 +654,8 @@ In this book, we'll also use `parse_json()`, since it takes a string containing 
 To get started, here are three simple JSON datasets, starting with a number, then putting a few numbers in an array, then putting that array in an object:
 
 ```{r}
-str(parse_json('1'))
-str(parse_json('[1, 2, 3]'))
+str(parse_json("1"))
+str(parse_json("[1, 2, 3]"))
 str(parse_json('{"x": [1, 2, 3]}'))
 ```
 
@@ -676,8 +676,8 @@ json <- '[
 df <- tibble(json = parse_json(json))
 df
 
-df |> 
-  unnest_wider(json)
+df |>
+    unnest_wider(json)
 ```
 
 In rarer cases, the JSON file consists of a single top-level JSON object, representing one "thing".
@@ -685,7 +685,7 @@ In this case, you'll need to kick off the rectangling process by wrapping it in 
 
 ```{r}
 json <- '{
-  "status": "OK", 
+  "status": "OK",
   "results": [
     {"name": "John", "age": 34},
     {"name": "Susan", "age": 27}
@@ -695,18 +695,18 @@ json <- '{
 df <- tibble(json = list(parse_json(json)))
 df
 
-df |> 
-  unnest_wider(json) |> 
-  unnest_longer(results) |> 
-  unnest_wider(results)
+df |>
+    unnest_wider(json) |>
+    unnest_longer(results) |>
+    unnest_wider(results)
 ```
 
 Alternatively, you can reach inside the parsed JSON and start with the bit that you actually care about:
 
 ```{r}
 df <- tibble(results = parse_json(json)$results)
-df |> 
-  unnest_wider(results)
+df |>
+    unnest_wider(results)
 ```
 
 ### Exercises
@@ -715,13 +715,13 @@ df |>
     They represent the two ways of encoding a data frame in JSON.
 
     ```{r}
-    json_col <- parse_json('
+json_col <- parse_json('
       {
         "x": ["a", "x", "z"],
         "y": [10, null, 3]
       }
     ')
-    json_row <- parse_json('
+json_row <- parse_json('
       [
         {"x": "a", "y": 10},
         {"x": "x", "y": null},
@@ -729,8 +729,8 @@ df |>
       ]
     ')
 
-    df_col <- tibble(json = list(json_col)) 
-    df_row <- tibble(json = json_row)
+df_col <- tibble(json = list(json_col))
+df_row <- tibble(json = json_row)
     ```
 
 ## Summary

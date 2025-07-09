@@ -76,11 +76,11 @@ That makes it possible to get a sense of the following code even though you have
 ```{r}
 #| eval: false
 flights |>
-  filter(dest == "IAH") |> 
-  group_by(year, month, day) |> 
-  summarize(
-    arr_delay = mean(arr_delay, na.rm = TRUE)
-  )
+    filter(dest == "IAH") |>
+    group_by(year, month, day) |>
+    summarize(
+        arr_delay = mean(arr_delay, na.rm = TRUE)
+    )
 ```
 
 dplyr's verbs are organized into four groups based on what they operate on: **rows**, **columns**, **groups**, or **tables**.
@@ -105,8 +105,8 @@ For example, we could find all flights that departed more than 120 minutes (two 
 [^data-transform-1]: Later, you'll learn about the `slice_*()` family, which allows you to choose rows based on their positions.
 
 ```{r}
-flights |> 
-  filter(dep_delay > 120)
+flights |>
+    filter(dep_delay > 120)
 ```
 
 As well as `>` (greater than), you can use `>=` (greater than or equal to), `<` (less than), `<=` (less than or equal to), `==` (equal to), and `!=` (not equal to).
@@ -114,12 +114,12 @@ You can also combine conditions with `&` or `,` to indicate "and" (check for bot
 
 ```{r}
 # Flights that departed on January 1
-flights |> 
-  filter(month == 1 & day == 1)
+flights |>
+    filter(month == 1 & day == 1)
 
 # Flights that departed in January or February
-flights |> 
-  filter(month == 1 | month == 2)
+flights |>
+    filter(month == 1 | month == 2)
 ```
 
 There's a useful shortcut when you're combining `|` and `==`: `%in%`.
@@ -127,8 +127,8 @@ It keeps rows where the variable equals one of the values on the right:
 
 ```{r}
 # A shorter way to select flights that departed in January or February
-flights |> 
-  filter(month %in% c(1, 2))
+flights |>
+    filter(month %in% c(1, 2))
 ```
 
 We'll come back to these comparisons and logical operators in more detail in @sec-logicals.
@@ -138,8 +138,8 @@ It doesn't modify the existing `flights` dataset because dplyr functions never m
 To save the result, you need to use the assignment operator, `<-`:
 
 ```{r}
-jan1 <- flights |> 
-  filter(month == 1 & day == 1)
+jan1 <- flights |>
+    filter(month == 1 & day == 1)
 ```
 
 ### Common mistakes
@@ -149,16 +149,16 @@ When you're starting out with R, the easiest mistake to make is to use `=` inste
 
 ```{r}
 #| error: true
-flights |> 
-  filter(month = 1)
+flights |>
+    filter(month = 1)
 ```
 
 Another mistakes is you write "or" statements like you would in English:
 
 ```{r}
 #| eval: false
-flights |> 
-  filter(month == 1 | 2)
+flights |>
+    filter(month == 1 | 2)
 ```
 
 This "works", in the sense that it doesn't throw an error, but it doesn't do what you want because `|` first checks the condition `month == 1` and then checks the condition `2`, which is not a sensible condition to check.
@@ -173,16 +173,16 @@ For example, the following code sorts by the departure time, which is spread ove
 We get the earliest years first, then within a year, the earliest months, etc.
 
 ```{r}
-flights |> 
-  arrange(year, month, day, dep_time)
+flights |>
+    arrange(year, month, day, dep_time)
 ```
 
 You can use `desc()` on a column inside of `arrange()` to re-order the data frame based on that column in descending (big-to-small) order.
 For example, this code orders flights from most to least delayed:
 
 ```{r}
-flights |> 
-  arrange(desc(dep_delay))
+flights |>
+    arrange(desc(dep_delay))
 ```
 
 Note that the number of rows has not changed -- we're only arranging the data, we're not filtering it.
@@ -194,19 +194,19 @@ Most of the time, however, you'll want the distinct combination of some variable
 
 ```{r}
 # Remove duplicate rows, if any
-flights |> 
-  distinct()
+flights |>
+    distinct()
 
 # Find all unique origin and destination pairs
-flights |> 
-  distinct(origin, dest)
+flights |>
+    distinct(origin, dest)
 ```
 
 Alternatively, if you want to keep the other columns when filtering for unique rows, you can use the `.keep_all = TRUE` option.
 
 ```{r}
-flights |> 
-  distinct(origin, dest, .keep_all = TRUE)
+flights |>
+    distinct(origin, dest, .keep_all = TRUE)
 ```
 
 It's not a coincidence that all of these distinct flights are on January 1: `distinct()` will find the first occurrence of a unique row in the dataset and discard the rest.
@@ -217,7 +217,7 @@ You'll learn more about count in @sec-counts.
 
 ```{r}
 flights |>
-  count(origin, dest, sort = TRUE)
+    count(origin, dest, sort = TRUE)
 ```
 
 ### Exercises
@@ -257,11 +257,11 @@ In the transform chapters, you'll learn a large set of functions that you can us
 For now, we'll stick with basic algebra, which allows us to compute the `gain`, how much time a delayed flight made up in the air, and the `speed` in miles per hour:
 
 ```{r}
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    speed = distance / air_time * 60
-  )
+flights |>
+    mutate(
+        gain = dep_delay - arr_delay,
+        speed = distance / air_time * 60
+    )
 ```
 
 By default, `mutate()` adds new columns on the right-hand side of your dataset, which makes it difficult to see what's happening here.
@@ -270,12 +270,12 @@ We can use the `.before` argument to instead add the variables to the left-hand 
 [^data-transform-2]: Remember that in RStudio, the easiest way to see a dataset with many columns is `View()`.
 
 ```{r}
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    speed = distance / air_time * 60,
-    .before = 1
-  )
+flights |>
+    mutate(
+        gain = dep_delay - arr_delay,
+        speed = distance / air_time * 60,
+        .before = 1
+    )
 ```
 
 The `.` indicates that `.before` is an argument to the function, not the name of a third new variable we are creating.
@@ -284,12 +284,12 @@ For example, we could add the new variables after `day`:
 
 ```{r}
 #| results: false
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    speed = distance / air_time * 60,
-    .after = day
-  )
+flights |>
+    mutate(
+        gain = dep_delay - arr_delay,
+        speed = distance / air_time * 60,
+        .after = day
+    )
 ```
 
 Alternatively, you can control which variables are kept with the `.keep` argument.
@@ -298,13 +298,13 @@ For example, the following output will contain only the variables `dep_delay`, `
 
 ```{r}
 #| results: false
-flights |> 
-  mutate(
-    gain = dep_delay - arr_delay,
-    hours = air_time / 60,
-    gain_per_hour = gain / hours,
-    .keep = "used"
-  )
+flights |>
+    mutate(
+        gain = dep_delay - arr_delay,
+        hours = air_time / 60,
+        gain_per_hour = gain / hours,
+        .keep = "used"
+    )
 ```
 
 Note that since we haven't assigned the result of the above computation back to `flights`, the new variables `gain`, `hours`, and `gain_per_hour` will only be printed but will not be stored in a data frame.
@@ -320,25 +320,25 @@ In this situation, the first challenge is often just focusing on the variables y
 -   Select columns by name:
 
     ```{r}
-    #| results: false
-    flights |> 
-      select(year, month, day)
+#| results: false
+flights |>
+    select(year, month, day)
     ```
 
 -   Select all columns between year and day (inclusive):
 
     ```{r}
-    #| results: false
-    flights |> 
-      select(year:day)
+#| results: false
+flights |>
+    select(year:day)
     ```
 
 -   Select all columns except those from year to day (inclusive):
 
     ```{r}
-    #| results: false
-    flights |> 
-      select(!year:day)
+#| results: false
+flights |>
+    select(!year:day)
     ```
 
     Historically this operation was done with `-` instead of `!`, so you're likely to see that in the wild.
@@ -348,9 +348,9 @@ In this situation, the first challenge is often just focusing on the variables y
 -   Select all columns that are characters:
 
     ```{r}
-    #| results: false
-    flights |> 
-      select(where(is.character))
+#| results: false
+flights |>
+    select(where(is.character))
     ```
 
 There are a number of helper functions you can use within `select()`:
@@ -367,8 +367,8 @@ You can rename variables as you `select()` them by using `=`.
 The new name appears on the left-hand side of the `=`, and the old variable appears on the right-hand side:
 
 ```{r}
-flights |> 
-  select(tail_num = tailnum)
+flights |>
+    select(tail_num = tailnum)
 ```
 
 ### `rename()`
@@ -376,8 +376,8 @@ flights |>
 If you want to keep all the existing variables and just want to rename a few, you can use `rename()` instead of `select()`:
 
 ```{r}
-flights |> 
-  rename(tail_num = tailnum)
+flights |>
+    rename(tail_num = tailnum)
 ```
 
 If you have a bunch of inconsistently named columns and it would be painful to fix them all by hand, check out `janitor::clean_names()` which provides some useful automated cleaning.
@@ -389,18 +389,18 @@ You might want to collect related variables together or move important variables
 By default `relocate()` moves variables to the front:
 
 ```{r}
-flights |> 
-  relocate(time_hour, air_time)
+flights |>
+    relocate(time_hour, air_time)
 ```
 
 You can also specify where to put them using the `.before` and `.after` arguments, just like in `mutate()`:
 
 ```{r}
 #| results: false
-flights |> 
-  relocate(year:dep_time, .after = time_hour)
-flights |> 
-  relocate(starts_with("arr"), .before = dep_time)
+flights |>
+    relocate(year:dep_time, .after = time_hour)
+flights |>
+    relocate(starts_with("arr"), .before = dep_time)
 ```
 
 ### Exercises
@@ -410,15 +410,18 @@ flights |>
 #| echo: false
 # For data checking, not used in results shown in book
 flights <- flights |> mutate(
-  dep_time = hour * 60 + minute,
-  arr_time = (arr_time %/% 100) * 60 + (arr_time %% 100),
-  airtime2 = arr_time - dep_time,
-  dep_sched = dep_time + dep_delay
+    dep_time = hour * 60 + minute,
+    arr_time = (arr_time %/% 100) * 60 + (arr_time %% 100),
+    airtime2 = arr_time - dep_time,
+    dep_sched = dep_time + dep_delay
 )
 
-ggplot(flights, aes(x = dep_sched)) + geom_histogram(binwidth = 60)
-ggplot(flights, aes(x = dep_sched %% 60)) + geom_histogram(binwidth = 1)
-ggplot(flights, aes(x = air_time - airtime2)) + geom_histogram()
+ggplot(flights, aes(x = dep_sched)) +
+    geom_histogram(binwidth = 60)
+ggplot(flights, aes(x = dep_sched %% 60)) +
+    geom_histogram(binwidth = 1)
+ggplot(flights, aes(x = air_time - airtime2)) +
+    geom_histogram()
 ```
 
 1.  Compare `dep_time`, `sched_dep_time`, and `dep_delay`.
@@ -432,7 +435,7 @@ ggplot(flights, aes(x = air_time - airtime2)) + geom_histogram()
     Why might it be helpful in conjunction with this vector?
 
     ```{r}
-    variables <- c("year", "month", "day", "dep_delay", "arr_delay")
+variables <- c("year", "month", "day", "dep_delay", "arr_delay")
     ```
 
 5.  Does the result of running the following code surprise you?
@@ -440,8 +443,8 @@ ggplot(flights, aes(x = air_time - airtime2)) + geom_histogram()
     How can you change that default?
 
     ```{r}
-    #| eval: false
-    flights |> select(contains("TIME"))
+#| eval: false
+flights |> select(contains("TIME"))
     ```
 
 6.  Rename `air_time` to `air_time_min` to indicate units of measurement and move it to the beginning of the data frame.
@@ -449,10 +452,10 @@ ggplot(flights, aes(x = air_time - airtime2)) + geom_histogram()
 7.  Why doesn't the following work, and what does the error mean?
 
     ```{r}
-    #| error: true
-    flights |> 
-      select(tailnum) |> 
-      arrange(arr_delay)
+#| error: true
+flights |>
+    select(tailnum) |>
+    arrange(arr_delay)
     ```
 
 ## The pipe {#sec-the-pipe}
@@ -461,11 +464,11 @@ We've shown you simple examples of the pipe above, but its real power arises whe
 For example, imagine that you wanted to find the fastest flights to Houston's IAH airport: you need to combine `filter()`, `mutate()`, `select()`, and `arrange()`:
 
 ```{r}
-flights |> 
-  filter(dest == "IAH") |> 
-  mutate(speed = distance / air_time * 60) |> 
-  select(year:day, dep_time, carrier, flight, speed) |> 
-  arrange(desc(speed))
+flights |>
+    filter(dest == "IAH") |>
+    mutate(speed = distance / air_time * 60) |>
+    select(year:day, dep_time, carrier, flight, speed) |>
+    arrange(desc(speed))
 ```
 
 Even though this pipeline has four steps, it's easy to skim because the verbs come at the start of each line: start with the `flights` data, then filter, then mutate, then select, then arrange.
@@ -476,17 +479,17 @@ We could nest each function call inside the previous call:
 ```{r}
 #| results: false
 arrange(
-  select(
-    mutate(
-      filter(
-        flights, 
-        dest == "IAH"
-      ),
-      speed = distance / air_time * 60
+    select(
+        mutate(
+            filter(
+                flights,
+                dest == "IAH"
+            ),
+            speed = distance / air_time * 60
+        ),
+        year:day, dep_time, carrier, flight, speed
     ),
-    year:day, dep_time, carrier, flight, speed
-  ),
-  desc(speed)
+    desc(speed)
 )
 ```
 
@@ -510,7 +513,7 @@ You'll need to make one change to your RStudio options to use `|>` instead of `%
 #| echo: false
 #| fig-cap: |
 #|   To insert `|>`, make sure the "Use native pipe operator" option is checked.
-#| fig-alt: | 
+#| fig-alt: |
 #|   Screenshot showing the "Use native pipe operator" option which can
 #|   be found on the "Editing" panel of the "Code" options.
 knitr::include_graphics("screenshots/rstudio-pipe-options.png")
@@ -526,9 +529,9 @@ The magrittr package is included in the core tidyverse, so you can use `%>%` whe
 #| eval: false
 library(tidyverse)
 
-mtcars %>% 
-  group_by(cyl) %>%
-  summarize(n = n())
+mtcars %>%
+    group_by(cyl) %>%
+    summarize(n = n())
 ```
 
 For simple cases, `|>` and `%>%` behave identically.
@@ -549,8 +552,8 @@ In this section, we'll focus on the most important functions: `group_by()`, `sum
 Use `group_by()` to divide your dataset into groups meaningful for your analysis:
 
 ```{r}
-flights |> 
-  group_by(month)
+flights |>
+    group_by(month)
 ```
 
 `group_by()` doesn't change the data but, if you look closely at the output, you'll notice that the output indicates that it is "grouped by" month (`Groups: month [12]`).
@@ -565,11 +568,11 @@ In dplyr, this operation is performed by `summarize()`[^data-transform-3], as sh
 [^data-transform-3]: Or `summarise()`, if you prefer British English.
 
 ```{r}
-flights |> 
-  group_by(month) |> 
-  summarize(
-    avg_delay = mean(dep_delay)
-  )
+flights |>
+    group_by(month) |>
+    summarize(
+        avg_delay = mean(dep_delay)
+    )
 ```
 
 Uh-oh!
@@ -578,23 +581,23 @@ This happened because some of the observed flights had missing data in the delay
 We'll come back to discuss missing values in detail in @sec-missing-values, but for now, we'll tell the `mean()` function to ignore all missing values by setting the argument `na.rm` to `TRUE`:
 
 ```{r}
-flights |> 
-  group_by(month) |> 
-  summarize(
-    avg_delay = mean(dep_delay, na.rm = TRUE)
-  )
+flights |>
+    group_by(month) |>
+    summarize(
+        avg_delay = mean(dep_delay, na.rm = TRUE)
+    )
 ```
 
 You can create any number of summaries in a single call to `summarize()`.
 You'll learn various useful summaries in the upcoming chapters, but one very useful summary is `n()`, which returns the number of rows in each group:
 
 ```{r}
-flights |> 
-  group_by(month) |> 
-  summarize(
-    avg_delay = mean(dep_delay, na.rm = TRUE), 
-    n = n()
-  )
+flights |>
+    group_by(month) |>
+    summarize(
+        avg_delay = mean(dep_delay, na.rm = TRUE),
+        n = n()
+    )
 ```
 
 Means and counts can get you a surprisingly long way in data science!
@@ -613,10 +616,10 @@ You can vary `n` to select more than one row, or instead of `n =`, you can use `
 For example, the following code finds the flights that are most delayed upon arrival at each destination:
 
 ```{r}
-flights |> 
-  group_by(dest) |> 
-  slice_max(arr_delay, n = 1) |>
-  relocate(dest)
+flights |>
+    group_by(dest) |>
+    slice_max(arr_delay, n = 1) |>
+    relocate(dest)
 ```
 
 Note that there are 105 destinations but we get 108 rows here.
@@ -632,8 +635,8 @@ You can create groups using more than one variable.
 For example, we could make a group for each date.
 
 ```{r}
-daily <- flights |>  
-  group_by(year, month, day)
+daily <- flights |>
+    group_by(year, month, day)
 daily
 ```
 
@@ -642,8 +645,8 @@ In hindsight, this wasn't a great way to make this function work, but it's diffi
 To make it obvious what's happening, dplyr displays a message that tells you how you can change this behavior:
 
 ```{r}
-daily_flights <- daily |> 
-  summarize(n = n())
+daily_flights <- daily |>
+    summarize(n = n())
 ```
 
 If you're happy with this behavior, you can explicitly request it in order to suppress the message:
@@ -651,11 +654,11 @@ If you're happy with this behavior, you can explicitly request it in order to su
 ```{r}
 #| results: false
 
-daily_flights <- daily |> 
-  summarize(
-    n = n(), 
-    .groups = "drop_last"
-  )
+daily_flights <- daily |>
+    summarize(
+        n = n(),
+        .groups = "drop_last"
+    )
 ```
 
 Alternatively, change the default behavior by setting a different value, e.g., `"drop"` to drop all grouping or `"keep"` to preserve the same groups.
@@ -666,19 +669,19 @@ You might also want to remove grouping from a data frame without using `summariz
 You can do this with `ungroup()`.
 
 ```{r}
-daily |> 
-  ungroup()
+daily |>
+    ungroup()
 ```
 
 Now let's see what happens when you summarize an ungrouped data frame.
 
 ```{r}
-daily |> 
-  ungroup() |>
-  summarize(
-    avg_delay = mean(dep_delay, na.rm = TRUE), 
-    flights = n()
-  )
+daily |>
+    ungroup() |>
+    summarize(
+        avg_delay = mean(dep_delay, na.rm = TRUE),
+        flights = n()
+    )
 ```
 
 You get a single row back because dplyr treats all the rows in an ungrouped data frame as belonging to one group.
@@ -690,24 +693,24 @@ dplyr 1.1.0 includes a new, experimental, syntax for per-operation grouping, the
 
 ```{r}
 #| results: false
-flights |> 
-  summarize(
-    delay = mean(dep_delay, na.rm = TRUE), 
-    n = n(),
-    .by = month
-  )
+flights |>
+    summarize(
+        delay = mean(dep_delay, na.rm = TRUE),
+        n = n(),
+        .by = month
+    )
 ```
 
 Or if you want to group by multiple variables:
 
 ```{r}
 #| results: false
-flights |> 
-  summarize(
-    delay = mean(dep_delay, na.rm = TRUE), 
-    n = n(),
-    .by = c(origin, dest)
-  )
+flights |>
+    summarize(
+        delay = mean(dep_delay, na.rm = TRUE),
+        n = n(),
+        .by = c(origin, dest)
+    )
 ```
 
 `.by` works with all verbs and has the advantage that you don't need to use the `.groups` argument to suppress the grouping message or `ungroup()` when you're done.
@@ -736,71 +739,71 @@ You can learn more about it in the [dplyr 1.1.0 blog post](https://www.tidyverse
 6.  Suppose we have the following tiny data frame:
 
     ```{r}
-    df <- tibble(
-      x = 1:5,
-      y = c("a", "b", "a", "a", "b"),
-      z = c("K", "K", "L", "L", "K")
-    )
+df <- tibble(
+    x = 1:5,
+    y = c("a", "b", "a", "a", "b"),
+    z = c("K", "K", "L", "L", "K")
+)
     ```
 
     a.  Write down what you think the output will look like, then check if you were correct, and describe what `group_by()` does.
 
         ```{r}
-        #| eval: false 
-        df |>
-          group_by(y)
+#| eval: false
+df |>
+    group_by(y)
         ```
 
     b.  Write down what you think the output will look like, then check if you were correct, and describe what `arrange()` does.
         Also, comment on how it's different from the `group_by()` in part (a).
 
         ```{r}
-        #| eval: false
-        df |>
-          arrange(y)
+#| eval: false
+df |>
+    arrange(y)
         ```
 
     c.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does.
 
         ```{r}
-        #| eval: false
-        df |>
-          group_by(y) |>
-          summarize(mean_x = mean(x))
+#| eval: false
+df |>
+    group_by(y) |>
+    summarize(mean_x = mean(x))
         ```
 
     d.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does.
         Then, comment on what the message says.
 
         ```{r}
-        #| eval: false  
-        df |>
-          group_by(y, z) |>
-          summarize(mean_x = mean(x))
+#| eval: false
+df |>
+    group_by(y, z) |>
+    summarize(mean_x = mean(x))
         ```
 
     e.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does.
         How is the output different from the one in part (d)?
 
         ```{r}
-        #| eval: false
-        df |>
-          group_by(y, z) |>
-          summarize(mean_x = mean(x), .groups = "drop")
+#| eval: false
+df |>
+    group_by(y, z) |>
+    summarize(mean_x = mean(x), .groups = "drop")
         ```
 
     f.  Write down what you think the outputs will look like, then check if you were correct, and describe what each pipeline does.
         How are the outputs of the two pipelines different?
 
         ```{r}
-        #| eval: false  
-        df |>
-          group_by(y, z) |>
-          summarize(mean_x = mean(x))
-            
-        df |>
-          group_by(y, z) |>
-          mutate(mean_x = mean(x))
+#| eval: false
+df |>
+    group_by(y, z) |>
+    summarize(mean_x = mean(x))
+
+df |>
+    group_by(y, z) |>
+    mutate(mean_x = mean(x))
         ```
 
 ## Case study: aggregates and sample size {#sec-sample-size}
@@ -811,12 +814,12 @@ We'll demonstrate this with some baseball data from the **Lahman** package.
 Specifically, we will compare what proportion of times a player gets a hit (`H`) vs. the number of times they try to put the ball in play (`AB`):
 
 ```{r}
-batters <- Lahman::Batting |> 
-  group_by(playerID) |> 
-  summarize(
-    performance = sum(H, na.rm = TRUE) / sum(AB, na.rm = TRUE),
-    n = sum(AB, na.rm = TRUE)
-  )
+batters <- Lahman::Batting |>
+    group_by(playerID) |>
+    summarize(
+        performance = sum(H, na.rm = TRUE) / sum(AB, na.rm = TRUE),
+        n = sum(AB, na.rm = TRUE)
+    )
 batters
 ```
 
@@ -832,16 +835,16 @@ When we plot the skill of the batter (measured by the batting average, `performa
 ```{r}
 #| warning: false
 #| fig-alt: |
-#|   A scatterplot of the number of batting performances vs. batting opportunities 
+#|   A scatterplot of the number of batting performances vs. batting opportunities
 #|   overlaid with a smoothed line. Average performance increases sharply
 #|   from 0.2 at when n is ~100 to 0.25 when n is ~1000. Average performance
 #|   continues to increase linearly at a much shallower slope, reaching
 #|   0.3 when n is ~12,000.
-batters |> 
-  filter(n > 100) |> 
-  ggplot(aes(x = n, y = performance)) +
-  geom_point(alpha = 1 / 10) + 
-  geom_smooth(se = FALSE)
+batters |>
+    filter(n > 100) |>
+    ggplot(aes(x = n, y = performance)) +
+    geom_point(alpha = 1 / 10) +
+    geom_smooth(se = FALSE)
 ```
 
 Note the handy pattern for combining ggplot2 and dplyr.
@@ -851,8 +854,8 @@ This also has important implications for ranking.
 If you naively sort on `desc(performance)`, the people with the best batting averages are clearly the ones who tried to put the ball in play very few times and happened to get a hit, they're not necessarily the most skilled players:
 
 ```{r}
-batters |> 
-  arrange(desc(performance))
+batters |>
+    arrange(desc(performance))
 ```
 
 You can find a good explanation of this problem and how to overcome it at <http://varianceexplained.org/r/empirical_bayes_baseball/> and <https://www.evanmiller.org/how-not-to-sort-by-average-rating.html>.

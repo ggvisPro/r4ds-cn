@@ -481,9 +481,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a> shows what the spreadsheet we’re going to read into R looks like in Excel. This spreadsheet can be downloaded as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/" class="uri">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-students-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Excel. The spreadsheet contains  information on 6 students, their ID, full name, favourite food, meal plan,  and age.">
+<div id="fig-students-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Excel. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-students-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Excel. The spreadsheet contains  information on 6 students, their ID, full name, favourite food, meal plan,  and age." width="1200">
+<img src="screenshots/import-spreadsheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Excel. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age." width="1200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-students-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
@@ -514,8 +514,8 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>The column names are all over the place. You can provide column names that follow a consistent format; we recommend <code>snake_case</code> using the <code>col_names</code> argument.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span>  <span class="st">"data/students.xlsx"</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span></span>
+<span><span class="st">"data/students.xlsx"</span>,</span>
+<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -531,9 +531,9 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>Unfortunately, this didn’t quite do the trick. We now have the variable names we want, but what was previously the header row now shows up as the first observation in the data. You can explicitly skip that row using the <code>skip</code> argument.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span>  <span class="st">"data/students.xlsx"</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  skip <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="st">"data/students.xlsx"</span>,</span>
+<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>skip <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -550,10 +550,10 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>In the <code>favourite_food</code> column, one of the observations is <code>N/A</code>, which stands for “not available” but it’s currently not recognized as an <code>NA</code> (note the contrast between this <code>N/A</code> and the age of the fourth student in the list). You can specify which character strings should be recognized as <code>NA</code>s with the <code>na</code> argument. By default, only <code>""</code> (empty string, or, in the case of reading from a spreadsheet, an empty cell or a cell with the formula <code>=NA()</code>) is recognized as an <code>NA</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span>  <span class="st">"data/students.xlsx"</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span></span>
+<span><span class="st">"data/students.xlsx"</span>,</span>
+<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -570,11 +570,11 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>One other remaining issue is that <code>age</code> is read in as a character variable, but it really should be numeric. Just like with <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> and friends for reading data from flat files, you can supply a <code>col_types</code> argument to <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> and specify the column types for the variables you read in. The syntax is a bit different, though. Your options are <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code> or <code>"list"</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span>  <span class="st">"data/students.xlsx"</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"numeric"</span><span class="op">)</span></span>
+<span><span class="st">"data/students.xlsx"</span>,</span>
+<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"numeric"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Expecting numeric in E6 / R6C5: got 'five'</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
@@ -590,18 +590,18 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>However, this didn’t quite produce the desired result either. By specifying that <code>age</code> should be numeric, we have turned the one cell with the non-numeric entry (which had the value <code>five</code>) into an <code>NA</code>. In this case, we should read age in as <code>"text"</code> and then make the change once the data is loaded in R.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span>  <span class="st">"data/students.xlsx"</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span><span class="op">)</span></span>
+<span><span class="st">"data/students.xlsx"</span>,</span>
+<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">students</span> <span class="op">&lt;-</span> <span class="va">students</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">age</span> <span class="op">==</span> <span class="st">"five"</span>, <span class="st">"5"</span>, <span class="va">age</span><span class="op">)</span>,</span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">students</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
@@ -623,9 +623,9 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <p>An important feature that distinguishes spreadsheets from flat files is the notion of multiple sheets, called worksheets. <a href="#fig-penguins-islands" class="quarto-xref">Figure&nbsp;<span>20.2</span></a> shows an Excel spreadsheet with multiple worksheets. The data come from the <strong>palmerpenguins</strong> package, and you can download this spreadsheet as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/" class="uri">https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/</a>. Each worksheet contains information on penguins from a different island where data were collected.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-penguins-islands" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has  three worksheets: Torgersen Island, Biscoe Island, and Dream Island.">
+<div id="fig-penguins-islands" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three worksheets: Torgersen Island, Biscoe Island, and Dream Island.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-penguins-islands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-penguins-islands.png" class="img-fluid figure-img" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has  three worksheets: Torgersen Island, Biscoe Island, and Dream Island." width="1514">
+<img src="screenshots/import-spreadsheets-penguins-islands.png" class="img-fluid figure-img" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three worksheets: Torgersen Island, Biscoe Island, and Dream Island." width="1514">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-penguins-islands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three worksheets.
@@ -673,7 +673,7 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <p>Once you know the names of the worksheets, you can read them in individually with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_biscoe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Biscoe Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
-<span><span class="va">penguins_dream</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">penguins_dream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case the full penguins dataset is spread across three worksheets in the spreadsheet. Each worksheet has the same number of columns but different numbers of rows.</p>
 <div class="cell">
@@ -706,9 +706,9 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <p>Since many use Excel spreadsheets for presentation as well as for data storage, it’s quite common to find cell entries in a spreadsheet that are not part of the data you want to read into R. <a href="#fig-deaths-excel" class="quarto-xref">Figure&nbsp;<span>20.3</span></a> shows such a spreadsheet: in the middle of the sheet is what looks like a data frame but there is extraneous text in cells above and below the data.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-deaths-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows  on top that contain non-data information; the text 'For the same of  consistency in the data layout, which is really a beautiful thing, I will  keep making notes up here.' is spread across cells in these top four rows.  Then, there is a data frame that includes information on deaths of 10  famous people, including their names, professions, ages, whether they have  kids or not, date of birth and death. At the bottom, there are four more  rows of non-data information; the text 'This has been really fun, but  we're signing off now!' is spread across cells in these bottom four rows.">
+<div id="fig-deaths-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows on top that contain non-data information; the text 'For the same of consistency in the data layout, which is really a beautiful thing, I will keep making notes up here.' is spread across cells in these top four rows. Then, there is a data frame that includes information on deaths of 10 famous people, including their names, professions, ages, whether they have kids or not, date of birth and death. At the bottom, there are four more rows of non-data information; the text 'This has been really fun, but we're signing off now!' is spread across cells in these bottom four rows.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-deaths-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-deaths.png" class="img-fluid figure-img" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows  on top that contain non-data information; the text 'For the same of  consistency in the data layout, which is really a beautiful thing, I will  keep making notes up here.' is spread across cells in these top four rows.  Then, there is a data frame that includes information on deaths of 10  famous people, including their names, professions, ages, whether they have  kids or not, date of birth and death. At the bottom, there are four more  rows of non-data information; the text 'This has been really fun, but  we're signing off now!' is spread across cells in these bottom four rows." width="1614">
+<img src="screenshots/import-spreadsheets-deaths.png" class="img-fluid figure-img" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows on top that contain non-data information; the text 'For the same of consistency in the data layout, which is really a beautiful thing, I will keep making notes up here.' is spread across cells in these top four rows. Then, there is a data frame that includes information on deaths of 10 famous people, including their names, professions, ages, whether they have kids or not, date of birth and death. At the bottom, there are four more rows of non-data information; the text 'This has been really fun, but we're signing off now!' is spread across cells in these bottom four rows." width="1614">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deaths-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
@@ -782,8 +782,8 @@ Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
 <p>Let’s create a small data frame that we can then write out. Note that <code>item</code> is a factor and <code>quantity</code> is an integer.</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bake_sale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>  item     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brownie"</span>, <span class="st">"cupcake"</span>, <span class="st">"cookie"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span>
+<span>    item     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brownie"</span>, <span class="st">"cupcake"</span>, <span class="st">"cookie"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bake_sale</span></span>
@@ -833,7 +833,7 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-survey.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows.  The group column has two values: 1 (spanning 7 merged rows) and 2  (spanning 5 merged rows). The subgroup column has four values: A  (spanning 3 merged rows), B (spanning 4 merged rows), A (spanning 2  merged rows), and B (spanning 3 merged rows). The id column has twelve  values, numbers 1 through 12." width="263"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-survey.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows. The group column has two values: 1 (spanning 7 merged rows) and 2 (spanning 5 merged rows). The subgroup column has four values: A (spanning 3 merged rows), B (spanning 4 merged rows), A (spanning 2 merged rows), and B (spanning 3 merged rows). The id column has twelve values, numbers 1 through 12." width="263"></p>
 </figure>
 </div>
 </div>
@@ -856,7 +856,7 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-roster.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows. The  group column has two values: 1 (spanning 7 merged rows) and 2 (spanning  5 merged rows). The subgroup column has four values: A (spanning 3 merged  rows), B (spanning 4 merged rows), A (spanning 2 merged rows), and B  (spanning 3 merged rows). The id column has twelve values, numbers 1  through 12." width="255"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-roster.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows. The group column has two values: 1 (spanning 7 merged rows) and 2 (spanning 5 merged rows). The subgroup column has four values: A (spanning 3 merged rows), B (spanning 4 merged rows), A (spanning 2 merged rows), and B (spanning 3 merged rows). The id column has twelve values, numbers 1 through 12." width="255"></p>
 </figure>
 </div>
 </div>
@@ -885,7 +885,7 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-sales.png" class="img-fluid figure-img" alt="A spreadsheet with 2 columns and 13 rows. The first two rows have text  containing information about the sheet. Row 1 says &quot;This file contains information on sales&quot;. Row 2 says &quot;Data are organized by brand name, and  for each brand, we have the ID number for the item sold, and how many are  sold.&quot;. Then there are two empty rows, and then 9 rows of data." width="317"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-sales.png" class="img-fluid figure-img" alt="A spreadsheet with 2 columns and 13 rows. The first two rows have text containing information about the sheet. Row 1 says &quot;This file contains information on sales&quot;. Row 2 says &quot;Data are organized by brand name, and for each brand, we have the ID number for the item sold, and how many are sold.&quot;. Then there are two empty rows, and then 9 rows of data." width="317"></p>
 </figure>
 </div>
 </div>
@@ -943,9 +943,9 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <p><a href="#fig-students-googlesheets" class="quarto-xref">Figure&nbsp;<span>20.5</span></a> shows what the spreadsheet we’re going to read into R looks like in Google Sheets. This is the same dataset as in <a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a>, except it’s stored in a Google Sheet instead of Excel.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-students-googlesheets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains  information on 6 students, their ID, full name, favourite food, meal plan,  and age.">
+<div id="fig-students-googlesheets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-students-googlesheets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-googlesheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains  information on 6 students, their ID, full name, favourite food, meal plan,  and age." width="986">
+<img src="screenshots/import-googlesheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age." width="986">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-students-googlesheets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.5: Google Sheet called students in a browser window.
@@ -976,11 +976,11 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <p>Just like we did with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can supply column names, NA strings, and column types to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span></span>
-<span>  <span class="va">students_sheet_id</span>,</span>
-<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>  col_types <span class="op">=</span> <span class="st">"dcccc"</span></span>
+<span>    <span class="va">students_sheet_id</span>,</span>
+<span>    col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>    skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>    col_types <span class="op">=</span> <span class="st">"dcccc"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from students.</span></span>
 <span><span class="co">#&gt; ✔ Range 2:10000000.</span></span>
@@ -1157,7 +1157,7 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/bjmu\.edu\.kg:99\/");
+        var filterRegex = new RegExp("https:\/\/github\.com\/ggvisPro\/r4ds-cn\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

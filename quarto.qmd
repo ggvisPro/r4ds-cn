@@ -62,13 +62,13 @@ RStudio executes the code and displays the results inline with the code.
 #| echo: false
 #| out-width: "90%"
 #| fig-cap: |
-#|   A Quarto document in RStudio. Code and output interleaved in 
+#|   A Quarto document in RStudio. Code and output interleaved in
 #|   the document, with the plot output appearing right underneath the code.
 #| fig-alt: |
-#|   RStudio window with a Quarto document titled "diamond-sizes.qmd" 
-#|   on the left and a blank Viewer window on the right. The Quarto 
-#|   document has a code chunk that creates a frequency plot of diamonds 
-#|   that weigh less than 2.5 carats. The plot shows that the frequency 
+#|   RStudio window with a Quarto document titled "diamond-sizes.qmd"
+#|   on the left and a blank Viewer window on the right. The Quarto
+#|   document has a code chunk that creates a frequency plot of diamonds
+#|   that weigh less than 2.5 carats. The plot shows that the frequency
 #|   decreases as the weight increases.
 knitr::include_graphics("quarto/diamond-sizes-notebook.png")
 ```
@@ -82,12 +82,12 @@ If you don't like seeing your plots and output in your document and would rather
 #| fig-cap: |
 #|   A Quarto document in RStudio with the plot output in the Plots pane.
 #| fig-alt: |
-#|   RStudio window with a Quarto document titled "diamond-sizes.qmd" 
-#|   on the left and the Plot pane on the bottom right. The Quarto 
-#|   document has a code chunk that creates a frequency plot of diamonds 
-#|   that weigh less than 2.5 carats. The plot is displayed in the Plot 
-#|   pane and shows that the frequency decreases as the weight increases. 
-#|   The RStudio option to show Chunk Output in Console is also 
+#|   RStudio window with a Quarto document titled "diamond-sizes.qmd"
+#|   on the left and the Plot pane on the bottom right. The Quarto
+#|   document has a code chunk that creates a frequency plot of diamonds
+#|   that weigh less than 2.5 carats. The plot is displayed in the Plot
+#|   pane and shows that the frequency decreases as the weight increases.
+#|   The RStudio option to show Chunk Output in Console is also
 #|   highlighted.
 knitr::include_graphics("quarto/diamond-sizes-console-output.png")
 ```
@@ -101,12 +101,12 @@ This will display the report in the viewer pane as shown in @fig-diamond-sizes-r
 #| echo: false
 #| out-width: "90%"
 #| fig-cap: |
-#|   A Quarto document in RStudio with the rendered document in the 
+#|   A Quarto document in RStudio with the rendered document in the
 #|   Viewer pane.
 #| fig-alt: |
-#|   RStudio window with a Quarto document titled "diamond-sizes.qmd" 
-#|   on the left and the Plot pane on the bottom right. The rendered 
-#|   document does not show any of the code, but the code is visible 
+#|   RStudio window with a Quarto document titled "diamond-sizes.qmd"
+#|   on the left and the Plot pane on the bottom right. The rendered
+#|   document does not show any of the code, but the code is visible
 #|   in the source document.
 knitr::include_graphics("quarto/diamond-sizes-report.png")
 ```
@@ -121,10 +121,10 @@ The advantage of this two step workflow is that you can create a very wide range
 #| echo: false
 #| out-width: "75%"
 #| fig-alt: |
-#|   Workflow diagram starting with a qmd file, then knitr, then md, 
+#|   Workflow diagram starting with a qmd file, then knitr, then md,
 #|   then pandoc, then PDF, MS Word, or HTML.
 #| fig-cap: |
-#|   Diagram of Quarto workflow from qmd, to knitr, to md, to pandoc, 
+#|   Diagram of Quarto workflow from qmd, to knitr, to md, to pandoc,
 #|   to output in PDF, MS Word, or HTML formats.
 knitr::include_graphics("images/quarto-flow.png")
 ```
@@ -166,16 +166,16 @@ If you are at the beginning of a line (as shown in @fig-visual-editor), you can 
 #| fig-cap: |
 #|   Quarto visual editor.
 #| fig-alt: |
-#|   A Quarto document displaying various features of the 
-#|   visual editor such as text formatting (italic, bold, 
+#|   A Quarto document displaying various features of the
+#|   visual editor such as text formatting (italic, bold,
 #|   underline, small caps, code, superscript, and subscript),
 #|   first through third level headings, bulleted and numbered
-#|   lists, links, linked phrases, and images (along with a 
-#|   pop-up window for customizing image size, adding a 
-#|   caption and alt text, etc.), tables with a header row, 
-#|   and the insert anything tool with options to insert an 
-#|   R code chunk, a Python code chunk, a div, a bullet list, 
-#|   a numbered list, or a first level heading (the top few 
+#|   lists, links, linked phrases, and images (along with a
+#|   pop-up window for customizing image size, adding a
+#|   caption and alt text, etc.), tables with a header row,
+#|   and the insert anything tool with options to insert an
+#|   R code chunk, a Python code chunk, a div, a bullet list,
+#|   a numbered list, or a first level heading (the top few
 #|   choices in the tool).
 knitr::include_graphics("quarto/quarto-visual-editor.png")
 ```
@@ -272,14 +272,14 @@ This has three advantages:
 1.  You can more easily navigate to specific chunks using the drop-down code navigator in the bottom-left of the script editor:
 
     ```{r}
-    #| echo: false
-    #| out-width: "30%"
-    #| fig-alt: |
-    #|   Snippet of RStudio IDE showing only the drop-down code navigator 
-    #|   which shows three chunks. Chunk 1 is setup. Chunk 2 is cars and 
-    #|   it is in a section called Quarto. Chunk 3 is pressure and it is in 
-    #|   a section called Including plots.
-    knitr::include_graphics("screenshots/quarto-chunk-nav.png")
+#| echo: false
+#| out-width: "30%"
+#| fig-alt: |
+#|   Snippet of RStudio IDE showing only the drop-down code navigator
+#|   which shows three chunks. Chunk 1 is setup. Chunk 2 is cars and
+#|   it is in a section called Quarto. Chunk 3 is pressure and it is in
+#|   a section called Including plots.
+knitr::include_graphics("screenshots/quarto-chunk-nav.png")
     ```
 
 2.  Graphics produced by the chunks will have useful names that make them easier to use elsewhere.
@@ -450,7 +450,8 @@ To illustrate the principle, the following three plots have `fig-width` of 4, 6,
 
 ```{r}
 #| include: false
-plot <- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+plot <- ggplot(mpg, aes(x = displ, y = hwy)) +
+    geom_point()
 ```
 
 ```{r}
@@ -458,8 +459,8 @@ plot <- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
 #| fig-width: 4
 #| out-width: "50%"
 #| fig-alt: |
-#|   Scatterplot of highway mileage vs. displacement of cars, where the points 
-#|   are normally sized and the axis text and labels are in similar font size 
+#|   Scatterplot of highway mileage vs. displacement of cars, where the points
+#|   are normally sized and the axis text and labels are in similar font size
 #|   to the surrounding text.
 plot
 ```
@@ -469,8 +470,8 @@ plot
 #| fig-width: 6
 #| out-width: "50%"
 #| fig-alt: |
-#|   Scatterplot of highway mileage vs. displacement of cars, where the points 
-#|   are smaller than in the previous plot and the axis text and labels are 
+#|   Scatterplot of highway mileage vs. displacement of cars, where the points
+#|   are smaller than in the previous plot and the axis text and labels are
 #|   smallter than the surrounding text.
 plot
 ```
@@ -480,8 +481,8 @@ plot
 #| fig-width: 8
 #| out-width: "50%"
 #| fig-alt: |
-#|   Scatterplot of highway mileage vs. displacement of cars, where the points 
-#|   are even smaller than in the previous plot and the axis text and labels are 
+#|   Scatterplot of highway mileage vs. displacement of cars, where the points
+#|   are even smaller than in the previous plot and the axis text and labels are
 #|   even smallter than the surrounding text.
 plot
 ```

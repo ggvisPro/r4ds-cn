@@ -842,11 +842,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   dest  delay</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 HOU    7.18</span></span>
-<span><span class="co">#&gt; 2 PHX    2.10</span></span>
-<span><span class="co">#&gt; 3 SYR    8.90</span></span>
-<span><span class="co">#&gt; 4 BDL    7.05</span></span>
-<span><span class="co">#&gt; 5 BWI   10.7 </span></span>
-<span><span class="co">#&gt; 6 SAT    6.95</span></span>
+<span><span class="co">#&gt; 2 SFO    2.67</span></span>
+<span><span class="co">#&gt; 3 GSP   15.9 </span></span>
+<span><span class="co">#&gt; 4 TYS   24.1 </span></span>
+<span><span class="co">#&gt; 5 CRW   14.7 </span></span>
+<span><span class="co">#&gt; 6 MTJ    1.79</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you want to learn more about how <code>NULL</code>s work, you might enjoy “<a href="https://modern-sql.com/concept/three-valued-logic">The Three-Valued Logic of SQL</a>” by Markus Winand.</p>
@@ -1181,7 +1181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/bjmu\.edu\.kg:99\/");
+        var filterRegex = new RegExp("https:\/\/github\.com\/ggvisPro\/r4ds-cn\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

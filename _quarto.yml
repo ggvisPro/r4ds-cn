@@ -15,7 +15,7 @@ book:
       本书由 <a href="https://quarto.org/">Quarto</a> 构建。
   cover-image: cover.jpg
   favicon: cover.jpg
-  site-url: http://bjmu.edu.kg:99/
+  site-url: https://github.com/ggvisPro/r4ds-cn/
   repo-url: https://github.com/ggvisPro/r4ds-cn/
   repo-branch: main
   repo-actions: [edit, issue]
@@ -84,3 +84,7 @@ format:
     callout-appearance: simple
 
 editor: source
+
+execute:
+  cache: true
+  freeze: auto

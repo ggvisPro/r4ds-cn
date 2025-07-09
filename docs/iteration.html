@@ -1304,10 +1304,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
 <span><span class="co">#&gt;    year     n</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  1987   142</span></span>
-<span><span class="co">#&gt; 2  1977   142</span></span>
-<span><span class="co">#&gt; 3  2007   142</span></span>
-<span><span class="co">#&gt; 4  1972   142</span></span>
+<span><span class="co">#&gt; 1  1972   142</span></span>
+<span><span class="co">#&gt; 2  1992   142</span></span>
+<span><span class="co">#&gt; 3  1997   142</span></span>
+<span><span class="co">#&gt; 4  2002   142</span></span>
 <span><span class="co">#&gt; 5  1952   142</span></span>
 <span><span class="co">#&gt; 6  1957   142</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1506,7 +1506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/bjmu\.edu\.kg:99\/");
+        var filterRegex = new RegExp("https:\/\/github\.com\/ggvisPro\/r4ds-cn\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

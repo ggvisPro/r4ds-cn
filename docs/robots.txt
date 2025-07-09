@@ -1,1 +1,1 @@
-Sitemap: http://bjmu.edu.kg:99/sitemap.xml
+Sitemap: https://github.com/ggvisPro/r4ds-cn/sitemap.xml

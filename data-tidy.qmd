@@ -62,10 +62,10 @@ There are three interrelated rules that make a dataset tidy:
 ```{r}
 #| label: fig-tidy-structure
 #| echo: false
-#| fig-cap: | 
+#| fig-cap: |
 #|   The following three rules make a dataset tidy: variables are columns,
 #|   observations are rows, and values are cells.
-#| fig-alt: | 
+#| fig-alt: |
 #|   Three panels, each representing a tidy data frame. The first panel
 #|   shows that each variable is a column. The second panel shows that each
 #|   observation is a row. The third panel shows that each value is
@@ -89,9 +89,9 @@ Here are a few small examples showing how you might work with `table1`.
 ```{r}
 #| fig-width: 5
 #| fig-alt: |
-#|   This figure shows the number of cases in 1999 and 2000 for 
-#|   Afghanistan, Brazil, and China, with year on the x-axis and number 
-#|   of cases on the y-axis. Each point on the plot represents the number 
+#|   This figure shows the number of cases in 1999 and 2000 for
+#|   Afghanistan, Brazil, and China, with year on the x-axis and number
+#|   of cases on the y-axis. Each point on the plot represents the number
 #|   of cases in a given country in a given year. The points for each
 #|   country are differentiated from others by color and shape and connected
 #|   with a line, resulting in three, non-parallel, non-intersecting lines.
@@ -102,18 +102,18 @@ Here are a few small examples showing how you might work with `table1`.
 #|   values that appear to be very close to 0 on this scale.
 # Compute rate per 10,000
 table1 |>
-  mutate(rate = cases / population * 10000)
+    mutate(rate = cases / population * 10000)
 
 # Compute total cases per year
-table1 |> 
-  group_by(year) |> 
-  summarize(total_cases = sum(cases))
+table1 |>
+    group_by(year) |>
+    summarize(total_cases = sum(cases))
 
 # Visualize changes over time
 ggplot(table1, aes(x = year, y = cases)) +
-  geom_line(aes(group = country), color = "grey50") +
-  geom_point(aes(color = country, shape = country)) +
-  scale_x_continuous(breaks = c(1999, 2000)) # x-axis breaks at 1999 and 2000
+    geom_line(aes(group = country), color = "grey50") +
+    geom_point(aes(color = country, shape = country)) +
+    scale_x_continuous(breaks = c(1999, 2000)) # x-axis breaks at 1999 and 2000
 ```
 
 ### Exercises
@@ -168,12 +168,12 @@ Here, the column names are one variable (the `week`) and the cell values are ano
 To tidy this data, we'll use `pivot_longer()`:
 
 ```{r, R.options=list(pillar.print_min = 10)}
-billboard |> 
-  pivot_longer(
-    cols = starts_with("wk"), 
-    names_to = "week", 
-    values_to = "rank"
-  )
+billboard |>
+    pivot_longer(
+        cols = starts_with("wk"),
+        names_to = "week",
+        values_to = "rank"
+    )
 ```
 
 After the data, there are three key arguments:
@@ -193,13 +193,13 @@ These `NA`s don't really represent unknown observations; they were forced to exi
 [^data-tidy-2]: We'll come back to this idea in @sec-missing-values.
 
 ```{r}
-billboard |> 
-  pivot_longer(
-    cols = starts_with("wk"), 
-    names_to = "week", 
-    values_to = "rank",
-    values_drop_na = TRUE
-  )
+billboard |>
+    pivot_longer(
+        cols = starts_with("wk"),
+        names_to = "week",
+        values_to = "rank",
+        values_drop_na = TRUE
+    )
 ```
 
 The number of rows is now much lower, indicating that many rows with `NA`s were dropped.
@@ -212,16 +212,16 @@ This data is now tidy, but we could make future computation a bit easier by conv
 `parse_number()` is a handy function that will extract the first number from a string, ignoring all other text.
 
 ```{r}
-billboard_longer <- billboard |> 
-  pivot_longer(
-    cols = starts_with("wk"), 
-    names_to = "week", 
-    values_to = "rank",
-    values_drop_na = TRUE
-  ) |> 
-  mutate(
-    week = parse_number(week)
-  )
+billboard_longer <- billboard |>
+    pivot_longer(
+        cols = starts_with("wk"),
+        names_to = "week",
+        values_to = "rank",
+        values_drop_na = TRUE
+    ) |>
+    mutate(
+        week = parse_number(week)
+    )
 billboard_longer
 ```
 
@@ -239,10 +239,10 @@ We can see that very few songs stay in the top 100 for more than 20 weeks.
 #|   rapidly accelerate to a low rank, and then decay again. There are
 #|   surprisingly few tracks in the region when week is >20 and rank is
 #|   >50.
-billboard_longer |> 
-  ggplot(aes(x = week, y = rank, group = track)) + 
-  geom_line(alpha = 0.25) + 
-  scale_y_reverse()
+billboard_longer |>
+    ggplot(aes(x = week, y = rank, group = track)) +
+    geom_line(alpha = 0.25) +
+    scale_y_reverse()
 ```
 
 ### How does pivoting work?
@@ -254,10 +254,10 @@ We'll create the data with `tribble()`, a handy function for constructing small 
 
 ```{r}
 df <- tribble(
-  ~id,  ~bp1, ~bp2,
-   "A",  100,  120,
-   "B",  140,  115,
-   "C",  120,  125
+    ~id, ~bp1, ~bp2,
+    "A", 100, 120,
+    "B", 140, 115,
+    "C", 120, 125
 )
 ```
 
@@ -265,12 +265,12 @@ We want our new dataset to have three variables: `id` (already exists), `measure
 To achieve this, we need to pivot `df` longer:
 
 ```{r}
-df |> 
-  pivot_longer(
-    cols = bp1:bp2,
-    names_to = "measurement",
-    values_to = "value"
-  )
+df |>
+    pivot_longer(
+        cols = bp1:bp2,
+        names_to = "measurement",
+        values_to = "value"
+    )
 ```
 
 How does the reshaping work?
@@ -280,10 +280,10 @@ As shown in @fig-pivot-variables, the values in a column that was already a vari
 ```{r}
 #| label: fig-pivot-variables
 #| echo: false
-#| fig-cap: | 
+#| fig-cap: |
 #|   Columns that are already variables need to be repeated, once for
 #|   each column that is pivoted.
-#| fig-alt: | 
+#| fig-alt: |
 #|   A diagram showing how `pivot_longer()` transforms a simple
 #|   dataset, using color to highlight how the values in the `id` column
 #|   ("A", "B", "C") are each repeated twice in the output because there are
@@ -298,11 +298,11 @@ They need to be repeated once for each row in the original dataset.
 #| label: fig-pivot-names
 #| echo: false
 #| fig-cap: |
-#|   The column names of pivoted columns become values in a new column. The 
+#|   The column names of pivoted columns become values in a new column. The
 #|   values need to be repeated once for each row of the original dataset.
-#| fig-alt: | 
+#| fig-alt: |
 #|   A diagram showing how `pivot_longer()` transforms a simple
-#|   data set, using color to highlight how column names ("bp1" and 
+#|   data set, using color to highlight how column names ("bp1" and
 #|   "bp2") become the values in a new `measurement` column. They are repeated
 #|   three times because there were three rows in the input.
 knitr::include_graphics("diagrams/tidy-data/column-names.png", dpi = 270)
@@ -318,11 +318,11 @@ They are unwound row by row.
 #| fig-cap: |
 #|   The number of values is preserved (not repeated), but unwound
 #|   row-by-row.
-#| fig-alt: | 
+#| fig-alt: |
 #|   A diagram showing how `pivot_longer()` transforms data,
 #|   using color to highlight how the cell values (blood pressure measurements)
 #|   become the values in a new `value` column. They are unwound row-by-row,
-#|   so the original rows (100,120), then (140,115), then (120,125), become 
+#|   so the original rows (100,120), then (140,115), then (120,125), become
 #|   a column running from 100 to 125.
 knitr::include_graphics("diagrams/tidy-data/cell-values.png", dpi = 270)
 ```
@@ -347,13 +347,13 @@ So in this case we have six pieces of information recorded in `who2`: the countr
 To organize these six pieces of information in six separate columns, we use `pivot_longer()` with a vector of column names for `names_to` and instructors for splitting the original variable names into pieces for `names_sep` as well as a column name for `values_to`:
 
 ```{r}
-who2 |> 
-  pivot_longer(
-    cols = !(country:year),
-    names_to = c("diagnosis", "gender", "age"), 
-    names_sep = "_",
-    values_to = "count"
-  )
+who2 |>
+    pivot_longer(
+        cols = !(country:year),
+        names_to = c("diagnosis", "gender", "age"),
+        names_sep = "_",
+        values_to = "count"
+    )
 ```
 
 An alternative to `names_sep` is `names_pattern`, which you can use to extract variables from more complicated naming scenarios, once you've learned about regular expressions in @sec-regular-expressions.
@@ -366,11 +366,11 @@ You can imagine this happening in two steps (first pivoting and then separating)
 #| label: fig-pivot-multiple-names
 #| echo: false
 #| fig-cap: |
-#|   Pivoting columns with multiple pieces of information in the names 
-#|   means that each column name now fills in values in multiple output 
+#|   Pivoting columns with multiple pieces of information in the names
+#|   means that each column name now fills in values in multiple output
 #|   columns.
 #| fig-alt: |
-#|   A diagram that uses color to illustrate how supplying `names_sep` 
+#|   A diagram that uses color to illustrate how supplying `names_sep`
 #|   and multiple `names_to` creates multiple variables in the output.
 #|   The input has variable names "x_1" and "y_2" which are split up
 #|   by "_" to create name and number columns in the output. This is
@@ -394,13 +394,13 @@ To solve this problem we again need to supply a vector to `names_to` but this ti
 This overrides the usual `values_to` argument to use the first component of the pivoted column name as a variable name in the output.
 
 ```{r}
-household |> 
-  pivot_longer(
-    cols = !family, 
-    names_to = c(".value", "child"), 
-    names_sep = "_", 
-    values_drop_na = TRUE
-  )
+household |>
+    pivot_longer(
+        cols = !family,
+        names_to = c(".value", "child"),
+        names_sep = "_",
+        values_drop_na = TRUE
+    )
 ```
 
 We again use `values_drop_na = TRUE`, since the shape of the input forces the creation of explicit missing variables (e.g., for families with only one child).
@@ -440,8 +440,8 @@ The core unit being studied is an organization, but each organization is spread 
 We can see the complete set of values for `measure_cd` and `measure_title` by using `distinct()`:
 
 ```{r}
-cms_patient_experience |> 
-  distinct(measure_cd, measure_title)
+cms_patient_experience |>
+    distinct(measure_cd, measure_title)
 ```
 
 Neither of these columns will make particularly great variable names: `measure_cd` doesn't hint at the meaning of the variable and `measure_title` is a long sentence containing spaces.
@@ -450,23 +450,23 @@ We'll use `measure_cd` as the source for our new column names for now, but in a 
 `pivot_wider()` has the opposite interface to `pivot_longer()`: instead of choosing new column names, we need to provide the existing columns that define the values (`values_from`) and the column name (`names_from`):
 
 ```{r}
-cms_patient_experience |> 
-  pivot_wider(
-    names_from = measure_cd,
-    values_from = prf_rate
-  )
+cms_patient_experience |>
+    pivot_wider(
+        names_from = measure_cd,
+        values_from = prf_rate
+    )
 ```
 
 The output doesn't look quite right; we still seem to have multiple rows for each organization.
 That's because, we also need to tell `pivot_wider()` which column or columns have values that uniquely identify each row; in this case those are the variables starting with `"org"`:
 
 ```{r}
-cms_patient_experience |> 
-  pivot_wider(
-    id_cols = starts_with("org"),
-    names_from = measure_cd,
-    values_from = prf_rate
-  )
+cms_patient_experience |>
+    pivot_wider(
+        id_cols = starts_with("org"),
+        names_from = measure_cd,
+        values_from = prf_rate
+    )
 ```
 
 This gives us the output that we're looking for.
@@ -478,32 +478,32 @@ This time we have two patients with `id`s A and B, we have three blood pressure 
 
 ```{r}
 df <- tribble(
-  ~id, ~measurement, ~value,
-  "A",        "bp1",    100,
-  "B",        "bp1",    140,
-  "B",        "bp2",    115, 
-  "A",        "bp2",    120,
-  "A",        "bp3",    105
+    ~id, ~measurement, ~value,
+    "A",        "bp1",    100,
+    "B",        "bp1",    140,
+    "B",        "bp2",    115,
+    "A",        "bp2",    120,
+    "A",        "bp3",    105
 )
 ```
 
 We'll take the values from the `value` column and the names from the `measurement` column:
 
 ```{r}
-df |> 
-  pivot_wider(
-    names_from = measurement,
-    values_from = value
-  )
+df |>
+    pivot_wider(
+        names_from = measurement,
+        values_from = value
+    )
 ```
 
 To begin the process `pivot_wider()` needs to first figure out what will go in the rows and columns.
 The new column names will be the unique values of `measurement`.
 
 ```{r}
-df |> 
-  distinct(measurement) |> 
-  pull()
+df |>
+    distinct(measurement) |>
+    pull()
 ```
 
 By default, the rows in the output are determined by all the variables that aren't going into the new names or values.
@@ -511,18 +511,18 @@ These are called the `id_cols`.
 Here there is only one column, but in general there can be any number.
 
 ```{r}
-df |> 
-  select(-measurement, -value) |> 
-  distinct()
+df |>
+    select(-measurement, -value) |>
+    distinct()
 ```
 
 `pivot_wider()` then combines these results to generate an empty data frame:
 
 ```{r}
-df |> 
-  select(-measurement, -value) |> 
-  distinct() |> 
-  mutate(x = NA, y = NA, z = NA)
+df |>
+    select(-measurement, -value) |>
+    distinct() |>
+    mutate(x = NA, y = NA, z = NA)
 ```
 
 It then fills in all the missing values using the data in the input.
@@ -534,12 +534,12 @@ The example below has two rows that correspond to `id` "A" and `measurement` "bp
 
 ```{r}
 df <- tribble(
-  ~id, ~measurement, ~value,
-  "A",        "bp1",    100,
-  "A",        "bp1",    102,
-  "A",        "bp2",    120,
-  "B",        "bp1",    140, 
-  "B",        "bp2",    115
+    ~id, ~measurement, ~value,
+    "A",        "bp1",    100,
+    "A",        "bp1",    102,
+    "A",        "bp2",    120,
+    "B",        "bp1",    140,
+    "B",        "bp2",    115
 )
 ```
 
@@ -547,19 +547,19 @@ If we attempt to pivot this we get an output that contains list-columns, which y
 
 ```{r}
 df |>
-  pivot_wider(
-    names_from = measurement,
-    values_from = value
-  )
+    pivot_wider(
+        names_from = measurement,
+        values_from = value
+    )
 ```
 
 Since you don't know how to work with this sort of data yet, you'll want to follow the hint in the warning to figure out where the problem is:
 
 ```{r}
-df |> 
-  group_by(id, measurement) |> 
-  summarize(n = n(), .groups = "drop") |> 
-  filter(n > 1)
+df |>
+    group_by(id, measurement) |>
+    summarize(n = n(), .groups = "drop") |>
+    filter(n > 1)
 ```
 
 It's then up to you to figure out what's gone wrong with your data and either repair the underlying damage or use your grouping and summarizing skills to ensure that each combination of row and column values only has a single row.

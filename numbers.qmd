@@ -71,12 +71,12 @@ You can perform the same computation "by hand" with `group_by()`, `summarize()` 
 This is useful because it allows you to compute other summaries at the same time:
 
 ```{r}
-flights |> 
-  group_by(dest) |> 
-  summarize(
-    n = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  )
+flights |>
+    group_by(dest) |>
+    summarize(
+        n = n(),
+        delay = mean(arr_delay, na.rm = TRUE)
+    )
 ```
 
 `n()` is a special summary function that doesn't take any arguments and instead accesses information about the "current" group.
@@ -93,35 +93,35 @@ There are a couple of variants of `n()` and `count()` that you might find useful
     For example, we could figure out which destinations are served by the most carriers:
 
     ```{r}
-    flights |> 
-      group_by(dest) |> 
-      summarize(carriers = n_distinct(carrier)) |> 
-      arrange(desc(carriers))
+flights |>
+    group_by(dest) |>
+    summarize(carriers = n_distinct(carrier)) |>
+    arrange(desc(carriers))
     ```
 
 -   A weighted count is a sum.
     For example you could "count" the number of miles each plane flew:
 
     ```{r}
-    flights |> 
-      group_by(tailnum) |> 
-      summarize(miles = sum(distance))
+flights |>
+    group_by(tailnum) |>
+    summarize(miles = sum(distance))
     ```
 
     Weighted counts are a common problem so `count()` has a `wt` argument that does the same thing:
 
     ```{r}
-    #| results: false
-    flights |> count(tailnum, wt = distance)
+#| results: false
+flights |> count(tailnum, wt = distance)
     ```
 
 -   You can count missing values by combining `sum()` and `is.na()`.
     In the `flights` dataset this represents flights that are cancelled:
 
     ```{r}
-    flights |> 
-      group_by(dest) |> 
-      summarize(n_cancelled = sum(is.na(dep_time))) 
+flights |>
+    group_by(dest) |>
+    summarize(n_cancelled = sum(is.na(dep_time)))
     ```
 
 ### Exercises
@@ -168,8 +168,8 @@ These recycling rules are also applied to logical comparisons (`==`, `<`, `<=`, 
 For example, take this code which attempts to find all flights in January and February:
 
 ```{r}
-flights |> 
-  filter(month == c(1, 2))
+flights |>
+    filter(month == c(1, 2))
 ```
 
 The code runs without error, but it doesn't return what you want.
@@ -186,28 +186,28 @@ Two closely related functions are `pmin()` and `pmax()`, which when given two or
 
 ```{r}
 df <- tribble(
-  ~x, ~y,
-  1,  3,
-  5,  2,
-  7, NA,
+    ~x, ~y,
+    1, 3,
+    5, 2,
+    7, NA,
 )
 
-df |> 
-  mutate(
-    min = pmin(x, y, na.rm = TRUE),
-    max = pmax(x, y, na.rm = TRUE)
-  )
+df |>
+    mutate(
+        min = pmin(x, y, na.rm = TRUE),
+        max = pmax(x, y, na.rm = TRUE)
+    )
 ```
 
 Note that these are different to the summary functions `min()` and `max()` which take multiple observations and return a single value.
 You can tell that you've used the wrong form when all the minimums and all the maximums have the same value:
 
 ```{r}
-df |> 
-  mutate(
-    min = min(x, y, na.rm = TRUE),
-    max = max(x, y, na.rm = TRUE)
-  )
+df |>
+    mutate(
+        min = min(x, y, na.rm = TRUE),
+        max = max(x, y, na.rm = TRUE)
+    )
 ```
 
 ### Modular arithmetic
@@ -223,12 +223,12 @@ In R, `%/%` does integer division and `%%` computes the remainder:
 Modular arithmetic is handy for the `flights` dataset, because we can use it to unpack the `sched_dep_time` variable into `hour` and `minute`:
 
 ```{r}
-flights |> 
-  mutate(
-    hour = sched_dep_time %/% 100,
-    minute = sched_dep_time %% 100,
-    .keep = "used"
-  )
+flights |>
+    mutate(
+        hour = sched_dep_time %/% 100,
+        minute = sched_dep_time %% 100,
+        .keep = "used"
+    )
 ```
 
 We can combine that with the `mean(is.na(x))` trick from @sec-logical-summaries to see how the proportion of cancelled flights varies over the course of the day.
@@ -236,7 +236,7 @@ The results are shown in @fig-prop-cancelled.
 
 ```{r}
 #| label: fig-prop-cancelled
-#| fig-cap: | 
+#| fig-cap: |
 #|   A line plot with scheduled departure hour on the x-axis, and proportion
 #|   of cancelled flights on the y-axis. Cancellations seem to accumulate
 #|   over the course of the day until 8pm, very late flights are much
@@ -247,13 +247,13 @@ The results are shown in @fig-prop-cancelled.
 #|   5am, then steadily increases over the course of the day until peaking
 #|   at 4% at 7pm. The proportion of cancelled flights then drops rapidly
 #|   getting down to around 1% by midnight.
-flights |> 
-  group_by(hour = sched_dep_time %/% 100) |> 
-  summarize(prop_cancelled = mean(is.na(dep_time)), n = n()) |> 
-  filter(hour > 1) |> 
-  ggplot(aes(x = hour, y = prop_cancelled)) +
-  geom_line(color = "grey50") + 
-  geom_point(aes(size = n))
+flights |>
+    group_by(hour = sched_dep_time %/% 100) |>
+    summarize(prop_cancelled = mean(is.na(dep_time)), n = n()) |>
+    filter(hour > 1) |>
+    ggplot(aes(x = hour, y = prop_cancelled)) +
+    geom_line(color = "grey50") +
+    geom_point(aes(size = n))
 ```
 
 ### Logarithms
@@ -277,8 +277,8 @@ You can control the precision of the rounding with the second argument, `digits`
 This definition is useful because it implies `round(x, -3)` will round to the nearest thousand, which indeed it does:
 
 ```{r}
-round(123.456, 2)  # two digits
-round(123.456, 1)  # one digit
+round(123.456, 2) # two digits
+round(123.456, 1) # one digit
 round(123.456, -1) # round to nearest ten
 round(123.456, -2) # round to nearest hundred
 ```
@@ -342,9 +342,9 @@ You can optionally supply your own `labels`.
 Note that there should be one less `labels` than `breaks`.
 
 ```{r}
-cut(x, 
-  breaks = c(0, 5, 10, 15, 20), 
-  labels = c("sm", "md", "lg", "xl")
+cut(x,
+    breaks = c(0, 5, 10, 15, 20),
+    labels = c("sm", "md", "lg", "xl")
 )
 ```
 
@@ -382,11 +382,11 @@ If you need more complex rolling or sliding aggregates, try the [slider](https:/
     You can see the basic problem by running the code below: there's a gap between each hour.
 
     ```{r}
-    #| eval: false
-    flights |> 
-      filter(month == 1, day == 1) |> 
-      ggplot(aes(x = sched_dep_time, y = dep_delay)) +
-      geom_point()
+#| eval: false
+flights |>
+    filter(month == 1, day == 1) |>
+    ggplot(aes(x = sched_dep_time, y = dep_delay)) +
+    geom_point()
     ```
 
     Convert them to a more truthful representation of time (either fractional hours or minutes since midnight).
@@ -418,13 +418,13 @@ See the documentation for details.
 
 ```{r}
 df <- tibble(x = x)
-df |> 
-  mutate(
-    row_number = row_number(x),
-    dense_rank = dense_rank(x),
-    percent_rank = percent_rank(x),
-    cume_dist = cume_dist(x)
-  )
+df |>
+    mutate(
+        row_number = row_number(x),
+        dense_rank = dense_rank(x),
+        percent_rank = percent_rank(x),
+        cume_dist = cume_dist(x)
+    )
 ```
 
 You can achieve many of the same results by picking the appropriate `ties.method` argument to base R's `rank()`; you'll probably also want to set `na.last = "keep"` to keep `NA`s as `NA`.
@@ -436,12 +436,12 @@ When combined with `%%` or `%/%` this can be a useful tool for dividing data int
 ```{r}
 df <- tibble(id = 1:10)
 
-df |> 
-  mutate(
-    row0 = row_number() - 1,
-    three_groups = row0 %% 3,
-    three_in_each_group = row0 %/% 3
-  )
+df |>
+    mutate(
+        row0 = row_number() - 1,
+        three_groups = row0 %% 3,
+        three_in_each_group = row0 %/% 3
+    )
 ```
 
 ### Offsets
@@ -458,13 +458,13 @@ lead(x)
 -   `x - lag(x)` gives you the difference between the current and previous value.
 
     ```{r}
-    x - lag(x)
+x - lag(x)
     ```
 
 -   `x == lag(x)` tells you when the current value changes.
 
     ```{r}
-    x == lag(x)
+x == lag(x)
     ```
 
 You can lead or lag by more than one position by using the second argument, `n`.
@@ -477,7 +477,7 @@ For example, imagine you have the times when someone visited a website:
 
 ```{r}
 events <- tibble(
-  time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
+    time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
 )
 
 ```
@@ -485,11 +485,11 @@ events <- tibble(
 And you've computed the time between each event, and figured out if there's a gap that's big enough to qualify:
 
 ```{r}
-events <- events |> 
-  mutate(
-    diff = time - lag(time, default = first(time)),
-    has_gap = diff >= 5
-  )
+events <- events |>
+    mutate(
+        diff = time - lag(time, default = first(time)),
+        has_gap = diff >= 5
+    )
 events
 ```
 
@@ -498,7 +498,7 @@ But how do we go from that logical vector to something that we can `group_by()`?
 
 ```{r}
 events |> mutate(
-  group = cumsum(has_gap)
+    group = cumsum(has_gap)
 )
 ```
 
@@ -507,17 +507,17 @@ For example, inspired by [this stackoverflow question](https://stackoverflow.com
 
 ```{r}
 df <- tibble(
-  x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
-  y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
+    x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
+    y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
 )
 ```
 
 If you want to keep the first row from each repeated `x`, you could use `group_by()`, `consecutive_id()`, and `slice_head()`:
 
 ```{r}
-df |> 
-  group_by(id = consecutive_id(x)) |> 
-  slice_head(n = 1)
+df |>
+    group_by(id = consecutive_id(x)) |>
+    slice_head(n = 1)
 ```
 
 ### Exercises
@@ -540,16 +540,16 @@ df |>
     Using `lag()`, explore how the average flight delay for an hour is related to the average delay for the previous hour.
 
     ```{r}
-    #| results: false
-    flights |> 
-      mutate(hour = dep_time %/% 100) |> 
-      group_by(year, month, day, hour) |> 
-      summarize(
+#| results: false
+flights |>
+    mutate(hour = dep_time %/% 100) |>
+    group_by(year, month, day, hour) |>
+    summarize(
         dep_delay = mean(dep_delay, na.rm = TRUE),
         n = n(),
         .groups = "drop"
-      ) |> 
-      filter(n > 5)
+    ) |>
+    filter(n > 5)
     ```
 
 7.  Look at each destination.
@@ -583,21 +583,21 @@ The median delay is always smaller than the mean delay because flights sometimes
 #|   delay with median instead of mean.
 #| fig-alt: |
 #|   All points fall below a 45° line, meaning that the median delay is
-#|   always less than the mean delay. Most points are clustered in a 
+#|   always less than the mean delay. Most points are clustered in a
 #|   dense region of mean [0, 20] and median [-5, 5]. As the mean delay
 #|   increases, the spread of the median also increases. There are two
 #|   outlying points with mean ~60, median ~30, and mean ~85, median ~55.
 flights |>
-  group_by(year, month, day) |>
-  summarize(
-    mean = mean(dep_delay, na.rm = TRUE),
-    median = median(dep_delay, na.rm = TRUE),
-    n = n(),
-    .groups = "drop"
-  ) |> 
-  ggplot(aes(x = mean, y = median)) + 
-  geom_abline(slope = 1, intercept = 0, color = "white", linewidth = 2) +
-  geom_point()
+    group_by(year, month, day) |>
+    summarize(
+        mean = mean(dep_delay, na.rm = TRUE),
+        median = median(dep_delay, na.rm = TRUE),
+        n = n(),
+        .groups = "drop"
+    ) |>
+    ggplot(aes(x = mean, y = median)) +
+    geom_abline(slope = 1, intercept = 0, color = "white", linewidth = 2) +
+    geom_point()
 ```
 
 You might also wonder about the **mode**, or the most common value.
@@ -617,12 +617,12 @@ For the `flights` data, you might want to look at the 95% quantile of delays rat
 
 ```{r}
 flights |>
-  group_by(year, month, day) |>
-  summarize(
-    max = max(dep_delay, na.rm = TRUE),
-    q95 = quantile(dep_delay, 0.95, na.rm = TRUE),
-    .groups = "drop"
-  )
+    group_by(year, month, day) |>
+    summarize(
+        max = max(dep_delay, na.rm = TRUE),
+        q95 = quantile(dep_delay, 0.95, na.rm = TRUE),
+        .groups = "drop"
+    )
 ```
 
 ### Spread
@@ -636,14 +636,14 @@ You might expect the spread of the distance between origin and destination to be
 But the code below reveals a data oddity for airport [EGE](https://en.wikipedia.org/wiki/Eagle_County_Regional_Airport):
 
 ```{r}
-flights |> 
-  group_by(origin, dest) |> 
-  summarize(
-    distance_iqr = IQR(distance), 
-    n = n(),
-    .groups = "drop"
-  ) |> 
-  filter(distance_iqr > 0)
+flights |>
+    group_by(origin, dest) |>
+    summarize(
+        distance_iqr = IQR(distance),
+        n = n(),
+        .groups = "drop"
+    ) |>
+    filter(distance_iqr > 0)
 ```
 
 ### Distributions
@@ -677,13 +677,13 @@ This suggests that the mean is unlikely to be a good summary and we might prefer
 library(patchwork)
 
 full <- flights |>
-  ggplot(aes(x = dep_delay)) + 
-  geom_histogram(binwidth = 15, na.rm = TRUE)
+    ggplot(aes(x = dep_delay)) +
+    geom_histogram(binwidth = 15, na.rm = TRUE)
 
 delayed120 <- flights |>
-  filter(dep_delay < 120) |> 
-  ggplot(aes(x = dep_delay)) + 
-  geom_histogram(binwidth = 5)
+    filter(dep_delay < 120) |>
+    ggplot(aes(x = dep_delay)) +
+    geom_histogram(binwidth = 5)
 
 full + delayed120
 ```
@@ -695,12 +695,12 @@ The distributions seem to follow a common pattern, suggesting it's fine to use t
 ```{r}
 #| fig-alt: |
 #|   The distribution of `dep_delay` is highly right skewed with a strong
-#|   peak slightly less than 0. The 365 frequency polygons are mostly 
+#|   peak slightly less than 0. The 365 frequency polygons are mostly
 #|   overlapping forming a thick black band.
 flights |>
-  filter(dep_delay < 120) |> 
-  ggplot(aes(x = dep_delay, group = interaction(day, month))) + 
-  geom_freqpoly(binwidth = 5, alpha = 1/5)
+    filter(dep_delay < 120) |>
+    ggplot(aes(x = dep_delay, group = interaction(day, month))) +
+    geom_freqpoly(binwidth = 5, alpha = 1 / 5)
 ```
 
 Don't be afraid to explore your own custom summaries specifically tailored for the data that you're working with.
@@ -714,13 +714,13 @@ There's one final type of summary that's useful for numeric vectors, but also wo
 For example, we can find the first, fifth and last departure for each day:
 
 ```{r}
-flights |> 
-  group_by(year, month, day) |> 
-  summarize(
-    first_dep = first(dep_time, na_rm = TRUE), 
-    fifth_dep = nth(dep_time, 5, na_rm = TRUE),
-    last_dep = last(dep_time, na_rm = TRUE)
-  )
+flights |>
+    group_by(year, month, day) |>
+    summarize(
+        first_dep = first(dep_time, na_rm = TRUE),
+        fifth_dep = nth(dep_time, 5, na_rm = TRUE),
+        last_dep = last(dep_time, na_rm = TRUE)
+    )
 ```
 
 (NB: Because dplyr functions use `_` to separate components of function and arguments names, these functions use `na_rm` instead of `na.rm`.)
@@ -732,10 +732,10 @@ Extracting values at positions is complementary to filtering on ranks.
 Filtering gives you all variables, with each observation in a separate row:
 
 ```{r}
-flights |> 
-  group_by(year, month, day) |> 
-  mutate(r = min_rank(sched_dep_time)) |> 
-  filter(r %in% c(1, max(r)))
+flights |>
+    group_by(year, month, day) |>
+    mutate(r = min_rank(sched_dep_time)) |>
+    filter(r %in% c(1, max(r)))
 ```
 
 ### With `mutate()`

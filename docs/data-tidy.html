@@ -536,7 +536,7 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Compute rate per 10,000</span></span>
 <span><span class="va">table1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   country      year  cases population  rate</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -548,9 +548,9 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <span><span class="co">#&gt; 6 China        2000 213766 1280428583 1.67</span></span>
 <span></span>
 <span><span class="co"># Compute total cases per year</span></span>
-<span><span class="va">table1</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">table1</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;    year total_cases</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt;</span></span>
@@ -559,12 +559,12 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <span></span>
 <span><span class="co"># Visualize changes over time</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">table1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">country</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">country</span>, shape <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1999</span>, <span class="fl">2000</span><span class="op">)</span><span class="op">)</span> <span class="co"># x-axis breaks at 1999 and 2000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">country</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">country</span>, shape <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1999</span>, <span class="fl">2000</span><span class="op">)</span><span class="op">)</span> <span class="co"># x-axis breaks at 1999 and 2000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="data-tidy_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="This figure shows the number of cases in 1999 and 2000 for  Afghanistan, Brazil, and China, with year on the x-axis and number  of cases on the y-axis. Each point on the plot represents the number  of cases in a given country in a given year. The points for each country are differentiated from others by color and shape and connected with a line, resulting in three, non-parallel, non-intersecting lines. The numbers of cases in China are highest for both 1999 and 2000, with values above 200,000 for both years. The number of cases in Brazil is approximately 40,000 in 1999 and approximately 75,000 in 2000. The numbers of cases in Afghanistan are lowest for both 1999 and 2000, with values that appear to be very close to 0 on this scale." width="480"></p>
+<figure class="figure"><p><img src="data-tidy_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="This figure shows the number of cases in 1999 and 2000 for Afghanistan, Brazil, and China, with year on the x-axis and number of cases on the y-axis. Each point on the plot represents the number of cases in a given country in a given year. The points for each country are differentiated from others by color and shape and connected with a line, resulting in three, non-parallel, non-intersecting lines. The numbers of cases in China are highest for both 1999 and 2000, with values above 200,000 for both years. The number of cases in Brazil is approximately 40,000 in 1999 and approximately 75,000 in 2000. The numbers of cases in Afghanistan are lowest for both 1999 and 2000, with values that appear to be very close to 0 on this scale." width="480"></p>
 </figure>
 </div>
 </div>
@@ -612,12 +612,12 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <p>In this dataset, each observation is a song. The first three columns (<code>artist</code>, <code>track</code> and <code>date.entered</code>) are variables that describe the song. Then we have 76 columns (<code>wk1</code>-<code>wk76</code>) that describe the rank of the song in each week<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Here, the column names are one variable (the <code>week</code>) and the cell values are another (the <code>rank</code>).</p>
 <p>To tidy this data, we’ll use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
-<span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
-<span>    values_to <span class="op">=</span> <span class="st">"rank"</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="st">"week"</span>,</span>
+<span>        values_to <span class="op">=</span> <span class="st">"rank"</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 24,092 × 5</span></span>
 <span><span class="co">#&gt;    artist track                   date.entered week   rank</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
@@ -645,13 +645,13 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <p>Note that in the code <code>"week"</code> and <code>"rank"</code> are quoted because those are new variables we’re creating, they don’t yet exist in the data when we run the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> call.</p>
 <p>Now let’s turn our attention to the resulting, longer data frame. What happens if a song is in the top 100 for less than 76 weeks? Take 2 Pac’s “Baby Don’t Cry”, for example. The above output suggests that it was only in the top 100 for 7 weeks, and all the remaining weeks are filled in with missing values. These <code>NA</code>s don’t really represent unknown observations; they were forced to exist by the structure of the dataset<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, so we can ask <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to get rid of them by setting <code>values_drop_na = TRUE</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
-<span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
-<span>    values_to <span class="op">=</span> <span class="st">"rank"</span>,</span>
-<span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="st">"week"</span>,</span>
+<span>        values_to <span class="op">=</span> <span class="st">"rank"</span>,</span>
+<span>        values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5,307 × 5</span></span>
 <span><span class="co">#&gt;   artist track                   date.entered week   rank</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
@@ -667,16 +667,16 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 <p>You might also wonder what happens if a song is in the top 100 for more than 76 weeks? We can’t tell from this data, but you might guess that additional columns <code>wk77</code>, <code>wk78</code>, … would be added to the dataset.</p>
 <p>This data is now tidy, but we could make future computation a bit easier by converting values of <code>week</code> from character strings to numbers using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://readr.tidyverse.org/reference/parse_number.html">readr::parse_number()</a></code>. <code><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number()</a></code> is a handy function that will extract the first number from a string, ignoring all other text.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">&lt;-</span> <span class="va">billboard</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
-<span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
-<span>    values_to <span class="op">=</span> <span class="st">"rank"</span>,</span>
-<span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    week <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">week</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">&lt;-</span> <span class="va">billboard</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="st">"week"</span>,</span>
+<span>        values_to <span class="op">=</span> <span class="st">"rank"</span>,</span>
+<span>        values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>        week <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">week</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="va">billboard_longer</span></span>
 <span><span class="co">#&gt; # A tibble: 5,307 × 5</span></span>
 <span><span class="co">#&gt;   artist track                   date.entered  week  rank</span></span>
@@ -691,10 +691,10 @@ Figure&nbsp;5.1: The following three rules make a dataset tidy: variables are co
 </div>
 <p>Now that we have all the week numbers in one variable and all the rank values in another, we’re in a good position to visualize how song ranks vary over time. The code is shown below and the result is in <a href="#fig-billboard-ranks" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. We can see that very few songs stay in the top 100 for more than 20 weeks.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">week</span>, y <span class="op">=</span> <span class="va">rank</span>, group <span class="op">=</span> <span class="va">track</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">week</span>, y <span class="op">=</span> <span class="va">rank</span>, group <span class="op">=</span> <span class="va">track</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-billboard-ranks" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A line plot with week on the x-axis and rank on the y-axis, where each line represents a song. Most songs appear to start at a high rank, rapidly accelerate to a low rank, and then decay again. There are surprisingly few tracks in the region when week is >20 and rank is >50.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-billboard-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -711,20 +711,20 @@ Figure&nbsp;5.2: A line plot showing how the rank of a song changes over time.
 <p>Now that you’ve seen how we can use pivoting to reshape our data, let’s take a little time to gain some intuition about what pivoting does to the data. Let’s start with a very simple dataset to make it easier to see what’s happening. Suppose we have three patients with <code>id</code>s A, B, and C, and we take two blood pressure measurements on each patient. We’ll create the data with <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code>, a handy function for constructing small tibbles by hand:</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>  <span class="op">~</span><span class="va">id</span>,  <span class="op">~</span><span class="va">bp1</span>, <span class="op">~</span><span class="va">bp2</span>,</span>
-<span>   <span class="st">"A"</span>,  <span class="fl">100</span>,  <span class="fl">120</span>,</span>
-<span>   <span class="st">"B"</span>,  <span class="fl">140</span>,  <span class="fl">115</span>,</span>
-<span>   <span class="st">"C"</span>,  <span class="fl">120</span>,  <span class="fl">125</span></span>
+<span>    <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">bp1</span>, <span class="op">~</span><span class="va">bp2</span>,</span>
+<span>    <span class="st">"A"</span>, <span class="fl">100</span>, <span class="fl">120</span>,</span>
+<span>    <span class="st">"B"</span>, <span class="fl">140</span>, <span class="fl">115</span>,</span>
+<span>    <span class="st">"C"</span>, <span class="fl">120</span>, <span class="fl">125</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We want our new dataset to have three variables: <code>id</code> (already exists), <code>measurement</code> (the column names), and <code>value</code> (the cell values). To achieve this, we need to pivot <code>df</code> longer:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="va">bp1</span><span class="op">:</span><span class="va">bp2</span>,</span>
-<span>    names_to <span class="op">=</span> <span class="st">"measurement"</span>,</span>
-<span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="va">bp1</span><span class="op">:</span><span class="va">bp2</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="st">"measurement"</span>,</span>
+<span>        values_to <span class="op">=</span> <span class="st">"value"</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
 <span><span class="co">#&gt;   id    measurement value</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;</span></span>
@@ -751,9 +751,9 @@ Figure&nbsp;5.3: Columns that are already variables need to be repeated, once fo
 <p>The column names become values in a new variable, whose name is defined by <code>names_to</code>, as shown in <a href="#fig-pivot-names" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. They need to be repeated once for each row in the original dataset.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pivot-names" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram showing how `pivot_longer()` transforms a simple data set, using color to highlight how column names (&quot;bp1&quot; and  &quot;bp2&quot;) become the values in a new `measurement` column. They are repeated three times because there were three rows in the input.">
+<div id="fig-pivot-names" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram showing how `pivot_longer()` transforms a simple data set, using color to highlight how column names (&quot;bp1&quot; and &quot;bp2&quot;) become the values in a new `measurement` column. They are repeated three times because there were three rows in the input.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/tidy-data/column-names.png" class="img-fluid figure-img" alt="A diagram showing how `pivot_longer()` transforms a simple data set, using color to highlight how column names (&quot;bp1&quot; and  &quot;bp2&quot;) become the values in a new `measurement` column. They are repeated three times because there were three rows in the input." width="515">
+<img src="diagrams/tidy-data/column-names.png" class="img-fluid figure-img" alt="A diagram showing how `pivot_longer()` transforms a simple data set, using color to highlight how column names (&quot;bp1&quot; and &quot;bp2&quot;) become the values in a new `measurement` column. They are repeated three times because there were three rows in the input." width="515">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.4: The column names of pivoted columns become values in a new column. The values need to be repeated once for each row of the original dataset.
@@ -764,9 +764,9 @@ Figure&nbsp;5.4: The column names of pivoted columns become values in a new colu
 <p>The cell values also become values in a new variable, with a name defined by <code>values_to</code>. They are unwound row by row. <a href="#fig-pivot-values" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> illustrates the process.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pivot-values" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram showing how `pivot_longer()` transforms data, using color to highlight how the cell values (blood pressure measurements) become the values in a new `value` column. They are unwound row-by-row, so the original rows (100,120), then (140,115), then (120,125), become  a column running from 100 to 125.">
+<div id="fig-pivot-values" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram showing how `pivot_longer()` transforms data, using color to highlight how the cell values (blood pressure measurements) become the values in a new `value` column. They are unwound row-by-row, so the original rows (100,120), then (140,115), then (120,125), become a column running from 100 to 125.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/tidy-data/cell-values.png" class="img-fluid figure-img" alt="A diagram showing how `pivot_longer()` transforms data, using color to highlight how the cell values (blood pressure measurements) become the values in a new `value` column. They are unwound row-by-row, so the original rows (100,120), then (140,115), then (120,125), become  a column running from 100 to 125." width="515">
+<img src="diagrams/tidy-data/cell-values.png" class="img-fluid figure-img" alt="A diagram showing how `pivot_longer()` transforms data, using color to highlight how the cell values (blood pressure measurements) become the values in a new `value` column. They are unwound row-by-row, so the original rows (100,120), then (140,115), then (120,125), become a column running from 100 to 125." width="515">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.5: The number of values is preserved (not repeated), but unwound row-by-row.
@@ -794,13 +794,13 @@ Figure&nbsp;5.5: The number of values is preserved (not repeated), but unwound r
 <p>This dataset, collected by the World Health Organisation, records information about tuberculosis diagnoses. There are two columns that are already variables and are easy to interpret: <code>country</code> and <code>year</code>. They are followed by 56 columns like <code>sp_m_014</code>, <code>ep_m_4554</code>, and <code>rel_m_3544</code>. If you stare at these columns for long enough, you’ll notice there’s a pattern. Each column name is made up of three pieces separated by <code>_</code>. The first piece, <code>sp</code>/<code>rel</code>/<code>ep</code>, describes the method used for the diagnosis, the second piece, <code>m</code>/<code>f</code> is the <code>gender</code> (coded as a binary variable in this dataset), and the third piece, <code>014</code>/<code>1524</code>/<code>2534</code>/<code>3544</code>/<code>4554</code>/<code>5564</code>/<code>65</code> is the <code>age</code> range (<code>014</code> represents 0-14, for example).</p>
 <p>So in this case we have six pieces of information recorded in <code>who2</code>: the country and the year (already columns); the method of diagnosis, the gender category, and the age range category (contained in the other column names); and the count of patients in that category (cell values). To organize these six pieces of information in six separate columns, we use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> with a vector of column names for <code>names_to</code> and instructors for splitting the original variable names into pieces for <code>names_sep</code> as well as a column name for <code>values_to</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="va">country</span><span class="op">:</span><span class="va">year</span><span class="op">)</span>,</span>
-<span>    names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"diagnosis"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span><span class="op">)</span>, </span>
-<span>    names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
-<span>    values_to <span class="op">=</span> <span class="st">"count"</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="va">country</span><span class="op">:</span><span class="va">year</span><span class="op">)</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"diagnosis"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>        names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
+<span>        values_to <span class="op">=</span> <span class="st">"count"</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 405,440 × 6</span></span>
 <span><span class="co">#&gt;   country      year diagnosis gender age   count</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;</span></span>
@@ -816,9 +816,9 @@ Figure&nbsp;5.5: The number of values is preserved (not repeated), but unwound r
 <p>Conceptually, this is only a minor variation on the simpler case you’ve already seen. <a href="#fig-pivot-multiple-names" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows the basic idea: now, instead of the column names pivoting into a single column, they pivot into multiple columns. You can imagine this happening in two steps (first pivoting and then separating) but under the hood it happens in a single step because that’s faster.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pivot-multiple-names" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram that uses color to illustrate how supplying `names_sep`  and multiple `names_to` creates multiple variables in the output. The input has variable names &quot;x_1&quot; and &quot;y_2&quot; which are split up by &quot;_&quot; to create name and number columns in the output. This is is similar case with a single `names_to`, but what would have been a single output variable is now separated into multiple variables.">
+<div id="fig-pivot-multiple-names" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram that uses color to illustrate how supplying `names_sep` and multiple `names_to` creates multiple variables in the output. The input has variable names &quot;x_1&quot; and &quot;y_2&quot; which are split up by &quot;_&quot; to create name and number columns in the output. This is is similar case with a single `names_to`, but what would have been a single output variable is now separated into multiple variables.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pivot-multiple-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/tidy-data/multiple-names.png" class="img-fluid figure-img" alt="A diagram that uses color to illustrate how supplying `names_sep`  and multiple `names_to` creates multiple variables in the output. The input has variable names &quot;x_1&quot; and &quot;y_2&quot; which are split up by &quot;_&quot; to create name and number columns in the output. This is is similar case with a single `names_to`, but what would have been a single output variable is now separated into multiple variables." width="524">
+<img src="diagrams/tidy-data/multiple-names.png" class="img-fluid figure-img" alt="A diagram that uses color to illustrate how supplying `names_sep` and multiple `names_to` creates multiple variables in the output. The input has variable names &quot;x_1&quot; and &quot;y_2&quot; which are split up by &quot;_&quot; to create name and number columns in the output. This is is similar case with a single `names_to`, but what would have been a single output variable is now separated into multiple variables." width="524">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pivot-multiple-names-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.6: Pivoting columns with multiple pieces of information in the names means that each column name now fills in values in multiple output columns.
@@ -842,13 +842,13 @@ Figure&nbsp;5.6: Pivoting columns with multiple pieces of information in the nam
 </div>
 <p>This dataset contains data about five families, with the names and dates of birth of up to two children. The new challenge in this dataset is that the column names contain the names of two variables (<code>dob</code>, <code>name</code>) and the values of another (<code>child</code>, with values 1 or 2). To solve this problem we again need to supply a vector to <code>names_to</code> but this time we use the special <code>".value"</code> sentinel; this isn’t the name of a variable but a unique value that tells <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to do something different. This overrides the usual <code>values_to</code> argument to use the first component of the pivoted column name as a variable name in the output.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="op">!</span><span class="va">family</span>, </span>
-<span>    names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">".value"</span>, <span class="st">"child"</span><span class="op">)</span>, </span>
-<span>    names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
-<span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>        cols <span class="op">=</span> <span class="op">!</span><span class="va">family</span>,</span>
+<span>        names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">".value"</span>, <span class="st">"child"</span><span class="op">)</span>,</span>
+<span>        names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
+<span>        values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 4</span></span>
 <span><span class="co">#&gt;   family child  dob        name </span></span>
 <span><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;</span></span>
@@ -893,8 +893,8 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 </div>
 <p>The core unit being studied is an organization, but each organization is spread across six rows, with one row for each measurement taken in the survey organization. We can see the complete set of values for <code>measure_cd</code> and <code>measure_title</code> by using <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measure_cd</span>, <span class="va">measure_title</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measure_cd</span>, <span class="va">measure_title</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
 <span><span class="co">#&gt;   measure_cd   measure_title                                                 </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                                                         </span></span>
@@ -908,11 +908,11 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 <p>Neither of these columns will make particularly great variable names: <code>measure_cd</code> doesn’t hint at the meaning of the variable and <code>measure_title</code> is a long sentence containing spaces. We’ll use <code>measure_cd</code> as the source for our new column names for now, but in a real analysis you might want to create your own variable names that are both short and meaningful.</p>
 <p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> has the opposite interface to <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>: instead of choosing new column names, we need to provide the existing columns that define the values (<code>values_from</code>) and the column name (<code>names_from</code>):</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>    names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
-<span>    values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>        names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
+<span>        values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 500 × 9</span></span>
 <span><span class="co">#&gt;   org_pac_id org_nm                   measure_title   CAHPS_GRP_1 CAHPS_GRP_2</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                    &lt;chr&gt;                 &lt;dbl&gt;       &lt;dbl&gt;</span></span>
@@ -927,12 +927,12 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 </div>
 <p>The output doesn’t look quite right; we still seem to have multiple rows for each organization. That’s because, we also need to tell <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> which column or columns have values that uniquely identify each row; in this case those are the variables starting with <code>"org"</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>    id_cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"org"</span><span class="op">)</span>,</span>
-<span>    names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
-<span>    values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>        id_cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"org"</span><span class="op">)</span>,</span>
+<span>        names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
+<span>        values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 95 × 8</span></span>
 <span><span class="co">#&gt;   org_pac_id org_nm           CAHPS_GRP_1 CAHPS_GRP_2 CAHPS_GRP_3 CAHPS_GRP_5</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                  &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
@@ -951,21 +951,21 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 <p>To understand how <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> works, let’s again start with a very simple dataset. This time we have two patients with <code>id</code>s A and B, we have three blood pressure measurements on patient A and two on patient B:</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>  <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
-<span>  <span class="st">"B"</span>,        <span class="st">"bp1"</span>,    <span class="fl">140</span>,</span>
-<span>  <span class="st">"B"</span>,        <span class="st">"bp2"</span>,    <span class="fl">115</span>, </span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp2"</span>,    <span class="fl">120</span>,</span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp3"</span>,    <span class="fl">105</span></span>
+<span>    <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
+<span>    <span class="st">"B"</span>,        <span class="st">"bp1"</span>,    <span class="fl">140</span>,</span>
+<span>    <span class="st">"B"</span>,        <span class="st">"bp2"</span>,    <span class="fl">115</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp2"</span>,    <span class="fl">120</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp3"</span>,    <span class="fl">105</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We’ll take the values from the <code>value</code> column and the names from the <code>measurement</code> column:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>    names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
-<span>    values_from <span class="op">=</span> <span class="va">value</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>        names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
+<span>        values_from <span class="op">=</span> <span class="va">value</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 4</span></span>
 <span><span class="co">#&gt;   id      bp1   bp2   bp3</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -974,16 +974,16 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 </div>
 <p>To begin the process <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> needs to first figure out what will go in the rows and columns. The new column names will be the unique values of <code>measurement</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "bp1" "bp2" "bp3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default, the rows in the output are determined by all the variables that aren’t going into the new names or values. These are called the <code>id_cols</code>. Here there is only one column, but in general there can be any number.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 1</span></span>
 <span><span class="co">#&gt;   id   </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;</span></span>
@@ -992,10 +992,10 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 </div>
 <p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> then combines these results to generate an empty data frame:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="cn">NA</span>, z <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="cn">NA</span>, z <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 4</span></span>
 <span><span class="co">#&gt;   id    x     y     z    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;</span></span>
@@ -1006,21 +1006,21 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 <p>You might also wonder what happens if there are multiple rows in the input that correspond to one cell in the output. The example below has two rows that correspond to <code>id</code> “A” and <code>measurement</code> “bp1”:</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>  <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">102</span>,</span>
-<span>  <span class="st">"A"</span>,        <span class="st">"bp2"</span>,    <span class="fl">120</span>,</span>
-<span>  <span class="st">"B"</span>,        <span class="st">"bp1"</span>,    <span class="fl">140</span>, </span>
-<span>  <span class="st">"B"</span>,        <span class="st">"bp2"</span>,    <span class="fl">115</span></span>
+<span>    <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">102</span>,</span>
+<span>    <span class="st">"A"</span>,        <span class="st">"bp2"</span>,    <span class="fl">120</span>,</span>
+<span>    <span class="st">"B"</span>,        <span class="st">"bp1"</span>,    <span class="fl">140</span>,</span>
+<span>    <span class="st">"B"</span>,        <span class="st">"bp2"</span>,    <span class="fl">115</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we attempt to pivot this we get an output that contains list-columns, which you’ll learn more about in <a href="rectangling.html" class="quarto-xref"><span>Chapter 23</span></a>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>    names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
-<span>    values_from <span class="op">=</span> <span class="va">value</span></span>
-<span>  <span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>        names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
+<span>        values_from <span class="op">=</span> <span class="va">value</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Values from `value` are not uniquely identified; output will contain</span></span>
 <span><span class="co">#&gt; list-cols.</span></span>
 <span><span class="co">#&gt; • Use `values_fn = list` to suppress this warning.</span></span>
@@ -1037,10 +1037,10 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
 </div>
 <p>Since you don’t know how to work with this sort of data yet, you’ll want to follow the hint in the warning to figure out where the problem is:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
 <span><span class="co">#&gt;   id    measurement     n</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt;</span></span>
@@ -1131,7 +1131,7 @@ Figure&nbsp;5.7: Pivoting with <code>names_to = c(".value", "num")</code> splits
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/bjmu\.edu\.kg:99\/");
+        var filterRegex = new RegExp("https:\/\/github\.com\/ggvisPro\/r4ds-cn\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

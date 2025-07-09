@@ -46,26 +46,26 @@ You add labels with the `labs()` function.
 ```{r}
 #| message: false
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, where 
-#|   points are colored according to the car class. A smooth curve following 
-#|   the trajectory of the relationship between highway fuel efficiency versus 
-#|   engine size of cars is overlaid. The x-axis is labelled "Engine 
-#|   displacement (L)" and the y-axis is labelled "Highway fuel economy (mpg)". 
-#|   The legend is labelled "Car type". The plot is titled "Fuel efficiency 
-#|   generally decreases with engine size". The subtitle is "Two seaters 
-#|   (sports cars) are an exception because of their light weight" and the 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars, where
+#|   points are colored according to the car class. A smooth curve following
+#|   the trajectory of the relationship between highway fuel efficiency versus
+#|   engine size of cars is overlaid. The x-axis is labelled "Engine
+#|   displacement (L)" and the y-axis is labelled "Highway fuel economy (mpg)".
+#|   The legend is labelled "Car type". The plot is titled "Fuel efficiency
+#|   generally decreases with engine size". The subtitle is "Two seaters
+#|   (sports cars) are an exception because of their light weight" and the
 #|   caption is "Data from fueleconomy.gov".
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) +
-  geom_smooth(se = FALSE) +
-  labs(
-    x = "Engine displacement (L)",
-    y = "Highway fuel economy (mpg)",
-    color = "Car type",
-    title = "Fuel efficiency generally decreases with engine size",
-    subtitle = "Two seaters (sports cars) are an exception because of their light weight",
-    caption = "Data from fueleconomy.gov"
-  )
+    geom_point(aes(color = class)) +
+    geom_smooth(se = FALSE) +
+    labs(
+        x = "Engine displacement (L)",
+        y = "Highway fuel economy (mpg)",
+        color = "Car type",
+        title = "Fuel efficiency generally decreases with engine size",
+        subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+        caption = "Data from fueleconomy.gov"
+    )
 ```
 
 The purpose of a plot title is to summarize the main finding.
@@ -83,19 +83,19 @@ Just switch `""` out for `quote()` and read about the available options in `?plo
 #| out-width: "50%"
 #| fig-width: 3
 #| fig-alt: |
-#|   Scatterplot with math text on the x and y axis labels. X-axis label 
+#|   Scatterplot with math text on the x and y axis labels. X-axis label
 #|   says x_i, y-axis label says sum of x_i  squared, for i from 1 to n.
 df <- tibble(
-  x = 1:10,
-  y = cumsum(x^2)
+    x = 1:10,
+    y = cumsum(x^2)
 )
 
 ggplot(df, aes(x, y)) +
-  geom_point() +
-  labs(
-    x = quote(x[i]),
-    y = quote(sum(x[i] ^ 2, i == 1, n))
-  )
+    geom_point() +
+    labs(
+        x = quote(x[i]),
+        y = quote(sum(x[i]^2, i == 1, n))
+    )
 ```
 
 ### Exercises
@@ -106,18 +106,18 @@ ggplot(df, aes(x, y)) +
     Note that both the colors and shapes of points vary by type of drive train.
 
     ```{r}
-    #| echo: false
-    #| fig-alt: |
-    #|   Scatterplot of highway versus city fuel efficiency. Shapes and 
-    #|   colors of points are determined by type of drive train.
-    ggplot(mpg, aes(x = cty, y = hwy, color = drv, shape = drv)) +
-      geom_point() +
-      labs(
+#| echo: false
+#| fig-alt: |
+#|   Scatterplot of highway versus city fuel efficiency. Shapes and
+#|   colors of points are determined by type of drive train.
+ggplot(mpg, aes(x = cty, y = hwy, color = drv, shape = drv)) +
+    geom_point() +
+    labs(
         x = "City MPG",
         y = "Highway MPG",
         shape = "Type of\ndrive train",
         color = "Type of\ndrive train"
-      )
+    )
     ```
 
 3.  Take an exploratory graphic that you've created in the last month, and add informative titles to make it easier for others to understand.
@@ -135,17 +135,17 @@ In the following plot we pull out the cars with the highest engine size in each 
 
 ```{r}
 label_info <- mpg |>
-  group_by(drv) |>
-  arrange(desc(displ)) |>
-  slice_head(n = 1) |>
-  mutate(
-    drive_type = case_when(
-      drv == "f" ~ "front-wheel drive",
-      drv == "r" ~ "rear-wheel drive",
-      drv == "4" ~ "4-wheel drive"
-    )
-  ) |>
-  select(displ, hwy, drv, drive_type)
+    group_by(drv) |>
+    arrange(desc(displ)) |>
+    slice_head(n = 1) |>
+    mutate(
+        drive_type = case_when(
+            drv == "f" ~ "front-wheel drive",
+            drv == "r" ~ "rear-wheel drive",
+            drv == "4" ~ "4-wheel drive"
+        )
+    ) |>
+    select(displ, hwy, drv, drive_type)
 
 label_info
 ```
@@ -157,18 +157,18 @@ They're larger than the rest of the text on the plot and bolded.
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway mileage versus engine size where points are colored 
-#|   by drive type. Smooth curves for each drive type are overlaid. 
+#|   Scatterplot of highway mileage versus engine size where points are colored
+#|   by drive type. Smooth curves for each drive type are overlaid.
 #|   Text labels identify the curves as front-wheel, rear-wheel, and 4-wheel.
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(se = FALSE) +
-  geom_text(
-    data = label_info, 
-    aes(x = displ, y = hwy, label = drive_type),
-    fontface = "bold", size = 5, hjust = "right", vjust = "bottom"
-  ) +
-  theme(legend.position = "none")
+    geom_point(alpha = 0.3) +
+    geom_smooth(se = FALSE) +
+    geom_text(
+        data = label_info,
+        aes(x = displ, y = hwy, label = drive_type),
+        fontface = "bold", size = 5, hjust = "right", vjust = "bottom"
+    ) +
+    theme(legend.position = "none")
 ```
 
 Note the use of `hjust` (horizontal justification) and `vjust` (vertical justification) to control the alignment of the label.
@@ -179,20 +179,20 @@ This useful package will automatically adjust labels so that they don't overlap:
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway mileage versus engine size where points are colored 
-#|   by drive type. Smooth curves for each drive type are overlaid. 
+#|   Scatterplot of highway mileage versus engine size where points are colored
+#|   by drive type. Smooth curves for each drive type are overlaid.
 #|   Text labels identify the curves as front-wheel, rear-wheel, and 4-wheel.
-#|   The labels are box with white background 
+#|   The labels are box with white background
 #|   and positioned to not overlap.
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(se = FALSE) +
-  geom_label_repel(
-    data = label_info, 
-    aes(x = displ, y = hwy, label = drive_type),
-    fontface = "bold", size = 5, nudge_y = 2
-  ) +
-  theme(legend.position = "none")
+    geom_point(alpha = 0.3) +
+    geom_smooth(se = FALSE) +
+    geom_label_repel(
+        data = label_info,
+        aes(x = displ, y = hwy, label = drive_type),
+        fontface = "bold", size = 5, nudge_y = 2
+    ) +
+    theme(legend.position = "none")
 ```
 
 You can also use the same idea to highlight certain points on a plot with `geom_text_repel()` from the ggrepel package.
@@ -200,21 +200,21 @@ Note another handy technique used here: we added a second layer of large, hollow
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars. Points 
-#|   where highway mileage is above 40 as well as above 20 with engine size 
-#|   above 5 are red, with a hollow red circle, and labelled with model name 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars. Points
+#|   where highway mileage is above 40 as well as above 20 with engine size
+#|   above 5 are red, with a hollow red circle, and labelled with model name
 #|   of the car.
 potential_outliers <- mpg |>
-  filter(hwy > 40 | (hwy > 20 & displ > 5))
-  
+    filter(hwy > 40 | (hwy > 20 & displ > 5))
+
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  geom_text_repel(data = potential_outliers, aes(label = model)) +
-  geom_point(data = potential_outliers, color = "red") +
-  geom_point(
-    data = potential_outliers,
-    color = "red", size = 3, shape = "circle open"
-  )
+    geom_point() +
+    geom_text_repel(data = potential_outliers, aes(label = model)) +
+    geom_point(data = potential_outliers, color = "red") +
+    geom_point(
+        data = potential_outliers,
+        color = "red", size = 3, shape = "circle open"
+    )
 ```
 
 Remember, in addition to `geom_text()` and `geom_label()`, you have many other geoms in ggplot2 available to help annotate your plot.
@@ -239,7 +239,7 @@ The text is a bit long, so we'll use `stringr::str_wrap()` to automatically add 
 
 ```{r}
 trend_text <- "Larger engine sizes tend to have lower fuel economy." |>
-  str_wrap(width = 30)
+    str_wrap(width = 30)
 trend_text
 ```
 
@@ -249,22 +249,22 @@ Note also that the segment is styled as an arrow.
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars. A red 
-#|   arrow pointing down follows the trend of the points and the annotation 
-#|   placed next to the arrow reads "Larger engine sizes tend to have lower 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars. A red
+#|   arrow pointing down follows the trend of the points and the annotation
+#|   placed next to the arrow reads "Larger engine sizes tend to have lower
 #|   fuel economy". The arrow and the annotation text is red.
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  annotate(
-    geom = "label", x = 3.5, y = 38,
-    label = trend_text,
-    hjust = "left", color = "red"
-  ) +
-  annotate(
-    geom = "segment",
-    x = 3, y = 35, xend = 5, yend = 25, color = "red",
-    arrow = arrow(type = "closed")
-  )
+    geom_point() +
+    annotate(
+        geom = "label", x = 3.5, y = 38,
+        label = trend_text,
+        hjust = "left", color = "red"
+    ) +
+    annotate(
+        geom = "segment",
+        x = 3, y = 35, xend = 5, yend = 25, color = "red",
+        arrow = arrow(type = "closed")
+    )
 ```
 
 Annotation is a powerful tool for communicating main takeaways and interesting features of your visualizations.
@@ -302,7 +302,7 @@ For example, when you type:
 #| label: default-scales
 #| fig-show: hide
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class))
+    geom_point(aes(color = class))
 ```
 
 ggplot2 automatically adds default scales behind the scenes:
@@ -310,10 +310,10 @@ ggplot2 automatically adds default scales behind the scenes:
 ```{r}
 #| fig-show: hide
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) +
-  scale_x_continuous() +
-  scale_y_continuous() +
-  scale_color_discrete()
+    geom_point(aes(color = class)) +
+    scale_x_continuous() +
+    scale_y_continuous() +
+    scale_color_discrete()
 ```
 
 Note the naming scheme for scales: `scale_` followed by the name of the aesthetic, then `_`, then the name of the scale.
@@ -343,11 +343,11 @@ The most common use of `breaks` is to override the default choice:
 ```{r}
 #| fig-alt: |
 #|   Scatterplot of highway fuel efficiency versus engine size of cars,
-#|   colored by drive. The y-axis has breaks starting at 15 and ending at 40, 
+#|   colored by drive. The y-axis has breaks starting at 15 and ending at 40,
 #|   increasing by 5.
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-  geom_point() +
-  scale_y_continuous(breaks = seq(15, 40, by = 5)) 
+    geom_point() +
+    scale_y_continuous(breaks = seq(15, 40, by = 5))
 ```
 
 You can use `labels` in the same way (a character vector the same length as `breaks`), but you can also set it to `NULL` to suppress the labels altogether.
@@ -357,14 +357,14 @@ For discrete scales for categorical variables, `labels` can be a named list of t
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, colored 
-#|   by drive. The x and y-axes do not have any labels at the axis ticks. 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars, colored
+#|   by drive. The x and y-axes do not have any labels at the axis ticks.
 #|   The legend has custom labels: 4-wheel, front, rear.
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-  geom_point() +
-  scale_x_continuous(labels = NULL) +
-  scale_y_continuous(labels = NULL) +
-  scale_color_discrete(labels = c("4" = "4-wheel", "f" = "front", "r" = "rear"))
+    geom_point() +
+    scale_x_continuous(labels = NULL) +
+    scale_y_continuous(labels = NULL) +
+    scale_color_discrete(labels = c("4" = "4-wheel", "f" = "front", "r" = "rear"))
 ```
 
 The `labels` argument coupled with labelling functions from the scales package is also useful for formatting numbers as currency, percent, etc.
@@ -376,35 +376,35 @@ Note that `breaks` is in the original scale of the data.
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-alt: |
-#|   Two side-by-side box plots of price versus cut of diamonds. The outliers 
+#|   Two side-by-side box plots of price versus cut of diamonds. The outliers
 #|   are transparent. On both plots the x-axis labels are formatted as dollars.
-#|   The x-axis labels on the left plot start at $0 and go to $15,000, increasing 
-#|   by $5,000. The x-axis labels on the right plot start at $1K and go to 
-#|   $19K, increasing by $6K. 
+#|   The x-axis labels on the left plot start at $0 and go to $15,000, increasing
+#|   by $5,000. The x-axis labels on the right plot start at $1K and go to
+#|   $19K, increasing by $6K.
 # Left
 ggplot(diamonds, aes(x = price, y = cut)) +
-  geom_boxplot(alpha = 0.05) +
-  scale_x_continuous(labels = label_dollar())
+    geom_boxplot(alpha = 0.05) +
+    scale_x_continuous(labels = label_dollar())
 
 # Right
 ggplot(diamonds, aes(x = price, y = cut)) +
-  geom_boxplot(alpha = 0.05) +
-  scale_x_continuous(
-    labels = label_dollar(scale = 1/1000, suffix = "K"), 
-    breaks = seq(1000, 19000, by = 6000)
-  )
+    geom_boxplot(alpha = 0.05) +
+    scale_x_continuous(
+        labels = label_dollar(scale = 1 / 1000, suffix = "K"),
+        breaks = seq(1000, 19000, by = 6000)
+    )
 ```
 
 Another handy label function is `label_percent()`:
 
 ```{r}
 #| fig-alt: |
-#|   Segmented bar plots of cut, filled with levels of clarity. The y-axis 
-#|   labels start at 0% and go to 100%, increasing by 25%. The y-axis label 
+#|   Segmented bar plots of cut, filled with levels of clarity. The y-axis
+#|   labels start at 0% and go to 100%, increasing by 25%. The y-axis label
 #|   name is "Percentage".
 ggplot(diamonds, aes(x = cut, fill = clarity)) +
-  geom_bar(position = "fill") +
-  scale_y_continuous(name = "Percentage", labels = label_percent())
+    geom_bar(position = "fill") +
+    scale_y_continuous(name = "Percentage", labels = label_percent())
 ```
 
 Another use of `breaks` is when you have relatively few data points and want to highlight exactly where the observations occur.
@@ -412,16 +412,16 @@ For example, take this plot that shows when each US president started and ended 
 
 ```{r}
 #| fig-alt: |
-#|   Line plot of id number of presidents versus the year they started their 
-#|   presidency. Start year is marked with a point and a segment that starts 
-#|   there and ends at the end of the presidency. The x-axis labels are 
+#|   Line plot of id number of presidents versus the year they started their
+#|   presidency. Start year is marked with a point and a segment that starts
+#|   there and ends at the end of the presidency. The x-axis labels are
 #|   formatted as two digit years starting with an apostrophe, e.g., '53.
 presidential |>
-  mutate(id = 33 + row_number()) |>
-  ggplot(aes(x = start, y = id)) +
-  geom_point() +
-  geom_segment(aes(xend = end, yend = id)) +
-  scale_x_date(name = NULL, breaks = presidential$start, date_labels = "'%y")
+    mutate(id = 33 + row_number()) |>
+    ggplot(aes(x = start, y = id)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = id)) +
+    scale_x_date(name = NULL, breaks = presidential$start, date_labels = "'%y")
 ```
 
 Note that for the `breaks` argument we pulled out the `start` variable as a vector with `presidential$start` because we can't do an aesthetic mapping for this argument.
@@ -444,20 +444,20 @@ The theme setting `legend.position` controls where the legend is drawn:
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-alt: |
-#|   Four scatterplots of highway fuel efficiency versus engine size of cars 
-#|   where points are colored based on class of car. Clockwise, the legend 
+#|   Four scatterplots of highway fuel efficiency versus engine size of cars
+#|   where points are colored based on class of car. Clockwise, the legend
 #|   is placed on the right, left, bottom, and top of the plot.
 base <- ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class))
+    geom_point(aes(color = class))
 
 base + theme(legend.position = "right") # the default
 base + theme(legend.position = "left")
-base + 
-  theme(legend.position = "top") +
-  guides(color = guide_legend(nrow = 3))
-base + 
-  theme(legend.position = "bottom") +
-  guides(color = guide_legend(nrow = 3))
+base +
+    theme(legend.position = "top") +
+    guides(color = guide_legend(nrow = 3))
+base +
+    theme(legend.position = "bottom") +
+    guides(color = guide_legend(nrow = 3))
 ```
 
 If your plot is short and wide, place the legend at the top or bottom, and if it's tall and narrow, place the legend at the left or right.
@@ -469,16 +469,16 @@ This is particularly useful if you have used a low `alpha` to display many point
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars 
-#|   where points are colored based on class of car. Overlaid on the plot is a 
-#|   smooth curve. The legend is in the bottom and classes are listed 
-#|   horizontally in two rows. The points in the legend are larger than the points 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars
+#|   where points are colored based on class of car. Overlaid on the plot is a
+#|   smooth curve. The legend is in the bottom and classes are listed
+#|   horizontally in two rows. The points in the legend are larger than the points
 #|   in the plot.
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) +
-  geom_smooth(se = FALSE) +
-  theme(legend.position = "bottom") +
-  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))
+    geom_point(aes(color = class)) +
+    geom_smooth(se = FALSE) +
+    theme(legend.position = "bottom") +
+    guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))
 ```
 
 Note that the name of the argument in `guides()` matches the name of the aesthetic, just like in `labs()`.
@@ -497,17 +497,17 @@ For example, it's easier to see the precise relationship between `carat` and `pr
 #| layout-ncol: 2
 #| fig-width: 3
 #| fig-alt: |
-#|   Two plots of price versus carat of diamonds. Data binned and the color of 
-#|   the rectangles representing each bin based on the number of points that 
-#|   fall into that bin. In the plot on the right, price and carat values 
+#|   Two plots of price versus carat of diamonds. Data binned and the color of
+#|   the rectangles representing each bin based on the number of points that
+#|   fall into that bin. In the plot on the right, price and carat values
 #|   are logged and the axis labels shows the logged values.
 # Left
 ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_bin2d()
+    geom_bin2d()
 
 # Right
 ggplot(diamonds, aes(x = log10(carat), y = log10(price))) +
-  geom_bin2d()
+    geom_bin2d()
 ```
 
 However, the disadvantage of this transformation is that the axes are now labelled with the transformed values, making it hard to interpret the plot.
@@ -516,13 +516,13 @@ This is visually identical, except the axes are labelled on the original data sc
 
 ```{r}
 #| fig-alt: |
-#|   Plot of price versus carat of diamonds. Data binned and the color of 
-#|   the rectangles representing each bin based on the number of points that 
+#|   Plot of price versus carat of diamonds. Data binned and the color of
+#|   the rectangles representing each bin based on the number of points that
 #|   fall into that bin. The axis labels are on the original data scale.
 ggplot(diamonds, aes(x = carat, y = price)) +
-  geom_bin2d() + 
-  scale_x_log10() + 
-  scale_y_log10()
+    geom_bin2d() +
+    scale_x_log10() +
+    scale_y_log10()
 ```
 
 Another scale that is frequently customized is color.
@@ -537,16 +537,16 @@ The two plots below look similar, but there is enough difference in the shades o
 #| layout-ncol: 2
 #| fig-width: 3
 #| fig-alt: |
-#|   Two scatterplots of highway mileage versus engine size where points are 
-#|   colored by drive type. The plot on the left uses the default 
-#|   ggplot2 color palette and the plot on the right uses a different color 
+#|   Two scatterplots of highway mileage versus engine size where points are
+#|   colored by drive type. The plot on the left uses the default
+#|   ggplot2 color palette and the plot on the right uses a different color
 #|   palette.
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv))
+    geom_point(aes(color = drv))
 
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv)) +
-  scale_color_brewer(palette = "Set1")
+    geom_point(aes(color = drv)) +
+    scale_color_brewer(palette = "Set1")
 ```
 
 Don't forget simpler techniques for improving accessibility.
@@ -555,12 +555,12 @@ This will also help ensure your plot is interpretable in black and white.
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway mileage versus engine size where both color 
-#|   and shape of points are based on drive type. The color palette is not 
+#|   Scatterplot of highway mileage versus engine size where both color
+#|   and shape of points are based on drive type. The color palette is not
 #|   the default ggplot2 palette.
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv, shape = drv)) +
-  scale_color_brewer(palette = "Set1")
+    geom_point(aes(color = drv, shape = drv)) +
+    scale_color_brewer(palette = "Set1")
 ```
 
 The ColorBrewer scales are documented online at <https://colorbrewer2.org/> and made available in R via the **RColorBrewer** package, by Erich Neuwirth.
@@ -574,9 +574,9 @@ This often arises if you've used `cut()` to make a continuous variable into a ca
 #| fig-cap: All colorBrewer scales.
 #| fig-asp: 2.5
 #| fig-alt: |
-#|   All colorBrewer scales. One group goes from light to dark colors. 
-#|   Another group is a set of non ordinal colors. And the last group has 
-#|   diverging scales (from dark to light to dark again). Within each set 
+#|   All colorBrewer scales. One group goes from light to dark colors.
+#|   Another group is a set of non ordinal colors. And the last group has
+#|   diverging scales (from dark to light to dark again). Within each set
 #|   there are a number of palettes.
 par(mar = c(0, 3, 0, 0))
 RColorBrewer::display.brewer.all()
@@ -588,16 +588,16 @@ One approach for assigning these colors is using hex color codes:
 
 ```{r}
 #| fig-alt: |
-#|   Line plot of id number of presidents versus the year they started their 
-#|   presidency. Start year is marked with a point and a segment that starts 
-#|   there and ends at the end of the presidency. Democratic presidents are 
+#|   Line plot of id number of presidents versus the year they started their
+#|   presidency. Start year is marked with a point and a segment that starts
+#|   there and ends at the end of the presidency. Democratic presidents are
 #|   represented in blue and Republicans in red.
 presidential |>
-  mutate(id = 33 + row_number()) |>
-  ggplot(aes(x = start, y = id, color = party)) +
-  geom_point() +
-  geom_segment(aes(xend = end, yend = id)) +
-  scale_color_manual(values = c(Republican = "#E81B23", Democratic = "#00AEF3"))
+    mutate(id = 33 + row_number()) |>
+    ggplot(aes(x = start, y = id, color = party)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = id)) +
+    scale_color_manual(values = c(Republican = "#E81B23", Democratic = "#00AEF3"))
 ```
 
 For continuous color, you can use the built-in `scale_color_gradient()` or `scale_fill_gradient()`.
@@ -615,31 +615,31 @@ These scales are available as continuous (`c`), discrete (`d`), and binned (`b`)
 #| fig-width: 3
 #| fig-asp: 0.75
 #| fig-alt: |
-#|   Three hex plots where the color of the hexes show the number of observations 
-#|   that fall into that hex bin. The first plot uses the default, continuous 
-#|   ggplot2 scale. The second plot uses the viridis, continuous scale, and the 
+#|   Three hex plots where the color of the hexes show the number of observations
+#|   that fall into that hex bin. The first plot uses the default, continuous
+#|   ggplot2 scale. The second plot uses the viridis, continuous scale, and the
 #|   third plot uses the viridis, binned scale.
 df <- tibble(
-  x = rnorm(10000),
-  y = rnorm(10000)
+    x = rnorm(10000),
+    y = rnorm(10000)
 )
 
 ggplot(df, aes(x, y)) +
-  geom_hex() +
-  coord_fixed() +
-  labs(title = "Default, continuous", x = NULL, y = NULL)
+    geom_hex() +
+    coord_fixed() +
+    labs(title = "Default, continuous", x = NULL, y = NULL)
 
 ggplot(df, aes(x, y)) +
-  geom_hex() +
-  coord_fixed() +
-  scale_fill_viridis_c() +
-  labs(title = "Viridis, continuous", x = NULL, y = NULL)
+    geom_hex() +
+    coord_fixed() +
+    scale_fill_viridis_c() +
+    labs(title = "Viridis, continuous", x = NULL, y = NULL)
 
 ggplot(df, aes(x, y)) +
-  geom_hex() +
-  coord_fixed() +
-  scale_fill_viridis_b() +
-  labs(title = "Viridis, binned", x = NULL, y = NULL)
+    geom_hex() +
+    coord_fixed() +
+    scale_fill_viridis_b() +
+    labs(title = "Viridis, binned", x = NULL, y = NULL)
 ```
 
 Note that all color scales come in two varieties: `scale_color_*()` and `scale_fill_*()` for the `color` and `fill` aesthetics respectively (the color scales are available in both UK and US spellings).
@@ -662,24 +662,24 @@ Subsetting the data has affected the x and y scales as well as the smooth curve.
 #| fig-width: 4
 #| message: false
 #| fig-alt: |
-#|   On the left, scatterplot of highway mileage vs. displacement 
-#|   where points are colored by drive type. 
-#|   The smooth curve overlaid shows a decreasing, and then 
-#|   increasing trend, like a hockey stick. On the right, same variables 
-#|   are plotted with displacement ranging only from 5 to 6 and highway 
-#|   mileage ranging only from 10 to 25. The smooth curve overlaid shows a 
-#|   trend that's slightly increasing first and then decreasing. 
+#|   On the left, scatterplot of highway mileage vs. displacement
+#|   where points are colored by drive type.
+#|   The smooth curve overlaid shows a decreasing, and then
+#|   increasing trend, like a hockey stick. On the right, same variables
+#|   are plotted with displacement ranging only from 5 to 6 and highway
+#|   mileage ranging only from 10 to 25. The smooth curve overlaid shows a
+#|   trend that's slightly increasing first and then decreasing.
 # Left
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv)) +
-  geom_smooth()
+    geom_point(aes(color = drv)) +
+    geom_smooth()
 
 # Right
 mpg |>
-  filter(displ >= 5 & displ <= 6 & hwy >= 10 & hwy <= 25) |>
-  ggplot(aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv)) +
-  geom_smooth()
+    filter(displ >= 5 & displ <= 6 & hwy >= 10 & hwy <= 25) |>
+    ggplot(aes(x = displ, y = hwy)) +
+    geom_point(aes(color = drv)) +
+    geom_smooth()
 ```
 
 Let's compare these to the two plots below where the plot on the left sets the `limits` on individual scales and the plot on the right sets them in `coord_cartesian()`.
@@ -692,24 +692,24 @@ Therefore, to zoom in on a region of the plot, it's generally best to use `coord
 #| message: false
 #| warning: false
 #| fig-alt: |
-#|   On the left, scatterplot of highway mileage vs. displacement, with 
-#|   displacement ranging from 5 to 6 and highway mileage ranging from 
-#|   10 to 25. The smooth curve overlaid shows a trend that's slightly 
-#|   increasing first and then decreasing. On the right, same variables 
+#|   On the left, scatterplot of highway mileage vs. displacement, with
+#|   displacement ranging from 5 to 6 and highway mileage ranging from
+#|   10 to 25. The smooth curve overlaid shows a trend that's slightly
+#|   increasing first and then decreasing. On the right, same variables
 #|   are plotted with the same limits, however the smooth curve overlaid
 #|   shows a relatively flat trend with a slight increase at the end.
 # Left
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv)) +
-  geom_smooth() +
-  scale_x_continuous(limits = c(5, 6)) +
-  scale_y_continuous(limits = c(10, 25))
+    geom_point(aes(color = drv)) +
+    geom_smooth() +
+    scale_x_continuous(limits = c(5, 6)) +
+    scale_y_continuous(limits = c(10, 25))
 
 # Right
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = drv)) +
-  geom_smooth() +
-  coord_cartesian(xlim = c(5, 6), ylim = c(10, 25))
+    geom_point(aes(color = drv)) +
+    geom_smooth() +
+    coord_cartesian(xlim = c(5, 6), ylim = c(10, 25))
 ```
 
 On the other hand, setting the `limits` on individual scales is generally more useful if you want to *expand* the limits, e.g., to match scales across different plots.
@@ -721,22 +721,22 @@ For example, if we extract two classes of cars and plot them separately, it's di
 #| fig-alt: |
 #|   On the left, a scatterplot of highway mileage vs. displacement of SUVs.
 #|   On the right, a scatterplot of the same variables for compact cars.
-#|   Points are colored by drive type for both plots. Among SUVs more of 
-#|   the cars are 4-wheel drive and the others are rear-wheel drive, while 
-#|   among compact cars more of the cars are front-wheel drive and the others 
-#|   are 4-wheel drive. SUV plot shows a clear negative relationship 
-#|   between higway mileage and displacement while in the compact cars plot 
+#|   Points are colored by drive type for both plots. Among SUVs more of
+#|   the cars are 4-wheel drive and the others are rear-wheel drive, while
+#|   among compact cars more of the cars are front-wheel drive and the others
+#|   are 4-wheel drive. SUV plot shows a clear negative relationship
+#|   between higway mileage and displacement while in the compact cars plot
 #|   the relationship is much flatter.
 suv <- mpg |> filter(class == "suv")
 compact <- mpg |> filter(class == "compact")
 
 # Left
 ggplot(suv, aes(x = displ, y = hwy, color = drv)) +
-  geom_point()
+    geom_point()
 
 # Right
 ggplot(compact, aes(x = displ, y = hwy, color = drv)) +
-  geom_point()
+    geom_point()
 ```
 
 One way to overcome this problem is to share scales across multiple plots, training the scales with the `limits` of the full data.
@@ -747,12 +747,12 @@ One way to overcome this problem is to share scales across multiple plots, train
 #| fig-alt: |
 #|   On the left, a scatterplot of highway mileage vs. displacement of SUVs.
 #|   On the right, a scatterplot of the same variables for compact cars.
-#|   Points are colored by drive type for both plots. Both plots are plotted 
-#|   on the same scale for highway mileage, displacement, and drive type, 
-#|   resulting in the legend showing all three types (front, rear, and 4-wheel 
-#|   drive) for both plots even though there are no front-wheel drive SUVs and 
-#|   no rear-wheel drive compact cars. Since the x and y scales are the same, 
-#|   and go well beyond minimum or maximum highway mileage and displacement, 
+#|   Points are colored by drive type for both plots. Both plots are plotted
+#|   on the same scale for highway mileage, displacement, and drive type,
+#|   resulting in the legend showing all three types (front, rear, and 4-wheel
+#|   drive) for both plots even though there are no front-wheel drive SUVs and
+#|   no rear-wheel drive compact cars. Since the x and y scales are the same,
+#|   and go well beyond minimum or maximum highway mileage and displacement,
 #|   the points do not take up the entire plotting area.
 x_scale <- scale_x_continuous(limits = range(mpg$displ))
 y_scale <- scale_y_continuous(limits = range(mpg$hwy))
@@ -760,17 +760,17 @@ col_scale <- scale_color_discrete(limits = unique(mpg$drv))
 
 # Left
 ggplot(suv, aes(x = displ, y = hwy, color = drv)) +
-  geom_point() +
-  x_scale +
-  y_scale +
-  col_scale
+    geom_point() +
+    x_scale +
+    y_scale +
+    col_scale
 
 # Right
 ggplot(compact, aes(x = displ, y = hwy, color = drv)) +
-  geom_point() +
-  x_scale +
-  y_scale +
-  col_scale
+    geom_point() +
+    x_scale +
+    y_scale +
+    col_scale
 ```
 
 In this particular case, you could have simply used faceting, but this technique is useful more generally, if for instance, you want to spread plots over multiple pages of a report.
@@ -780,16 +780,16 @@ In this particular case, you could have simply used faceting, but this technique
 1.  Why doesn't the following code override the default scale?
 
     ```{r}
-    #| fig-show: hide
-    df <- tibble(
-      x = rnorm(10000),
-      y = rnorm(10000)
-    )
+#| fig-show: hide
+df <- tibble(
+    x = rnorm(10000),
+    y = rnorm(10000)
+)
 
-    ggplot(df, aes(x, y)) +
-      geom_hex() +
-      scale_color_gradient(low = "white", high = "red") +
-      coord_fixed()
+ggplot(df, aes(x, y)) +
+    geom_hex() +
+    scale_color_gradient(low = "white", high = "red") +
+    coord_fixed()
     ```
 
 2.  What is the first argument to every scale?
@@ -807,9 +807,9 @@ In this particular case, you could have simply used faceting, but this technique
     Then, modify the code using `override.aes` to make the legend easier to see.
 
     ```{r}
-    #| fig-show: hide
-    ggplot(diamonds, aes(x = carat, y = price)) +
-      geom_point(aes(color = cut), alpha = 1/20)
+#| fig-show: hide
+ggplot(diamonds, aes(x = carat, y = price)) +
+    geom_point(aes(color = cut), alpha = 1 / 20)
     ```
 
 ## Themes {#sec-themes}
@@ -819,12 +819,12 @@ Finally, you can customize the non-data elements of your plot with a theme:
 ```{r}
 #| message: false
 #| fig-alt: |
-#|   Scatterplot of highway mileage vs. displacement of cars, colored by class 
+#|   Scatterplot of highway mileage vs. displacement of cars, colored by class
 #|   of car. The plot background is white, with gray grid lines.
 ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) +
-  geom_smooth(se = FALSE) +
-  theme_bw()
+    geom_point(aes(color = class)) +
+    geom_smooth(se = FALSE) +
+    theme_bw()
 ```
 
 ggplot2 includes the eight themes shown in @fig-themes, with `theme_gray()` as the default.[^communication-2]
@@ -842,13 +842,13 @@ You can also create your own themes, if you are trying to match a particular cor
 #| echo: false
 #| fig-cap: The eight themes built-in to ggplot2.
 #| fig-alt: |
-#|   Eight barplots created with ggplot2, each 
-#|   with one of the eight built-in themes: 
+#|   Eight barplots created with ggplot2, each
+#|   with one of the eight built-in themes:
 #|   theme_bw() - White background with grid lines,
 #|   theme_light() - Light axes and grid lines,
 #|   theme_classic() - Classic theme, axes but no grid
-#|   lines, theme_linedraw() - Only black lines, 
-#|   theme_dark() - Dark background for contrast, 
+#|   lines, theme_linedraw() - Only black lines,
+#|   theme_dark() - Dark background for contrast,
 #|   theme_minimal() - Minimal theme, no background,
 #|   theme_gray() - Gray background (default theme),
 #|   theme_void() - Empty theme, only geoms are visible.
@@ -867,26 +867,26 @@ A few other helpful `theme()` components are used to change the placement for fo
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, colored 
-#|   by drive. The plot is titled 'Larger engine sizes tend to have lower fuel 
+#|   Scatterplot of highway fuel efficiency versus engine size of cars, colored
+#|   by drive. The plot is titled 'Larger engine sizes tend to have lower fuel
 #|   economy' with the caption pointing to the source of the data, fueleconomy.gov.
 #|   The caption and title are left justified, the legend is inside of the plot
 #|   with a black border.
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-  geom_point() +
-  labs(
-    title = "Larger engine sizes tend to have lower fuel economy",
-    caption = "Source: https://fueleconomy.gov."
-  ) +
-  theme(
-    legend.position = c(0.6, 0.7),
-    legend.direction = "horizontal",
-    legend.box.background = element_rect(color = "black"),
-    plot.title = element_text(face = "bold"),
-    plot.title.position = "plot",
-    plot.caption.position = "plot",
-    plot.caption = element_text(hjust = 0)
-  )
+    geom_point() +
+    labs(
+        title = "Larger engine sizes tend to have lower fuel economy",
+        caption = "Source: https://fueleconomy.gov."
+    ) +
+    theme(
+        legend.position = c(0.6, 0.7),
+        legend.direction = "horizontal",
+        legend.box.background = element_rect(color = "black"),
+        plot.title = element_text(face = "bold"),
+        plot.title.position = "plot",
+        plot.caption.position = "plot",
+        plot.caption = element_text(hjust = 0)
+    )
 ```
 
 For an overview of all `theme()` components, see help with `?theme`.
@@ -912,15 +912,15 @@ Then, you place them next to each other with `+`.
 #| fig-width: 6
 #| fig-asp: 0.5
 #| fig-alt: |
-#|   Two plots (a scatterplot of highway mileage versus engine size and a 
-#|   side-by-side boxplots of highway mileage versus drive train) placed next 
+#|   Two plots (a scatterplot of highway mileage versus engine size and a
+#|   side-by-side boxplots of highway mileage versus drive train) placed next
 #|   to each other.
-p1 <- ggplot(mpg, aes(x = displ, y = hwy)) + 
-  geom_point() + 
-  labs(title = "Plot 1")
-p2 <- ggplot(mpg, aes(x = drv, y = hwy)) + 
-  geom_boxplot() + 
-  labs(title = "Plot 2")
+p1 <- ggplot(mpg, aes(x = displ, y = hwy)) +
+    geom_point() +
+    labs(title = "Plot 1")
+p2 <- ggplot(mpg, aes(x = drv, y = hwy)) +
+    geom_boxplot() +
+    labs(title = "Plot 2")
 p1 + p2
 ```
 
@@ -934,14 +934,14 @@ In the following, `|` places the `p1` and `p3` next to each other and `/` moves 
 #| fig-width: 6
 #| fig-asp: 0.8
 #| fig-alt: |
-#|   Three plots laid out such that first and third plot are next to each other 
-#|   and the second plot stretched beneath them. The first plot is a 
-#|   scatterplot of highway mileage versus engine size, the third plot is a 
-#|   scatterplot of highway mileage versus city mileage, and the second plot is 
-#|   side-by-side boxplots of highway mileage versus drive train). 
-p3 <- ggplot(mpg, aes(x = cty, y = hwy)) + 
-  geom_point() + 
-  labs(title = "Plot 3")
+#|   Three plots laid out such that first and third plot are next to each other
+#|   and the second plot stretched beneath them. The first plot is a
+#|   scatterplot of highway mileage versus engine size, the third plot is a
+#|   scatterplot of highway mileage versus city mileage, and the second plot is
+#|   side-by-side boxplots of highway mileage versus drive train).
+p3 <- ggplot(mpg, aes(x = cty, y = hwy)) +
+    geom_point() +
+    labs(title = "Plot 3")
 (p1 | p3) / p2
 ```
 
@@ -958,45 +958,45 @@ Patchwork divides up the area you have allotted for your plot using this scale a
 #| fig-width: 8
 #| fig-asp: 1
 #| fig-alt: |
-#|   Five plots laid out such that first two plots are next to each other. Plots 
-#|   three and four are underneath them. And the fifth plot stretches under them. 
-#|   The patchworked plot is titled "City and highway mileage for cars with 
-#|   different drive trains" and captioned "Source: https://fueleconomy.gov". 
-#|   The first two plots are side-by-side box plots. Plots 3 and 4 are density 
-#|   plots. And the fifth plot is a faceted scatterplot. Each of these plots show 
-#|   geoms colored by drive train, but the patchworked plot has only one legend 
+#|   Five plots laid out such that first two plots are next to each other. Plots
+#|   three and four are underneath them. And the fifth plot stretches under them.
+#|   The patchworked plot is titled "City and highway mileage for cars with
+#|   different drive trains" and captioned "Source: https://fueleconomy.gov".
+#|   The first two plots are side-by-side box plots. Plots 3 and 4 are density
+#|   plots. And the fifth plot is a faceted scatterplot. Each of these plots show
+#|   geoms colored by drive train, but the patchworked plot has only one legend
 #|   that applies to all of them, above the plots and beneath the title.
-p1 <- ggplot(mpg, aes(x = drv, y = cty, color = drv)) + 
-  geom_boxplot(show.legend = FALSE) + 
-  labs(title = "Plot 1")
+p1 <- ggplot(mpg, aes(x = drv, y = cty, color = drv)) +
+    geom_boxplot(show.legend = FALSE) +
+    labs(title = "Plot 1")
 
-p2 <- ggplot(mpg, aes(x = drv, y = hwy, color = drv)) + 
-  geom_boxplot(show.legend = FALSE) + 
-  labs(title = "Plot 2")
+p2 <- ggplot(mpg, aes(x = drv, y = hwy, color = drv)) +
+    geom_boxplot(show.legend = FALSE) +
+    labs(title = "Plot 2")
 
-p3 <- ggplot(mpg, aes(x = cty, color = drv, fill = drv)) + 
-  geom_density(alpha = 0.5) + 
-  labs(title = "Plot 3")
+p3 <- ggplot(mpg, aes(x = cty, color = drv, fill = drv)) +
+    geom_density(alpha = 0.5) +
+    labs(title = "Plot 3")
 
-p4 <- ggplot(mpg, aes(x = hwy, color = drv, fill = drv)) + 
-  geom_density(alpha = 0.5) + 
-  labs(title = "Plot 4")
+p4 <- ggplot(mpg, aes(x = hwy, color = drv, fill = drv)) +
+    geom_density(alpha = 0.5) +
+    labs(title = "Plot 4")
 
-p5 <- ggplot(mpg, aes(x = cty, y = hwy, color = drv)) + 
-  geom_point(show.legend = FALSE) + 
-  facet_wrap(~drv) +
-  labs(title = "Plot 5")
+p5 <- ggplot(mpg, aes(x = cty, y = hwy, color = drv)) +
+    geom_point(show.legend = FALSE) +
+    facet_wrap(~drv) +
+    labs(title = "Plot 5")
 
 (guide_area() / (p1 + p2) / (p3 + p4) / p5) +
-  plot_annotation(
-    title = "City and highway mileage for cars with different drive trains",
-    caption = "Source: https://fueleconomy.gov."
-  ) +
-  plot_layout(
-    guides = "collect",
-    heights = c(1, 3, 2, 4)
+    plot_annotation(
+        title = "City and highway mileage for cars with different drive trains",
+        caption = "Source: https://fueleconomy.gov."
+    ) +
+    plot_layout(
+        guides = "collect",
+        heights = c(1, 3, 2, 4)
     ) &
-  theme(legend.position = "top")
+    theme(legend.position = "top")
 ```
 
 If you'd like to learn more about combining and layout out multiple plots with patchwork, we recommend looking through the guides on the package website: <https://patchwork.data-imaginist.com>.
@@ -1007,39 +1007,39 @@ If you'd like to learn more about combining and layout out multiple plots with p
     Can you explain why this happens?
 
     ```{r}
-    #| fig-show: hide
-    p1 <- ggplot(mpg, aes(x = displ, y = hwy)) + 
-      geom_point() + 
-      labs(title = "Plot 1")
-    p2 <- ggplot(mpg, aes(x = drv, y = hwy)) + 
-      geom_boxplot() + 
-      labs(title = "Plot 2")
-    p3 <- ggplot(mpg, aes(x = cty, y = hwy)) + 
-      geom_point() + 
-      labs(title = "Plot 3")
+#| fig-show: hide
+p1 <- ggplot(mpg, aes(x = displ, y = hwy)) +
+    geom_point() +
+    labs(title = "Plot 1")
+p2 <- ggplot(mpg, aes(x = drv, y = hwy)) +
+    geom_boxplot() +
+    labs(title = "Plot 2")
+p3 <- ggplot(mpg, aes(x = cty, y = hwy)) +
+    geom_point() +
+    labs(title = "Plot 3")
 
-    (p1 | p2) / p3
+(p1 | p2) / p3
     ```
 
 2.  Using the three plots from the previous exercise, recreate the following patchwork.
 
     ```{r}
-    #| fig-width: 7
-    #| fig-asp: 0.8
-    #| echo: false
-    #| fig-alt: |
-    #|   Three plots: Plot 1 is a scatterplot of highway mileage versus engine size. 
-    #|   Plot 2 is side-by-side box plots of highway mileage versus drive train. 
-    #|   Plot 3 is side-by-side box plots of city mileage versus drive train. 
-    #|   Plots 1 is on the first row. Plots 2 and 3 are on the next row, each span 
-    #|   half the width of Plot 1. Plot 1 is labelled "Fig. A", Plot 2 is labelled 
-    #|   "Fig. B", and Plot 3 is labelled "Fig. C".
-    p1 / (p2 + p3) +
-      plot_annotation(
-        tag_levels = c("A"), 
+#| fig-width: 7
+#| fig-asp: 0.8
+#| echo: false
+#| fig-alt: |
+#|   Three plots: Plot 1 is a scatterplot of highway mileage versus engine size.
+#|   Plot 2 is side-by-side box plots of highway mileage versus drive train.
+#|   Plot 3 is side-by-side box plots of city mileage versus drive train.
+#|   Plots 1 is on the first row. Plots 2 and 3 are on the next row, each span
+#|   half the width of Plot 1. Plot 1 is labelled "Fig. A", Plot 2 is labelled
+#|   "Fig. B", and Plot 3 is labelled "Fig. C".
+p1 / (p2 + p3) +
+    plot_annotation(
+        tag_levels = c("A"),
         tag_prefix = "Fig. ",
         tag_suffix = ":"
-      )
+    )
     ```
 
 ## Summary

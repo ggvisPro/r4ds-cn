@@ -22,15 +22,15 @@ There are two ways to set the output of a document:
 2.  Transiently, by calling `quarto::quarto_render()` by hand:
 
     ```{r}
-    #| eval: false
-    quarto::quarto_render("diamond-sizes.qmd", output_format = "docx")
+#| eval: false
+quarto::quarto_render("diamond-sizes.qmd", output_format = "docx")
     ```
 
     This is useful if you want to programmatically produce multiple types of output since the `output_format` argument can also take a list of values.
 
     ```{r}
-    #| eval: false
-    quarto::quarto_render("diamond-sizes.qmd", output_format = c("docx", "pdf"))
+#| eval: false
+quarto::quarto_render("diamond-sizes.qmd", output_format = c("docx", "pdf"))
     ```
 
 ## Output options
@@ -136,9 +136,9 @@ You obviously can't do that in a book, so Quarto automatically inserts a static 
 #| fig-alt: Leaflet map of Maungawhau / Mount Eden.
 library(leaflet)
 leaflet() |>
-  setView(174.764, -36.877, zoom = 16) |> 
-  addTiles() |>
-  addMarkers(174.764, -36.877, popup = "Maungawhau") 
+    setView(174.764, -36.877, zoom = 16) |>
+    addTiles() |>
+    addMarkers(174.764, -36.877, popup = "Maungawhau")
 ```
 
 The great thing about htmlwidgets is that you don't need to know anything about HTML or JavaScript to use them.
@@ -185,7 +185,7 @@ numericInput("age", "How old are you?", NA, min = 0, max = 150)
 #| echo: false
 #| out-width: null
 #| fig-alt: |
-#|   Two input boxes on top of each other. Top one says, "What is your 
+#|   Two input boxes on top of each other. Top one says, "What is your
 #|   name?", the bottom, "How old are you?".
 knitr::include_graphics("quarto/quarto-shiny.png")
 ```

@@ -21,7 +21,7 @@ Open the palette by pressing Cmd/Ctrl + Shift + P, then type "styler" to see all
 #| label: fig-styler
 #| echo: false
 #| out-width: null
-#| fig-cap: | 
+#| fig-cap: |
 #|   RStudio's command palette makes it easy to access every RStudio command
 #|   using only the keyboard.
 #| fig-alt: |
@@ -71,7 +71,7 @@ Put spaces on either side of mathematical operators apart from `^` (i.e. `+`, `-
 z <- (a + b)^2 / d
 
 # Avoid
-z<-( a + b ) ^ 2/d
+z <- (a + b)^2 / d
 ```
 
 Don't put spaces inside or outside parentheses for regular function calls.
@@ -83,7 +83,7 @@ Always put a space after a comma, just like in standard English.
 mean(x, na.rm = TRUE)
 
 # Avoid
-mean (x ,na.rm=TRUE)
+mean(x, na.rm = TRUE)
 ```
 
 It's OK to add extra spaces if it improves alignment.
@@ -94,12 +94,12 @@ This makes it easier to skim the code.
 
 ```{r}
 #| eval: false
-flights |> 
-  mutate(
-    speed      = distance / air_time,
-    dep_hour   = dep_time %/% 100,
-    dep_minute = dep_time %%  100
-  )
+flights |>
+    mutate(
+        speed      = distance / air_time,
+        dep_hour   = dep_time %/% 100,
+        dep_minute = dep_time %% 100
+    )
 ```
 
 ## Pipes {#sec-pipes}
@@ -109,13 +109,15 @@ This makes it easier to add new steps, rearrange existing steps, modify elements
 
 ```{r}
 #| eval: false
-# Strive for 
-flights |>  
-  filter(!is.na(arr_delay), !is.na(tailnum)) |> 
-  count(dest)
+# Strive for
+flights |>
+    filter(!is.na(arr_delay), !is.na(tailnum)) |>
+    count(dest)
 
 # Avoid
-flights|>filter(!is.na(arr_delay), !is.na(tailnum))|>count(dest)
+flights |>
+    filter(!is.na(arr_delay), !is.na(tailnum)) |>
+    count(dest)
 ```
 
 If the function you're piping into has named arguments (like `mutate()` or `summarize()`), put each argument on a new line.
@@ -124,19 +126,19 @@ If the function doesn't have named arguments (like `select()` or `filter()`), ke
 ```{r}
 #| eval: false
 # Strive for
-flights |>  
-  group_by(tailnum) |> 
-  summarize(
-    delay = mean(arr_delay, na.rm = TRUE),
-    n = n()
-  )
+flights |>
+    group_by(tailnum) |>
+    summarize(
+        delay = mean(arr_delay, na.rm = TRUE),
+        n = n()
+    )
 
 # Avoid
 flights |>
-  group_by(
-    tailnum
-  ) |> 
-  summarize(delay = mean(arr_delay, na.rm = TRUE), n = n())
+    group_by(
+        tailnum
+    ) |>
+    summarize(delay = mean(arr_delay, na.rm = TRUE), n = n())
 ```
 
 After the first step of the pipeline, indent each line by two spaces.
@@ -146,29 +148,29 @@ Make sure `)` is on its own line, and un-indented to match the horizontal positi
 
 ```{r}
 #| eval: false
-# Strive for 
-flights |>  
-  group_by(tailnum) |> 
-  summarize(
-    delay = mean(arr_delay, na.rm = TRUE),
-    n = n()
-  )
+# Strive for
+flights |>
+    group_by(tailnum) |>
+    summarize(
+        delay = mean(arr_delay, na.rm = TRUE),
+        n = n()
+    )
 
 # Avoid
-flights|>
-  group_by(tailnum) |> 
-  summarize(
-             delay = mean(arr_delay, na.rm = TRUE), 
-             n = n()
-           )
+flights |>
+    group_by(tailnum) |>
+    summarize(
+        delay = mean(arr_delay, na.rm = TRUE),
+        n = n()
+    )
 
 # Avoid
-flights|>
-  group_by(tailnum) |> 
-  summarize(
-  delay = mean(arr_delay, na.rm = TRUE), 
-  n = n()
-  )
+flights |>
+    group_by(tailnum) |>
+    summarize(
+        delay = mean(arr_delay, na.rm = TRUE),
+        n = n()
+    )
 ```
 
 It's OK to shirk some of these rules if your pipeline fits easily on one line.
@@ -179,12 +181,12 @@ But in our collective experience, it's common for short snippets to grow longer,
 # This fits compactly on one line
 df |> mutate(y = x + 1)
 
-# While this takes up 4x as many lines, it's easily extended to 
+# While this takes up 4x as many lines, it's easily extended to
 # more variables and more steps in the future
-df |> 
-  mutate(
-    y = x + 1
-  )
+df |>
+    mutate(
+        y = x + 1
+    )
 ```
 
 Finally, be wary of writing very long pipes, say longer than 10-15 lines.
@@ -200,35 +202,35 @@ The same basic rules that apply to the pipe also apply to ggplot2; just treat `+
 
 ```{r}
 #| eval: false
-flights |> 
-  group_by(month) |> 
-  summarize(
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) |> 
-  ggplot(aes(x = month, y = delay)) +
-  geom_point() + 
-  geom_line()
+flights |>
+    group_by(month) |>
+    summarize(
+        delay = mean(arr_delay, na.rm = TRUE)
+    ) |>
+    ggplot(aes(x = month, y = delay)) +
+    geom_point() +
+    geom_line()
 ```
 
 Again, if you can't fit all of the arguments to a function on to a single line, put each argument on its own line:
 
 ```{r}
 #| eval: false
-flights |> 
-  group_by(dest) |> 
-  summarize(
-    distance = mean(distance),
-    speed = mean(distance / air_time, na.rm = TRUE)
-  ) |> 
-  ggplot(aes(x = distance, y = speed)) +
-  geom_smooth(
-    method = "loess",
-    span = 0.5,
-    se = FALSE, 
-    color = "white", 
-    linewidth = 4
-  ) +
-  geom_point()
+flights |>
+    group_by(dest) |>
+    summarize(
+        distance = mean(distance),
+        speed = mean(distance / air_time, na.rm = TRUE)
+    ) |>
+    ggplot(aes(x = distance, y = speed)) +
+    geom_smooth(
+        method = "loess",
+        span = 0.5,
+        se = FALSE,
+        color = "white",
+        linewidth = 4
+    ) +
+    geom_point()
 ```
 
 Watch for the transition from `|>` to `+`.
@@ -251,7 +253,7 @@ RStudio provides a keyboard shortcut to create these headers (Cmd/Ctrl + Shift +
 #| label: fig-rstudio-sections
 #| echo: false
 #| out-width: null
-#| fig-cap: | 
+#| fig-cap: |
 #|   After adding sectioning comments to your script, you can
 #|   easily navigate to them using the code navigation tool in the
 #|   bottom-left of the script editor.
@@ -263,13 +265,25 @@ knitr::include_graphics("screenshots/rstudio-nav.png")
 1.  Restyle the following pipelines following the guidelines above.
 
     ```{r}
-    #| eval: false
-    flights|>filter(dest=="IAH")|>group_by(year,month,day)|>summarize(n=n(),
-    delay=mean(arr_delay,na.rm=TRUE))|>filter(n>10)
+#| eval: false
+flights |>
+    filter(dest == "IAH") |>
+    group_by(year, month, day) |>
+    summarize(
+        n = n(),
+        delay = mean(arr_delay, na.rm = TRUE)
+    ) |>
+    filter(n > 10)
 
-    flights|>filter(carrier=="UA",dest%in%c("IAH","HOU"),sched_dep_time>
-    0900,sched_arr_time<2000)|>group_by(flight)|>summarize(delay=mean(
-    arr_delay,na.rm=TRUE),cancelled=sum(is.na(arr_delay)),n=n())|>filter(n>10)
+flights |>
+    filter(carrier == "UA", dest %in% c("IAH", "HOU"), sched_dep_time >
+        0900, sched_arr_time < 2000) |>
+    group_by(flight) |>
+    summarize(delay = mean(
+        arr_delay,
+        na.rm = TRUE
+    ), cancelled = sum(is.na(arr_delay)), n = n()) |>
+    filter(n > 10)
     ```
 
 ## Summary

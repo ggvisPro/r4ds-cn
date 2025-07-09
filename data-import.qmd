@@ -47,7 +47,7 @@ read_lines("data/students.csv") |> cat(sep = "\n")
 #| message: false
 #| tbl-cap: Data from the students.csv file as a table.
 read_csv("data/students.csv") |>
-  knitr::kable()
+    knitr::kable()
 ```
 
 We can read this file into R using `read_csv()`.
@@ -96,11 +96,11 @@ That's because they contain spaces, breaking R's usual rules for variable names;
 To refer to these variables, you need to surround them with backticks, `` ` ``:
 
 ```{r}
-students |> 
-  rename(
-    student_id = `Student ID`,
-    full_name = `Full Name`
-  )
+students |>
+    rename(
+        student_id = `Student ID`,
+        full_name = `Full Name`
+    )
 ```
 
 An alternative approach is to use `janitor::clean_names()` to use some heuristics to turn them all into snake case at once[^data-import-1].
@@ -117,8 +117,8 @@ For example, `meal_plan` is a categorical variable with a known set of possible 
 
 ```{r}
 students |>
-  janitor::clean_names() |>
-  mutate(meal_plan = factor(meal_plan))
+    janitor::clean_names() |>
+    mutate(meal_plan = factor(meal_plan))
 ```
 
 Note that the values in the `meal_plan` variable have stayed the same, but the type of variable denoted underneath the variable name has changed from character (`<chr>`) to factor (`<fct>`).
@@ -130,11 +130,11 @@ We discuss the details of fixing this issue in @sec-import-spreadsheets.
 
 ```{r}
 students <- students |>
-  janitor::clean_names() |>
-  mutate(
-    meal_plan = factor(meal_plan),
-    age = parse_number(if_else(age == "five", "5", age))
-  )
+    janitor::clean_names() |>
+    mutate(
+        meal_plan = factor(meal_plan),
+        age = parse_number(if_else(age == "five", "5", age))
+    )
 
 students
 ```
@@ -152,7 +152,7 @@ There are a couple of other important arguments that we need to mention, and the
 ```{r}
 #| message: false
 read_csv(
-  "a,b,c
+    "a,b,c
   1,2,3
   4,5,6"
 )
@@ -165,18 +165,18 @@ You can use `skip = n` to skip the first `n` lines or use `comment = "#"` to dro
 ```{r}
 #| message: false
 read_csv(
-  "The first line of metadata
+    "The first line of metadata
   The second line of metadata
   x,y,z
   1,2,3",
-  skip = 2
+    skip = 2
 )
 
 read_csv(
-  "# A comment I want to skip
+    "# A comment I want to skip
   x,y,z
   1,2,3",
-  comment = "#"
+    comment = "#"
 )
 ```
 
@@ -186,9 +186,9 @@ You can use `col_names = FALSE` to tell `read_csv()` not to treat the first row 
 ```{r}
 #| message: false
 read_csv(
-  "1,2,3
+    "1,2,3
   4,5,6",
-  col_names = FALSE
+    col_names = FALSE
 )
 ```
 
@@ -197,9 +197,9 @@ Alternatively, you can pass `col_names` a character vector which will be used as
 ```{r}
 #| message: false
 read_csv(
-  "1,2,3
+    "1,2,3
   4,5,6",
-  col_names = c("x", "y", "z")
+    col_names = c("x", "y", "z")
 )
 ```
 
@@ -237,20 +237,20 @@ Once you've mastered `read_csv()`, using readr's other functions is straightforw
     To read the following text into a data frame, what argument to `read_csv()` do you need to specify?
 
     ```{r}
-    #| eval: false
-    "x,y\n1,'a,b'"
+#| eval: false
+"x,y\n1,'a,b'"
     ```
 
 5.  Identify what is wrong with each of the following inline CSV files.
     What happens when you run the code?
 
     ```{r}
-    #| eval: false
-    read_csv("a,b\n1,2,3\n4,5,6")
-    read_csv("a,b,c\n1,2\n1,2,3,4")
-    read_csv("a,b\n\"1")
-    read_csv("a,b\n1,2\na,b")
-    read_csv("a;b\n1;3")
+#| eval: false
+read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b,c\n1,2\n1,2,3,4")
+read_csv("a,b\n\"1")
+read_csv("a,b\n1,2\na,b")
+read_csv("a;b\n1;3")
     ```
 
 6.  Practice referring to non-syntactic names in the following data frame by:
@@ -261,10 +261,10 @@ Once you've mastered `read_csv()`, using readr's other functions is straightforw
     d.  Renaming the columns to `one`, `two`, and `three`.
 
     ```{r}
-    annoying <- tibble(
-      `1` = 1:10,
-      `2` = `1` * 2 + rnorm(length(`1`))
-    )
+annoying <- tibble(
+    `1` = 1:10,
+    `2` = `1` * 2 + rnorm(length(`1`))
+)
     ```
 
 ## Controlling column types {#sec-col-types}
@@ -330,8 +330,8 @@ You can do that with the `col_types` argument, which takes a named list where th
 
 ```{r}
 df <- read_csv(
-  simple_csv, 
-  col_types = list(x = col_double())
+    simple_csv,
+    col_types = list(x = col_double())
 )
 ```
 
@@ -369,8 +369,8 @@ x,y,z
 1,2,3"
 
 read_csv(
-  another_csv, 
-  col_types = cols(.default = col_character())
+    another_csv,
+    col_types = cols(.default = col_character())
 )
 ```
 
@@ -378,8 +378,8 @@ Another useful helper is `cols_only()` which will read in only the columns you s
 
 ```{r}
 read_csv(
-  another_csv,
-  col_types = cols_only(x = col_character())
+    another_csv,
+    col_types = cols_only(x = col_character())
 )
 ```
 
@@ -401,9 +401,9 @@ You can download these files from <https://pos.it/r4ds-01-sales>, <https://pos.i
 ```{r}
 #| eval: false
 sales_files <- c(
-  "https://pos.it/r4ds-01-sales",
-  "https://pos.it/r4ds-02-sales",
-  "https://pos.it/r4ds-03-sales"
+    "https://pos.it/r4ds-01-sales",
+    "https://pos.it/r4ds-02-sales",
+    "https://pos.it/r4ds-03-sales"
 )
 read_csv(sales_files, id = "file")
 ```
@@ -450,27 +450,27 @@ There are two main alternatives:
     This means that when you reload the object, you are loading the *exact same* R object that you stored.
 
     ```{r}
-    write_rds(students, "students.rds")
-    read_rds("students.rds")
+write_rds(students, "students.rds")
+read_rds("students.rds")
     ```
 
 2.  The arrow package allows you to read and write parquet files, a fast binary file format that can be shared across programming languages.
     We'll return to arrow in more depth in @sec-arrow.
 
     ```{r}
-    #| eval: false
-    library(arrow)
-    write_parquet(students, "students.parquet")
-    read_parquet("students.parquet")
-    #> # A tibble: 6 × 5
-    #>   student_id full_name        favourite_food     meal_plan             age
-    #>        <dbl> <chr>            <chr>              <fct>               <dbl>
-    #> 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-    #> 2          2 Barclay Lynn     French fries       Lunch only              5
-    #> 3          3 Jayendra Lyne    NA                 Breakfast and lunch     7
-    #> 4          4 Leon Rossini     Anchovies          Lunch only             NA
-    #> 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-    #> 6          6 Güvenç Attila    Ice cream          Lunch only              6
+#| eval: false
+library(arrow)
+write_parquet(students, "students.parquet")
+read_parquet("students.parquet")
+#> # A tibble: 6 × 5
+#>   student_id full_name        favourite_food     meal_plan             age
+#>        <dbl> <chr>            <chr>              <fct>               <dbl>
+#> 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
+#> 2          2 Barclay Lynn     French fries       Lunch only              5
+#> 3          3 Jayendra Lyne    NA                 Breakfast and lunch     7
+#> 4          4 Leon Rossini     Anchovies          Lunch only             NA
+#> 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
+#> 6          6 Güvenç Attila    Ice cream          Lunch only              6
     ```
 
 Parquet tends to be much faster than RDS and is usable outside of R, but does require the arrow package.
@@ -489,9 +489,9 @@ There are two useful functions to help you do this which differ in whether you l
 
 ```{r}
 tibble(
-  x = c(1, 2, 5), 
-  y = c("h", "m", "g"),
-  z = c(0.08, 0.83, 0.60)
+    x = c(1, 2, 5),
+    y = c("h", "m", "g"),
+    z = c(0.08, 0.83, 0.60)
 )
 ```
 
@@ -501,10 +501,10 @@ This makes it possible to lay out small amounts of data in an easy to read form:
 
 ```{r}
 tribble(
-  ~x, ~y, ~z,
-  1, "h", 0.08,
-  2, "m", 0.83,
-  5, "g", 0.60
+    ~x, ~y, ~z,
+    1, "h", 0.08,
+    2, "m", 0.83,
+    5, "g", 0.60
 )
 ```
 

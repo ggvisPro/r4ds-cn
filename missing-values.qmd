@@ -36,11 +36,11 @@ When data is entered by hand, missing values sometimes indicate that the value i
 
 ```{r}
 treatment <- tribble(
-  ~person,           ~treatment, ~response,
-  "Derrick Whitmore", 1,         7,
-  NA,                 2,         10,
-  NA,                 3,         NA,
-  "Katherine Burke",  1,         4
+    ~person, ~treatment, ~response,
+    "Derrick Whitmore", 1, 7,
+    NA, 2, 10,
+    NA, 3, NA,
+    "Katherine Burke", 1, 4
 )
 ```
 
@@ -49,7 +49,7 @@ It works like `select()`, taking a set of columns:
 
 ```{r}
 treatment |>
-  fill(everything())
+    fill(everything())
 ```
 
 This treatment is sometimes called "last observation carried forward", or **locf** for short.
@@ -93,7 +93,7 @@ In the rare case you need to distinguish an `NA` from a `NaN`, you can use `is.n
 You'll generally encounter a `NaN` when you perform a mathematical operation that has an indeterminate result:
 
 ```{r}
-0 / 0 
+0 / 0
 0 * Inf
 Inf - Inf
 sqrt(-1)
@@ -107,9 +107,9 @@ Let's illustrate the difference with a simple dataset that records the price of 
 
 ```{r}
 stocks <- tibble(
-  year  = c(2020, 2020, 2020, 2020, 2021, 2021, 2021),
-  qtr   = c(   1,    2,    3,    4,    2,    3,    4),
-  price = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+    year  = c(2020, 2020, 2020, 2020, 2021, 2021, 2021),
+    qtr   = c(1, 2, 3, 4, 2, 3, 4),
+    price = c(1.88, 0.59, 0.35, NA, 0.92, 0.17, 2.66)
 )
 ```
 
@@ -137,10 +137,10 @@ For example, if we pivot `stocks` to put the `quarter` in the columns, both miss
 
 ```{r}
 stocks |>
-  pivot_wider(
-    names_from = qtr, 
-    values_from = price
-  )
+    pivot_wider(
+        names_from = qtr,
+        values_from = price
+    )
 ```
 
 By default, making data longer preserves explicit missing values, but if they are structurally missing values that only exist because the data is not tidy, you can drop them (make them implicit) by setting `values_drop_na = TRUE`.
@@ -153,7 +153,7 @@ For example, we know that all combinations of `year` and `qtr` should exist in t
 
 ```{r}
 stocks |>
-  complete(year, qtr)
+    complete(year, qtr)
 ```
 
 Typically, you'll call `complete()` with names of existing variables, filling in the missing combinations.
@@ -162,7 +162,7 @@ For example, you might know that the `stocks` dataset is supposed to run from 20
 
 ```{r}
 stocks |>
-  complete(year = 2019:2021, qtr)
+    complete(year = 2019:2021, qtr)
 ```
 
 If the range of a variable is correct, but not all values are present, you could use `full_seq(x, 1)` to generate all values from `min(x)` to `max(x)` spaced out by 1.
@@ -181,13 +181,13 @@ For example, we can use two `anti_join()`s to reveal that we're missing informat
 ```{r}
 library(nycflights13)
 
-flights |> 
-  distinct(faa = dest) |> 
-  anti_join(airports)
+flights |>
+    distinct(faa = dest) |>
+    anti_join(airports)
 
-flights |> 
-  distinct(tailnum) |> 
-  anti_join(planes)
+flights |>
+    distinct(tailnum) |>
+    anti_join(planes)
 ```
 
 ### Exercises
@@ -201,9 +201,9 @@ For example, imagine we have a dataset that contains some health information abo
 
 ```{r}
 health <- tibble(
-  name   = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
-  smoker = factor(c("no", "no", "no", "no", "no"), levels = c("yes", "no")),
-  age    = c(34, 88, 75, 47, 56),
+    name   = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
+    smoker = factor(c("no", "no", "no", "no", "no"), levels = c("yes", "no")),
+    age    = c(34, 88, 75, 47, 56),
 )
 ```
 
@@ -226,17 +226,17 @@ You can force them to display by supplying `drop = FALSE` to the appropriate dis
 ```{r}
 #| layout-ncol: 2
 #| fig-width: 3
-#| fig-alt: 
+#| fig-alt:
 #|   - A bar chart with a single value on the x-axis, "no".
 #|   - The same bar chart as the last plot, but now with two values on
 #|     the x-axis, "yes" and "no". There is no bar for the "yes" category.
 ggplot(health, aes(x = smoker)) +
-  geom_bar() +
-  scale_x_discrete()
+    geom_bar() +
+    scale_x_discrete()
 
 ggplot(health, aes(x = smoker)) +
-  geom_bar() +
-  scale_x_discrete(drop = FALSE)
+    geom_bar() +
+    scale_x_discrete(drop = FALSE)
 ```
 
 The same problem comes up more generally with `dplyr::group_by()`.
@@ -244,15 +244,15 @@ And again you can use `.drop = FALSE` to preserve all factor levels:
 
 ```{r}
 #| warning: false
-health |> 
-  group_by(smoker, .drop = FALSE) |> 
-  summarize(
-    n = n(),
-    mean_age = mean(age),
-    min_age = min(age),
-    max_age = max(age),
-    sd_age = sd(age)
-  )
+health |>
+    group_by(smoker, .drop = FALSE) |>
+    summarize(
+        n = n(),
+        mean_age = mean(age),
+        min_age = min(age),
+        max_age = max(age),
+        sd_age = sd(age)
+    )
 ```
 
 We get some interesting results here because when summarizing an empty group, the summary functions are applied to zero-length vectors.
@@ -277,16 +277,16 @@ Here we see `mean(age)` returning `NaN` because `mean(age)` = `sum(age)/length(a
 Sometimes a simpler approach is to perform the summary and then make the implicit missings explicit with `complete()`.
 
 ```{r}
-health |> 
-  group_by(smoker) |> 
-  summarize(
-    n = n(),
-    mean_age = mean(age),
-    min_age = min(age),
-    max_age = max(age),
-    sd_age = sd(age)
-  ) |> 
-  complete(smoker)
+health |>
+    group_by(smoker) |>
+    summarize(
+        n = n(),
+        mean_age = mean(age),
+        min_age = min(age),
+        max_age = max(age),
+        sd_age = sd(age)
+    ) |>
+    complete(smoker)
 ```
 
 The main drawback of this approach is that you get an `NA` for the count, even though you know that it should be zero.
