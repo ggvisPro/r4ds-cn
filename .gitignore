@@ -12,7 +12,6 @@ libs
 _main.*
 tmp-pdfcrop-*
 figures
-site_libs
 /data/seattle-library-checkouts.csv
 /data/seattle-library-checkouts.parquet
 /data/seattle-library-checkouts
@@ -21,5 +20,4 @@ oreilly
 **/*_cache/
 /.quarto/
 /_freeze/
-/*_files/
 /data/
