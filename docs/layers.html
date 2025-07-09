@@ -1283,7 +1283,7 @@ Figure&nbsp;9.3: Steps for going from raw data to a table of frequencies to a ba
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/github\.com\/ggvisPro\/r4ds-cn\/");
+        var filterRegex = new RegExp("https:\/\/ggvispro\.github\.io\/r4ds-cn\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

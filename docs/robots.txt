@@ -1,1 +1,1 @@
-Sitemap: https://github.com/ggvisPro/r4ds-cn/sitemap.xml
+Sitemap: https://ggvispro.github.io/r4ds-cn/sitemap.xml

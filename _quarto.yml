@@ -15,7 +15,7 @@ book:
       本书由 <a href="https://quarto.org/">Quarto</a> 构建。
   cover-image: cover.jpg
   favicon: cover.jpg
-  site-url: https://github.com/ggvisPro/r4ds-cn/
+  site-url: https://ggvispro.github.io/r4ds-cn/
   repo-url: https://github.com/ggvisPro/r4ds-cn/
   repo-branch: main
   repo-actions: [edit, issue]
