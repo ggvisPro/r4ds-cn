@@ -1,0 +1,341 @@
+# Introduction {#sec-intro .unnumbered}
+
+```{r}
+#| echo: false
+source("_common.R")
+```
+
+Data science is an exciting discipline that allows you to transform raw data into understanding, insight, and knowledge.
+The goal of "R for Data Science" is to help you learn the most important tools in R that will allow you to do data science efficiently and reproducibly, and to have some fun along the way 😃.
+After reading this book, you'll have the tools to tackle a wide variety of data science challenges using the best parts of R.
+
+## What you will learn
+
+Data science is a vast field, and there's no way you can master it all by reading a single book.
+This book aims to give you a solid foundation in the most important tools and enough knowledge to find the resources to learn more when necessary.
+Our model of the steps of a typical data science project looks something like @fig-ds-diagram.
+
+```{r}
+#| label: fig-ds-diagram
+#| echo: false
+#| fig-cap: |
+#|   In our model of the data science process, you start with data import
+#|   and tidying. Next, you understand your data with an iterative cycle of
+#|   transforming, visualizing, and modeling. You finish the process 
+#|   by communicating your results to other humans.
+#| fig-alt: |
+#|   A diagram displaying the data science cycle: Import -> Tidy -> Understand 
+#|   (which has the phases Transform -> Visualize -> Model in a cycle) -> 
+#|   Communicate. Surrounding all of these is Program.
+#| out.width: NULL
+knitr::include_graphics("diagrams/data-science/base.png", dpi = 270)
+```
+
+First, you must **import** your data into R.
+This typically means that you take data stored in a file, database, or web application programming interface (API) and load it into a data frame in R.
+If you can't get your data into R, you can't do data science on it!
+
+Once you've imported your data, it is a good idea to **tidy** it.
+Tidying your data means storing it in a consistent form that matches the semantics of the dataset with how it is stored.
+In brief, when your data is tidy, each column is a variable and each row is an observation.
+Tidy data is important because the consistent structure lets you focus your efforts on answering questions about the data, not fighting to get the data into the right form for different functions.
+
+Once you have tidy data, a common next step is to **transform** it.
+Transformation includes narrowing in on observations of interest (like all people in one city or all data from the last year), creating new variables that are functions of existing variables (like computing speed from distance and time), and calculating a set of summary statistics (like counts or means).
+Together, tidying and transforming are called **wrangling** because getting your data in a form that's natural to work with often feels like a fight!
+
+Once you have tidy data with the variables you need, there are two main engines of knowledge generation: visualization and modeling.
+These have complementary strengths and weaknesses, so any real data analysis will iterate between them many times.
+
+**Visualization** is a fundamentally human activity.
+A good visualization will show you things you did not expect or raise new questions about the data.
+A good visualization might also hint that you're asking the wrong question or that you need to collect different data.
+Visualizations can surprise you, but they don't scale particularly well because they require a human to interpret them.
+
+**Models** are complementary tools to visualization.
+Once you have made your questions sufficiently precise, you can use a model to answer them.
+Models are fundamentally mathematical or computational tools, so they generally scale well.
+Even when they don't, it's usually cheaper to buy more computers than it is to buy more brains!
+But every model makes assumptions, and by its very nature, a model cannot question its own assumptions.
+That means a model cannot fundamentally surprise you.
+
+The last step of data science is **communication**, an absolutely critical part of any data analysis project.
+It doesn't matter how well your models and visualization have led you to understand the data unless you can also communicate your results to others.
+
+Surrounding all these tools is **programming**.
+Programming is a cross-cutting tool that you use in nearly every part of a data science project.
+You don't need to be an expert programmer to be a successful data scientist, but learning more about programming pays off because becoming a better programmer allows you to automate common tasks and solve new problems with greater ease.
+
+You'll use these tools in every data science project, but they're not enough for most projects.
+There's a rough 80/20 rule at play: you can tackle about 80% of every project using the tools you'll learn in this book, but you'll need other tools to tackle the remaining 20%.
+Throughout this book, we'll point you to resources where you can learn more.
+
+## How this book is organized
+
+The previous description of the tools of data science is organized roughly according to the order in which you use them in an analysis (although, of course, you'll iterate through them multiple times).
+In our experience, however, learning data importing and tidying first is suboptimal because, 80% of the time, it's routine and boring, and the other 20% of the time, it's weird and frustrating.
+That's a bad place to start learning a new subject!
+Instead, we'll start with visualization and transformation of data that's already been imported and tidied.
+That way, when you ingest and tidy your own data, your motivation will stay high because you know the pain is worth the effort.
+
+Within each chapter, we try to adhere to a consistent pattern: start with some motivating examples so you can see the bigger picture, and then dive into the details.
+Each section of the book is paired with exercises to help you practice what you've learned.
+Although it can be tempting to skip the exercises, there's no better way to learn than by practicing on real problems.
+
+## What you won't learn
+
+There are several important topics that this book doesn't cover.
+We believe it's important to stay ruthlessly focused on the essentials so you can get up and running as quickly as possible.
+That means this book can't cover every important topic.
+
+### Modeling
+
+Modeling is super important for data science, but it's a big topic, and unfortunately, we just don't have the space to give it the coverage it deserves here.
+To learn more about modeling, we highly recommend [Tidy Modeling with R](https://www.tmwr.org) by our colleagues Max Kuhn and Julia Silge.
+This book will teach you the tidymodels family of packages, which, as you might guess from the name, share many conventions with the tidyverse packages we use in this book.
+
+### Big data
+
+This book proudly and primarily focuses on small, in-memory datasets.
+This is the right place to start because you can't tackle big data unless you have experience with small data.
+The tools you'll learn throughout the majority of this book will easily handle hundreds of megabytes of data, and with a bit of care, you can typically use them to work with a few gigabytes of data.
+We'll also show you how to get data out of databases and parquet files, both of which are often used to store big data.
+You won't necessarily be able to work with the entire dataset, but that's not a problem because you only need a subset or subsample to answer the question that you're interested in.
+
+If you're routinely working with larger data (10--100 GB, say), we recommend learning more about [data.table](https://github.com/Rdatatable/data.table).
+We don't teach it here because it uses a different interface than the tidyverse and requires you to learn some different conventions.
+However, it is incredibly faster, and the performance payoff is worth investing some time in learning it if you're working with large data.
+
+### Python, Julia, and friends
+
+In this book, you won't learn anything about Python, Julia, or any other programming language useful for data science.
+This isn't because we think these tools are bad.
+They're not!
+And in practice, most data science teams use a mix of languages, often at least R and Python.
+But we strongly believe that it's best to master one tool at a time, and R is a great place to start.
+
+## Prerequisites
+
+We've made a few assumptions about what you already know to get the most out of this book.
+You should be generally numerically literate, and it's helpful if you have some basic programming experience already.
+If you've never programmed before, you might find [Hands on Programming with R](https://rstudio-education.github.io/hopr/) by Garrett to be a valuable adjunct to this book.
+
+You need four things to run the code in this book: R, RStudio, a collection of R packages called the **tidyverse**, and a handful of other packages.
+Packages are the fundamental units of reproducible R code.
+They include reusable functions, documentation that describes how to use them, and sample data.
+
+### R
+
+To download R, go to CRAN, the **c**omprehensive **R** **a**rchive **n**etwork, <https://cloud.r-project.org>.
+A new major version of R comes out once a year, and there are 2-3 minor releases each year.
+It's a good idea to update regularly.
+Upgrading can be a bit of a hassle, especially for major versions that require you to re-install all your packages, but putting it off only makes it worse.
+We recommend R 4.2.0 or later for this book.
+
+### RStudio
+
+RStudio is an integrated development environment, or IDE, for R programming, which you can download from <https://posit.co/download/rstudio-desktop/>.
+RStudio is updated a couple of times a year, and it will automatically let you know when a new version is out, so there's no need to check back.
+It's a good idea to upgrade regularly to take advantage of the latest and greatest features.
+For this book, make sure you have at least RStudio 2022.02.0.
+
+When you start RStudio, @fig-rstudio-console, you'll see two key regions in the interface: the console pane and the output pane.
+For now, all you need to know is that you type the R code in the console pane and press enter to run it.
+You'll learn more as we go along![^intro-1]
+
+[^intro-1]: If you'd like a comprehensive overview of all of RStudio's features, see the RStudio User Guide at <https://docs.posit.co/ide/user>.
+
+```{r}
+#| label: fig-rstudio-console
+#| echo: false
+#| out-width: ~
+#| fig-cap: |
+#|   The RStudio IDE has two key regions: type R code in the console pane
+#|   on the left, and look for plots in the output pane on the right.
+#| fig-alt: |
+#|   The RStudio IDE with the panes Console and Output highlighted.
+knitr::include_graphics("diagrams/rstudio/console.png", dpi = 270)
+```
+
+### The tidyverse
+
+You'll also need to install some R packages.
+An R **package** is a collection of functions, data, and documentation that extends the capabilities of base R.
+Using packages is key to the successful use of R.
+The majority of the packages that you will learn in this book are part of the so-called tidyverse.
+All packages in the tidyverse share a common philosophy of data and R programming and are designed to work together.
+
+You can install the complete tidyverse with a single line of code:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+On your computer, type that line of code in the console, and then press enter to run it.
+R will download the packages from CRAN and install them on your computer.
+
+You will not be able to use the functions, objects, or help files in a package until you load it with `library()`.
+Once you have installed a package, you can load it using the `library()` function:
+
+```{r}
+library(tidyverse)
+```
+
+This tells you that tidyverse loads nine packages: dplyr, forcats, ggplot2, lubridate, purrr, readr, stringr, tibble, tidyr.
+These are considered the **core** of the tidyverse because you'll use them in almost every analysis.
+
+Packages in the tidyverse change fairly frequently.
+You can see if updates are available by running `tidyverse_update()`.
+
+### Other packages
+
+There are many other excellent packages that are not part of the tidyverse because they solve problems in a different domain or are designed with a different set of underlying principles.
+This doesn't make them better or worse; it just makes them different.
+In other words, the complement to the tidyverse is not the messyverse but many other universes of interrelated packages.
+As you tackle more data science projects with R, you'll learn new packages and new ways of thinking about data.
+
+We'll use many packages from outside the tidyverse in this book.
+For example, we'll use the following packages because they provide interesting datasets for us to work with in the process of learning R:
+
+```{r}
+#| eval: false
+install.packages(
+  c("arrow", "babynames", "curl", "duckdb", "gapminder", 
+    "ggrepel", "ggridges", "ggthemes", "hexbin", "janitor", "Lahman", 
+    "leaflet", "maps", "nycflights13", "openxlsx", "palmerpenguins", 
+    "repurrrsive", "tidymodels", "writexl")
+  )
+```
+
+We'll also use a selection of other packages for one off examples.
+You don't need to install them now, just remember that whenever you see an error like this:
+
+```{r}
+#| eval: false
+library(ggrepel)
+#> Error in library(ggrepel) : there is no package called ‘ggrepel’
+```
+
+You need to run `install.packages("ggrepel")` to install the package.
+
+## Running R code
+
+The previous section showed you several examples of running R code.
+The code in the book looks like this:
+
+```{r}
+#| eval: true
+1 + 2
+```
+
+If you run the same code in your local console, it will look like this:
+
+```         
+> 1 + 2
+[1] 3
+```
+
+There are two main differences.
+In your console, you type after the `>`, called the **prompt**; we don't show the prompt in the book.
+In the book, the output is commented out with `#>`; in your console, it appears directly after your code.
+These two differences mean that if you're working with an electronic version of the book, you can easily copy code out of the book and paste it into the console.
+
+Throughout the book, we use a consistent set of conventions to refer to code:
+
+-   Functions are displayed in a code font and followed by parentheses, like `sum()` or `mean()`.
+
+-   Other R objects (such as data or function arguments) are in a code font, without parentheses, like `flights` or `x`.
+
+-   Sometimes, to make it clear which package an object comes from, we'll use the package name followed by two colons, like `dplyr::mutate()` or `nycflights13::flights`.
+    This is also valid R code.
+
+## Acknowledgments
+
+This book isn't just the product of Hadley, Mine, and Garrett but is the result of many conversations (in person and online) that we've had with many people in the R community.
+We're incredibly grateful for all the conversations we've had with y'all; thank you so much!
+
+```{r}
+#| eval: false
+#| echo: false
+library(tidyverse)
+contribs_all_json <- gh::gh("/repos/:owner/:repo/contributors",
+  owner = "hadley",
+  repo = "r4ds",
+  .limit = Inf
+)
+contribs_all <- tibble(
+  login = contribs_all_json |> map_chr("login"),
+  n = contribs_all_json |> map_int("contributions")
+)
+
+contribs_old <- read_csv("contributors.csv", col_types = list())
+contribs_new <- contribs_all |> anti_join(contribs_old, by = "login")
+
+# Get info for new contributors
+needed_json <- map(
+  contribs_new$login, 
+  ~ gh::gh("/users/:username", username = .x),
+  .progress = TRUE
+)
+info_new <- tibble(
+  login = contribs_new$login,
+  name = map_chr(needed_json, "name", .default = NA),
+  blog = map_chr(needed_json, "blog", .default = NA)
+)
+info_old <- contribs_old |> select(login, name, blog)
+info_all <- bind_rows(info_old, info_new)
+
+contribs_all <- contribs_all |> 
+  left_join(info_all, by = "login") |> 
+  mutate(login_lowercase = str_to_lower(login)) |>
+  arrange(login_lowercase) |>
+  select(-login_lowercase)
+write_csv(contribs_all, "contributors.csv")
+```
+
+```{r}
+#| results: asis
+#| echo: false
+#| message: false
+library(dplyr)
+contributors <- readr::read_csv("contributors.csv")
+contributors <- contributors |> 
+  filter(!login %in% c("hadley", "garrettgman", "mine-cetinkaya-rundel")) |> 
+  mutate(
+    login = paste0("\\@", login),
+    desc = ifelse(is.na(name), login, paste0(name, " (", login, ")"))
+  )
+
+cat("This book was written in the open, and many people contributed via pull requests. A special thanks to all ",nrow(contributors), " of you who contributed improvements via GitHub pull requests (in alphabetical order by username): ", sep = "")
+cat(paste0(contributors$desc, collapse = ", "))
+cat(".\n")
+```
+
+## Colophon
+
+An online version of this book is available at <https://r4ds.hadley.nz>.
+It will continue to evolve in between reprints of the physical book.
+The source of the book is available at <https://github.com/hadley/r4ds>.
+The book is powered by [Quarto](https://quarto.org), which makes it easy to write books that combine text and executable code.
+
+```{r}
+#| eval: false
+#| echo: false
+#| results: asis
+pkgs <- sessioninfo::package_info(
+  tidyverse:::tidyverse_packages(),
+  dependencies = FALSE
+)
+df <- tibble(
+  package = pkgs$package,
+  version = pkgs$ondiskversion,
+  source = gsub("@", "\\\\@", pkgs$source)
+)
+knitr::kable(df, format = "markdown")
+```
+
+```{r}
+#| include: false
+cli:::ruler()
+```

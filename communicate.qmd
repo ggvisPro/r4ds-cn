@@ -1,0 +1,34 @@
+# Communicate {#sec-communicate-intro .unnumbered}
+
+```{r}
+#| echo: false
+source("_common.R")
+```
+
+So far, you've learned the tools to get your data into R, tidy it into a form convenient for analysis, and then understand your data through transformation, and visualization.
+However, it doesn't matter how great your analysis is unless you can explain it to others: you need to **communicate** your results.
+
+```{r}
+#| label: fig-ds-communicate
+#| echo: false
+#| fig-cap: |
+#|   Communication is the final part of the data science process; if you
+#|   can't communicate your results to other humans, it doesn't matter how
+#|   great your analysis is.
+#| fig-alt: |
+#|   A diagram displaying the data science cycle with
+#|   communicate highlighed in blue.
+#| out.width: NULL
+knitr::include_graphics("diagrams/data-science/communicate.png", dpi = 270)
+```
+
+Communication is the theme of the following two chapters:
+
+-   In @sec-quarto, you will learn about Quarto, a tool for integrating prose, code, and results.
+    You can use Quarto for analyst-to-analyst communication as well as analyst-to-decision-maker communication.
+    Thanks to the power of Quarto formats, you can even use the same document for both purposes.
+
+-   In @sec-quarto-formats, you'll learn a little about the many other varieties of outputs you can produce using Quarto, including dashboards, websites, and books.
+
+These chapters focus mostly on the technical mechanics of communication, not the really hard problems of communicating your thoughts to other humans.
+However, there are lot of other great books about communication, which we'll point you to at the end of each chapter.
