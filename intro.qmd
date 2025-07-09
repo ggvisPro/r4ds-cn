@@ -3,6 +3,7 @@
 ```{r}
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 数据科学是一门激动人心的学科，它能让你将原始数据转化为理解、洞察和知识。

@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -464,7 +464,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">7.2</span> 从文件中读取数据</h2>
 <p>首先，我们将重点关注最常见的矩形数据文件类型：CSV，即逗号分隔值 (comma-separated values) 的缩写。 下面是一个简单的 CSV 文件的样子。 第一行，通常称为标题行 (header row)，给出了列名，接下来的六行提供了数据。 这些列由逗号分隔，也称为定界 (delimited)。</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
 <pre><code>Student ID,Full Name,favourite.food,mealPlan,AGE
 1,Sunil Huffmann,Strawberry yoghurt,Lunch only,4
 2,Barclay Lynn,French fries,Lunch only,5
@@ -472,7 +471,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4,Leon Rossini,Anchovies,Lunch only,
 5,Chidiegwu Dunkel,Pizza,Breakfast and lunch,five
 6,Güvenç Attila,Ice cream,Lunch only,6</code></pre>
-</div>
 </div>
 <p><a href="#tbl-students-table" class="quarto-xref">Table&nbsp;<span>7.1</span></a> 以表格形式展示了相同的数据。</p>
 <div class="cell">
@@ -548,206 +546,183 @@ Table&nbsp;7.1: 来自 students.csv 文件的数据表格。
 </div>
 <p>我们可以使用 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 将这个文件读入 R。 第一个参数是最重要的：文件的路径。 你可以将路径看作是文件的地址：文件名为 <code>students.csv</code>，它位于 <code>data</code> 文件夹中。</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/students.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 6 Columns: 5
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (4): Full Name, favourite.food, mealPlan, AGE
-dbl (1): Student ID
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/students.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 6 Columns: 5</span></span>
+<span><span class="co">#&gt; ── Column specification ─────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Delimiter: ","</span></span>
+<span><span class="co">#&gt; chr (4): Full Name, favourite.food, mealPlan, AGE</span></span>
+<span><span class="co">#&gt; dbl (1): Student ID</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>如果你的项目中的 <code>data</code> 文件夹里有 <code>students.csv</code> 文件，上面的代码就能正常工作。 你可以从 <a href="https://pos.it/r4ds-students-csv">https://pos.it/r4ds-students-csv</a> 下载 <code>students.csv</code> 文件，或者用下面的代码直接从那个 URL 读取它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://pos.it/r4ds-students-csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://pos.it/r4ds-students-csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>当你运行 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 时，它会打印一条消息，告诉你数据的行数和列数、使用的分隔符以及列的规格（按列所含数据类型组织的列名）。 它还会打印一些关于检索完整列规格和如何静默此消息的信息。 这条消息是 readr 的一个组成部分，我们将在 <a href="#sec-col-types" class="quarto-xref"><span>Section 7.3</span></a> 中再次讨论它。</p>
 <section id="实用建议" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="实用建议">
 <span class="header-section-number">7.2.1</span> 实用建议</h3>
 <p>一旦你读入数据，第一步通常是进行某种方式的转换，以便在后续分析中更容易处理。 让我们带着这个想法再看一次 <code>students</code> 数据。</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  `Student ID` `Full Name`      favourite.food     mealPlan            AGE  
-         &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;
-1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
-2            2 Barclay Lynn     French fries       Lunch only          5    
-3            3 Jayendra Lyne    N/A                Breakfast and lunch 7    
-4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; 
-5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
-6            6 Güvenç Attila    Ice cream          Lunch only          6    </code></pre>
-</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   `Student ID` `Full Name`      favourite.food     mealPlan            AGE  </span></span>
+<span><span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span><span class="co">#&gt; 2            2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span><span class="co">#&gt; 3            3 Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
+<span><span class="co">#&gt; 4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在 <code>favourite.food</code> 列中，有一堆食物项目，然后是字符串 <code>N/A</code>，这本应是一个真正的 <code>NA</code>，R 会将其识别为“不可用”(not available)。 这是我们可以使用 <code>na</code> 参数来解决的问题。 默认情况下，<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 在这个数据集中只识别空字符串 (<code>""</code>) 为 <code>NA</code>，我们希望它也能识别字符串 <code>"N/A"</code>。</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/students.csv"</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"N/A"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/students.csv"</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"N/A"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">students</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  `Student ID` `Full Name`      favourite.food     mealPlan            AGE  
-         &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;
-1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
-2            2 Barclay Lynn     French fries       Lunch only          5    
-3            3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    
-4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; 
-5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
-6            6 Güvenç Attila    Ice cream          Lunch only          6    </code></pre>
-</div>
+<span><span class="va">students</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   `Student ID` `Full Name`      favourite.food     mealPlan            AGE  </span></span>
+<span><span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span><span class="co">#&gt; 2            2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span><span class="co">#&gt; 3            3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
+<span><span class="co">#&gt; 4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你可能还会注意到 <code>Student ID</code> 和 <code>Full Name</code> 这两列被反引号包围。 这是因为它们包含空格，破坏了 R 的常规变量命名规则；它们是<strong>非语法</strong> (non-syntactic) 名称。 要引用这些变量，你需要用反引号 <code>`</code> 将它们包围起来：</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
 <span>    student_id <span class="op">=</span> <span class="va">`Student ID`</span>,</span>
 <span>    full_name <span class="op">=</span> <span class="va">`Full Name`</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite.food     mealPlan            AGE  
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
-2          2 Barclay Lynn     French fries       Lunch only          5    
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    
-4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; 
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
-6          6 Güvenç Attila    Ice cream          Lunch only          6    </code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite.food     mealPlan            AGE  </span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>另一种方法是使用 <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code>，它会运用一些启发式方法一次性将所有列名转换为蛇形命名法 (snake case)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan           age  
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
-2          2 Barclay Lynn     French fries       Lunch only          5    
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    
-4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; 
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
-6          6 Güvenç Attila    Ice cream          Lunch only          6    </code></pre>
-</div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>读入数据后的另一个常见任务是考虑变量类型。 例如，<code>meal_plan</code> 是一个分类变量，具有一组已知的可能值，在 R 中应表示为因子 (factor)：</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>meal_plan <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meal_plan</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan           age  
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;chr&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
-2          2 Barclay Lynn     French fries       Lunch only          5    
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    
-4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; 
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
-6          6 Güvenç Attila    Ice cream          Lunch only          6    </code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>meal_plan <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meal_plan</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>注意，<code>meal_plan</code> 变量中的值保持不变，但变量名下方表示的变量类型已从字符 (<code>&lt;chr&gt;</code>) 变为因子 (<code>&lt;fct&gt;</code>)。 你将在 <a href="factors.html" class="quarto-xref"><span>Chapter 16</span></a> 中学到更多关于因子的知识。</p>
 <p>在分析这些数据之前，你可能想修复 <code>age</code> 列。 目前，<code>age</code> 是一个字符变量，因为其中一个观测值被输入为 <code>five</code> 而不是数字 <code>5</code>。 我们将在 <a href="spreadsheets.html" class="quarto-xref"><span>Chapter 20</span></a> 中讨论修复这个问题的细节。</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="va">students</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="va">students</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    meal_plan <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">meal_plan</span><span class="op">)</span>,</span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">age</span> <span class="op">==</span> <span class="st">"five"</span>, <span class="st">"5"</span>, <span class="va">age</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">students</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan             age
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-2          2 Barclay Lynn     French fries       Lunch only              5
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7
-4          4 Leon Rossini     Anchovies          Lunch only             NA
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-6          6 Güvenç Attila    Ice cream          Lunch only              6</code></pre>
-</div>
+<span><span class="va">students</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这里有一个新函数 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>，它有三个参数。 第一个参数 <code>test</code> 应该是一个逻辑向量。 当 <code>test</code> 为 <code>TRUE</code> 时，结果将包含第二个参数 <code>yes</code> 的值；当 <code>test</code> 为 <code>FALSE</code> 时，结果将包含第三个参数 <code>no</code> 的值。 这里我们是说，如果 <code>age</code> 是字符串 <code>"five"</code>，就把它变成 <code>"5"</code>，如果不是，就保持 <code>age</code> 不变。 你将在 <a href="logicals.html" class="quarto-xref"><span>Chapter 12</span></a> 中学到更多关于 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 和逻辑向量的知识。</p>
 </section><section id="其他参数" class="level3" data-number="7.2.2"><h3 data-number="7.2.2" class="anchored" data-anchor-id="其他参数">
 <span class="header-section-number">7.2.2</span> 其他参数</h3>
 <p>我们还需要提到几个其他重要的参数，如果我们先向你展示一个方便的技巧，会更容易演示：<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 可以读取你创建并格式化为 CSV 文件那样的文本字符串：</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="st">"a,b,c</span></span>
 <span><span class="st">  1,2,3</span></span>
 <span><span class="st">  4,5,6"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-      a     b     c
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     2     3
-2     4     5     6</code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;       a     b     c</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     2     3</span></span>
+<span><span class="co">#&gt; 2     4     5     6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>通常，<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 使用数据的第一行作为列名，这是一个非常普遍的惯例。 但文件顶部包含几行元数据的情况也并不少见。 你可以使用 <code>skip = n</code> 来跳过前 <code>n</code> 行，或者使用 <code>comment = "#"</code> 来删除所有以（例如）<code>#</code> 开头的行：</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="st">"元数据的第一行</span></span>
 <span><span class="st">  元数据的第二行</span></span>
 <span><span class="st">  x,y,z</span></span>
 <span><span class="st">  1,2,3"</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">2</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-      x     y     z
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     2     3</code></pre>
-</div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;       x     y     z</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     2     3</span></span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="st">"# 我想跳过的一条注释</span></span>
 <span><span class="st">  x,y,z</span></span>
 <span><span class="st">  1,2,3"</span>,</span>
 <span>  comment <span class="op">=</span> <span class="st">"#"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-      x     y     z
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     2     3</code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;       x     y     z</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     2     3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在其他情况下，数据可能没有列名。 你可以使用 <code>col_names = FALSE</code> 来告诉 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 不要将第一行作为标题，而是按顺序将它们标记为 <code>X1</code> 到 <code>Xn</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="st">"1,2,3</span></span>
 <span><span class="st">  4,5,6"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-     X1    X2    X3
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     2     3
-2     4     5     6</code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;      X1    X2    X3</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     2     3</span></span>
+<span><span class="co">#&gt; 2     4     5     6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>或者，你可以给 <code>col_names</code> 传递一个字符向量，它将被用作列名：</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="st">"1,2,3</span></span>
 <span><span class="st">  4,5,6"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-      x     y     z
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     2     3
-2     4     5     6</code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;       x     y     z</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     2     3</span></span>
+<span><span class="co">#&gt; 2     4     5     6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这些参数就是你在实践中读取大多数 CSV 文件所需要知道的全部内容了。 （至于其余情况，你需要仔细检查你的 <code>.csv</code> 文件，并阅读 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 许多其他参数的文档。）</p>
 </section><section id="其他文件类型" class="level3" data-number="7.2.3"><h3 data-number="7.2.3" class="anchored" data-anchor-id="其他文件类型">
@@ -769,13 +744,13 @@ dbl (1): Student ID
 <li>
 <p>有时 CSV 文件中的字符串包含逗号。 为了防止它们引起问题，它们需要被引号字符包围，比如 <code>"</code> 或 <code>'</code>。默认情况下，<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 假设引号字符是 <code>"</code>。 要将以下文本读入一个数据框，你需要为 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 指定哪个参数？</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"x,y\n1,'a,b'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"x,y\n1,'a,b'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
 <p>找出以下每个内联 CSV 文件有什么问题。 当你运行这些代码时会发生什么？</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"a,b\n1,2,3\n4,5,6"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"a,b\n1,2,3\n4,5,6"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"a,b,c\n1,2\n1,2,3,4"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"a,b\n\"1"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"a,b\n1,2\na,b"</span><span class="op">)</span></span>
@@ -791,7 +766,7 @@ dbl (1): Student ID
 <li>将列重命名为 <code>one</code>、<code>two</code> 和 <code>three</code>。</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">annoying</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">annoying</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  `1` <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,</span>
 <span>  `2` <span class="op">=</span> <span class="va">`1`</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">`1`</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -811,20 +786,18 @@ dbl (1): Student ID
 </ul>
 <p>你可以在这个简单的例子中看到这种行为：</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">  logical,numeric,date,string</span></span>
 <span><span class="st">  TRUE,1,2021-01-15,abc</span></span>
 <span><span class="st">  false,4.5,2021-02-15,def</span></span>
 <span><span class="st">  T,Inf,2021-02-16,ghi</span></span>
-<span><span class="st">"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 4
-  logical numeric date       string
-  &lt;lgl&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt; 
-1 TRUE        1   2021-01-15 abc   
-2 FALSE       4.5 2021-02-15 def   
-3 TRUE      Inf   2021-02-16 ghi   </code></pre>
-</div>
+<span><span class="st">"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span><span class="co">#&gt;   logical numeric date       string</span></span>
+<span><span class="co">#&gt;   &lt;lgl&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt; </span></span>
+<span><span class="co">#&gt; 1 TRUE        1   2021-01-15 abc   </span></span>
+<span><span class="co">#&gt; 2 FALSE       4.5 2021-02-15 def   </span></span>
+<span><span class="co">#&gt; 3 TRUE      Inf   2021-02-16 ghi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>如果你的数据集很干净，这个启发式方法效果很好，但在现实生活中，你会遇到各种各样稀奇古怪的失败情况。</p>
 </section><section id="缺失值列类型和问题" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="缺失值列类型和问题">
@@ -832,7 +805,7 @@ dbl (1): Student ID
 <p>列检测最常见的失败方式是某一列包含了意料之外的值，导致你得到一个字符列而不是更具体的类型。 最常见的原因之一是缺失值，它被记录为 readr 不期望的其他形式，而不是 <code>NA</code>。</p>
 <p>以这个简单的单列 CSV 文件为例：</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simple_csv</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simple_csv</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">  x</span></span>
 <span><span class="st">  10</span></span>
 <span><span class="st">  .</span></span>
@@ -841,52 +814,44 @@ dbl (1): Student ID
 </div>
 <p>如果我们不带任何额外参数来读取它，<code>x</code> 会变成一个字符列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">simple_csv</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 1
-  x    
-  &lt;chr&gt;
-1 10   
-2 .    
-3 20   
-4 30   </code></pre>
-</div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">simple_csv</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 1</span></span>
+<span><span class="co">#&gt;   x    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 10   </span></span>
+<span><span class="co">#&gt; 2 .    </span></span>
+<span><span class="co">#&gt; 3 20   </span></span>
+<span><span class="co">#&gt; 4 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在这个非常小的情况下，你可以轻易看到缺失值 <code>.</code>。 但是，如果你有成千上万行，其中只有少数几个由 <code>.</code> 表示的缺失值散布其中，会发生什么呢？ 一种方法是告诉 readr <code>x</code> 是一个数值列，然后看它在哪里失败。 你可以通过 <code>col_types</code> 参数来做到这一点，该参数接受一个命名列表，其中名称与 CSV 文件中的列名匹配：</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="va">simple_csv</span>, </span>
 <span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_double</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: One or more parsing issues, call `problems()` on your data frame for</span></span>
+<span><span class="co">#&gt; details, e.g.:</span></span>
+<span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
+<span><span class="co">#&gt;   problems(dat)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 报告说有问题，并告诉我们可以用 <code><a href="https://readr.tidyverse.org/reference/problems.html">problems()</a></code> 了解更多信息：</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-    row   col expected actual file                                              
-  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                                             
-1     3     1 a double .      C:/Users/14913/AppData/Local/Temp/RtmpmIlpiP/file…</code></pre>
-</div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span><span class="co">#&gt;     row   col expected actual file                                           </span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                                          </span></span>
+<span><span class="co">#&gt; 1     3     1 a double .      /private/var/folders/kv/dd2pdkvn7b7ftn5mvccghw…</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这告诉我们，在第 3 行第 1 列有一个问题，readr 期望一个双精度数 (double)，但得到了一个 <code>.</code>。 这表明这个数据集使用 <code>.</code> 来表示缺失值。 所以我们设置 <code>na = "."</code>，自动猜测就成功了，得到了我们想要的数值列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">simple_csv</span>, na <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 1
-      x
-  &lt;dbl&gt;
-1    10
-2    NA
-3    20
-4    30</code></pre>
-</div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">simple_csv</span>, na <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 1</span></span>
+<span><span class="co">#&gt;       x</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1    10</span></span>
+<span><span class="co">#&gt; 2    NA</span></span>
+<span><span class="co">#&gt; 3    20</span></span>
+<span><span class="co">#&gt; 4    30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="列类型" class="level3" data-number="7.3.3"><h3 data-number="7.3.3" class="anchored" data-anchor-id="列类型">
 <span class="header-section-number">7.3.3</span> 列类型</h3>
@@ -907,68 +872,50 @@ e.g.:
 </ul>
 <p>也可以通过从 <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> 切换到 <code><a href="https://readr.tidyverse.org/reference/cols.html">cols()</a></code> 并指定 <code>.default</code> 来覆盖默认的列类型：</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">another_csv</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">another_csv</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">x,y,z</span></span>
 <span><span class="st">1,2,3"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="va">another_csv</span>, </span>
 <span>  col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>.default <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  x     y     z    
-  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-1 1     2     3    </code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;   x     y     z    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 1     2     3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>另一个有用的辅助函数是 <code><a href="https://readr.tidyverse.org/reference/cols.html">cols_only()</a></code>，它只会读入你指定的列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
 <span>  <span class="va">another_csv</span>,</span>
 <span>  col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols_only</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  x    
-  &lt;chr&gt;
-1 1    </code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 1</span></span>
+<span><span class="co">#&gt;   x    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="sec-readr-directory" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="sec-readr-directory">
 <span class="header-section-number">7.4</span> 从多个文件中读取数据</h2>
 <p>有时你的数据分散在多个文件中，而不是包含在单个文件中。 例如，你可能有多個月的销售数据，每个月的数据都在一个单独的文件中：<code>01-sales.csv</code> 代表一月，<code>02-sales.csv</code> 代表二月，<code>03-sales.csv</code> 代表三月。 使用 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>，你可以一次性读取这些数据，并将它们堆叠在一个单一的数据框中。</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"data/01-sales.csv"</span>, <span class="st">"data/02-sales.csv"</span>, <span class="st">"data/03-sales.csv"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">sales_files</span>, id <span class="op">=</span> <span class="st">"file"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 19 × 6
-   file              month     year brand  item     n
-   &lt;chr&gt;             &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 data/01-sales.csv January   2019     1  1234     3
- 2 data/01-sales.csv January   2019     1  8721     9
- 3 data/01-sales.csv January   2019     1  1822     2
- 4 data/01-sales.csv January   2019     2  3333     1
- 5 data/01-sales.csv January   2019     2  2156     9
- 6 data/01-sales.csv January   2019     2  3987     6
- 7 data/01-sales.csv January   2019     2  3827     6
- 8 data/02-sales.csv February  2019     1  1234     8
- 9 data/02-sales.csv February  2019     1  8721     2
-10 data/02-sales.csv February  2019     1  1822     3
-11 data/02-sales.csv February  2019     2  3333     1
-12 data/02-sales.csv February  2019     2  2156     3
-13 data/02-sales.csv February  2019     2  3987     6
-14 data/03-sales.csv March     2019     1  1234     3
-15 data/03-sales.csv March     2019     1  3627     1
-16 data/03-sales.csv March     2019     1  8820     3
-17 data/03-sales.csv March     2019     2  7253     1
-18 data/03-sales.csv March     2019     2  8766     3
-19 data/03-sales.csv March     2019     2  8288     6</code></pre>
-</div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"data/01-sales.csv"</span>, <span class="st">"data/02-sales.csv"</span>, <span class="st">"data/03-sales.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">sales_files</span>, id <span class="op">=</span> <span class="st">"file"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 19 × 6</span></span>
+<span><span class="co">#&gt;   file              month    year brand  item     n</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 data/01-sales.csv January  2019     1  1234     3</span></span>
+<span><span class="co">#&gt; 2 data/01-sales.csv January  2019     1  8721     9</span></span>
+<span><span class="co">#&gt; 3 data/01-sales.csv January  2019     1  1822     2</span></span>
+<span><span class="co">#&gt; 4 data/01-sales.csv January  2019     2  3333     1</span></span>
+<span><span class="co">#&gt; 5 data/01-sales.csv January  2019     2  2156     9</span></span>
+<span><span class="co">#&gt; 6 data/01-sales.csv January  2019     2  3987     6</span></span>
+<span><span class="co">#&gt; # ℹ 13 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>同样，如果你的项目中的 <code>data</code> 文件夹里有这些 CSV 文件，上面的代码就能正常工作。 你可以从 <a href="https://pos.it/r4ds-01-sales">https://pos.it/r4ds-01-sales</a>、<a href="https://pos.it/r4ds-02-sales">https://pos.it/r4ds-02-sales</a> 和 <a href="https://pos.it/r4ds-03-sales">https://pos.it/r4ds-03-sales</a> 下载这些文件，或者用下面的代码直接读取它们：</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"https://pos.it/r4ds-01-sales"</span>,</span>
 <span>  <span class="st">"https://pos.it/r4ds-02-sales"</span>,</span>
 <span>  <span class="st">"https://pos.it/r4ds-03-sales"</span></span>
@@ -978,72 +925,64 @@ e.g.:
 <p><code>id</code> 参数会在结果数据框中添加一个名为 <code>file</code> 的新列，用于标识数据来自哪个文件。 这在读取的文件本身没有标识列，无法帮助你将观测值追溯到其原始来源的情况下特别有用。</p>
 <p>如果你有很多文件要读取，将它们的名字写成一个列表可能会很麻烦。 相反，你可以使用基础 R 的 <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> 函数，通过匹配文件名中的一个模式来为你找到文件。 你将在 <a href="regexps.html" class="quarto-xref"><span>Chapter 15</span></a> 中学到更多关于这些模式的知识。</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"data"</span>, pattern <span class="op">=</span> <span class="st">"sales\\.csv$"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">sales_files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data/01-sales.csv" "data/02-sales.csv" "data/03-sales.csv"</code></pre>
-</div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sales_files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"data"</span>, pattern <span class="op">=</span> <span class="st">"sales\\.csv$"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sales_files</span></span>
+<span><span class="co">#&gt; [1] "data/01-sales.csv" "data/02-sales.csv" "data/03-sales.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-writing-to-a-file" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="sec-writing-to-a-file">
 <span class="header-section-number">7.5</span> 写入文件</h2>
 <p>readr 也附带了两个有用的函数，用于将数据写回磁盘：<code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> 和 <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_tsv()</a></code>。 这些函数最重要的参数是 <code>x</code>（要保存的数据框）和 <code>file</code>（保存的位置）。 你还可以用 <code>na</code> 指定如何写入缺失值，以及如果你想 <code>append</code>到一个现有文件。</p>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在让我们把那个 csv 文件读回来。 注意，当你保存为 CSV 时，你刚刚设置的变量类型信息会丢失，因为你又从一个纯文本文件开始读取了：</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan             age
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-2          2 Barclay Lynn     French fries       Lunch only              5
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7
-4          4 Leon Rossini     Anchovies          Lunch only             NA
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-6          6 Güvenç Attila    Ice cream          Lunch only              6</code></pre>
-</div>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students-2.csv"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"students-2.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan             age
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-2          2 Barclay Lynn     French fries       Lunch only              5
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7
-4          4 Leon Rossini     Anchovies          Lunch only             NA
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-6          6 Güvenç Attila    Ice cream          Lunch only              6</code></pre>
-</div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students-2.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"students-2.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这使得 CSV 对于缓存中间结果有点不可靠——你每次加载时都需要重新创建列规格。 主要有两种替代方案：</p>
 <ol type="1">
 <li>
 <p><code><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds()</a></code> 和 <code><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds()</a></code> 是对基础函数 <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> 和 <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code> 的统一包装。 它们以 R 的自定义二进制格式 RDS 存储数据。 这意味着当你重新加载对象时，你加载的是你存储的<strong>完全相同</strong>的 R 对象。</p>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.rds"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"students.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  student_id full_name        favourite_food     meal_plan             age
-       &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;
-1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4
-2          2 Barclay Lynn     French fries       Lunch only              5
-3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7
-4          4 Leon Rossini     Anchovies          Lunch only             NA
-5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5
-6          6 Güvenç Attila    Ice cream          Lunch only              6</code></pre>
-</div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">write_rds</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html">read_rds</a></span><span class="op">(</span><span class="st">"students.rds"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;               &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
 <p>arrow 包允许你读写 parquet 文件，这是一种快速的二进制文件格式，可以在不同编程语言之间共享。 我们将在 <a href="arrow.html" class="quarto-xref"><span>Chapter 22</span></a> 中更深入地讨论 arrow。</p>
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
-<span><span class="fu">write_parquet</span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.parquet"</span><span class="op">)</span></span>
-<span><span class="fu">read_parquet</span><span class="op">(</span><span class="st">"students.parquet"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"students.parquet"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/read_parquet.html">read_parquet</a></span><span class="op">(</span><span class="st">"students.parquet"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan               age</span></span>
 <span><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;fct&gt;                 &lt;dbl&gt;</span></span>
@@ -1061,36 +1000,32 @@ e.g.:
 <span class="header-section-number">7.6</span> 数据录入</h2>
 <p>有时你需要“手动”组装一个 tibble，在你的 R 脚本中进行少量的数据录入。 有两个有用的函数可以帮助你做到这一点，它们的区别在于你是按列还是按行来布局 tibble。 <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> 是按列工作的：</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span>, </span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h"</span>, <span class="st">"m"</span>, <span class="st">"g"</span><span class="op">)</span>,</span>
 <span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.08</span>, <span class="fl">0.83</span>, <span class="fl">0.60</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-      x y         z
-  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-1     1 h      0.08
-2     2 m      0.83
-3     5 g      0.6 </code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;       x y         z</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 h      0.08</span></span>
+<span><span class="co">#&gt; 2     2 m      0.83</span></span>
+<span><span class="co">#&gt; 3     5 g      0.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>按列布局数据可能很难看出行与行之间的关系，所以另一种选择是 <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code>，即<strong>转置的 tibble</strong> (transposed tibble) 的缩写，它让你逐行布局你的数据。 <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> 是为在代码中进行数据录入而定制的：列标题以 <code>~</code> 开头，条目由逗号分隔。 这使得可以用一种易于阅读的形式来布局少量数据：</p>
 <div class="cell">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>, <span class="op">~</span><span class="va">z</span>,</span>
 <span>  <span class="fl">1</span>, <span class="st">"h"</span>, <span class="fl">0.08</span>,</span>
 <span>  <span class="fl">2</span>, <span class="st">"m"</span>, <span class="fl">0.83</span>,</span>
 <span>  <span class="fl">5</span>, <span class="st">"g"</span>, <span class="fl">0.60</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-      x y         z
-  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-1     1 h      0.08
-2     2 m      0.83
-3     5 g      0.6 </code></pre>
-</div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;       x y         z</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 h      0.08</span></span>
+<span><span class="co">#&gt; 2     2 m      0.83</span></span>
+<span><span class="co">#&gt; 3     5 g      0.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="总结" class="level2" data-number="7.7"><h2 data-number="7.7" class="anchored" data-anchor-id="总结">
 <span class="header-section-number">7.7</span> 总结</h2>

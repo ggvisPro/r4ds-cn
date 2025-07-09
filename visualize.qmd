@@ -1,36 +1,38 @@
-# Visualize {#sec-visualize .unnumbered}
+# 可视化 {#sec-visualize .unnumbered}
 
 ```{r}
 #| echo: false
+
 source("_common.R")
+showtext::showtext_auto()
 ```
 
-After reading the first part of the book, you understand (at least superficially) the most important tools for doing data science.
-Now it's time to start diving into the details.
-In this part of the book, you'll learn about visualizing data in further depth.
+读完本书的第一部分后，你已经（至少在表面上）了解了从事数据科学所需的最重要的工具。
+现在是时候开始深入细节了。
+在本书的这一部分，你将更深入地学习数据可视化。
 
 ```{r}
 #| label: fig-ds-visualize
 #| echo: false
 #| fig-cap: |
-#|   Data visualization is often the first step in data exploration.
+#|   数据可视化通常是数据探索的第一步。
 #| fig-alt: |
-#|   Our data science model, with visualize highlighted in blue.
+#|   我们的数据科学模型，其中“可视化”部分以蓝色突出显示。
 #| out.width: NULL
 knitr::include_graphics("diagrams/data-science/visualize.png", dpi = 270)
 ```
 
-Each chapter addresses one to a few aspects of creating a data visualization.
+每一章都将探讨创建数据可视化的一个或几个方面。
 
--   In @sec-layers you will learn about the layered grammar of graphics.
+  - 在 @sec-layers 中，你将学习图形的 layered grammar (分层语法)。
 
--   In @sec-exploratory-data-analysis, you'll combine visualization with your curiosity and skepticism to ask and answer interesting questions about data.
+  - 在 @sec-exploratory-data-analysis 中，你将把可视化与你的好奇心和怀疑精神结合起来，从而提出并回答有关数据的有趣问题。
 
--   Finally, in @sec-communication you will learn how to take your exploratory graphics, elevate them, and turn them into expository graphics, graphics that help the newcomer to your analysis understand what's going on as quickly and easily as possible.
+  - 最后，在 @sec-communication 中，你将学习如何将你的探索性图形进行升华，将其转化为解释性图形，这种图形可以帮助初次接触你分析的人尽可能快速、轻松地理解当前的情况。
 
-These three chapters get you started in the world of visualization, but there is much more to learn.
-The absolute best place to learn more is the ggplot2 book: [*ggplot2: Elegant graphics for data analysis*](https://ggplot2-book.org/).
-It goes into much more depth about the underlying theory, and has many more examples of how to combine the individual pieces to solve practical problems.
-Another great resource is the ggplot2 extensions gallery <https://exts.ggplot2.tidyverse.org/gallery/>.
-This site lists many of the packages that extend ggplot2 with new geoms and scales.
-It's a great place to start if you're trying to do something that seems hard with ggplot2.
+这三章将带你进入可视化世界的大门，但还有更多的知识有待学习。
+学习更多知识的最佳途径是阅读 ggplot2 专著：[*ggplot2: Elegant graphics for data analysis*](https://ggplot2-book.org/)。
+该书更深入地探讨了底层理论，并提供了更多关于如何组合各个部分来解决实际问题的示例。
+另一个很棒的资源是 ggplot2 扩展库 [https://exts.ggplot2.tidyverse.org/gallery/](https://exts.ggplot2.tidyverse.org/gallery/)。
+这个网站列出了许多用新的几何对象 (geom) 和标度 (scale) 来扩展 ggplot2 的包。
+如果你想用 ggplot2 做一些看起来很困难的事情，这里是一个很好的起点。

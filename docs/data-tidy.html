@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -477,48 +477,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">5.2</span> 整洁数据</h2>
 <p>你可以用多种方式来表示相同的基础数据。下面的例子展示了用三种不同方式组织的相同数据。每个数据集都显示了四个变量的相同值：<em>country</em> (国家)、<em>year</em> (年份)、<em>population</em> (人口) 和记录在案的 <em>cases</em> (结核病案例) 数量，但每个数据集以不同的方式组织这些值。</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country      year  cases population
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
-1 Afghanistan  1999    745   19987071
-2 Afghanistan  2000   2666   20595360
-3 Brazil       1999  37737  172006362
-4 Brazil       2000  80488  174504898
-5 China        1999 212258 1272915272
-6 China        2000 213766 1280428583</code></pre>
-</div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   country      year type            count
-   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
- 1 Afghanistan  1999 cases             745
- 2 Afghanistan  1999 population   19987071
- 3 Afghanistan  2000 cases            2666
- 4 Afghanistan  2000 population   20595360
- 5 Brazil       1999 cases           37737
- 6 Brazil       1999 population  172006362
- 7 Brazil       2000 cases           80488
- 8 Brazil       2000 population  174504898
- 9 China        1999 cases          212258
-10 China        1999 population 1272915272
-11 China        2000 cases          213766
-12 China        2000 population 1280428583</code></pre>
-</div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  country      year rate             
-  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
-1 Afghanistan  1999 745/19987071     
-2 Afghanistan  2000 2666/20595360    
-3 Brazil       1999 37737/172006362  
-4 Brazil       2000 80488/174504898  
-5 China        1999 212258/1272915272
-6 China        2000 213766/1280428583</code></pre>
-</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table1</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;   country      year  cases population</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071</span></span>
+<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360</span></span>
+<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362</span></span>
+<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898</span></span>
+<span><span class="co">#&gt; 5 China        1999 212258 1272915272</span></span>
+<span><span class="co">#&gt; 6 China        2000 213766 1280428583</span></span>
+<span></span>
+<span><span class="va">table2</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 4</span></span>
+<span><span class="co">#&gt;   country      year type           count</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1999 cases            745</span></span>
+<span><span class="co">#&gt; 2 Afghanistan  1999 population  19987071</span></span>
+<span><span class="co">#&gt; 3 Afghanistan  2000 cases           2666</span></span>
+<span><span class="co">#&gt; 4 Afghanistan  2000 population  20595360</span></span>
+<span><span class="co">#&gt; 5 Brazil       1999 cases          37737</span></span>
+<span><span class="co">#&gt; 6 Brazil       1999 population 172006362</span></span>
+<span><span class="co">#&gt; # ℹ 6 more rows</span></span>
+<span></span>
+<span><span class="va">table3</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;   country      year rate             </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            </span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1999 745/19987071     </span></span>
+<span><span class="co">#&gt; 2 Afghanistan  2000 2666/20595360    </span></span>
+<span><span class="co">#&gt; 3 Brazil       1999 37737/172006362  </span></span>
+<span><span class="co">#&gt; 4 Brazil       2000 80488/174504898  </span></span>
+<span><span class="co">#&gt; 5 China        1999 212258/1272915272</span></span>
+<span><span class="co">#&gt; 6 China        2000 213766/1280428583</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这些都是相同基础数据的表示形式，但它们的使用便利性并不相同。其中之一，<code>table1</code>，在 tidyverse 中使用起来会容易得多，因为它是<strong>整洁的</strong> (tidy)。</p>
 <p>有三条相互关联的规则可以使一个数据集变得整洁：</p>
@@ -547,32 +538,30 @@ Figure&nbsp;5.1: 以下三条规则构成一个整洁的数据集：变量是列
 </ol>
 <p>dplyr、ggplot2 以及 tidyverse 中的所有其他包都是为处理整洁数据而设计的。以下是一些小例子，展示了你可能会如何使用 <code>table1</code>。</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 计算每万人的比率</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 计算每万人的比率</span></span>
 <span><span class="va">table1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  country      year  cases population  rate
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
-1 Afghanistan  1999    745   19987071 0.373
-2 Afghanistan  2000   2666   20595360 1.29 
-3 Brazil       1999  37737  172006362 2.19 
-4 Brazil       2000  80488  174504898 4.61 
-5 China        1999 212258 1272915272 1.67 
-6 China        2000 213766 1280428583 1.67 </code></pre>
-</div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 计算每年的总病例数</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   country      year  cases population  rate</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1999    745   19987071 0.373</span></span>
+<span><span class="co">#&gt; 2 Afghanistan  2000   2666   20595360 1.29 </span></span>
+<span><span class="co">#&gt; 3 Brazil       1999  37737  172006362 2.19 </span></span>
+<span><span class="co">#&gt; 4 Brazil       2000  80488  174504898 4.61 </span></span>
+<span><span class="co">#&gt; 5 China        1999 212258 1272915272 1.67 </span></span>
+<span><span class="co">#&gt; 6 China        2000 213766 1280428583 1.67</span></span>
+<span></span>
+<span><span class="co"># 计算每年的总病例数</span></span>
 <span><span class="va">table1</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-   year total_cases
-  &lt;dbl&gt;       &lt;dbl&gt;
-1  1999      250740
-2  2000      296920</code></pre>
-</div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 可视化随时间的变化</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">cases</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span><span class="co">#&gt;    year total_cases</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  1999      250740</span></span>
+<span><span class="co">#&gt; 2  2000      296920</span></span>
+<span></span>
+<span><span class="co"># 可视化随时间的变化</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">table1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">cases</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">country</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">country</span>, shape <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -611,55 +600,42 @@ Figure&nbsp;5.1: 以下三条规则构成一个整洁的数据集：变量是列
 <span class="header-section-number">5.3.1</span> 列名中包含数据</h3>
 <p><code>billboard</code> 数据集记录了 2000 年歌曲的广告牌排名：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 317 × 79
-   artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
-   &lt;chr&gt;      &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 2 Pac      Baby… 2000-02-26      87    82    72    77    87    94    99    NA
- 2 2Ge+her    The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA
- 3 3 Doors D… Kryp… 2000-04-08      81    70    68    67    66    57    54    53
- 4 3 Doors D… Loser 2000-10-21      76    76    72    69    67    65    55    59
- 5 504 Boyz   Wobb… 2000-04-15      57    34    25    17    17    31    36    49
- 6 98^0       Give… 2000-08-19      51    39    34    26    26    19     2     2
- 7 A*Teens    Danc… 2000-07-08      97    97    96    95   100    NA    NA    NA
- 8 Aaliyah    I Do… 2000-01-29      84    62    51    41    38    35    35    38
- 9 Aaliyah    Try … 2000-03-18      59    53    38    28    21    18    16    14
-10 Adams, Yo… Open… 2000-08-26      76    76    74    69    68    67    61    58
-# ℹ 307 more rows
-# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,
-#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,
-#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,
-#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,
-#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,
-#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, …</code></pre>
-</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span></span>
+<span><span class="co">#&gt; # A tibble: 317 × 79</span></span>
+<span><span class="co">#&gt;   artist       track               date.entered   wk1   wk2   wk3   wk4   wk5</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;               &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2 Pac        Baby Don't Cry (Ke… 2000-02-26      87    82    72    77    87</span></span>
+<span><span class="co">#&gt; 2 2Ge+her      The Hardest Part O… 2000-09-02      91    87    92    NA    NA</span></span>
+<span><span class="co">#&gt; 3 3 Doors Down Kryptonite          2000-04-08      81    70    68    67    66</span></span>
+<span><span class="co">#&gt; 4 3 Doors Down Loser               2000-10-21      76    76    72    69    67</span></span>
+<span><span class="co">#&gt; 5 504 Boyz     Wobble Wobble       2000-04-15      57    34    25    17    17</span></span>
+<span><span class="co">#&gt; 6 98^0         Give Me Just One N… 2000-08-19      51    39    34    26    26</span></span>
+<span><span class="co">#&gt; # ℹ 311 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 71 more variables: wk6 &lt;dbl&gt;, wk7 &lt;dbl&gt;, wk8 &lt;dbl&gt;, wk9 &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在这个数据集中，每个观测是一首歌。前三列 (<code>artist</code>, <code>track</code> 和 <code>date.entered</code>) 是描述歌曲的变量。然后我们有 76 列 (<code>wk1</code>-<code>wk76</code>) 描述了歌曲在每周的排名<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。在这里，列名是一个变量 (周，<code>week</code>)，而单元格的值是另一个变量 (排名，<code>rank</code>)。</p>
 <p>为了整理这个数据，我们将使用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
 <span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
 <span>    values_to <span class="op">=</span> <span class="st">"rank"</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24,092 × 5
-   artist track                   date.entered week   rank
-   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;
- 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87
- 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82
- 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72
- 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77
- 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87
- 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94
- 7 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk7      99
- 8 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk8      NA
- 9 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk9      NA
-10 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk10     NA
-# ℹ 24,082 more rows</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 24,092 × 5</span></span>
+<span><span class="co">#&gt;    artist track                   date.entered week   rank</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87</span></span>
+<span><span class="co">#&gt;  2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82</span></span>
+<span><span class="co">#&gt;  3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72</span></span>
+<span><span class="co">#&gt;  4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77</span></span>
+<span><span class="co">#&gt;  5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87</span></span>
+<span><span class="co">#&gt;  6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94</span></span>
+<span><span class="co">#&gt;  7 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk7      99</span></span>
+<span><span class="co">#&gt;  8 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk8      NA</span></span>
+<span><span class="co">#&gt;  9 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk9      NA</span></span>
+<span><span class="co">#&gt; 10 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk10     NA</span></span>
+<span><span class="co">#&gt; # ℹ 24,082 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在数据之后，有三个关键参数：</p>
 <ul>
@@ -673,35 +649,29 @@ Figure&nbsp;5.1: 以下三条规则构成一个整洁的数据集：变量是列
 <p>请注意，在代码中 <code>"week"</code> 和 <code>"rank"</code> 是带引号的，因为它们是我们正在创建的新变量，在运行 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 调用时它们还不存在于数据中。</p>
 <p>现在让我们把注意力转向结果中这个更长的数据框。如果一首歌在前 100 名的时间少于 76 周会发生什么？以 2 Pac 的 “Baby Don’t Cry” 为例。上面的输出表明它只在前 100 名中待了 7 周，所有剩余的周都用缺失值填充。这些 <code>NA</code> 并不真正代表未知的观测；它们是被数据集的结构强制存在的<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，所以我们可以通过设置 <code>values_drop_na = TRUE</code> 来让 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 移除它们：</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
 <span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
 <span>    values_to <span class="op">=</span> <span class="st">"rank"</span>,</span>
 <span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5,307 × 5
-   artist  track                   date.entered week   rank
-   &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;
- 1 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk1      87
- 2 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk2      82
- 3 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk3      72
- 4 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk4      77
- 5 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk5      87
- 6 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk6      94
- 7 2 Pac   Baby Don't Cry (Keep... 2000-02-26   wk7      99
- 8 2Ge+her The Hardest Part Of ... 2000-09-02   wk1      91
- 9 2Ge+her The Hardest Part Of ... 2000-09-02   wk2      87
-10 2Ge+her The Hardest Part Of ... 2000-09-02   wk3      92
-# ℹ 5,297 more rows</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5,307 × 5</span></span>
+<span><span class="co">#&gt;   artist track                   date.entered week   rank</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87</span></span>
+<span><span class="co">#&gt; 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82</span></span>
+<span><span class="co">#&gt; 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72</span></span>
+<span><span class="co">#&gt; 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77</span></span>
+<span><span class="co">#&gt; 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87</span></span>
+<span><span class="co">#&gt; 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94</span></span>
+<span><span class="co">#&gt; # ℹ 5,301 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在行数少了很多，这表明许多带有 <code>NA</code> 的行被删除了。</p>
 <p>你可能还会想，如果一首歌在前 100 名的时间超过 76 周会发生什么？我们无法从这些数据中得知，但你可能会猜到，数据集中会添加额外的列 <code>wk77</code>、<code>wk78</code>……</p>
 <p>这个数据现在是整洁的了，但我们可以通过使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 和 <code><a href="https://readr.tidyverse.org/reference/parse_number.html">readr::parse_number()</a></code> 将 <code>week</code> 的值从字符字符串转换为数字，来使未来的计算更容易一些。<code><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number()</a></code> 是一个方便的函数，它会从字符串中提取第一个数字，忽略所有其他文本。</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">&lt;-</span> <span class="va">billboard</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">&lt;-</span> <span class="va">billboard</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"wk"</span><span class="op">)</span>, </span>
 <span>    names_to <span class="op">=</span> <span class="st">"week"</span>, </span>
@@ -711,34 +681,28 @@ Figure&nbsp;5.1: 以下三条规则构成一个整洁的数据集：变量是列
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    week <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">week</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="va">billboard_longer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5,307 × 5
-   artist  track                   date.entered  week  rank
-   &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt;
- 1 2 Pac   Baby Don't Cry (Keep... 2000-02-26       1    87
- 2 2 Pac   Baby Don't Cry (Keep... 2000-02-26       2    82
- 3 2 Pac   Baby Don't Cry (Keep... 2000-02-26       3    72
- 4 2 Pac   Baby Don't Cry (Keep... 2000-02-26       4    77
- 5 2 Pac   Baby Don't Cry (Keep... 2000-02-26       5    87
- 6 2 Pac   Baby Don't Cry (Keep... 2000-02-26       6    94
- 7 2 Pac   Baby Don't Cry (Keep... 2000-02-26       7    99
- 8 2Ge+her The Hardest Part Of ... 2000-09-02       1    91
- 9 2Ge+her The Hardest Part Of ... 2000-09-02       2    87
-10 2Ge+her The Hardest Part Of ... 2000-09-02       3    92
-# ℹ 5,297 more rows</code></pre>
-</div>
+<span><span class="va">billboard_longer</span></span>
+<span><span class="co">#&gt; # A tibble: 5,307 × 5</span></span>
+<span><span class="co">#&gt;   artist track                   date.entered  week  rank</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26       1    87</span></span>
+<span><span class="co">#&gt; 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26       2    82</span></span>
+<span><span class="co">#&gt; 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26       3    72</span></span>
+<span><span class="co">#&gt; 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26       4    77</span></span>
+<span><span class="co">#&gt; 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26       5    87</span></span>
+<span><span class="co">#&gt; 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26       6    94</span></span>
+<span><span class="co">#&gt; # ℹ 5,301 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在我们把所有的周数都放在一个变量里，所有的排名值都放在另一个变量里，我们就很方便地可以可视化歌曲排名随时间的变化了。代码如下所示，结果在 <a href="#fig-billboard-ranks" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> 中。我们可以看到，很少有歌曲在前 100 名中停留超过 20 周。</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">billboard_longer</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">week</span>, y <span class="op">=</span> <span class="va">rank</span>, group <span class="op">=</span> <span class="va">track</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-billboard-ranks" class="quarto-float quarto-figure quarto-figure-center anchored" alt="一个折线图，x 轴是周数，y 轴是排名，每条线代表一首歌。大多数歌曲似乎从一个高排名开始，迅速攀升到一个低排名（排名数字小），然后再次下滑。在周数大于 20 且排名大于 50 的区域，歌曲数量出奇地少。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-billboard-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="data-tidy_files/figure-html/fig-billboard-ranks-1.png" class="img-fluid figure-img" alt="一个折线图，x 轴是周数，y 轴是排名，每条线代表一首歌。大多数歌曲似乎从一个高排名开始，迅速攀升到一个低排名（排名数字小），然后再次下滑。在周数大于 20 且排名大于 50 的区域，歌曲数量出奇地少。" width="672">
+<img src="data-tidy_files/figure-html/fig-billboard-ranks-1.png" class="img-fluid figure-img" alt="一个折线图，x 轴是周数，y 轴是排名，每条线代表一首歌。大多数歌曲似乎从一个高排名开始，迅速攀升到一个低排名（排名数字小），然后再次下滑。在周数大于 20 且排名大于 50 的区域，歌曲数量出奇地少。" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-billboard-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: 一个折线图，显示了歌曲排名随时间的变化。
@@ -750,7 +714,7 @@ Figure&nbsp;5.2: 一个折线图，显示了歌曲排名随时间的变化。
 <span class="header-section-number">5.3.2</span> 转换是如何工作的？</h3>
 <p>现在你已经看到了我们如何使用转换来重塑数据，让我们花一点时间来直观地理解转换对数据做了什么。让我们从一个非常简单的数据集开始，以便更容易地看到发生了什么。假设我们有三个病人，<code>id</code> 分别是 A、B 和 C，我们对每个病人进行了两次血压测量。我们将用 <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> 创建数据，这是一个方便手动构建小型 tibble 的函数：</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">id</span>,  <span class="op">~</span><span class="va">bp1</span>, <span class="op">~</span><span class="va">bp2</span>,</span>
 <span>   <span class="st">"A"</span>,   <span class="fl">100</span>,  <span class="fl">120</span>,</span>
 <span>   <span class="st">"B"</span>,   <span class="fl">140</span>,  <span class="fl">115</span>,</span>
@@ -759,23 +723,21 @@ Figure&nbsp;5.2: 一个折线图，显示了歌曲排名随时间的变化。
 </div>
 <p>我们希望我们的新数据集有三个变量：<code>id</code> (已存在)、<code>measurement</code> (测量，即列名) 和 <code>value</code> (值，即单元格值)。为了实现这一点，我们需要将 <code>df</code> 拉长：</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="va">bp1</span><span class="op">:</span><span class="va">bp2</span>,</span>
 <span>    names_to <span class="op">=</span> <span class="st">"measurement"</span>,</span>
 <span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  id    measurement value
-  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
-1 A     bp1           100
-2 A     bp2           120
-3 B     bp1           140
-4 B     bp2           115
-5 C     bp1           120
-6 C     bp2           125</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;   id    measurement value</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 A     bp1           100</span></span>
+<span><span class="co">#&gt; 2 A     bp2           120</span></span>
+<span><span class="co">#&gt; 3 B     bp1           140</span></span>
+<span><span class="co">#&gt; 4 B     bp2           115</span></span>
+<span><span class="co">#&gt; 5 C     bp1           120</span></span>
+<span><span class="co">#&gt; 6 C     bp2           125</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>重塑是如何工作的呢？如果我们逐列思考，就更容易理解了。如 <a href="#fig-pivot-variables" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> 所示，原始数据集中已经是变量的列中的值 (<code>id</code>) 需要被重复，每个被转换的列重复一次。</p>
 <div class="cell">
@@ -820,56 +782,39 @@ Figure&nbsp;5.5: 值的数量被保留（不重复），但被逐行展开。
 <span class="header-section-number">5.3.3</span> 列名中包含多个变量</h3>
 <p>一个更具挑战性的情况是，当你的列名中塞入了多条信息，而你希望将这些信息存储在不同的新变量中时。例如，拿 <code>who2</code> 数据集来说，这是你上面看到的 <code>table1</code> 及其他表格的来源：</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7,240 × 58
-   country      year sp_m_014 sp_m_1524 sp_m_2534 sp_m_3544 sp_m_4554 sp_m_5564
-   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
- 1 Afghanistan  1980       NA        NA        NA        NA        NA        NA
- 2 Afghanistan  1981       NA        NA        NA        NA        NA        NA
- 3 Afghanistan  1982       NA        NA        NA        NA        NA        NA
- 4 Afghanistan  1983       NA        NA        NA        NA        NA        NA
- 5 Afghanistan  1984       NA        NA        NA        NA        NA        NA
- 6 Afghanistan  1985       NA        NA        NA        NA        NA        NA
- 7 Afghanistan  1986       NA        NA        NA        NA        NA        NA
- 8 Afghanistan  1987       NA        NA        NA        NA        NA        NA
- 9 Afghanistan  1988       NA        NA        NA        NA        NA        NA
-10 Afghanistan  1989       NA        NA        NA        NA        NA        NA
-# ℹ 7,230 more rows
-# ℹ 50 more variables: sp_m_65 &lt;dbl&gt;, sp_f_014 &lt;dbl&gt;, sp_f_1524 &lt;dbl&gt;,
-#   sp_f_2534 &lt;dbl&gt;, sp_f_3544 &lt;dbl&gt;, sp_f_4554 &lt;dbl&gt;, sp_f_5564 &lt;dbl&gt;,
-#   sp_f_65 &lt;dbl&gt;, sn_m_014 &lt;dbl&gt;, sn_m_1524 &lt;dbl&gt;, sn_m_2534 &lt;dbl&gt;,
-#   sn_m_3544 &lt;dbl&gt;, sn_m_4554 &lt;dbl&gt;, sn_m_5564 &lt;dbl&gt;, sn_m_65 &lt;dbl&gt;,
-#   sn_f_014 &lt;dbl&gt;, sn_f_1524 &lt;dbl&gt;, sn_f_2534 &lt;dbl&gt;, sn_f_3544 &lt;dbl&gt;,
-#   sn_f_4554 &lt;dbl&gt;, sn_f_5564 &lt;dbl&gt;, sn_f_65 &lt;dbl&gt;, ep_m_014 &lt;dbl&gt;, …</code></pre>
-</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span></span>
+<span><span class="co">#&gt; # A tibble: 7,240 × 58</span></span>
+<span><span class="co">#&gt;   country      year sp_m_014 sp_m_1524 sp_m_2534 sp_m_3544 sp_m_4554</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1980       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; 2 Afghanistan  1981       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; 3 Afghanistan  1982       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; 4 Afghanistan  1983       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; 5 Afghanistan  1984       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; 6 Afghanistan  1985       NA        NA        NA        NA        NA</span></span>
+<span><span class="co">#&gt; # ℹ 7,234 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 51 more variables: sp_m_5564 &lt;dbl&gt;, sp_m_65 &lt;dbl&gt;, sp_f_014 &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这个由世界卫生组织收集的数据集记录了关于结核病诊断的信息。有两列已经是变量并且很容易解释：<code>country</code> 和 <code>year</code>。它们后面跟着 56 列，如 <code>sp_m_014</code>、<code>ep_m_4554</code> 和 <code>rel_m_3544</code>。如果你盯着这些列足够长的时间，你会注意到一个模式。每个列名都由三部分组成，用 <code>_</code> 分隔。第一部分，<code>sp</code>/<code>rel</code>/<code>ep</code>，描述了诊断所用的方法；第二部分，<code>m</code>/<code>f</code> 是 <code>gender</code> (性别，在这个数据集中编码为二元变量)；第三部分，<code>014</code>/<code>1524</code>/<code>2534</code>/<code>3544</code>/<code>4554</code>/<code>5564</code>/<code>65</code> 是 <code>age</code> (年龄) 范围 (例如，<code>014</code> 代表 0-14 岁)。</p>
 <p>所以在这种情况下，我们在 <code>who2</code> 中记录了六条信息：国家和年份 (已经是列)；诊断方法、性别类别和年龄范围类别 (包含在其他列名中)；以及该类别中的患者计数 (单元格值)。为了将这六条信息组织在六个独立的列中，我们使用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>，并为 <code>names_to</code> 提供一个列名向量，为 <code>names_sep</code> 提供将原始变量名拆分成块的指令，以及为 <code>values_to</code> 提供一个列名：</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">who2</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="va">country</span><span class="op">:</span><span class="va">year</span><span class="op">)</span>,</span>
 <span>    names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"diagnosis"</span>, <span class="st">"gender"</span>, <span class="st">"age"</span><span class="op">)</span>, </span>
 <span>    names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
 <span>    values_to <span class="op">=</span> <span class="st">"count"</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 405,440 × 6
-   country      year diagnosis gender age   count
-   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
- 1 Afghanistan  1980 sp        m      014      NA
- 2 Afghanistan  1980 sp        m      1524     NA
- 3 Afghanistan  1980 sp        m      2534     NA
- 4 Afghanistan  1980 sp        m      3544     NA
- 5 Afghanistan  1980 sp        m      4554     NA
- 6 Afghanistan  1980 sp        m      5564     NA
- 7 Afghanistan  1980 sp        m      65       NA
- 8 Afghanistan  1980 sp        f      014      NA
- 9 Afghanistan  1980 sp        f      1524     NA
-10 Afghanistan  1980 sp        f      2534     NA
-# ℹ 405,430 more rows</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 405,440 × 6</span></span>
+<span><span class="co">#&gt;   country      year diagnosis gender age   count</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Afghanistan  1980 sp        m      014      NA</span></span>
+<span><span class="co">#&gt; 2 Afghanistan  1980 sp        m      1524     NA</span></span>
+<span><span class="co">#&gt; 3 Afghanistan  1980 sp        m      2534     NA</span></span>
+<span><span class="co">#&gt; 4 Afghanistan  1980 sp        m      3544     NA</span></span>
+<span><span class="co">#&gt; 5 Afghanistan  1980 sp        m      4554     NA</span></span>
+<span><span class="co">#&gt; 6 Afghanistan  1980 sp        m      5564     NA</span></span>
+<span><span class="co">#&gt; # ℹ 405,434 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>names_sep</code> 的一个替代方案是 <code>names_pattern</code>，在你学习了 <a href="regexps.html" class="quarto-xref"><span>Chapter 15</span></a> 中的正则表达式后，可以用它从更复杂的命名场景中提取变量。</p>
 <p>从概念上讲，这只是你已经看过的更简单情况的一个小变种。<a href="#fig-pivot-multiple-names" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> 展示了基本思想：现在，列名不再是转换成单个列，而是转换成多个列。你可以想象这分两步发生 (先转换再分离)，但实际上它是在一个步骤中完成的，因为这样更快。</p>
@@ -889,41 +834,35 @@ Figure&nbsp;5.6: 转换名称中包含多条信息的列，意味着每个列名
 <span class="header-section-number">5.3.4</span> 列标题中包含数据和变量名</h3>
 <p>复杂性的下一个台阶是当列名中混合了变量值和变量名。例如，拿 <code>household</code> 数据集来说：</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 5
-  family dob_child1 dob_child2 name_child1 name_child2
-   &lt;int&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;       &lt;chr&gt;      
-1      1 1998-11-26 2000-01-29 Susan       Jose       
-2      2 1996-06-22 NA         Mark        &lt;NA&gt;       
-3      3 2002-07-11 2004-04-05 Sam         Seth       
-4      4 2004-10-10 2009-08-27 Craig       Khai       
-5      5 2000-12-05 2005-02-28 Parker      Gracie     </code></pre>
-</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span><span class="co">#&gt;   family dob_child1 dob_child2 name_child1 name_child2</span></span>
+<span><span class="co">#&gt;    &lt;int&gt; &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;       &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt; 1      1 1998-11-26 2000-01-29 Susan       Jose       </span></span>
+<span><span class="co">#&gt; 2      2 1996-06-22 NA         Mark        &lt;NA&gt;       </span></span>
+<span><span class="co">#&gt; 3      3 2002-07-11 2004-04-05 Sam         Seth       </span></span>
+<span><span class="co">#&gt; 4      4 2004-10-10 2009-08-27 Craig       Khai       </span></span>
+<span><span class="co">#&gt; 5      5 2000-12-05 2005-02-28 Parker      Gracie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这个数据集包含了五个家庭的数据，以及最多两个孩子的姓名和出生日期。这个数据集中的新挑战是，列名包含了两个变量的名称 (<code>dob</code>、<code>name</code>) 和另一个变量 (<code>child</code>，值为 1 或 2) 的值。为了解决这个问题，我们再次需要向 <code>names_to</code> 提供一个向量，但这次我们使用特殊的 <code>".value"</code> 指示符；这不是一个变量名，而是一个告诉 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 做些不同事情的唯一值。这会覆盖通常的 <code>values_to</code> 参数，转而使用被转换列名的第一部分作为输出中的变量名。</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">household</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="op">!</span><span class="va">family</span>, </span>
 <span>    names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">".value"</span>, <span class="st">"child"</span><span class="op">)</span>, </span>
 <span>    names_sep <span class="op">=</span> <span class="st">"_"</span>, </span>
 <span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 4
-  family child  dob        name  
-   &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt; 
-1      1 child1 1998-11-26 Susan 
-2      1 child2 2000-01-29 Jose  
-3      2 child1 1996-06-22 Mark  
-4      3 child1 2002-07-11 Sam   
-5      3 child2 2004-04-05 Seth  
-6      4 child1 2004-10-10 Craig 
-7      4 child2 2009-08-27 Khai  
-8      5 child1 2000-12-05 Parker
-9      5 child2 2005-02-28 Gracie</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 4</span></span>
+<span><span class="co">#&gt;   family child  dob        name </span></span>
+<span><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1      1 child1 1998-11-26 Susan</span></span>
+<span><span class="co">#&gt; 2      1 child2 2000-01-29 Jose </span></span>
+<span><span class="co">#&gt; 3      2 child1 1996-06-22 Mark </span></span>
+<span><span class="co">#&gt; 4      3 child1 2002-07-11 Sam  </span></span>
+<span><span class="co">#&gt; 5      3 child2 2004-04-05 Seth </span></span>
+<span><span class="co">#&gt; 6      4 child1 2004-10-10 Craig</span></span>
+<span><span class="co">#&gt; # ℹ 3 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们再次使用 <code>values_drop_na = TRUE</code>，因为输入的形状强制创建了显式的缺失变量 (例如，对于只有一个孩子的家庭)。</p>
 <p><a href="#fig-pivot-names-and-values" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> 用一个更简单的例子阐述了基本思想。当你在 <code>names_to</code> 中使用 <code>".value"</code> 时，输入中的列名同时贡献了输出中的值和变量名。</p>
@@ -944,98 +883,78 @@ Figure&nbsp;5.7: 使用 <code>names_to = c(".value", "num")</code> 进行转换�
 <p>到目前为止，我们已经使用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 来解决一类常见的问题，即值最终出现在列名中。接下来，我们将转向 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>，它通过增加列数和减少行数来使数据集<strong>变宽</strong>，并在一个观测分布在多行时提供帮助。这种情况在现实世界中似乎不那么常见，但在处理政府数据时似乎经常出现。</p>
 <p>我们将从查看 <code>cms_patient_experience</code> 开始，这是一个来自医疗保险和医疗补助服务中心的数据集，收集了关于患者体验的数据：</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 500 × 5
-   org_pac_id org_nm                           measure_cd measure_title prf_rate
-   &lt;chr&gt;      &lt;chr&gt;                            &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;
- 1 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       63
- 2 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       87
- 3 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       86
- 4 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       57
- 5 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       85
- 6 0446157747 USC CARE MEDICAL GROUP INC       CAHPS_GRP… CAHPS for MI…       24
- 7 0446162697 ASSOCIATION OF UNIVERSITY PHYSI… CAHPS_GRP… CAHPS for MI…       59
- 8 0446162697 ASSOCIATION OF UNIVERSITY PHYSI… CAHPS_GRP… CAHPS for MI…       85
- 9 0446162697 ASSOCIATION OF UNIVERSITY PHYSI… CAHPS_GRP… CAHPS for MI…       83
-10 0446162697 ASSOCIATION OF UNIVERSITY PHYSI… CAHPS_GRP… CAHPS for MI…       63
-# ℹ 490 more rows</code></pre>
-</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span></span>
+<span><span class="co">#&gt; # A tibble: 500 × 5</span></span>
+<span><span class="co">#&gt;   org_pac_id org_nm                     measure_cd   measure_title   prf_rate</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                      &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_1  CAHPS for MIPS…       63</span></span>
+<span><span class="co">#&gt; 2 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_2  CAHPS for MIPS…       87</span></span>
+<span><span class="co">#&gt; 3 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_3  CAHPS for MIPS…       86</span></span>
+<span><span class="co">#&gt; 4 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_5  CAHPS for MIPS…       57</span></span>
+<span><span class="co">#&gt; 5 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_8  CAHPS for MIPS…       85</span></span>
+<span><span class="co">#&gt; 6 0446157747 USC CARE MEDICAL GROUP INC CAHPS_GRP_12 CAHPS for MIPS…       24</span></span>
+<span><span class="co">#&gt; # ℹ 494 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>被研究的核心单位是一个组织，但每个组织都分布在六行中，每一行对应于在该组织调查中进行的一次测量。我们可以通过使用 <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> 来查看 <code>measure_cd</code> 和 <code>measure_title</code> 的完整值集：</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measure_cd</span>, <span class="va">measure_title</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  measure_cd   measure_title                                                    
-  &lt;chr&gt;        &lt;chr&gt;                                                            
-1 CAHPS_GRP_1  CAHPS for MIPS SSM: Getting Timely Care, Appointments, and Infor…
-2 CAHPS_GRP_2  CAHPS for MIPS SSM: How Well Providers Communicate               
-3 CAHPS_GRP_3  CAHPS for MIPS SSM: Patient's Rating of Provider                 
-4 CAHPS_GRP_5  CAHPS for MIPS SSM: Health Promotion and Education               
-5 CAHPS_GRP_8  CAHPS for MIPS SSM: Courteous and Helpful Office Staff           
-6 CAHPS_GRP_12 CAHPS for MIPS SSM: Stewardship of Patient Resources             </code></pre>
-</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measure_cd</span>, <span class="va">measure_title</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span><span class="co">#&gt;   measure_cd   measure_title                                                 </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                                                         </span></span>
+<span><span class="co">#&gt; 1 CAHPS_GRP_1  CAHPS for MIPS SSM: Getting Timely Care, Appointments, and In…</span></span>
+<span><span class="co">#&gt; 2 CAHPS_GRP_2  CAHPS for MIPS SSM: How Well Providers Communicate            </span></span>
+<span><span class="co">#&gt; 3 CAHPS_GRP_3  CAHPS for MIPS SSM: Patient's Rating of Provider              </span></span>
+<span><span class="co">#&gt; 4 CAHPS_GRP_5  CAHPS for MIPS SSM: Health Promotion and Education            </span></span>
+<span><span class="co">#&gt; 5 CAHPS_GRP_8  CAHPS for MIPS SSM: Courteous and Helpful Office Staff        </span></span>
+<span><span class="co">#&gt; 6 CAHPS_GRP_12 CAHPS for MIPS SSM: Stewardship of Patient Resources</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这两列都不会成为特别好的变量名：<code>measure_cd</code> 没有暗示变量的含义，而 <code>measure_title</code> 是一个包含空格的长句子。我们现在将使用 <code>measure_cd</code> 作为新列名的来源，但在实际分析中，你可能想要创建既简短又有意义的自己的变量名。</p>
 <p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 的接口与 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 相反：我们不是选择新的列名，而是需要提供定义值的现有列 (<code>values_from</code>) 和定义列名的列 (<code>names_from</code>)：</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
 <span>    values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 500 × 9
-   org_pac_id org_nm           measure_title CAHPS_GRP_1 CAHPS_GRP_2 CAHPS_GRP_3
-   &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;               &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
- 1 0446157747 USC CARE MEDICA… CAHPS for MI…          63          NA          NA
- 2 0446157747 USC CARE MEDICA… CAHPS for MI…          NA          87          NA
- 3 0446157747 USC CARE MEDICA… CAHPS for MI…          NA          NA          86
- 4 0446157747 USC CARE MEDICA… CAHPS for MI…          NA          NA          NA
- 5 0446157747 USC CARE MEDICA… CAHPS for MI…          NA          NA          NA
- 6 0446157747 USC CARE MEDICA… CAHPS for MI…          NA          NA          NA
- 7 0446162697 ASSOCIATION OF … CAHPS for MI…          59          NA          NA
- 8 0446162697 ASSOCIATION OF … CAHPS for MI…          NA          85          NA
- 9 0446162697 ASSOCIATION OF … CAHPS for MI…          NA          NA          83
-10 0446162697 ASSOCIATION OF … CAHPS for MI…          NA          NA          NA
-# ℹ 490 more rows
-# ℹ 3 more variables: CAHPS_GRP_5 &lt;dbl&gt;, CAHPS_GRP_8 &lt;dbl&gt;, CAHPS_GRP_12 &lt;dbl&gt;</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 500 × 9</span></span>
+<span><span class="co">#&gt;   org_pac_id org_nm                   measure_title   CAHPS_GRP_1 CAHPS_GRP_2</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                    &lt;chr&gt;                 &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          63          NA</span></span>
+<span><span class="co">#&gt; 2 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          NA          87</span></span>
+<span><span class="co">#&gt; 3 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          NA          NA</span></span>
+<span><span class="co">#&gt; 4 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          NA          NA</span></span>
+<span><span class="co">#&gt; 5 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          NA          NA</span></span>
+<span><span class="co">#&gt; 6 0446157747 USC CARE MEDICAL GROUP … CAHPS for MIPS…          NA          NA</span></span>
+<span><span class="co">#&gt; # ℹ 494 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 4 more variables: CAHPS_GRP_3 &lt;dbl&gt;, CAHPS_GRP_5 &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>输出看起来不太对；我们似乎每个组织仍然有多行。这是因为，我们还需要告诉 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 哪个或哪些列的值唯一标识每一行；在这种情况下，是那些以 <code>"org"</code> 开头的变量：</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cms_patient_experience</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    id_cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"org"</span><span class="op">)</span>,</span>
 <span>    names_from <span class="op">=</span> <span class="va">measure_cd</span>,</span>
 <span>    values_from <span class="op">=</span> <span class="va">prf_rate</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 95 × 8
-   org_pac_id org_nm CAHPS_GRP_1 CAHPS_GRP_2 CAHPS_GRP_3 CAHPS_GRP_5 CAHPS_GRP_8
-   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
- 1 0446157747 USC C…          63          87          86          57          85
- 2 0446162697 ASSOC…          59          85          83          63          88
- 3 0547164295 BEAVE…          49          NA          75          44          73
- 4 0749333730 CAPE …          67          84          85          65          82
- 5 0840104360 ALLIA…          66          87          87          64          87
- 6 0840109864 REX H…          73          87          84          67          91
- 7 0840513552 SCL H…          58          83          76          58          78
- 8 0941545784 GRITM…          46          86          81          54          NA
- 9 1052612785 COMMU…          65          84          80          58          87
-10 1254237779 OUR L…          61          NA          NA          65          NA
-# ℹ 85 more rows
-# ℹ 1 more variable: CAHPS_GRP_12 &lt;dbl&gt;</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 95 × 8</span></span>
+<span><span class="co">#&gt;   org_pac_id org_nm           CAHPS_GRP_1 CAHPS_GRP_2 CAHPS_GRP_3 CAHPS_GRP_5</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                  &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 0446157747 USC CARE MEDICA…          63          87          86          57</span></span>
+<span><span class="co">#&gt; 2 0446162697 ASSOCIATION OF …          59          85          83          63</span></span>
+<span><span class="co">#&gt; 3 0547164295 BEAVER MEDICAL …          49          NA          75          44</span></span>
+<span><span class="co">#&gt; 4 0749333730 CAPE PHYSICIANS…          67          84          85          65</span></span>
+<span><span class="co">#&gt; 5 0840104360 ALLIANCE PHYSIC…          66          87          87          64</span></span>
+<span><span class="co">#&gt; 6 0840109864 REX HOSPITAL INC          73          87          84          67</span></span>
+<span><span class="co">#&gt; # ℹ 89 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: CAHPS_GRP_8 &lt;dbl&gt;, CAHPS_GRP_12 &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这样我们就得到了我们想要的输出。</p>
 <section id="pivot_wider-是如何工作的" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="pivot_wider-是如何工作的">
 <span class="header-section-number">5.4.1</span> <code>pivot_wider()</code> 是如何工作的？</h3>
 <p>为了理解 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 是如何工作的，让我们再次从一个非常简单的数据集开始。这次我们有两个病人，<code>id</code> 分别是 A 和 B，我们对病人 A 进行了三次血压测量，对病人 B 进行了两次：</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
 <span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
 <span>  <span class="st">"B"</span>,        <span class="st">"bp1"</span>,    <span class="fl">140</span>,</span>
@@ -1046,59 +965,51 @@ Figure&nbsp;5.7: 使用 <code>names_to = c(".value", "num")</code> 进行转换�
 </div>
 <p>我们将从 <code>value</code> 列取值，从 <code>measurement</code> 列取名：</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
 <span>    values_from <span class="op">=</span> <span class="va">value</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  id      bp1   bp2   bp3
-  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 A       100   120   105
-2 B       140   115    NA</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 4</span></span>
+<span><span class="co">#&gt;   id      bp1   bp2   bp3</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 A       100   120   105</span></span>
+<span><span class="co">#&gt; 2 B       140   115    NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>为了开始这个过程，<code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 首先需要弄清楚行和列中将放什么。新的列名将是 <code>measurement</code> 的唯一值。</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "bp1" "bp2" "bp3"</code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "bp1" "bp2" "bp3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>默认情况下，输出中的行由所有不进入新名称或值的变量决定。这些被称为 <code>id_cols</code>。这里只有一个列，但通常可以有任意数量。</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 1
-  id   
-  &lt;chr&gt;
-1 A    
-2 B    </code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 1</span></span>
+<span><span class="co">#&gt;   id   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 A    </span></span>
+<span><span class="co">#&gt; 2 B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>然后 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 结合这些结果生成一个空的数据框：</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">measurement</span>, <span class="op">-</span><span class="va">value</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="cn">NA</span>, z <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  id    x     y     z    
-  &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
-1 A     NA    NA    NA   
-2 B     NA    NA    NA   </code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="cn">NA</span>, z <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 4</span></span>
+<span><span class="co">#&gt;   id    x     y     z    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;</span></span>
+<span><span class="co">#&gt; 1 A     NA    NA    NA   </span></span>
+<span><span class="co">#&gt; 2 B     NA    NA    NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>然后它用输入中的数据填充所有缺失值。在这种情况下，并非输出中的每个单元格在输入中都有对应的值，因为病人 B 没有第三次血压测量，所以那个单元格保持缺失。我们将在 <a href="missing-values.html" class="quarto-xref"><span>Chapter 18</span></a> 中回到 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 可以“制造”缺失值的这个概念。</p>
 <p>你可能还会想，如果输入中有多个行对应于输出中的一个单元格会发生什么。下面的例子有两行对应于 <code>id</code> “A” 和 <code>measurement</code> “bp1”：</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">id</span>, <span class="op">~</span><span class="va">measurement</span>, <span class="op">~</span><span class="va">value</span>,</span>
 <span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">100</span>,</span>
 <span>  <span class="st">"A"</span>,        <span class="st">"bp1"</span>,    <span class="fl">102</span>,</span>
@@ -1109,40 +1020,35 @@ Figure&nbsp;5.7: 使用 <code>names_to = c(".value", "num")</code> 进行转换�
 </div>
 <p>如果我们尝试转换这个，我们会得到一个包含列表列 (list-columns) 的输出，你将在 <a href="rectangling.html" class="quarto-xref"><span>Chapter 23</span></a> 中学到更多关于它的知识：</p>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    names_from <span class="op">=</span> <span class="va">measurement</span>,</span>
 <span>    values_from <span class="op">=</span> <span class="va">value</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Values from `value` are not uniquely identified; output will contain list-cols.
-• Use `values_fn = list` to suppress this warning.
-• Use `values_fn = {summary_fun}` to summarise duplicates.
-• Use the following dplyr code to identify duplicates.
-  {data} |&gt;
-  dplyr::summarise(n = dplyr::n(), .by = c(id, measurement)) |&gt;
-  dplyr::filter(n &gt; 1L)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  id    bp1       bp2      
-  &lt;chr&gt; &lt;list&gt;    &lt;list&gt;   
-1 A     &lt;dbl [2]&gt; &lt;dbl [1]&gt;
-2 B     &lt;dbl [1]&gt; &lt;dbl [1]&gt;</code></pre>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Values from `value` are not uniquely identified; output will contain</span></span>
+<span><span class="co">#&gt; list-cols.</span></span>
+<span><span class="co">#&gt; • Use `values_fn = list` to suppress this warning.</span></span>
+<span><span class="co">#&gt; • Use `values_fn = {summary_fun}` to summarise duplicates.</span></span>
+<span><span class="co">#&gt; • Use the following dplyr code to identify duplicates.</span></span>
+<span><span class="co">#&gt;   {data} |&gt;</span></span>
+<span><span class="co">#&gt;   dplyr::summarise(n = dplyr::n(), .by = c(id, measurement)) |&gt;</span></span>
+<span><span class="co">#&gt;   dplyr::filter(n &gt; 1L)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   id    bp1       bp2      </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;    &lt;list&gt;   </span></span>
+<span><span class="co">#&gt; 1 A     &lt;dbl [2]&gt; &lt;dbl [1]&gt;</span></span>
+<span><span class="co">#&gt; 2 B     &lt;dbl [1]&gt; &lt;dbl [1]&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>因为你还不知道如何处理这种数据，你可能需要根据警告中的提示来找出问题所在：</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">measurement</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  id    measurement     n
-  &lt;chr&gt; &lt;chr&gt;       &lt;int&gt;
-1 A     bp1             2</code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
+<span><span class="co">#&gt;   id    measurement     n</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 A     bp1             2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>然后就得由你来弄清楚你的数据出了什么问题，要么修复底层的数据损坏，要么使用你的分组和汇总技能来确保行和列值的每个组合只有一个单行。</p>
 </section></section><section id="小结" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="小结">

@@ -3,6 +3,7 @@
 ```{r}
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 良好的代码风格就像正确的标点符号：没有它也能行，但它确实能让内容更容易阅读。

@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>10&nbsp; Exploratory data analysis – R 数据科学 2e
+<title>10&nbsp; 探索性数据分析 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize.html">Visualize</a></li><li class="breadcrumb-item"><a href="./EDA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize.html">可视化</a></li><li class="breadcrumb-item"><a href="./EDA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,41 +406,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">10.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">10.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">10.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">10.1.1</span> 先决条件</a></li>
   </ul>
 </li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.2</span> Questions</a></li>
+  <li><a href="#%E9%97%AE%E9%A2%98" id="toc-问题" class="nav-link" data-scroll-target="#%E9%97%AE%E9%A2%98"><span class="header-section-number">10.2</span> 问题</a></li>
   <li>
-<a href="#variation" id="toc-variation" class="nav-link" data-scroll-target="#variation"><span class="header-section-number">10.3</span> Variation</a>
+<a href="#%E5%8F%98%E5%BC%82" id="toc-变异" class="nav-link" data-scroll-target="#%E5%8F%98%E5%BC%82"><span class="header-section-number">10.3</span> 变异</a>
   <ul class="collapse">
-<li><a href="#typical-values" id="toc-typical-values" class="nav-link" data-scroll-target="#typical-values"><span class="header-section-number">10.3.1</span> Typical values</a></li>
-  <li><a href="#unusual-values" id="toc-unusual-values" class="nav-link" data-scroll-target="#unusual-values"><span class="header-section-number">10.3.2</span> Unusual values</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.3.3</span> Exercises</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#sec-unusual-values-eda" id="toc-sec-unusual-values-eda" class="nav-link" data-scroll-target="#sec-unusual-values-eda"><span class="header-section-number">10.4</span> Unusual values</a>
-  <ul class="collapse">
-<li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">10.4.1</span> Exercises</a></li>
+<li><a href="#%E5%85%B8%E5%9E%8B%E5%80%BC" id="toc-典型值" class="nav-link" data-scroll-target="#%E5%85%B8%E5%9E%8B%E5%80%BC"><span class="header-section-number">10.3.1</span> 典型值</a></li>
+  <li><a href="#%E5%BC%82%E5%B8%B8%E5%80%BC" id="toc-异常值" class="nav-link" data-scroll-target="#%E5%BC%82%E5%B8%B8%E5%80%BC"><span class="header-section-number">10.3.2</span> 异常值</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">10.3.3</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#covariation" id="toc-covariation" class="nav-link" data-scroll-target="#covariation"><span class="header-section-number">10.5</span> Covariation</a>
+<a href="#sec-unusual-values-eda" id="toc-sec-unusual-values-eda" class="nav-link" data-scroll-target="#sec-unusual-values-eda"><span class="header-section-number">10.4</span> 异常值</a>
   <ul class="collapse">
-<li><a href="#sec-cat-num" id="toc-sec-cat-num" class="nav-link" data-scroll-target="#sec-cat-num"><span class="header-section-number">10.5.1</span> A categorical and a numerical variable</a></li>
-  <li><a href="#two-categorical-variables" id="toc-two-categorical-variables" class="nav-link" data-scroll-target="#two-categorical-variables"><span class="header-section-number">10.5.2</span> Two categorical variables</a></li>
-  <li><a href="#two-numerical-variables" id="toc-two-numerical-variables" class="nav-link" data-scroll-target="#two-numerical-variables"><span class="header-section-number">10.5.3</span> Two numerical variables</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A0-1" id="toc-练习-1" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-1"><span class="header-section-number">10.4.1</span> 练习</a></li>
   </ul>
 </li>
-  <li><a href="#patterns-and-models" id="toc-patterns-and-models" class="nav-link" data-scroll-target="#patterns-and-models"><span class="header-section-number">10.6</span> Patterns and models</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">10.7</span> Summary</a></li>
+  <li>
+<a href="#%E5%8D%8F%E5%8F%98" id="toc-协变" class="nav-link" data-scroll-target="#%E5%8D%8F%E5%8F%98"><span class="header-section-number">10.5</span> 协变</a>
+  <ul class="collapse">
+<li><a href="#sec-cat-num" id="toc-sec-cat-num" class="nav-link" data-scroll-target="#sec-cat-num"><span class="header-section-number">10.5.1</span> 一个分类变量和一个数值变量</a></li>
+  <li><a href="#%E4%B8%A4%E4%B8%AA%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F" id="toc-两个分类变量" class="nav-link" data-scroll-target="#%E4%B8%A4%E4%B8%AA%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="header-section-number">10.5.2</span> 两个分类变量</a></li>
+  <li><a href="#%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E5%8F%98%E9%87%8F" id="toc-两个数值变量" class="nav-link" data-scroll-target="#%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E5%8F%98%E9%87%8F"><span class="header-section-number">10.5.3</span> 两个数值变量</a></li>
+  </ul>
+</li>
+  <li><a href="#%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%A8%A1%E5%9E%8B" id="toc-模式和模型" class="nav-link" data-scroll-target="#%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="header-section-number">10.6</span> 模式和模型</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">10.7</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/EDA.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize.html">Visualize</a></li><li class="breadcrumb-item"><a href="./EDA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-exploratory-data-analysis" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize.html">可视化</a></li><li class="breadcrumb-item"><a href="./EDA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-exploratory-data-analysis" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></h1>
 </div>
 
 
@@ -454,476 +454,490 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">10.1</span> Introduction</h2>
-<p>This chapter will show you how to use visualization and transformation to explore your data in a systematic way, a task that statisticians call exploratory data analysis, or EDA for short. EDA is an iterative cycle. You:</p>
+</header><section id="引言" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">10.1</span> 引言</h2>
+<p>本章将向你展示如何使用可视化和转换来系统地探索数据，统计学家称这项任务为<strong>探索性数据分析</strong> (exploratory data analysis)，简称 <strong>EDA</strong>。 EDA 是一个迭代循环。 你需要：</p>
 <ol type="1">
-<li><p>Generate questions about your data.</p></li>
-<li><p>Search for answers by visualizing, transforming, and modelling your data.</p></li>
-<li><p>Use what you learn to refine your questions and/or generate new questions.</p></li>
+<li><p>生成关于数据的问题。</p></li>
+<li><p>通过可视化、转换和建模来寻找答案。</p></li>
+<li><p>利用你学到的知识来完善你的问题和/或生成新的问题。</p></li>
 </ol>
-<p>EDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends. As your exploration continues, you will home in on a few particularly productive insights that you’ll eventually write up and communicate to others.</p>
-<p>EDA is an important part of any data analysis, even if the primary research questions are handed to you on a platter, because you always need to investigate the quality of your data. Data cleaning is just one application of EDA: you ask questions about whether your data meets your expectations or not. To do data cleaning, you’ll need to deploy all the tools of EDA: visualization, transformation, and modelling.</p>
-<section id="prerequisites" class="level3" data-number="10.1.1"><h3 data-number="10.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">10.1.1</span> Prerequisites</h3>
-<p>In this chapter we’ll combine what you’ve learned about dplyr and ggplot2 to interactively ask questions, answer them with data, and then ask new questions.</p>
+<p>EDA 不是一个有着严格规则的正式流程。 更重要的是，EDA 是一种思维状态。 在 EDA 的初始阶段，你应该自由地探索你脑海中出现的每一个想法。 有些想法会成功，有些则会是死胡同。 随着探索的深入，你将逐渐聚焦于一些特别富有成效的见解，并最终将它们整理成文，与他人交流。</p>
+<p>EDA 是任何数据分析的重要组成部分，即使主要的研究问题已经现成地交给你，因为你总是需要调查数据的质量。 数据清理只是 EDA 的一个应用：你提出关于数据是否符合预期的问题。 要进行数据清理，你需要运用所有 EDA 的工具：可视化、转换和建模。</p>
+<section id="先决条件" class="level3" data-number="10.1.1"><h3 data-number="10.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">10.1.1</span> 先决条件</h3>
+<p>在本章中，我们将结合你所学的 dplyr 和 ggplot2 知识，以交互方式提出问题，用数据回答问题，然后再提出新的问题。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="questions" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="questions">
-<span class="header-section-number">10.2</span> Questions</h2>
+<hr></section></section><section id="问题" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="问题">
+<span class="header-section-number">10.2</span> 问题</h2>
 <blockquote class="blockquote">
-<p>“There are no routine statistical questions, only questionable statistical routines.” — Sir David Cox</p>
+<p>“没有常规的统计问题，只有值得怀疑的统计程序。(The greatest value of a picture is when it forces us to notice what we never expected to see.)”<br>
+— David Cox</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>“Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.” — John Tukey</p>
+<p>“对正确问题的近似答案，远胜于对错误问题的精确答案；前者通常是模糊的，而后者总是可以做得很精确。(Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.)”<br>
+— John Tukey</p>
 </blockquote>
-<p>Your goal during EDA is to develop an understanding of your data. The easiest way to do this is to use questions as tools to guide your investigation. When you ask a question, the question focuses your attention on a specific part of your dataset and helps you decide which graphs, models, or transformations to make.</p>
-<p>EDA is fundamentally a creative process. And like most creative processes, the key to asking <em>quality</em> questions is to generate a large <em>quantity</em> of questions. It is difficult to ask revealing questions at the start of your analysis because you do not know what insights can be gleaned from your dataset. On the other hand, each new question that you ask will expose you to a new aspect of your data and increase your chance of making a discovery. You can quickly drill down into the most interesting parts of your data—and develop a set of thought-provoking questions—if you follow up each question with a new question based on what you find.</p>
-<p>There is no rule about which questions you should ask to guide your research. However, two types of questions will always be useful for making discoveries within your data. You can loosely word these questions as:</p>
+<p>你在 EDA 过程中的目标是建立对数据的理解。最简单的方法是使用问题作为工具来引导你的探索。当你提出一个问题时，这个问题会将你的注意力集中到数据集的特定部分，并帮助你决定制作哪种图表、模型或进行何种转换。</p>
+<p>EDA 本质上是一个创造性的过程。和大多数创造性过程一样，提出<em>高质量</em>问题的关键在于生成<em>大量</em>的问题。在分析之初很难提出有启发性的问题，因为你不知道可以从数据集中获得哪些见解。另一方面，你每提出一个新问题，都会让你接触到数据的一个新方面，增加你做出发现的机会。如果你在每个问题之后，都根据你的发现提出一个新问题，你就能迅速深入到数据最有趣的部分，并形成一系列引人深思的问题。</p>
+<p>关于应该提出什么问题来指导研究，没有固定的规则。然而，有两类问题对于在数据中做出发现总是很有用的。你可以将这些问题粗略地表述为：</p>
 <ol type="1">
-<li><p>What type of variation occurs within my variables?</p></li>
-<li><p>What type of covariation occurs between my variables?</p></li>
+<li><p>我的变量内部存在什么样的变异？</p></li>
+<li><p>我的变量之间存在什么样的协变？</p></li>
 </ol>
-<p>The rest of this chapter will look at these two questions. We’ll explain what variation and covariation are, and we’ll show you several ways to answer each question.</p>
-</section><section id="variation" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="variation">
-<span class="header-section-number">10.3</span> Variation</h2>
-<p><strong>Variation</strong> is the tendency of the values of a variable to change from measurement to measurement. You can see variation easily in real life; if you measure any continuous variable twice, you will get two different results. This is true even if you measure quantities that are constant, like the speed of light. Each of your measurements will include a small amount of error that varies from measurement to measurement. Variables can also vary if you measure across different subjects (e.g., the eye colors of different people) or at different times (e.g., the energy levels of an electron at different moments). Every variable has its own pattern of variation, which can reveal interesting information about how it varies between measurements on the same observation as well as across observations. The best way to understand that pattern is to visualize the distribution of the variable’s values, which you’ve learned about in <a href="data-visualize.html" class="quarto-xref"><span>Chapter 1</span></a>.</p>
-<p>We’ll start our exploration by visualizing the distribution of weights (<code>carat</code>) of ~54,000 diamonds from the <code>diamonds</code> dataset. Since <code>carat</code> is a numerical variable, we can use a histogram:</p>
+<p>本章的其余部分将探讨这两个问题。我们将解释什么是变异和协变，并向你展示几种回答每个问题的方法。</p>
+<hr></section><section id="变异" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="变异">
+<span class="header-section-number">10.3</span> 变异</h2>
+<p><strong>变异 (Variation)</strong> 是指一个变量的值在不同测量中变化的趋势。你在现实生活中可以轻易看到变异；如果你对任何连续变量进行两次测量，你会得到两个不同的结果。即使你测量的是恒定的量，比如光速，也是如此。你的每一次测量都会包含少量的误差，这个误差在每次测量中都会有所不同。如果你在不同的主体（例如，不同人的眼睛颜色）或不同的时间（例如，一个电子在不同时刻的能量水平）进行测量，变量也会发生变化。每个变量都有其自身的变异模式，这可以揭示关于它在同一次观测的不同测量之间以及跨观测之间如何变化的有趣信息。理解这种模式的最佳方法是可视化变量值的分布，这在 <a href="data-visualize.html" class="quarto-xref"><span>Chapter 1</span></a> 中你已经学过了。</p>
+<p>我们将通过可视化 <code>diamonds</code> 数据集中约 54,000 颗钻石的重量（<code>carat</code>）分布来开始我们的探索。由于 <code>carat</code> 是一个数值变量，我们可以使用直方图：</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="A histogram of carats of diamonds, with the x-axis ranging from 0 to 4.5 and the y-axis ranging from 0 to 30000. The distribution is right skewed with very few diamonds in the bin centered at 0, almost 30000 diamonds in the bin centered at 0.5, approximately 15000 diamonds in the bin centered at 1, and much fewer, approximately 5000 diamonds in the bin centered at 1.5. Beyond this, there's a trailing tail." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" alt="钻石克拉数的直方图，x 轴范围从 0 到 4.5，y 轴范围从 0 到 30000。 分布是右偏的，中心在 0 的条柱中钻石很少，中心在 0.5 的条柱中钻石接近 30000 颗， 中心在 1 的条柱中大约有 15000 颗钻石，而在中心在 1.5 的条柱中则少得多，大约 5000 颗。 在此之后，有一个拖尾。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now that you can visualize variation, what should you look for in your plots? And what type of follow-up questions should you ask? We’ve put together a list below of the most useful types of information that you will find in your graphs, along with some follow-up questions for each type of information. The key to asking good follow-up questions will be to rely on your curiosity (What do you want to learn more about?) as well as your skepticism (How could this be misleading?).</p>
-<section id="typical-values" class="level3" data-number="10.3.1"><h3 data-number="10.3.1" class="anchored" data-anchor-id="typical-values">
-<span class="header-section-number">10.3.1</span> Typical values</h3>
-<p>In both bar charts and histograms, tall bars show the common values of a variable, and shorter bars show less-common values. Places that do not have bars reveal values that were not seen in your data. To turn this information into useful questions, look for anything unexpected:</p>
+<p>现在你已经可以可视化变异了，那么你应该在图表中寻找什么呢？你应该提出什么样的后续问题呢？我们整理了一份清单，列出了你在图中最可能找到的有用信息类型，以及针对每种信息的一些后续问题。提出好的后续问题的关键在于依赖你的好奇心（你想更多地了解什么？）以及你的怀疑精神（这可能是如何误导人的？）。</p>
+<section id="典型值" class="level3" data-number="10.3.1"><h3 data-number="10.3.1" class="anchored" data-anchor-id="典型值">
+<span class="header-section-number">10.3.1</span> 典型值</h3>
+<p>在条形图和直方图中，高条显示了变量的常见值，而短条显示了不那么常见的值。没有条形图的地方揭示了你的数据中未曾出现的值。要将这些信息转化为有用的问题，请寻找任何意料之外的情况：</p>
 <ul>
-<li><p>Which values are the most common? Why?</p></li>
-<li><p>Which values are rare? Why? Does that match your expectations?</p></li>
-<li><p>Can you see any unusual patterns? What might explain them?</p></li>
+<li><p>哪些值是最常见的？为什么？</p></li>
+<li><p>哪些值是罕见的？为什么？这是否符合你的预期？</p></li>
+<li><p>你能看到任何不寻常的模式吗？可能是什么解释了它们？</p></li>
 </ul>
-<p>Let’s take a look at the distribution of <code>carat</code> for smaller diamonds.</p>
+<p>让我们看一下较小钻石的 <code>carat</code> 分布。</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">smaller</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">smaller</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="A histogram of carats of diamonds, with the x-axis ranging from 0 to 3 and the y-axis ranging from 0 to roughly 2500. The binwidth is quite narrow (0.01), resulting in a very large number of skinny bars. The distribution is right skewed, with many peaks followed by bars in decreasing heights, until a sharp increase at the next peak." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="钻石克拉数的直方图，x 轴范围从 0 到 3，y 轴范围从 0 到大约 2500。 组距很窄 (0.01)，导致了大量细长的条柱。分布是右偏的，有许多峰值， 随后是高度递减的条柱，直到下一个峰值处急剧增加。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This histogram suggests several interesting questions:</p>
+<p>这个直方图引出了一些有趣的问题：</p>
 <ul>
-<li><p>Why are there more diamonds at whole carats and common fractions of carats?</p></li>
-<li><p>Why are there more diamonds slightly to the right of each peak than there are slightly to the left of each peak?</p></li>
+<li><p>为什么在整数克拉和常见的克拉分数处有更多的钻石？</p></li>
+<li><p>为什么在每个峰值右侧的钻石比左侧的要多？</p></li>
 </ul>
-<p>Visualizations can also reveal clusters, which suggest that subgroups exist in your data. To understand the subgroups, ask:</p>
+<p>可视化还可以揭示聚类，这表明你的数据中存在子群。要理解这些子群，请问：</p>
 <ul>
-<li><p>How are the observations within each subgroup similar to each other?</p></li>
-<li><p>How are the observations in separate clusters different from each other?</p></li>
-<li><p>How can you explain or describe the clusters?</p></li>
-<li><p>Why might the appearance of clusters be misleading?</p></li>
+<li><p>每个子群内的观测值彼此之间有何相似之处？</p></li>
+<li><p>不同聚类中的观测值彼此之间有何不同？</p></li>
+<li><p>你如何解释或描述这些聚类？</p></li>
+<li><p>为什么聚类的出现可能是误导性的？</p></li>
 </ul>
-<p>Some of these questions can be answered with the data while some will require domain expertise about the data. Many of them will prompt you to explore a relationship <em>between</em> variables, for example, to see if the values of one variable can explain the behavior of another variable. We’ll get to that shortly.</p>
-</section><section id="unusual-values" class="level3" data-number="10.3.2"><h3 data-number="10.3.2" class="anchored" data-anchor-id="unusual-values">
-<span class="header-section-number">10.3.2</span> Unusual values</h3>
-<p>Outliers are observations that are unusual; data points that don’t seem to fit the pattern. Sometimes outliers are data entry errors, sometimes they are simply values at the extremes that happened to be observed in this data collection, and other times they suggest important new discoveries. When you have a lot of data, outliers are sometimes difficult to see in a histogram. For example, take the distribution of the <code>y</code> variable from the diamonds dataset. The only evidence of outliers is the unusually wide limits on the x-axis.</p>
+<p>这些问题中，有些可以用数据回答，有些则需要关于数据的领域专业知识。其中许多问题会促使你探索变量<em>之间</em>的关系，例如，看看一个变量的值是否能解释另一个变量的行为。我们很快就会谈到这一点。</p>
+</section><section id="异常值" class="level3" data-number="10.3.2"><h3 data-number="10.3.2" class="anchored" data-anchor-id="异常值">
+<span class="header-section-number">10.3.2</span> 异常值</h3>
+<p><strong>离群点 (Outliers)</strong> 是不寻常的观测值；即那些似乎不符合模式的数据点。有时离群点是数据录入错误，有时它们仅仅是在这次数据收集中碰巧观察到的极端值，而其他时候它们则预示着重要的新发现。当数据量很大时，离群点有时在直方图中很难看到。例如，看看 diamonds 数据集中 <code>y</code> 变量的分布。离群点的唯一证据是 x 轴上异常宽的范围。</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="A histogram of lengths of diamonds. The x-axis ranges from 0 to 60 and the y-axis ranges from 0 to 12000. There is a peak around 5, and the data appear to be completely clustered around the peak." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="钻石长度的直方图。x 轴范围从 0 到 60，y 轴范围从 0 到 12000。 在 5 附近有一个峰值，数据似乎完全聚集在峰值周围。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>There are so many observations in the common bins that the rare bins are very short, making it very difficult to see them (although maybe if you stare intently at 0 you’ll spot something). To make it easy to see the unusual values, we need to zoom to small values of the y-axis with <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code>:</p>
+<p>在常见的组（bin）中有太多的观测值，以至于罕见的组非常短，使得它们很难被看到（尽管如果你仔细盯着 0 的位置，也许会发现些什么）。为了更容易地看到异常值，我们需要使用 <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> 来放大 y 轴的较小数值范围：</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" alt="A histogram of lengths of diamonds. The x-axis ranges from 0 to 60 and the y-axis ranges from 0 to 50. There is a peak around 5, and the data appear to be completely clustered around the peak. Other than those data, there is one bin at 0 with a height of about 8, one a little over 30 with a height of 1 and another one a little below 60 with a height of 1." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="钻石长度的直方图。x 轴范围从 0 到 60，y 轴范围从 0 到 50。 在 5 附近有一个峰值，数据似乎完全聚集在峰值周围。 除了这些数据，在 0 处有一个高度约为 8 的条柱，在略高于 30 的地方有一个高度为 1 的条柱， 在略低于 60 的地方有另一个高度为 1 的条柱。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> also has an <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> argument for when you need to zoom into the x-axis. ggplot2 also has <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> functions that work slightly differently: they throw away the data outside the limits.</p>
-<p>This allows us to see that there are three unusual values: 0, ~30, and ~60. We pluck them out with dplyr:</p>
+<p>当你需要放大 x 轴时，<code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> 也有一个 <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> 参数。ggplot2 还有 <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> 和 <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> 函数，它们的工作方式略有不同：它们会丢弃限制范围之外的数据。</p>
+<p>这让我们能看到有三个异常值：0、约 30 和约 60。我们用 dplyr 将它们提取出来：</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unusual</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="va">y</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="va">unusual</span></span>
-<span><span class="co">#&gt; # A tibble: 9 × 4</span></span>
-<span><span class="co">#&gt;   price     x     y     z</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  5139  0      0    0   </span></span>
-<span><span class="co">#&gt; 2  6381  0      0    0   </span></span>
-<span><span class="co">#&gt; 3 12800  0      0    0   </span></span>
-<span><span class="co">#&gt; 4 15686  0      0    0   </span></span>
-<span><span class="co">#&gt; 5 18034  0      0    0   </span></span>
-<span><span class="co">#&gt; 6  2130  0      0    0   </span></span>
-<span><span class="co">#&gt; 7  2130  0      0    0   </span></span>
-<span><span class="co">#&gt; 8  2075  5.15  31.8  5.12</span></span>
-<span><span class="co">#&gt; 9 12210  8.09  58.9  8.06</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unusual</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="va">y</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">unusual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+  price     x     y     z
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  5139  0      0    0   
+2  6381  0      0    0   
+3 12800  0      0    0   
+4 15686  0      0    0   
+5 18034  0      0    0   
+6  2130  0      0    0   
+7  2130  0      0    0   
+8  2075  5.15  31.8  5.12
+9 12210  8.09  58.9  8.06</code></pre>
 </div>
-<p>The <code>y</code> variable measures one of the three dimensions of these diamonds, in mm. We know that diamonds can’t have a width of 0mm, so these values must be incorrect. By doing EDA, we have discovered missing data that was coded as 0, which we never would have found by simply searching for <code>NA</code>s. Going forward we might choose to re-code these values as <code>NA</code>s in order to prevent misleading calculations. We might also suspect that measurements of 32mm and 59mm are implausible: those diamonds are over an inch long, but don’t cost hundreds of thousands of dollars!</p>
-<p>It’s good practice to repeat your analysis with and without the outliers. If they have minimal effect on the results, and you can’t figure out why they’re there, it’s reasonable to omit them, and move on. However, if they have a substantial effect on your results, you shouldn’t drop them without justification. You’ll need to figure out what caused them (e.g., a data entry error) and disclose that you removed them in your write-up.</p>
-</section><section id="exercises" class="level3" data-number="10.3.3"><h3 data-number="10.3.3" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">10.3.3</span> Exercises</h3>
+</div>
+<p><code>y</code> 变量测量的是这些钻石的三个维度之一，单位是毫米 (mm)。我们知道钻石的宽度不可能是 0mm，所以这些值肯定是错误的。通过进行 EDA，我们发现了被编码为 0 的缺失数据，而仅仅通过搜索 <code>NA</code> 是永远找不到的。接下来，我们可能会选择将这些值重新编码为 <code>NA</code>，以防止误导性的计算。我们可能还会怀疑 32mm 和 59mm 的测量值是不可信的：那些钻石超过一英寸长，但价格却没有数十万美元！</p>
+<p>一个好的做法是，在包含和不包含离群点的情况下重复你的分析。如果它们对结果的影响微乎其微，并且你无法弄清楚它们为什么存在，那么省略它们并继续分析是合理的。然而，如果它们对你的结果有重大影响，你就不应该在没有正当理由的情况下丢弃它们。你需要弄清楚是什么导致了它们（例如，数据录入错误），并在你的报告中披露你移除了它们。</p>
+</section><section id="练习" class="level3" data-number="10.3.3"><h3 data-number="10.3.3" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">10.3.3</span> 练习</h3>
 <ol type="1">
-<li><p>Explore the distribution of each of the <code>x</code>, <code>y</code>, and <code>z</code> variables in <code>diamonds</code>. What do you learn? Think about a diamond and how you might decide which dimension is the length, width, and depth.</p></li>
-<li><p>Explore the distribution of <code>price</code>. Do you discover anything unusual or surprising? (Hint: Carefully think about the <code>binwidth</code> and make sure you try a wide range of values.)</p></li>
-<li><p>How many diamonds are 0.99 carat? How many are 1 carat? What do you think is the cause of the difference?</p></li>
-<li><p>Compare and contrast <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> vs.&nbsp;<code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> when zooming in on a histogram. What happens if you leave <code>binwidth</code> unset? What happens if you try and zoom so only half a bar shows?</p></li>
-</ol></section></section><section id="sec-unusual-values-eda" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="sec-unusual-values-eda">
-<span class="header-section-number">10.4</span> Unusual values</h2>
-<p>If you’ve encountered unusual values in your dataset, and simply want to move on to the rest of your analysis, you have two options.</p>
+<li><p>探索 <code>diamonds</code> 数据集中 <code>x</code>、<code>y</code> 和 <code>z</code> 每个变量的分布。你学到了什么？思考一下一颗钻石，你可能会如何决定哪个维度是长度、宽度和深度。</p></li>
+<li><p>探索 <code>price</code> 的分布。你发现了什么不寻常或令人惊讶的事情吗？（提示：仔细考虑 <code>binwidth</code> 并确保你尝试了各种不同的值。）</p></li>
+<li><p>有多少颗钻石是 0.99 克拉？有多少是 1 克拉？你认为造成这种差异的原因是什么？</p></li>
+<li><p>在放大直方图时，比较并对比 <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> 与 <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> 或 <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code>。如果你不设置 <code>binwidth</code> 会发生什么？如果你尝试放大到只显示半个条形会发生什么？</p></li>
+</ol>
+<hr></section></section><section id="sec-unusual-values-eda" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="sec-unusual-values-eda">
+<span class="header-section-number">10.4</span> 异常值</h2>
+<p>如果你在数据集中遇到了异常值，并且只想继续进行其余的分析，你有两个选择。</p>
 <ol type="1">
 <li>
-<p>Drop the entire row with the strange values:</p>
+<p>删除包含异常值的整行：</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds2</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">3</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds2</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">3</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We don’t recommend this option because one invalid value doesn’t imply that all the other values for that observation are also invalid. Additionally, if you have low quality data, by the time that you’ve applied this approach to every variable you might find that you don’t have any data left!</p>
+<p>我们不推荐这个选项，因为一个无效值并不意味着该观测的所有其他值也无效。此外，如果你的数据质量较差，当你对每个变量都应用这种方法后，你可能会发现你已经没有任何数据了！</p>
 </li>
 <li>
-<p>Instead, we recommend replacing the unusual values with missing values. The easiest way to do this is to use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to replace the variable with a modified copy. You can use the <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> function to replace unusual values with <code>NA</code>:</p>
+<p>相反，我们建议用缺失值替换异常值。最简单的方法是使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 将变量替换为一个修改后的副本。你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 函数将异常值替换为 <code>NA</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds2</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="va">y</span> <span class="op">&gt;</span> <span class="fl">20</span>, <span class="cn">NA</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds2</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&lt;</span> <span class="fl">3</span> <span class="op">|</span> <span class="va">y</span> <span class="op">&gt;</span> <span class="fl">20</span>, <span class="cn">NA</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 </ol>
-<p>It’s not obvious where you should plot missing values, so ggplot2 doesn’t include them in the plot, but it does warn that they’ve been removed:</p>
+<p>ggplot2 不确定应该在哪里绘制缺失值，所以它不会在图表中包含它们，但它会警告说它们已被移除：</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 9 rows containing missing values or values outside the scale range</span></span>
-<span><span class="co">#&gt; (`geom_point()`).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 9 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" alt="A scatterplot of widths vs. lengths of diamonds. There is a strong, linear association between the two variables. All but one of the diamonds has length greater than 3. The one outlier has a length of 0 and a width of about 6.5." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" alt="钻石宽度与长度的散点图。两个变量之间存在强烈的线性关系。 除了一颗钻石外，所有钻石的长度都大于 3。那个离群点的长度为 0， 宽度约为 6.5。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>To suppress that warning, set <code>na.rm = TRUE</code>:</p>
+<p>要抑制该警告，请设置 <code>na.rm = TRUE</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Other times you want to understand what makes observations with missing values different to observations with recorded values. For example, in <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, missing values in the <code>dep_time</code> variable indicate that the flight was cancelled. So you might want to compare the scheduled departure times for cancelled and non-cancelled times. You can do this by making a new variable, using <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> to check if <code>dep_time</code> is missing.</p>
+<p>其他时候，你想要理解为什么有缺失值的观测值与有记录值的观测值不同。例如，在 <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 中，<code>dep_time</code> 变量中的缺失值表示航班被取消了。所以你可能想比较已取消和未取消航班的计划起飞时间。你可以通过创建一个新变量，使用 <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 来检查 <code>dep_time</code> 是否缺失来做到这一点。</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        cancelled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span>,</span>
-<span>        sched_hour <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">100</span>,</span>
-<span>        sched_min <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">100</span>,</span>
-<span>        sched_dep_time <span class="op">=</span> <span class="va">sched_hour</span> <span class="op">+</span> <span class="op">(</span><span class="va">sched_min</span> <span class="op">/</span> <span class="fl">60</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sched_dep_time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cancelled</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    cancelled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span>,</span>
+<span>    sched_hour <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">100</span>,</span>
+<span>    sched_min <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">100</span>,</span>
+<span>    sched_dep_time <span class="op">=</span> <span class="va">sched_hour</span> <span class="op">+</span> <span class="op">(</span><span class="va">sched_min</span> <span class="op">/</span> <span class="fl">60</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sched_dep_time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cancelled</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" alt="A frequency polygon of scheduled departure times of flights. Two lines represent flights that are cancelled and not cancelled. The x-axis ranges from 0 to 25 minutes and the y-axis ranges from 0 to 10000. The number of flights not cancelled are much higher than those cancelled." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" alt="航班计划起飞时间的频率多边形图。两条线分别代表被取消和未被取消的航班。 x 轴范围从 0 到 25 分钟，y 轴范围从 0 到 10000。 未被取消的航班数量远高于被取消的航班。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>However this plot isn’t great because there are many more non-cancelled flights than cancelled flights. In the next section we’ll explore some techniques for improving this comparison.</p>
-<section id="exercises-1" class="level3" data-number="10.4.1"><h3 data-number="10.4.1" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">10.4.1</span> Exercises</h3>
+<p>然而，这张图并不理想，因为未取消的航班数量远多于取消的航班。在下一节中，我们将探讨一些改善这种比较的技巧。</p>
+<section id="练习-1" class="level3" data-number="10.4.1"><h3 data-number="10.4.1" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">10.4.1</span> 练习</h3>
 <ol type="1">
-<li><p>What happens to missing values in a histogram? What happens to missing values in a bar chart? Why is there a difference in how missing values are handled in histograms and bar charts?</p></li>
-<li><p>What does <code>na.rm = TRUE</code> do in <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>?</p></li>
-<li><p>Recreate the frequency plot of <code>scheduled_dep_time</code> colored by whether the flight was cancelled or not. Also facet by the <code>cancelled</code> variable. Experiment with different values of the <code>scales</code> variable in the faceting function to mitigate the effect of more non-cancelled flights than cancelled flights.</p></li>
-</ol></section></section><section id="covariation" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="covariation">
-<span class="header-section-number">10.5</span> Covariation</h2>
-<p>If variation describes the behavior <em>within</em> a variable, covariation describes the behavior <em>between</em> variables. <strong>Covariation</strong> is the tendency for the values of two or more variables to vary together in a related way. The best way to spot covariation is to visualize the relationship between two or more variables.</p>
+<li><p>在直方图中，缺失值会怎么样？在条形图中，缺失值会怎么样？为什么在直方图和条形图中处理缺失值的方式有差异？</p></li>
+<li><p><code>na.rm = TRUE</code> 在 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 和 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> 中有什么作用？</p></li>
+<li><p>重新创建按航班是否取消着色的 <code>scheduled_dep_time</code> 频率图。同时，按 <code>cancelled</code> 变量进行分面。尝试在分面函数中使用不同的 <code>scales</code> 变量值，以减轻未取消航班数量多于取消航班数量的影响。</p></li>
+</ol>
+<hr></section></section><section id="协变" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="协变">
+<span class="header-section-number">10.5</span> 协变</h2>
+<p>如果说变异描述的是<em>单个</em>变量内部的行为，那么协变描述的就是变量<em>之间</em>的行为。<strong>协变 (Covariation)</strong> 是指两个或多个变量的值以一种相关联的方式共同变化的趋势。发现协变的最佳方法是可视化两个或多个变量之间的关系。</p>
 <section id="sec-cat-num" class="level3" data-number="10.5.1"><h3 data-number="10.5.1" class="anchored" data-anchor-id="sec-cat-num">
-<span class="header-section-number">10.5.1</span> A categorical and a numerical variable</h3>
-<p>For example, let’s explore how the price of a diamond varies with its quality (measured by <code>cut</code>) using <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code>:</p>
+<span class="header-section-number">10.5.1</span> 一个分类变量和一个数值变量</h3>
+<p>例如，让我们使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> 来探索钻石价格如何随其质量（以 <code>cut</code> 衡量）而变化：</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span>, linewidth <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span>, linewidth <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" alt="A frequency polygon of prices of diamonds where each cut of carat (Fair, Good, Very Good, Premium, and Ideal) is represented with a different color line. The x-axis ranges from 0 to 30000 and the y-axis ranges from 0 to 5000. The lines overlap a great deal, suggesting similar frequency distributions of prices of diamonds. One notable feature is that Ideal diamonds have the highest peak around 1500." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" alt="钻石价格的频率多边形图，其中每种切工等级（Fair, Good, Very Good,  Premium, 和 Ideal）都用不同颜色的线表示。x 轴范围从 0 到 30000， y 轴范围从 0 到 5000。这些线大量重叠，表明钻石价格的频率分布相似。 一个显著的特点是，Ideal 级钻石在 1500 附近有最高的峰值。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Note that ggplot2 uses an ordered color scale for <code>cut</code> because it’s defined as an ordered factor variable in the data. You’ll learn more about these in <a href="factors.html#sec-ordered-factors" class="quarto-xref"><span>Section 16.6</span></a>.</p>
-<p>The default appearance of <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> is not that useful here because the height, determined by the overall count, differs so much across <code>cut</code>s, making it hard to see the differences in the shapes of their distributions.</p>
-<p>To make the comparison easier we need to swap what is displayed on the y-axis. Instead of displaying count, we’ll display the <strong>density</strong>, which is the count standardized so that the area under each frequency polygon is one.</p>
+<p>请注意，ggplot2 为 <code>cut</code> 使用了有序颜色标度，因为它在数据中被定义为一个有序因子变量。你将在 <a href="factors.html#sec-ordered-factors" class="quarto-xref"><span>Section 16.6</span></a> 中学习更多关于这些的内容。</p>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> 的默认外观在这里不是很有用，因为高度（由总计数决定）在不同的 <code>cut</code> 之间差异很大，这使得很难看出它们分布形状的差异。</p>
+<p>为了使比较更容易，我们需要更换 y 轴上显示的内容。我们将不再显示计数，而是显示<strong>密度 (density)</strong>，即计数经过标准化，使得每个频率多边形下的面积为一。</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span>, y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span>, linewidth <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span>, y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span>, linewidth <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" alt="A frequency polygon of densities of prices of diamonds where each cut of carat (Fair, Good, Very Good, Premium, and Ideal) is represented with a different color line. The x-axis ranges from 0 to 20000. The lines overlap a great deal, suggesting similar density distributions of prices of diamonds. One notable feature is that all but Fair diamonds have high peaks around a price of 1500 and Fair diamonds have a higher mean than others." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" alt="钻石价格密度的频率多边形图，其中每种切工等级（Fair, Good, Very Good, Premium, 和 Ideal）都用不同颜色的线表示。x 轴范围从 0 到 20000。 这些线大量重叠，表明钻石价格的密度分布相似。一个显著的特点是， 除了 Fair 级钻石外，所有钻石在价格 1500 附近都有高峰， 而 Fair 级钻石的均值高于其他等级。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Note that we’re mapping the density to <code>y</code>, but since <code>density</code> is not a variable in the <code>diamonds</code> dataset, we need to first calculate it. We use the <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat()</a></code> function to do so.</p>
-<p>There’s something rather surprising about this plot - it appears that fair diamonds (the lowest quality) have the highest average price! But maybe that’s because frequency polygons are a little hard to interpret - there’s a lot going on in this plot.</p>
-<p>A visually simpler plot for exploring this relationship is using side-by-side boxplots.</p>
+<p>注意，我们将密度映射到 <code>y</code>，但由于 <code>density</code> 不是 <code>diamonds</code> 数据集中的变量，我们需要先计算它。我们使用 <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat()</a></code> 函数来完成这个计算。</p>
+<p>这张图中有一些相当令人惊讶的事情 —— 似乎 Fair 级钻石（质量最低）的平均价格最高！但这也许是因为频率多边形有点难以解读 —— 这张图中信息量太大了。</p>
+<p>用于探索这种关系的一种视觉上更简单的图是并排的箱线图。</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" alt="Side-by-side boxplots of prices of diamonds by cut. The distribution of prices is right skewed for each cut (Fair, Good, Very Good, Premium, and Ideal). The medians are close to each other, with the median for Ideal diamonds lowest and that for Fair highest." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" alt="按切工等级排列的钻石价格的并排箱线图。每种切工等级（Fair, Good, Very Good, Premium, 和 Ideal）的价格分布都是右偏的。中位数彼此接近， Ideal 级钻石的中位数最低，而 Fair 级最高。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>We see much less information about the distribution, but the boxplots are much more compact so we can more easily compare them (and fit more on one plot). It supports the counter-intuitive finding that better quality diamonds are typically cheaper! In the exercises, you’ll be challenged to figure out why.</p>
-<p><code>cut</code> is an ordered factor: fair is worse than good, which is worse than very good and so on. Many categorical variables don’t have such an intrinsic order, so you might want to reorder them to make a more informative display. One way to do that is with <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>. You’ll learn more about that function in <a href="factors.html#sec-modifying-factor-order" class="quarto-xref"><span>Section 16.4</span></a>, but we want to give you a quick preview here because it’s so useful. For example, take the <code>class</code> variable in the <code>mpg</code> dataset. You might be interested to know how highway mileage varies across classes:</p>
+<p>我们看到的关于分布的信息少了很多，但是箱线图更加紧凑，所以我们可以更容易地比较它们（并且可以在一张图上容纳更多）。它支持了那个与直觉相反的发现：质量更好的钻石通常更便宜！在练习中，你将面临挑战，去找出原因。</p>
+<p><code>cut</code> 是一个有序因子：fair 比 good 差，good 又比 very good 差，依此类推。许多分类变量没有这种内在的顺序，所以你可能想重新排序它们以获得信息更丰富的展示。一种方法是使用 <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>。你将在 <a href="factors.html#sec-modifying-factor-order" class="quarto-xref"><span>Section 16.4</span></a> 中学习更多关于这个函数的内容，但我们想在这里给你一个快速预览，因为它非常有用。例如，看看 <code>mpg</code> 数据集中的 <code>class</code> 变量。你可能想知道高速公路里程是如何因车型而异的：</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" alt="Side-by-side boxplots of highway mileages of cars by class. Classes are on the x-axis (2seaters, compact, midsize, minivan, pickup, subcompact, and suv)." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" alt="按车型类别显示的汽车高速公路里程的并排箱线图。类别在 x 轴上 （2seaters, compact, midsize, minivan, pickup, subcompact, and suv）。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>To make the trend easier to see, we can reorder <code>class</code> based on the median value of <code>hwy</code>:</p>
+<p>为了让趋势更容易看清，我们可以根据 <code>hwy</code> 的中位数重新排序 <code>class</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" alt="Side-by-side boxplots of highway mileages of cars by class. Classes are on the x-axis and ordered by increasing median highway mileage (pickup, suv, minivan, 2seater, subcompact, compact, and midsize)." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" alt="按车型类别显示的汽车高速公路里程的并排箱线图。类别在 x 轴上， 并按高速公路里程中位数的升序排列（pickup, suv, minivan, 2seater,  subcompact, compact, and midsize）。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>If you have long variable names, <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> will work better if you flip it 90°. You can do that by exchanging the x and y aesthetic mappings.</p>
+<p>如果你的变量名很长，<code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> 将其翻转 90° 会效果更好。你可以通过交换 x 和 y 的美学映射来实现。</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" alt="Side-by-side boxplots of highway mileages of cars by class. Classes are on the y-axis and ordered by increasing median highway mileage." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" alt="按车型类别显示的汽车高速公路里程的并排箱线图。类别在 y 轴上， 并按高速公路里程中位数的升序排列。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="exercises-2" class="level4" data-number="10.5.1.1"><h4 data-number="10.5.1.1" class="anchored" data-anchor-id="exercises-2">
-<span class="header-section-number">10.5.1.1</span> Exercises</h4>
+<section id="练习-2" class="level4" data-number="10.5.1.1"><h4 data-number="10.5.1.1" class="anchored" data-anchor-id="练习-2">
+<span class="header-section-number">10.5.1.1</span> 练习</h4>
 <ol type="1">
-<li><p>Use what you’ve learned to improve the visualization of the departure times of cancelled vs.&nbsp;non-cancelled flights.</p></li>
-<li><p>Based on EDA, what variable in the diamonds dataset appears to be most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationships lead to lower quality diamonds being more expensive?</p></li>
-<li><p>Instead of exchanging the x and y variables, add <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip()</a></code> as a new layer to the vertical boxplot to create a horizontal one. How does this compare to exchanging the variables?</p></li>
-<li><p>One problem with boxplots is that they were developed in an era of much smaller datasets and tend to display a prohibitively large number of “outlying values”. One approach to remedy this problem is the letter value plot. Install the lvplot package, and try using <code>geom_lv()</code> to display the distribution of price vs.&nbsp;cut. What do you learn? How do you interpret the plots?</p></li>
-<li><p>Create a visualization of diamond prices vs.&nbsp;a categorical variable from the <code>diamonds</code> dataset using <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code>, then a faceted <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>, then a colored <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code>, and then a colored <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code>. Compare and contrast the four plots. What are the pros and cons of each method of visualizing the distribution of a numerical variable based on the levels of a categorical variable?</p></li>
-<li><p>If you have a small dataset, it’s sometimes useful to use <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> to avoid overplotting to more easily see the relationship between a continuous and categorical variable. The ggbeeswarm package provides a number of methods similar to <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>. List them and briefly describe what each one does.</p></li>
-</ol></section></section><section id="two-categorical-variables" class="level3" data-number="10.5.2"><h3 data-number="10.5.2" class="anchored" data-anchor-id="two-categorical-variables">
-<span class="header-section-number">10.5.2</span> Two categorical variables</h3>
-<p>To visualize the covariation between categorical variables, you’ll need to count the number of observations for each combination of levels of these categorical variables. One way to do that is to rely on the built-in <code><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count()</a></code>:</p>
+<li><p>利用你所学到的知识，改进已取消航班与未取消航班出发时间的可视化。</p></li>
+<li><p>根据 EDA，<code>diamonds</code> 数据集中的哪个变量似乎对预测钻石价格最重要？该变量与切工 <code>cut</code> 有何关联？为什么这两个关系的组合会导致质量较低的钻石反而更昂贵？</p></li>
+<li><p>不要交换 x 和 y 变量，而是在垂直箱线图中添加 <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip()</a></code> 作为一个新图层来创建水平箱线图。这与交换变量相比如何？</p></li>
+<li><p>箱线图的一个问题是，它们是在数据集小得多的时代发展起来的，并且倾向于显示过多的“离群值”。解决这个问题的一种方法是字母值图 (letter value plot)。安装 <code>lvplot</code> 包，并尝试使用 <code>geom_lv()</code> 来显示价格与切工的分布。你学到了什么？你如何解释这些图？</p></li>
+<li><p>使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code>、分面的 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>、彩色的 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> 和彩色的 <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code>，分别创建一个钻石价格与 <code>diamonds</code> 数据集中某个分类变量的可视化。比较和对比这四种图。基于一个分类变量的水平来可视化一个数值变量的分布，每种方法的优缺点是什么？</p></li>
+<li><p>如果你的数据集很小，有时使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> 来避免过度绘制，从而更容易地看到连续变量和分类变量之间的关系是很有用的。<code>ggbeeswarm</code> 包提供了许多类似于 <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> 的方法。列出它们并简要描述每种方法的作用。</p></li>
+</ol></section></section><section id="两个分类变量" class="level3" data-number="10.5.2"><h3 data-number="10.5.2" class="anchored" data-anchor-id="两个分类变量">
+<span class="header-section-number">10.5.2</span> 两个分类变量</h3>
+<p>要可视化分类变量之间的协变，你需要计算这些分类变量每个水平组合的观测数量。一种方法是依赖内置的 <code><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" alt="A scatterplot of color vs. cut of diamonds. There is one point for each combination of levels of cut (Fair, Good, Very Good, Premium, and Ideal) and color (D, E, F, G, G, I, and J). The sizes of the points represent the number of observations for that combination. The legend indicates that these sizes range between 1000 and 4000." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" alt="钻石颜色与切工的散点图。对于切工（Fair, Good, Very Good, Premium, 和 Ideal）和颜色（D, E, F, G, H, I, 和 J）的每个组合都有一个点。 点的大小代表该组合的观测数量。图例显示这些大小在 1000 到 4000 之间。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The size of each circle in the plot displays how many observations occurred at each combination of values. Covariation will appear as a strong correlation between specific x values and specific y values.</p>
-<p>Another approach for exploring the relationship between these variables is computing the counts with dplyr:</p>
+<p>图中每个圆圈的大小显示了在每个值组合处有多少观测值。协变将表现为特定 x 值和特定 y 值之间的强相关性。</p>
+<p>探索这些变量之间关系的另一种方法是使用 dplyr 计算计数：</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">color</span>, <span class="va">cut</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 35 × 3</span></span>
-<span><span class="co">#&gt;   color cut           n</span></span>
-<span><span class="co">#&gt;   &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1 D     Fair        163</span></span>
-<span><span class="co">#&gt; 2 D     Good        662</span></span>
-<span><span class="co">#&gt; 3 D     Very Good  1513</span></span>
-<span><span class="co">#&gt; 4 D     Premium    1603</span></span>
-<span><span class="co">#&gt; 5 D     Ideal      2834</span></span>
-<span><span class="co">#&gt; 6 E     Fair        224</span></span>
-<span><span class="co">#&gt; # ℹ 29 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">color</span>, <span class="va">cut</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 3
+   color cut           n
+   &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;
+ 1 D     Fair        163
+ 2 D     Good        662
+ 3 D     Very Good  1513
+ 4 D     Premium    1603
+ 5 D     Ideal      2834
+ 6 E     Fair        224
+ 7 E     Good        933
+ 8 E     Very Good  2400
+ 9 E     Premium    2337
+10 E     Ideal      3903
+# ℹ 25 more rows</code></pre>
 </div>
-<p>Then visualize with <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile()</a></code> and the fill aesthetic:</p>
+</div>
+<p>然后使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile()</a></code> 和 <code>fill</code> 美学进行可视化：</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">color</span>, <span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">color</span>, y <span class="op">=</span> <span class="va">cut</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">color</span>, <span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">color</span>, y <span class="op">=</span> <span class="va">cut</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" alt="A tile plot of cut vs. color of diamonds. Each tile represents a cut/color combination and tiles are colored according to the number of observations in each tile. There are more Ideal diamonds than other cuts, with the highest number being Ideal diamonds with color G. Fair diamonds and diamonds with color I are the lowest in frequency." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" alt="钻石切工与颜色的瓦片图。每个瓦片代表一个切工/颜色组合， 瓦片根据每个瓦片中的观测数量着色。Ideal 切工的钻石比其他切工多， 其中数量最多的是颜色为 G 的 Ideal 钻石。Fair 切工和颜色为 I 的钻石 频率最低。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>If the categorical variables are unordered, you might want to use the seriation package to simultaneously reorder the rows and columns in order to more clearly reveal interesting patterns. For larger plots, you might want to try the heatmaply package, which creates interactive plots.</p>
-<section id="exercises-3" class="level4" data-number="10.5.2.1"><h4 data-number="10.5.2.1" class="anchored" data-anchor-id="exercises-3">
-<span class="header-section-number">10.5.2.1</span> Exercises</h4>
+<p>如果分类变量是无序的，你可能想使用 <code>seriation</code> 包来同时重新排列行和列，以便更清晰地揭示有趣的模式。对于更大的图，你可能想尝试 <code>heatmaply</code> 包，它可以创建交互式图。</p>
+<section id="练习-3" class="level4" data-number="10.5.2.1"><h4 data-number="10.5.2.1" class="anchored" data-anchor-id="练习-3">
+<span class="header-section-number">10.5.2.1</span> 练习</h4>
 <ol type="1">
-<li><p>How could you rescale the count dataset above to more clearly show the distribution of cut within color, or color within cut?</p></li>
-<li><p>What different data insights do you get with a segmented bar chart if color is mapped to the <code>x</code> aesthetic and <code>cut</code> is mapped to the <code>fill</code> aesthetic? Calculate the counts that fall into each of the segments.</p></li>
-<li><p>Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile()</a></code> together with dplyr to explore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?</p></li>
-</ol></section></section><section id="two-numerical-variables" class="level3" data-number="10.5.3"><h3 data-number="10.5.3" class="anchored" data-anchor-id="two-numerical-variables">
-<span class="header-section-number">10.5.3</span> Two numerical variables</h3>
-<p>You’ve already seen one great way to visualize the covariation between two numerical variables: draw a scatterplot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. You can see covariation as a pattern in the points. For example, you can see a positive relationship between the carat size and price of a diamond: diamonds with more carats have a higher price. The relationship is exponential.</p>
+<li><p>你如何重新缩放上面的计数数据集，以更清晰地显示颜色内的切工分布，或切工内的颜色分布？</p></li>
+<li><p>如果将颜色映射到 <code>x</code> 美学，将 <code>cut</code> 映射到 <code>fill</code> 美学，使用分段条形图你会得到什么不同的数据见解？计算落入每个分段的计数。</p></li>
+<li><p>使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile()</a></code> 和 dplyr 来探索平均航班起飞延迟如何随目的地和年份中的月份而变化。是什么使得图表难以阅读？你如何改进它？</p></li>
+</ol></section></section><section id="两个数值变量" class="level3" data-number="10.5.3"><h3 data-number="10.5.3" class="anchored" data-anchor-id="两个数值变量">
+<span class="header-section-number">10.5.3</span> 两个数值变量</h3>
+<p>你已经见过一种可视化两个数值变量之间协变的绝佳方法：用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> 绘制散点图。你可以将协变看作是点的模式。例如，你可以看到钻石的克拉大小和价格之间存在正相关关系：克拉数越大的钻石价格越高。这种关系是指数级的。</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" alt="A scatterplot of price vs. carat. The relationship is positive, somewhat strong, and exponential." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" alt="价格与克拉的散点图。关系是正向的、有些强、并且是指数型的。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>(In this section we’ll use the <code>smaller</code> dataset to stay focused on the bulk of the diamonds that are smaller than 3 carats)</p>
-<p>Scatterplots become less useful as the size of your dataset grows, because points begin to overplot, and pile up into areas of uniform black, making it hard to judge differences in the density of the data across the 2-dimensional space as well as making it hard to spot the trend. You’ve already seen one way to fix the problem: using the <code>alpha</code> aesthetic to add transparency.</p>
+<p>（在本节中，我们将使用 <code>smaller</code> 数据集，以专注于小于 3 克拉的大部分钻石）</p>
+<p>随着数据集规模的增长，散点图的用处会减小，因为点开始重叠（overplot），堆积成均匀的黑色区域，使得难以判断数据在二维空间中密度的差异，也难以发现趋势。你已经见过一种解决这个问题的方法：使用 <code>alpha</code> 美学来增加透明度。</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" alt="A scatterplot of price vs. carat. The relationship is positive, somewhat strong, and exponential. The points are transparent, showing clusters where the number of points is higher than other areas, The most obvious clusters are for diamonds with 1, 1.5, and 2 carats." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" alt="价格与克拉的散点图。关系是正向的、有些强、并且是指数型的。 点是透明的，显示出点数高于其他区域的聚类。最明显的聚类是 1 克拉、1.5 克拉和 2 克拉的钻石。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>But using transparency can be challenging for very large datasets. Another solution is to use bin. Previously you used <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> to bin in one dimension. Now you’ll learn how to use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> to bin in two dimensions.</p>
-<p><code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> divide the coordinate plane into 2d bins and then use a fill color to display how many points fall into each bin. <code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> creates rectangular bins. <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> creates hexagonal bins. You will need to install the hexbin package to use <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code>.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
+<p>但是对于非常大的数据集，使用透明度可能具有挑战性。另一个解决方案是使用分箱 (bin)。之前你使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> 和 <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> 在一维空间中进行分箱。现在你将学习如何使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> 和 <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> 在二维空间中进行分箱。</p>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> 和 <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> 将坐标平面划分为二维的箱子，然后使用填充颜色来显示有多少个点落入每个箱子。<code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> 创建矩形箱子。<code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code> 创建六边形箱子。你需要安装 <code>hexbin</code> 包才能使用 <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code>。</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co"># install.packages("hexbin")</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="EDA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" alt="Plot 1: A binned density plot of price vs. carat. Plot 2: A hexagonal bin plot of price vs. carat. Both plots show that the highest density of diamonds have low carats and low prices." width="288"></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" alt="图1：价格与克拉的分箱密度图。图2：价格与克拉的六边形分箱图。 两张图都显示，密度最高的钻石具有低克拉数和低价格。" width="288"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="EDA_files/figure-html/unnamed-chunk-25-2.png" class="img-fluid" alt="Plot 1: A binned density plot of price vs. carat. Plot 2: A hexagonal bin plot of price vs. carat. Both plots show that the highest density of diamonds have low carats and low prices." width="288"></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid" alt="图1：价格与克拉的分箱密度图。图2：价格与克拉的六边形分箱图。 两张图都显示，密度最高的钻石具有低克拉数和低价格。" width="288"></p>
 </div>
 </div>
 </div>
-<p>Another option is to bin one continuous variable so it acts like a categorical variable. Then you can use one of the techniques for visualizing the combination of a categorical and a continuous variable that you learned about. For example, you could bin <code>carat</code> and then for each group, display a boxplot:</p>
+<p>另一个选择是将一个连续变量分箱，使其像一个分类变量一样。然后你可以使用你学过的可视化分类变量和连续变量组合的技巧之一。例如，你可以将 <code>carat</code> 分箱，然后为每个组显示一个箱线图：</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" alt="Side-by-side box plots of price by carat. Each box plot represents diamonds that are 0.1 carats apart in weight. The box plots show that as carat increases the median price increases as well. Additionally, diamonds with 1.5 carats or lower have right skewed price distributions, 1.5 to 2 have roughly symmetric price distributions, and diamonds that weigh more have left skewed distributions. Cheaper, smaller diamonds have outliers on the higher end, more expensive, bigger diamonds have outliers on the lower end." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" alt="按克拉分组的价格的并排箱线图。每个箱线图代表重量相差 0.1 克拉的钻石。 箱线图显示，随着克拉数的增加，价格中位数也在增加。此外， 1.5 克拉或更低的钻石价格分布呈右偏，1.5 到 2 克拉的价格分布大致对称， 而更重的钻石价格分布呈左偏。更便宜、更小的钻石有高端的离群值， 更昂贵、更大的钻石有低端的离群值。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><code>cut_width(x, width)</code>, as used above, divides <code>x</code> into bins of width <code>width</code>. By default, boxplots look roughly the same (apart from number of outliers) regardless of how many observations there are, so it’s difficult to tell that each boxplot summarizes a different number of points. One way to show that is to make the width of the boxplot proportional to the number of points with <code>varwidth = TRUE</code>.</p>
-<section id="exercises-4" class="level4" data-number="10.5.3.1"><h4 data-number="10.5.3.1" class="anchored" data-anchor-id="exercises-4">
-<span class="header-section-number">10.5.3.1</span> Exercises</h4>
+<p><code>cut_width(x, width)</code>，如上所述，将 <code>x</code> 分成宽度为 <code>width</code> 的箱。默认情况下，无论有多少观测值，箱线图看起来都大致相同（除了离群点的数量），所以很难看出每个箱线图总结了不同数量的点。一种显示这一点的方法是让箱线图的宽度与点的数量成正比，使用 <code>varwidth = TRUE</code>。</p>
+<section id="练习-4" class="level4" data-number="10.5.3.1"><h4 data-number="10.5.3.1" class="anchored" data-anchor-id="练习-4">
+<span class="header-section-number">10.5.3.1</span> 练习</h4>
 <ol type="1">
-<li><p>Instead of summarizing the conditional distribution with a boxplot, you could use a frequency polygon. What do you need to consider when using <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width()</a></code> vs.&nbsp;<code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number()</a></code>? How does that impact a visualization of the 2d distribution of <code>carat</code> and <code>price</code>?</p></li>
-<li><p>Visualize the distribution of <code>carat</code>, partitioned by <code>price</code>.</p></li>
-<li><p>How does the price distribution of very large diamonds compare to small diamonds? Is it as you expect, or does it surprise you?</p></li>
-<li><p>Combine two of the techniques you’ve learned to visualize the combined distribution of cut, carat, and price.</p></li>
+<li><p>除了用箱线图总结条件分布，你还可以使用频率多边形。在使用 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width()</a></code> 与 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number()</a></code> 时，你需要考虑什么？这对 <code>carat</code> 和 <code>price</code> 的二维分布的可视化有何影响？</p></li>
+<li><p>可视化按 <code>price</code> 划分的 <code>carat</code> 的分布。</p></li>
+<li><p>非常大的钻石与小钻石的价格分布相比如何？是如你所料，还是让你感到惊讶？</p></li>
+<li><p>结合你学到的两种技巧，来可视化 <code>cut</code>、<code>carat</code> 和 <code>price</code> 的组合分布。</p></li>
 <li>
-<p>Two dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the following plot have an unusual combination of <code>x</code> and <code>y</code> values, which makes the points outliers even though their <code>x</code> and <code>y</code> values appear normal when examined separately. Why is a scatterplot a better display than a binned plot for this case?</p>
+<p>二维图揭示了在一维图中不可见的离群点。例如，下图中有些点的 <code>x</code> 和 <code>y</code> 值组合不寻常，这使得这些点成为离群点，即使它们的 <code>x</code> 和 <code>y</code> 值在单独检查时看起来正常。为什么在这种情况下，散点图比分箱图更适合显示？</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p>Instead of creating boxes of equal width with <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width()</a></code>, we could create boxes that contain roughly equal number of points with <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number()</a></code>. What are the advantages and disadvantages of this approach?</p>
+<p>除了用 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width()</a></code> 创建等宽的箱子，我们还可以用 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number()</a></code> 创建包含大致相等数量的点的箱子。这种方法的优缺点是什么？</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">smaller</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_number</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-</ol></section></section></section><section id="patterns-and-models" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="patterns-and-models">
-<span class="header-section-number">10.6</span> Patterns and models</h2>
-<p>If a systematic relationship exists between two variables it will appear as a pattern in the data. If you spot a pattern, ask yourself:</p>
+</ol>
+<hr></section></section></section><section id="模式和模型" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="模式和模型">
+<span class="header-section-number">10.6</span> 模式和模型</h2>
+<p>如果两个变量之间存在系统性关系，它将以数据中的模式出现。如果你发现一个模式，问问自己：</p>
 <ul>
-<li><p>Could this pattern be due to coincidence (i.e.&nbsp;random chance)?</p></li>
-<li><p>How can you describe the relationship implied by the pattern?</p></li>
-<li><p>How strong is the relationship implied by the pattern?</p></li>
-<li><p>What other variables might affect the relationship?</p></li>
-<li><p>Does the relationship change if you look at individual subgroups of the data?</p></li>
+<li><p>这个模式可能是由于巧合（即随机机会）吗？</p></li>
+<li><p>你如何描述该模式所暗示的关系？</p></li>
+<li><p>该模式所暗示的关系有多强？</p></li>
+<li><p>还有哪些其他变量可能会影响这种关系？</p></li>
+<li><p>如果你观察数据的各个子群，这种关系会改变吗？</p></li>
 </ul>
-<p>Patterns in your data provide clues about relationships, i.e., they reveal covariation. If you think of variation as a phenomenon that creates uncertainty, covariation is a phenomenon that reduces it. If two variables covary, you can use the values of one variable to make better predictions about the values of the second. If the covariation is due to a causal relationship (a special case), then you can use the value of one variable to control the value of the second.</p>
-<p>Models are a tool for extracting patterns out of data. For example, consider the diamonds data. It’s hard to understand the relationship between cut and price, because cut and carat, and carat and price are tightly related. It’s possible to use a model to remove the very strong relationship between price and carat so we can explore the subtleties that remain. The following code fits a model that predicts <code>price</code> from <code>carat</code> and then computes the residuals (the difference between the predicted value and the actual value). The residuals give us a view of the price of the diamond, once the effect of carat has been removed. Note that instead of using the raw values of <code>price</code> and <code>carat</code>, we log transform them first, and fit a model to the log-transformed values. Then, we exponentiate the residuals to put them back in the scale of raw prices.</p>
+<p>数据中的模式提供了关于关系的线索，即它们揭示了协变。如果你把变异看作是一种产生不确定性的现象，那么协变就是一种减少不确定性的现象。如果两个变量协变，你可以利用一个变量的值来更好地预测另一个变量的值。如果协变是由于因果关系（一种特殊情况），那么你可以利用一个变量的值来控制另一个变量的值。</p>
+<p>模型是从数据中提取模式的工具。例如，考虑钻石数据。很难理解切工和价格之间的关系，因为切工和克拉，以及克拉和价格是紧密相关的。可以使用一个模型来移除价格和克拉之间非常强的关系，这样我们就可以探索剩下的细微差别。下面的代码拟合了一个从 <code>carat</code> 预测 <code>price</code> 的模型，然后计算残差（预测值和实际值之间的差异）。残差为我们提供了一个视角，来看待在移除了克拉的影响之后钻石的价格。请注意，我们没有使用 <code>price</code> 和 <code>carat</code> 的原始值，而是先对它们进行对数转换，并对对数转换后的值拟合一个模型。然后，我们对残差进行指数化，将其放回到原始价格的尺度上。</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">diamonds</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        log_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,</span>
-<span>        log_carat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    log_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,</span>
+<span>    log_carat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">diamonds_fit</span> <span class="op">&lt;-</span> <span class="fu">linear_reg</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">fit</span><span class="op">(</span><span class="va">log_price</span> <span class="op">~</span> <span class="va">log_carat</span>, data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span></span>
+<span>  <span class="fu">fit</span><span class="op">(</span><span class="va">log_price</span> <span class="op">~</span> <span class="va">log_carat</span>, data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">diamonds_aug</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">diamonds_fit</span>, new_data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.resid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">.resid</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.resid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">.resid</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds_aug</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds_aug</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" alt="A scatterplot of residuals vs. carat of diamonds. The x-axis ranges from 0 to 5, the y-axis ranges from 0 to almost 4. Much of the data are clustered around low values of carat and residuals. There is a clear, curved pattern showing decrease in residuals as carat increases." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" alt="钻石残差与克拉的散点图。x 轴范围从 0 到 5，y 轴范围从 0 到近 4。 大部分数据聚集在低克拉和低残差值附近。有一条清晰的曲线模式， 显示残差随着克拉的增加而减少。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Once you’ve removed the strong relationship between carat and price, you can see what you expect in the relationship between cut and price: relative to their size, better quality diamonds are more expensive.</p>
+<p>一旦你移除了克拉和价格之间的强关系，你就可以在切工和价格之间的关系中看到你所期望的：相对于它们的大小，质量更好的钻石更昂贵。</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds_aug</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds_aug</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">.resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" alt="Side-by-side box plots of residuals by cut. The x-axis displays the various cuts (Fair to Ideal), the y-axis ranges from 0 to almost 5. The medians are quite similar, between roughly 0.75 to 1.25. Each of the distributions of residuals is right skewed, with many outliers on the higher end." width="576"></p>
+<figure class="figure"><p><img src="EDA_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" alt="按切工分类的残差的并排箱线图。x 轴显示了各种切工（从 Fair 到 Ideal）， y 轴范围从 0 到近 5。中位数非常相似，大约在 0.75 到 1.25 之间。 每个残差分布都是右偏的，有许多高端的离群值。" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>We’re not discussing modelling in this book because understanding what models are and how they work is easiest once you have tools of data wrangling and programming in hand.</p>
-</section><section id="summary" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">10.7</span> Summary</h2>
-<p>In this chapter you’ve learned a variety of tools to help you understand the variation within your data. You’ve seen techniques that work with a single variable at a time and with a pair of variables. This might seem painfully restrictive if you have tens or hundreds of variables in your data, but they’re the foundation upon which all other techniques are built.</p>
-<p>In the next chapter, we’ll focus on the tools we can use to communicate our results.</p>
+<p>我们在这本书中不讨论建模，因为理解模型是什么以及它们如何工作，在你掌握了数据整理和编程的工具之后会最容易。</p>
+</section><section id="总结" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">10.7</span> 总结</h2>
+<p>在本章中，你学习了各种工具来帮助你理解数据中的变异。你看到了处理单个变量和一对变量的技巧。如果你的数据中有几十个或几百个变量，这可能看起来很痛苦地受限，但它们是所有其他技术构建的基础。</p>
+<p>在下一章中，我们将专注于我们可以用来交流我们结果的工具。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>Remember that when we need to be explicit about where a function (or dataset) comes from, we’ll use the special form <code>package::function()</code> or <code>package::dataset</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>请记住，当我们需明确指出一个函数（或数据集）的来源时，我们会使用特殊形式 <code>package::function()</code> 或 <code>package::dataset</code>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1323,13 +1337,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./layers.html" class="pagination-link" aria-label="Layers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span>
+      <a href="./layers.html" class="pagination-link" aria-label="图层">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./communication.html" class="pagination-link" aria-label="Communication">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./communication.html" class="pagination-link" aria-label="沟通">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

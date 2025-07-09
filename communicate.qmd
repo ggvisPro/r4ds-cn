@@ -3,6 +3,7 @@
 ```{r}
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 So far, you've learned the tools to get your data into R, tidy it into a form convenient for analysis, and then understand your data through transformation, and visualization.

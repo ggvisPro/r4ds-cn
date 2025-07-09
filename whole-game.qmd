@@ -4,6 +4,7 @@
 #| results: "asis"
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 本书这一部分的目标是，让你快速概览数据科学的主要工具：**导入 (importing)**、**整理 (tidying)**、**转换 (transforming)** 和 **可视化 (visualizing) 数据**，如 @fig-ds-whole-game 所示。

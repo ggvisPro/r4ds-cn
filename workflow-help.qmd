@@ -3,6 +3,7 @@
 ```{r}
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 这本书并非一座孤岛；没有任何单一的资源能让你精通 R。

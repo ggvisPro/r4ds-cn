@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  username <span class="op">=</span> <span class="st">"foo"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
-<span>  <span class="fu">RPostgres</span><span class="fu">::</span><span class="fu">Postgres</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>  <span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span>, </span>
 <span>  hostname <span class="op">=</span> <span class="st">"databases.mycompany.com"</span>, </span>
 <span>  port <span class="op">=</span> <span class="fl">1234</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"diamonds"</span><span class="op">)</span></span>
 <span><span class="va">diamonds_db</span></span>
 <span><span class="co">#&gt; # Source:   table&lt;diamonds&gt; [?? x 10]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
 <span><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
@@ -611,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="va">big_diamonds_db</span></span>
 <span><span class="co">#&gt; # Source:   SQL [?? x 5]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
 <span><span class="co">#&gt;   carat cut       color clarity price</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
@@ -839,15 +839,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Use `na.rm = TRUE` to silence this warning</span></span>
 <span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
 <span><span class="co">#&gt; # Source:   SQL [?? x 2]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
-<span><span class="co">#&gt;   dest  delay</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 HOU    7.18</span></span>
-<span><span class="co">#&gt; 2 SFO    2.67</span></span>
-<span><span class="co">#&gt; 3 GSP   15.9 </span></span>
-<span><span class="co">#&gt; 4 TYS   24.1 </span></span>
-<span><span class="co">#&gt; 5 CRW   14.7 </span></span>
-<span><span class="co">#&gt; 6 MTJ    1.79</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
+<span><span class="co">#&gt;   dest   delay</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 CLT    7.36 </span></span>
+<span><span class="co">#&gt; 2 MDW   12.4  </span></span>
+<span><span class="co">#&gt; 3 SDF   12.7  </span></span>
+<span><span class="co">#&gt; 4 LAS    0.258</span></span>
+<span><span class="co">#&gt; 5 IAH    4.24 </span></span>
+<span><span class="co">#&gt; 6 CAK   19.7  </span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you want to learn more about how <code>NULL</code>s work, you might enjoy “<a href="https://modern-sql.com/concept/three-valued-logic">The Three-Valued Logic of SQL</a>” by Markus Winand.</p>

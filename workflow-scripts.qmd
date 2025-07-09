@@ -3,6 +3,7 @@
 ```{r}
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 本章将向你介绍两个用于组织代码的重要工具：脚本和项目。

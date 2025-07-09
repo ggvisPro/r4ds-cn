@@ -1,5 +1,7 @@
 set.seed(1014)
 
+showtext::showtext_auto()
+
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,

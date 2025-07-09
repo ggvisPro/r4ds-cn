@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -435,42 +435,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">2.1</span> 编码基础</h2>
 <p>让我们回顾一些我们为了让你尽快开始绘图而省略的基础知识。你可以使用 R 进行基本的数学计算：</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fl">200</span> <span class="op">*</span> <span class="fl">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.15</code></pre>
-</div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="fl">59</span> <span class="op">+</span> <span class="fl">73</span> <span class="op">+</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 44.66667</code></pre>
-</div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">pi</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fl">200</span> <span class="op">*</span> <span class="fl">30</span></span>
+<span><span class="co">#&gt; [1] 0.15</span></span>
+<span><span class="op">(</span><span class="fl">59</span> <span class="op">+</span> <span class="fl">73</span> <span class="op">+</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 44.66667</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">pi</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你可以使用赋值运算符 <code>&lt;-</code> 创建新对象：</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="fl">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>注意，<code>x</code> 的值没有被打印出来，它只是被存储了。如果你想查看这个值，可以在控制台中输入 <code>x</code>。</p>
 <p>你可以使用 <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> 将多个元素<strong>合</strong> (c) 并成一个向量：</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>对向量的基本算术运算会应用于向量的每个元素：</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primes</span> <span class="op">*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  4  6 10 14 22 26</code></pre>
-</div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primes</span> <span class="op">-</span> <span class="fl">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  2  4  6 10 12</code></pre>
-</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primes</span> <span class="op">*</span> <span class="fl">2</span></span>
+<span><span class="co">#&gt; [1]  4  6 10 14 22 26</span></span>
+<span><span class="va">primes</span> <span class="op">-</span> <span class="fl">1</span></span>
+<span><span class="co">#&gt; [1]  1  2  4  6 10 12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>所有你用来创建对象的 R 语句，即<strong>赋值</strong> (assignment) 语句，都具有相同的形式：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object_name</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">object_name</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在读这段代码时，在脑海里默念“对象名 gets 值”。</p>
 <p>你会进行大量的赋值操作，而输入 <code>&lt;-</code> 很麻烦。你可以使用 RStudio 的键盘快捷键来节省时间：Alt + -（减号）。注意 RStudio 会自动在 <code>&lt;-</code> 周围加上空格，这是一个很好的代码格式化习惯。好的代码有时读起来也很费劲，所以请多使用空格，让你的眼睛休息一下。</p>
@@ -479,14 +469,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>R 会忽略那一行中 <code>#</code> 之后的所有文本。这允许你编写<strong>注释</strong> (comments)，即被 R 忽略但供其他人类阅读的文本。我们有时会在示例中包含注释，以解释代码的作用。</p>
 <p>注释对于简要描述后续代码的功能非常有帮助。</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 创建一个素数向量</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 创建一个素数向量</span></span>
 <span><span class="va">primes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 将素数乘以 2</span></span>
-<span><span class="va">primes</span> <span class="op">*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  4  6 10 14 22 26</code></pre>
-</div>
+<span><span class="va">primes</span> <span class="op">*</span> <span class="fl">2</span></span>
+<span><span class="co">#&gt; [1]  4  6 10 14 22 26</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>对于像这样简短的代码，为每一行代码都留注释可能没有必要。但是随着你编写的代码变得越来越复杂，注释可以为你（和你的合作者）节省大量时间来理解代码中的操作。</p>
 <p>使用注释来解释你代码的<em>原因</em> (why)，而不是<em>方式</em> (how) 或<em>内容</em> (what)。代码的<em>内容</em>和<em>方式</em>总是可以通过仔细阅读来弄清楚，尽管可能很繁琐。如果你在注释中描述了每一步，然后又更改了代码，你就必须记得也要更新注释，否则将来你再看代码时会感到困惑。</p>
@@ -496,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">2.3</span> 名字里有什么？</h2>
 <p>对象名必须以字母开头，并且只能包含字母、数字、<code>_</code> 和 <code>.</code>。你希望你的对象名具有描述性，所以你需要为多个单词采用一种命名约定。我们推荐<strong>蛇形命名法</strong> (snake_case)，即用 <code>_</code> 分隔小写单词。</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i_use_snake_case</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i_use_snake_case</span></span>
 <span><span class="va">otherPeopleUseCamelCase</span></span>
 <span><span class="va">some.people.use.periods</span></span>
 <span><span class="va">And_aFew.People_RENOUNCEconvention</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -504,24 +492,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>我们将在 <a href="workflow-style.html" class="quarto-xref"><span>Chapter 4</span></a> 讨论代码风格时再次回到命名问题。</p>
 <p>你可以通过输入对象名来查看它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 12</code></pre>
-</div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>再进行一次赋值：</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">this_is_a_really_long_name</span> <span class="op">&lt;-</span> <span class="fl">2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">this_is_a_really_long_name</span> <span class="op">&lt;-</span> <span class="fl">2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>要查看这个对象，试试 RStudio 的自动补全功能：输入 “this”，按 TAB 键，继续添加字符直到你有一个唯一的前缀，然后按回车。</p>
 <p>假设你犯了一个错误，<code>this_is_a_really_long_name</code> 的值应该是 3.5，而不是 2.5。你可以使用另一个键盘快捷键来帮助你修正。例如，你可以按 ↑ 键调出你输入的最后一条命令并进行编辑。或者，输入 “this” 然后按 Cmd/Ctrl + ↑ 来列出你输入过的所有以这些字母开头的命令。使用箭头键导航，然后按回车键重新输入命令。将 2.5 改为 3.5 并重新运行。</p>
 <p>再进行一次赋值：</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r_rocks</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r_rocks</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>让我们试着查看它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r_rock</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r_rock</span></span>
 <span><span class="co">#&gt; Error: object 'r_rock' not found</span></span>
 <span><span class="va">R_rocks</span></span>
 <span><span class="co">#&gt; Error: object 'R_rocks' not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -531,26 +517,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">2.4</span> 调用函数</h2>
 <p>R 有大量内置函数，调用方式如下：</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">function_name</span><span class="op">(</span>argument1 <span class="op">=</span> <span class="va">value1</span>, argument2 <span class="op">=</span> <span class="va">value2</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">function_name</span><span class="op">(</span>argument1 <span class="op">=</span> <span class="va">value1</span>, argument2 <span class="op">=</span> <span class="va">value2</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>让我们试着用 <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> 来创建规则的数字<strong>序</strong> (seq) 列，同时学习更多 RStudio 的实用功能。输入 <code>se</code> 然后按 TAB 键。一个弹出窗口会显示可能的补全选项。通过输入更多字符（一个 <code>q</code>）来明确指定 <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>，或者使用 ↑/↓ 箭头来选择。注意弹出的浮动工具提示，它会提醒你函数参数和用途。如果你需要更多帮助，按 F1 键可以在右下角的帮助标签页中获取所有详细信息。</p>
 <p>当你选定了想要的函数后，再次按 TAB 键。RStudio 会为你添加匹配的开括号 (<code>(</code>) 和闭括号 (<code>)</code>)。输入第一个参数的名称 <code>from</code>，并将其设置为 <code>1</code>。然后，输入第二个参数的名称 <code>to</code>，并将其设置为 <code>10</code>。最后，按回车键。</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们通常会省略函数调用中前几个参数的名称，所以我们可以这样重写：</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>输入以下代码，注意 RStudio 对成对的引号也提供了类似的辅助：</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"hello world"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"hello world"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>引号和括号必须总是成对出现。RStudio 会尽力帮助你，但你仍然可能搞砸，导致不匹配。如果发生这种情况，R 会显示续行符 “+”:</p>
 <pre><code>&gt; x &lt;- "hello
@@ -571,29 +553,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <p>为什么这段代码不工作？</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_variable</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">my_varıable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: 找不到对象'my_varıable'</code></pre>
-</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_variable</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">my_varıable</span></span>
+<span><span class="co">#&gt; Error: 找不到对象'my_varıable'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>仔细看！ （这可能看起来像一个无意义的练习，但训练你的大脑注意最微小的差异在编程时会大有裨益。）</p>
 </li>
 <li>
 <p>调整以下每个 R 命令，使它们能够正确运行：</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">libary</span>(todyverse)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">dTA =</span> mpg) <span class="sc">+</span> </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">maping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">libary</span>(todyverse)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">dTA =</span> mpg) <span class="sc">+</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">maping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li><p>按 Option + Shift + K / Alt + Shift + K。 发生了什么？ 如何通过菜单达到同样的位置？</p></li>
 <li>
 <p>让我们重温 <a href="data-visualize.html#sec-ggsave" class="quarto-xref"><span>Section 1.6</span></a> 中的一个练习。 运行以下代码行。 哪一个图被保存为 <code>mpg-plot.png</code>？ 为什么？</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_bar_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_bar_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">my_scatter_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>

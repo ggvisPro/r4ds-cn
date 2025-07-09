@@ -8,6 +8,7 @@ freeze: true
 #| echo: false
 
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 ## Introduction
@@ -42,6 +43,7 @@ library(arrow)
 Later in the chapter, we'll also see some connections between arrow and duckdb, so we'll also need dbplyr and duckdb.
 
 ```{r}
+#| eval: false
 library(dbplyr, warn.conflicts = FALSE)
 library(duckdb)
 ```
@@ -56,7 +58,8 @@ The data is a 9GB CSV file, so it will take some time to download.
 I highly recommend using `curl::multi_download()` to get very large files as it's built for exactly this purpose: it gives you a progress bar and it can resume the download if its interrupted.
 
 ```{r}
-#| eval: !expr "!file.exists('data/seattle-library-checkouts.csv')"
+#| eval: false
+## | eval: !expr "!file.exists('data/seattle-library-checkouts.csv')"
 dir.create("data", showWarnings = FALSE)
 
 curl::multi_download(
@@ -88,6 +91,7 @@ Once the data has been scanned by `open_dataset()`, it records what it's found a
 This metadata is what we see if we print `seattle_csv`:
 
 ```{r}
+#| eval: false
 seattle_csv
 ```
 
@@ -98,6 +102,7 @@ We can see what's actually in with `glimpse()`.
 This reveals that there are \~41 million rows and 12 columns, and shows us a few values.
 
 ```{r glimpse-data}
+#| eval: false
 #| cache: true
 seattle_csv |> glimpse()
 ```
@@ -106,6 +111,7 @@ We can start to use this dataset with dplyr verbs, using `collect()` to force ar
 For example, this code tells us the total number of checkouts per year:
 
 ```{r}
+#| eval: false
 #| cache: true
 seattle_csv |>
     group_by(CheckoutYear) |>
@@ -164,11 +170,13 @@ To rewrite the data we define the partition using `dplyr::group_by()` and then s
 `write_dataset()` has two important arguments: a directory where we'll create the files and the format we'll use.
 
 ```{r}
+#| eval: false
 pq_path <- "data/seattle-library-checkouts"
 ```
 
 ```{r write-dataset}
-#| eval: !expr "!file.exists(pq_path)"
+#| eval: false
+## | eval: !expr "!file.exists(pq_path)"
 
 seattle_csv |>
     group_by(CheckoutYear) |>
@@ -180,6 +188,7 @@ This takes about a minute to run; as we'll see shortly this is an initial invest
 Let's take a look at what we just produced:
 
 ```{r show-parquet-files}
+#| eval: false
 tibble(
     files = list.files(pq_path, recursive = TRUE),
     size_MB = file.size(file.path(pq_path, files)) / 1024^2
@@ -198,6 +207,7 @@ Now we've created these parquet files, we'll need to read them in again.
 We use `open_dataset()` again, but this time we give it a directory:
 
 ```{r}
+#| eval: false
 seattle_pq <- open_dataset(pq_path)
 ```
 
@@ -205,6 +215,7 @@ Now we can write our dplyr pipeline.
 For example, we could count the total number of books checked out in each month for the last five years:
 
 ```{r books-by-year-query}
+#| eval: false
 query <- seattle_pq |>
     filter(CheckoutYear >= 2018, MaterialType == "BOOK") |>
     group_by(CheckoutYear, CheckoutMonth) |>
@@ -216,12 +227,15 @@ Writing dplyr code for arrow data is conceptually similar to dbplyr, @sec-import
 If we print out the `query` object we can see a little information about what we expect Arrow to return when the execution takes place:
 
 ```{r}
+#| eval: false
 query
 ```
 
 And we can get the results by calling `collect()`:
 
 ```{r books-by-year}
+#| eval: false
+#| echo: false
 query |> collect()
 ```
 
@@ -234,6 +248,7 @@ Let's take a quick look at the performance impact of switching from CSV to parqu
 First, let's time how long it takes to calculate the number of books checked out in each month of 2021, when the data is stored as a single large csv:
 
 ```{r dataset-performance-csv}
+#| eval: false
 #| cache: true
 
 seattle_csv |>
@@ -248,6 +263,7 @@ seattle_csv |>
 Now let's use our new version of the dataset in which the Seattle library checkout data has been partitioned into 18 smaller parquet files:
 
 ```{r dataset-performance-multiple-parquet}
+#| eval: false
 #| cache: true
 
 seattle_pq |>
@@ -271,6 +287,7 @@ This massive difference in performance is why it pays off to convert large CSVs 
 There's one last advantage of parquet and arrow --- it's very easy to turn an arrow dataset into a DuckDB database (@sec-import-databases) by calling `arrow::to_duckdb()`:
 
 ```{r use-duckdb}
+#| eval: false
 seattle_pq |>
     to_duckdb() |>
     filter(CheckoutYear >= 2018, MaterialType == "BOOK") |>

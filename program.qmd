@@ -4,6 +4,7 @@
 #| results: "asis"
 #| echo: false
 source("_common.R")
+showtext::showtext_auto()
 ```
 
 In this part of the book, you'll improve your programming skills.

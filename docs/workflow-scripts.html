@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -547,7 +547,7 @@ report-draft-notes.txt</code></pre>
 <section id="什么是事实的唯一来源" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="什么是事实的唯一来源">
 <span class="header-section-number">6.2.1</span> 什么是事实的唯一来源？</h3>
 <p>作为初学者，依赖当前环境 (Environment) 来包含你在整个分析过程中创建的所有对象是可以的。 然而，为了更容易地处理大型项目或与他人协作，你的事实的唯一来源应该是 R 脚本。 有了你的 R 脚本（和你的数据文件），你就可以重现环境。 而只有你的环境，要重现你的 R 脚本就困难得多：你要么得凭记忆重新输入大量代码（不可避免地会出错），要么就得仔细挖掘你的 R 历史记录。</p>
-<p>为了帮助你将 R 脚本作为分析的事实的唯一来源，我们强烈建议你设置 RStudio 在会话之间不保存你的工作区。 你可以通过运行 <code><a href="https://usethis.r-lib.org/reference/use_blank_slate.html">usethis::use_blank_slate()</a></code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 或模仿 <a href="#fig-blank-slate" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> 中显示的选项来做到这一点。这会给你带来一些短期的痛苦，因为现在当你重启 RStudio 时，它将不再记得你上次运行的代码，你创建的对象或读取的数据集也无法使用。 但是这种短期的痛苦可以让你免于长期的折磨，因为它迫使你将所有重要的过程都记录在你的代码中。 没有什么比在三个月后发现你只把一个重要计算的结果保存在你的环境中，而不是把计算本身保存在你的代码中更糟糕的了。</p>
+<p>为了帮助你将 R 脚本作为分析的事实的唯一来源，我们强烈建议你设置 RStudio 在会话之间不保存你的工作区。 你可以通过运行 <code>usethis::use_blank_slate()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 或模仿 <a href="#fig-blank-slate" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> 中显示的选项来做到这一点。这会给你带来一些短期的痛苦，因为现在当你重启 RStudio 时，它将不再记得你上次运行的代码，你创建的对象或读取的数据集也无法使用。 但是这种短期的痛苦可以让你免于长期的折磨，因为它迫使你将所有重要的过程都记录在你的代码中。 没有什么比在三个月后发现你只把一个重要计算的结果保存在你的环境中，而不是把计算本身保存在你的代码中更糟糕的了。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-blank-slate" class="quarto-float quarto-figure quarto-figure-center anchored" alt="RStudio 全局选项窗口，其中“启动时将 .RData 恢复到工作区”选项未被勾选。 另外，“退出时将工作区保存到 .RData”选项被设置为“从不”。 ">

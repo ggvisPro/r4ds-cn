@@ -84,7 +84,3 @@ format:
     callout-appearance: simple
 
 editor: source
-
-execute:
-  cache: true
-  freeze: auto

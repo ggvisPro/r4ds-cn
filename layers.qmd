@@ -1,28 +1,23 @@
-# Layers {#sec-layers}
+# 图层 {#sec-layers}
 
 ```{r}
 #| echo: false
+
 source("_common.R")
+showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-In @sec-data-visualization, you learned much more than just how to make scatterplots, bar charts, and boxplots.
-You learned a foundation that you can use to make *any* type of plot with ggplot2.
+在 @sec-data-visualization 中，你学到的远不止如何制作散点图、条形图和箱线图。你学到了一个基础，可以用它来通过 ggplot2 制作*任何*类型的图表。
 
-In this chapter, you'll expand on that foundation as you learn about the layered grammar of graphics.
-We'll start with a deeper dive into aesthetic mappings, geometric objects, and facets.
-Then, you will learn about statistical transformations ggplot2 makes under the hood when creating a plot.
-These transformations are used to calculate new values to plot, such as the heights of bars in a bar plot or medians in a box plot.
-You will also learn about position adjustments, which modify how geoms are displayed in your plots.
-Finally, we'll briefly introduce coordinate systems.
+本章中，你将在学习图形的分层语法时扩展这一基础。我们将从更深入地探讨图形属性映射 (aesthetic mappings)、几何对象 (geometric objects) 和分面 (facets) 开始。然后，你将学习 ggplot2 在创建图表时在幕后进行的统计变换 (statistical transformations)。这些变换用于计算要绘制的新值，例如条形图中条形的高度或箱线图中的中位数。你还将学习位置调整 (position adjustments)，它会修改几何对象在图中的显示方式。最后，我们将简要介绍坐标系。
 
-We will not cover every single function and option for each of these layers, but we will walk you through the most important and commonly used functionality provided by ggplot2 as well as introduce you to packages that extend ggplot2.
+我们不会涵盖这些图层中每一个的全部函数和选项，但我们会引导你了解 ggplot2 提供的最重要和最常用的功能，并向你介绍扩展 ggplot2 的包。
 
-### Prerequisites
+### 前提条件
 
-This chapter focuses on ggplot2.
-To access the datasets, help pages, and functions used in this chapter, load the tidyverse by running this code:
+本章重点介绍 ggplot2。要访问本章中使用的数据集、帮助页面和函数，请运行以下代码加载 tidyverse：
 
 ```{r}
 #| label: setup
@@ -30,113 +25,96 @@ To access the datasets, help pages, and functions used in this chapter, load the
 library(tidyverse)
 ```
 
-## Aesthetic mappings
+## 图形属性映射
 
-> "The greatest value of a picture is when it forces us to notice what we never expected to see." --- John Tukey
+> “图片的最大价值在于，它迫使我们注意到我们从未预料会看到的东西。” --- John Tukey
 
-Remember that the `mpg` data frame bundled with the ggplot2 package contains `r nrow(mpg)` observations on `r mpg |> distinct(model) |> nrow()` car models.
+请记住，ggplot2 包中附带的 `mpg` 数据框包含 `r nrow(mpg)` 条关于 `r mpg |> distinct(model) |> nrow()` 种车型的观测数据。
 
 ```{r}
 mpg
 ```
 
-Among the variables in `mpg` are:
+`mpg` 中的变量包括：
 
-1.  `displ`: A car's engine size, in liters.
-    A numerical variable.
+1.  `displ`：汽车的发动机尺寸，单位是升 (liters)。这是一个数值变量。
 
-2.  `hwy`: A car's fuel efficiency on the highway, in miles per gallon (mpg).
-    A car with a low fuel efficiency consumes more fuel than a car with a high fuel efficiency when they travel the same distance.
-    A numerical variable.
+2.  `hwy`：汽车在高速公路上的燃油效率，单位是每加仑英里数 (miles per gallon, mpg)。燃油效率低的汽车在行驶相同距离时比燃油效率高的汽车消耗更多的燃料。这是一个数值变量。
 
-3.  `class`: Type of car.
-    A categorical variable.
+3.  `class`：汽车的类型。这是一个分类变量。
 
-Let's start by visualizing the relationship between `displ` and `hwy` for various `class`es of cars.
-We can do this with a scatterplot where the numerical variables are mapped to the `x` and `y` aesthetics and the categorical variable is mapped to an aesthetic like `color` or `shape`.
+我们先从可视化不同 `class` 的汽车中 `displ` 和 `hwy` 之间的关系开始。我们可以用一个散点图来做到这一点，其中数值变量被映射到 `x` 和 `y` 图形属性，而分类变量被映射到像 `color` 或 `shape` 这样的图形属性。
 
 ```{r}
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-alt: |
-#|   Two scatterplots next to each other, both visualizing highway fuel
-#|   efficiency versus engine size of cars and showing a negative
-#|   association. In the plot on the left class is mapped to the color
-#|   aesthetic, resulting in different colors for each class.
-#|   In the plot on the right class is mapped the shape aesthetic,
-#|   resulting in different plotting character shapes for each class,
-#|   except for suv. Each plot comes with a legend that shows the
-#|   mapping between color or shape and levels of the class variable.
-# Left
+#|   并排的两个散点图，都可视化了汽车的高速公路燃油效率与发动机尺寸的关系，并显示出负相关。
+#|   左图中，class 被映射到颜色属性，导致每个类别都有不同的颜色。
+#|   右图中，class 被映射到形状属性，导致除 suv 外的每个类别都有不同的绘图字符形状。
+#|   每个图都带有一个图例，显示了颜色或形状与 class 变量水平之间的映射关系。
+# 左
 ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
-    geom_point()
+  geom_point()
 
-# Right
+# 右
 ggplot(mpg, aes(x = displ, y = hwy, shape = class)) +
-    geom_point()
+  geom_point()
 ```
 
-When `class` is mapped to `shape`, we get two warnings:
+当 `class` 被映射到 `shape` 时，我们会收到两条警告：
 
-> 1: The shape palette can deal with a maximum of 6 discrete values because more than 6 becomes difficult to discriminate; you have 7.
-> Consider specifying shapes manually if you must have them.
+> 1: The shape palette can deal with a maximum of 6 discrete values because more than 6 becomes difficult to discriminate; you have 7. Consider specifying shapes manually if you must have them.
+> (形状调色板最多只能处理 6 个离散值，因为超过 6 个就很难区分了；而你有 7 个。如果必须使用，请考虑手动指定形状。)
 >
 > 2: Removed 62 rows containing missing values (`geom_point()`).
+> (移除了 62 行包含缺失值的记录 (`geom_point()`))
 
-Since ggplot2 will only use six shapes at a time, by default, additional groups will go unplotted when you use the shape aesthetic.
-The second warning is related -- there are 62 SUVs in the dataset and they're not plotted.
+由于 ggplot2 默认一次只使用六种形状，当你使用形状属性时，额外的组将不会被绘制。第二条警告与此相关——数据集中有 62 辆 SUV 没有被绘制出来。
 
-Similarly, we can map `class` to `size` or `alpha` aesthetics as well, which control the size and the transparency of the points, respectively.
+类似地，我们也可以将 `class` 映射到 `size` 或 `alpha` 图形属性，它们分别控制点的大小和透明度。
 
 ```{r}
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-alt: |
-#|   Two scatterplots next to each other, both visualizing highway fuel
-#|   efficiency versus engine size of cars and showing a negative
-#|   association. In the plot on the left class is mapped to the size
-#|   aesthetic, resulting in different sizes for each class.
-#|   In the plot on the right class is mapped the alpha aesthetic,
-#|   resulting in different alpha (transparency) levels for each class.
-#|   Each plot comes with a legend that shows the mapping between size
-#|   or alpha level and levels of the class variable.
-# Left
+#|   并排的两个散点图，都可视化了汽车的高速公路燃油效率与发动机尺寸的关系，并显示出负相关。
+#|   左图中，class 被映射到大小属性，导致每个类别都有不同的大小。
+#|   右图中，class 被映射到 alpha 属性，导致每个类别都有不同的 alpha (透明度) 水平。
+#|   每个图都带有一个图例，显示了大小或 alpha 水平与 class 变量水平之间的映射关系。
+# 左
 ggplot(mpg, aes(x = displ, y = hwy, size = class)) +
-    geom_point()
+  geom_point()
 
-# Right
+# 右
 ggplot(mpg, aes(x = displ, y = hwy, alpha = class)) +
-    geom_point()
+  geom_point()
 ```
 
-Both of these produce warnings as well:
+这两个图也都会产生警告：
 
 > Using alpha for a discrete variable is not advised.
+> (不建议对离散变量使用 alpha。)
 
-Mapping an unordered discrete (categorical) variable (`class`) to an ordered aesthetic (`size` or `alpha`) is generally not a good idea because it implies a ranking that does not in fact exist.
+将一个无序的离散 (分类) 变量 (`class`) 映射到一个有序的图形属性 (`size` 或 `alpha`) 通常不是一个好主意，因为它暗示了一个实际上不存在的排序。
 
-Once you map an aesthetic, ggplot2 takes care of the rest.
-It selects a reasonable scale to use with the aesthetic, and it constructs a legend that explains the mapping between levels and values.
-For x and y aesthetics, ggplot2 does not create a legend, but it creates an axis line with tick marks and a label.
-The axis line provides the same information as a legend; it explains the mapping between locations and values.
+一旦你映射了一个图形属性，ggplot2 会处理剩下的事情。它会选择一个合理的标度 (scale) 与该属性一起使用，并构建一个图例来解释水平 (levels) 和值 (values) 之间的映射关系。对于 x 和 y 图形属性，ggplot2 不会创建图例，但它会创建一个带有刻度标记和标签的坐标轴。坐标轴线提供与图例相同的信息；它解释了位置和值之间的映射。
 
-You can also set the visual properties of your geom manually as an argument of your geom function (*outside* of `aes()`) instead of relying on a variable mapping to determine the appearance.
-For example, we can make all of the points in our plot blue:
+你也可以手动设置几何对象的视觉属性，将其作为几何对象函数的参数 (在 `aes()` *之外*)，而不是依赖于变量映射来决定外观。例如，我们可以使图中所有的点都为蓝色：
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars
-#|   that shows a negative association. All points are blue.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(color = "blue")
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，显示出负相关。所有点都是蓝色的。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point(color = "blue")
 ```
 
-Here, the color doesn't convey information about a variable, but only changes the appearance of the plot.
-You'll need to pick a value that makes sense for that aesthetic:
+在这里，颜色并不传达关于变量的信息，而只是改变了图的外观。你需要为该图形属性选择一个有意义的值：
 
--   The name of a color as a character string, e.g., `color = "blue"`
--   The size of a point in mm, e.g., `size = 1`
--   The shape of a point as a number, e.g, `shape = 1`, as shown in @fig-shapes.
+  - 颜色的名称作为字符串，例如 `color = "blue"`
+  - 点的大小，单位是毫米 (mm)，例如 `size = 1`
+  - 点的形状，用数字表示，例如 `shape = 1`，如 @fig-shapes 所示。
+
 
 ```{r}
 #| label: fig-shapes
@@ -145,71 +123,63 @@ You'll need to pick a value that makes sense for that aesthetic:
 #| fig.asp: 0.364
 #| fig-align: "center"
 #| fig-cap: |
-#|   R has 26 built-in shapes that are identified by numbers. There are some
-#|   seeming duplicates: for example, 0, 15, and 22 are all squares. The
-#|   difference comes from the interaction of the `color` and `fill`
-#|   aesthetics. The hollow shapes (0--14) have a border determined by `color`;
-#|   the solid shapes (15--20) are filled with `color`; the filled shapes
-#|   (21--25) have a border of `color` and are filled with `fill`. Shapes are
-#|   arranged to keep similar shapes next to each other.
+#|   R 有 26 种内置形状，用数字标识。有一些看起来是重复的：例如，0、15 和 22 都是正方形。
+#|   区别在于 `color` 和 `fill` 图形属性的交互。
+#|   空心形状 (0-14) 的边框由 `color` 决定；
+#|   实心形状 (15-20) 用 `color` 填充；填充形状 (21-25) 的边框是 `color`，内部用 `fill` 填充。
+#|   形状的排列是为了让相似的形状相邻。
 #| fig-alt: |
-#|   Mapping between shapes and the numbers that represent them: 0 - square open,
-#|   1 - circle open, 2 - triangle open, 3 - plus, 4 - cross, 5 - diamond open,
-#|   6 - triangle down open, 7 - square cross, 8 - asterisk, 9 - diamond plus,
-#|   10 - circle plus, 11 - star, 12 - square plus,
-#|   13 - circle cross, 14 - square triangle, 15 - square,
-#|   16 - circle small, 17 - triangle, 18 - diamond,
-#|   19 - circle, 20 - bullet, 21 - circle filled,
-#|   22 - square filled, 23 - diamond filled, 24 - triangle filled,
-#|   25 - triangle down filled.
+#|   形状与代表它们的数字之间的映射关系：0 - 空心正方形，
+#|   1 - 空心圆形，2 - 空心三角形，3 - 加号，4 - 叉号，5 - 空心菱形，
+#|   6 - 空心倒三角形，7 - 带叉的正方形，8 - 星号，9 - 带加号的菱形，
+#|   10 - 带加号的圆形，11 - 星形，12 - 带加号的正方形，
+#|   13 - 带叉的圆形，14 - 带三角形的正方形，15 - 实心正方形，
+#|   16 - 小实心圆形，17 - 实心三角形，18 - 实心菱形，
+#|   19 - 实心圆形，20 - 小黑点，21 - 带边框的填充圆形，
+#|   22 - 带边框的填充正方形，23 - 带边框的填充菱形，24 - 带边框的填充三角形，
+#|   25 - 带边框的填充倒三角形。
 shapes <- tibble(
-    shape = c(0, 1, 2, 5, 3, 4, 6:19, 22, 21, 24, 23, 20, 25),
-    x = (0:25 %/% 5) / 2,
-    y = (-(0:25 %% 5)) / 4
+  shape = c(0, 1, 2, 5, 3, 4, 6:19, 22, 21, 24, 23, 20, 25),
+  x = (0:25 %/% 5) / 2,
+  y = (-(0:25 %% 5)) / 4
 )
-ggplot(shapes, aes(x, y)) +
-    geom_point(aes(shape = shape), size = 5, fill = "red") +
-    geom_text(aes(label = shape), hjust = 0, nudge_x = 0.15) +
-    scale_shape_identity() +
-    expand_limits(x = 4.1) +
-    scale_x_continuous(NULL, breaks = NULL) +
-    scale_y_continuous(NULL, breaks = NULL, limits = c(-1.2, 0.2)) +
-    theme_minimal() +
-    theme(aspect.ratio = 1 / 2.75)
+ggplot(shapes, aes(x, y)) + 
+  geom_point(aes(shape = shape), size = 5, fill = "red") +
+  geom_text(aes(label = shape), hjust = 0, nudge_x = 0.15) +
+  scale_shape_identity() +
+  expand_limits(x = 4.1) +
+  scale_x_continuous(NULL, breaks = NULL) + 
+  scale_y_continuous(NULL, breaks = NULL, limits = c(-1.2, 0.2)) + 
+  theme_minimal() +
+  theme(aspect.ratio = 1/2.75)
 ```
 
-So far we have discussed aesthetics that we can map or set in a scatterplot, when using a point geom.
-You can learn more about all possible aesthetic mappings in the aesthetic specifications vignette at <https://ggplot2.tidyverse.org/articles/ggplot2-specs.html>.
+到目前为止，我们已经讨论了在使用点几何对象 (point geom) 制作散点图时可以映射或设置的图形属性。你可以在图形属性规范说明文档 [https://ggplot2.tidyverse.org/articles/ggplot2-specs.html](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html) 中了解所有可能的图形属性映射。
 
-The specific aesthetics you can use for a plot depend on the geom you use to represent the data.
-In the next section we dive deeper into geoms.
+你可以为图表使用的具体图形属性取决于你用来表示数据的几何对象 (geom)。在下一节中，我们将更深入地探讨几何对象。
 
-### Exercises
+### 练习
 
-1.  Create a scatterplot of `hwy` vs. `displ` where the points are pink filled in triangles.
+1.  创建一个 `hwy` 对 `displ` 的散点图，其中的点是粉色填充的三角形。
 
-2.  Why did the following code not result in a plot with blue points?
+2.  为什么下面的代码没有生成一个带有蓝色点的图？
 
     ```{r}
-#| fig-show: hide
-#| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars
-#|   that shows a negative association. All points are red and
-#|   the legend shows a red point that is mapped to the word blue.
-ggplot(mpg) +
-    geom_point(aes(x = displ, y = hwy, color = "blue"))
+    #| fig-show: hide
+    #| fig-alt: |
+    #|   汽车高速公路燃油效率与发动机尺寸的散点图，显示出负相关。
+    #|   所有点都是红色的，图例显示一个红点映射到 "blue" 这个词。
+    ggplot(mpg) + 
+      geom_point(aes(x = displ, y = hwy, color = "blue"))
     ```
 
-3.  What does the `stroke` aesthetic do?
-    What shapes does it work with?
-    (Hint: use `?geom_point`)
+3.  `stroke` 图形属性有什么作用？它适用于哪些形状？（提示：使用 `?geom_point`）
 
-4.  What happens if you map an aesthetic to something other than a variable name, like `aes(color = displ < 5)`?
-    Note, you'll also need to specify x and y.
+4.  如果你将一个图形属性映射到变量名以外的东西，比如 `aes(color = displ < 5)`，会发生什么？注意，你还需要指定 x 和 y。
 
-## Geometric objects {#sec-geometric-objects}
+## 几何对象 {#sec-geometric-objects}
 
-How are these two plots similar?
+下面这两幅图有何相似之处？
 
 ```{r}
 #| echo: false
@@ -217,89 +187,69 @@ How are these two plots similar?
 #| layout-ncol: 2
 #| fig-width: 3
 #| fig-alt: |
-#|   There are two plots. The plot on the left is a scatterplot of highway
-#|   fuel efficiency versus engine size of cars and the plot on the right
-#|   shows a smooth curve that follows the trajectory of the relationship
-#|   between these variables. A confidence interval around the smooth
-#|   curve is also displayed.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point()
+#|   这里有两幅图。左边的图是汽车高速公路燃油效率与发动机尺寸的散点图，
+#|   右边的图显示了一条平滑曲线，该曲线遵循了这些变量之间关系的轨迹。
+#|   图中还显示了平滑曲线周围的置信区间。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point()
 
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth()
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_smooth()
 ```
 
-Both plots contain the same x variable, the same y variable, and both describe the same data.
-But the plots are not identical.
-Each plot uses a different geometric object, geom, to represent the data.
-The plot on the left uses the point geom, and the plot on the right uses the smooth geom, a smooth line fitted to the data.
+两幅图都包含相同的 x 变量，相同的 y 变量，并且都描述了相同的数据。但这两幅图并不完全相同。每幅图使用不同的几何对象 (geom) 来表示数据。左边的图使用点几何对象 (point geom)，右边的图使用平滑几何对象 (smooth geom)，即一条拟合数据的平滑线。
 
-To change the geom in your plot, change the geom function that you add to `ggplot()`.
-For instance, to make the plots above, you can use the following code:
+要改变图中的几何对象，只需改变你添加到 `ggplot()` 的几何对象函数即可。例如，要制作上面的图，你可以使用以下代码：
 
 ```{r}
 #| fig-show: hide
-# Left
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point()
+# 左图
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point()
 
-# Right
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth()
+# 右图
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_smooth()
 ```
 
-Every geom function in ggplot2 takes a `mapping` argument, either defined locally in the geom layer or globally in the `ggplot()` layer.
-However, not every aesthetic works with every geom.
-You could set the shape of a point, but you couldn't set the "shape" of a line.
-If you try, ggplot2 will silently ignore that aesthetic mapping.
-On the other hand, you *could* set the linetype of a line.
-`geom_smooth()` will draw a different line, with a different linetype, for each unique value of the variable that you map to linetype.
+ggplot2 中的每个几何对象函数都接受一个 `mapping` 参数，这个参数可以在几何对象图层中局部定义，也可以在 `ggplot()` 图层中全局定义。然而，并非每个图形属性都适用于每个几何对象。你可以设置一个点的形状，但不能设置一条线的“形状”。如果你尝试这样做，ggplot2 会默默地忽略该图形属性映射。另一方面，你*可以*设置一条线的线型 (linetype)。`geom_smooth()` 会为映射到线型的变量的每个唯一值绘制一条不同的线，具有不同的线型。
 
 ```{r}
 #| message: false
 #| layout-ncol: 2
 #| fig-width: 3
 #| fig-alt: |
-#|   Two plots of highway fuel efficiency versus engine size of cars.
-#|   The data are represented with smooth curves. On the left, three
-#|   smooth curves, all with the same linetype. On the right, three
-#|   smooth curves with different line types (solid, dashed, or long
-#|   dashed) for each type of drive train. In both plots, confidence
-#|   intervals around the smooth curves are also displayed.
-# Left
-ggplot(mpg, aes(x = displ, y = hwy, shape = drv)) +
-    geom_smooth()
+#|   两幅关于汽车高速公路燃油效率与发动机尺寸关系的图。
+#|   数据用平滑曲线表示。左图中，有三条平滑曲线，都具有相同的线型。
+#|   右图中，有三条平滑曲线，每种驱动系统类型对应不同的线型（实线、虚线或长划线）。
+#|   两幅图中都显示了平滑曲线周围的置信区间。
+# 左图
+ggplot(mpg, aes(x = displ, y = hwy, shape = drv)) + 
+  geom_smooth()
 
-# Right
-ggplot(mpg, aes(x = displ, y = hwy, linetype = drv)) +
-    geom_smooth()
+# 右图
+ggplot(mpg, aes(x = displ, y = hwy, linetype = drv)) + 
+  geom_smooth()
 ```
 
-Here, `geom_smooth()` separates the cars into three lines based on their `drv` value, which describes a car's drive train.
-One line describes all of the points that have a `4` value, one line describes all of the points that have an `f` value, and one line describes all of the points that have an `r` value.
-Here, `4` stands for four-wheel drive, `f` for front-wheel drive, and `r` for rear-wheel drive.
+在这里，`geom_smooth()` 根据汽车的 `drv` 值（描述汽车的驱动系统）将汽车分成三条线。一条线描述所有 `drv` 值为 `4` 的点，一条线描述所有值为 `f` 的点，还有一条线描述所有值为 `r` 的点。在这里，`4` 代表四轮驱动 (four-wheel drive)，`f` 代表前轮驱动 (front-wheel drive)，`r` 代表后轮驱动 (rear-wheel drive)。
 
-If this sounds strange, we can make it clearer by overlaying the lines on top of the raw data and then coloring everything according to `drv`.
+如果这听起来有些奇怪，我们可以通过将线条叠加在原始数据之上，并根据 `drv` 对所有元素进行着色，来使其更清晰。
 
 ```{r}
 #| message: false
 #| fig-alt: |
-#|   A plot of highway fuel efficiency versus engine size of cars. The data
-#|   are represented with points (colored by drive train) as well as smooth
-#|   curves (where line type is determined based on drive train as well).
-#|   Confidence intervals around the smooth curves are also displayed.
-ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-    geom_point() +
-    geom_smooth(aes(linetype = drv))
+#|   一幅关于汽车高速公路燃油效率与发动机尺寸关系的图。数据
+#|   用点（按驱动系统着色）和平滑曲线（线型也由驱动系统决定）表示。
+#|   图中还显示了平滑曲线周围的置信区间。
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() +
+  geom_smooth(aes(linetype = drv))
 ```
 
-Notice that this plot contains two geoms in the same graph.
+请注意，这幅图在同一个图形中包含了两个几何对象。
 
-Many geoms, like `geom_smooth()`, use a single geometric object to display multiple rows of data.
-For these geoms, you can set the `group` aesthetic to a categorical variable to draw multiple objects.
-ggplot2 will draw a separate object for each unique value of the grouping variable.
-In practice, ggplot2 will automatically group the data for these geoms whenever you map an aesthetic to a discrete variable (as in the `linetype` example).
-It is convenient to rely on this feature because the `group` aesthetic by itself does not add a legend or distinguishing features to the geoms.
+许多几何对象，如 `geom_smooth()`，使用单个几何对象来显示多行数据。对于这些几何对象，你可以将 `group` 图形属性设置为一个分类变量，以绘制多个对象。ggplot2 会为分组变量的每个唯一值绘制一个独立的对象。实际上，每当你将一个图形属性映射到一个离散变量时（如 `linetype` 的例子），ggplot2 都会自动为这些几何对象进行数据分组。依赖这个特性很方便，因为 `group` 图形属性本身不会为几何对象添加图例或区分特征。
 
 ```{r}
 #| layout-ncol: 3
@@ -307,658 +257,546 @@ It is convenient to rely on this feature because the `group` aesthetic by itself
 #| fig-asp: 1
 #| message: false
 #| fig-alt: |
-#|   Three plots, each with highway fuel efficiency on the y-axis and engine
-#|   size of cars on the x-axis, where data are represented by a smooth curve.
-#|   The first plot
-#|   only has these two variables, the center plot has three separate smooth
-#|   curves for each level of drive train, and the right plot not only has the
-#|   same three separate smooth curves for each level of drive train but these
-#|   curves are plotted in different colors.
-#|   Confidence intervals around the smooth curves
-#|   are also displayed.
-# Left
+#|   三幅图，每幅图的 y 轴是高速公路燃油效率，x 轴是汽车的发动机尺寸，
+#|   数据由一条平滑曲线表示。第一幅图只有这两个变量。中间的图
+#|   为每种驱动系统级别绘制了三条独立的平滑曲线。右边的图不仅有
+#|   同样的三条独立的平滑曲线，而且这些曲线还用不同的颜色绘制。
+#|   图中也显示了平滑曲线周围的置信区间。
+# 左图
 ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth()
+  geom_smooth()
 
-# Middle
+# 中间
 ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth(aes(group = drv))
+  geom_smooth(aes(group = drv))
 
-# Right
+# 右图
 ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth(aes(color = drv), show.legend = FALSE)
+  geom_smooth(aes(color = drv), show.legend = FALSE)
 ```
 
-If you place mappings in a geom function, ggplot2 will treat them as local mappings for the layer.
-It will use these mappings to extend or overwrite the global mappings *for that layer only*.
-This makes it possible to display different aesthetics in different layers.
+如果你将映射放在一个几何对象函数中，ggplot2 会将它们视为该图层的局部映射。它将使用这些映射来扩展或覆盖*仅该图层*的全局映射。这使得在不同图层中显示不同的图形属性成为可能。
 
 ```{r}
 #| message: false
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, where
-#|   points are colored according to the car class. A smooth curve following
-#|   the trajectory of the relationship between highway fuel efficiency versus
-#|   engine size of cars is overlaid along with a confidence interval around it.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(aes(color = class)) +
-    geom_smooth()
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，其中
+#|   点根据汽车类别进行着色。一条遵循高速公路燃油效率与
+#|   发动机尺寸关系的平滑曲线以及其周围的置信区间被叠加显示。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = class)) + 
+  geom_smooth()
 ```
 
-You can use the same idea to specify different `data` for each layer.
-Here, we use red points as well as open circles to highlight two-seater cars.
-The local data argument in `geom_point()` overrides the global data argument in `ggplot()` for that layer only.
+你可以使用同样的想法为每个图层指定不同的 `data`。在这里，我们使用红点和空心圆来突出显示双座车。`geom_point()` 中的局部数据参数会覆盖 `ggplot()` 中仅该图层的全局数据参数。
 
 ```{r}
 #| message: false
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, where
-#|   two-seater cars are highlighted with red points and open circles.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    geom_point(
-        data = mpg |> filter(class == "2seater"),
-        color = "red"
-    ) +
-    geom_point(
-        data = mpg |> filter(class == "2seater"),
-        shape = "circle open", size = 3, color = "red"
-    )
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，其中
+#|   双座车用红点和空心圆突出显示。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_point(
+    data = mpg |> filter(class == "2seater"), 
+    color = "red"
+  ) +
+  geom_point(
+    data = mpg |> filter(class == "2seater"), 
+    shape = "circle open", size = 3, color = "red"
+  )
 ```
 
-Geoms are the fundamental building blocks of ggplot2.
-You can completely transform the look of your plot by changing its geom, and different geoms can reveal different features of your data.
-For example, the histogram and density plot below reveal that the distribution of highway mileage is bimodal and right skewed while the boxplot reveals two potential outliers.
+几何对象是 ggplot2 的基本构建模块。你可以通过改变其几何对象来完全改变图的外观，不同的几何对象可以揭示你数据的不同特征。例如，下面的直方图和密度图显示高速公路里程的分布是双峰且右偏的，而箱线图则揭示了两个潜在的异常值。
 
 ```{r}
 #| layout-ncol: 3
 #| fig-width: 3
 #| fig-alt: |
-#|   Three plots: histogram, density plot, and box plot of highway
-#|   mileage.
-# Left
+#|   三张图：高速公路里程的直方图、密度图和箱线图。
+# 左图
 ggplot(mpg, aes(x = hwy)) +
-    geom_histogram(binwidth = 2)
+  geom_histogram(binwidth = 2)
 
-# Middle
+# 中间
 ggplot(mpg, aes(x = hwy)) +
-    geom_density()
+  geom_density()
 
-# Right
+# 右图
 ggplot(mpg, aes(x = hwy)) +
-    geom_boxplot()
+  geom_boxplot()
 ```
 
-ggplot2 provides more than 40 geoms but these don't cover all possible plots one could make.
-If you need a different geom, we recommend looking into extension packages first to see if someone else has already implemented it (see <https://exts.ggplot2.tidyverse.org/gallery/> for a sampling).
-For example, the **ggridges** package ([https://wilkelab.org/ggridges](https://wilkelab.org/ggridges/){.uri}) is useful for making ridgeline plots, which can be useful for visualizing the density of a numerical variable for different levels of a categorical variable.
-In the following plot not only did we use a new geom (`geom_density_ridges()`), but we have also mapped the same variable to multiple aesthetics (`drv` to `y`, `fill`, and `color`) as well as set an aesthetic (`alpha = 0.5`) to make the density curves transparent.
+ggplot2 提供了超过 40 种几何对象，但这并不能涵盖所有可能制作的图。如果你需要一种不同的几何对象，我们建议先查看扩展包，看看是否已经有人实现了它（参见 [https://exts.ggplot2.tidyverse.org/gallery/](https://exts.ggplot2.tidyverse.org/gallery/) 的一些例子）。例如，**ggridges** 包 ([https://wilkelab.org/ggridges](https://wilkelab.org/ggridges/){.uri}) 对于制作山脊图 (ridgeline plots) 很有用，这对于可视化一个数值变量在不同分类变量水平上的密度非常有用。在下面的图中，我们不仅使用了一个新的几何对象 (`geom_density_ridges()`)，还将同一个变量映射到了多个图形属性（`drv` 映射到 `y`、`fill` 和 `color`），并设置了一个图形属性 (`alpha = 0.5`) 来使密度曲线透明。
 
 ```{r}
 #| fig-asp: 0.33
-#| fig-alt:
-#|   Density curves for highway mileage for cars with rear wheel,
-#|   front wheel, and 4-wheel drives plotted separately. The
-#|   distribution is bimodal and roughly symmetric for real and
-#|   4 wheel drive cars and unimodal and right skewed for front
-#|   wheel drive cars.
+#| fig-alt: 
+#|   分别为后轮驱动、前轮驱动和四轮驱动汽车的高速公路里程密度曲线。
+#|   对于后轮和四轮驱动汽车，分布是双峰且大致对称的；对于前轮驱动汽车，
+#|   分布是单峰且右偏的。
 library(ggridges)
 
 ggplot(mpg, aes(x = hwy, y = drv, fill = drv, color = drv)) +
-    geom_density_ridges(alpha = 0.5, show.legend = FALSE)
+  geom_density_ridges(alpha = 0.5, show.legend = FALSE)
 ```
 
-The best place to get a comprehensive overview of all of the geoms ggplot2 offers, as well as all functions in the package, is the reference page: <https://ggplot2.tidyverse.org/reference>.
-To learn more about any single geom, use the help (e.g., `?geom_smooth`).
+要全面了解 ggplot2 提供的所有几何对象以及包中的所有函数，最好的地方是参考页面：[https://ggplot2.tidyverse.org/reference](https://ggplot2.tidyverse.org/reference)。要了解任何单个几何对象的更多信息，请使用帮助（例如，`?geom_smooth`）。
 
-### Exercises
+### 练习
 
-1.  What geom would you use to draw a line chart?
-    A boxplot?
-    A histogram?
-    An area chart?
+1.  你会用什么几何对象来绘制折线图？箱线图？直方图？面积图？
 
-2.  Earlier in this chapter we used `show.legend` without explaining it:
+2.  在本章前面，我们使用了 `show.legend` 但没有解释它：
 
     ```{r}
-#| fig-show: hide
-#| message: false
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth(aes(color = drv), show.legend = FALSE)
+    #| fig-show: hide
+    #| message: false
+    ggplot(mpg, aes(x = displ, y = hwy)) +
+      geom_smooth(aes(color = drv), show.legend = FALSE)
     ```
 
-    What does `show.legend = FALSE` do here?
-    What happens if you remove it?
-    Why do you think we used it earlier?
+    `show.legend = FALSE` 在这里有什么作用？如果去掉它会发生什么？你认为我们之前为什么要使用它？
 
-3.  What does the `se` argument to `geom_smooth()` do?
+3.  `geom_smooth()` 的 `se` 参数有什么作用？
 
-4.  Recreate the R code necessary to generate the following graphs.
-    Note that wherever a categorical variable is used in the plot, it's `drv`.
+4.  重新创建生成以下图形所需的 R 代码。请注意，图中凡是使用分类变量的地方，都是 `drv`。
 
     ```{r}
-#| echo: false
-#| message: false
-#| layout-ncol: 2
-#| fig-width: 3
-#| fig-alt: |
-#|   There are six scatterplots in this figure, arranged in a 3x2 grid.
-#|   In all plots highway fuel efficiency of cars are on the y-axis and
-#|   engine size is on the x-axis. The first plot shows all points in black
-#|   with a smooth curve overlaid on them. In the second plot points are
-#|   also all black, with separate smooth curves overlaid for each level of
-#|   drive train. On the third plot, points and the smooth curves are
-#|   represented in different colors for each level of drive train. In the
-#|   fourth plot the points are represented in different colors for each
-#|   level of drive train but there is only a single smooth line fitted to
-#|   the whole data. In the fifth plot, points are represented in different
-#|   colors for each level of drive train, and a separate smooth curve with
-#|   different line types are fitted to each level of drive train. And
-#|   finally in the sixth plot points are represented in different colors
-#|   for each level of drive train and they have a thick white border.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    geom_smooth(se = FALSE)
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_smooth(aes(group = drv), se = FALSE) +
-    geom_point()
-ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
-    geom_point() +
-    geom_smooth(se = FALSE)
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(aes(color = drv)) +
-    geom_smooth(se = FALSE)
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(aes(color = drv)) +
-    geom_smooth(aes(linetype = drv), se = FALSE)
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(size = 4, color = "white") +
-    geom_point(aes(color = drv))
+    #| echo: false
+    #| message: false
+    #| layout-ncol: 2
+    #| fig-width: 3
+    #| fig-alt: |
+    #|   该图中有六个散点图，排列成一个 3x2 的网格。
+    #|   在所有图中，y 轴是汽车的高速公路燃油效率，x 轴是发动机尺寸。
+    #|   第一幅图显示所有点为黑色，并叠加了一条平滑曲线。
+    #|   第二幅图中，点也都是黑色的，但为每种驱动系统级别叠加了单独的平滑曲线。
+    #|   第三幅图中，点和平滑曲线根据每种驱动系统级别显示为不同颜色。
+    #|   第四幅图中，点根据每种驱动系统级别显示为不同颜色，但只有一条拟合整个数据的平滑线。
+    #|   第五幅图中，点根据每种驱动系统级别显示为不同颜色，并为每种驱动系统级别拟合了不同线型的平滑曲线。
+    #|   最后，在第六幅图中，点根据每种驱动系统级别显示为不同颜色，并且它们有粗的白色边框。
+    ggplot(mpg, aes(x = displ, y = hwy)) + 
+      geom_point() + 
+      geom_smooth(se = FALSE)
+    ggplot(mpg, aes(x = displ, y = hwy)) + 
+      geom_smooth(aes(group = drv), se = FALSE) +
+      geom_point()
+    ggplot(mpg, aes(x = displ, y = hwy, color = drv)) + 
+      geom_point() + 
+      geom_smooth(se = FALSE)
+    ggplot(mpg, aes(x = displ, y = hwy)) + 
+      geom_point(aes(color = drv)) + 
+      geom_smooth(se = FALSE)
+    ggplot(mpg, aes(x = displ, y = hwy)) + 
+      geom_point(aes(color = drv)) +
+      geom_smooth(aes(linetype = drv), se = FALSE)
+    ggplot(mpg, aes(x = displ, y = hwy)) + 
+      geom_point(size = 4, color = "white") + 
+      geom_point(aes(color = drv))
     ```
 
-## Facets
+## 分面
 
-In @sec-data-visualization you learned about faceting with `facet_wrap()`, which splits a plot into subplots that each display one subset of the data based on a categorical variable.
+在 @sec-data-visualization 中，你学习了使用 `facet_wrap()` 进行分面，它根据一个分类变量将一个图分割成多个子图，每个子图显示数据的一个子集。
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars,
-#|   faceted by number of cylinders, with facets spanning two rows.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    facet_wrap(~cyl)
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，
+#|   按气缸数分面，分面跨越两行。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  facet_wrap(~cyl)
 ```
 
-To facet your plot with the combination of two variables, switch from `facet_wrap()` to `facet_grid()`.
-The first argument of `facet_grid()` is also a formula, but now it's a double sided formula: `rows ~ cols`.
+要根据两个变量的组合来分面你的图，请从 `facet_wrap()` 切换到 `facet_grid()`。`facet_grid()` 的第一个参数也是一个公式，但现在它是一个双边公式：`rows ~ cols`。
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars, faceted
-#|   by number of cylinders across rows and by type of drive train across
-#|   columns. This results in a 4x3 grid of 12 facets. Some of these facets have
-#|   no observations: 5 cylinders and 4 wheel drive, 4 or 5 cylinders and front
-#|   wheel drive.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    facet_grid(drv ~ cyl)
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，按行分面为气缸数，按列分面为驱动系统类型。
+#|   这导致了一个 4x3 的 12 个分面的网格。其中一些分面没有观测值：
+#|   5 缸和四轮驱动，4 或 5 缸和前轮驱动。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  facet_grid(drv ~ cyl)
 ```
 
-By default each of the facets share the same scale and range for x and y axes.
-This is useful when you want to compare data across facets but it can be limiting when you want to visualize the relationship within each facet better.
-Setting the `scales` argument in a faceting function to `"free_x"` will allow for different scales of x-axis across columns, `"free_y"` will allow for different scales on y-axis across rows, and `"free"` will allow both.
+默认情况下，每个分面共享相同的 x 轴和 y 轴的标度 (scale) 和范围 (range)。这在你想要跨分面比较数据时很有用，但当你想要更好地可视化每个分面内部的关系时，这可能会有限制。在分面函数中将 `scales` 参数设置为 `"free_x"` 将允许跨列使用不同的 x 轴标度，`"free_y"` 将允许跨行使用不同的 y 轴标度，而 `"free"` 将同时允许两者。
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars,
-#|   faceted by number of cylinders across rows and by type of drive train
-#|   across columns. This results in a 4x3 grid of 12 facets. Some of these
-#|   facets have no observations: 5 cylinders and 4 wheel drive, 4 or 5
-#|   cylinders and front wheel drive. Facets within a row share the same
-#|   y-scale and facets within a column share the same x-scale.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point() +
-    facet_grid(drv ~ cyl, scales = "free")
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，
+#|   按行分面为气缸数，按列分面为驱动系统类型。
+#|   这导致了一个 4x3 的 12 个分面的网格。其中一些分面没有观测值：
+#|   5 缸和四轮驱动，4 或 5 缸和前轮驱动。
+#|   同一行内的分面共享相同的 y 轴标度，同一列内的分面共享相同的 x 轴标度。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  facet_grid(drv ~ cyl, scales = "free")
 ```
 
-### Exercises
+### 练习
 
-1.  What happens if you facet on a continuous variable?
+1.  如果你对一个连续变量进行分面会发生什么？
 
-2.  What do the empty cells in the plot above with `facet_grid(drv ~ cyl)` mean?
-    Run the following code.
-    How do they relate to the resulting plot?
+2.  在上面使用 `facet_grid(drv ~ cyl)` 的图中，空的单元格意味着什么？运行下面的代码。它们与最终的图有什么关系？
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg) +
-    geom_point(aes(x = drv, y = cyl))
+    #| fig-show: hide
+    ggplot(mpg) + 
+      geom_point(aes(x = drv, y = cyl))
     ```
 
-3.  What plots does the following code make?
-    What does `.` do?
+3.  下面的代码生成了什么图？`.` 有什么作用？
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg) +
-    geom_point(aes(x = displ, y = hwy)) +
-    facet_grid(drv ~ .)
+    #| fig-show: hide
+    ggplot(mpg) + 
+      geom_point(aes(x = displ, y = hwy)) +
+      facet_grid(drv ~ .)
 
-ggplot(mpg) +
-    geom_point(aes(x = displ, y = hwy)) +
-    facet_grid(. ~ cyl)
+    ggplot(mpg) + 
+      geom_point(aes(x = displ, y = hwy)) +
+      facet_grid(. ~ cyl)
     ```
 
-4.  Take the first faceted plot in this section:
+4.  看本节的第一个分面图：
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg) +
-    geom_point(aes(x = displ, y = hwy)) +
-    facet_wrap(~cyl, nrow = 2)
+    #| fig-show: hide
+    ggplot(mpg) + 
+      geom_point(aes(x = displ, y = hwy)) + 
+      facet_wrap(~ cyl, nrow = 2)
     ```
 
-    What are the advantages to using faceting instead of the color aesthetic?
-    What are the disadvantages?
-    How might the balance change if you had a larger dataset?
+    使用分面代替颜色图形属性有什么优点？有什么缺点？如果你有一个更大的数据集，这种权衡可能会如何改变？
 
-5.  Read `?facet_wrap`.
-    What does `nrow` do?
-    What does `ncol` do?
-    What other options control the layout of the individual panels?
-    Why doesn't `facet_grid()` have `nrow` and `ncol` arguments?
+5.  阅读 `?facet_wrap`。`nrow` 有什么作用？`ncol` 有什么作用？还有哪些其他选项可以控制单个面板的布局？为什么 `facet_grid()` 没有 `nrow` 和 `ncol` 参数？
 
-6.  Which of the following plots makes it easier to compare engine size (`displ`) across cars with different drive trains?
-    What does this say about when to place a faceting variable across rows or columns?
+6.  下面的哪个图更容易比较不同驱动系统汽车的发动机尺寸（`displ`）？这对于何时将分面变量放在行或列上有什么启示？
 
     ```{r}
-#| fig-show: hide
-#| message: false
-ggplot(mpg, aes(x = displ)) +
-    geom_histogram() +
-    facet_grid(drv ~ .)
+    #| fig-show: hide
+    #| message: false
+    ggplot(mpg, aes(x = displ)) + 
+      geom_histogram() + 
+      facet_grid(drv ~ .)
 
-ggplot(mpg, aes(x = displ)) +
-    geom_histogram() +
-    facet_grid(. ~ drv)
+    ggplot(mpg, aes(x = displ)) + 
+      geom_histogram() +
+      facet_grid(. ~ drv)
     ```
 
-7.  Recreate the following plot using `facet_wrap()` instead of `facet_grid()`.
-    How do the positions of the facet labels change?
+7.  使用 `facet_wrap()` 而不是 `facet_grid()` 重新创建以下图。分面标签的位置有何变化？
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg) +
-    geom_point(aes(x = displ, y = hwy)) +
-    facet_grid(drv ~ .)
+    #| fig-show: hide
+    ggplot(mpg) + 
+      geom_point(aes(x = displ, y = hwy)) +
+      facet_grid(drv ~ .)
     ```
 
-## Statistical transformations
+## 统计变换
 
-Consider a basic bar chart, drawn with `geom_bar()` or `geom_col()`.
-The following chart displays the total number of diamonds in the `diamonds` dataset, grouped by `cut`.
-The `diamonds` dataset is in the ggplot2 package and contains information on \~54,000 diamonds, including the `price`, `carat`, `color`, `clarity`, and `cut` of each diamond.
-The chart shows that more diamonds are available with high quality cuts than with low quality cuts.
+考虑一个基本的条形图，用 `geom_bar()` 或 `geom_col()` 绘制。下面的图表显示了 `diamonds` 数据集中钻石的总数，按 `cut` 分组。`diamonds` 数据集在 ggplot2 包中，包含了约 54,000 颗钻石的信息，包括每颗钻石的 `price`、`carat`、`color`、`clarity` 和 `cut`。该图表显示，高质量切工的钻石比低质量切工的钻石更多。
 
 ```{r}
 #| fig-alt: |
-#|   Bar chart of number of each cut of diamond. There are roughly 1500
-#|   Fair, 5000 Good, 12000 Very Good, 14000 Premium, and 22000 Ideal cut
-#|   diamonds.
-ggplot(diamonds, aes(x = cut)) +
-    geom_bar()
+#|   各种钻石切工数量的条形图。大约有 1500 颗
+#|   Fair、5000 颗 Good、12000 颗 Very Good、14000 颗 Premium 和 22000 颗 Ideal 切工
+#|   的钻石。
+ggplot(diamonds, aes(x = cut)) + 
+  geom_bar()
 ```
 
-On the x-axis, the chart displays `cut`, a variable from `diamonds`.
-On the y-axis, it displays count, but count is not a variable in `diamonds`!
-Where does count come from?
-Many graphs, like scatterplots, plot the raw values of your dataset.
-Other graphs, like bar charts, calculate new values to plot:
+在 x 轴上，图表显示了 `cut`，这是 `diamonds` 中的一个变量。在 y 轴上，它显示了计数 (count)，但计数不是 `diamonds` 中的一个变量！计数是从哪里来的？许多图形，比如散点图，绘制的是你数据集的原始值。而其他图形，比如条形图，会计算新的值来绘制：
 
--   Bar charts, histograms, and frequency polygons bin your data and then plot bin counts, the number of points that fall in each bin.
+  - 条形图、直方图和频率多边图会对你的数据进行分箱 (bin)，然后绘制每个箱中的计数，即落入每个箱中的点的数量。
 
--   Smoothers fit a model to your data and then plot predictions from the model.
+  - 平滑器 (smoothers) 会对你的数据拟合一个模型，然后绘制模型的预测值。
 
--   Boxplots compute the five-number summary of the distribution and then display that summary as a specially formatted box.
+  - 箱线图会计算分布的五数概括 (five-number summary)，然后将该概括显示为一个特殊格式的盒子。
 
-The algorithm used to calculate new values for a graph is called a **stat**, short for statistical transformation.
-@fig-vis-stat-bar shows how this process works with `geom_bar()`.
+用于为图形计算新值的算法被称为 **stat**，即统计变换 (statistical transformation) 的缩写。@fig-vis-stat-bar 展示了这个过程如何与 `geom_bar()` 一起工作。
 
 ```{r}
 #| label: fig-vis-stat-bar
 #| echo: false
 #| out-width: "100%"
 #| fig-cap: |
-#|   When creating a bar chart we first start with the raw data, then
-#|   aggregate it to count the number of observations in each bar,
-#|   and finally map those computed variables to plot aesthetics.
+#|   在创建条形图时，我们首先从原始数据开始，然后
+#|   对其进行聚合以计算每个条中的观测数量，
+#|   最后将这些计算出的变量映射到图的图形属性上。
 #| fig-alt: |
-#|   A figure demonstrating three steps of creating a bar chart.
-#|   Step 1. geom_bar() begins with the diamonds data set. Step 2. geom_bar()
-#|   transforms the data with the count stat, which returns a data set of
-#|   cut values and counts. Step 3. geom_bar() uses the transformed data to
-#|   build the plot. cut is mapped to the x-axis, count is mapped to the y-axis.
+#|   一个展示创建条形图三个步骤的图。
+#|   步骤1. geom_bar() 从 diamonds 数据集开始。步骤2. geom_bar()
+#|   使用 count 统计变换数据，它返回一个包含 cut 值和计数的
+#|   数据集。步骤3. geom_bar() 使用变换后的数据
+#|   构建图。cut 映射到 x 轴，count 映射到 y 轴。
 knitr::include_graphics("images/visualization-stat-bar.png")
 ```
 
-You can learn which stat a geom uses by inspecting the default value for the `stat` argument.
-For example, `?geom_bar` shows that the default value for `stat` is "count", which means that `geom_bar()` uses `stat_count()`.
-`stat_count()` is documented on the same page as `geom_bar()`.
-If you scroll down, the section called "Computed variables" explains that it computes two new variables: `count` and `prop`.
+你可以通过检查 `stat` 参数的默认值来了解一个几何对象使用的是哪个 stat。例如，`?geom_bar` 显示 `stat` 的默认值是 "count"，这意味着 `geom_bar()` 使用 `stat_count()`。`stat_count()` 与 `geom_bar()` 在同一个帮助页面上有文档。如果你向下滚动，名为“Computed variables”的部分解释说它计算了两个新变量：`count` 和 `prop`。
 
-Every geom has a default stat; and every stat has a default geom.
-This means that you can typically use geoms without worrying about the underlying statistical transformation.
-However, there are three reasons why you might need to use a stat explicitly:
+每个几何对象都有一个默认的 stat；每个 stat 也有一个默认的几何对象。这意味着你通常可以使用几何对象而无需担心底层的统计变换。然而，有三个原因可能让你需要明确地使用一个 stat：
 
-1.  You might want to override the default stat.
-    In the code below, we change the stat of `geom_bar()` from count (the default) to identity.
-    This lets us map the height of the bars to the raw values of a y variable.
+1.  你可能想覆盖默认的 stat。在下面的代码中，我们将 `geom_bar()` 的 stat 从 count（默认值）改为 identity。这使我们能够将条形的高度映射到 y 变量的原始值。
 
     ```{r}
-#| warning: false
-#| fig-alt: |
-#|   Bar chart of number of each cut of diamond. There are roughly 1500
-#|   Fair, 5000 Good, 12000 Very Good, 14000 Premium, and 22000 Ideal cut
-#|   diamonds.
-diamonds |>
-    count(cut) |>
-    ggplot(aes(x = cut, y = n)) +
-    geom_bar(stat = "identity")
+    #| warning: false
+    #| fig-alt: |
+    #|   各种钻石切工数量的条形图。大约有 1500 颗
+    #|   Fair、5000 颗 Good、12000 颗 Very Good、14000 颗 Premium 和 22000 颗 Ideal 切工
+    #|   的钻石。
+    diamonds |>
+      count(cut) |>
+      ggplot(aes(x = cut, y = n)) +
+      geom_bar(stat = "identity")
     ```
 
-2.  You might want to override the default mapping from transformed variables to aesthetics.
-    For example, you might want to display a bar chart of proportions, rather than counts:
+2.  你可能想覆盖从变换后的变量到图形属性的默认映射。例如，你可能想显示一个比例的条形图，而不是计数的条形图：
 
     ```{r}
-#| fig-alt: |
-#|   Bar chart of proportion of each cut of diamond. Roughly, Fair
-#|   diamonds make up 0.03, Good 0.09, Very Good 0.22, Premium 0.26, and
-#|   Ideal 0.40.
-ggplot(diamonds, aes(x = cut, y = after_stat(prop), group = 1)) +
-    geom_bar()
+    #| fig-alt: |
+    #|   各种钻石切工比例的条形图。大致上，Fair
+    #|   钻石占 0.03，Good 占 0.09，Very Good 占 0.22，Premium 占 0.26，
+    #|   Ideal 占 0.40。
+    ggplot(diamonds, aes(x = cut, y = after_stat(prop), group = 1)) + 
+      geom_bar()
     ```
 
-    To find the possible variables that can be computed by the stat, look for the section titled "computed variables" in the help for `geom_bar()`.
+    要查找 stat 可能计算的所有变量，请在 `geom_bar()` 的帮助文档中查找标题为“computed variables”（计算变量）的部分。
 
-3.  You might want to draw greater attention to the statistical transformation in your code.
-    For example, you might use `stat_summary()`, which summarizes the y values for each unique x value, to draw attention to the summary that you're computing:
+3.  你可能想在代码中更着重地突出统计变换。例如，你可能会使用 `stat_summary()`，它为每个唯一的 x 值总结 y 值，以突出你正在计算的摘要：
 
     ```{r}
-#| fig-alt: |
-#|   A plot with depth on the y-axis and cut on the x-axis (with levels
-#|   fair, good, very good, premium, and ideal) of diamonds. For each level
-#|   of cut, vertical lines extend from minimum to maximum depth for diamonds
-#|   in that cut category, and the median depth is indicated on the line
-#|   with a point.
-ggplot(diamonds) +
-    stat_summary(
+    #| fig-alt: |
+    #|   一张图，y 轴是深度 (depth)，x 轴是钻石的切工 (cut)（级别为
+    #|   fair, good, very good, premium, ideal）。对于每个切工级别，
+    #|   垂直线从该切工类别中钻石的最小深度延伸到最大深度，
+    #|   并且中位数深度用一个点在线上标出。
+    ggplot(diamonds) + 
+      stat_summary(
         aes(x = cut, y = depth),
         fun.min = min,
         fun.max = max,
         fun = median
-    )
+      )
     ```
 
-ggplot2 provides more than 20 stats for you to use.
-Each stat is a function, so you can get help in the usual way, e.g., `?stat_bin`.
+ggplot2 提供了超过 20 个 stat 供你使用。每个 stat 都是一个函数，所以你可以用通常的方式获取帮助，例如 `?stat_bin`。
 
-### Exercises
+### 练习
 
-1.  What is the default geom associated with `stat_summary()`?
-    How could you rewrite the previous plot to use that geom function instead of the stat function?
+1.  与 `stat_summary()` 关联的默认几何对象是什么？你如何重写上一个图，使用该几何对象函数而不是 stat 函数？
 
-2.  What does `geom_col()` do?
-    How is it different from `geom_bar()`?
+2.  `geom_col()` 做什么？它与 `geom_bar()` 有何不同？
 
-3.  Most geoms and stats come in pairs that are almost always used in concert.
-    Make a list of all the pairs.
-    What do they have in common?
-    (Hint: Read through the documentation.)
+3.  大多数几何对象和统计变换都成对出现，几乎总是同时使用。列出所有的配对。它们有什么共同点？（提示：通读文档。）
 
-4.  What variables does `stat_smooth()` compute?
-    What arguments control its behavior?
+4.  `stat_smooth()` 计算哪些变量？哪些参数控制其行为？
 
-5.  In our proportion bar chart, we needed to set `group = 1`.
-    Why?
-    In other words, what is the problem with these two graphs?
+5.  在我们的比例条形图中，我们需要设置 `group = 1`。为什么？换句话说，下面这两张图有什么问题？
 
     ```{r}
-#| fig-show: hide
-ggplot(diamonds, aes(x = cut, y = after_stat(prop))) +
-    geom_bar()
-ggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) +
-    geom_bar()
+    #| fig-show: hide
+    ggplot(diamonds, aes(x = cut, y = after_stat(prop))) + 
+      geom_bar()
+    ggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) + 
+      geom_bar()
     ```
 
-## Position adjustments
+## 位置调整
 
-There's one more piece of magic associated with bar charts.
-You can color a bar chart using either the `color` aesthetic, or, more usefully, the `fill` aesthetic:
+条形图还有另外一个神奇之处。你可以使用 `color` 图形属性来为条形图上色，或者更有用地，使用 `fill` 图形属性：
 
 ```{r}
 #| layout-ncol: 2
 #| fig-width: 4
 #| fig-alt: |
-#|   Two bar charts of drive types of cars. In the first plot, the bars have
-#|   colored borders. In the second plot, they're filled with colors. Heights
-#|   of the bars correspond to the number of cars in each drv category.
-# Left
-ggplot(mpg, aes(x = drv, color = drv)) +
-    geom_bar()
+#|   两张关于汽车驱动类型的条形图。在第一张图中，条形有彩色的边框。
+#|   在第二张图中，它们被颜色填充。条形的高度对应于每个 drv 类别中的汽车数量。
+# 左图
+ggplot(mpg, aes(x = drv, color = drv)) + 
+  geom_bar()
 
-# Right
-ggplot(mpg, aes(x = drv, fill = drv)) +
-    geom_bar()
+# 右图
+ggplot(mpg, aes(x = drv, fill = drv)) + 
+  geom_bar()
 ```
 
-Note what happens if you map the fill aesthetic to another variable, like `class`: the bars are automatically stacked.
-Each colored rectangle represents a combination of `drv` and `class`.
+注意，如果你将 `fill` 图形属性映射到另一个变量，比如 `class`，会发生什么：条形会自动堆叠。每个彩色矩形代表 `drv` 和 `class` 的一个组合。
 
 ```{r}
 #| fig-alt: |
-#|   Segmented bar chart of drive types of cars, where each bar is filled with
-#|   colors for the classes of cars. Heights of the bars correspond to the
-#|   number of cars in each drive category, and heights of the colored
-#|   segments represent the number of cars with a given class
-#|   level within a given drive type level.
-ggplot(mpg, aes(x = drv, fill = class)) +
-    geom_bar()
+#|   汽车驱动类型的分段条形图，其中每个条形都用汽车类别的颜色填充。
+#|   条形的高度对应于每个驱动类别中的汽车数量，而彩色段的高度
+#|   代表在给定驱动类型级别内具有给定类别级别的汽车数量。
+ggplot(mpg, aes(x = drv, fill = class)) + 
+  geom_bar()
 ```
 
-The stacking is performed automatically using the **position adjustment** specified by the `position` argument.
-If you don't want a stacked bar chart, you can use one of three other options: `"identity"`, `"dodge"` or `"fill"`.
+堆叠是使用由 `position` 参数指定的**位置调整 (position adjustment)** 自动执行的。如果你不想要堆叠条形图，你可以使用其他三个选项之一：`"identity"`、`"dodge"` 或 `"fill"`。
 
--   `position = "identity"` will place each object exactly where it falls in the context of the graph.
-    This is not very useful for bars, because it overlaps them.
-    To see that overlapping we either need to make the bars slightly transparent by setting `alpha` to a small value, or completely transparent by setting `fill = NA`.
+  - `position = "identity"` 会将每个对象精确地放置在它在图上下文中所在的位置。这对条形图不是很有用，因为它会使它们重叠。为了看到重叠，我们要么需要通过将 `alpha` 设置为一个较小的值来使条形略微透明，要么通过设置 `fill = NA` 来使其完全透明。
 
     ```{r}
-#| layout-ncol: 2
-#| fig-width: 4
-#| fig-alt: |
-#|   Segmented bar chart of drive types of cars, where each bar is filled with
-#|   colors for the classes of cars.
-#|   Heights of the colored
-#|   segments represent the number of cars with a given class
-#|   level within a given drive type level. However the segments overlap. In
-#|   the first plot the bars are filled with transparent colors
-#|   and in the second plot they are only outlined with color.
-# Left
-ggplot(mpg, aes(x = drv, fill = class)) +
-    geom_bar(alpha = 1 / 5, position = "identity")
+    #| layout-ncol: 2
+    #| fig-width: 4
+    #| fig-alt: |
+    #|   汽车驱动类型的分段条形图，其中每个条形都用汽车类别的颜色填充。
+    #|   彩色段的高度代表在给定驱动类型级别内具有给定类别级别的汽车数量。
+    #|   然而，这些段是重叠的。在第一张图中，条形用透明颜色填充，
+    #|   在第二张图中，它们只有彩色轮廓。
+    # 左图
+    ggplot(mpg, aes(x = drv, fill = class)) + 
+      geom_bar(alpha = 1/5, position = "identity")
 
-# Right
-ggplot(mpg, aes(x = drv, color = class)) +
-    geom_bar(fill = NA, position = "identity")
+    # 右图
+    ggplot(mpg, aes(x = drv, color = class)) + 
+      geom_bar(fill = NA, position = "identity")
     ```
 
-    The identity position adjustment is more useful for 2d geoms, like points, where it is the default.
+    `identity` 位置调整对于二维几何对象（如点）更有用，它是默认设置。
 
--   `position = "fill"` works like stacking, but makes each set of stacked bars the same height.
-    This makes it easier to compare proportions across groups.
+  - `position = "fill"` 的工作方式类似于堆叠，但它使每组堆叠的条形具有相同的高度。这使得比较各组之间的比例更容易。
 
--   `position = "dodge"` places overlapping objects directly *beside* one another.
-    This makes it easier to compare individual values.
+  - `position = "dodge"` 将重叠的对象直接并排*放置*。这使得比较单个值更容易。
 
     ```{r}
-#| layout-ncol: 2
-#| fig-width: 4
-#| fig-alt: |
-#|   On the left, segmented bar chart of drive types of cars, where each bar is
-#|   filled with colors for the levels of class. Height of each bar is 1 and
-#|   heights of the colored segments represent the proportions of cars
-#|   with a given class level within a given drive type.
-#|   On the right, dodged bar chart of drive types of cars. Dodged bars are
-#|   grouped by levels of drive type. Within each group bars represent each
-#|   level of class. Some classes are represented within some drive types and
-#|   not represented in others, resulting in unequal number of bars within each
-#|   group. Heights of these bars represent the number of cars with a given
-#|   level of drive type and class.
-# Left
-ggplot(mpg, aes(x = drv, fill = class)) +
-    geom_bar(position = "fill")
+    #| layout-ncol: 2
+    #| fig-width: 4
+    #| fig-alt: |
+    #|   左图是汽车驱动类型的分段条形图，其中每个条形都用 class 级别的颜色填充。
+    #|   每个条形的高度为 1，彩色段的高度代表在给定驱动类型内具有给定 class 级别的汽车比例。
+    #|   右图是汽车驱动类型的分组条形图。分组的条形按驱动类型级别分组。
+    #|   在每个组内，条形代表 class 的每个级别。某些 class 在某些驱动类型中表示，
+    #|   而在其他驱动类型中不表示，导致每个组内的条形数量不等。
+    #|   这些条形的高度代表具有给定驱动类型和 class 级别的汽车数量。
+    # 左图
+    ggplot(mpg, aes(x = drv, fill = class)) + 
+      geom_bar(position = "fill")
 
-# Right
-ggplot(mpg, aes(x = drv, fill = class)) +
-    geom_bar(position = "dodge")
+    # 右图
+    ggplot(mpg, aes(x = drv, fill = class)) + 
+      geom_bar(position = "dodge")
     ```
 
-There's one other type of adjustment that's not useful for bar charts, but can be very useful for scatterplots.
-Recall our first scatterplot.
-Did you notice that the plot displays only 126 points, even though there are 234 observations in the dataset?
+还有一种调整类型对条形图没有用，但对散点图可能非常有用。回想我们的第一个散点图。你是否注意到，尽管数据集中有 234 个观测值，但该图只显示了 126 个点？
 
 ```{r}
 #| echo: false
 #| fig-alt: |
-#|   Scatterplot of highway fuel efficiency versus engine size of cars that
-#|   shows a negative association.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point()
+#|   汽车高速公路燃油效率与发动机尺寸的散点图，显示出负相关。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point()
 ```
 
-The underlying values of `hwy` and `displ` are rounded so the points appear on a grid and many points overlap each other.
-This problem is known as **overplotting**.
-This arrangement makes it difficult to see the distribution of the data.
-Are the data points spread equally throughout the graph, or is there one special combination of `hwy` and `displ` that contains 109 values?
+`hwy` 和 `displ` 的基础值是四舍五入的，所以点出现在一个网格上，许多点相互重叠。这个问题被称为**过度绘制 (overplotting)**。这种排列方式使得很难看出数据的分布。数据点是均匀地分布在整个图中，还是有一个特殊的 `hwy` 和 `displ` 组合包含了 109 个值？
 
-You can avoid this gridding by setting the position adjustment to "jitter".
-`position = "jitter"` adds a small amount of random noise to each point.
-This spreads the points out because no two points are likely to receive the same amount of random noise.
+你可以通过将位置调整设置为 "jitter" 来避免这种网格化。`position = "jitter"` 为每个点添加少量随机噪声。这会使点散开，因为不太可能有两个点会接收到相同数量的随机噪声。
 
 ```{r}
 #| fig-alt: |
-#|   Jittered scatterplot of highway fuel efficiency versus engine size of cars.
-#|   The plot shows a negative association.
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(position = "jitter")
+#|   汽车高速公路燃油效率与发动机尺寸的抖动散点图。该图显示出负相关。
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point(position = "jitter")
 ```
 
-Adding randomness seems like a strange way to improve your plot, but while it makes your graph less accurate at small scales, it makes your graph *more* revealing at large scales.
-Because this is such a useful operation, ggplot2 comes with a shorthand for `geom_point(position = "jitter")`: `geom_jitter()`.
+添加随机性似乎是改进你的图的一种奇怪方式，但虽然它使你的图在小尺度上不太准确，但它使你的图在*大尺度上更具揭示性*。因为这是一个非常有用的操作，ggplot2 为 `geom_point(position = "jitter")` 提供了一个简写：`geom_jitter()`。
 
-To learn more about a position adjustment, look up the help page associated with each adjustment: `?position_dodge`, `?position_fill`, `?position_identity`, `?position_jitter`, and `?position_stack`.
+要了解更多关于位置调整的信息，请查阅与每个调整相关的帮助页面：`?position_dodge`、`?position_fill`、`?position_identity`、`?position_jitter` 和 `?position_stack`。
 
-### Exercises
+### 练习
 
-1.  What is the problem with the following plot?
-    How could you improve it?
+1.  下面的图有什么问题？你如何改进它？
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg, aes(x = cty, y = hwy)) +
-    geom_point()
+    #| fig-show: hide
+    ggplot(mpg, aes(x = cty, y = hwy)) + 
+      geom_point()
     ```
 
-2.  What, if anything, is the difference between the two plots?
-    Why?
+2.  这两张图有什么不同（如果有的话）？为什么？
 
     ```{r}
-#| fig-show: hide
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point()
-ggplot(mpg, aes(x = displ, y = hwy)) +
-    geom_point(position = "identity")
+    #| fig-show: hide
+    ggplot(mpg, aes(x = displ, y = hwy)) +
+      geom_point()
+    ggplot(mpg, aes(x = displ, y = hwy)) +
+      geom_point(position = "identity")
     ```
 
-3.  What parameters to `geom_jitter()` control the amount of jittering?
+3.  `geom_jitter()` 的哪些参数控制抖动的量？
 
-4.  Compare and contrast `geom_jitter()` with `geom_count()`.
+4.  比较和对比 `geom_jitter()` 和 `geom_count()`。
 
-5.  What's the default position adjustment for `geom_boxplot()`?
-    Create a visualization of the `mpg` dataset that demonstrates it.
+5.  `geom_boxplot()` 的默认位置调整是什么？创建一个 `mpg` 数据集的可视化来展示它。
 
-## Coordinate systems
+## 坐标系
 
-Coordinate systems are probably the most complicated part of ggplot2.
-The default coordinate system is the Cartesian coordinate system where the x and y positions act independently to determine the location of each point.
-There are two other coordinate systems that are occasionally helpful.
+坐标系可能是 ggplot2 中最复杂的部分。默认的坐标系是笛卡尔坐标系 (Cartesian coordinate system)，其中 x 和 y 的位置独立地决定每个点的位置。还有另外两种偶尔有用的坐标系。
 
--   `coord_quickmap()` sets the aspect ratio correctly for geographic maps.
-    This is very important if you're plotting spatial data with ggplot2.
-    We don't have the space to discuss maps in this book, but you can learn more in the [Maps chapter](https://ggplot2-book.org/maps.html) of *ggplot2: Elegant graphics for data analysis*.
+  - `coord_quickmap()` 为地理地图正确设置长宽比。如果你用 ggplot2 绘制空间数据，这一点非常重要。我们在这本书里没有空间讨论地图，但你可以在 *ggplot2: Elegant graphics for data analysis* 的 [Maps 章节](https://ggplot2-book.org/maps.html) 中学到更多。
 
     ```{r}
-#| layout-ncol: 2
-#| fig-width: 3
-#| message: false
-#| fig-alt: |
-#|   Two maps of the boundaries of New Zealand. In the first plot the aspect
-#|   ratio is incorrect, in the second plot it is correct.
-nz <- map_data("nz")
+    #| layout-ncol: 2
+    #| fig-width: 3
+    #| message: false
+    #| fig-alt: |
+    #|   两张新西兰边界的地图。在第一张图中，长宽比不正确，在第二张图中是正确的。
+    nz <- map_data("nz")
 
-ggplot(nz, aes(x = long, y = lat, group = group)) +
-    geom_polygon(fill = "white", color = "black")
+    ggplot(nz, aes(x = long, y = lat, group = group)) +
+      geom_polygon(fill = "white", color = "black")
 
-ggplot(nz, aes(x = long, y = lat, group = group)) +
-    geom_polygon(fill = "white", color = "black") +
-    coord_quickmap()
+    ggplot(nz, aes(x = long, y = lat, group = group)) +
+      geom_polygon(fill = "white", color = "black") +
+      coord_quickmap()
     ```
 
--   `coord_polar()` uses polar coordinates.
-    Polar coordinates reveal an interesting connection between a bar chart and a Coxcomb chart.
+  - `coord_polar()` 使用极坐标 (polar coordinates)。极坐标揭示了条形图和鸡冠花图 (Coxcomb chart) 之间一个有趣的联系。
 
     ```{r}
-#| layout-ncol: 2
-#| fig-width: 3
-#| fig-asp: 1
-#| fig-alt: |
-#|   There are two plots. On the left is a bar chart of clarity of diamonds,
-#|   on the right is a Coxcomb chart of the same data.
-bar <- ggplot(data = diamonds) +
-    geom_bar(
-        mapping = aes(x = clarity, fill = clarity),
+    #| layout-ncol: 2
+    #| fig-width: 3
+    #| fig-asp: 1
+    #| fig-alt: |
+    #|   这里有两张图。左边是钻石净度的条形图，
+    #|   右边是相同数据的鸡冠花图。
+    bar <- ggplot(data = diamonds) + 
+      geom_bar(
+        mapping = aes(x = clarity, fill = clarity), 
         show.legend = FALSE,
         width = 1
-    ) +
-    theme(aspect.ratio = 1)
+      ) + 
+      theme(aspect.ratio = 1)
 
-bar + coord_flip()
-bar + coord_polar()
+    bar + coord_flip()
+    bar + coord_polar()
     ```
 
-### Exercises
+### 练习
 
-1.  Turn a stacked bar chart into a pie chart using `coord_polar()`.
+1.  使用 `coord_polar()` 将一个堆叠条形图变成一个饼图。
 
-2.  What's the difference between `coord_quickmap()` and `coord_map()`?
+2.  `coord_quickmap()` 和 `coord_map()` 有什么区别？
 
-3.  What does the following plot tell you about the relationship between city and highway mpg?
-    Why is `coord_fixed()` important?
-    What does `geom_abline()` do?
+3.  下面的图告诉你城市和高速公路 mpg 之间的关系是什么？为什么 `coord_fixed()` 很重要？`geom_abline()` 做什么？
 
     ```{r}
-#| fig-show: hide
-ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
-    geom_point() +
-    geom_abline() +
-    coord_fixed()
+    #| fig-show: hide
+    ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+      geom_point() + 
+      geom_abline() +
+      coord_fixed()
     ```
 
-## The layered grammar of graphics
+## 图形的分层语法
 
-We can expand on the graphing template you learned in @sec-ggplot2-calls by adding position adjustments, stats, coordinate systems, and faceting:
+我们可以扩展你在 @sec-ggplot2-calls 中学到的绘图模板，加入位置调整、统计变换、坐标系和分面：
 
-```         
+```
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(
      mapping = aes(<MAPPINGS>),
@@ -969,46 +807,36 @@ ggplot(data = <DATA>) +
   <FACET_FUNCTION>
 ```
 
-Our new template takes seven parameters, the bracketed words that appear in the template.
-In practice, you rarely need to supply all seven parameters to make a graph because ggplot2 will provide useful defaults for everything except the data, the mappings, and the geom function.
+我们的新模板有七个参数，即模板中出现的带括号的词。实际上，你很少需要提供所有七个参数来制作一个图，因为 ggplot2 会为除了数据、映射和几何对象函数之外的所有东西提供有用的默认值。
 
-The seven parameters in the template compose the grammar of graphics, a formal system for building plots.
-The grammar of graphics is based on the insight that you can uniquely describe *any* plot as a combination of a dataset, a geom, a set of mappings, a stat, a position adjustment, a coordinate system, a faceting scheme, and a theme.
+模板中的七个参数构成了图形的语法 (grammar of graphics)，一个用于构建图的正式系统。图形的语法基于这样一个洞见：你可以将*任何*图唯一地描述为一个数据集、一个几何对象、一组映射、一个统计变换、一个位置调整、一个坐标系、一个分面方案和一个主题的组合。
 
-To see how this works, consider how you could build a basic plot from scratch: you could start with a dataset and then transform it into the information that you want to display (with a stat).
-Next, you could choose a geometric object to represent each observation in the transformed data.
-You could then use the aesthetic properties of the geoms to represent variables in the data.
-You would map the values of each variable to the levels of an aesthetic.
-These steps are illustrated in @fig-visualization-grammar.
-You'd then select a coordinate system to place the geoms into, using the location of the objects (which is itself an aesthetic property) to display the values of the x and y variables.
+要了解这是如何工作的，可以考虑如何从头开始构建一个基本的图：你可以从一个数据集开始，然后将其转换为你想要显示的信息（通过一个 stat）。接下来，你可以选择一个几何对象来代表变换后数据中的每个观测值。然后，你可以使用几何对象的图形属性来代表数据中的变量。你会将每个变量的值映射到一个图形属性的水平上。这些步骤在 @fig-visualization-grammar 中有所说明。然后，你会选择一个坐标系来放置这些几何对象，使用对象的位置（其本身也是一个图形属性）来显示 x 和 y 变量的值。
 
 ```{r}
 #| label: fig-visualization-grammar
 #| echo: false
 #| fig-alt: |
-#|   A figure demonstrating the steps for going from raw data to table of
-#|   frequencies where each row represents one level of cut and a count column
-#|   shows how many diamonds are in that cut level. Then, these values are
-#|   mapped to heights of bars.
+#|   一个展示从原始数据到频率表的步骤的图，
+#|   表中每一行代表一个 cut 级别，一个 count 列
+#|   显示该 cut 级别有多少颗钻石。然后，这些值
+#|   被映射到条形的高度。
 #| fig-cap: |
-#|   Steps for going from raw data to a table of frequencies to a bar plot where
-#|   the heights of the bar represent the frequencies.
+#|   从原始数据到频率表，再到条形图的步骤，
+#|   其中条形的高度代表频率。
 knitr::include_graphics("images/visualization-grammar.png")
 ```
 
-At this point, you would have a complete graph, but you could further adjust the positions of the geoms within the coordinate system (a position adjustment) or split the graph into subplots (faceting).
-You could also extend the plot by adding one or more additional layers, where each additional layer uses a dataset, a geom, a set of mappings, a stat, and a position adjustment.
+此时，你已经有了一个完整的图，但你可以进一步调整几何对象在坐标系内的位置（位置调整）或将图分割成子图（分面）。你还可以通过添加一个或多个额外的图层来扩展该图，其中每个额外的图层使用一个数据集、一个几何对象、一组映射、一个统计变换和一个位置调整。
 
-You could use this method to build *any* plot that you imagine.
-In other words, you can use the code template that you've learned in this chapter to build hundreds of thousands of unique plots.
+你可以用这种方法来构建你想象中的*任何*图。换句话说，你可以用你在本章学到的代码模板来构建成千上万个独特的图。
 
-If you'd like to learn more about the theoretical underpinnings of ggplot2, you might enjoy reading "[The Layered Grammar of Graphics](https://vita.had.co.nz/papers/layered-grammar.pdf)", the scientific paper that describes the theory of ggplot2 in detail.
+如果你想更多地了解 ggplot2 的理论基础，你可能会喜欢阅读 "[The Layered Grammar of Graphics](https://vita.had.co.nz/papers/layered-grammar.pdf)"，这篇科学论文详细描述了 ggplot2 的理论。
 
-## Summary
+## 总结
 
-In this chapter you learned about the layered grammar of graphics starting with aesthetics and geometries to build a simple plot, facets for splitting the plot into subsets, statistics for understanding how geoms are calculated, position adjustments for controlling the fine details of position when geoms might otherwise overlap, and coordinate systems which allow you to fundamentally change what `x` and `y` mean.
-One layer we have not yet touched on is theme, which we will introduce in @sec-themes.
+在本章中，你学习了图形的分层语法，从图形属性和几何对象开始构建简单的图，用分面将图分割成子集，用统计变换来理解几何对象是如何计算的，用位置调整来控制几何对象可能重叠时的位置细节，以及用坐标系来从根本上改变 `x` 和 `y` 的含义。我们尚未涉及的一个图层是主题 (theme)，我们将在 @sec-themes 中介绍它。
 
-Two very useful resources for getting an overview of the complete ggplot2 functionality are the ggplot2 cheatsheet (which you can find at <https://posit.co/resources/cheatsheets>) and the ggplot2 package website ([https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)).
+要全面了解 ggplot2 的功能，有两个非常有用的资源：ggplot2 速查表（你可以在 [https://posit.co/resources/cheatsheets](https://posit.co/resources/cheatsheets) 找到）和 ggplot2 包网站 ([https://ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/))。
 
-An important lesson you should take from this chapter is that when you feel the need for a geom that is not provided by ggplot2, it's always a good idea to look into whether someone else has already solved your problem by creating a ggplot2 extension package that offers that geom.
+你应该从本章中学到的一个重要教训是，当你觉得需要一个 ggplot2 未提供的几何对象时，先看看是否已经有人通过创建一个提供该几何对象的 ggplot2 扩展包解决了你的问题，这总是一个好主意。

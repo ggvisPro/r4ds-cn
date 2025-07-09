@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualize</span></a>
+ <span class="menu-text">可视化</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -228,19 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">图层</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exploratory data analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">探索性数据分析</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">沟通</span></span></a>
   </div>
 </li>
       </ul>
@@ -475,60 +475,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>在本章中，我们将重点关注 dplyr 包，它是 tidyverse 的另一个核心成员。我们将使用 nycflights13 包中的数据来说明关键思想，并使用 ggplot2 来帮助我们理解数据。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ───────────────────── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.3.0</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.0.4     </span></span>
+<span><span class="co">#&gt; ── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>请仔细注意加载 tidyverse 时打印出的冲突信息。它告诉你 dplyr 覆盖了 R 基础包中的一些函数。如果你在加载 dplyr 后想使用这些函数的基础版本，你需要使用它们的全名：<code><a href="https://rdrr.io/r/stats/filter.html">stats::filter()</a></code> 和 <code><a href="https://rdrr.io/r/stats/lag.html">stats::lag()</a></code>。到目前为止，我们大多忽略了函数来自哪个包，因为这通常不重要。然而，知道包可以帮助你找到帮助和相关函数，所以当我们需​​要精确说明一个函数来自哪个包时，我们将使用与 R 相同的语法：<code>packagename::functionname()</code>。</p>
 </section><section id="nycflights13" class="level3" data-number="3.1.2"><h3 data-number="3.1.2" class="anchored" data-anchor-id="nycflights13">
 <span class="header-section-number">3.1.2</span> nycflights13</h3>
 <p>为了探索基本的 dplyr 动词，我们将使用 <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code>。这个数据集包含了 2013 年从纽约市起飞的所有 336,776 个航班。数据来自美国<a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">交通统计局</a>，并在 <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">?flights</a></code> 中有文档说明。</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>flights</code> 是一个 tibble，这是 tidyverse 使用的一种特殊类型的数据框，以避免一些常见的陷阱。tibble 和数据框之间最重要的区别是 tibble 的打印方式；它们专为大型数据集设计，因此只显示前几行和能在一个屏幕上容纳的列。有几种方法可以查看所有内容。如果你正在使用 RStudio，最方便的可能是 <code>View(flights)</code>，它会打开一个可交互、可滚动和可筛选的视图。否则你可以使用 <code>print(flights, width = Inf)</code> 来显示所有列，或者使用 <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 336,776
-Columns: 19
-$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
-$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …
-$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …
-$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…
-$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…
-$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…
-$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…
-$ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "…
-$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…
-$ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394…
-$ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",…
-$ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",…
-$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…
-$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …
-$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…
-$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
-$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…</code></pre>
-</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">flights</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 336,776</span></span>
+<span><span class="co">#&gt; Columns: 19</span></span>
+<span><span class="co">#&gt; $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013…</span></span>
+<span><span class="co">#&gt; $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</span></span>
+<span><span class="co">#&gt; $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</span></span>
+<span><span class="co">#&gt; $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 55…</span></span>
+<span><span class="co">#&gt; $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 60…</span></span>
+<span><span class="co">#&gt; $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2,…</span></span>
+<span><span class="co">#&gt; $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 8…</span></span>
+<span><span class="co">#&gt; $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 8…</span></span>
+<span><span class="co">#&gt; $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7,…</span></span>
+<span><span class="co">#&gt; $ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6"…</span></span>
+<span><span class="co">#&gt; $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301…</span></span>
+<span><span class="co">#&gt; $ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N…</span></span>
+<span><span class="co">#&gt; $ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LG…</span></span>
+<span><span class="co">#&gt; $ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IA…</span></span>
+<span><span class="co">#&gt; $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149…</span></span>
+<span><span class="co">#&gt; $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 73…</span></span>
+<span><span class="co">#&gt; $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6…</span></span>
+<span><span class="co">#&gt; $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59…</span></span>
+<span><span class="co">#&gt; $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-0…</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在这两种视图中，变量名后面都跟着缩写，告诉你每个变量的类型：<code>&lt;int&gt;</code> 是整数 (integer) 的缩写，<code>&lt;dbl&gt;</code> 是双精度浮点数 (double)（也就是实数）的缩写，<code>&lt;chr&gt;</code> 是字符 (character)（也就是字符串）的缩写，<code>&lt;dttm&gt;</code> 是日期时间 (date-time) 的缩写。这些都很重要，因为你可以对一列执行的操作在很大程度上取决于它的“类型”。</p>
 </section><section id="dplyr-基础" class="level3" data-number="3.1.3"><h3 data-number="3.1.3" class="anchored" data-anchor-id="dplyr-基础">
@@ -541,7 +541,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </ol>
 <p>因为每个动词都只做好一件事，所以解决复杂问题通常需要组合多个动词，我们将使用管道 <code>|&gt;</code> 来实现这一点。我们将在 <a href="#sec-the-pipe" class="quarto-xref"><span>Section 3.4</span></a> 中更多地讨论管道，但简而言之，管道将其左侧的内容传递给右侧的函数，因此 <code>x |&gt; f(y)</code> 等同于 <code>f(x, y)</code>，而 <code>x |&gt; f(y) |&gt; g(z)</code> 等同于 <code>g(f(x, y), z)</code>。管道最简单的发音方式是“然后 (then)”。这使得即使你还没有学习细节，也能对以下代码有一个大致的了解：</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -557,122 +557,89 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 允许你根据列的值保留行<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。第一个参数是数据框。第二个及后续参数是保留行必须满足的条件。例如，我们可以找到所有晚点超过 120 分钟（两小时）起飞的航班：</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&gt;</span> <span class="fl">120</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9,723 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      848           1835       853     1001           1950
- 2  2013     1     1      957            733       144     1056            853
- 3  2013     1     1     1114            900       134     1447           1222
- 4  2013     1     1     1540           1338       122     2020           1825
- 5  2013     1     1     1815           1325       290     2120           1542
- 6  2013     1     1     1842           1422       260     1958           1535
- 7  2013     1     1     1856           1645       131     2212           2005
- 8  2013     1     1     1934           1725       129     2126           1855
- 9  2013     1     1     1938           1703       155     2109           1823
-10  2013     1     1     1942           1705       157     2124           1830
-# ℹ 9,713 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&gt;</span> <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 9,723 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      848           1835       853     1001           1950</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      957            733       144     1056            853</span></span>
+<span><span class="co">#&gt; 3  2013     1     1     1114            900       134     1447           1222</span></span>
+<span><span class="co">#&gt; 4  2013     1     1     1540           1338       122     2020           1825</span></span>
+<span><span class="co">#&gt; 5  2013     1     1     1815           1325       290     2120           1542</span></span>
+<span><span class="co">#&gt; 6  2013     1     1     1842           1422       260     1958           1535</span></span>
+<span><span class="co">#&gt; # ℹ 9,717 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>除了 <code>&gt;</code>（大于），你还可以使用 <code>&gt;=</code>（大于或等于）、<code>&lt;</code>（小于）、<code>&lt;=</code>（小于或等于）、<code>==</code>（等于）和 <code>!=</code>（不等于）。你还可以用 <code>&amp;</code> 或 <code>,</code> 组合条件来表示“与”（检查两个条件），或用 <code>|</code> 来表示“或”（检查任一条件）：</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 1 月 1 日起飞的航班</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 1 月 1 日起飞的航班</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 842 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 832 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 1 月或 2 月起飞的航班</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 842 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 836 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span>
+<span></span>
+<span><span class="co"># 1 月或 2 月起飞的航班</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51,955 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 51,945 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 51,955 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 51,949 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>当你组合 <code>|</code> 和 <code>==</code> 时，有一个很有用的快捷方式：<code>%in%</code>。它会保留变量等于右侧值之一的行：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 一种更短的方式来选择 1 月或 2 月起飞的航班</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 一种更短的方式来选择 1 月或 2 月起飞的航班</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51,955 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 51,945 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 51,955 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 51,949 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>我们将在 <a href="logicals.html" class="quarto-xref"><span>Chapter 12</span></a> 中更详细地回到这些比较和逻辑运算符。</p>
 <p>当你运行 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 时，dplyr 会执行筛选操作，创建一个新的数据框，然后打印它。它不会修改现有的 <code>flights</code> 数据集，因为 dplyr 函数从不修改它们的输入。要保存结果，你需要使用赋值运算符 <code>&lt;-</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jan1</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jan1</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="常见错误" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="常见错误">
 <span class="header-section-number">3.2.2</span> 常见错误</h3>
 <p>当你刚开始使用 R 时，最容易犯的错误是在测试相等性时使用 <code>=</code> 而不是 <code>==</code>。<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 会在这种情况下提醒你：</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>month <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-! We detected a named input.
-ℹ This usually means that you've used `=` instead of `==`.
-ℹ Did you mean `month == 1`?</code></pre>
-</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>month <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `filter()`:</span></span>
+<span><span class="co">#&gt; ! We detected a named input.</span></span>
+<span><span class="co">#&gt; ℹ This usually means that you've used `=` instead of `==`.</span></span>
+<span><span class="co">#&gt; ℹ Did you mean `month == 1`?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>另一个错误是你像在英语中那样写“或”语句：</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这在某种意义上是“有效”的，因为它不会抛出错误，但它没有做你想要的事情，因为 <code>|</code> 首先检查条件 <code>month == 1</code>，然后检查条件 <code>2</code>，这不是一个合理的检查条件。我们将在 <a href="logicals.html#sec-order-operations-boolean" class="quarto-xref"><span>Section 12.3.2</span></a> 中学习更多关于这里发生了什么以及为什么会这样。</p>
@@ -681,51 +648,35 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 根据列的值改变行的顺序。它接受一个数据框和一组列名（或更复杂的表达式）作为排序依据。如果你提供多个列名，每个额外的列将用于打破前一列值中的平局。例如，以下代码按出发时间排序，该时间分布在四列中。我们首先得到最早的年份，然后在一年内，最早的月份，依此类推。</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">dep_time</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你可以在 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 内部对一列使用 <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code>，以按该列的降序（从大到小）重新排序数据框。例如，这段代码按延误时间从多到少对航班进行排序：</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     9      641            900      1301     1242           1530
- 2  2013     6    15     1432           1935      1137     1607           2120
- 3  2013     1    10     1121           1635      1126     1239           1810
- 4  2013     9    20     1139           1845      1014     1457           2210
- 5  2013     7    22      845           1600      1005     1044           1815
- 6  2013     4    10     1100           1900       960     1342           2211
- 7  2013     3    17     2321            810       911      135           1020
- 8  2013     6    27      959           1900       899     1236           2226
- 9  2013     7    22     2257            759       898      121           1026
-10  2013    12     5      756           1700       896     1058           2020
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     9      641            900      1301     1242           1530</span></span>
+<span><span class="co">#&gt; 2  2013     6    15     1432           1935      1137     1607           2120</span></span>
+<span><span class="co">#&gt; 3  2013     1    10     1121           1635      1126     1239           1810</span></span>
+<span><span class="co">#&gt; 4  2013     9    20     1139           1845      1014     1457           2210</span></span>
+<span><span class="co">#&gt; 5  2013     7    22      845           1600      1005     1044           1815</span></span>
+<span><span class="co">#&gt; 6  2013     4    10     1100           1900       960     1342           2211</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>注意行数没有改变——我们只是在排列数据，而不是筛选数据。</p>
 </section><section id="distinct" class="level3" data-number="3.2.4"><h3 data-number="3.2.4" class="anchored" data-anchor-id="distinct">
@@ -733,93 +684,66 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> 找到数据集中的所有唯一行，所以从技术上讲，它主要操作行。然而，大多数时候，你会想要一些变量的独特组合，所以你也可以选择性地提供列名：</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 如果有的话，移除重复的行</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 如果有的话，移除重复的行</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 找到所有唯一的出发地和目的地对</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span>
+<span></span>
+<span><span class="co"># 找到所有唯一的出发地和目的地对</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 2
-   origin dest 
-   &lt;chr&gt;  &lt;chr&gt;
- 1 EWR    IAH  
- 2 LGA    IAH  
- 3 JFK    MIA  
- 4 JFK    BQN  
- 5 LGA    ATL  
- 6 EWR    ORD  
- 7 EWR    FLL  
- 8 LGA    IAD  
- 9 JFK    MCO  
-10 LGA    ORD  
-# ℹ 214 more rows</code></pre>
-</div>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 224 × 2</span></span>
+<span><span class="co">#&gt;   origin dest </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 EWR    IAH  </span></span>
+<span><span class="co">#&gt; 2 LGA    IAH  </span></span>
+<span><span class="co">#&gt; 3 JFK    MIA  </span></span>
+<span><span class="co">#&gt; 4 JFK    BQN  </span></span>
+<span><span class="co">#&gt; 5 LGA    ATL  </span></span>
+<span><span class="co">#&gt; 6 EWR    ORD  </span></span>
+<span><span class="co">#&gt; # ℹ 218 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>另外，如果你想在筛选唯一行时保留其他列，你可以使用 <code>.keep_all = TRUE</code> 选项。</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 214 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 224 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 218 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>所有这些不同的航班都在 1 月 1 日并非巧合：<code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> 会找到数据集中唯一行的第一次出现，并丢弃其余的。</p>
 <p>如果你想找到出现的次数，最好将 <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> 换成 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>。通过 <code>sort = TRUE</code> 参数，你可以按出现次数的降序排列它们。你将在 <a href="numbers.html#sec-counts" class="quarto-xref"><span>Section 13.3</span></a> 中学到更多关于 <code>count</code> 的知识。</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 3
-   origin dest      n
-   &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;
- 1 JFK    LAX   11262
- 2 LGA    ATL   10263
- 3 LGA    ORD    8857
- 4 JFK    SFO    8204
- 5 LGA    CLT    6168
- 6 EWR    ORD    6100
- 7 JFK    BOS    5898
- 8 LGA    MIA    5781
- 9 JFK    MCO    5464
-10 EWR    BOS    5327
-# ℹ 214 more rows</code></pre>
-</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 224 × 3</span></span>
+<span><span class="co">#&gt;   origin dest      n</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 JFK    LAX   11262</span></span>
+<span><span class="co">#&gt; 2 LGA    ATL   10263</span></span>
+<span><span class="co">#&gt; 3 LGA    ORD    8857</span></span>
+<span><span class="co">#&gt; 4 JFK    SFO    8204</span></span>
+<span><span class="co">#&gt; 5 LGA    CLT    6168</span></span>
+<span><span class="co">#&gt; 6 EWR    ORD    6100</span></span>
+<span><span class="co">#&gt; # ℹ 218 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="练习" class="level3" data-number="3.2.5"><h3 data-number="3.2.5" class="anchored" data-anchor-id="练习">
 <span class="header-section-number">3.2.5</span> 练习</h3>
@@ -848,62 +772,46 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 的工作是添加从现有列计算出的新列。在数据转换的章节中，你将学习一大堆可以用来操作不同类型变量的函数。现在，我们只使用基本代数，这使我们能够计算 <code>gain</code>（延误航班在空中弥补了多少时间）和 <code>speed</code>（以英里/小时为单位）：</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>        gain <span class="op">=</span> <span class="va">dep_delay</span> <span class="op">-</span> <span class="va">arr_delay</span>,</span>
 <span>        speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="va">air_time</span> <span class="op">*</span> <span class="fl">60</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 21
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 13 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;, gain &lt;dbl&gt;, speed &lt;dbl&gt;</code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 21</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 13 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>默认情况下，<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 会在你数据集的右侧添加新列，这使得很难看到这里发生了什么。我们可以使用 <code>.before</code> 参数将变量添加到左侧<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>        gain <span class="op">=</span> <span class="va">dep_delay</span> <span class="op">-</span> <span class="va">arr_delay</span>,</span>
 <span>        speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="va">air_time</span> <span class="op">*</span> <span class="fl">60</span>,</span>
 <span>        .before <span class="op">=</span> <span class="fl">1</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 21
-    gain speed  year month   day dep_time sched_dep_time dep_delay arr_time
-   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
- 1    -9  370.  2013     1     1      517            515         2      830
- 2   -16  374.  2013     1     1      533            529         4      850
- 3   -31  408.  2013     1     1      542            540         2      923
- 4    17  517.  2013     1     1      544            545        -1     1004
- 5    19  394.  2013     1     1      554            600        -6      812
- 6   -16  288.  2013     1     1      554            558        -4      740
- 7   -24  404.  2013     1     1      555            600        -5      913
- 8    11  259.  2013     1     1      557            600        -3      709
- 9     5  405.  2013     1     1      557            600        -3      838
-10   -10  319.  2013     1     1      558            600        -2      753
-# ℹ 336,766 more rows
-# ℹ 12 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;,
-#   flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
-#   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 21</span></span>
+<span><span class="co">#&gt;    gain speed  year month   day dep_time sched_dep_time dep_delay arr_time</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1    -9  370.  2013     1     1      517            515         2      830</span></span>
+<span><span class="co">#&gt; 2   -16  374.  2013     1     1      533            529         4      850</span></span>
+<span><span class="co">#&gt; 3   -31  408.  2013     1     1      542            540         2      923</span></span>
+<span><span class="co">#&gt; 4    17  517.  2013     1     1      544            545        -1     1004</span></span>
+<span><span class="co">#&gt; 5    19  394.  2013     1     1      554            600        -6      812</span></span>
+<span><span class="co">#&gt; 6   -16  288.  2013     1     1      554            558        -4      740</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 12 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.</code> 表示 <code>.before</code> 是函数的参数，而不是我们正在创建的第三个新变量的名称。你也可以使用 <code>.after</code> 在某个变量之后添加，并且在 <code>.before</code> 和 <code>.after</code> 中你都可以使用变量名而不是位置。例如，我们可以在 <code>day</code> 之后添加新变量：</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>        gain <span class="op">=</span> <span class="va">dep_delay</span> <span class="op">-</span> <span class="va">arr_delay</span>,</span>
 <span>        speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="va">air_time</span> <span class="op">*</span> <span class="fl">60</span>,</span>
@@ -912,7 +820,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 <p>另外，你可以用 <code>.keep</code> 参数来控制保留哪些变量。一个特别有用的参数是 <code>"used"</code>，它指定我们只保留在 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 步骤中涉及或创建的列。例如，以下输出将只包含 <code>dep_delay</code>、<code>arr_delay</code>、<code>air_time</code>、<code>gain</code>、<code>hours</code> 和 <code>gain_per_hour</code> 这些变量。</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>        gain <span class="op">=</span> <span class="va">dep_delay</span> <span class="op">-</span> <span class="va">arr_delay</span>,</span>
 <span>        hours <span class="op">=</span> <span class="va">air_time</span> <span class="op">/</span> <span class="fl">60</span>,</span>
@@ -929,21 +837,21 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>
 <p>按名称选择列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
 <p>选择从 <code>year</code> 到 <code>day</code> 之间的所有列（包括 <code>year</code> 和 <code>day</code>）：</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">day</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
 <p>选择除了从 <code>year</code> 到 <code>day</code> 之外的所有列（包括 <code>year</code> 和 <code>day</code>）：</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="va">year</span><span class="op">:</span><span class="va">day</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>历史上，这个操作是用 <code>-</code> 而不是 <code>!</code> 来完成的，所以你很可能会在实际应用中看到它。这两个运算符作用相同，但行为上有一些细微的差异。我们推荐使用 <code>!</code>，因为它读作“非 (not)”，并且能很好地与 <code>&amp;</code> 和 <code>|</code> 结合。</p>
@@ -951,7 +859,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>
 <p>选择所有字符类型的列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
@@ -970,51 +878,37 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <p>更多详情请参见 <code><a href="https://dplyr.tidyverse.org/reference/select.html">?select</a></code>。一旦你了解了正则表达式（<a href="regexps.html" class="quarto-xref"><span>Chapter 15</span></a> 的主题），你也将能够使用 <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">matches()</a></code> 来选择匹配模式的变量。</p>
 <p>你可以在 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 时使用 <code>=</code> 来重命名变量。新名称出现在 <code>=</code> 的左侧，旧变量出现在右侧：</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>tail_num <span class="op">=</span> <span class="va">tailnum</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 1
-   tail_num
-   &lt;chr&gt;   
- 1 N14228  
- 2 N24211  
- 3 N619AA  
- 4 N804JB  
- 5 N668DN  
- 6 N39463  
- 7 N516JB  
- 8 N829AS  
- 9 N593JB  
-10 N3ALAA  
-# ℹ 336,766 more rows</code></pre>
-</div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>tail_num <span class="op">=</span> <span class="va">tailnum</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 1</span></span>
+<span><span class="co">#&gt;   tail_num</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 N14228  </span></span>
+<span><span class="co">#&gt; 2 N24211  </span></span>
+<span><span class="co">#&gt; 3 N619AA  </span></span>
+<span><span class="co">#&gt; 4 N804JB  </span></span>
+<span><span class="co">#&gt; 5 N668DN  </span></span>
+<span><span class="co">#&gt; 6 N39463  </span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="rename" class="level3" data-number="3.3.3"><h3 data-number="3.3.3" class="anchored" data-anchor-id="rename">
 <span class="header-section-number">3.3.3</span> <code>rename()</code>
 </h3>
 <p>如果你想保留所有现有的变量，只想重命名少数几个，你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> 而不是 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>tail_num <span class="op">=</span> <span class="va">tailnum</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tail_num &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>tail_num <span class="op">=</span> <span class="va">tailnum</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>如果你有一堆命名不一致的列，并且手动修复它们会很痛苦，可以看看 <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code>，它提供了一些有用的自动清理功能。</p>
 </section><section id="relocate" class="level3" data-number="3.3.4"><h3 data-number="3.3.4" class="anchored" data-anchor-id="relocate">
@@ -1022,31 +916,23 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </h3>
 <p>使用 <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> 来移动变量的位置。你可能想把相关的变量收集在一起，或者把重要的变量移到前面。默认情况下，<code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> 会把变量移到最前面：</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">time_hour</span>, <span class="va">air_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-   time_hour           air_time  year month   day dep_time sched_dep_time
-   &lt;dttm&gt;                 &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;
- 1 2013-01-01 05:00:00      227  2013     1     1      517            515
- 2 2013-01-01 05:00:00      227  2013     1     1      533            529
- 3 2013-01-01 05:00:00      160  2013     1     1      542            540
- 4 2013-01-01 05:00:00      183  2013     1     1      544            545
- 5 2013-01-01 06:00:00      116  2013     1     1      554            600
- 6 2013-01-01 05:00:00      150  2013     1     1      554            558
- 7 2013-01-01 06:00:00      158  2013     1     1      555            600
- 8 2013-01-01 06:00:00       53  2013     1     1      557            600
- 9 2013-01-01 06:00:00      140  2013     1     1      557            600
-10 2013-01-01 06:00:00      138  2013     1     1      558            600
-# ℹ 336,766 more rows
-# ℹ 12 more variables: dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, sched_arr_time &lt;int&gt;,
-#   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;,
-#   dest &lt;chr&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">time_hour</span>, <span class="va">air_time</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;   time_hour           air_time  year month   day dep_time sched_dep_time</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;                 &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 2013-01-01 05:00:00      227  2013     1     1      517            515</span></span>
+<span><span class="co">#&gt; 2 2013-01-01 05:00:00      227  2013     1     1      533            529</span></span>
+<span><span class="co">#&gt; 3 2013-01-01 05:00:00      160  2013     1     1      542            540</span></span>
+<span><span class="co">#&gt; 4 2013-01-01 05:00:00      183  2013     1     1      544            545</span></span>
+<span><span class="co">#&gt; 5 2013-01-01 06:00:00      116  2013     1     1      554            600</span></span>
+<span><span class="co">#&gt; 6 2013-01-01 05:00:00      150  2013     1     1      554            558</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 12 more variables: dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你也可以使用 <code>.before</code> 和 <code>.after</code> 参数指定将它们放在哪里，就像在 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 中一样：</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">dep_time</span>, .after <span class="op">=</span> <span class="va">time_hour</span><span class="op">)</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"arr"</span><span class="op">)</span>, .before <span class="op">=</span> <span class="va">dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1060,60 +946,52 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>
 <p><code><a href="https://tidyselect.r-lib.org/reference/all_of.html">any_of()</a></code> 函数是做什么的？为什么它与下面这个向量一起使用可能会有帮助？</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">variables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_delay"</span>, <span class="st">"arr_delay"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">variables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_delay"</span>, <span class="st">"arr_delay"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
 <p>运行以下代码的结果是否让你感到惊讶？<code>select</code> 辅助函数默认如何处理大小写？你如何更改该默认设置？</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"TIME"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"TIME"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li><p>将 <code>air_time</code> 重命名为 <code>air_time_min</code> 以表明度量单位，并将其移动到数据框的开头。</p></li>
 <li>
 <p>为什么以下代码不起作用，这个错误是什么意思？</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `arrange()`:
-ℹ In argument: `..1 = arr_delay`.
-Caused by error:
-! 找不到对象'arr_delay'</code></pre>
-</div>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `arrange()`:</span></span>
+<span><span class="co">#&gt; ℹ In argument: `..1 = arr_delay`.</span></span>
+<span><span class="co">#&gt; Caused by error:</span></span>
+<span><span class="co">#&gt; ! 找不到对象'arr_delay'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 </ol></section></section><section id="sec-the-pipe" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="sec-the-pipe">
 <span class="header-section-number">3.4</span> 管道</h2>
 <p>我们上面已经向你展示了管道的简单示例，但它真正的威力在于你开始组合多个动词时。例如，假设你想找到飞往休斯顿 IAH 机场的最快航班：你需要组合 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="va">air_time</span> <span class="op">*</span> <span class="fl">60</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">day</span>, <span class="va">dep_time</span>, <span class="va">carrier</span>, <span class="va">flight</span>, <span class="va">speed</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7,198 × 7
-    year month   day dep_time carrier flight speed
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;
- 1  2013     7     9      707 UA         226  522.
- 2  2013     8    27     1850 UA        1128  521.
- 3  2013     8    28      902 UA        1711  519.
- 4  2013     8    28     2122 UA        1022  519.
- 5  2013     6    11     1628 UA        1178  515.
- 6  2013     8    27     1017 UA         333  515.
- 7  2013     8    27     1205 UA        1421  515.
- 8  2013     8    27     1758 UA         302  515.
- 9  2013     9    27      521 UA         252  515.
-10  2013     8    28      625 UA         559  515.
-# ℹ 7,188 more rows</code></pre>
-</div>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 7,198 × 7</span></span>
+<span><span class="co">#&gt;    year month   day dep_time carrier flight speed</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     7     9      707 UA         226  522.</span></span>
+<span><span class="co">#&gt; 2  2013     8    27     1850 UA        1128  521.</span></span>
+<span><span class="co">#&gt; 3  2013     8    28      902 UA        1711  519.</span></span>
+<span><span class="co">#&gt; 4  2013     8    28     2122 UA        1022  519.</span></span>
+<span><span class="co">#&gt; 5  2013     6    11     1628 UA        1178  515.</span></span>
+<span><span class="co">#&gt; 6  2013     8    27     1017 UA         333  515.</span></span>
+<span><span class="co">#&gt; # ℹ 7,192 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>尽管这个管道有四个步骤，但它很容易浏览，因为动词都出现在每行的开头：从 <code>flights</code> 数据开始，然后筛选，然后派生，然后选择，然后排序。</p>
 <p>如果我们没有管道会怎么样？我们可以将每个函数调用嵌套在前一个调用中：</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
@@ -1129,7 +1007,7 @@ Caused by error:
 </div>
 <p>或者我们可以使用一堆中间对象：</p>
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">flights</span>, <span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span><span class="op">)</span></span>
 <span><span class="va">flights2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">flights1</span>, speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="va">air_time</span> <span class="op">*</span> <span class="fl">60</span><span class="op">)</span></span>
 <span><span class="va">flights3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flights2</span>, <span class="va">year</span><span class="op">:</span><span class="va">day</span>, <span class="va">dep_time</span>, <span class="va">carrier</span>, <span class="va">flight</span>, <span class="va">speed</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">flights3</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">speed</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1160,7 +1038,7 @@ magrittr
 <div class="callout-body-container callout-body">
 <p>如果你已经使用 tidyverse 一段时间了，你可能熟悉 <strong>magrittr</strong> 包提供的 <code>%&gt;%</code> 管道。magrittr 包包含在核心 tidyverse 中，所以你可以在加载 tidyverse 时随时使用 <code>%&gt;%</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1177,28 +1055,20 @@ magrittr
 </h3>
 <p>使用 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 将你的数据集划分为对你的分析有意义的组：</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-# Groups:   month [12]
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt; # Groups:   month [12]</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 不会改变数据，但如果你仔细看输出，你会注意到输出表明它“按月份分组” (<code>Groups: month [12]</code>)。这意味着后续操作现在将“按月”工作。<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 将这个分组特性（称为类）添加到数据框中，这改变了应用于该数据的后续动词的行为。</p>
 </section><section id="sec-summarize" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-summarize">
@@ -1206,79 +1076,58 @@ magrittr
 </h3>
 <p>最重要的分组操作是摘要 (summary)，如果用于计算单个摘要统计量，它会将数据框减少到每个组只有一行。在 dplyr 中，这个操作由 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 执行，如下例所示，该示例计算了按月份的平均出发延误：</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        avg_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 2
-   month avg_delay
-   &lt;int&gt;     &lt;dbl&gt;
- 1     1        NA
- 2     2        NA
- 3     3        NA
- 4     4        NA
- 5     5        NA
- 6     6        NA
- 7     7        NA
- 8     8        NA
- 9     9        NA
-10    10        NA
-11    11        NA
-12    12        NA</code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 2</span></span>
+<span><span class="co">#&gt;   month avg_delay</span></span>
+<span><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1        NA</span></span>
+<span><span class="co">#&gt; 2     2        NA</span></span>
+<span><span class="co">#&gt; 3     3        NA</span></span>
+<span><span class="co">#&gt; 4     4        NA</span></span>
+<span><span class="co">#&gt; 5     5        NA</span></span>
+<span><span class="co">#&gt; 6     6        NA</span></span>
+<span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>噢！出错了，我们所有的结果都是 <code>NA</code>（发音为“N-A”），这是 R 中表示缺失值的符号。这是因为一些观测到的航班在延误列中有缺失数据，所以当我们计算包含这些值的平均值时，我们得到了 <code>NA</code> 结果。我们将在 <a href="missing-values.html" class="quarto-xref"><span>Chapter 18</span></a> 中详细讨论缺失值，但现在，我们将通过将参数 <code>na.rm</code> 设置为 <code>TRUE</code> 来告诉 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 函数忽略所有缺失值：</p>
 <div class="cell">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        avg_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 2
-   month avg_delay
-   &lt;int&gt;     &lt;dbl&gt;
- 1     1     10.0 
- 2     2     10.8 
- 3     3     13.2 
- 4     4     13.9 
- 5     5     13.0 
- 6     6     20.8 
- 7     7     21.7 
- 8     8     12.6 
- 9     9      6.72
-10    10      6.24
-11    11      5.44
-12    12     16.6 </code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 2</span></span>
+<span><span class="co">#&gt;   month avg_delay</span></span>
+<span><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1      10.0</span></span>
+<span><span class="co">#&gt; 2     2      10.8</span></span>
+<span><span class="co">#&gt; 3     3      13.2</span></span>
+<span><span class="co">#&gt; 4     4      13.9</span></span>
+<span><span class="co">#&gt; 5     5      13.0</span></span>
+<span><span class="co">#&gt; 6     6      20.8</span></span>
+<span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你可以在一次 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 调用中创建任意数量的摘要。你将在接下来的章节中学到各种有用的摘要，但一个非常有用的摘要是 <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code>，它返回每个组中的行数：</p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        avg_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
-   month avg_delay     n
-   &lt;int&gt;     &lt;dbl&gt; &lt;int&gt;
- 1     1     10.0  27004
- 2     2     10.8  24951
- 3     3     13.2  28834
- 4     4     13.9  28330
- 5     5     13.0  28796
- 6     6     20.8  28243
- 7     7     21.7  29425
- 8     8     12.6  29327
- 9     9      6.72 27574
-10    10      6.24 28889
-11    11      5.44 27268
-12    12     16.6  28135</code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 3</span></span>
+<span><span class="co">#&gt;   month avg_delay     n</span></span>
+<span><span class="co">#&gt;   &lt;int&gt;     &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1      10.0 27004</span></span>
+<span><span class="co">#&gt; 2     2      10.8 24951</span></span>
+<span><span class="co">#&gt; 3     3      13.2 28834</span></span>
+<span><span class="co">#&gt; 4     4      13.9 28330</span></span>
+<span><span class="co">#&gt; 5     5      13.0 28796</span></span>
+<span><span class="co">#&gt; 6     6      20.8 28243</span></span>
+<span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>在数据科学中，平均值和计数能让你走得很远！</p>
 </section><section id="slice_-系列函数" class="level3" data-number="3.5.3"><h3 data-number="3.5.3" class="anchored" data-anchor-id="slice_-系列函数">
@@ -1298,30 +1147,22 @@ magrittr
 </ul>
 <p>你可以改变 <code>n</code> 来选择多于一行，或者用 <code>prop = 0.1</code> 代替 <code>n =</code> 来选择（例如）每个组中 10% 的行。例如，以下代码找到了在每个目的地到达时延误最严重的航班：</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">arr_delay</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 108 × 19
-# Groups:   dest [105]
-   dest   year month   day dep_time sched_dep_time dep_delay arr_time
-   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
- 1 ABQ    2013     7    22     2145           2007        98      132
- 2 ACK    2013     7    23     1139            800       219     1250
- 3 ALB    2013     1    25      123           2000       323      229
- 4 ANC    2013     8    17     1740           1625        75     2042
- 5 ATL    2013     7    22     2257            759       898      121
- 6 AUS    2013     7    10     2056           1505       351     2347
- 7 AVL    2013     8    13     1156            832       204     1417
- 8 BDL    2013     2    21     1728           1316       252     1839
- 9 BGR    2013    12     1     1504           1056       248     1628
-10 BHM    2013     4    10       25           1900       325      136
-# ℹ 98 more rows
-# ℹ 11 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;,
-#   flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 108 × 19</span></span>
+<span><span class="co">#&gt; # Groups:   dest [105]</span></span>
+<span><span class="co">#&gt;   dest   year month   day dep_time sched_dep_time dep_delay arr_time</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 ABQ    2013     7    22     2145           2007        98      132</span></span>
+<span><span class="co">#&gt; 2 ACK    2013     7    23     1139            800       219     1250</span></span>
+<span><span class="co">#&gt; 3 ALB    2013     1    25      123           2000       323      229</span></span>
+<span><span class="co">#&gt; 4 ANC    2013     8    17     1740           1625        75     2042</span></span>
+<span><span class="co">#&gt; 5 ATL    2013     7    22     2257            759       898      121</span></span>
+<span><span class="co">#&gt; 6 AUS    2013     7    10     2056           1505       351     2347</span></span>
+<span><span class="co">#&gt; # ℹ 102 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>注意这里有 105 个目的地，但我们得到了 108 行。怎么回事？<code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> 会保留值相同的行，所以 <code>n = 1</code> 意味着给我们所有具有最高值的行。如果你希望每个组只得到一行，你可以设置 <code>with_ties = FALSE</code>。</p>
 <p>这类似于用 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 计算最大延误，但你得到的是整个对应的行（如果值相同则有多行），而不是单个摘要统计量。</p>
@@ -1329,42 +1170,32 @@ magrittr
 <span class="header-section-number">3.5.4</span> 按多个变量分组</h3>
 <p>你可以使用多个变量来创建组。例如，我们可以为每个日期创建一个组。</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span></span>
-<span><span class="va">daily</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-# Groups:   year, month, day [365]
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<span><span class="va">daily</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt; # Groups:   year, month, day [365]</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>当你对按多个变量分组的 tibble 进行摘要时，每个摘要都会剥离最后一个分组。事后看来，这不是一个让这个函数工作的很好方式，但在不破坏现有代码的情况下很难改变。为了清楚地说明发生了什么，dplyr 显示了一条消息，告诉你如何改变这种行为：</p>
 <div class="cell">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_flights</span> <span class="op">&lt;-</span> <span class="va">daily</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'year', 'month'. You can override using the
-`.groups` argument.</code></pre>
-</div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_flights</span> <span class="op">&lt;-</span> <span class="va">daily</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `summarise()` has grouped output by 'year', 'month'. You can override using</span></span>
+<span><span class="co">#&gt; the `.groups` argument.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>如果你对这种行为感到满意，你可以明确请求它以抑制该消息：</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_flights</span> <span class="op">&lt;-</span> <span class="va">daily</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_flights</span> <span class="op">&lt;-</span> <span class="va">daily</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        .groups <span class="op">=</span> <span class="st">"drop_last"</span></span>
@@ -1375,42 +1206,32 @@ magrittr
 <span class="header-section-number">3.5.5</span> 取消分组</h3>
 <p>你可能还想在不使用 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 的情况下从数据框中移除分组。你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> 来做到这一点。</p>
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
- 1  2013     1     1      517            515         2      830            819
- 2  2013     1     1      533            529         4      850            830
- 3  2013     1     1      542            540         2      923            850
- 4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
-# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
+<span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  2013     1     1      517            515         2      830            819</span></span>
+<span><span class="co">#&gt; 2  2013     1     1      533            529         4      850            830</span></span>
+<span><span class="co">#&gt; 3  2013     1     1      542            540         2      923            850</span></span>
+<span><span class="co">#&gt; 4  2013     1     1      544            545        -1     1004           1022</span></span>
+<span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
+<span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>现在让我们看看当你对一个未分组的数据框进行摘要时会发生什么。</p>
 <div class="cell">
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        avg_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>        flights <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  avg_delay flights
-      &lt;dbl&gt;   &lt;int&gt;
-1      12.6  336776</code></pre>
-</div>
+<span>    <span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 2</span></span>
+<span><span class="co">#&gt;   avg_delay flights</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt;   &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1      12.6  336776</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你得到了一行，因为 dplyr 将未分组数据框中的所有行都视为属于一个组。</p>
 </section><section id="by" class="level3" data-number="3.5.6"><h3 data-number="3.5.6" class="anchored" data-anchor-id="by">
@@ -1418,7 +1239,7 @@ magrittr
 </h3>
 <p>dplyr 1.1.0 包含了一种新的、实验性的、用于按操作分组的语法，即 <code>.by</code> 参数。<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> 不会消失，但你现在也可以使用 <code>.by</code> 参数在单个操作内进行分组：</p>
 <div class="cell">
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1427,7 +1248,7 @@ magrittr
 </div>
 <p>或者，如果你想按多个变量分组：</p>
 <div class="cell">
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1447,7 +1268,7 @@ magrittr
 <li>
 <p>假设我们有以下这个小数据框：</p>
 <div class="cell">
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
 <span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>,</span>
 <span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"K"</span>, <span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">"L"</span>, <span class="st">"K"</span><span class="op">)</span></span>
@@ -1457,21 +1278,21 @@ magrittr
 <li>写下你认为输出会是什么样子，然后检查你是否正确，并描述 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 的作用。</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>
 b.  写下你认为输出会是什么样子，然后检查你是否正确，并描述 `arrange()` 的作用。另外，评论它与 (a) 部分中的 `group_by()` 有何不同。
 </code></pre>
 <div class="cell">
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>
 c.  写下你认为输出会是什么样子，然后检查你是否正确，并描述这个管道的作用。
 </code></pre>
 <div class="cell">
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1479,7 +1300,7 @@ c.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 d.  写下你认为输出会是什么样子，然后检查你是否正确，并描述这个管道的作用。然后，评论消息说了什么。
 </code></pre>
 <div class="cell">
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1487,7 +1308,7 @@ d.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 <li>写下你认为输出会是什么样子，然后检查你是否正确，并描述这个管道的作用。它的输出与 (d) 部分的输出有何不同？</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1495,7 +1316,7 @@ d.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 <li>写下你认为输出会是什么样子，然后检查你是否正确，并描述每个管道的作用。这两个管道的输出有何不同？</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1508,29 +1329,23 @@ d.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 <span class="header-section-number">3.6</span> 案例</h2>
 <p>每当你进行任何聚合操作时，包含一个计数（<code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code>）总是一个好主意。这样，你可以确保你不是基于非常少量的数据得出结论。我们将用 <strong>Lahman</strong> 包中的一些棒球数据来演示这一点。具体来说，我们将比较一个球员击中安打（<code>H</code>）的比例与他们尝试将球打入场内（<code>AB</code>）的次数：</p>
 <div class="cell">
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">&lt;-</span> <span class="fu">Lahman</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/Lahman/man/Batting.html">Batting</a></span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">&lt;-</span> <span class="fu">Lahman</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/Lahman/man/Batting.html">Batting</a></span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">playerID</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>        performance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">H</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">AB</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>        n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">AB</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
-<span><span class="va">batters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20,730 × 3
-   playerID  performance     n
-   &lt;chr&gt;           &lt;dbl&gt; &lt;int&gt;
- 1 aardsda01      0          4
- 2 aaronha01      0.305  12364
- 3 aaronto01      0.229    944
- 4 aasedo01       0          5
- 5 abadan01       0.0952    21
- 6 abadfe01       0.111      9
- 7 abadijo01      0.224     49
- 8 abbated01      0.254   3044
- 9 abbeybe01      0.169    225
-10 abbeych01      0.281   1756
-# ℹ 20,720 more rows</code></pre>
-</div>
+<span><span class="va">batters</span></span>
+<span><span class="co">#&gt; # A tibble: 20,730 × 3</span></span>
+<span><span class="co">#&gt;   playerID  performance     n</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 aardsda01      0          4</span></span>
+<span><span class="co">#&gt; 2 aaronha01      0.305  12364</span></span>
+<span><span class="co">#&gt; 3 aaronto01      0.229    944</span></span>
+<span><span class="co">#&gt; 4 aasedo01       0          5</span></span>
+<span><span class="co">#&gt; 5 abadan01       0.0952    21</span></span>
+<span><span class="co">#&gt; 6 abadfe01       0.111      9</span></span>
+<span><span class="co">#&gt; # ℹ 20,724 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>当我们绘制击球手的技术水平（用击球率 <code>performance</code> 衡量）与击球机会次数（用打数 <code>n</code> 衡量）的关系图时，你会看到两种模式：</p>
 <ol type="1">
@@ -1538,14 +1353,14 @@ d.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 <li><p>技术水平 (<code>performance</code>) 和击球机会 (<code>n</code>) 之间存在正相关关系，因为球队希望给他们最好的击球手最多的击球机会。</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="va">performance</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="data-transform_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" alt="击球表现次数与击球机会次数的散点图， 叠加了一条平滑线。当 n 约为 100 时，平均表现从 0.2 急剧增加到 n 约为 1000 时的 0.25。 平均表现继续以更平缓的斜率线性增加， 当 n 约为 12,000 时达到 0.3。" width="672"></p>
+<figure class="figure"><p><img src="data-transform_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" alt="击球表现次数与击球机会次数的散点图， 叠加了一条平滑线。当 n 约为 100 时，平均表现从 0.2 急剧增加到 n 约为 1000 时的 0.25。 平均表现继续以更平缓的斜率线性增加， 当 n 约为 12,000 时达到 0.3。" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1553,24 +1368,18 @@ d.  写下你认为输出会是什么样子，然后检查你是否正确，并�
 <p>注意 ggplot2 和 dplyr 组合使用的便捷模式。你只需要记住从用于数据处理的 <code>|&gt;</code> 切换到用于向图表添加图层的 <code>+</code>。</p>
 <p>这对排名也有重要影响。如果你天真地按 <code>desc(performance)</code> 排序，击球率最高的人显然是那些尝试将球打入场内次数很少且碰巧击中安打的人，他们不一定是最有技术的球员：</p>
 <div class="cell">
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">performance</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20,730 × 3
-   playerID  performance     n
-   &lt;chr&gt;           &lt;dbl&gt; &lt;int&gt;
- 1 abramge01           1     1
- 2 alberan01           1     1
- 3 banisje01           1     1
- 4 bartocl01           1     1
- 5 bassdo01            1     1
- 6 birasst01           1     2
- 7 bruneju01           1     1
- 8 burnscb01           1     1
- 9 cammaer01           1     1
-10 campsh01            1     1
-# ℹ 20,720 more rows</code></pre>
-</div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">batters</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">performance</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 20,730 × 3</span></span>
+<span><span class="co">#&gt;   playerID  performance     n</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 abramge01           1     1</span></span>
+<span><span class="co">#&gt; 2 alberan01           1     1</span></span>
+<span><span class="co">#&gt; 3 banisje01           1     1</span></span>
+<span><span class="co">#&gt; 4 bartocl01           1     1</span></span>
+<span><span class="co">#&gt; 5 bassdo01            1     1</span></span>
+<span><span class="co">#&gt; 6 birasst01           1     2</span></span>
+<span><span class="co">#&gt; # ℹ 20,724 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>你可以在 <a href="http://varianceexplained.org/r/empirical_bayes_baseball/">http://varianceexplained.org/r/empirical_bayes_baseball/</a> 和 <a href="https://www.evanmiller.org/how-not-to-sort-by-average-rating.html">https://www.evanmiller.org/how-not-to-sort-by-average-rating.html</a> 找到对这个问题以及如何克服它的很好解释。</p>
 </section><section id="小结" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="小结">
