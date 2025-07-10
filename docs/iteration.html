@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-442386bcaee29f7246100ac1b47b78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-cfa698a38273543b64ee69d493127e2a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -568,12 +568,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Error in `summarize()`:</span></span>
 <span><span class="co">#&gt; ℹ In argument: `across(everything(), median())`.</span></span>
 <span><span class="co">#&gt; Caused by error in `median.default()`:</span></span>
-<span><span class="co">#&gt; ! 缺少参数"x",也缺失默认值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; ! argument "x" is missing, with no default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>这个错误是因为你调用函数时没有提供输入，例如：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in median.default(): 缺少参数"x",也缺失默认值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Error in median.default(): argument "x" is missing, with no default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="调用多个函数" class="level3" data-number="26.2.3"><h3 data-number="26.2.3" class="anchored" data-anchor-id="调用多个函数">
 <span class="header-section-number">26.2.3</span> 调用多个函数</h3>
@@ -1274,7 +1274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # Source:   table&lt;gapminder&gt; [?? x 6]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
 <span><span class="co">#&gt; # ℹ 6 variables: country &lt;chr&gt;, continent &lt;chr&gt;, lifeExp &lt;dbl&gt;, pop &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   gdpPercap &lt;dbl&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1301,15 +1301,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # Source:   SQL [?? x 2]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v1.3.1 [14913@Windows 10 x64:R 4.5.1/:memory:]</span></span>
 <span><span class="co">#&gt;    year     n</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  1977   142</span></span>
-<span><span class="co">#&gt; 2  1987   142</span></span>
-<span><span class="co">#&gt; 3  1972   142</span></span>
-<span><span class="co">#&gt; 4  1992   142</span></span>
-<span><span class="co">#&gt; 5  1997   142</span></span>
-<span><span class="co">#&gt; 6  2007   142</span></span>
+<span><span class="co">#&gt; 1  1972   142</span></span>
+<span><span class="co">#&gt; 2  1992   142</span></span>
+<span><span class="co">#&gt; 3  1997   142</span></span>
+<span><span class="co">#&gt; 4  1952   142</span></span>
+<span><span class="co">#&gt; 5  1957   142</span></span>
+<span><span class="co">#&gt; 6  1962   142</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="写入-csv-文件" class="level3" data-number="26.4.2"><h3 data-number="26.4.2" class="anchored" data-anchor-id="写入-csv-文件">

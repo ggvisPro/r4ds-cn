@@ -1,3 +1,7 @@
+---
+freeze: true
+---
+
 # Arrow {#sec-arrow}
 
 ```{r}
@@ -22,6 +26,7 @@ arrow 和 dbplyr 都提供了 dplyr 后端，所以你可能会想知道何时�
 在本章中，我们将继续使用 tidyverse，特别是 dplyr，但我们会将其与专门为处理大数据而设计的 arrow 包配对使用。
 
 ```{r setup}
+#| eval: false
 #| message: false
 #| warning: false
 library(tidyverse)
@@ -44,7 +49,7 @@ library(duckdb)
 
 ```{r}
 #| eval: false
-## | eval: !expr "!file.exists('data/seattle-library-checkouts.csv')"
+# eval: !expr "!file.exists('data/seattle-library-checkouts.csv')"
 dir.create("data", showWarnings = FALSE)
 
 curl::multi_download(
@@ -59,6 +64,7 @@ curl::multi_download(
 让我们先来看看数据。这个文件有 9 GB，足够大，我们可能不想把整个文件都加载到内存中。一个好的经验法则是，你通常需要至少是数据大小两倍的内存，而许多笔记本电脑的内存上限是 16 GB。这意味着我们想避免使用 `read_csv()`，而是使用 `arrow::open_dataset()`：
 
 ```{r open-dataset}
+#| eval: false
 seattle_csv <- open_dataset(
     sources = "data/seattle-library-checkouts.csv",
     col_types = schema(ISBN = string()),

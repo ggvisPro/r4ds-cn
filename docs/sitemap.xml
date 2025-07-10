@@ -2,154 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/index.html</loc>
-    <lastmod>2025-07-09T13:28:22.363Z</lastmod>
+    <lastmod>2025-07-09T08:14:46.601Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/preface-2e.html</loc>
-    <lastmod>2025-07-09T13:28:22.370Z</lastmod>
+    <lastmod>2025-07-09T08:17:01.688Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/intro.html</loc>
-    <lastmod>2025-07-09T16:26:42.971Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.910Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/whole-game.html</loc>
-    <lastmod>2025-07-10T00:50:16.634Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/data-visualize.html</loc>
-    <lastmod>2025-07-09T16:26:42.936Z</lastmod>
+    <lastmod>2025-07-10T03:12:31.152Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/workflow-basics.html</loc>
-    <lastmod>2025-07-09T16:26:42.999Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/data-transform.html</loc>
-    <lastmod>2025-07-09T16:26:42.952Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/workflow-style.html</loc>
-    <lastmod>2025-07-09T16:26:42.952Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/data-tidy.html</loc>
-    <lastmod>2025-07-09T16:26:42.936Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/workflow-scripts.html</loc>
-    <lastmod>2025-07-09T16:26:42.935Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/data-import.html</loc>
-    <lastmod>2025-07-09T16:26:42.952Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/workflow-help.html</loc>
-    <lastmod>2025-07-09T16:26:43.027Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/visualize.html</loc>
-    <lastmod>2025-07-09T16:26:42.935Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/layers.html</loc>
-    <lastmod>2025-07-09T16:26:42.992Z</lastmod>
+    <lastmod>2025-07-10T03:12:32.431Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/EDA.html</loc>
-    <lastmod>2025-07-09T16:04:56.476Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.825Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/communication.html</loc>
-    <lastmod>2025-07-09T16:26:42.935Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/transform.html</loc>
-    <lastmod>2025-07-09T23:51:32.216Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/logicals.html</loc>
-    <lastmod>2025-07-09T23:53:56.010Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.957Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/numbers.html</loc>
-    <lastmod>2025-07-09T23:59:36.620Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/strings.html</loc>
-    <lastmod>2025-07-10T00:01:06.416Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/regexps.html</loc>
-    <lastmod>2025-07-10T00:04:53.875Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/factors.html</loc>
-    <lastmod>2025-07-10T00:51:01.047Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.910Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/datetimes.html</loc>
-    <lastmod>2025-07-10T00:14:42.907Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.872Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/missing-values.html</loc>
-    <lastmod>2025-07-10T00:16:24.325Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/joins.html</loc>
-    <lastmod>2025-07-10T00:22:33.662Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.910Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/import.html</loc>
-    <lastmod>2025-07-10T00:29:44.496Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.910Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/spreadsheets.html</loc>
-    <lastmod>2025-07-10T00:30:41.583Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/databases.html</loc>
-    <lastmod>2025-07-10T00:31:14.393Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.872Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/arrow.html</loc>
-    <lastmod>2025-07-10T00:35:20.572Z</lastmod>
+    <lastmod>2025-07-10T02:15:59.359Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/rectangling.html</loc>
-    <lastmod>2025-07-10T00:37:00.671Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/webscraping.html</loc>
-    <lastmod>2025-07-10T00:37:34.849Z</lastmod>
+    <lastmod>2025-07-10T03:00:12.534Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/program.html</loc>
-    <lastmod>2025-07-10T00:42:15.713Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/functions.html</loc>
-    <lastmod>2025-07-10T00:42:49.507Z</lastmod>
+    <lastmod>2025-07-10T02:33:37.945Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/iteration.html</loc>
-    <lastmod>2025-07-10T00:43:13.709Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.910Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/base-R.html</loc>
-    <lastmod>2025-07-10T00:46:09.121Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/communicate.html</loc>
-    <lastmod>2025-07-10T00:46:42.989Z</lastmod>
+    <lastmod>2025-07-10T01:36:59.840Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/quarto.html</loc>
-    <lastmod>2025-07-10T01:02:35.950Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
   <url>
     <loc>https://ggvispro.github.io/r4ds-cn/quarto-formats.html</loc>
-    <lastmod>2025-07-10T01:07:05.531Z</lastmod>
+    <lastmod>2025-07-10T01:37:01.972Z</lastmod>
   </url>
 </urlset>

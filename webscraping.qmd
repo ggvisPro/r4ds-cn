@@ -1,3 +1,7 @@
+---
+cache: false
+---
+
 # 网络抓取 {#sec-scraping}
 
 ```{r}
