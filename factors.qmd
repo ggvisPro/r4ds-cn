@@ -158,7 +158,6 @@ ggplot(relig_summary, aes(x = tvhours, y = relig)) +
   - `.x`，你想要用来重新排序水平的数值向量。
   - 可选的 `.fun`，一个函数，如果 `.f` 的每个值对应多个 `.x` 的值，则使用该函数。默认值是 `median`。
 
-<!-- end list -->
 
 ```{r}
 #| fig-alt: |

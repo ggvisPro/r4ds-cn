@@ -1,32 +1,25 @@
-# Iteration {#sec-iteration}
+# 迭代 {#sec-iteration}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-In this chapter, you'll learn tools for iteration, repeatedly performing the same action on different objects.
-Iteration in R generally tends to look rather different from other programming languages because so much of it is implicit and we get it for free.
-For example, if you want to double a numeric vector `x` in R, you can just write `2 * x`.
-In most other languages, you'd need to explicitly double each element of `x` using some sort of for loop.
+在本章中，你将学习迭代的工具，即在不同对象上重复执行相同的操作。R 语言中的迭代通常看起来与其他编程语言大相径庭，因为很多迭代是隐式的，我们可以免费获得。例如，如果你想在 R 中将一个数值向量 `x` 的每个元素都乘以 2，你只需写 `2 * x`。在大多数其他语言中，你需要使用某种 for 循环来显式地将 `x` 的每个元素乘以 2。
 
-This book has already given you a small but powerful number of tools that perform the same action for multiple "things":
+本书已经为你提供了一些小而强大的工具，可以对多个“事物”执行相同的操作：
 
--   `facet_wrap()` and `facet_grid()` draws a plot for each subset.
--   `group_by()` plus `summarize()` computes summary statistics for each subset.
--   `unnest_wider()` and `unnest_longer()` create new rows and columns for each element of a list-column.
+  - `facet_wrap()` 和 `facet_grid()` 为每个子集绘制一幅图。
+  - `group_by()` 加上 `summarize()` 为每个子集计算汇总统计量。
+  - `unnest_wider()` 和 `unnest_longer()` 为列表列的每个元素创建新的行和列。
 
-Now it's time to learn some more general tools, often called **functional programming** tools because they are built around functions that take other functions as inputs.
-Learning functional programming can easily veer into the abstract, but in this chapter we'll keep things concrete by focusing on three common tasks: modifying multiple columns, reading multiple files, and saving multiple objects.
+现在是时候学习一些更通用的工具了，这些工具通常被称为 **函数式编程** (functional programming) 工具，因为它们是围绕着接收其他函数作为输入的函数构建的。学习函数式编程很容易变得抽象，但在本章中，我们将通过关注三个常见的任务来保持具体：修改多个列、读取多个文件和保存多个对象。
 
-### Prerequisites
+### 先决条件
 
-In this chapter, we'll focus on tools provided by dplyr and purrr, both core members of the tidyverse.
-You've seen dplyr before, but [purrr](http://purrr.tidyverse.org/) is new.
-We're just going to use a couple of purrr functions in this chapter, but it's a great package to explore as you improve your programming skills.
+在本章中，我们将重点关注 dplyr 和 purrr 提供的工具，它们都是 tidyverse 的核心成员。你之前已经见过 dplyr，但 [purrr](http://purrr.tidyverse.org/) 是新内容。本章我们只会使用几个 purrr 函数，但随着你编程技能的提高，它是一个值得探索的优秀包。
 
 ```{r}
 #| label: setup
@@ -34,9 +27,9 @@ We're just going to use a couple of purrr functions in this chapter, but it's a 
 library(tidyverse)
 ```
 
-## Modifying multiple columns {#sec-across}
+## 修改多个列 {#sec-across}
 
-Imagine you have this simple tibble and you want to count the number of observations and compute the median of every column.
+假设你有下面这个简单的 tibble，并且你想计算观测值的数量并计算每一列的中位数。
 
 ```{r}
 df <- tibble(
@@ -47,7 +40,7 @@ df <- tibble(
 )
 ```
 
-You could do it with copy-and-paste:
+你可以通过复制粘贴来完成：
 
 ```{r}
 df |> summarize(
@@ -59,8 +52,7 @@ df |> summarize(
 )
 ```
 
-That breaks our rule of thumb to never copy and paste more than twice, and you can imagine that this will get very tedious if you have tens or even hundreds of columns.
-Instead, you can use `across()`:
+这违反了我们“绝不复制粘贴超过两次”的经验法则，而且你可以想象，如果你有几十甚至上百列，这将变得非常繁琐。相反，你可以使用 `across()`：
 
 ```{r}
 df |> summarize(
@@ -69,18 +61,13 @@ df |> summarize(
 )
 ```
 
-`across()` has three particularly important arguments, which we'll discuss in detail in the following sections.
-You'll use the first two every time you use `across()`: the first argument, `.cols`, specifies which columns you want to iterate over, and the second argument, `.fns`, specifies what to do with each column.
-You can use the `.names` argument when you need additional control over the names of output columns, which is particularly important when you use `across()` with `mutate()`.
-We'll also discuss two important variations, `if_any()` and `if_all()`, which work with `filter()`.
+`across()` 有三个特别重要的参数，我们将在接下来的部分中详细讨论。每次使用 `across()` 时，你都会用到前两个参数：第一个参数 `.cols` 指定了你想要迭代的列，第二个参数 `.fns` 指定了如何处理每一列。当你需要对输出列的名称进行额外控制时，可以使用 `.names` 参数，这在使用 `across()` 配合 `mutate()` 时尤其重要。我们还将讨论两个重要的变体，`if_any()` 和 `if_all()`，它们与 `filter()` 一起工作。
 
-### Selecting columns with `.cols`
+### 使用 `.cols` 选择列
 
-The first argument to `across()`, `.cols`, selects the columns to transform.
-This uses the same specifications as `select()`, @sec-select, so you can use functions like `starts_with()` and `ends_with()` to select columns based on their name.
+`across()` 的第一个参数 `.cols` 用于选择要转换的列。这与 `select()` 使用相同的规范，详见 @sec-select，因此你可以使用像 `starts_with()` 和 `ends_with()` 这样的函数来根据列名选择列。
 
-There are two additional selection techniques that are particularly useful for `across()`: `everything()` and `where()`.
-`everything()` is straightforward: it selects every (non-grouping) column:
+还有两种对 `across()` 特别有用的选择技术：`everything()` 和 `where()`。`everything()` 很直接：它选择所有（非分组）列：
 
 ```{r}
 df <- tibble(
@@ -96,29 +83,23 @@ df |>
   summarize(across(everything(), median))
 ```
 
-Note grouping columns (`grp` here) are not included in `across()`, because they're automatically preserved by `summarize()`.
+注意，分组列（这里是 `grp`）不包含在 `across()` 的选择范围内，因为它们会被 `summarize()` 自动保留。
 
-`where()` allows you to select columns based on their type:
+`where()` 允许你根据列的类型来选择列：
 
--   `where(is.numeric)` selects all numeric columns.
--   `where(is.character)` selects all string columns.
--   `where(is.Date)` selects all date columns.
--   `where(is.POSIXct)` selects all date-time columns.
--   `where(is.logical)` selects all logical columns.
+  - `where(is.numeric)` 选择所有数值列。
+  - `where(is.character)` 选择所有字符串列。
+  - `where(is.Date)` 选择所有日期列。
+  - `where(is.POSIXct)` 选择所有日期时间列。
+  - `where(is.logical)` 选择所有逻辑列。
 
-Just like other selectors, you can combine these with Boolean algebra.
-For example, `!where(is.numeric)` selects all non-numeric columns, and `starts_with("a") & where(is.logical)` selects all logical columns whose name starts with "a".
+就像其他选择器一样，你可以将它们与布尔代数结合起来。例如，`!where(is.numeric)` 选择所有非数值列，而 `starts_with("a") & where(is.logical)` 选择所有名称以 "a" 开头的逻辑列。
 
-### Calling a single function
+### 调用单个函数
 
-The second argument to `across()` defines how each column will be transformed.
-In simple cases, as above, this will be a single existing function.
-This is a pretty special feature of R: we're passing one function (`median`, `mean`, `str_flatten`, ...) to another function (`across`).
-This is one of the features that makes R a functional programming language.
+`across()` 的第二个参数定义了每一列将如何被转换。在简单的情况下，如上所示，这将是一个现有的函数。这是 R 的一个很特别的特性：我们将一个函数（`median`、`mean`、`str_flatten` 等）传递给另一个函数（`across`）。这是使 R 成为一门函数式编程语言的特性之一。
 
-It's important to note that we're passing this function to `across()`, so `across()` can call it; we're not calling it ourselves.
-That means the function name should never be followed by `()`.
-If you forget, you'll get an error:
+需要注意的是，我们是将这个函数传递给 `across()`，以便 `across()` 可以调用它；我们不是自己调用它。这意味着函数名后面不应该有 `()`。如果你忘了这一点，你会得到一个错误：
 
 ```{r}
 #| error: true
@@ -127,18 +108,16 @@ df |>
   summarize(across(everything(), median()))
 ```
 
-This error arises because you're calling the function with no input, e.g.:
+这个错误是因为你调用函数时没有提供输入，例如：
 
 ```{r}
 #| error: true
 median()
 ```
 
-### Calling multiple functions
+### 调用多个函数
 
-In more complex cases, you might want to supply additional arguments or perform multiple transformations.
-Let's motivate this problem with a simple example: what happens if we have some missing values in our data?
-`median()` propagates those missing values, giving us a suboptimal output:
+在更复杂的情况下，你可能想要提供额外的参数或执行多个转换。让我们用一个简单的例子来引出这个问题：如果我们的数据中有一些缺失值会发生什么？`median()` 会传播这些缺失值，给我们一个次优的输出：
 
 ```{r}
 rnorm_na <- function(n, n_na, mean = 0, sd = 1) {
@@ -158,8 +137,7 @@ df_miss |>
   )
 ```
 
-It would be nice if we could pass along `na.rm = TRUE` to `median()` to remove these missing values.
-To do so, instead of calling `median()` directly, we need to create a new function that calls `median()` with the desired arguments:
+如果我们能将 `na.rm = TRUE` 传递给 `median()` 来移除这些缺失值，那就太好了。为此，我们需要创建一个新函数，该函数使用所需的参数调用 `median()`，而不是直接调用 `median()`：
 
 ```{r}
 df_miss |> 
@@ -169,14 +147,7 @@ df_miss |>
   )
 ```
 
-This is a little verbose, so R comes with a handy shortcut: for this sort of throw away, or **anonymous**[^iteration-1], function you can replace `function` with `\`[^iteration-2]:
-
-[^iteration-1]: Anonymous, because we never explicitly gave it a name with `<-`.
-    Another term programmers use for this is "lambda function".
-
-[^iteration-2]: In older code you might see syntax that looks like `~ .x + 1`.
-    This is another way to write anonymous functions but it only works inside tidyverse functions and always uses the variable name `.x`.
-    We now recommend the base syntax, `\(x) x + 1`.
+这种写法有点冗长，所以 R 提供了一个方便的快捷方式：对于这种一次性的或**匿名**[^1]函数，你可以用 `\` 替换 `function`[^2]：
 
 ```{r}
 #| results: false
@@ -187,7 +158,7 @@ df_miss |>
   )
 ```
 
-In either case, `across()` effectively expands to the following code:
+无论哪种情况，`across()` 实际上都等同于以下代码：
 
 ```{r}
 #| eval: false
@@ -201,9 +172,7 @@ df_miss |>
   )
 ```
 
-When we remove the missing values from the `median()`, it would be nice to know just how many values were removed.
-We can find that out by supplying two functions to `across()`: one to compute the median and the other to count the missing values.
-You supply multiple functions by using a named list to `.fns`:
+当我们从 `median()` 中移除缺失值时，知道究竟移除了多少个值会很有用。我们可以通过向 `across()` 提供两个函数来实现这一点：一个用于计算中位数，另一个用于计算缺失值的数量。你可以通过向 `.fns` 参数提供一个命名的列表来提供多个函数：
 
 ```{r}
 df_miss |> 
@@ -216,16 +185,11 @@ df_miss |>
   )
 ```
 
-If you look carefully, you might intuit that the columns are named using a glue specification (@sec-glue) like `{.col}_{.fn}` where `.col` is the name of the original column and `.fn` is the name of the function.
-That's not a coincidence!
-As you'll learn in the next section, you can use the `.names` argument to supply your own glue spec.
+如果你仔细观察，你可能会直观地感觉到列名是使用了一个类似 `{.col}_{.fn}` 的 glue 规范（@sec-glue）来命名的，其中 `.col` 是原始列的名称，`.fn` 是函数的名称。这并非巧合！正如你将在下一节中学到的，你可以使用 `.names` 参数来提供你自己的 glue 规范。
 
-### Column names
+### 列名
 
-The result of `across()` is named according to the specification provided in the `.names` argument.
-We could specify our own if we wanted the name of the function to come first[^iteration-3]:
-
-[^iteration-3]: You can't currently change the order of the columns, but you could reorder them after the fact using `relocate()` or similar.
+`across()` 的结果根据 `.names` 参数中提供的规范来命名。如果我们想让函数名排在前面，我们可以指定自己的命名方式[^3]：
 
 ```{r}
 df_miss |> 
@@ -242,10 +206,7 @@ df_miss |>
   )
 ```
 
-The `.names` argument is particularly important when you use `across()` with `mutate()`.
-By default, the output of `across()` is given the same names as the inputs.
-This means that `across()` inside of `mutate()` will replace existing columns.
-For example, here we use `coalesce()` to replace `NA`s with `0`:
+当你将 `across()` 与 `mutate()` 一起使用时，`.names` 参数尤其重要。默认情况下，`across()` 的输出与输入的名称相同。这意味着在 `mutate()` 内部使用 `across()` 将会替换现有的列。例如，这里我们使用 `coalesce()` 将 `NA` 替换为 `0`：
 
 ```{r}
 df_miss |> 
@@ -254,7 +215,7 @@ df_miss |>
   )
 ```
 
-If you'd like to instead create new columns, you can use the `.names` argument to give the output new names:
+如果你想创建新的列，可以使用 `.names` 参数为输出指定新的名称：
 
 ```{r}
 df_miss |> 
@@ -263,24 +224,21 @@ df_miss |>
   )
 ```
 
-### Filtering
+### 筛选
 
-`across()` is a great match for `summarize()` and `mutate()` but it's more awkward to use with `filter()`, because you usually combine multiple conditions with either `|` or `&`.
-It's clear that `across()` can help to create multiple logical columns, but then what?
-So dplyr provides two variants of `across()` called `if_any()` and `if_all()`:
+`across()` 与 `summarize()` 和 `mutate()` 是绝佳的搭配，但与 `filter()` 一起使用时就比较尴尬了，因为你通常需要用 `|` 或 `&` 来组合多个条件。很明显，`across()` 可以帮助创建多个逻辑列，但接下来该怎么办呢？因此，dplyr 提供了 `across()` 的两个变体，名为 `if_any()` 和 `if_all()`：
 
 ```{r}
-# same as df_miss |> filter(is.na(a) | is.na(b) | is.na(c) | is.na(d))
+# 等同于 df_miss |> filter(is.na(a) | is.na(b) | is.na(c) | is.na(d))
 df_miss |> filter(if_any(a:d, is.na))
 
-# same as df_miss |> filter(is.na(a) & is.na(b) & is.na(c) & is.na(d))
+# 等同于 df_miss |> filter(is.na(a) & is.na(b) & is.na(c) & is.na(d))
 df_miss |> filter(if_all(a:d, is.na))
 ```
 
-### `across()` in functions
+### 在函数中使用 `across()`
 
-`across()` is particularly useful to program with because it allows you to operate on multiple columns.
-For example, [Jacob Scott](https://twitter.com/_wurli/status/1571836746899283969) uses this little helper which wraps a bunch of lubridate functions to expand all date columns into year, month, and day columns:
+`across()` 在编程中特别有用，因为它允许你对多个列进行操作。例如，[Jacob Scott](https://twitter.com/_wurli/status/1571836746899283969) 使用了这个小助手函数，它包装了一系列 lubridate 函数，将所有日期列扩展为年、月、日列：
 
 ```{r}
 expand_dates <- function(df) {
@@ -299,9 +257,7 @@ df_date |>
   expand_dates()
 ```
 
-`across()` also makes it easy to supply multiple columns in a single argument because the first argument uses tidy-select; you just need to remember to embrace that argument, as we discussed in @sec-embracing.
-For example, this function will compute the means of numeric columns by default.
-But by supplying the second argument you can choose to summarize just selected columns:
+`across()` 还可以方便地在单个参数中提供多个列，因为它的第一个参数使用了 tidy-select；你只需要记住要拥抱 (embrace) 该参数，正如我们在 @sec-embracing 中讨论的那样。例如，下面这个函数默认会计算数值列的均值。但是通过提供第二个参数，你可以选择只对选定的列进行汇总：
 
 ```{r}
 summarize_means <- function(df, summary_vars = where(is.numeric)) {
@@ -321,18 +277,16 @@ diamonds |>
   summarize_means(c(carat, x:z))
 ```
 
-### Compare with `pivot_longer()`
+### 与 `pivot_longer()` 比较
 
-Before we go on, it's worth pointing out an interesting connection between `across()` and `pivot_longer()` (@sec-pivoting).
-In many cases, you perform the same calculations by first pivoting the data and then performing the operations by group rather than by column.
-For example, take this multi-function summary:
+在我们继续之前，有必要指出 `across()` 和 `pivot_longer()` (@sec-pivoting) 之间一个有趣的联系。在许多情况下，你可以通过先转换数据，然后按组而不是按列执行操作来完成相同的计算。例如，看下面这个多函数汇总：
 
 ```{r}
 df |> 
   summarize(across(a:d, list(median = median, mean = mean)))
 ```
 
-We could compute the same values by pivoting longer and then summarizing:
+我们可以通过先将数据转换为长格式，然后进行汇总来计算相同的值：
 
 ```{r}
 long <- df |> 
@@ -345,7 +299,7 @@ long <- df |>
 long
 ```
 
-And if you wanted the same structure as `across()` you could pivot again:
+如果你想要与 `across()` 相同的结构，你可以再次进行转换：
 
 ```{r}
 long |> 
@@ -357,8 +311,7 @@ long |>
   )
 ```
 
-This is a useful technique to know about because sometimes you'll hit a problem that's not currently possible to solve with `across()`: when you have groups of columns that you want to compute with simultaneously.
-For example, imagine that our data frame contains both values and weights and we want to compute a weighted mean:
+这是一个很有用的技巧，因为有时你会遇到一个目前无法用 `across()` 解决的问题：当你有多组列，并且想要同时对它们进行计算时。例如，假设我们的数据框包含值和权重，我们想要计算加权平均值：
 
 ```{r}
 df_paired <- tibble(
@@ -373,9 +326,7 @@ df_paired <- tibble(
 )
 ```
 
-There's currently no way to do this with `across()`[^iteration-4], but it's relatively straightforward with `pivot_longer()`:
-
-[^iteration-4]: Maybe there will be one day, but currently we don't see how.
+目前没有办法用 `across()` 来实现这个功能[^4]，但用 `pivot_longer()` 就相对直接了：
 
 ```{r}
 df_long <- df_paired |> 
@@ -391,26 +342,23 @@ df_long |>
   summarize(mean = weighted.mean(val, wts))
 ```
 
-If needed, you could `pivot_wider()` this back to the original form.
+如果需要，你可以用 `pivot_wider()` 将其转换回原始形式。
 
-### Exercises
+### 练习
 
-1.  Practice your `across()` skills by:
+1.  通过以下方式练习你的 `across()` 技能：
 
-    1.  Computing the number of unique values in each column of `palmerpenguins::penguins`.
+    1.  计算 `palmerpenguins::penguins` 数据集中每一列的唯一值数量。
 
-    2.  Computing the mean of every column in `mtcars`.
+    2.  计算 `mtcars` 数据集中每一列的平均值。
 
-    3.  Grouping `diamonds` by `cut`, `clarity`, and `color` then counting the number of observations and computing the mean of each numeric column.
+    3.  将 `diamonds` 按 `cut`、`clarity` 和 `color` 分组，然后计算观测数量和每个数值列的平均值。
 
-2.  What happens if you use a list of functions in `across()`, but don't name them?
-    How is the output named?
+2.  如果在 `across()` 中使用一个函数列表，但不给它们命名，会发生什么？输出是如何命名的？
 
-3.  Adjust `expand_dates()` to automatically remove the date columns after they've been expanded.
-    Do you need to embrace any arguments?
+3.  修改 `expand_dates()` 函数，使其在扩展日期列后自动删除它们。你需要拥抱 (embrace) 任何参数吗？
 
-4.  Explain what each step of the pipeline in this function does.
-    What special feature of `where()` are we taking advantage of?
+4.  解释下面这个函数中管道的每一步都做了什么。我们利用了 `where()` 的什么特殊功能？
 
     ```{r}
     #| results: false
@@ -426,14 +374,9 @@ If needed, you could `pivot_wider()` this back to the original form.
     nycflights13::flights |> show_missing(c(year, month, day))
     ```
 
-## Reading multiple files
+## 读取多个文件
 
-In the previous section, you learned how to use `dplyr::across()` to repeat a transformation on multiple columns.
-In this section, you'll learn how to use `purrr::map()` to do something to every file in a directory.
-Let's start with a little motivation: imagine you have a directory full of excel spreadsheets[^iteration-5] you want to read.
-You could do it with copy and paste:
-
-[^iteration-5]: If you instead had a directory of csv files with the same format, you can use the technique from @sec-readr-directory.
+在上一节中，你学习了如何使用 `dplyr::across()` 对多个列重复进行转换。在本节中，你将学习如何使用 `purrr::map()` 对目录中的每个文件执行某些操作。让我们从一个小小的动机开始：假设你有一个装满了你想要读取的 Excel 电子表格的目录[^5]。你可以通过复制粘贴来完成：
 
 ```{r}
 #| eval: false
@@ -443,56 +386,46 @@ data2021 <- readxl::read_excel("data/y2021.xlsx")
 data2022 <- readxl::read_excel("data/y2022.xlsx")
 ```
 
-And then use `dplyr::bind_rows()` to combine them all together:
+然后使用 `dplyr::bind_rows()` 将它们全部合并在一起：
 
 ```{r}
 #| eval: false
 data <- bind_rows(data2019, data2020, data2021, data2022)
 ```
 
-You can imagine that this would get tedious quickly, especially if you had hundreds of files, not just four.
-The following sections show you how to automate this sort of task.
-There are three basic steps: use `list.files()` to list all the files in a directory, then use `purrr::map()` to read each of them into a list, then use `purrr::list_rbind()` to combine them into a single data frame.
-We'll then discuss how you can handle situations of increasing heterogeneity, where you can't do exactly the same thing to every file.
+你可以想象这会很快变得乏味，特别是如果你有数百个文件，而不仅仅是四个。接下来的部分将向你展示如何自动化这类任务。有三个基本步骤：使用 `list.files()` 列出目录中的所有文件，然后使用 `purrr::map()` 将每个文件读入一个列表中，最后使用 `purrr::list_rbind()` 将它们合并成一个单一的数据框。然后我们将讨论如何处理异质性越来越高的情况，即你不能对每个文件都做完全相同的事情。
 
-### Listing files in a directory
+### 列出目录中的文件
 
-As the name suggests, `list.files()` lists the files in a directory.
-You'll almost always use three arguments:
+顾名思义，`list.files()` 列出目录中的文件。你几乎总是会使用三个参数：
 
--   The first argument, `path`, is the directory to look in.
+  - 第一个参数 `path` 是要查看的目录。
 
--   `pattern` is a regular expression used to filter the file names.
-    The most common pattern is something like `[.]xlsx$` or `[.]csv$` to find all files with a specified extension.
+  - `pattern` 是一个用于过滤文件名的正则表达式。最常见的模式是类似 `[.]xlsx$` 或 `[.]csv$` 这样的，用来查找所有具有指定扩展名的文件。
 
--   `full.names` determines whether or not the directory name should be included in the output.
-    You almost always want this to be `TRUE`.
+  - `full.names` 决定是否应将目录名包含在输出中。你几乎总是希望它为 `TRUE`。
 
-To make our motivating example concrete, this book contains a folder with 12 excel spreadsheets containing data from the gapminder package.
-Each file contains one year's worth of data for 142 countries.
-We can list them all with the appropriate call to `list.files()`:
+为了使我们的动机示例更具体，本书包含一个文件夹，其中有 12 个 Excel 电子表格，包含了来自 gapminder 包的数据。每个文件包含 142 个国家一年的数据。我们可以通过适当的 `list.files()` 调用来列出它们：
 
 ```{r}
 paths <- list.files("data/gapminder", pattern = "[.]xlsx$", full.names = TRUE)
 paths
 ```
 
-### Lists
+### 列表
 
-Now that we have these 12 paths, we could call `read_excel()` 12 times to get 12 data frames:
+现在我们有了这 12 个路径，我们可以调用 `read_excel()` 12 次来得到 12 个数据框：
 
 ```{r}
 #| eval: false
 gapminder_1952 <- readxl::read_excel("data/gapminder/1952.xlsx")
 gapminder_1957 <- readxl::read_excel("data/gapminder/1957.xlsx")
 gapminder_1962 <- readxl::read_excel("data/gapminder/1962.xlsx")
- ...,
+  ...,
 gapminder_2007 <- readxl::read_excel("data/gapminder/2007.xlsx")
 ```
 
-But putting each sheet into its own variable is going to make it hard to work with them a few steps down the road.
-Instead, they'll be easier to work with if we put them into a single object.
-A list is the perfect tool for this job:
+但是将每个表格放入其自己的变量中，会在接下来的步骤中使它们难以处理。相反，如果我们将它们放入一个单一的对象中，它们会更容易处理。列表 (list) 是完成这项工作的完美工具：
 
 ```{r}
 #| eval: false
@@ -510,20 +443,17 @@ files <- list(
 files <- map(paths, readxl::read_excel)
 ```
 
-Now that you have these data frames in a list, how do you get one out?
-You can use `files[[i]]` to extract the i<sup>th</sup> element:
+现在你已经将这些数据框放入一个列表中，你如何取出一个呢？你可以使用 `files[[i]]` 来提取第 i\<sup\>th\</sup\> 个元素：
 
 ```{r}
 files[[3]]
 ```
 
-We'll come back to `[[` in more detail in @sec-subset-one.
+我们将在 @sec-subset-one 中更详细地回到 `[[`。
 
-### `purrr::map()` and `list_rbind()`
+### `purrr::map()` 和 `list_rbind()`
 
-The code to collect those data frames in a list "by hand" is basically just as tedious to type as code that reads the files one-by-one.
-Happily, we can use `purrr::map()` to make even better use of our `paths` vector.
-`map()` is similar to`across()`, but instead of doing something to each column in a data frame, it does something to each element of a vector.`map(x, f)` is shorthand for:
+“手动”收集这些数据框到列表中的代码，基本上和逐个读取文件的代码一样繁琐。幸运的是，我们可以使用 `purrr::map()` 来更好地利用我们的 `paths` 向量。`map()` 类似于 `across()`，但它不是对数据框中的每一列做某事，而是对向量中的每个元素做某事。`map(x, f)` 是以下代码的简写：
 
 ```{r}
 #| eval: false
@@ -535,7 +465,7 @@ list(
 )
 ```
 
-So we can use `map()` to get a list of 12 data frames:
+所以我们可以使用 `map()` 来得到一个包含 12 个数据框的列表：
 
 ```{r}
 files <- map(paths, readxl::read_excel)
@@ -544,15 +474,15 @@ length(files)
 files[[1]]
 ```
 
-(This is another data structure that doesn't display particularly compactly with `str()` so you might want to load it into RStudio and inspect it with `View()`).
+(这是另一种用 `str()` 显示不够紧凑的数据结构，所以你可能想在 RStudio 中加载它并用 `View()` 来检查它)。
 
-Now we can use `purrr::list_rbind()` to combine that list of data frames into a single data frame:
+现在我们可以使用 `purrr::list_rbind()` 将这个数据框列表合并成一个单一的数据框：
 
 ```{r}
 list_rbind(files)
 ```
 
-Or we could do both steps at once in a pipeline:
+或者我们可以在一个管道中同时完成这两个步骤：
 
 ```{r}
 #| results: false
@@ -561,9 +491,7 @@ paths |>
   list_rbind()
 ```
 
-What if we want to pass in extra arguments to `read_excel()`?
-We use the same technique that we used with `across()`.
-For example, it's often useful to peek at the first few rows of the data with `n_max = 1`:
+如果我们想给 `read_excel()` 传入额外的参数怎么办？我们使用与 `across()` 相同的技术。例如，用 `n_max = 1` 预览数据的前几行通常很有用：
 
 ```{r}
 paths |> 
@@ -571,24 +499,19 @@ paths |>
   list_rbind()
 ```
 
-This makes it clear that something is missing: there's no `year` column because that value is recorded in the path, not in the individual files.
-We'll tackle that problem next.
+这清楚地表明缺少了某些东西：没有 `year` 列，因为这个值记录在路径中，而不是在单个文件中。我们将在下一步解决这个问题。
 
-### Data in the path {#sec-data-in-the-path}
+### 路径中的数据 {#sec-data-in-the-path}
 
-Sometimes the name of the file is data itself.
-In this example, the file name contains the year, which is not otherwise recorded in the individual files.
-To get that column into the final data frame, we need to do two things:
+有时文件名本身就是数据。在这个例子中，文件名包含了年份，而这个信息在单个文件中并没有记录。为了将这一列加入到最终的数据框中，我们需要做两件事：
 
-First, we name the vector of paths.
-The easiest way to do this is with the `set_names()` function, which can take a function.
-Here we use `basename()` to extract just the file name from the full path:
+首先，我们为路径向量命名。最简单的方法是使用 `set_names()` 函数，它可以接受一个函数作为参数。这里我们使用 `basename()` 从完整路径中仅提取文件名：
 
 ```{r}
 paths |> set_names(basename) 
 ```
 
-Those names are automatically carried along by all the map functions, so the list of data frames will have those same names:
+这些名称会被所有的 map 函数自动沿用，所以数据框列表也会有相同的名称：
 
 ```{r}
 files <- paths |> 
@@ -596,7 +519,7 @@ files <- paths |>
   map(readxl::read_excel)
 ```
 
-That makes this call to `map()` shorthand for:
+这使得这个 `map()` 调用成为以下代码的简写：
 
 ```{r}
 #| eval: false
@@ -609,13 +532,13 @@ files <- list(
 )
 ```
 
-You can also use `[[` to extract elements by name:
+你也可以使用 `[[` 按名称提取元素：
 
 ```{r}
 files[["1962.xlsx"]]
 ```
 
-Then we use the `names_to` argument to `list_rbind()` to tell it to save the names into a new column called `year` then use `readr::parse_number()` to extract the number from the string.
+然后，我们使用 `list_rbind()` 的 `names_to` 参数，告诉它将名称保存到一个名为 `year` 的新列中，然后使用 `readr::parse_number()` 从字符串中提取数字。
 
 ```{r}
 paths |> 
@@ -625,8 +548,7 @@ paths |>
   mutate(year = parse_number(year))
 ```
 
-In more complicated cases, there might be other variables stored in the directory name, or maybe the file name contains multiple bits of data.
-In that case, use `set_names()` (without any arguments) to record the full path, and then use `tidyr::separate_wider_delim()` and friends to turn them into useful columns.
+在更复杂的情况下，可能还有其他变量存储在目录名中，或者文件名可能包含多个数据片段。在这种情况下，使用 `set_names()`（不带任何参数）来记录完整路径，然后使用 `tidyr::separate_wider_delim()` 及其相关函数将它们转换成有用的列。
 
 ```{r}
 paths |> 
@@ -637,9 +559,9 @@ paths |>
   separate_wider_delim(file, delim = ".", names = c("file", "ext"))
 ```
 
-### Save your work
+### 保存你的工作
 
-Now that you've done all this hard work to get to a nice tidy data frame, it's a great time to save your work:
+现在你已经完成了所有这些辛苦的工作，得到了一个整洁的数据框，是时候保存你的工作了：
 
 ```{r}
 gapminder <- paths |> 
@@ -651,27 +573,22 @@ gapminder <- paths |>
 write_csv(gapminder, "gapminder.csv")
 ```
 
-Now when you come back to this problem in the future, you can read in a single csv file.
-For large and richer datasets, using parquet might be a better choice than `.csv`, as discussed in @sec-parquet.
+现在，当你将来再次处理这个问题时，你可以只读取一个 csv 文件。对于更大、更丰富的数据集，使用 parquet 可能比 `.csv` 是一个更好的选择，如 @sec-parquet 中所讨论的。
 
 ```{r}
 #| include: false
 unlink("gapminder.csv")
 ```
 
-If you're working in a project, we suggest calling the file that does this sort of data prep work something like `0-cleanup.R`.
-The `0` in the file name suggests that this should be run before anything else.
+如果你在一个项目（project）中工作，我们建议将执行这类数据准备工作的文件命名为 `0-cleanup.R`。文件名中的 `0` 暗示这个文件应该在其他任何文件之前运行。
 
-If your input data files change over time, you might consider learning a tool like [targets](https://docs.ropensci.org/targets/) to set up your data cleaning code to automatically re-run whenever one of the input files is modified.
+如果你的输入数据文件会随时间变化，你可能需要考虑学习一个像 [targets](https://docs.ropensci.org/targets/) 这样的工具，来设置你的数据清理代码，使其在任何输入文件被修改时自动重新运行。
 
-### Many simple iterations
+### 多次简单迭代
 
-Here we've just loaded the data directly from disk, and were lucky enough to get a tidy dataset.
-In most cases, you'll need to do some additional tidying, and you have two basic options: you can do one round of iteration with a complex function, or do multiple rounds of iteration with simple functions.
-In our experience most folks reach first for one complex iteration, but you're often better by doing multiple simple iterations.
+在这里，我们只是直接从磁盘加载了数据，并幸运地得到了一个整洁的数据集。在大多数情况下，你需要进行一些额外的整理工作，你有两种基本选择：你可以用一个复杂的函数进行一轮迭代，或者用简单的函数进行多轮迭代。根据我们的经验，大多数人首先会选择进行一次复杂的迭代，但通常通过进行多次简单的迭代会更好。
 
-For example, imagine that you want to read in a bunch of files, filter out missing values, pivot, and then combine.
-One way to approach the problem is to write a function that takes a file and does all those steps then call `map()` once:
+例如，假设你想读入一堆文件，过滤掉缺失值，进行数据转换，然后合并。一种方法是编写一个函数，它接收一个文件并执行所有这些步骤，然后调用 `map()` 一次：
 
 ```{r}
 #| eval: false
@@ -689,7 +606,7 @@ paths |>
   list_rbind()
 ```
 
-Alternatively, you could perform each step of `process_file()` to every file:
+或者，你可以对每个文件执行 `process_file()` 的每一步：
 
 ```{r}
 #| eval: false
@@ -701,11 +618,9 @@ paths |>
   list_rbind()
 ```
 
-We recommend this approach because it stops you getting fixated on getting the first file right before moving on to the rest.
-By considering all of the data when doing tidying and cleaning, you're more likely to think holistically and end up with a higher quality result.
+我们推荐这种方法，因为它能防止你在转向处理其余文件之前，过分专注于把第一个文件处理得完美无瑕。通过在进行整理和清理时考虑所有数据，你更有可能进行整体思考，并最终得到更高质量的结果。
 
-In this particular example, there's another optimization you could make, by binding all the data frames together earlier.
-Then you can rely on regular dplyr behavior:
+在这个特定的例子中，还有另一个可以做的优化，就是更早地将所有数据框绑定在一起。然后你可以依赖常规的 dplyr 行为：
 
 ```{r}
 #| eval: false
@@ -717,10 +632,9 @@ paths |>
   pivot_longer(jan:dec, names_to = "month")
 ```
 
-### Heterogeneous data
+### 异构数据
 
-Unfortunately, sometimes it's not possible to go from `map()` straight to `list_rbind()` because the data frames are so heterogeneous that `list_rbind()` either fails or yields a data frame that's not very useful.
-In that case, it's still useful to start by loading all of the files:
+不幸的是，有时无法直接从 `map()` 转到 `list_rbind()`，因为数据框的异构性太高，导致 `list_rbind()` 要么失败，要么产生一个不太有用的数据框。在这种情况下，先加载所有文件仍然是有用的：
 
 ```{r}
 #| eval: false
@@ -728,10 +642,7 @@ files <- paths |>
   map(readxl::read_excel) 
 ```
 
-Then a very useful strategy is to capture the structure of the data frames so that you can explore it using your data science skills.
-One way to do so is with this handy `df_types` function[^iteration-6] that returns a tibble with one row for each column:
-
-[^iteration-6]: We're not going to explain how it works, but if you look at the docs for the functions used, you should be able to puzzle it out.
+然后，一个非常有用的策略是捕获数据框的结构，以便你可以用你的数据科学技能来探索它。一种方法是使用这个方便的 `df_types` 函数[^6]，它返回一个 tibble，每列一行：
 
 ```{r}
 df_types <- function(df) {
@@ -745,8 +656,7 @@ df_types <- function(df) {
 df_types(gapminder)
 ```
 
-You can then apply this function to all of the files, and maybe do some pivoting to make it easier to see where the differences are.
-For example, this makes it easy to verify that the gapminder spreadsheets that we've been working with are all quite homogeneous:
+然后你可以将这个函数应用于所有文件，并可能进行一些转换，以便更容易地看到差异所在。例如，这使得验证我们一直在处理的 gapminder 电子表格都非常同质化变得容易：
 
 ```{r}
 files |> 
@@ -756,20 +666,13 @@ files |>
   pivot_wider(names_from = col_name, values_from = col_type)
 ```
 
-If the files have heterogeneous formats, you might need to do more processing before you can successfully merge them.
-Unfortunately, we're now going to leave you to figure that out on your own, but you might want to read about `map_if()` and `map_at()`.
-`map_if()` allows you to selectively modify elements of a list based on their values; `map_at()` allows you to selectively modify elements based on their names.
+如果文件具有异构格式，你可能需要进行更多的处理才能成功合并它们。不幸的是，我们现在要让你自己去解决了，但你可能想读一下关于 `map_if()` 和 `map_at()` 的内容。`map_if()` 允许你根据列表元素的值有选择地修改它们；`map_at()` 允许你根据它们的名称有选择地修改元素。
 
-### Handling failures
+### 处理失败
 
-Sometimes the structure of your data might be sufficiently wild that you can't even read all the files with a single command.
-And then you'll encounter one of the downsides of `map()`: it succeeds or fails as a whole.
-`map()` will either successfully read all of the files in a directory or fail with an error, reading zero files.
-This is annoying: why does one failure prevent you from accessing all the other successes?
+有时你的数据结构可能足够混乱，以至于你甚至不能用一个命令读取所有文件。然后你会遇到 `map()` 的一个缺点：它要么整体成功，要么整体失败。`map()` 要么成功读取目录中的所有文件，要么因错误而失败，一个文件也读不进来。这很烦人：为什么一个失败会阻止你访问所有其他成功的结果？
 
-Luckily, purrr comes with a helper to tackle this problem: `possibly()`.
-`possibly()` is what's known as a function operator: it takes a function and returns a function with modified behavior.
-In particular, `possibly()` changes a function from erroring to returning a value that you specify:
+幸运的是，purrr 提供了一个助手来解决这个问题：`possibly()`。`possibly()` 是所谓的函数操作符：它接受一个函数并返回一个行为被修改的函数。具体来说，`possibly()` 将一个会出错的函数改变为返回你指定的值：
 
 ```{r}
 files <- paths |> 
@@ -778,35 +681,30 @@ files <- paths |>
 data <- files |> list_rbind()
 ```
 
-This works particularly well here because `list_rbind()`, like many tidyverse functions, automatically ignores `NULL`s.
+这在这里特别有效，因为 `list_rbind()`，像许多 tidyverse 函数一样，会自动忽略 `NULL`。
 
-Now you have all the data that can be read easily, and it's time to tackle the hard part of figuring out why some files failed to load and what to do about it.
-Start by getting the paths that failed:
+现在你有了所有可以轻松读取的数据，是时候解决困难的部分了，即找出为什么有些文件加载失败以及该怎么处理。首先获取失败的路径：
 
 ```{r}
 failed <- map_vec(files, is.null)
 paths[failed]
 ```
 
-Then call the import function again for each failure and figure out what went wrong.
+然后对每个失败的路径再次调用导入函数，找出问题所在。
 
-## Saving multiple outputs
+## 保存多个输出
 
-In the last section, you learned about `map()`, which is useful for reading multiple files into a single object.
-In this section, we'll now explore sort of the opposite problem: how can you take one or more R objects and save it to one or more files?
-We'll explore this challenge using three examples:
+在上一节中，你学习了 `map()`，它对于将多个文件读入单个对象很有用。在本节中，我们将探讨一个相反的问题：如何将一个或多个 R 对象保存到一个或多个文件中？我们将通过三个例子来探讨这个挑战：
 
--   Saving multiple data frames into one database.
--   Saving multiple data frames into multiple `.csv` files.
--   Saving multiple plots to multiple `.png` files.
+  - 将多个数据框保存到一个数据库中。
+  - 将多个数据框保存到多个 `.csv` 文件中。
+  - 将多个图保存到多个 `.png` 文件中。
 
-### Writing to a database {#sec-save-database}
+### 写入数据库 {#sec-save-database}
 
-Sometimes when working with many files at once, it's not possible to fit all your data into memory at once, and you can't do `map(files, read_csv)`.
-One approach to deal with this problem is to load your data into a database so you can access just the bits you need with dbplyr.
+有时在同时处理许多文件时，不可能一次性将所有数据都装入内存，也就无法执行 `map(files, read_csv)`。处理这个问题的一种方法是将数据加载到数据库中，这样你就可以用 dbplyr 只访问你需要的部分。
 
-If you're lucky, the database package you're using will provide a handy function that takes a vector of paths and loads them all into the database.
-This is the case with duckdb's `duckdb_read_csv()`:
+如果你幸运的话，你正在使用的数据库包会提供一个方便的函数，该函数接收一个路径向量并将它们全部加载到数据库中。duckdb 的 `duckdb_read_csv()` 就是这种情况：
 
 ```{r}
 #| eval: false
@@ -814,13 +712,9 @@ con <- DBI::dbConnect(duckdb::duckdb())
 duckdb::duckdb_read_csv(con, "gapminder", paths)
 ```
 
-This would work well here, but we don't have csv files, instead we have excel spreadsheets.
-So we're going to have to do it "by hand".
-Learning to do it by hand will also help you when you have a bunch of csvs and the database that you're working with doesn't have one function that will load them all in.
+这在这里会很好用，但我们没有 csv 文件，而是 Excel 电子表格。所以我们得“手动”来做。学习手动操作也能帮助你在有一堆 csv 文件，而你正在使用的数据库没有一个能一次性加载所有文件的函数时。
 
-We need to start by creating a table that we will fill in with data.
-The easiest way to do this is by creating a template, a dummy data frame that contains all the columns we want, but only a sampling of the data.
-For the gapminder data, we can make that template by reading a single file and adding the year to it:
+我们需要从创建一个我们将用数据填充的表开始。最简单的方法是创建一个模板，一个包含我们想要的所有列但只包含部分数据的虚拟数据框。对于 gapminder 数据，我们可以通过读取单个文件并向其添加年份来制作该模板：
 
 ```{r}
 template <- readxl::read_excel(paths[[1]])
@@ -828,22 +722,20 @@ template$year <- 1952
 template
 ```
 
-Now we can connect to the database, and use `DBI::dbCreateTable()` to turn our template into a database table:
+现在我们可以连接到数据库，并使用 `DBI::dbCreateTable()` 将我们的模板变成一个数据库表：
 
 ```{r}
 con <- DBI::dbConnect(duckdb::duckdb())
 DBI::dbCreateTable(con, "gapminder", template)
 ```
 
-`dbCreateTable()` doesn't use the data in `template`, just the variable names and types.
-So if we inspect the `gapminder` table now you'll see that it's empty but it has the variables we need with the types we expect:
+`dbCreateTable()` 不使用 `template` 中的数据，只使用变量名和类型。所以如果我们现在检查 `gapminder` 表，你会看到它是空的，但它有我们需要的变量和我们期望的类型：
 
 ```{r}
 con |> tbl("gapminder")
 ```
 
-Next, we need a function that takes a single file path, reads it into R, and adds the result to the `gapminder` table.
-We can do that by combining `read_excel()` with `DBI::dbAppendTable()`:
+接下来，我们需要一个函数，它接受单个文件路径，将其读入 R，并将结果添加到 `gapminder` 表中。我们可以通过结合 `read_excel()` 和 `DBI::dbAppendTable()` 来做到这一点：
 
 ```{r}
 append_file <- function(path) {
@@ -854,22 +746,20 @@ append_file <- function(path) {
 }
 ```
 
-Now we need to call `append_file()` once for each element of `paths`.
-That's certainly possible with `map()`:
+现在我们需要对 `paths` 的每个元素调用一次 `append_file()`。这当然可以用 `map()` 来实现：
 
 ```{r}
 #| eval: false
 paths |> map(append_file)
 ```
 
-But we don't care about the output of `append_file()`, so instead of `map()` it's slightly nicer to use `walk()`.
-`walk()` does exactly the same thing as `map()` but throws the output away:
+但我们不关心 `append_file()` 的输出，所以使用 `walk()` 会比 `map()` 稍微好一些。`walk()` 的作用与 `map()` 完全相同，但会丢弃输出：
 
 ```{r}
 paths |> walk(append_file)
 ```
 
-Now we can see if we have all the data in our table:
+现在我们可以看看我们的表中是否包含了所有数据：
 
 ```{r}
 con |> 
@@ -882,12 +772,9 @@ con |>
 DBI::dbDisconnect(con, shutdown = TRUE)
 ```
 
-### Writing csv files
+### 写入 csv 文件
 
-The same basic principle applies if we want to write multiple csv files, one for each group.
-Let's imagine that we want to take the `ggplot2::diamonds` data and save one csv file for each `clarity`.
-First we need to make those individual datasets.
-There are many ways you could do that, but there's one way we particularly like: `group_nest()`.
+如果我们想为每个组写入多个 csv 文件，基本原理是相同的。让我们假设我们想取 `ggplot2::diamonds` 数据，并为每个 `clarity` 保存一个 csv 文件。首先，我们需要创建那些单独的数据集。有很多方法可以做到这一点，但有一种我们特别喜欢的方法：`group_nest()`。
 
 ```{r}
 by_clarity <- diamonds |> 
@@ -896,14 +783,13 @@ by_clarity <- diamonds |>
 by_clarity
 ```
 
-This gives us a new tibble with eight rows and two columns.
-`clarity` is our grouping variable and `data` is a list-column containing one tibble for each unique value of `clarity`:
+这给了我们一个有八行两列的新 tibble。`clarity` 是我们的分组变量，`data` 是一个列表列，其中包含 `clarity` 每个唯一值对应的一个 tibble：
 
 ```{r}
 by_clarity$data[[1]]
 ```
 
-While we're here, let's create a column that gives the name of output file, using `mutate()` and `str_glue()`:
+趁热打铁，让我们创建一个给出输出文件名的列，使用 `mutate()` 和 `str_glue()`：
 
 ```{r}
 by_clarity <- by_clarity |> 
@@ -912,7 +798,7 @@ by_clarity <- by_clarity |>
 by_clarity
 ```
 
-So if we were going to save these data frames by hand, we might write something like:
+所以如果我们要手动保存这些数据框，我们可能会这样写：
 
 ```{r}
 #| eval: false
@@ -923,10 +809,7 @@ write_csv(by_clarity$data[[3]], by_clarity$path[[3]])
 write_csv(by_clarity$by_clarity[[8]], by_clarity$path[[8]])
 ```
 
-This is a little different to our previous uses of `map()` because there are two arguments that are changing, not just one.
-That means we need a new function: `map2()`, which varies both the first and second arguments.
-And because we again don't care about the output, we want `walk2()` rather than `map2()`.
-That gives us:
+这与我们之前使用 `map()` 的情况有点不同，因为有两个参数在变化，而不仅仅是一个。这意味着我们需要一个新的函数：`map2()`，它同时改变第一个和第二个参数。而且因为我们同样不关心输出，所以我们想要用 `walk2()` 而不是 `map2()`。这样我们就得到了：
 
 ```{r}
 walk2(by_clarity$data, by_clarity$path, write_csv)
@@ -937,17 +820,14 @@ walk2(by_clarity$data, by_clarity$path, write_csv)
 unlink(by_clarity$path)
 ```
 
-### Saving plots
+### 保存图表
 
-We can take the same basic approach to create many plots.
-Let's first make a function that draws the plot we want:
+我们可以采用同样的基本方法来创建多个图表。让我们先创建一个函数来绘制我们想要的图表：
 
 ```{r}
 #| fig-alt: |
-#|   Histogram of carats of diamonds from the by_clarity dataset, ranging from 
-#|   0 to 5 carats. The distribution is unimodal and right skewed with a peak 
-#|   around 1 carat.
-
+#|   来自 by_clarity 数据集的钻石克拉数直方图，范围从 0 到 5 克拉。
+#|   分布是单峰且右偏的，峰值在 1 克拉左右。
 carat_histogram <- function(df) {
   ggplot(df, aes(x = carat)) + geom_histogram(binwidth = 0.1)  
 }
@@ -955,10 +835,7 @@ carat_histogram <- function(df) {
 carat_histogram(by_clarity$data[[1]])
 ```
 
-Now we can use `map()` to create a list of many plots[^iteration-7] and their eventual file paths:
-
-[^iteration-7]: You can print `by_clarity$plot` to get a crude animation --- you'll get one plot for each element of `plots`.
-    NOTE: this didn't happen for me.
+现在我们可以使用 `map()` 来创建一个包含多个图表[^7]及其最终文件路径的列表：
 
 ```{r}
 by_clarity <- by_clarity |> 
@@ -968,7 +845,7 @@ by_clarity <- by_clarity |>
   )
 ```
 
-Then use `walk2()` with `ggsave()` to save each plot:
+然后使用 `walk2()` 配合 `ggsave()` 来保存每个图表：
 
 ```{r}
 walk2(
@@ -978,7 +855,7 @@ walk2(
 )
 ```
 
-This is shorthand for:
+这是以下代码的简写：
 
 ```{r}
 #| eval: false
@@ -995,20 +872,31 @@ unlink(by_clarity$path)
 ```
 
 ```{=html}
-<!-- 
-### Exercises
-
-1.  Imagine you have a table of student data containing (amongst other variables) `school_name` and `student_id`. Sketch out what code you'd write if you want to save all the information for each student in file called `{student_id}.csv` in the `{school}` directory.
--->
 ```
 
-## Summary
+## 总结
 
-In this chapter, you've seen how to use explicit iteration to solve three problems that come up frequently when doing data science: manipulating multiple columns, reading multiple files, and saving multiple outputs.
-But in general, iteration is a super power: if you know the right iteration technique, you can easily go from fixing one problem to fixing all the problems.
-Once you've mastered the techniques in this chapter, we highly recommend learning more by reading the [Functionals chapter](https://adv-r.hadley.nz/functionals.html) of *Advanced R* and consulting the [purrr website](https://purrr.tidyverse.org).
+在本章中，你已经看到了如何使用显式迭代来解决数据科学中经常出现的三个问题：操作多个列、读取多个文件以及保存多个输出。但总的来说，迭代是一种超能力：如果你知道正确的迭代技巧，你可以轻松地从解决一个问题扩展到解决所有问题。一旦你掌握了本章中的技术，我们强烈建议你通过阅读《*Advanced R*》的 [Functionals 章节](https://adv-r.hadley.nz/functionals.html)和查阅 [purrr 网站](https://purrr.tidyverse.org)来学习更多内容。
 
-If you know much about iteration in other languages, you might be surprised that we didn't discuss the `for` loop.
-That's because R's orientation towards data analysis changes how we iterate: in most cases you can rely on an existing idiom to do something to each columns or each group.
-And when you can't, you can often use a functional programming tool like `map()` that does something to each element of a list.
-However, you will see `for` loops in wild-caught code, so you'll learn about them in the next chapter where we'll discuss some important base R tools.
+如果你对其他语言中的迭代有很多了解，你可能会惊讶于我们没有讨论 `for` 循环。这是因为 R 面向数据分析的特性改变了我们迭代的方式：在大多数情况下，你可以依赖现有的惯用法来对每一列或每个组执行操作。而当你无法这样做时，你通常可以使用像 `map()` 这样的函数式编程工具，它对列表的每个元素执行操作。然而，你会在野外捕获的代码中看到 `for` 循环，所以你将在下一章中学习它们，届时我们将讨论一些重要的基础 R 工具。
+
+[^1]:
+    匿名，因为我们从未用 `<-` 明确地给它命名。程序员们使用的另一个术语是“lambda 函数”。
+
+[^2]:
+    在旧代码中，你可能会看到类似 `~ .x + 1` 的语法。这是编写匿名函数的另一种方式，但它只在 tidyverse 函数内部有效，并且总是使用变量名 `.x`。我们现在推荐使用基础语法 `\(x) x + 1`。
+
+[^3]:
+    你目前无法更改列的顺序，但可以在事后使用 `relocate()` 或类似函数重新排序。
+
+[^4]:
+    也许有一天会有，但目前我们还没看到如何实现。
+
+[^5]:
+    如果你有一个包含相同格式的 csv 文件的目录，你可以使用 @sec-readr-directory 中的技术。
+
+[^6]:
+    我们不打算解释它是如何工作的，但如果你查看所用函数的文档，你应该能弄明白。
+
+[^7]:
+    你可以打印 `by_clarity$plot` 来获得一个粗略的动画——你会为 `plots` 的每个元素得到一个图。注意：这在我这里没有发生。

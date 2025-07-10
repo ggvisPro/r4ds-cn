@@ -1,40 +1,33 @@
-# Functions {#sec-functions}
+# 函数 {#sec-functions}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-One of the best ways to improve your reach as a data scientist is to write functions.
-Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting.
-Writing a function has four big advantages over using copy-and-paste:
+提升你作为数据科学家的影响力最好的方法之一就是编写函数。函数能让你以比复制粘贴更强大、更通用的方式自动化常见任务。与使用复制粘贴相比，编写函数有四大优势：
 
-1.  You can give a function an evocative name that makes your code easier to understand.
+1.  你可以给函数起一个富有表现力的名字，让你的代码更容易理解。
 
-2.  As requirements change, you only need to update code in one place, instead of many.
+2.  当需求变化时，你只需要在一个地方更新代码，而不是多处。
 
-3.  You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
+3.  你消除了在复制粘贴时犯下偶然错误的机会（例如，在一个地方更新了变量名，但在另一个地方没有）。
 
-4.  It makes it easier to reuse work from project-to-project, increasing your productivity over time.
+4.  它让你更容易在项目之间重用工作，随着时间的推移提高你的生产力。
 
-A good rule of thumb is to consider writing a function whenever you've copied and pasted a block of code more than twice (i.e. you now have three copies of the same code).
-In this chapter, you'll learn about three useful types of functions:
+一个好的经验法则是，当你复制粘贴一个代码块超过两次时（即你现在有三份相同的代码），就应该考虑编写一个函数。在本章中，你将学习三种有用的函数类型：
 
--   Vector functions take one or more vectors as input and return a vector as output.
--   Data frame functions take a data frame as input and return a data frame as output.
--   Plot functions that take a data frame as input and return a plot as output.
+  - 向量函数 (Vector functions) 将一个或多个向量作为输入，并返回一个向量作为输出。
+  - 数据框函数 (Data frame functions) 将一个数据框作为输入，并返回一个数据框作为输出。
+  - 绘图函数 (Plot functions) 将一个数据框作为输入，并返回一个图表作为输出。
 
-Each of these sections includes many examples to help you generalize the patterns that you see.
-These examples wouldn't be possible without the help of folks of twitter, and we encourage you to follow the links in the comments to see the original inspirations.
-You might also want to read the original motivating tweets for [general functions](https://twitter.com/hadleywickham/status/1571603361350164486) and [plotting functions](https://twitter.com/hadleywickham/status/1574373127349575680) to see even more functions.
+这些部分中的每一节都包含许多示例，以帮助你归纳所看到的模式。没有 Twitter 上朋友们的帮助，这些示例是不可能完成的。我们鼓励你点击注释中的链接，查看原始的灵感来源。你可能还想阅读关于[通用函数](https://twitter.com/hadleywickham/status/1571603361350164486)和[绘图函数](https://twitter.com/hadleywickham/status/1574373127349575680)的原始激励推文，以看到更多函数。
 
-### Prerequisites
+### 先决条件
 
-We'll wrap up a variety of functions from around the tidyverse.
-We'll also use nycflights13 as a source of familiar data to use our functions with.
+我们将封装来自 tidyverse 各处的多种函数。我们还将使用 nycflights13 作为熟悉的数据源来应用我们的函数。
 
 ```{r}
 #| message: false
@@ -42,11 +35,9 @@ library(tidyverse)
 library(nycflights13)
 ```
 
-## Vector functions
+## 向量函数
 
-We'll begin with vector functions: functions that take one or more vectors and return a vector result.
-For example, take a look at this code.
-What does it do?
+我们将从向量函数开始：即接收一个或多个向量并返回一个向量结果的函数。例如，看看这段代码。它做了什么？
 
 ```{r}
 df <- tibble(
@@ -68,15 +59,11 @@ df |> mutate(
 )
 ```
 
-You might be able to puzzle out that this rescales each column to have a range from 0 to 1.
-But did you spot the mistake?
-When Hadley wrote this code he made an error when copying-and-pasting and forgot to change an `a` to a `b`.
-Preventing this type of mistake is one very good reason to learn how to write functions.
+你也许能琢磨出这是在重新缩放每一列，使其范围从 0 到 1。但你发现错误了吗？Hadley 在写这段代码时，因为复制粘贴而犯了一个错误，忘记把一个 `a` 改成 `b`。防止这类错误是学习如何编写函数的一个非常好的理由。
 
-### Writing a function
+### 编写一个函数
 
-To write a function you need to first analyse your repeated code to figure what parts are constant and what parts vary.
-If we take the code above and pull it outside of `mutate()`, it's a little easier to see the pattern because each repetition is now one line:
+要编写一个函数，你首先需要分析你重复的代码，找出哪些部分是固定不变的，哪些部分是变化的。如果我们将上面的代码从 `mutate()` 中拿出来，模式会看得更清楚一些，因为现在每次重复都只有一行：
 
 ```{r}
 #| eval: false
@@ -86,26 +73,22 @@ If we take the code above and pull it outside of `mutate()`, it's a little easie
 (d - min(d, na.rm = TRUE)) / (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))  
 ```
 
-To make this a bit clearer we can replace the bit that varies with `█`:
+为了让这一点更清晰，我们可以用 `█` 替换变化的部分：
 
 ```{r}
 #| eval: false
 (█ - min(█, na.rm = TRUE)) / (max(█, na.rm = TRUE) - min(█, na.rm = TRUE))
 ```
 
-To turn this into a function you need three things:
+要把它变成一个函数，你需要三样东西：
 
-1.  A **name**.
-    Here we'll use `rescale01` because this function rescales a vector to lie between 0 and 1.
+1.  一个**名称** (name)。这里我们将使用 `rescale01`，因为这个函数将一个向量重新缩放到 0 和 1 之间。
 
-2.  The **arguments**.
-    The arguments are things that vary across calls and our analysis above tells us that we have just one.
-    We'll call it `x` because this is the conventional name for a numeric vector.
+2.  **参数** (arguments)。参数是在不同调用中变化的东西，我们上面的分析告诉我们只有一个。我们称之为 `x`，因为这是一个数值向量的常规名称。
 
-3.  The **body**.
-    The body is the code that's repeated across all the calls.
+3.  **函数体** (body)。函数体是在所有调用中重复的代码。
 
-Then you create a function by following the template:
+然后你按照模板创建一个函数：
 
 ```{r}
 name <- function(arguments) {
@@ -113,7 +96,7 @@ name <- function(arguments) {
 }
 ```
 
-For this case that leads to:
+对于这个例子，我们得到：
 
 ```{r}
 rescale01 <- function(x) {
@@ -121,14 +104,14 @@ rescale01 <- function(x) {
 }
 ```
 
-At this point you might test with a few simple inputs to make sure you've captured the logic correctly:
+此时，你可能会用一些简单的输入来测试，以确保你已经正确地捕捉到了逻辑：
 
 ```{r}
 rescale01(c(-10, 0, 10))
 rescale01(c(1, 2, 3, NA, 5))
 ```
 
-Then you can rewrite the call to `mutate()` as:
+然后你可以将对 `mutate()` 的调用重写为：
 
 ```{r}
 df |> mutate(
@@ -139,11 +122,11 @@ df |> mutate(
 )
 ```
 
-(In @sec-iteration, you'll learn how to use `across()` to reduce the duplication even further so all you need is `df |> mutate(across(a:d, rescale01))`).
+（在 [@sec-iteration] 中，你将学习如何使用 `across()` 来进一步减少重复，这样你只需要 `df |> mutate(across(a:d, rescale01))` 即可）。
 
-### Improving our function
+### 改进我们的函数
 
-You might notice that the `rescale01()` function does some unnecessary work --- instead of computing `min()` twice and `max()` once we could instead compute both the minimum and maximum in one step with `range()`:
+你可能会注意到 `rescale01()` 函数做了一些不必要的工作 --- 与其计算两次 `min()` 和一次 `max()`，我们不如用 `range()` 一步计算出最小值和最大值：
 
 ```{r}
 rescale01 <- function(x) {
@@ -152,14 +135,14 @@ rescale01 <- function(x) {
 }
 ```
 
-Or you might try this function on a vector that includes an infinite value:
+或者你可能在一个包含无限值的向量上尝试这个函数：
 
 ```{r}
 x <- c(1:10, Inf)
 rescale01(x)
 ```
 
-That result is not particularly useful so we could ask `range()` to ignore infinite values:
+这个结果不是特别有用，所以我们可以让 `range()` 忽略无限值：
 
 ```{r}
 rescale01 <- function(x) {
@@ -170,15 +153,13 @@ rescale01 <- function(x) {
 rescale01(x)
 ```
 
-These changes illustrate an important benefit of functions: because we've moved the repeated code into a function, we only need to make the change in one place.
+这些更改说明了函数的一个重要好处：因为我们已经将重复的代码移入一个函数中，我们只需要在一个地方进行更改。
 
-### Mutate functions
+### 修改函数 (Mutate functions)
 
-Now that you've got the basic idea of functions, let's take a look at a whole bunch of examples.
-We'll start by looking at "mutate" functions, i.e. functions that work well inside of `mutate()` and `filter()` because they return an output of the same length as the input.
+现在你已经掌握了函数的基本概念，让我们来看一大堆例子。我们将从“修改”函数开始，也就是那些在 `mutate()` 和 `filter()` 中工作得很好的函数，因为它们返回的输出与输入的长度相同。
 
-Let's start with a simple variation of `rescale01()`.
-Maybe you want to compute the Z-score, rescaling a vector to have a mean of zero and a standard deviation of one:
+让我们从 `rescale01()` 的一个简单变体开始。也许你想要计算 Z-score，将一个向量重新缩放，使其均值为零，标准差为一：
 
 ```{r}
 z_score <- function(x) {
@@ -186,8 +167,7 @@ z_score <- function(x) {
 }
 ```
 
-Or maybe you want to wrap up a straightforward `case_when()` and give it a useful name.
-For example, this `clamp()` function ensures all values of a vector lie in between a minimum or a maximum:
+或者你可能想把一个简单的 `case_when()` 包装起来，并给它一个有用的名字。例如，这个 `clamp()` 函数确保一个向量的所有值都位于一个最小值和一个最大值之间：
 
 ```{r}
 clamp <- function(x, min, max) {
@@ -201,9 +181,7 @@ clamp <- function(x, min, max) {
 clamp(1:10, min = 3, max = 7)
 ```
 
-Of course functions don't just need to work with numeric variables.
-You might want to do some repeated string manipulation.
-Maybe you need to make the first character upper case:
+当然，函数不一定只处理数值变量。你可能想做一些重复的字符串操作。也许你需要将第一个字符大写：
 
 ```{r}
 first_upper <- function(x) {
@@ -214,7 +192,7 @@ first_upper <- function(x) {
 first_upper("hello")
 ```
 
-Or maybe you want to strip percent signs, commas, and dollar signs from a string before converting it into a number:
+或者，你可能想在将字符串转换为数字之前，去掉百分号、逗号和美元符号：
 
 ```{r}
 # https://twitter.com/NVlabormarket/status/1571939851922198530
@@ -232,8 +210,7 @@ clean_number("$12,300")
 clean_number("45%")
 ```
 
-Sometimes your functions will be highly specialized for one data analysis step.
-For example, if you have a bunch of variables that record missing values as 997, 998, or 999, you might want to write a function to replace them with `NA`:
+有时你的函数会为一个数据分析步骤高度特化。例如，如果你有一堆变量将缺失值记录为 997、998 或 999，你可能想写一个函数将它们替换为 `NA`：
 
 ```{r}
 fix_na <- function(x) {
@@ -241,13 +218,11 @@ fix_na <- function(x) {
 }
 ```
 
-We've focused on examples that take a single vector because we think they're the most common.
-But there's no reason that your function can't take multiple vector inputs.
+我们专注于接收单个向量的例子，因为我们认为它们是最常见的。但是，你的函数没有理由不能接收多个向量输入。
 
-### Summary functions
+### 汇总函数 (Summary functions)
 
-Another important family of vector functions is summary functions, functions that return a single value for use in `summarize()`.
-Sometimes this can just be a matter of setting a default argument or two:
+另一类重要的向量函数是汇总函数，即返回单个值以在 `summarize()` 中使用的函数。有时这可能只是设置一两个默认参数的问题：
 
 ```{r}
 commas <- function(x) {
@@ -257,7 +232,7 @@ commas <- function(x) {
 commas(c("cat", "dog", "pigeon"))
 ```
 
-Or you might wrap up a simple computation, like for the coefficient of variation, which divides the standard deviation by the mean:
+或者你可能想封装一个简单的计算，比如变异系数，它用标准差除以均值：
 
 ```{r}
 cv <- function(x, na.rm = FALSE) {
@@ -268,7 +243,7 @@ cv(runif(100, min = 0, max = 50))
 cv(runif(100, min = 0, max = 500))
 ```
 
-Or maybe you just want to make a common pattern easier to remember by giving it a memorable name:
+或者你可能只是想通过给一个常见的模式起一个好记的名字来让它更容易记住：
 
 ```{r}
 # https://twitter.com/gbganalyst/status/1571619641390252033
@@ -277,8 +252,7 @@ n_missing <- function(x) {
 } 
 ```
 
-You can also write functions with multiple vector inputs.
-For example, maybe you want to compute the mean absolute percentage error to help you compare model predictions with actual values:
+你也可以编写具有多个向量输入的函数。例如，也许你想计算平均绝对百分比误差，以帮助你比较模型预测与实际值：
 
 ```{r}
 # https://twitter.com/neilgcurrie/status/1571607727255834625
@@ -288,22 +262,19 @@ mape <- function(actual, predicted) {
 ```
 
 ::: callout-note
+
 ## RStudio
 
-Once you start writing functions, there are two RStudio shortcuts that are super useful:
+一旦你开始编写函数，有两个 RStudio 快捷键非常有用：
 
--   To find the definition of a function that you've written, place the cursor on the name of the function and press `F2`.
+  - 要找到你编写的函数的定义，将光标放在函数名上，然后按 `F2`。
 
--   To quickly jump to a function, press `Ctrl + .` to open the fuzzy file and function finder and type the first few letters of your function name.
-    You can also navigate to files, Quarto sections, and more, making it a very handy navigation tool.
-:::
+  - 要快速跳转到一个函数，按 `Ctrl + .` 打开模糊文件和函数查找器，然后输入你的函数名的前几个字母。你还可以导航到文件、Quarto 章节等，使其成为一个非常方便的导航工具。
+    :::
 
-### Exercises
+### 练习
 
-1.  Practice turning the following code snippets into functions.
-    Think about what each function does.
-    What would you call it?
-    How many arguments does it need?
+1.  练习将以下代码片段转化为函数。思考每个函数的作用。你会怎么称呼它？它需要多少个参数？
 
     ```{r}
     #| eval: false
@@ -320,18 +291,15 @@ Once you start writing functions, there are two RStudio shortcuts that are super
     round(z / sum(z, na.rm = TRUE) * 100, 1)
     ```
 
-2.  In the second variant of `rescale01()`, infinite values are left unchanged.
-    Can you rewrite `rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1?
+2.  在 `rescale01()` 的第二个变体中，无限值保持不变。你能重写 `rescale01()`，使得 `-Inf` 被映射到 0，而 `Inf` 被映射到 1 吗？
 
-3.  Given a vector of birthdates, write a function to compute the age in years.
+3.  给定一个出生日期的向量，编写一个函数来计算以年为单位的年龄。
 
-4.  Write your own functions to compute the variance and skewness of a numeric vector.
-    You can look up the definitions on Wikipedia or elsewhere.
+4.  编写你自己的函数来计算数值向量的方差和偏度。你可以在维基百科或其他地方查找定义。
 
-5.  Write `both_na()`, a summary function that takes two vectors of the same length and returns the number of positions that have an `NA` in both vectors.
+5.  编写 `both_na()`，一个汇总函数，它接收两个相同长度的向量，并返回两个向量中都为 `NA` 的位置数量。
 
-6.  Read the documentation to figure out what the following functions do.
-    Why are they useful even though they are so short?
+6.  阅读文档，找出以下函数的作用。为什么尽管它们如此简短，却仍然有用？
 
     ```{r}
     is_directory <- function(x) {
@@ -342,21 +310,15 @@ Once you start writing functions, there are two RStudio shortcuts that are super
     }
     ```
 
-## Data frame functions
+## 数据框函数
 
-Vector functions are useful for pulling out code that's repeated within a dplyr verb.
-But you'll often also repeat the verbs themselves, particularly within a large pipeline.
-When you notice yourself copying and pasting multiple verbs multiple times, you might think about writing a data frame function.
-Data frame functions work like dplyr verbs: they take a data frame as the first argument, some extra arguments that say what to do with it, and return a data frame or a vector.
+向量函数对于提取在 dplyr 动词内部重复的代码很有用。但是你通常也会重复动词本身，尤其是在一个大型的管道中。当你注意到自己多次复制粘贴多个动词时，你可能会考虑编写一个数据框函数。数据框函数的工作方式类似于 dplyr 动词：它们接收一个数据框作为第一个参数，一些额外的参数来说明如何处理它，并返回一个数据框或一个向量。
 
-To let you write a function that uses dplyr verbs, we'll first introduce you to the challenge of indirection and how you can overcome it with embracing, `{{{ }}}`.
-With this theory under your belt, we'll then show you a bunch of examples to illustrate what you might do with it.
+为了让你能够编写使用 dplyr 动词的函数，我们首先向你介绍间接引用 (indirection) 的挑战，以及如何通过拥抱 (embracing) `{{{ }}}` 来克服它。掌握了这个理论之后，我们将向你展示一大堆例子，来说明你可以用它做什么。
 
-### Indirection and tidy evaluation
+### 间接引用和整洁评估 (tidy evaluation)
 
-When you start writing functions that use dplyr verbs you rapidly hit the problem of indirection.
-Let's illustrate the problem with a very simple function: `grouped_mean()`.
-The goal of this function is to compute the mean of `mean_var` grouped by `group_var`:
+当你开始编写使用 dplyr 动词的函数时，你很快就会遇到间接引用的问题。让我们用一个非常简单的函数 `grouped_mean()` 来说明这个问题。这个函数的目的是计算按 `group_var` 分组的 `mean_var` 的均值：
 
 ```{r}
 grouped_mean <- function(df, group_var, mean_var) {
@@ -366,14 +328,14 @@ grouped_mean <- function(df, group_var, mean_var) {
 }
 ```
 
-If we try and use it, we get an error:
+如果我们尝试使用它，我们会得到一个错误：
 
 ```{r}
 #| error: true
 diamonds |> grouped_mean(cut, carat)
 ```
 
-To make the problem a bit more clear, we can use a made up data frame:
+为了让问题更清楚一点，我们可以使用一个虚构的数据框：
 
 ```{r}
 df <- tibble(
@@ -388,19 +350,13 @@ df |> grouped_mean(group, x)
 df |> grouped_mean(group, y)
 ```
 
-Regardless of how we call `grouped_mean()` it always does `df |> group_by(group_var) |> summarize(mean(mean_var))`, instead of `df |> group_by(group) |> summarize(mean(x))` or `df |> group_by(group) |> summarize(mean(y))`.
-This is a problem of indirection, and it arises because dplyr uses **tidy evaluation** to allow you to refer to the names of variables inside your data frame without any special treatment.
+无论我们如何调用 `grouped_mean()`，它总是执行 `df |> group_by(group_var) |> summarize(mean(mean_var))`，而不是 `df |> group_by(group) |> summarize(mean(x))` 或 `df |> group_by(group) |> summarize(mean(y))`。这是一个间接引用的问题，它之所以出现，是因为 dplyr 使用**整洁评估** (tidy evaluation) 来允许你引用数据框内的变量名而无需任何特殊处理。
 
-Tidy evaluation is great 95% of the time because it makes your data analyses very concise as you never have to say which data frame a variable comes from; it's obvious from the context.
-The downside of tidy evaluation comes when we want to wrap up repeated tidyverse code into a function.
-Here we need some way to tell `group_by()` and `summarize()` not to treat `group_var` and `mean_var` as the name of the variables, but instead look inside them for the variable we actually want to use.
+整洁评估在 95% 的情况下都很棒，因为它使你的数据分析非常简洁，你永远不必说一个变量来自哪个数据框；从上下文中看这是显而易见的。整洁评估的缺点在于，当我们想将重复的 tidyverse 代码包装成一个函数时。在这里，我们需要一种方法来告诉 `group_by()` 和 `summarize()` 不要将 `group_var` 和 `mean_var` 视为变量的名称，而是查看它们内部以找到我们实际想要使用的变量。
 
-Tidy evaluation includes a solution to this problem called **embracing** 🤗.
-Embracing a variable means to wrap it in braces so (e.g.) `var` becomes `{{{ var }}}`.
-Embracing a variable tells dplyr to use the value stored inside the argument, not the argument as the literal variable name.
-One way to remember what's happening is to think of `{{{ }}}` as looking down a tunnel --- `{{{ var }}}` will make a dplyr function look inside of `var` rather than looking for a variable called `var`.
+整洁评估包含一个解决这个问题的方案，叫做**拥抱** (embracing) 🤗。拥抱一个变量意味着用大括号将其包裹起来，所以（例如）`var` 变成了 `{{{ var }}}`。拥抱一个变量告诉 dplyr 使用存储在参数内部的值，而不是将参数作为字面上的变量名。记住正在发生什么的一种方法是将 `{{{ }}}` 想象成看向一个隧道 --- `{{{ var }}}` 会让一个 dplyr 函数看向 `var` 的内部，而不是寻找一个名为 `var` 的变量。
 
-So to make `grouped_mean()` work, we need to surround `group_var` and `mean_var` with `{{{ }}}`:
+所以为了让 `grouped_mean()` 工作，我们需要用 `{{{ }}}` 包围 `group_var` 和 `mean_var`：
 
 ```{r}
 grouped_mean <- function(df, group_var, mean_var) {
@@ -412,25 +368,23 @@ grouped_mean <- function(df, group_var, mean_var) {
 df |> grouped_mean(group, x)
 ```
 
-Success!
+成功了！
 
-### When to embrace? {#sec-embracing}
+### 何时拥抱？ {#sec-embracing}
 
-So the key challenge in writing data frame functions is figuring out which arguments need to be embraced.
-Fortunately, this is easy because you can look it up from the documentation 😄.
-There are two terms to look for in the docs which correspond to the two most common sub-types of tidy evaluation:
+因此，编写数据框函数的主要挑战是弄清楚哪些参数需要被拥抱。幸运的是，这很容易，因为你可以从文档中查到 😄。在文档中有两个术语需要注意，它们对应于整洁评估的两个最常见的子类型：
 
--   **Data-masking**: this is used in functions like `arrange()`, `filter()`, and `summarize()` that compute with variables.
+  - **数据掩码** (Data-masking)：用于像 `arrange()`、`filter()` 和 `summarize()` 这样用变量进行计算的函数。
 
--   **Tidy-selection**: this is used for functions like `select()`, `relocate()`, and `rename()` that select variables.
+  - **整洁选择** (Tidy-selection)：用于像 `select()`、`relocate()` 和 `rename()` 这样选择变量的函数。
 
-Your intuition about which arguments use tidy evaluation should be good for many common functions --- just think about whether you can compute (e.g., `x + 1`) or select (e.g., `a:x`).
+对于许多常见的函数，你关于哪些参数使用整洁评估的直觉应该是好的 --- 只要想一想你是否可以计算（例如 `x + 1`）或选择（例如 `a:x`）。
 
-In the following sections, we'll explore the sorts of handy functions you might write once you understand embracing.
+在接下来的部分中，我们将探讨一旦你理解了拥抱，你可能会编写的各种方便的函数。
 
-### Common use cases
+### 常见用例
 
-If you commonly perform the same set of summaries when doing initial data exploration, you might consider wrapping them up in a helper function:
+如果你在进行初步数据探索时经常执行相同的汇总集，你可能会考虑将它们包装在一个辅助函数中：
 
 ```{r}
 summary6 <- function(data, var) {
@@ -448,9 +402,9 @@ summary6 <- function(data, var) {
 diamonds |> summary6(carat)
 ```
 
-(Whenever you wrap `summarize()` in a helper, we think it's good practice to set `.groups = "drop"` to both avoid the message and leave the data in an ungrouped state.)
+（每当你将 `summarize()` 包装在辅助函数中时，我们认为设置 `.groups = "drop"` 是一个好习惯，这样既可以避免消息，又可以让数据处于未分组状态。）
 
-The nice thing about this function is, because it wraps `summarize()`, you can use it on grouped data:
+这个函数的好处是，因为它包装了 `summarize()`，你可以在分组数据上使用它：
 
 ```{r}
 diamonds |> 
@@ -458,8 +412,7 @@ diamonds |>
   summary6(carat)
 ```
 
-Furthermore, since the arguments to summarize are data-masking, so is the `var` argument to `summary6()`.
-That means you can also summarize computed variables:
+此外，由于 `summarize` 的参数是数据掩码，`summary6()` 的 `var` 参数也是如此。这意味着你也可以对计算出的变量进行汇总：
 
 ```{r}
 diamonds |> 
@@ -467,9 +420,9 @@ diamonds |>
   summary6(log10(carat))
 ```
 
-To summarize multiple variables, you'll need to wait until @sec-across, where you'll learn how to use `across()`.
+要汇总多个变量，你需要等到 [@sec-across]，在那里你将学习如何使用 `across()`。
 
-Another popular `summarize()` helper function is a version of `count()` that also computes proportions:
+另一个流行的 `summarize()` 辅助函数是一个版本的 `count()`，它也计算比例：
 
 ```{r}
 # https://twitter.com/Diabb6/status/1571635146658402309
@@ -482,11 +435,9 @@ count_prop <- function(df, var, sort = FALSE) {
 diamonds |> count_prop(clarity)
 ```
 
-This function has three arguments: `df`, `var`, and `sort`, and only `var` needs to be embraced because it's passed to `count()` which uses data-masking for all variables.
-Note that we use a default value for `sort` so that if the user doesn't supply their own value it will default to `FALSE`.
+这个函数有三个参数：`df`、`var` 和 `sort`，只有 `var` 需要被拥抱，因为它被传递给了 `count()`，而 `count()` 对所有变量都使用数据掩码。请注意，我们为 `sort` 使用了一个默认值，这样如果用户不提供自己的值，它将默认为 `FALSE`。
 
-Or maybe you want to find the sorted unique values of a variable for a subset of the data.
-Rather than supplying a variable and a value to do the filtering, we'll allow the user to supply a condition:
+或者，你可能想为数据的子集找到一个变量的已排序唯一值。与其提供一个变量和一个值来进行过滤，我们将允许用户提供一个条件：
 
 ```{r}
 unique_where <- function(df, condition, var) {
@@ -496,14 +447,13 @@ unique_where <- function(df, condition, var) {
     arrange({{ var }})
 }
 
-# Find all the destinations in December
+# 查找十二月份的所有目的地
 flights |> unique_where(month == 12, dest)
 ```
 
-Here we embrace `condition` because it's passed to `filter()` and `var` because it's passed to `distinct()` and `arrange()`.
+这里我们拥抱 `condition` 是因为它被传递给了 `filter()`，拥抱 `var` 是因为它被传递给了 `distinct()` 和 `arrange()`。
 
-We've made all these examples to take a data frame as the first argument, but if you're working repeatedly with the same data, it can make sense to hardcode it.
-For example, the following function always works with the flights dataset and always selects `time_hour`, `carrier`, and `flight` since they form the compound primary key that allows you to identify a row.
+我们已经将所有这些例子都设置为接收一个数据框作为第一个参数，但如果你反复使用相同的数据，硬编码它可能是有意义的。例如，下面的函数总是与 `flights` 数据集一起工作，并且总是选择 `time_hour`、`carrier` 和 `flight`，因为它们构成了允许你识别一行的复合主键。
 
 ```{r}
 subset_flights <- function(rows, cols) {
@@ -513,11 +463,9 @@ subset_flights <- function(rows, cols) {
 }
 ```
 
-### Data-masking vs. tidy-selection
+### 数据掩码 vs. 整洁选择
 
-Sometimes you want to select variables inside a function that uses data-masking.
-For example, imagine you want to write a `count_missing()` that counts the number of missing observations in rows.
-You might try writing something like:
+有时你想在一个使用数据掩码的函数内部选择变量。例如，假设你想编写一个 `count_missing()` 来计算行中缺失观测值的数量。你可能会尝试写成这样：
 
 ```{r}
 #| error: true
@@ -534,8 +482,7 @@ flights |>
   count_missing(c(year, month, day), dep_time)
 ```
 
-This doesn't work because `group_by()` uses data-masking, not tidy-selection.
-We can work around that problem by using the handy `pick()` function, which allows you to use tidy-selection inside data-masking functions:
+这行不通，因为 `group_by()` 使用的是数据掩码，而不是整洁选择。我们可以通过使用方便的 `pick()` 函数来解决这个问题，它允许你在数据掩码函数内部使用整洁选择：
 
 ```{r}
 count_missing <- function(df, group_vars, x_var) {
@@ -544,15 +491,14 @@ count_missing <- function(df, group_vars, x_var) {
     summarize(
       n_miss = sum(is.na({{ x_var }})),
       .groups = "drop"
-  )
+    )
 }
 
 flights |> 
   count_missing(c(year, month, day), dep_time)
 ```
 
-Another convenient use of `pick()` is to make a 2d table of counts.
-Here we count using all the variables in the `rows` and `columns`, then use `pivot_wider()` to rearrange the counts into a grid:
+`pick()` 的另一个方便用途是制作一个二维的计数表。这里我们使用 `rows` 和 `columns` 中的所有变量进行计数，然后使用 `pivot_wider()` 将计数重新排列成一个网格：
 
 ```{r}
 # https://twitter.com/pollicipes/status/1571606508944719876
@@ -570,50 +516,50 @@ count_wide <- function(data, rows, cols) {
 diamonds |> count_wide(c(clarity, color), cut)
 ```
 
-While our examples have mostly focused on dplyr, tidy evaluation also underpins tidyr, and if you look at the `pivot_wider()` docs you can see that `names_from` uses tidy-selection.
+虽然我们的例子主要集中在 dplyr 上，但整洁评估也支撑着 tidyr，如果你查看 `pivot_wider()` 的文档，你会看到 `names_from` 使用了整洁选择。
 
-### Exercises
+### 练习
 
-1.  Using the datasets from nycflights13, write a function that:
+1.  使用 nycflights13 的数据集，编写一个函数：
 
-    1.  Finds all flights that were cancelled (i.e. `is.na(arr_time)`) or delayed by more than an hour.
+    1.  找到所有被取消（即 `is.na(arr_time)`）或延误超过一小时的航班。
 
         ```{r}
         #| eval: false
         flights |> filter_severe()
         ```
 
-    2.  Counts the number of cancelled flights and the number of flights delayed by more than an hour.
+    2.  计算被取消的航班数量和延误超过一小时的航班数量。
 
         ```{r}
         #| eval: false
         flights |> group_by(dest) |> summarize_severe()
         ```
 
-    3.  Finds all flights that were cancelled or delayed by more than a user supplied number of hours:
+    3.  找到所有被取消或延误超过用户提供的小时数的航班：
 
         ```{r}
         #| eval: false
         flights |> filter_severe(hours = 2)
         ```
 
-    4.  Summarizes the weather to compute the minimum, mean, and maximum, of a user supplied variable:
+    4.  总结天气，计算用户提供的变量的最小值、平均值和最大值：
 
         ```{r}
         #| eval: false
         weather |> summarize_weather(temp)
         ```
 
-    5.  Converts the user supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into a decimal time (i.e. hours + (minutes / 60)).
+    5.  将用户提供的、使用时钟时间（例如 `dep_time`、`arr_time` 等）的变量转换为十进制时间（即 小时 + (分钟 / 60)）。
 
         ```{r}
         #| eval: false
         flights |> standardize_time(sched_dep_time)
         ```
 
-2.  For each of the following functions list all arguments that use tidy evaluation and describe whether they use data-masking or tidy-selection: `distinct()`, `count()`, `group_by()`, `rename_with()`, `slice_min()`, `slice_sample()`.
+2.  对于以下每个函数，列出所有使用整洁评估的参数，并描述它们是使用数据掩码还是整洁选择：`distinct()`、`count()`、`group_by()`、`rename_with()`、`slice_min()`、`slice_sample()`。
 
-3.  Generalize the following function so that you can supply any number of variables to count.
+3.  泛化以下函数，以便你可以提供任意数量的变量进行计数。
 
     ```{r}
     count_prop <- function(df, var, sort = FALSE) {
@@ -623,11 +569,9 @@ While our examples have mostly focused on dplyr, tidy evaluation also underpins 
     }
     ```
 
-## Plot functions
+## 绘图函数
 
-Instead of returning a data frame, you might want to return a plot.
-Fortunately, you can use the same techniques with ggplot2, because `aes()` is a data-masking function.
-For example, imagine that you're making a lot of histograms:
+你可能不想返回一个数据框，而是想返回一个图。幸运的是，你可以在 ggplot2 中使用相同的技术，因为 `aes()` 是一个数据掩码函数。例如，假设你正在制作大量的直方图：
 
 ```{r}
 #| fig-show: hide
@@ -640,13 +584,12 @@ diamonds |>
   geom_histogram(binwidth = 0.05)
 ```
 
-Wouldn't it be nice if you could wrap this up into a histogram function?
-This is easy as pie once you know that `aes()` is a data-masking function and you need to embrace:
+如果你能把这个包装成一个直方图函数，那不是很好吗？一旦你知道 `aes()` 是一个数据掩码函数并且你需要使用拥抱，这就易如反掌了：
 
 ```{r}
 #| fig-alt: |
-#|   A histogram of carats of diamonds, ranging from 0 to 5, showing a unimodal, 
-#|   right-skewed distribution with a peak between 0 to 1 carats.
+#|   钻石克拉数的直方图，范围从 0 到 5，显示了一个单峰、
+#|   右偏的分布，峰值在 0 到 1 克拉之间。
 histogram <- function(df, var, binwidth = NULL) {
   df |> 
     ggplot(aes(x = {{ var }})) + 
@@ -656,26 +599,23 @@ histogram <- function(df, var, binwidth = NULL) {
 diamonds |> histogram(carat, 0.1)
 ```
 
-Note that `histogram()` returns a ggplot2 plot, meaning you can still add on additional components if you want.
-Just remember to switch from `|>` to `+`:
+注意，`histogram()` 返回一个 ggplot2 图，这意味着你仍然可以根据需要添加额外的组件。只需记住从 `|>` 切换到 `+`：
 
 ```{r}
 #| fig.show: hide
 diamonds |> 
   histogram(carat, 0.1) +
-  labs(x = "Size (in carats)", y = "Number of diamonds")
+  labs(x = "大小 (克拉)", y = "钻石数量")
 ```
 
-### More variables
+### 更多变量
 
-It's straightforward to add more variables to the mix.
-For example, maybe you want an easy way to eyeball whether or not a dataset is linear by overlaying a smooth line and a straight line:
+在组合中添加更多变量是很直接的。例如，也许你想要一个简单的方法来目测一个数据集是否是线性的，方法是覆盖一条平滑线和一条直线：
 
 ```{r}
 #| fig-alt: |
-#|   Scatterplot of height vs. mass of StarWars characters showing a positive 
-#|   relationship. A smooth curve of the relationship is plotted in red, and 
-#|   the best fit line is ploted in blue.
+#|   星球大战角色身高与体重的散点图，显示出正相关关系。
+#|   关系的平滑曲线用红色绘制，最佳拟合线用蓝色绘制。
 # https://twitter.com/tyler_js_smith/status/1574377116988104704
 linearity_check <- function(df, x, y) {
   df |>
@@ -690,18 +630,18 @@ starwars |>
   linearity_check(mass, height)
 ```
 
-Or maybe you want an alternative to colored scatterplots for very large datasets where overplotting is a problem:
+或者，对于点重叠严重的大型数据集，你可能想要一种替代彩色散点图的方法：
 
 ```{r}
 #| fig-alt: |
-#|   Hex plot of price vs. carat of diamonds showing a positive relationship. 
-#|   There are more diamonds that are less than 2 carats than more than 2 carats.
+#|   钻石价格与克拉数的六边形图，显示出正相关关系。
+#|   小于 2 克拉的钻石比大于 2 克拉的要多。
 # https://twitter.com/ppaxisa/status/1574398423175921665
 hex_plot <- function(df, x, y, z, bins = 20, fun = "mean") {
   df |> 
     ggplot(aes(x = {{ x }}, y = {{ y }}, z = {{ z }})) + 
     stat_summary_hex(
-      aes(color = after_scale(fill)), # make border same color as fill
+      aes(color = after_scale(fill)), # 使边框颜色与填充色相同
       bins = bins, 
       fun = fun,
     )
@@ -710,17 +650,14 @@ hex_plot <- function(df, x, y, z, bins = 20, fun = "mean") {
 diamonds |> hex_plot(carat, price, depth)
 ```
 
-### Combining with other tidyverse
+### 与其他 tidyverse 函数结合
 
-Some of the most useful helpers combine a dash of data manipulation with ggplot2.
-For example, if you might want to do a vertical bar chart where you automatically sort the bars in frequency order using `fct_infreq()`.
-Since the bar chart is vertical, we also need to reverse the usual order to get the highest values at the top:
+一些最有用的辅助函数结合了少量的数据操作和 ggplot2。例如，你可能想做一个垂直条形图，其中你使用 `fct_infreq()` 自动按频率顺序对条形进行排序。由于条形图是垂直的，我们还需要反转通常的顺序，以使最高的值在顶部：
 
 ```{r}
 #| fig-alt: |
-#|   Bar plot of clarify of diamonds, where clarity is on the y-axis and counts 
-#|   are on the x-axis, and the bars are ordered in order of frequency: SI1, 
-#|   VS2, SI2, VS1, VVS2, VVS1, IF, I1.
+#|   钻石净度的条形图，其中净度在 y 轴上，计数在 x 轴上，
+#|   条形按频率排序：SI1、VS2、SI2、VS1、VVS2、VVS1、IF、I1。
 sorted_bars <- function(df, var) {
   df |> 
     mutate({{ var }} := fct_rev(fct_infreq({{ var }})))  |>
@@ -731,16 +668,14 @@ sorted_bars <- function(df, var) {
 diamonds |> sorted_bars(clarity)
 ```
 
-We have to use a new operator here, `:=` (commonly referred to as the "walrus operator"), because we are generating the variable name based on user-supplied data.
-Variable names go on the left hand side of `=`, but R's syntax doesn't allow anything to the left of `=` except for a single literal name.
-To work around this problem, we use the special operator `:=` which tidy evaluation treats in exactly the same way as `=`.
+我们在这里必须使用一个新的操作符 `:=`（通常被称为“海象操作符”），因为我们正在根据用户提供的数据生成变量名。变量名位于 `=` 的左侧，但 R 的语法不允许在 `=` 的左侧有除了单个字面名称之外的任何东西。为了解决这个问题，我们使用特殊的操作符 `:=`，整洁评估会将其与 `=` 完全相同地处理。
 
-Or maybe you want to make it easy to draw a bar plot just for a subset of the data:
+或者，你可能想让为数据的子集绘制条形图变得容易：
 
 ```{r}
 #| fig-alt: |
-#|   Bar plot of clarity of diamonds. The most common is SI1, then SI2, then 
-#|   VS2, then VS1, then VVS2, then VVS1, then I1, then lastly IF.
+#|   钻石净度的条形图。最常见的是 SI1，然后是 SI2，然后是
+#|   VS2，然后是 VS1，然后是 VVS2，然后是 VVS1，然后是 I1，最后是 IF。
 conditional_bars <- function(df, condition, var) {
   df |> 
     filter({{ condition }}) |> 
@@ -751,15 +686,13 @@ conditional_bars <- function(df, condition, var) {
 diamonds |> conditional_bars(cut == "Good", clarity)
 ```
 
-You can also get creative and display data summaries in other ways.
-You can find a cool application at <https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b>; it uses the axis labels to display the highest value.
-As you learn more about ggplot2, the power of your functions will continue to increase.
+你也可以发挥创意，用其他方式展示数据摘要。你可以在 [https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b](https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b) 找到一个很酷的应用；它使用轴标签来显示最高值。随着你对 ggplot2 的了解越来越多，你的函数的功能将继续增强。
 
-We'll finish with a more complicated case: labelling the plots you create.
+我们将以一个更复杂的案例结束：为你创建的图表添加标签。
 
-### Labeling
+### 添加标签
 
-Remember the histogram function we showed you earlier?
+还记得我们之前给你展示的直方图函数吗？
 
 ```{r}
 histogram <- function(df, var, binwidth = NULL) {
@@ -769,18 +702,14 @@ histogram <- function(df, var, binwidth = NULL) {
 }
 ```
 
-Wouldn't it be nice if we could label the output with the variable and the bin width that was used?
-To do so, we're going to have to go under the covers of tidy evaluation and use a function from the package we haven't talked about yet: rlang.
-rlang is a low-level package that's used by just about every other package in the tidyverse because it implements tidy evaluation (as well as many other useful tools).
+如果我们能用所使用的变量和箱宽来标记输出，那不是很好吗？为此，我们将不得不深入了解整洁评估的内部，并使用一个我们尚未谈及的包中的函数：rlang。rlang 是一个底层包，几乎 tidyverse 中的所有其他包都使用它，因为它实现了整洁评估（以及许多其他有用的工具）。
 
-To solve the labeling problem we can use `rlang::englue()`.
-This works similarly to `str_glue()`, so any value wrapped in `{ }` will be inserted into the string.
-But it also understands `{{{ }}}`, which automatically inserts the appropriate variable name:
+为了解决标签问题，我们可以使用 `rlang::englue()`。这与 `str_glue()` 的工作方式类似，所以任何用 `{ }` 包装的值都将被插入到字符串中。但它也理解 `{{{ }}}`，它会自动插入适当的变量名：
 
 ```{r}
 #| fig-alt: |
-#|   Histogram of carats of diamonds, ranging from 0 to 5. The distribution is 
-#|   unimodal and right skewed with a peak between 0 to 1 carats.
+#|   钻石克拉数的直方图，范围从 0 到 5。分布是单峰且右偏的，
+#|   峰值在 0 到 1 克拉之间。
 histogram <- function(df, var, binwidth) {
   label <- rlang::englue("A histogram of {{var}} with binwidth {binwidth}")
   
@@ -793,49 +722,41 @@ histogram <- function(df, var, binwidth) {
 diamonds |> histogram(carat, 0.1)
 ```
 
-You can use the same approach in any other place where you want to supply a string in a ggplot2 plot.
+你可以在任何其他想要在 ggplot2 图中提供字符串的地方使用相同的方法。
 
-### Exercises
+### 练习
 
-Build up a rich plotting function by incrementally implementing each of the steps below:
+通过逐步实现以下每个步骤，构建一个丰富的绘图函数：
 
-1.  Draw a scatterplot given dataset and `x` and `y` variables.
+1.  给定数据集以及 `x` 和 `y` 变量，绘制一个散点图。
 
-2.  Add a line of best fit (i.e. a linear model with no standard errors).
+2.  添加一条最佳拟合线（即没有标准误差的线性模型）。
 
-3.  Add a title.
+3.  添加一个标题。
 
-## Style
+## 风格
 
-R doesn't care what your function or arguments are called but the names make a big difference for humans.
-Ideally, the name of your function will be short, but clearly evoke what the function does.
-That's hard!
-But it's better to be clear than short, as RStudio's autocomplete makes it easy to type long names.
+R 不关心你的函数或参数叫什么名字，但这些名字对人类来说有很大的不同。理想情况下，你的函数名应该简短，但能清楚地唤起函数的作用。这很难！但清晰比简短更好，因为 RStudio 的自动完成功能使得输入长名称变得容易。
 
-Generally, function names should be verbs, and arguments should be nouns.
-There are some exceptions: nouns are ok if the function computes a very well known noun (i.e. `mean()` is better than `compute_mean()`), or accessing some property of an object (i.e. `coef()` is better than `get_coefficients()`).
-Use your best judgement and don't be afraid to rename a function if you figure out a better name later.
+通常，函数名应该是动词，参数应该是名词。也有一些例外：如果函数计算一个非常著名的名词（即 `mean()` 比 `compute_mean()` 好），或者访问对象的某个属性（即 `coef()` 比 `get_coefficients()` 好），那么名词是可以的。运用你的最佳判断，如果你后来想到了更好的名字，不要害怕重命名函数。
 
 ```{r}
 #| eval: false
-# Too short
+# 太短
 f()
 
-# Not a verb, or descriptive
+# 不是动词，或不具描述性
 my_awesome_function()
 
-# Long, but clear
+# 长，但清晰
 impute_missing()
 collapse_years()
 ```
 
-R also doesn't care about how you use white space in your functions but future readers will.
-Continue to follow the rules from @sec-workflow-style.
-Additionally, `function()` should always be followed by squiggly brackets (`{}`), and the contents should be indented by an additional two spaces.
-This makes it easier to see the hierarchy in your code by skimming the left-hand margin.
+R 也不关心你在函数中如何使用空格，但未来的读者会。继续遵循 [@sec-workflow-style] 中的规则。此外，`function()` 后面应该总是跟着花括号 (`{}`)，并且内容应该额外缩进两个空格。这样通过浏览左边距，可以更容易地看到代码的层次结构。
 
 ```{r}
-# Missing extra two spaces
+# 缺少额外的两个空格
 density <- function(color, facets, binwidth = 0.1) {
 diamonds |> 
   ggplot(aes(x = carat, y = after_stat(density), color = {{ color }})) +
@@ -843,7 +764,7 @@ diamonds |>
   facet_wrap(vars({{ facets }}))
 }
 
-# Pipe indented incorrectly
+# 管道缩进不正确
 density <- function(color, facets, binwidth = 0.1) {
   diamonds |> 
   ggplot(aes(x = carat, y = after_stat(density), color = {{ color }})) +
@@ -852,12 +773,11 @@ density <- function(color, facets, binwidth = 0.1) {
 }
 ```
 
-As you can see we recommend putting extra spaces inside of `{{{ }}}`.
-This makes it very obvious that something unusual is happening.
+如你所见，我们建议在 `{{{ }}}` 内部留出额外的空格。这使得非常明显地看出有不寻常的事情正在发生。
 
-### Exercises
+### 练习
 
-1.  Read the source code for each of the following two functions, puzzle out what they do, and then brainstorm better names.
+1.  阅读以下两个函数的源代码，弄清楚它们的作用，然后集思广益想出更好的名字。
 
     ```{r}
     f1 <- function(string, prefix) {
@@ -869,22 +789,18 @@ This makes it very obvious that something unusual is happening.
     }
     ```
 
-2.  Take a function that you've written recently and spend 5 minutes brainstorming a better name for it and its arguments.
+2.  拿一个你最近写的函数，花 5 分钟为它和它的参数想一个更好的名字。
 
-3.  Make a case for why `norm_r()`, `norm_d()` etc. would be better than `rnorm()`, `dnorm()`.
-    Make a case for the opposite.
-    How could you make the names even clearer?
+3.  为 `norm_r()`、`norm_d()` 等比 `rnorm()`、`dnorm()` 更好提出理由。再为相反的观点提出理由。你如何能让名字更清晰？
 
-## Summary
+## 总结
 
-In this chapter, you learned how to write functions for three useful scenarios: creating a vector, creating a data frame, or creating a plot.
-Along the way you saw many examples, which hopefully started to get your creative juices flowing, and gave you some ideas for where functions might help your analysis code.
+在本章中，你学习了如何为三种有用的场景编写函数：创建一个向量、一个数据框或一个图。在此过程中，你看到了许多例子，希望这些例子能激发你的创造力，并为你提供一些关于函数如何帮助你进行分析代码的想法。
 
-We have only shown you the bare minimum to get started with functions and there's much more to learn.
-A few places to learn more are:
+我们只向你展示了函数入门的最低要求，还有很多东西需要学习。以下是一些可以了解更多信息的地方：
 
--   To learn more about programming with tidy evaluation, see useful recipes in [programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html) and [programming with tidyr](https://tidyr.tidyverse.org/articles/programming.html) and learn more about the theory in [What is data-masking and why do I need {{?](https://rlang.r-lib.org/reference/topic-data-mask.html).
--   To learn more about reducing duplication in your ggplot2 code, read the [Programming with ggplot2](https://ggplot2-book.org/programming.html){.uri} chapter of the ggplot2 book.
--   For more advice on function style, see the [tidyverse style guide](https://style.tidyverse.org/functions.html){.uri}.
+  - 要了解更多关于使用整洁评估进行编程的信息，请参阅[使用 dplyr 编程](https://dplyr.tidyverse.org/articles/programming.html)和[使用 tidyr 编程](https://tidyr.tidyverse.org/articles/programming.html)中的有用秘诀，并在[什么是数据掩码，为什么我需要 {{?](https://rlang.r-lib.org/reference/topic-data-mask.html) 中了解更多理论。
+  - 要了解更多关于减少 ggplot2 代码中重复的信息，请阅读 ggplot2 书中的[使用 ggplot2 编程](https://ggplot2-book.org/programming.html){.uri}一章。
+  - 有关函数风格的更多建议，请参阅 [tidyverse 风格指南](https://style.tidyverse.org/functions.html){.uri}。
 
-In the next chapter, we'll dive into iteration which gives you further tools for reducing code duplication.
+在下一章中，我们将深入探讨迭代，它为你提供了进一步减少代码重复的工具。

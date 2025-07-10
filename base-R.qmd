@@ -1,31 +1,30 @@
-# A field guide to base R {#sec-base-r}
+# Base R 实战指南 {#sec-base-r}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-To finish off the programming section, we're going to give you a quick tour of the most important base R functions that we don't otherwise discuss in the book.
-These tools are particularly useful as you do more programming and will help you read code you'll encounter in the wild.
+为了完成编程部分的学习，我们将带你快速浏览一些本书中未曾讨论但非常重要的 Base R 函数。
+当你进行更多的编程工作时，这些工具会特别有用，它们也将帮助你阅读在实际工作中遇到的 R 代码。
 
-This is a good place to remind you that the tidyverse is not the only way to solve data science problems.
-We teach the tidyverse in this book because tidyverse packages share a common design philosophy, increasing the consistency across functions, and making each new function or package a little easier to learn and use.
-It's not possible to use the tidyverse without using base R, so we've actually already taught you a **lot** of base R functions: from `library()` to load packages, to `sum()` and `mean()` for numeric summaries, to the factor, date, and POSIXct data types, and of course all the basic operators like `+`, `-`, `/`, `*`, `|`, `&`, and `!`.
-What we haven't focused on so far is base R workflows, so we will highlight a few of those in this chapter.
+在此，我们想再次提醒你，tidyverse 并非解决数据科学问题的唯一途径。
+我们在本书中教授 tidyverse，是因为 tidyverse 系列包共享一套通用的设计理念，这增加了函数之间的一致性，使得学习和使用每一个新函数或包都变得更加容易。
+不使用 Base R 是不可能使用 tidyverse 的，所以我们实际上已经教了你**大量**的 Base R 函数：从用于加载包的 `library()`，到用于数值摘要的 `sum()` 和 `mean()`，再到因子 (factor)、日期 (date) 和 POSIXct 数据类型，当然还有所有基本运算符，如 `+`、`-`、`/`、`*`、`|`、`&` 和 `!`。
+到目前为止，我们还没有重点介绍 Base R 的工作流程，因此在本章中，我们将重点介绍其中的一些。
 
-After you read this book, you'll learn other approaches to the same problems using base R, data.table, and other packages.
-You'll undoubtedly encounter these other approaches when you start reading R code written by others, particularly if you're using StackOverflow.
-It's 100% okay to write code that uses a mix of approaches, and don't let anyone tell you otherwise!
+读完本书后，你将学习到使用 Base R、data.table 和其他包来解决同样问题的其他方法。
+当你开始阅读他人编写的 R 代码时，尤其是在使用 StackOverflow 时，你无疑会遇到这些其他方法。
+编写混合使用多种方法的代码是完全可以的，不要让任何人告诉你这有什么不对！
 
-In this chapter, we'll focus on four big topics: subsetting with `[`, subsetting with `[[` and `$`, the apply family of functions, and `for` loops.
-To finish off, we'll briefly discuss two essential plotting functions.
+在本章中，我们将重点关注四个主要主题：使用 `[` 进行子集选取，使用 `[[` 和 `$` 进行子集选取，apply 函数族，以及 `for` 循环。
+最后，我们将简要讨论两个必不可少的绘图函数。
 
-### Prerequisites
+### 前提条件
 
-This package focuses on base R so doesn't have any real prerequisites, but we'll load the tidyverse in order to explain some of the differences.
+这个包侧重于 Base R，因此没有真正的前提条件，但我们将加载 tidyverse 以便解释一些差异。
 
 ```{r}
 #| label: setup
@@ -33,101 +32,99 @@ This package focuses on base R so doesn't have any real prerequisites, but we'll
 library(tidyverse)
 ```
 
-## Selecting multiple elements with `[` {#sec-subset-many}
+## 使用 `[` 选取多个元素 {#sec-subset-many}
 
-`[` is used to extract sub-components from vectors and data frames, and is called like `x[i]` or `x[i, j]`.
-In this section, we'll introduce you to the power of `[`, first showing you how you can use it with vectors, then how the same principles extend in a straightforward way to two-dimensional (2d) structures like data frames.
-We'll then help you cement that knowledge by showing how various dplyr verbs are special cases of `[`.
+`[` 用于从向量和数据框中提取子组件，调用形式为 `x[i]` 或 `x[i, j]`。
+在本节中，我们将向你介绍 `[` 的强大功能，首先展示如何将其用于向量，然后说明同样的原理如何直接扩展到二维 (2d) 结构，如数据框。
+接着，我们将通过展示各种 dplyr 动词是如何作为 `[` 的特例，来帮助你巩固这些知识。
 
-### Subsetting vectors
+### 向量子集选取
 
-There are five main types of things that you can subset a vector with, i.e., that can be the `i` in `x[i]`:
+你可以用五种主要类型的东西来对向量进行子集选取，即 `x[i]` 中的 `i` 可以是：
 
-1.  **A vector of positive integers**.
-    Subsetting with positive integers keeps the elements at those positions:
-
-    ```{r}
-x <- c("one", "two", "three", "four", "five")
-x[c(3, 2, 5)]
-    ```
-
-    By repeating a position, you can actually make a longer output than input, making the term "subsetting" a bit of a misnomer.
+1.  **一个正整数向量**。
+    用正整数进行子集选取会保留这些位置上的元素：
 
     ```{r}
-x[c(1, 1, 5, 5, 5, 2)]
+    x <- c("one", "two", "three", "four", "five")
+    x[c(3, 2, 5)]
     ```
 
-2.  **A vector of negative integers**.
-    Negative values drop the elements at the specified positions:
+    通过重复一个位置，你实际上可以得到比输入更长的输出，这使得“子集选取 (subsetting)”这个术语有点名不副实。
 
     ```{r}
-x[c(-1, -3, -5)]
+    x[c(1, 1, 5, 5, 5, 2)]
     ```
 
-3.  **A logical vector**.
-    Subsetting with a logical vector keeps all values corresponding to a `TRUE` value.
-    This is most often useful in conjunction with the comparison functions.
+2.  **一个负整数向量**。
+    负数值会丢弃指定位置的元素：
 
     ```{r}
-x <- c(10, 3, NA, 5, 8, 1, NA)
-
-# All non-missing values of x
-x[!is.na(x)]
-
-# All even (or missing!) values of x
-x[x %% 2 == 0]
+    x[c(-1, -3, -5)]
     ```
 
-    Unlike `filter()`, `NA` indices will be included in the output as `NA`s.
-
-4.  **A character vector**.
-    If you have a named vector, you can subset it with a character vector:
+3.  **一个逻辑向量**。
+    用逻辑向量进行子集选取会保留所有对应 `TRUE` 值的值。
+    这在与比较函数结合使用时最为有用。
 
     ```{r}
-x <- c(abc = 1, def = 2, xyz = 5)
-x[c("xyz", "def")]
+    x <- c(10, 3, NA, 5, 8, 1, NA)
+
+    # x 的所有非缺失值
+    x[!is.na(x)]
+
+    # x 的所有偶数（或缺失！）值
+    x[x %% 2 == 0]
     ```
 
-    As with subsetting with positive integers, you can use a character vector to duplicate individual entries.
+    与 `filter()` 不同，`NA` 索引将在输出中作为 `NA` 包含进来。
 
-5.  **Nothing**.
-    The final type of subsetting is nothing, `x[]`, which returns the complete `x`.
-    This is not useful for subsetting vectors, but as we'll see shortly, it is useful when subsetting 2d structures like tibbles.
+4.  **一个字符向量**。
+    如果你有一个命名的向量，你可以用字符向量来对其进行子集选取：
 
-### Subsetting data frames
+    ```{r}
+    x <- c(abc = 1, def = 2, xyz = 5)
+    x[c("xyz", "def")]
+    ```
 
-There are quite a few different ways[^base-r-1] that you can use `[` with a data frame, but the most important way is to select rows and columns independently with `df[rows, cols]`. Here `rows` and `cols` are vectors as described above.
-For example, `df[rows, ]` and `df[, cols]` select just rows or just columns, using the empty subset to preserve the other dimension.
+    与使用正整数进行子集选取一样，你可以使用字符向量来复制单个条目。
 
-[^base-r-1]: Read <https://adv-r.hadley.nz/subsetting.html#subset-multiple> to see how you can also subset a data frame like it is a 1d object and how you can subset it with a matrix.
+5.  **空**。
+    最后一种子集选取是空，即 `x[]`，它返回完整的 `x`。
+    这对于向量的子集选取没什么用，但我们稍后会看到，在对二维结构（如 tibble）进行子集选取时它非常有用。
 
-Here are a couple of examples:
+### 数据框子集选取
+
+你可以用很多不同的方式[^1] 对数据框使用 `[`，但最重要的方式是使用 `df[rows, cols]` 独立地选择行和列。这里的 `rows` 和 `cols` 是如上所述的向量。
+例如，`df[rows, ]` 和 `df[, cols]` 分别只选择行或只选择列，使用空子集来保留另一维度。
+
+这里有几个例子：
 
 ```{r}
 df <- tibble(
-    x = 1:3,
-    y = c("a", "e", "f"),
-    z = runif(3)
+  x = 1:3, 
+  y = c("a", "e", "f"), 
+  z = runif(3)
 )
 
-# Select first row and second column
+# 选择第一行和第二列
 df[1, 2]
 
-# Select all rows and columns x and y
-df[, c("x", "y")]
+# 选择所有行以及 x 和 y 列
+df[, c("x" , "y")]
 
-# Select rows where `x` is greater than 1 and all columns
+# 选择 `x` 大于 1 的行和所有列
 df[df$x > 1, ]
 ```
 
-We'll come back to `$` shortly, but you should be able to guess what `df$x` does from the context: it extracts the `x` variable from `df`.
-We need to use it here because `[` doesn't use tidy evaluation, so you need to be explicit about the source of the `x` variable.
+我们稍后会回到 `$`，但你应该能从上下文中猜出 `df$x` 的作用：它从 `df` 中提取 `x` 变量。
+我们在这里需要使用它，因为 `[` 不使用整洁求值 (tidy evaluation)，所以你需要明确 `x` 变量的来源。
 
-There's an important difference between tibbles and data frames when it comes to `[`.
-In this book, we've mainly used tibbles, which *are* data frames, but they tweak some behaviors to make your life a little easier.
-In most places, you can use "tibble" and "data frame" interchangeably, so when we want to draw particular attention to R's built-in data frame, we'll write `data.frame`.
-If `df` is a `data.frame`, then `df[, cols]` will return a vector if `col` selects a single column and a data frame if it selects more than one column.
-If `df` is a tibble, then `[` will always return a tibble.
+在 `[` 的使用上，tibble 和 data frame 之间有一个重要的区别。
+在本书中，我们主要使用 tibble，它*是*一种数据框，但它们调整了一些行为以使你的工作更轻松一些。
+在大多数地方，你可以互换使用“tibble”和“data frame”，所以当我们想特别指出 R 的内置 data frame 时，我们会写成 `data.frame`。
+如果 `df` 是一个 `data.frame`，那么如果 `col` 选择单个列，`df[, cols]` 将返回一个向量；如果它选择多个列，则返回一个数据框。
+如果 `df` 是一个 tibble，那么 `[` 将始终返回一个 tibble。
 
 ```{r}
 df1 <- data.frame(x = 1:3)
@@ -137,120 +134,118 @@ df2 <- tibble(x = 1:3)
 df2[, "x"]
 ```
 
-One way to avoid this ambiguity with `data.frame`s is to explicitly specify `drop = FALSE`:
+一种避免与 `data.frame` 产生这种歧义的方法是明确指定 `drop = FALSE`：
 
 ```{r}
-df1[, "x", drop = FALSE]
+df1[, "x" , drop = FALSE]
 ```
 
-### dplyr equivalents
+### dplyr 等价操作
 
-Several dplyr verbs are special cases of `[`:
+一些 dplyr 动词是 `[` 的特例：
 
--   `filter()` is equivalent to subsetting the rows with a logical vector, taking care to exclude missing values:
-
-    ```{r}
-#| results: false
-df <- tibble(
-    x = c(2, 3, 1, 1, NA),
-    y = letters[1:5],
-    z = runif(5)
-)
-df |> filter(x > 1)
-
-# same as
-df[!is.na(df$x) & df$x > 1, ]
-    ```
-
-    Another common technique in the wild is to use `which()` for its side-effect of dropping missing values: `df[which(df$x > 1), ]`.
-
--   `arrange()` is equivalent to subsetting the rows with an integer vector, usually created with `order()`:
+  - `filter()` 等价于使用逻辑向量对行进行子集选取，并注意排除缺失值：
 
     ```{r}
-#| results: false
-df |> arrange(x, y)
+    #| results: false
+    df <- tibble(
+      x = c(2, 3, 1, 1, NA), 
+      y = letters[1:5], 
+      z = runif(5)
+    )
+    df |> filter(x > 1)
 
-# same as
-df[order(df$x, df$y), ]
+    # 等同于
+    df[!is.na(df$x) & df$x > 1, ]
     ```
 
-    You can use `order(decreasing = TRUE)` to sort all columns in descending order or `-rank(col)` to sort columns in decreasing order individually.
+    在实际应用中，另一个常见的技巧是使用 `which()` 来达到丢弃缺失值的副作用：`df[which(df$x > 1), ]`。
 
--   Both `select()` and `relocate()` are similar to subsetting the columns with a character vector:
+  - `arrange()` 等价于使用整数向量对行进行子集选取，这个向量通常由 `order()` 创建：
 
     ```{r}
-#| results: false
-df |> select(x, z)
+    #| results: false
+    df |> arrange(x, y)
 
-# same as
-df[, c("x", "z")]
+    # 等同于
+    df[order(df$x, df$y), ]
     ```
 
-Base R also provides a function that combines the features of `filter()` and `select()`[^base-r-2] called `subset()`:
+    你可以使用 `order(decreasing = TRUE)` 来按降序对所有列进行排序，或者使用 `-rank(col)` 来单独按降序对列进行排序。
 
-[^base-r-2]: But it doesn't handle grouped data frames differently and it doesn't support selection helper functions like `starts_with()`.
+  - `select()` 和 `relocate()` 都类似于使用字符向量对列进行子集选取：
+
+    ```{r}
+    #| results: false
+    df |> select(x, z)
+
+    # 等同于
+    df[, c("x", "z")]
+    ```
+
+Base R 还提供了一个结合了 `filter()` 和 `select()` 功能的函数[^2]，名为 `subset()`：
 
 ```{r}
-df |>
-    filter(x > 1) |>
-    select(y, z)
+df |> 
+  filter(x > 1) |> 
+  select(y, z)
 ```
 
 ```{r}
 #| results: false
-# same as
+# 等同于
 df |> subset(x > 1, c(y, z))
 ```
 
-This function was the inspiration for much of dplyr's syntax.
+这个函数是 dplyr 许多语法设计的灵感来源。
 
-### Exercises
+### 练习
 
-1.  Create functions that take a vector as input and return:
+1.  创建函数，输入一个向量，然后返回：
 
-    a.  The elements at even-numbered positions.
-    b.  Every element except the last value.
-    c.  Only even values (and no missing values).
+    a.  偶数位置上的元素。
+    b.  除了最后一个值之外的所有元素。
+    c.  只有偶数值（并且没有缺失值）。
 
-2.  Why is `x[-which(x > 0)]` not the same as `x[x <= 0]`?
-    Read the documentation for `which()` and do some experiments to figure it out.
+2.  为什么 `x[-which(x > 0)]` 和 `x[x <= 0]` 不一样？
+    阅读 `which()` 的文档并做一些实验来找出答案。
 
-## Selecting a single element with `$` and `[[` {#sec-subset-one}
+## 使用 `$` 和 `[[` 选取单个元素 {#sec-subset-one}
 
-`[`, which selects many elements, is paired with `[[` and `$`, which extract a single element.
-In this section, we'll show you how to use `[[` and `$` to pull columns out of data frames, discuss a couple more differences between `data.frames` and tibbles, and emphasize some important differences between `[` and `[[` when used with lists.
+`[` 用于选取多个元素，与之配对的是 `[[` 和 `$`，它们用于提取单个元素。
+在本节中，我们将向你展示如何使用 `[[` 和 `$` 从数据框中提取列，讨论 `data.frame` 和 tibble 之间更多的几个区别，并强调在与列表一起使用时 `[` 和 `[[` 之间的一些重要差异。
 
-### Data frames
+### 数据框
 
-`[[` and `$` can be used to extract columns out of a data frame.
-`[[` can access by position or by name, and `$` is specialized for access by name:
+`[[` 和 `$` 可以用来从数据框中提取列。
+`[[` 可以通过位置或名称访问，而 `$` 专门用于按名称访问：
 
 ```{r}
 tb <- tibble(
-    x = 1:4,
-    y = c(10, 4, 1, 21)
+  x = 1:4,
+  y = c(10, 4, 1, 21)
 )
 
-# by position
+# 按位置
 tb[[1]]
 
-# by name
+# 按名称
 tb[["x"]]
 tb$x
 ```
 
-They can also be used to create new columns, the base R equivalent of `mutate()`:
+它们也可以用来创建新列，这是 `mutate()` 在 Base R 中的等价操作：
 
 ```{r}
 tb$z <- tb$x + tb$y
 tb
 ```
 
-There are several other base R approaches to creating new columns including with `transform()`, `with()`, and `within()`.
-Hadley collected a few examples at <https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf>.
+还有其他几种 Base R 创建新列的方法，包括使用 `transform()`、`with()` 和 `within()`。
+Hadley 在 [https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf](https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf) 收集了一些例子。
 
-Using `$` directly is convenient when performing quick summaries.
-For example, if you just want to find the size of the biggest diamond or the possible values of `cut`, there's no need to use `summarize()`:
+在进行快速摘要时，直接使用 `$` 很方便。
+例如，如果你只想找出最大钻石的克拉数或 `cut` 的可能值，就不需要使用 `summarize()`：
 
 ```{r}
 max(diamonds$carat)
@@ -258,24 +253,20 @@ max(diamonds$carat)
 levels(diamonds$cut)
 ```
 
-dplyr also provides an equivalent to `[[`/`$` that we didn't mention in @sec-data-transform: `pull()`.
-`pull()` takes either a variable name or variable position and returns just that column.
-That means we could rewrite the above code to use the pipe:
+dplyr 也提供了一个等价于 `[[`/`$` 的函数，我们在 @sec-data-transform 中没有提到：`pull()`。
+`pull()` 接受一个变量名或变量位置，并只返回那一列。
+这意味着我们可以重写上面的代码来使用管道：
 
 ```{r}
-diamonds |>
-    pull(carat) |>
-    max()
+diamonds |> pull(carat) |> max()
 
-diamonds |>
-    pull(cut) |>
-    levels()
+diamonds |> pull(cut) |> levels()
 ```
 
 ### Tibbles
 
-There are a couple of important differences between tibbles and base `data.frame`s when it comes to `$`.
-Data frames match the prefix of any variable names (so-called **partial matching**) and don't complain if a column doesn't exist:
+在 `$` 的使用上，tibble 和 Base `data.frame` 之间有几个重要的区别。
+Data frame 会匹配任何变量名的前缀（即所谓的**部分匹配 (partial matching)**），并且如果一列不存在也不会报错：
 
 ```{r}
 df <- data.frame(x1 = 1)
@@ -283,7 +274,7 @@ df$x
 df$z
 ```
 
-Tibbles are more strict: they only ever match variable names exactly and they will generate a warning if the column you are trying to access doesn't exist:
+Tibble 更为严格：它们只精确匹配变量名，并且如果你尝试访问的列不存在，它们会生成一个警告：
 
 ```{r}
 tb <- tibble(x1 = 1)
@@ -292,221 +283,218 @@ tb$x
 tb$z
 ```
 
-For this reason we sometimes joke that tibbles are lazy and surly: they do less and complain more.
+因此，我们有时开玩笑说 tibble 是“又懒又暴躁”：它们做得更少，抱怨得更多。
 
-### Lists
+### 列表
 
-`[[` and `$` are also really important for working with lists, and it's important to understand how they differ from `[`.
-Let's illustrate the differences with a list named `l`:
+`[[` 和 `$` 在处理列表时也非常重要，理解它们与 `[` 的区别至关重要。
+让我们用一个名为 `l` 的列表来说明这些差异：
 
 ```{r}
 l <- list(
-    a = 1:3,
-    b = "a string",
-    c = pi,
-    d = list(-1, -5)
+  a = 1:3, 
+  b = "a string", 
+  c = pi, 
+  d = list(-1, -5)
 )
 ```
 
--   `[` extracts a sub-list.
-    It doesn't matter how many elements you extract, the result will always be a list.
+  - `[` 提取一个子列表。
+    无论你提取多少个元素，结果总是一个列表。
 
     ```{r}
-str(l[1:2])
+    str(l[1:2])
 
-str(l[1])
+    str(l[1])
 
-str(l[4])
+    str(l[4])
     ```
 
-    Like with vectors, you can subset with a logical, integer, or character vector.
+    与向量一样，你可以用逻辑、整数或字符向量进行子集选取。
 
--   `[[` and `$` extract a single component from a list.
-    They remove a level of hierarchy from the list.
+  - `[[` 和 `$` 从列表中提取单个组件。
+    它们会从列表中移除一个层级。
 
     ```{r}
-str(l[[1]])
+    str(l[[1]])
 
-str(l[[4]])
+    str(l[[4]])
 
-str(l$a)
+    str(l$a)
     ```
 
-The difference between `[` and `[[` is particularly important for lists because `[[` drills down into the list while `[` returns a new, smaller list.
-To help you remember the difference, take a look at the unusual pepper shaker shown in @fig-pepper.
-If this pepper shaker is your list `pepper`, then, `pepper[1]` is a pepper shaker containing a single pepper packet.
-`pepper[2]` would look the same, but would contain the second packet.
-`pepper[1:2]` would be a pepper shaker containing two pepper packets.
-`pepper[[1]]` would extract the pepper packet itself.
+`[` 和 `[[` 之间的区别对于列表尤为重要，因为 `[[` 会深入到列表中，而 `[` 返回一个新的、更小的列表。
+为了帮助你记住这个区别，请看 @fig-pepper 中展示的那个不寻常的胡椒瓶。
+如果这个胡椒瓶是你的列表 `pepper`，那么 `pepper[1]` 就是一个装有单个胡椒包的胡椒瓶。
+`pepper[2]` 看起来一样，但会装有第二个胡椒包。
+`pepper[1:2]` 将是一个装有两个胡椒包的胡椒瓶。
+而 `pepper[[1]]` 则会提取出胡椒包本身。
 
 ```{r}
 #| label: fig-pepper
 #| echo: false
 #| out-width: "100%"
 #| fig-cap: |
-#|   (Left) A pepper shaker that Hadley once found in his hotel room.
-#|   (Middle) `pepper[1]`.
-#|   (Right) `pepper[[1]]`
+#|   (左) Hadley 曾经在他酒店房间里发现的一个胡椒瓶。
+#|   (中) `pepper[1]`。
+#|   (右) `pepper[[1]]`。
 #| fig-alt: |
-#|   Three photos. On the left is a photo of a glass pepper shaker. Instead of
-#|   the pepper shaker containing pepper, it contains a single packet of pepper.
-#|   In the middle is a photo of a single packet of pepper. On the right is a
-#|   photo of the contents of a packet of pepper.
+#|   三张照片。左边是一张玻璃胡椒瓶的照片。胡椒瓶里装的不是胡椒粉，
+#|   而是一小包胡椒。中间是一张单包胡椒的照片。右边是一包胡椒
+#|   里的内容物的照片。
 knitr::include_graphics("diagrams/pepper.png")
 ```
 
-This same principle applies when you use 1d `[` with a data frame: `df["x"]` returns a one-column data frame and `df[["x"]]` returns a vector.
+当你对数据框使用一维 `[` 时，同样的原理也适用：`df["x"]` 返回一个单列数据框，而 `df[["x"]]` 返回一个向量。
 
-### Exercises
+### 练习
 
-1.  What happens when you use `[[` with a positive integer that's bigger than the length of the vector?
-    What happens when you subset with a name that doesn't exist?
+1.  当你用一个比向量长度大的正整数对 `[[` 进行子集选取时会发生什么？
+    当你用一个不存在的名称进行子集选取时会发生什么？
 
-2.  What would `pepper[[1]][1]` be?
-    What about `pepper[[1]][[1]]`?
+2.  `pepper[[1]][1]` 会是什么？
+    `pepper[[1]][[1]]` 呢？
 
-## Apply family
+## Apply 函数族
 
-In @sec-iteration, you learned tidyverse techniques for iteration like `dplyr::across()` and the map family of functions.
-In this section, you'll learn about their base equivalents, the **apply family**.
-In this context apply and map are synonyms because another way of saying "map a function over each element of a vector" is "apply a function over each element of a vector".
-Here we'll give you a quick overview of this family so you can recognize them in the wild.
+在 @sec-iteration 中，你学习了 tidyverse 的迭代技术，如 `dplyr::across()` 和 map 系列函数。
+在本节中，你将学习它们的 Base R 等价物，即 **apply 函数族**。
+在此语境下，apply 和 map 是同义词，因为“将一个函数映射 (map) 到向量的每个元素上”的另一种说法是“将一个函数应用 (apply) 到向量的每个元素上”。
+这里我们将为你简要介绍这个函数族，以便你在实际中能认出它们。
 
-The most important member of this family is `lapply()`, which is very similar to `purrr::map()`[^base-r-3].
-In fact, because we haven't used any of `map()`'s more advanced features, you can replace every `map()` call in @sec-iteration with `lapply()`.
+这个函数族中最重要的成员是 `lapply()`，它与 `purrr::map()` 非常相似[^3]。
+事实上，因为我们没有使用 `map()` 的任何更高级的功能，你可以将 @sec-iteration 中所有的 `map()` 调用都替换为 `lapply()`。
 
-[^base-r-3]: It just lacks convenient features like progress bars and reporting which element caused the problem if there's an error.
-
-There's no exact base R equivalent to `across()` but you can get close by using `[` with `lapply()`.
-This works because under the hood, data frames are lists of columns, so calling `lapply()` on a data frame applies the function to each column.
+没有完全等同于 `across()` 的 Base R 函数，但你可以通过结合使用 `[` 和 `lapply()` 来接近其功能。
+这是可行的，因为在底层，数据框是列的列表，所以对数据框调用 `lapply()` 会将函数应用于每一列。
 
 ```{r}
 df <- tibble(a = 1, b = 2, c = "a", d = "b", e = 4)
 
-# First find numeric columns
+# 首先找到数值列
 num_cols <- sapply(df, is.numeric)
 num_cols
 
-# Then transform each column with lapply() then replace the original values
+# 然后用 lapply() 转换每一列，再替换原始值
 df[, num_cols] <- lapply(df[, num_cols, drop = FALSE], \(x) x * 2)
 df
 ```
 
-The code above uses a new function, `sapply()`.
-It's similar to `lapply()` but it always tries to simplify the result, hence the `s` in its name, here producing a logical vector instead of a list.
-We don't recommend using it for programming, because the simplification can fail and give you an unexpected type, but it's usually fine for interactive use.
-purrr has a similar function called `map_vec()` that we didn't mention in @sec-iteration.
+上面的代码使用了一个新函数 `sapply()`。
+它与 `lapply()` 相似，但它总是尝试简化结果，因此其名称中的 `s` 代表简化 (simplify)，这里它产生了一个逻辑向量而不是一个列表。
+我们不推荐在编程中使用它，因为简化可能会失败并给你一个意想不到的类型，但对于交互式使用来说通常没问题。
+purrr 有一个类似的函数叫 `map_vec()`，我们在 @sec-iteration 中没有提到。
 
-Base R provides a stricter version of `sapply()` called `vapply()`, short for **v**ector apply.
-It takes an additional argument that specifies the expected type, ensuring that simplification occurs the same way regardless of the input.
-For example, we could replace the `sapply()` call above with this `vapply()` where we specify that we expect `is.numeric()` to return a logical vector of length 1:
+Base R 提供了一个比 `sapply()` 更严格的版本，叫做 `vapply()`，是**v**ector apply (向量应用) 的缩写。
+它接受一个额外的参数来指定预期的类型，确保无论输入如何，简化过程都以相同的方式发生。
+例如，我们可以将上面的 `sapply()` 调用替换为这个 `vapply()`，在这里我们指定期望 `is.numeric()` 返回一个长度为 1 的逻辑向量：
 
 ```{r}
 vapply(df, is.numeric, logical(1))
 ```
 
-The distinction between `sapply()` and `vapply()` is really important when they're inside a function (because it makes a big difference to the function's robustness to unusual inputs), but it doesn't usually matter in data analysis.
+`sapply()` 和 `vapply()` 之间的区别在它们位于函数内部时非常重要（因为它对函数对异常输入的鲁棒性有很大影响），但在数据分析中通常无关紧要。
 
-Another important member of the apply family is `tapply()` which computes a single grouped summary:
+apply 函数族的另一个重要成员是 `tapply()`，它计算单个分组摘要：
 
 ```{r}
-diamonds |>
-    group_by(cut) |>
-    summarize(price = mean(price))
+diamonds |> 
+  group_by(cut) |> 
+  summarize(price = mean(price))
 
 tapply(diamonds$price, diamonds$cut, mean)
 ```
 
-Unfortunately `tapply()` returns its results in a named vector which requires some gymnastics if you want to collect multiple summaries and grouping variables into a data frame (it's certainly possible to not do this and just work with free floating vectors, but in our experience that just delays the work).
-If you want to see how you might use `tapply()` or other base techniques to perform other grouped summaries, Hadley has collected a few techniques [in a gist](https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec).
+不幸的是，`tapply()` 将其结果返回在一个命名的向量中，如果你想将多个摘要和分组变量收集到一个数据框中，就需要一些技巧（当然可以不这样做，直接使用自由浮动的向量，但根据我们的经验，这只是推迟了工作）。
+如果你想看看如何使用 `tapply()` 或其他 Base R 技术来执行其他分组摘要，Hadley 在一个 [gist](https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec) 中收集了一些技巧。
 
-The final member of the apply family is the titular `apply()`, which works with matrices and arrays.
-In particular, watch out for `apply(df, 2, something)`, which is a slow and potentially dangerous way of doing `lapply(df, something)`.
-This rarely comes up in data science because we usually work with data frames and not matrices.
+apply 函数族的最后一个成员是其同名函数 `apply()`，它用于处理矩阵和数组。
+特别要注意 `apply(df, 2, something)`，这是一种缓慢且可能危险的方式来实现 `lapply(df, something)`。
+这在数据科学中很少出现，因为我们通常处理的是数据框而不是矩阵。
 
-## `for` loops
+## `for` 循环
 
-`for` loops are the fundamental building block of iteration that both the apply and map families use under the hood.
-`for` loops are powerful and general tools that are important to learn as you become a more experienced R programmer.
-The basic structure of a `for` loop looks like this:
+`for` 循环是 apply 和 map 家族在底层都使用的迭代基本构建块。
+`for` 循环是强大而通用的工具，随着你成为更富经验的 R 程序员，学习它们非常重要。
+`for` 循环的基本结构如下：
 
 ```{r}
 #| eval: false
 for (element in vector) {
-    # do something with element
+  # 对 element 执行某些操作
 }
 ```
 
-The most straightforward use of `for` loops is to achieve the same effect as `walk()`: call some function with a side-effect on each element of a list.
-For example, in @sec-save-database instead of using `walk()`:
+`for` 循环最直接的用途是实现与 `walk()` 相同的效果：对列表的每个元素调用某个具有副作用的函数。
+例如，在 @sec-save-database 中，我们没有使用 `walk()`：
 
 ```{r}
 #| eval: false
 paths |> walk(append_file)
 ```
 
-We could have used a `for` loop:
+而是可以使用 `for` 循环：
 
 ```{r}
 #| eval: false
 for (path in paths) {
-    append_file(path)
+  append_file(path)
 }
 ```
 
-Things get a little trickier if you want to save the output of the `for` loop, for example reading all of the excel files in a directory like we did in @sec-iteration:
+如果你想保存 `for` 循环的输出，事情就会变得棘手一些，例如像我们在 @sec-iteration 中做的那样，读取一个目录中所有的 excel 文件：
 
 ```{r}
 paths <- dir("data/gapminder", pattern = "\\.xlsx$", full.names = TRUE)
 files <- map(paths, readxl::read_excel)
 ```
 
-There are a few different techniques that you can use, but we recommend being explicit about what the output is going to look like upfront.
-In this case, we're going to want a list the same length as `paths`, which we can create with `vector()`:
+你可以使用几种不同的技术，但我们建议事先明确输出会是什么样子。
+在这种情况下，我们将需要一个与 `paths` 长度相同的列表，我们可以用 `vector()` 来创建它：
 
 ```{r}
 files <- vector("list", length(paths))
 ```
 
-Then instead of iterating over the elements of `paths`, we'll iterate over their indices, using `seq_along()` to generate one index for each element of paths:
+然后，我们不遍历 `paths` 的元素，而是遍历它们的索引，使用 `seq_along()` 为 `paths` 的每个元素生成一个索引：
 
 ```{r}
 seq_along(paths)
 ```
 
-Using the indices is important because it allows us to link to each position in the input with the corresponding position in the output:
+使用索引很重要，因为它允许我们将输入中的每个位置与输出中的相应位置联系起来：
 
 ```{r}
 for (i in seq_along(paths)) {
-    files[[i]] <- readxl::read_excel(paths[[i]])
+  files[[i]] <- readxl::read_excel(paths[[i]])
 }
 ```
 
-To combine the list of tibbles into a single tibble you can use `do.call()` + `rbind()`:
+要将 tibble 列表合并为单个 tibble，你可以使用 `do.call()` + `rbind()`：
 
 ```{r}
 do.call(rbind, files)
 ```
 
-Rather than making a list and saving the results as we go, a simpler approach is to build up the data frame piece-by-piece:
+与其先创建一个列表并在过程中保存结果，一个更简单的方法是逐个构建数据框：
 
 ```{r}
 out <- NULL
 for (path in paths) {
-    out <- rbind(out, readxl::read_excel(path))
+  out <- rbind(out, readxl::read_excel(path))
 }
 ```
 
-We recommend avoiding this pattern because it can become very slow when the vector is very long.
-This is the source of the persistent canard that `for` loops are slow: they're not, but iteratively growing a vector is.
+我们建议避免这种模式，因为当向量非常长时，它会变得非常慢。
+这就是“`for` 循环很慢”这个经久不衰的谣言的来源：它们本身不慢，但迭代地增长一个向量是慢的。
 
-## Plots
+## 图形
 
-Many R users who don't otherwise use the tidyverse prefer ggplot2 for plotting due to helpful features like sensible defaults, automatic legends, and a modern look.
-However, base R plotting functions can still be useful because they're so concise --- it takes very little typing to do a basic exploratory plot.
+许多不常使用 tidyverse 的 R 用户也偏爱使用 ggplot2 进行绘图，因为它具有一些有用的特性，如合理的默认设置、自动生成图例和现代的外观。
+然而，Base R 的绘图函数仍然很有用，因为它们非常简洁——做一个基本的探索性图表只需要很少的打字。
 
-There are two main types of base plot you'll see in the wild: scatterplots and histograms, produced with `plot()` and `hist()` respectively.
-Here's a quick example from the diamonds dataset:
+在实际应用中，你会看到两种主要的 Base R 图形：散点图和直方图，分别由 `plot()` 和 `hist()` 生成。
+这里有一个来自 `diamonds` 数据集的快速示例：
 
 ```{r}
 #| dev: png
@@ -514,27 +502,34 @@ Here's a quick example from the diamonds dataset:
 #| fig-asp: 1
 #| layout-ncol: 2
 #| fig-alt: |
-#|   On the left, histogram of carats of diamonds, ranging from 0 to 5 carats.
-#|   The distribution is unimodal and right-skewed. On the right, scatter
-#|   plot of price vs. carat of diamonds, showing a positive relationship
-#|   that fans out as both price and carat increases. The scatter plot
-#|   shows very few diamonds bigger than 3 carats compared to diamonds between
-#|   0 to 3 carats.
-# Left
+#|   左图是钻石克拉数的直方图，范围从 0 到 5 克拉。分布是单峰且右偏的。
+#|   右图是钻石价格与克拉数的散点图，显示出一种正相关关系，
+#|   随着价格和克拉数的增加，散点呈扇形散开。散点图显示，
+#|   与 0 到 3 克拉的钻石相比，大于 3 克拉的钻石非常少。
+# 左图
 hist(diamonds$carat)
 
-# Right
+# 右图
 plot(diamonds$carat, diamonds$price)
 ```
 
-Note that base plotting functions work with vectors, so you need to pull columns out of the data frame using `$` or some other technique.
+请注意，Base R 的绘图函数作用于向量，所以你需要使用 `$` 或其他技术从数据框中提取列。
 
-## Summary
+## 总结
 
-In this chapter, we've shown you a selection of base R functions useful for subsetting and iteration.
-Compared to approaches discussed elsewhere in the book, these functions tend to have more of a "vector" flavor than a "data frame" flavor because base R functions tend to take individual vectors, rather than a data frame and some column specification.
-This often makes life easier for programming and so becomes more important as you write more functions and begin to write your own packages.
+在本章中，我们向你展示了一系列用于子集选取和迭代的 Base R 函数。
+与本书其他地方讨论的方法相比，这些函数更倾向于“向量”风格，而不是“数据框”风格，因为 Base R 函数倾向于接受单个向量，而不是一个数据框和一些列的规范。
+这通常使编程工作更容易，因此当你编写更多函数并开始编写自己的包时，它变得更加重要。
 
-This chapter concludes the programming section of the book.
-You've made a solid start on your journey to becoming not just a data scientist who uses R, but a data scientist who can *program* in R.
-We hope these chapters have sparked your interest in programming and that you're looking forward to learning more outside of this book.
+本章结束了本书的编程部分。
+你已经在成为一名不仅使用 R 的数据科学家，而且是能够用 R *编程* 的数据科学家的道路上迈出了坚实的一步。
+我们希望这些章节激发了你对编程的兴趣，并期待你在本书之外学习更多内容。
+
+[^1]:
+    阅读 [https://adv-r.hadley.nz/subsetting.html\#subset-multiple](https://adv-r.hadley.nz/subsetting.html#subset-multiple) 来了解如何像处理一维对象一样对数据框进行子集选取，以及如何使用矩阵对其进行子集选取。
+
+[^2]:
+    但它不会对分组的数据框进行特殊处理，也不支持像 `starts_with()` 这样的选择辅助函数。
+
+[^3]:
+    它只是缺少了一些方便的功能，比如进度条和在出错时报告是哪个元素导致了问题。

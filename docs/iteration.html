@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>26&nbsp; Iteration – R 数据科学 2e
+<title>26&nbsp; 迭代 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./iteration.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./iteration.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Program</span></a>
+ <span class="menu-text">编程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -357,19 +357,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iteration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./base-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">沟通</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto-formats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto 格式</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,51 +406,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">26.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">26.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">26.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">26.1.1</span> 先决条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-across" id="toc-sec-across" class="nav-link" data-scroll-target="#sec-across"><span class="header-section-number">26.2</span> Modifying multiple columns</a>
+<a href="#sec-across" id="toc-sec-across" class="nav-link" data-scroll-target="#sec-across"><span class="header-section-number">26.2</span> 修改多个列</a>
   <ul class="collapse">
-<li><a href="#selecting-columns-with-.cols" id="toc-selecting-columns-with-.cols" class="nav-link" data-scroll-target="#selecting-columns-with-.cols"><span class="header-section-number">26.2.1</span> Selecting columns with <code>.cols</code></a></li>
-  <li><a href="#calling-a-single-function" id="toc-calling-a-single-function" class="nav-link" data-scroll-target="#calling-a-single-function"><span class="header-section-number">26.2.2</span> Calling a single function</a></li>
-  <li><a href="#calling-multiple-functions" id="toc-calling-multiple-functions" class="nav-link" data-scroll-target="#calling-multiple-functions"><span class="header-section-number">26.2.3</span> Calling multiple functions</a></li>
-  <li><a href="#column-names" id="toc-column-names" class="nav-link" data-scroll-target="#column-names"><span class="header-section-number">26.2.4</span> Column names</a></li>
-  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="header-section-number">26.2.5</span> Filtering</a></li>
-  <li><a href="#across-in-functions" id="toc-across-in-functions" class="nav-link" data-scroll-target="#across-in-functions"><span class="header-section-number">26.2.6</span> <code>across()</code> in functions</a></li>
-  <li><a href="#compare-with-pivot_longer" id="toc-compare-with-pivot_longer" class="nav-link" data-scroll-target="#compare-with-pivot_longer"><span class="header-section-number">26.2.7</span> Compare with <code>pivot_longer()</code></a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">26.2.8</span> Exercises</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-.cols-%E9%80%89%E6%8B%A9%E5%88%97" id="toc-使用-.cols-选择列" class="nav-link" data-scroll-target="#%E4%BD%BF%E7%94%A8-.cols-%E9%80%89%E6%8B%A9%E5%88%97"><span class="header-section-number">26.2.1</span> 使用 <code>.cols</code> 选择列</a></li>
+  <li><a href="#%E8%B0%83%E7%94%A8%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0" id="toc-调用单个函数" class="nav-link" data-scroll-target="#%E8%B0%83%E7%94%A8%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="header-section-number">26.2.2</span> 调用单个函数</a></li>
+  <li><a href="#%E8%B0%83%E7%94%A8%E5%A4%9A%E4%B8%AA%E5%87%BD%E6%95%B0" id="toc-调用多个函数" class="nav-link" data-scroll-target="#%E8%B0%83%E7%94%A8%E5%A4%9A%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="header-section-number">26.2.3</span> 调用多个函数</a></li>
+  <li><a href="#%E5%88%97%E5%90%8D" id="toc-列名" class="nav-link" data-scroll-target="#%E5%88%97%E5%90%8D"><span class="header-section-number">26.2.4</span> 列名</a></li>
+  <li><a href="#%E7%AD%9B%E9%80%89" id="toc-筛选" class="nav-link" data-scroll-target="#%E7%AD%9B%E9%80%89"><span class="header-section-number">26.2.5</span> 筛选</a></li>
+  <li><a href="#%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8-across" id="toc-在函数中使用-across" class="nav-link" data-scroll-target="#%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8-across"><span class="header-section-number">26.2.6</span> 在函数中使用 <code>across()</code></a></li>
+  <li><a href="#%E4%B8%8E-pivot_longer-%E6%AF%94%E8%BE%83" id="toc-与-pivot_longer-比较" class="nav-link" data-scroll-target="#%E4%B8%8E-pivot_longer-%E6%AF%94%E8%BE%83"><span class="header-section-number">26.2.7</span> 与 <code>pivot_longer()</code> 比较</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">26.2.8</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#reading-multiple-files" id="toc-reading-multiple-files" class="nav-link" data-scroll-target="#reading-multiple-files"><span class="header-section-number">26.3</span> Reading multiple files</a>
+<a href="#%E8%AF%BB%E5%8F%96%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6" id="toc-读取多个文件" class="nav-link" data-scroll-target="#%E8%AF%BB%E5%8F%96%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="header-section-number">26.3</span> 读取多个文件</a>
   <ul class="collapse">
-<li><a href="#listing-files-in-a-directory" id="toc-listing-files-in-a-directory" class="nav-link" data-scroll-target="#listing-files-in-a-directory"><span class="header-section-number">26.3.1</span> Listing files in a directory</a></li>
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">26.3.2</span> Lists</a></li>
-  <li><a href="#purrrmap-and-list_rbind" id="toc-purrrmap-and-list_rbind" class="nav-link" data-scroll-target="#purrrmap-and-list_rbind"><span class="header-section-number">26.3.3</span> <code>purrr::map()</code> and <code>list_rbind()</code></a></li>
-  <li><a href="#sec-data-in-the-path" id="toc-sec-data-in-the-path" class="nav-link" data-scroll-target="#sec-data-in-the-path"><span class="header-section-number">26.3.4</span> Data in the path</a></li>
-  <li><a href="#save-your-work" id="toc-save-your-work" class="nav-link" data-scroll-target="#save-your-work"><span class="header-section-number">26.3.5</span> Save your work</a></li>
-  <li><a href="#many-simple-iterations" id="toc-many-simple-iterations" class="nav-link" data-scroll-target="#many-simple-iterations"><span class="header-section-number">26.3.6</span> Many simple iterations</a></li>
-  <li><a href="#heterogeneous-data" id="toc-heterogeneous-data" class="nav-link" data-scroll-target="#heterogeneous-data"><span class="header-section-number">26.3.7</span> Heterogeneous data</a></li>
-  <li><a href="#handling-failures" id="toc-handling-failures" class="nav-link" data-scroll-target="#handling-failures"><span class="header-section-number">26.3.8</span> Handling failures</a></li>
+<li><a href="#%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6" id="toc-列出目录中的文件" class="nav-link" data-scroll-target="#%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="header-section-number">26.3.1</span> 列出目录中的文件</a></li>
+  <li><a href="#%E5%88%97%E8%A1%A8" id="toc-列表" class="nav-link" data-scroll-target="#%E5%88%97%E8%A1%A8"><span class="header-section-number">26.3.2</span> 列表</a></li>
+  <li><a href="#purrrmap-%E5%92%8C-list_rbind" id="toc-purrrmap-和-list_rbind" class="nav-link" data-scroll-target="#purrrmap-%E5%92%8C-list_rbind"><span class="header-section-number">26.3.3</span> <code>purrr::map()</code> 和 <code>list_rbind()</code></a></li>
+  <li><a href="#sec-data-in-the-path" id="toc-sec-data-in-the-path" class="nav-link" data-scroll-target="#sec-data-in-the-path"><span class="header-section-number">26.3.4</span> 路径中的数据</a></li>
+  <li><a href="#%E4%BF%9D%E5%AD%98%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C" id="toc-保存你的工作" class="nav-link" data-scroll-target="#%E4%BF%9D%E5%AD%98%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="header-section-number">26.3.5</span> 保存你的工作</a></li>
+  <li><a href="#%E5%A4%9A%E6%AC%A1%E7%AE%80%E5%8D%95%E8%BF%AD%E4%BB%A3" id="toc-多次简单迭代" class="nav-link" data-scroll-target="#%E5%A4%9A%E6%AC%A1%E7%AE%80%E5%8D%95%E8%BF%AD%E4%BB%A3"><span class="header-section-number">26.3.6</span> 多次简单迭代</a></li>
+  <li><a href="#%E5%BC%82%E6%9E%84%E6%95%B0%E6%8D%AE" id="toc-异构数据" class="nav-link" data-scroll-target="#%E5%BC%82%E6%9E%84%E6%95%B0%E6%8D%AE"><span class="header-section-number">26.3.7</span> 异构数据</a></li>
+  <li><a href="#%E5%A4%84%E7%90%86%E5%A4%B1%E8%B4%A5" id="toc-处理失败" class="nav-link" data-scroll-target="#%E5%A4%84%E7%90%86%E5%A4%B1%E8%B4%A5"><span class="header-section-number">26.3.8</span> 处理失败</a></li>
   </ul>
 </li>
   <li>
-<a href="#saving-multiple-outputs" id="toc-saving-multiple-outputs" class="nav-link" data-scroll-target="#saving-multiple-outputs"><span class="header-section-number">26.4</span> Saving multiple outputs</a>
+<a href="#%E4%BF%9D%E5%AD%98%E5%A4%9A%E4%B8%AA%E8%BE%93%E5%87%BA" id="toc-保存多个输出" class="nav-link" data-scroll-target="#%E4%BF%9D%E5%AD%98%E5%A4%9A%E4%B8%AA%E8%BE%93%E5%87%BA"><span class="header-section-number">26.4</span> 保存多个输出</a>
   <ul class="collapse">
-<li><a href="#sec-save-database" id="toc-sec-save-database" class="nav-link" data-scroll-target="#sec-save-database"><span class="header-section-number">26.4.1</span> Writing to a database</a></li>
-  <li><a href="#writing-csv-files" id="toc-writing-csv-files" class="nav-link" data-scroll-target="#writing-csv-files"><span class="header-section-number">26.4.2</span> Writing csv files</a></li>
-  <li><a href="#saving-plots" id="toc-saving-plots" class="nav-link" data-scroll-target="#saving-plots"><span class="header-section-number">26.4.3</span> Saving plots</a></li>
+<li><a href="#sec-save-database" id="toc-sec-save-database" class="nav-link" data-scroll-target="#sec-save-database"><span class="header-section-number">26.4.1</span> 写入数据库</a></li>
+  <li><a href="#%E5%86%99%E5%85%A5-csv-%E6%96%87%E4%BB%B6" id="toc-写入-csv-文件" class="nav-link" data-scroll-target="#%E5%86%99%E5%85%A5-csv-%E6%96%87%E4%BB%B6"><span class="header-section-number">26.4.2</span> 写入 csv 文件</a></li>
+  <li><a href="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E8%A1%A8" id="toc-保存图表" class="nav-link" data-scroll-target="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E8%A1%A8"><span class="header-section-number">26.4.3</span> 保存图表</a></li>
   </ul>
 </li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">26.5</span> Summary</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">26.5</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/iteration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./iteration.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-iteration" class="quarto-section-identifier"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./iteration.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-iteration" class="quarto-section-identifier"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span></h1>
 </div>
 
 
@@ -464,28 +464,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="26.1"><h2 data-number="26.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">26.1</span> Introduction</h2>
-<p>In this chapter, you’ll learn tools for iteration, repeatedly performing the same action on different objects. Iteration in R generally tends to look rather different from other programming languages because so much of it is implicit and we get it for free. For example, if you want to double a numeric vector <code>x</code> in R, you can just write <code>2 * x</code>. In most other languages, you’d need to explicitly double each element of <code>x</code> using some sort of for loop.</p>
-<p>This book has already given you a small but powerful number of tools that perform the same action for multiple “things”:</p>
+</header><section id="引言" class="level2" data-number="26.1"><h2 data-number="26.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">26.1</span> 引言</h2>
+<p>在本章中，你将学习迭代的工具，即在不同对象上重复执行相同的操作。R 语言中的迭代通常看起来与其他编程语言大相径庭，因为很多迭代是隐式的，我们可以免费获得。例如，如果你想在 R 中将一个数值向量 <code>x</code> 的每个元素都乘以 2，你只需写 <code>2 * x</code>。在大多数其他语言中，你需要使用某种 for 循环来显式地将 <code>x</code> 的每个元素乘以 2。</p>
+<p>本书已经为你提供了一些小而强大的工具，可以对多个“事物”执行相同的操作：</p>
 <ul>
 <li>
-<code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> draws a plot for each subset.</li>
+<code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> 和 <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> 为每个子集绘制一幅图。</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> plus <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> computes summary statistics for each subset.</li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 加上 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 为每个子集计算汇总统计量。</li>
 <li>
-<code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> create new rows and columns for each element of a list-column.</li>
+<code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> 和 <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> 为列表列的每个元素创建新的行和列。</li>
 </ul>
-<p>Now it’s time to learn some more general tools, often called <strong>functional programming</strong> tools because they are built around functions that take other functions as inputs. Learning functional programming can easily veer into the abstract, but in this chapter we’ll keep things concrete by focusing on three common tasks: modifying multiple columns, reading multiple files, and saving multiple objects.</p>
-<section id="prerequisites" class="level3" data-number="26.1.1"><h3 data-number="26.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">26.1.1</span> Prerequisites</h3>
-<p>In this chapter, we’ll focus on tools provided by dplyr and purrr, both core members of the tidyverse. You’ve seen dplyr before, but <a href="http://purrr.tidyverse.org/">purrr</a> is new. We’re just going to use a couple of purrr functions in this chapter, but it’s a great package to explore as you improve your programming skills.</p>
+<p>现在是时候学习一些更通用的工具了，这些工具通常被称为 <strong>函数式编程</strong> (functional programming) 工具，因为它们是围绕着接收其他函数作为输入的函数构建的。学习函数式编程很容易变得抽象，但在本章中，我们将通过关注三个常见的任务来保持具体：修改多个列、读取多个文件和保存多个对象。</p>
+<section id="先决条件" class="level3" data-number="26.1.1"><h3 data-number="26.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">26.1.1</span> 先决条件</h3>
+<p>在本章中，我们将重点关注 dplyr 和 purrr 提供的工具，它们都是 tidyverse 的核心成员。你之前已经见过 dplyr，但 <a href="http://purrr.tidyverse.org/">purrr</a> 是新内容。本章我们只会使用几个 purrr 函数，但随着你编程技能的提高，它是一个值得探索的优秀包。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="sec-across" class="level2" data-number="26.2"><h2 data-number="26.2" class="anchored" data-anchor-id="sec-across">
-<span class="header-section-number">26.2</span> Modifying multiple columns</h2>
-<p>Imagine you have this simple tibble and you want to count the number of observations and compute the median of every column.</p>
+<span class="header-section-number">26.2</span> 修改多个列</h2>
+<p>假设你有下面这个简单的 tibble，并且你想计算观测值的数量并计算每一列的中位数。</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You could do it with copy-and-paste:</p>
+<p>你可以通过复制粘贴来完成：</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>  n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -508,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1    10 -0.246 -0.287 -0.0567 0.144</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That breaks our rule of thumb to never copy and paste more than twice, and you can imagine that this will get very tedious if you have tens or even hundreds of columns. Instead, you can use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>:</p>
+<p>这违反了我们“绝不复制粘贴超过两次”的经验法则，而且你可以想象，如果你有几十甚至上百列，这将变得非常繁琐。相反，你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>  n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -519,12 +519,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1    10 -0.246 -0.287 -0.0567 0.144</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> has three particularly important arguments, which we’ll discuss in detail in the following sections. You’ll use the first two every time you use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>: the first argument, <code>.cols</code>, specifies which columns you want to iterate over, and the second argument, <code>.fns</code>, specifies what to do with each column. You can use the <code>.names</code> argument when you need additional control over the names of output columns, which is particularly important when you use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. We’ll also discuss two important variations, <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_any()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_all()</a></code>, which work with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>.</p>
-<section id="selecting-columns-with-.cols" class="level3" data-number="26.2.1"><h3 data-number="26.2.1" class="anchored" data-anchor-id="selecting-columns-with-.cols">
-<span class="header-section-number">26.2.1</span> Selecting columns with <code>.cols</code>
-</h3>
-<p>The first argument to <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, <code>.cols</code>, selects the columns to transform. This uses the same specifications as <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, <a href="data-transform.html#sec-select" class="quarto-xref"><span>Section 3.3.2</span></a>, so you can use functions like <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> and <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code> to select columns based on their name.</p>
-<p>There are two additional selection techniques that are particularly useful for <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>: <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> and <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code>. <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> is straightforward: it selects every (non-grouping) column:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 有三个特别重要的参数，我们将在接下来的部分中详细讨论。每次使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 时，你都会用到前两个参数：第一个参数 <code>.cols</code> 指定了你想要迭代的列，第二个参数 <code>.fns</code> 指定了如何处理每一列。当你需要对输出列的名称进行额外控制时，可以使用 <code>.names</code> 参数，这在使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 配合 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 时尤其重要。我们还将讨论两个重要的变体，<code><a href="https://dplyr.tidyverse.org/reference/across.html">if_any()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_all()</a></code>，它们与 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 一起工作。</p>
+<section id="使用-.cols-选择列" class="level3" data-number="26.2.1"><h3 data-number="26.2.1" class="anchored" data-anchor-id="使用-.cols-选择列">
+<span class="header-section-number">26.2.1</span> 使用 <code>.cols</code> 选择列</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的第一个参数 <code>.cols</code> 用于选择要转换的列。这与 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 使用相同的规范，详见 <a href="data-transform.html#sec-select" class="quarto-xref"><span>Section 3.3.2</span></a>，因此你可以使用像 <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> 和 <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code> 这样的函数来根据列名选择列。</p>
+<p>还有两种对 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 特别有用的选择技术：<code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> 和 <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code>。<code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> 很直接：它选择所有（非分组）列：</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -543,25 +542,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1     1 -0.0935 -0.0163 0.363 0.364</span></span>
 <span><span class="co">#&gt; 2     2  0.312  -0.0576 0.208 0.565</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note grouping columns (<code>grp</code> here) are not included in <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, because they’re automatically preserved by <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
-<p><code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> allows you to select columns based on their type:</p>
+<p>注意，分组列（这里是 <code>grp</code>）不包含在 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的选择范围内，因为它们会被 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 自动保留。</p>
+<p><code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> 允许你根据列的类型来选择列：</p>
 <ul>
 <li>
-<code>where(is.numeric)</code> selects all numeric columns.</li>
+<code>where(is.numeric)</code> 选择所有数值列。</li>
 <li>
-<code>where(is.character)</code> selects all string columns.</li>
+<code>where(is.character)</code> 选择所有字符串列。</li>
 <li>
-<code>where(is.Date)</code> selects all date columns.</li>
+<code>where(is.Date)</code> 选择所有日期列。</li>
 <li>
-<code>where(is.POSIXct)</code> selects all date-time columns.</li>
+<code>where(is.POSIXct)</code> 选择所有日期时间列。</li>
 <li>
-<code>where(is.logical)</code> selects all logical columns.</li>
+<code>where(is.logical)</code> 选择所有逻辑列。</li>
 </ul>
-<p>Just like other selectors, you can combine these with Boolean algebra. For example, <code>!where(is.numeric)</code> selects all non-numeric columns, and <code>starts_with("a") &amp; where(is.logical)</code> selects all logical columns whose name starts with “a”.</p>
-</section><section id="calling-a-single-function" class="level3" data-number="26.2.2"><h3 data-number="26.2.2" class="anchored" data-anchor-id="calling-a-single-function">
-<span class="header-section-number">26.2.2</span> Calling a single function</h3>
-<p>The second argument to <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> defines how each column will be transformed. In simple cases, as above, this will be a single existing function. This is a pretty special feature of R: we’re passing one function (<code>median</code>, <code>mean</code>, <code>str_flatten</code>, …) to another function (<code>across</code>). This is one of the features that makes R a functional programming language.</p>
-<p>It’s important to note that we’re passing this function to <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, so <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> can call it; we’re not calling it ourselves. That means the function name should never be followed by <code>()</code>. If you forget, you’ll get an error:</p>
+<p>就像其他选择器一样，你可以将它们与布尔代数结合起来。例如，<code>!where(is.numeric)</code> 选择所有非数值列，而 <code>starts_with("a") &amp; where(is.logical)</code> 选择所有名称以 “a” 开头的逻辑列。</p>
+</section><section id="调用单个函数" class="level3" data-number="26.2.2"><h3 data-number="26.2.2" class="anchored" data-anchor-id="调用单个函数">
+<span class="header-section-number">26.2.2</span> 调用单个函数</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的第二个参数定义了每一列将如何被转换。在简单的情况下，如上所示，这将是一个现有的函数。这是 R 的一个很特别的特性：我们将一个函数（<code>median</code>、<code>mean</code>、<code>str_flatten</code> 等）传递给另一个函数（<code>across</code>）。这是使 R 成为一门函数式编程语言的特性之一。</p>
+<p>需要注意的是，我们是将这个函数传递给 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>，以便 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 可以调用它；我们不是自己调用它。这意味着函数名后面不应该有 <code>()</code>。如果你忘了这一点，你会得到一个错误：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">grp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -571,14 +570,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Caused by error in `median.default()`:</span></span>
 <span><span class="co">#&gt; ! 缺少参数"x",也缺失默认值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This error arises because you’re calling the function with no input, e.g.:</p>
+<p>这个错误是因为你调用函数时没有提供输入，例如：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in median.default(): 缺少参数"x",也缺失默认值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="calling-multiple-functions" class="level3" data-number="26.2.3"><h3 data-number="26.2.3" class="anchored" data-anchor-id="calling-multiple-functions">
-<span class="header-section-number">26.2.3</span> Calling multiple functions</h3>
-<p>In more complex cases, you might want to supply additional arguments or perform multiple transformations. Let’s motivate this problem with a simple example: what happens if we have some missing values in our data? <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> propagates those missing values, giving us a suboptimal output:</p>
+</section><section id="调用多个函数" class="level3" data-number="26.2.3"><h3 data-number="26.2.3" class="anchored" data-anchor-id="调用多个函数">
+<span class="header-section-number">26.2.3</span> 调用多个函数</h3>
+<p>在更复杂的情况下，你可能想要提供额外的参数或执行多个转换。让我们用一个简单的例子来引出这个问题：如果我们的数据中有一些缺失值会发生什么？<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> 会传播这些缺失值，给我们一个次优的输出：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rnorm_na</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">n_na</span>, <span class="va">mean</span> <span class="op">=</span> <span class="fl">0</span>, <span class="va">sd</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="va">n_na</span>, mean <span class="op">=</span> <span class="va">mean</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">n_na</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -600,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1    NA    NA    NA  1.15     5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It would be nice if we could pass along <code>na.rm = TRUE</code> to <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> to remove these missing values. To do so, instead of calling <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> directly, we need to create a new function that calls <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> with the desired arguments:</p>
+<p>如果我们能将 <code>na.rm = TRUE</code> 传递给 <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> 来移除这些缺失值，那就太好了。为此，我们需要创建一个新函数，该函数使用所需的参数调用 <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>，而不是直接调用 <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -612,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 0.139 -1.11 -0.387  1.15     5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is a little verbose, so R comes with a handy shortcut: for this sort of throw away, or <strong>anonymous</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, function you can replace <code>function</code> with <code>\</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<p>这种写法有点冗长，所以 R 提供了一个方便的快捷方式：对于这种一次性的或<strong>匿名</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>函数，你可以用 <code>\</code> 替换 <code>function</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -620,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In either case, <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> effectively expands to the following code:</p>
+<p>无论哪种情况，<code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 实际上都等同于以下代码：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -631,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When we remove the missing values from the <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, it would be nice to know just how many values were removed. We can find that out by supplying two functions to <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>: one to compute the median and the other to count the missing values. You supply multiple functions by using a named list to <code>.fns</code>:</p>
+<p>当我们从 <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> 中移除缺失值时，知道究竟移除了多少个值会很有用。我们可以通过向 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 提供两个函数来实现这一点：一个用于计算中位数，另一个用于计算缺失值的数量。你可以通过向 <code>.fns</code> 参数提供一个命名的列表来提供多个函数：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -647,10 +646,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1    0.139        1    -1.11        1   -0.387        2     1.15        0</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: n &lt;int&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you look carefully, you might intuit that the columns are named using a glue specification (<a href="strings.html#sec-glue" class="quarto-xref"><span>Section 14.3.2</span></a>) like <code>{.col}_{.fn}</code> where <code>.col</code> is the name of the original column and <code>.fn</code> is the name of the function. That’s not a coincidence! As you’ll learn in the next section, you can use the <code>.names</code> argument to supply your own glue spec.</p>
-</section><section id="column-names" class="level3" data-number="26.2.4"><h3 data-number="26.2.4" class="anchored" data-anchor-id="column-names">
-<span class="header-section-number">26.2.4</span> Column names</h3>
-<p>The result of <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> is named according to the specification provided in the <code>.names</code> argument. We could specify our own if we wanted the name of the function to come first<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
+<p>如果你仔细观察，你可能会直观地感觉到列名是使用了一个类似 <code>{.col}_{.fn}</code> 的 glue 规范（<a href="strings.html#sec-glue" class="quarto-xref"><span>Section 14.3.2</span></a>）来命名的，其中 <code>.col</code> 是原始列的名称，<code>.fn</code> 是函数的名称。这并非巧合！正如你将在下一节中学到的，你可以使用 <code>.names</code> 参数来提供你自己的 glue 规范。</p>
+</section><section id="列名" class="level3" data-number="26.2.4"><h3 data-number="26.2.4" class="anchored" data-anchor-id="列名">
+<span class="header-section-number">26.2.4</span> 列名</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的结果根据 <code>.names</code> 参数中提供的规范来命名。如果我们想让函数名排在前面，我们可以指定自己的命名方式<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -670,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1    0.139        1    -1.11        1   -0.387        2     1.15        0</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: n &lt;int&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>.names</code> argument is particularly important when you use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. By default, the output of <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> is given the same names as the inputs. This means that <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> inside of <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> will replace existing columns. For example, here we use <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> to replace <code>NA</code>s with <code>0</code>:</p>
+<p>当你将 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 与 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 一起使用时，<code>.names</code> 参数尤其重要。默认情况下，<code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的输出与输入的名称相同。这意味着在 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 内部使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 将会替换现有的列。例如，这里我们使用 <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> 将 <code>NA</code> 替换为 <code>0</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -685,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 -2.61  -0.683 -0.785 2.13 </span></span>
 <span><span class="co">#&gt; 5  1.11   0     -0.387 0.704</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you’d like to instead create new columns, you can use the <code>.names</code> argument to give the output new names:</p>
+<p>如果你想创建新的列，可以使用 <code>.names</code> 参数为输出指定新的名称：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_miss</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -700,11 +699,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 -2.61  -0.683 -0.785 2.13     -2.61     -0.683    -0.785     2.13 </span></span>
 <span><span class="co">#&gt; 5  1.11  NA     -0.387 0.704     1.11      0        -0.387     0.704</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="filtering" class="level3" data-number="26.2.5"><h3 data-number="26.2.5" class="anchored" data-anchor-id="filtering">
-<span class="header-section-number">26.2.5</span> Filtering</h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> is a great match for <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> but it’s more awkward to use with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, because you usually combine multiple conditions with either <code>|</code> or <code>&amp;</code>. It’s clear that <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> can help to create multiple logical columns, but then what? So dplyr provides two variants of <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> called <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_any()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_all()</a></code>:</p>
+</section><section id="筛选" class="level3" data-number="26.2.5"><h3 data-number="26.2.5" class="anchored" data-anchor-id="筛选">
+<span class="header-section-number">26.2.5</span> 筛选</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 与 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 是绝佳的搭配，但与 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 一起使用时就比较尴尬了，因为你通常需要用 <code>|</code> 或 <code>&amp;</code> 来组合多个条件。很明显，<code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 可以帮助创建多个逻辑列，但接下来该怎么办呢？因此，dplyr 提供了 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的两个变体，名为 <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_any()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/across.html">if_all()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># same as df_miss |&gt; filter(is.na(a) | is.na(b) | is.na(c) | is.na(d))</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 等同于 df_miss |&gt; filter(is.na(a) | is.na(b) | is.na(c) | is.na(d))</span></span>
 <span><span class="va">df_miss</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_any</a></span><span class="op">(</span><span class="va">a</span><span class="op">:</span><span class="va">d</span>, <span class="va">is.na</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
 <span><span class="co">#&gt;        a      b      c     d</span></span>
@@ -714,14 +713,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 -0.156 -0.980 NA     1.15 </span></span>
 <span><span class="co">#&gt; 4  1.11  NA     -0.387 0.704</span></span>
 <span></span>
-<span><span class="co"># same as df_miss |&gt; filter(is.na(a) &amp; is.na(b) &amp; is.na(c) &amp; is.na(d))</span></span>
+<span><span class="co"># 等同于 df_miss |&gt; filter(is.na(a) &amp; is.na(b) &amp; is.na(c) &amp; is.na(d))</span></span>
 <span><span class="va">df_miss</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_all</a></span><span class="op">(</span><span class="va">a</span><span class="op">:</span><span class="va">d</span>, <span class="va">is.na</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 0 × 4</span></span>
 <span><span class="co">#&gt; # ℹ 4 variables: a &lt;dbl&gt;, b &lt;dbl&gt;, c &lt;dbl&gt;, d &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="across-in-functions" class="level3" data-number="26.2.6"><h3 data-number="26.2.6" class="anchored" data-anchor-id="across-in-functions">
-<span class="header-section-number">26.2.6</span> <code>across()</code> in functions</h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> is particularly useful to program with because it allows you to operate on multiple columns. For example, <a href="https://twitter.com/_wurli/status/1571836746899283969">Jacob Scott</a> uses this little helper which wraps a bunch of lubridate functions to expand all date columns into year, month, and day columns:</p>
+</section><section id="在函数中使用-across" class="level3" data-number="26.2.6"><h3 data-number="26.2.6" class="anchored" data-anchor-id="在函数中使用-across">
+<span class="header-section-number">26.2.6</span> 在函数中使用 <code>across()</code>
+</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 在编程中特别有用，因为它允许你对多个列进行操作。例如，<a href="https://twitter.com/_wurli/status/1571836746899283969">Jacob Scott</a> 使用了这个小助手函数，它包装了一系列 lubridate 函数，将所有日期列扩展为年、月、日列：</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">expand_dates</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -743,7 +743,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1 Amy   2009-08-03      2009          8        3</span></span>
 <span><span class="co">#&gt; 2 Bob   2010-01-16      2010          1       16</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> also makes it easy to supply multiple columns in a single argument because the first argument uses tidy-select; you just need to remember to embrace that argument, as we discussed in <a href="functions.html#sec-embracing" class="quarto-xref"><span>Section 25.3.2</span></a>. For example, this function will compute the means of numeric columns by default. But by supplying the second argument you can choose to summarize just selected columns:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 还可以方便地在单个参数中提供多个列，因为它的第一个参数使用了 tidy-select；你只需要记住要拥抱 (embrace) 该参数，正如我们在 <a href="functions.html#sec-embracing" class="quarto-xref"><span>Section 25.3.2</span></a> 中讨论的那样。例如，下面这个函数默认会计算数值列的均值。但是通过提供第二个参数，你可以选择只对选定的列进行汇总：</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summarize_means</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">summary_vars</span> <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -777,10 +777,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 Premium   0.892  5.97  5.94  3.65 13791</span></span>
 <span><span class="co">#&gt; 5 Ideal     0.703  5.51  5.52  3.40 21551</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="compare-with-pivot_longer" class="level3" data-number="26.2.7"><h3 data-number="26.2.7" class="anchored" data-anchor-id="compare-with-pivot_longer">
-<span class="header-section-number">26.2.7</span> Compare with <code>pivot_longer()</code>
-</h3>
-<p>Before we go on, it’s worth pointing out an interesting connection between <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> (<a href="data-tidy.html#sec-pivoting" class="quarto-xref"><span>Section 5.3</span></a>). In many cases, you perform the same calculations by first pivoting the data and then performing the operations by group rather than by column. For example, take this multi-function summary:</p>
+</section><section id="与-pivot_longer-比较" class="level3" data-number="26.2.7"><h3 data-number="26.2.7" class="anchored" data-anchor-id="与-pivot_longer-比较">
+<span class="header-section-number">26.2.7</span> 与 <code>pivot_longer()</code> 比较</h3>
+<p>在我们继续之前，有必要指出 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 和 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> (<a href="data-tidy.html#sec-pivoting" class="quarto-xref"><span>Section 5.3</span></a>) 之间一个有趣的联系。在许多情况下，你可以通过先转换数据，然后按组而不是按列执行操作来完成相同的计算。例如，看下面这个多函数汇总：</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="va">a</span><span class="op">:</span><span class="va">d</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>median <span class="op">=</span> <span class="va">median</span>, mean <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -789,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;      &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1   0.0380  0.205  -0.0163 0.0910    0.260 0.0716    0.540  0.508</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We could compute the same values by pivoting longer and then summarizing:</p>
+<p>我们可以通过先将数据转换为长格式，然后进行汇总来计算相同的值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">long</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">a</span><span class="op">:</span><span class="va">d</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -807,7 +806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 c      0.260  0.0716</span></span>
 <span><span class="co">#&gt; 4 d      0.540  0.508</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And if you wanted the same structure as <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> you could pivot again:</p>
+<p>如果你想要与 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 相同的结构，你可以再次进行转换：</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">long</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
@@ -821,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;      &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1   0.0380  0.205  -0.0163 0.0910    0.260 0.0716    0.540  0.508</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is a useful technique to know about because sometimes you’ll hit a problem that’s not currently possible to solve with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>: when you have groups of columns that you want to compute with simultaneously. For example, imagine that our data frame contains both values and weights and we want to compute a weighted mean:</p>
+<p>这是一个很有用的技巧，因为有时你会遇到一个目前无法用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 解决的问题：当你有多组列，并且想要同时对它们进行计算时。例如，假设我们的数据框包含值和权重，我们想要计算加权平均值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_paired</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  a_val <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
@@ -834,7 +833,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  d_wts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There’s currently no way to do this with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, but it’s relatively straightforward with <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>:</p>
+<p>目前没有办法用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 来实现这个功能<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，但用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 就相对直接了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_long</span> <span class="op">&lt;-</span> <span class="va">df_paired</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
@@ -865,22 +864,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 c     -0.360 </span></span>
 <span><span class="co">#&gt; 4 d     -0.248</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If needed, you could <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> this back to the original form.</p>
-</section><section id="exercises" class="level3" data-number="26.2.8"><h3 data-number="26.2.8" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">26.2.8</span> Exercises</h3>
+<p>如果需要，你可以用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 将其转换回原始形式。</p>
+</section><section id="练习" class="level3" data-number="26.2.8"><h3 data-number="26.2.8" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">26.2.8</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Practice your <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> skills by:</p>
+<p>通过以下方式练习你的 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 技能：</p>
 <ol type="1">
-<li><p>Computing the number of unique values in each column of <code><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">palmerpenguins::penguins</a></code>.</p></li>
-<li><p>Computing the mean of every column in <code>mtcars</code>.</p></li>
-<li><p>Grouping <code>diamonds</code> by <code>cut</code>, <code>clarity</code>, and <code>color</code> then counting the number of observations and computing the mean of each numeric column.</p></li>
+<li><p>计算 <code><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">palmerpenguins::penguins</a></code> 数据集中每一列的唯一值数量。</p></li>
+<li><p>计算 <code>mtcars</code> 数据集中每一列的平均值。</p></li>
+<li><p>将 <code>diamonds</code> 按 <code>cut</code>、<code>clarity</code> 和 <code>color</code> 分组，然后计算观测数量和每个数值列的平均值。</p></li>
 </ol>
 </li>
-<li><p>What happens if you use a list of functions in <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, but don’t name them? How is the output named?</p></li>
-<li><p>Adjust <code>expand_dates()</code> to automatically remove the date columns after they’ve been expanded. Do you need to embrace any arguments?</p></li>
+<li><p>如果在 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 中使用一个函数列表，但不给它们命名，会发生什么？输出是如何命名的？</p></li>
+<li><p>修改 <code>expand_dates()</code> 函数，使其在扩展日期列后自动删除它们。你需要拥抱 (embrace) 任何参数吗？</p></li>
 <li>
-<p>Explain what each step of the pipeline in this function does. What special feature of <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> are we taking advantage of?</p>
+<p>解释下面这个函数中管道的每一步都做了什么。我们利用了 <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> 的什么特殊功能？</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">show_missing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">group_vars</span>, <span class="va">summary_vars</span> <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -894,29 +893,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op">|&gt;</span> <span class="fu">show_missing</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-</ol></section></section><section id="reading-multiple-files" class="level2" data-number="26.3"><h2 data-number="26.3" class="anchored" data-anchor-id="reading-multiple-files">
-<span class="header-section-number">26.3</span> Reading multiple files</h2>
-<p>In the previous section, you learned how to use <code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a></code> to repeat a transformation on multiple columns. In this section, you’ll learn how to use <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> to do something to every file in a directory. Let’s start with a little motivation: imagine you have a directory full of excel spreadsheets<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> you want to read. You could do it with copy and paste:</p>
+</ol></section></section><section id="读取多个文件" class="level2" data-number="26.3"><h2 data-number="26.3" class="anchored" data-anchor-id="读取多个文件">
+<span class="header-section-number">26.3</span> 读取多个文件</h2>
+<p>在上一节中，你学习了如何使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a></code> 对多个列重复进行转换。在本节中，你将学习如何使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> 对目录中的每个文件执行某些操作。让我们从一个小小的动机开始：假设你有一个装满了你想要读取的 Excel 电子表格的目录<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。你可以通过复制粘贴来完成：</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data2019</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/y2019.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">data2020</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/y2020.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">data2021</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/y2021.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">data2022</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/y2022.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And then use <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows()</a></code> to combine them all together:</p>
+<p>然后使用 <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">dplyr::bind_rows()</a></code> 将它们全部合并在一起：</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">data2019</span>, <span class="va">data2020</span>, <span class="va">data2021</span>, <span class="va">data2022</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can imagine that this would get tedious quickly, especially if you had hundreds of files, not just four. The following sections show you how to automate this sort of task. There are three basic steps: use <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> to list all the files in a directory, then use <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> to read each of them into a list, then use <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_rbind()</a></code> to combine them into a single data frame. We’ll then discuss how you can handle situations of increasing heterogeneity, where you can’t do exactly the same thing to every file.</p>
-<section id="listing-files-in-a-directory" class="level3" data-number="26.3.1"><h3 data-number="26.3.1" class="anchored" data-anchor-id="listing-files-in-a-directory">
-<span class="header-section-number">26.3.1</span> Listing files in a directory</h3>
-<p>As the name suggests, <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> lists the files in a directory. You’ll almost always use three arguments:</p>
+<p>你可以想象这会很快变得乏味，特别是如果你有数百个文件，而不仅仅是四个。接下来的部分将向你展示如何自动化这类任务。有三个基本步骤：使用 <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> 列出目录中的所有文件，然后使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> 将每个文件读入一个列表中，最后使用 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_rbind()</a></code> 将它们合并成一个单一的数据框。然后我们将讨论如何处理异质性越来越高的情况，即你不能对每个文件都做完全相同的事情。</p>
+<section id="列出目录中的文件" class="level3" data-number="26.3.1"><h3 data-number="26.3.1" class="anchored" data-anchor-id="列出目录中的文件">
+<span class="header-section-number">26.3.1</span> 列出目录中的文件</h3>
+<p>顾名思义，<code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> 列出目录中的文件。你几乎总是会使用三个参数：</p>
 <ul>
-<li><p>The first argument, <code>path</code>, is the directory to look in.</p></li>
-<li><p><code>pattern</code> is a regular expression used to filter the file names. The most common pattern is something like <code>[.]xlsx$</code> or <code>[.]csv$</code> to find all files with a specified extension.</p></li>
-<li><p><code>full.names</code> determines whether or not the directory name should be included in the output. You almost always want this to be <code>TRUE</code>.</p></li>
+<li><p>第一个参数 <code>path</code> 是要查看的目录。</p></li>
+<li><p><code>pattern</code> 是一个用于过滤文件名的正则表达式。最常见的模式是类似 <code>[.]xlsx$</code> 或 <code>[.]csv$</code> 这样的，用来查找所有具有指定扩展名的文件。</p></li>
+<li><p><code>full.names</code> 决定是否应将目录名包含在输出中。你几乎总是希望它为 <code>TRUE</code>。</p></li>
 </ul>
-<p>To make our motivating example concrete, this book contains a folder with 12 excel spreadsheets containing data from the gapminder package. Each file contains one year’s worth of data for 142 countries. We can list them all with the appropriate call to <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code>:</p>
+<p>为了使我们的动机示例更具体，本书包含一个文件夹，其中有 12 个 Excel 电子表格，包含了来自 gapminder 包的数据。每个文件包含 142 个国家一年的数据。我们可以通过适当的 <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> 调用来列出它们：</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"data/gapminder"</span>, pattern <span class="op">=</span> <span class="st">"[.]xlsx$"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">paths</span></span>
@@ -927,17 +926,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;  [9] "data/gapminder/1992.xlsx" "data/gapminder/1997.xlsx"</span></span>
 <span><span class="co">#&gt; [11] "data/gapminder/2002.xlsx" "data/gapminder/2007.xlsx"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="lists" class="level3" data-number="26.3.2"><h3 data-number="26.3.2" class="anchored" data-anchor-id="lists">
-<span class="header-section-number">26.3.2</span> Lists</h3>
-<p>Now that we have these 12 paths, we could call <code>read_excel()</code> 12 times to get 12 data frames:</p>
+</section><section id="列表" class="level3" data-number="26.3.2"><h3 data-number="26.3.2" class="anchored" data-anchor-id="列表">
+<span class="header-section-number">26.3.2</span> 列表</h3>
+<p>现在我们有了这 12 个路径，我们可以调用 <code>read_excel()</code> 12 次来得到 12 个数据框：</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gapminder_1952 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1952.xlsx"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>gapminder_1957 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1957.xlsx"</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>gapminder_1962 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1962.xlsx"</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a> ...,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  ...,</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>gapminder_2007 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/2007.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But putting each sheet into its own variable is going to make it hard to work with them a few steps down the road. Instead, they’ll be easier to work with if we put them into a single object. A list is the perfect tool for this job:</p>
+<p>但是将每个表格放入其自己的变量中，会在接下来的步骤中使它们难以处理。相反，如果我们将它们放入一个单一的对象中，它们会更容易处理。列表 (list) 是完成这项工作的完美工具：</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/gapminder/1952.xlsx"</span><span class="op">)</span>,</span>
@@ -947,7 +946,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/gapminder/2007.xlsx"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now that you have these data frames in a list, how do you get one out? You can use <code>files[[i]]</code> to extract the i<sup>th</sup> element:</p>
+<p>现在你已经将这些数据框放入一个列表中，你如何取出一个呢？你可以使用 <code>files[[i]]</code> 来提取第 i&lt;sup&gt;th&lt;/sup&gt; 个元素：</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 142 × 5</span></span>
@@ -961,11 +960,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Australia   Oceania      70.9 10794968    12217.</span></span>
 <span><span class="co">#&gt; # ℹ 136 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’ll come back to <code>[[</code> in more detail in <a href="base-R.html#sec-subset-one" class="quarto-xref"><span>Section 27.3</span></a>.</p>
-</section><section id="purrrmap-and-list_rbind" class="level3" data-number="26.3.3"><h3 data-number="26.3.3" class="anchored" data-anchor-id="purrrmap-and-list_rbind">
-<span class="header-section-number">26.3.3</span> <code>purrr::map()</code> and <code>list_rbind()</code>
+<p>我们将在 <a href="base-R.html#sec-subset-one" class="quarto-xref"><span>Section 27.3</span></a> 中更详细地回到 <code>[[</code>。</p>
+</section><section id="purrrmap-和-list_rbind" class="level3" data-number="26.3.3"><h3 data-number="26.3.3" class="anchored" data-anchor-id="purrrmap-和-list_rbind">
+<span class="header-section-number">26.3.3</span> <code>purrr::map()</code> 和 <code>list_rbind()</code>
 </h3>
-<p>The code to collect those data frames in a list “by hand” is basically just as tedious to type as code that reads the files one-by-one. Happily, we can use <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> to make even better use of our <code>paths</code> vector. <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> is similar to<code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, but instead of doing something to each column in a data frame, it does something to each element of a vector.<code>map(x, f)</code> is shorthand for:</p>
+<p>“手动”收集这些数据框到列表中的代码，基本上和逐个读取文件的代码一样繁琐。幸运的是，我们可以使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> 来更好地利用我们的 <code>paths</code> 向量。<code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 类似于 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>，但它不是对数据框中的每一列做某事，而是对向量中的每个元素做某事。<code>map(x, f)</code> 是以下代码的简写：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
@@ -974,7 +973,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">f</span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="va">n</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So we can use <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> to get a list of 12 data frames:</p>
+<p>所以我们可以使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 来得到一个包含 12 个数据框的列表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">paths</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span>
@@ -992,8 +991,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.</span></span>
 <span><span class="co">#&gt; # ℹ 136 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(This is another data structure that doesn’t display particularly compactly with <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> so you might want to load it into RStudio and inspect it with <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>).</p>
-<p>Now we can use <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_rbind()</a></code> to combine that list of data frames into a single data frame:</p>
+<p>(这是另一种用 <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> 显示不够紧凑的数据结构，所以你可能想在 RStudio 中加载它并用 <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> 来检查它)。</p>
+<p>现在我们可以使用 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_rbind()</a></code> 将这个数据框列表合并成一个单一的数据框：</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1,704 × 5</span></span>
@@ -1007,13 +1006,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.</span></span>
 <span><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or we could do both steps at once in a pipeline:</p>
+<p>或者我们可以在一个管道中同时完成这两个步骤：</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>What if we want to pass in extra arguments to <code>read_excel()</code>? We use the same technique that we used with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>. For example, it’s often useful to peek at the first few rows of the data with <code>n_max = 1</code>:</p>
+<p>如果我们想给 <code>read_excel()</code> 传入额外的参数怎么办？我们使用与 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 相同的技术。例如，用 <code>n_max = 1</code> 预览数据的前几行通常很有用：</p>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span>, n_max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1029,11 +1028,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Afghanistan Asia         38.4 14880372      786.</span></span>
 <span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This makes it clear that something is missing: there’s no <code>year</code> column because that value is recorded in the path, not in the individual files. We’ll tackle that problem next.</p>
+<p>这清楚地表明缺少了某些东西：没有 <code>year</code> 列，因为这个值记录在路径中，而不是在单个文件中。我们将在下一步解决这个问题。</p>
 </section><section id="sec-data-in-the-path" class="level3" data-number="26.3.4"><h3 data-number="26.3.4" class="anchored" data-anchor-id="sec-data-in-the-path">
-<span class="header-section-number">26.3.4</span> Data in the path</h3>
-<p>Sometimes the name of the file is data itself. In this example, the file name contains the year, which is not otherwise recorded in the individual files. To get that column into the final data frame, we need to do two things:</p>
-<p>First, we name the vector of paths. The easiest way to do this is with the <code><a href="https://rlang.r-lib.org/reference/set_names.html">set_names()</a></code> function, which can take a function. Here we use <code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code> to extract just the file name from the full path:</p>
+<span class="header-section-number">26.3.4</span> 路径中的数据</h3>
+<p>有时文件名本身就是数据。在这个例子中，文件名包含了年份，而这个信息在单个文件中并没有记录。为了将这一列加入到最终的数据框中，我们需要做两件事：</p>
+<p>首先，我们为路径向量命名。最简单的方法是使用 <code><a href="https://rlang.r-lib.org/reference/set_names.html">set_names()</a></code> 函数，它可以接受一个函数作为参数。这里我们使用 <code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code> 从完整路径中仅提取文件名：</p>
 <div class="cell">
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">basename</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;                  1952.xlsx                  1957.xlsx </span></span>
@@ -1049,13 +1048,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;                  2002.xlsx                  2007.xlsx </span></span>
 <span><span class="co">#&gt; "data/gapminder/2002.xlsx" "data/gapminder/2007.xlsx"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Those names are automatically carried along by all the map functions, so the list of data frames will have those same names:</p>
+<p>这些名称会被所有的 map 函数自动沿用，所以数据框列表也会有相同的名称：</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">basename</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That makes this call to <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> shorthand for:</p>
+<p>这使得这个 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 调用成为以下代码的简写：</p>
 <div class="cell">
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>  <span class="st">"1952.xlsx"</span> <span class="op">=</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/gapminder/1952.xlsx"</span><span class="op">)</span>,</span>
@@ -1065,7 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="st">"2007.xlsx"</span> <span class="op">=</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/gapminder/2007.xlsx"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can also use <code>[[</code> to extract elements by name:</p>
+<p>你也可以使用 <code>[[</code> 按名称提取元素：</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span><span class="op">[[</span><span class="st">"1962.xlsx"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 142 × 5</span></span>
@@ -1079,7 +1078,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Australia   Oceania      70.9 10794968    12217.</span></span>
 <span><span class="co">#&gt; # ℹ 136 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then we use the <code>names_to</code> argument to <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code> to tell it to save the names into a new column called <code>year</code> then use <code><a href="https://readr.tidyverse.org/reference/parse_number.html">readr::parse_number()</a></code> to extract the number from the string.</p>
+<p>然后，我们使用 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code> 的 <code>names_to</code> 参数，告诉它将名称保存到一个名为 <code>year</code> 的新列中，然后使用 <code><a href="https://readr.tidyverse.org/reference/parse_number.html">readr::parse_number()</a></code> 从字符串中提取数字。</p>
 <div class="cell">
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">basename</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1097,7 +1096,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  1952 Australia   Oceania      69.1  8691212    10040.</span></span>
 <span><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In more complicated cases, there might be other variables stored in the directory name, or maybe the file name contains multiple bits of data. In that case, use <code><a href="https://rlang.r-lib.org/reference/set_names.html">set_names()</a></code> (without any arguments) to record the full path, and then use <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">tidyr::separate_wider_delim()</a></code> and friends to turn them into useful columns.</p>
+<p>在更复杂的情况下，可能还有其他变量存储在目录名中，或者文件名可能包含多个数据片段。在这种情况下，使用 <code><a href="https://rlang.r-lib.org/reference/set_names.html">set_names()</a></code>（不带任何参数）来记录完整路径，然后使用 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">tidyr::separate_wider_delim()</a></code> 及其相关函数将它们转换成有用的列。</p>
 <div class="cell">
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1116,9 +1115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 gapminder 1952  xlsx  Australia   Oceania      69.1  8691212    10040.</span></span>
 <span><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="save-your-work" class="level3" data-number="26.3.5"><h3 data-number="26.3.5" class="anchored" data-anchor-id="save-your-work">
-<span class="header-section-number">26.3.5</span> Save your work</h3>
-<p>Now that you’ve done all this hard work to get to a nice tidy data frame, it’s a great time to save your work:</p>
+</section><section id="保存你的工作" class="level3" data-number="26.3.5"><h3 data-number="26.3.5" class="anchored" data-anchor-id="保存你的工作">
+<span class="header-section-number">26.3.5</span> 保存你的工作</h3>
+<p>现在你已经完成了所有这些辛苦的工作，得到了一个整洁的数据框，是时候保存你的工作了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">basename</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1128,13 +1127,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="st">"gapminder.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now when you come back to this problem in the future, you can read in a single csv file. For large and richer datasets, using parquet might be a better choice than <code>.csv</code>, as discussed in <a href="arrow.html#sec-parquet" class="quarto-xref"><span>Section 22.4</span></a>.</p>
-<p>If you’re working in a project, we suggest calling the file that does this sort of data prep work something like <code>0-cleanup.R</code>. The <code>0</code> in the file name suggests that this should be run before anything else.</p>
-<p>If your input data files change over time, you might consider learning a tool like <a href="https://docs.ropensci.org/targets/">targets</a> to set up your data cleaning code to automatically re-run whenever one of the input files is modified.</p>
-</section><section id="many-simple-iterations" class="level3" data-number="26.3.6"><h3 data-number="26.3.6" class="anchored" data-anchor-id="many-simple-iterations">
-<span class="header-section-number">26.3.6</span> Many simple iterations</h3>
-<p>Here we’ve just loaded the data directly from disk, and were lucky enough to get a tidy dataset. In most cases, you’ll need to do some additional tidying, and you have two basic options: you can do one round of iteration with a complex function, or do multiple rounds of iteration with simple functions. In our experience most folks reach first for one complex iteration, but you’re often better by doing multiple simple iterations.</p>
-<p>For example, imagine that you want to read in a bunch of files, filter out missing values, pivot, and then combine. One way to approach the problem is to write a function that takes a file and does all those steps then call <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> once:</p>
+<p>现在，当你将来再次处理这个问题时，你可以只读取一个 csv 文件。对于更大、更丰富的数据集，使用 parquet 可能比 <code>.csv</code> 是一个更好的选择，如 <a href="arrow.html#sec-parquet" class="quarto-xref"><span>Section 22.4</span></a> 中所讨论的。</p>
+<p>如果你在一个项目（project）中工作，我们建议将执行这类数据准备工作的文件命名为 <code>0-cleanup.R</code>。文件名中的 <code>0</code> 暗示这个文件应该在其他任何文件之前运行。</p>
+<p>如果你的输入数据文件会随时间变化，你可能需要考虑学习一个像 <a href="https://docs.ropensci.org/targets/">targets</a> 这样的工具，来设置你的数据清理代码，使其在任何输入文件被修改时自动重新运行。</p>
+</section><section id="多次简单迭代" class="level3" data-number="26.3.6"><h3 data-number="26.3.6" class="anchored" data-anchor-id="多次简单迭代">
+<span class="header-section-number">26.3.6</span> 多次简单迭代</h3>
+<p>在这里，我们只是直接从磁盘加载了数据，并幸运地得到了一个整洁的数据集。在大多数情况下，你需要进行一些额外的整理工作，你有两种基本选择：你可以用一个复杂的函数进行一轮迭代，或者用简单的函数进行多轮迭代。根据我们的经验，大多数人首先会选择进行一次复杂的迭代，但通常通过进行多次简单的迭代会更好。</p>
+<p>例如，假设你想读入一堆文件，过滤掉缺失值，进行数据转换，然后合并。一种方法是编写一个函数，它接收一个文件并执行所有这些步骤，然后调用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 一次：</p>
 <div class="cell">
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">process_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
@@ -1149,7 +1148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">process_file</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Alternatively, you could perform each step of <code>process_file()</code> to every file:</p>
+<p>或者，你可以对每个文件执行 <code>process_file()</code> 的每一步：</p>
 <div class="cell">
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">read_csv</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1158,8 +1157,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">jan</span><span class="op">:</span><span class="va">dec</span>, names_to <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We recommend this approach because it stops you getting fixated on getting the first file right before moving on to the rest. By considering all of the data when doing tidying and cleaning, you’re more likely to think holistically and end up with a higher quality result.</p>
-<p>In this particular example, there’s another optimization you could make, by binding all the data frames together earlier. Then you can rely on regular dplyr behavior:</p>
+<p>我们推荐这种方法，因为它能防止你在转向处理其余文件之前，过分专注于把第一个文件处理得完美无瑕。通过在进行整理和清理时考虑所有数据，你更有可能进行整体思考，并最终得到更高质量的结果。</p>
+<p>在这个特定的例子中，还有另一个可以做的优化，就是更早地将所有数据框绑定在一起。然后你可以依赖常规的 dplyr 行为：</p>
 <div class="cell">
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">read_csv</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1168,14 +1167,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">jan</span><span class="op">:</span><span class="va">dec</span>, names_to <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="heterogeneous-data" class="level3" data-number="26.3.7"><h3 data-number="26.3.7" class="anchored" data-anchor-id="heterogeneous-data">
-<span class="header-section-number">26.3.7</span> Heterogeneous data</h3>
-<p>Unfortunately, sometimes it’s not possible to go from <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> straight to <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code> because the data frames are so heterogeneous that <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code> either fails or yields a data frame that’s not very useful. In that case, it’s still useful to start by loading all of the files:</p>
+</section><section id="异构数据" class="level3" data-number="26.3.7"><h3 data-number="26.3.7" class="anchored" data-anchor-id="异构数据">
+<span class="header-section-number">26.3.7</span> 异构数据</h3>
+<p>不幸的是，有时无法直接从 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 转到 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code>，因为数据框的异构性太高，导致 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code> 要么失败，要么产生一个不太有用的数据框。在这种情况下，先加载所有文件仍然是有用的：</p>
 <div class="cell">
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then a very useful strategy is to capture the structure of the data frames so that you can explore it using your data science skills. One way to do so is with this handy <code>df_types</code> function<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> that returns a tibble with one row for each column:</p>
+<p>然后，一个非常有用的策略是捕获数据框的结构，以便你可以用你的数据科学技能来探索它。一种方法是使用这个方便的 <code>df_types</code> 函数<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>，它返回一个 tibble，每列一行：</p>
 <div class="cell">
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_types</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
@@ -1196,7 +1195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5 pop       double         0</span></span>
 <span><span class="co">#&gt; 6 gdpPercap double         0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can then apply this function to all of the files, and maybe do some pivoting to make it easier to see where the differences are. For example, this makes it easy to verify that the gapminder spreadsheets that we’ve been working with are all quite homogeneous:</p>
+<p>然后你可以将这个函数应用于所有文件，并可能进行一些转换，以便更容易地看到差异所在。例如，这使得验证我们一直在处理的 gapminder 电子表格都非常同质化变得容易：</p>
 <div class="cell">
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">df_types</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1214,43 +1213,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 1977.xlsx character character double  double double   </span></span>
 <span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If the files have heterogeneous formats, you might need to do more processing before you can successfully merge them. Unfortunately, we’re now going to leave you to figure that out on your own, but you might want to read about <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_if()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_at()</a></code>. <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_if()</a></code> allows you to selectively modify elements of a list based on their values; <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_at()</a></code> allows you to selectively modify elements based on their names.</p>
-</section><section id="handling-failures" class="level3" data-number="26.3.8"><h3 data-number="26.3.8" class="anchored" data-anchor-id="handling-failures">
-<span class="header-section-number">26.3.8</span> Handling failures</h3>
-<p>Sometimes the structure of your data might be sufficiently wild that you can’t even read all the files with a single command. And then you’ll encounter one of the downsides of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>: it succeeds or fails as a whole. <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> will either successfully read all of the files in a directory or fail with an error, reading zero files. This is annoying: why does one failure prevent you from accessing all the other successes?</p>
-<p>Luckily, purrr comes with a helper to tackle this problem: <code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code>. <code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code> is what’s known as a function operator: it takes a function and returns a function with modified behavior. In particular, <code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code> changes a function from erroring to returning a value that you specify:</p>
+<p>如果文件具有异构格式，你可能需要进行更多的处理才能成功合并它们。不幸的是，我们现在要让你自己去解决了，但你可能想读一下关于 <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_if()</a></code> 和 <code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_at()</a></code> 的内容。<code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_if()</a></code> 允许你根据列表元素的值有选择地修改它们；<code><a href="https://purrr.tidyverse.org/reference/map_if.html">map_at()</a></code> 允许你根据它们的名称有选择地修改元素。</p>
+</section><section id="处理失败" class="level3" data-number="26.3.8"><h3 data-number="26.3.8" class="anchored" data-anchor-id="处理失败">
+<span class="header-section-number">26.3.8</span> 处理失败</h3>
+<p>有时你的数据结构可能足够混乱，以至于你甚至不能用一个命令读取所有文件。然后你会遇到 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 的一个缺点：它要么整体成功，要么整体失败。<code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 要么成功读取目录中的所有文件，要么因错误而失败，一个文件也读不进来。这很烦人：为什么一个失败会阻止你访问所有其他成功的结果？</p>
+<p>幸运的是，purrr 提供了一个助手来解决这个问题：<code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code>。<code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code> 是所谓的函数操作符：它接受一个函数并返回一个行为被修改的函数。具体来说，<code><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly()</a></code> 将一个会出错的函数改变为返回你指定的值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="va">paths</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/possibly.html">possibly</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span>, <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This works particularly well here because <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code>, like many tidyverse functions, automatically ignores <code>NULL</code>s.</p>
-<p>Now you have all the data that can be read easily, and it’s time to tackle the hard part of figuring out why some files failed to load and what to do about it. Start by getting the paths that failed:</p>
+<p>这在这里特别有效，因为 <code><a href="https://purrr.tidyverse.org/reference/list_c.html">list_rbind()</a></code>，像许多 tidyverse 函数一样，会自动忽略 <code>NULL</code>。</p>
+<p>现在你有了所有可以轻松读取的数据，是时候解决困难的部分了，即找出为什么有些文件加载失败以及该怎么处理。首先获取失败的路径：</p>
 <div class="cell">
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">failed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_vec</a></span><span class="op">(</span><span class="va">files</span>, <span class="va">is.null</span><span class="op">)</span></span>
 <span><span class="va">paths</span><span class="op">[</span><span class="va">failed</span><span class="op">]</span></span>
 <span><span class="co">#&gt; character(0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then call the import function again for each failure and figure out what went wrong.</p>
-</section></section><section id="saving-multiple-outputs" class="level2" data-number="26.4"><h2 data-number="26.4" class="anchored" data-anchor-id="saving-multiple-outputs">
-<span class="header-section-number">26.4</span> Saving multiple outputs</h2>
-<p>In the last section, you learned about <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>, which is useful for reading multiple files into a single object. In this section, we’ll now explore sort of the opposite problem: how can you take one or more R objects and save it to one or more files? We’ll explore this challenge using three examples:</p>
+<p>然后对每个失败的路径再次调用导入函数，找出问题所在。</p>
+</section></section><section id="保存多个输出" class="level2" data-number="26.4"><h2 data-number="26.4" class="anchored" data-anchor-id="保存多个输出">
+<span class="header-section-number">26.4</span> 保存多个输出</h2>
+<p>在上一节中，你学习了 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>，它对于将多个文件读入单个对象很有用。在本节中，我们将探讨一个相反的问题：如何将一个或多个 R 对象保存到一个或多个文件中？我们将通过三个例子来探讨这个挑战：</p>
 <ul>
-<li>Saving multiple data frames into one database.</li>
-<li>Saving multiple data frames into multiple <code>.csv</code> files.</li>
-<li>Saving multiple plots to multiple <code>.png</code> files.</li>
+<li>将多个数据框保存到一个数据库中。</li>
+<li>将多个数据框保存到多个 <code>.csv</code> 文件中。</li>
+<li>将多个图保存到多个 <code>.png</code> 文件中。</li>
 </ul>
 <section id="sec-save-database" class="level3" data-number="26.4.1"><h3 data-number="26.4.1" class="anchored" data-anchor-id="sec-save-database">
-<span class="header-section-number">26.4.1</span> Writing to a database</h3>
-<p>Sometimes when working with many files at once, it’s not possible to fit all your data into memory at once, and you can’t do <code>map(files, read_csv)</code>. One approach to deal with this problem is to load your data into a database so you can access just the bits you need with dbplyr.</p>
-<p>If you’re lucky, the database package you’re using will provide a handy function that takes a vector of paths and loads them all into the database. This is the case with duckdb’s <code>duckdb_read_csv()</code>:</p>
+<span class="header-section-number">26.4.1</span> 写入数据库</h3>
+<p>有时在同时处理许多文件时，不可能一次性将所有数据都装入内存，也就无法执行 <code>map(files, read_csv)</code>。处理这个问题的一种方法是将数据加载到数据库中，这样你就可以用 dbplyr 只访问你需要的部分。</p>
+<p>如果你幸运的话，你正在使用的数据库包会提供一个方便的函数，该函数接收一个路径向量并将它们全部加载到数据库中。duckdb 的 <code>duckdb_read_csv()</code> 就是这种情况：</p>
 <div class="cell">
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb_read_csv.html">duckdb_read_csv</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"gapminder"</span>, <span class="va">paths</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This would work well here, but we don’t have csv files, instead we have excel spreadsheets. So we’re going to have to do it “by hand”. Learning to do it by hand will also help you when you have a bunch of csvs and the database that you’re working with doesn’t have one function that will load them all in.</p>
-<p>We need to start by creating a table that we will fill in with data. The easiest way to do this is by creating a template, a dummy data frame that contains all the columns we want, but only a sampling of the data. For the gapminder data, we can make that template by reading a single file and adding the year to it:</p>
+<p>这在这里会很好用，但我们没有 csv 文件，而是 Excel 电子表格。所以我们得“手动”来做。学习手动操作也能帮助你在有一堆 csv 文件，而你正在使用的数据库没有一个能一次性加载所有文件的函数时。</p>
+<p>我们需要从创建一个我们将用数据填充的表开始。最简单的方法是创建一个模板，一个包含我们想要的所有列但只包含部分数据的虚拟数据框。对于 gapminder 数据，我们可以通过读取单个文件并向其添加年份来制作该模板：</p>
 <div class="cell">
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">template</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">template</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fl">1952</span></span>
@@ -1266,12 +1265,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.  1952</span></span>
 <span><span class="co">#&gt; # ℹ 136 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now we can connect to the database, and use <code><a href="https://dbi.r-dbi.org/reference/dbCreateTable.html">DBI::dbCreateTable()</a></code> to turn our template into a database table:</p>
+<p>现在我们可以连接到数据库，并使用 <code><a href="https://dbi.r-dbi.org/reference/dbCreateTable.html">DBI::dbCreateTable()</a></code> 将我们的模板变成一个数据库表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbCreateTable.html">dbCreateTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"gapminder"</span>, <span class="va">template</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>dbCreateTable()</code> doesn’t use the data in <code>template</code>, just the variable names and types. So if we inspect the <code>gapminder</code> table now you’ll see that it’s empty but it has the variables we need with the types we expect:</p>
+<p><code>dbCreateTable()</code> 不使用 <code>template</code> 中的数据，只使用变量名和类型。所以如果我们现在检查 <code>gapminder</code> 表，你会看到它是空的，但它有我们需要的变量和我们期望的类型：</p>
 <div class="cell">
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # Source:   table&lt;gapminder&gt; [?? x 6]</span></span>
@@ -1279,7 +1278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 6 variables: country &lt;chr&gt;, continent &lt;chr&gt;, lifeExp &lt;dbl&gt;, pop &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   gdpPercap &lt;dbl&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next, we need a function that takes a single file path, reads it into R, and adds the result to the <code>gapminder</code> table. We can do that by combining <code>read_excel()</code> with <code><a href="https://dbi.r-dbi.org/reference/dbAppendTable.html">DBI::dbAppendTable()</a></code>:</p>
+<p>接下来，我们需要一个函数，它接受单个文件路径，将其读入 R，并将结果添加到 <code>gapminder</code> 表中。我们可以通过结合 <code>read_excel()</code> 和 <code><a href="https://dbi.r-dbi.org/reference/dbAppendTable.html">DBI::dbAppendTable()</a></code> 来做到这一点：</p>
 <div class="cell">
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">append_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
@@ -1288,15 +1287,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbAppendTable.html">dbAppendTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"gapminder"</span>, <span class="va">df</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now we need to call <code>append_file()</code> once for each element of <code>paths</code>. That’s certainly possible with <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>:</p>
+<p>现在我们需要对 <code>paths</code> 的每个元素调用一次 <code>append_file()</code>。这当然可以用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 来实现：</p>
 <div class="cell">
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">append_file</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But we don’t care about the output of <code>append_file()</code>, so instead of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> it’s slightly nicer to use <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>. <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code> does exactly the same thing as <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> but throws the output away:</p>
+<p>但我们不关心 <code>append_file()</code> 的输出，所以使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code> 会比 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 稍微好一些。<code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code> 的作用与 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 完全相同，但会丢弃输出：</p>
 <div class="cell">
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">walk</a></span><span class="op">(</span><span class="va">append_file</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now we can see if we have all the data in our table:</p>
+<p>现在我们可以看看我们的表中是否包含了所有数据：</p>
 <div class="cell">
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1305,17 +1304,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # Database: DuckDB v1.2.2 [ggvis@Darwin 24.3.0:R 4.5.0/:memory:]</span></span>
 <span><span class="co">#&gt;    year     n</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  2007   142</span></span>
-<span><span class="co">#&gt; 2  1967   142</span></span>
-<span><span class="co">#&gt; 3  1982   142</span></span>
-<span><span class="co">#&gt; 4  1977   142</span></span>
-<span><span class="co">#&gt; 5  1987   142</span></span>
-<span><span class="co">#&gt; 6  1952   142</span></span>
+<span><span class="co">#&gt; 1  1977   142</span></span>
+<span><span class="co">#&gt; 2  1987   142</span></span>
+<span><span class="co">#&gt; 3  1972   142</span></span>
+<span><span class="co">#&gt; 4  1992   142</span></span>
+<span><span class="co">#&gt; 5  1997   142</span></span>
+<span><span class="co">#&gt; 6  2007   142</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="writing-csv-files" class="level3" data-number="26.4.2"><h3 data-number="26.4.2" class="anchored" data-anchor-id="writing-csv-files">
-<span class="header-section-number">26.4.2</span> Writing csv files</h3>
-<p>The same basic principle applies if we want to write multiple csv files, one for each group. Let’s imagine that we want to take the <code><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">ggplot2::diamonds</a></code> data and save one csv file for each <code>clarity</code>. First we need to make those individual datasets. There are many ways you could do that, but there’s one way we particularly like: <code><a href="https://dplyr.tidyverse.org/reference/group_nest.html">group_nest()</a></code>.</p>
+</section><section id="写入-csv-文件" class="level3" data-number="26.4.2"><h3 data-number="26.4.2" class="anchored" data-anchor-id="写入-csv-文件">
+<span class="header-section-number">26.4.2</span> 写入 csv 文件</h3>
+<p>如果我们想为每个组写入多个 csv 文件，基本原理是相同的。让我们假设我们想取 <code><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">ggplot2::diamonds</a></code> 数据，并为每个 <code>clarity</code> 保存一个 csv 文件。首先，我们需要创建那些单独的数据集。有很多方法可以做到这一点，但有一种我们特别喜欢的方法：<code><a href="https://dplyr.tidyverse.org/reference/group_nest.html">group_nest()</a></code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span> <span class="op">&lt;-</span> <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_nest.html">group_nest</a></span><span class="op">(</span><span class="va">clarity</span><span class="op">)</span></span>
@@ -1332,7 +1331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 VVS2           [5,066 × 9]</span></span>
 <span><span class="co">#&gt; # ℹ 2 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This gives us a new tibble with eight rows and two columns. <code>clarity</code> is our grouping variable and <code>data</code> is a list-column containing one tibble for each unique value of <code>clarity</code>:</p>
+<p>这给了我们一个有八行两列的新 tibble。<code>clarity</code> 是我们的分组变量，<code>data</code> 是一个列表列，其中包含 <code>clarity</code> 每个唯一值对应的一个 tibble：</p>
 <div class="cell">
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 741 × 9</span></span>
@@ -1346,7 +1345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  1.04 Premium   G      62.2    58  2801  6.46  6.41  4   </span></span>
 <span><span class="co">#&gt; # ℹ 735 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>While we’re here, let’s create a column that gives the name of output file, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>:</p>
+<p>趁热打铁，让我们创建一个给出输出文件名的列，使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 和 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span> <span class="op">&lt;-</span> <span class="va">by_clarity</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"diamonds-{clarity}.csv"</span><span class="op">)</span><span class="op">)</span></span>
@@ -1363,7 +1362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 VVS2           [5,066 × 9] diamonds-VVS2.csv</span></span>
 <span><span class="co">#&gt; # ℹ 2 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So if we were going to save these data frames by hand, we might write something like:</p>
+<p>所以如果我们要手动保存这些数据框，我们可能会这样写：</p>
 <div class="cell">
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
@@ -1371,13 +1370,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">...</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">by_clarity</span><span class="op">[[</span><span class="fl">8</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">8</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is a little different to our previous uses of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> because there are two arguments that are changing, not just one. That means we need a new function: <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>, which varies both the first and second arguments. And because we again don’t care about the output, we want <code><a href="https://purrr.tidyverse.org/reference/map2.html">walk2()</a></code> rather than <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>. That gives us:</p>
+<p>这与我们之前使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 的情况有点不同，因为有两个参数在变化，而不仅仅是一个。这意味着我们需要一个新的函数：<code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>，它同时改变第一个和第二个参数。而且因为我们同样不关心输出，所以我们想要用 <code><a href="https://purrr.tidyverse.org/reference/map2.html">walk2()</a></code> 而不是 <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>。这样我们就得到了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">walk2</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">data</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span>, <span class="va">write_csv</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="saving-plots" class="level3" data-number="26.4.3"><h3 data-number="26.4.3" class="anchored" data-anchor-id="saving-plots">
-<span class="header-section-number">26.4.3</span> Saving plots</h3>
-<p>We can take the same basic approach to create many plots. Let’s first make a function that draws the plot we want:</p>
+</section><section id="保存图表" class="level3" data-number="26.4.3"><h3 data-number="26.4.3" class="anchored" data-anchor-id="保存图表">
+<span class="header-section-number">26.4.3</span> 保存图表</h3>
+<p>我们可以采用同样的基本方法来创建多个图表。让我们先创建一个函数来绘制我们想要的图表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">carat_histogram</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>  </span>
@@ -1386,12 +1385,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">carat_histogram</span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="iteration_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" alt="Histogram of carats of diamonds from the by_clarity dataset, ranging from  0 to 5 carats. The distribution is unimodal and right skewed with a peak  around 1 carat." width="576"></p>
+<figure class="figure"><p><img src="iteration_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" alt="来自 by_clarity 数据集的钻石克拉数直方图，范围从 0 到 5 克拉。 分布是单峰且右偏的，峰值在 1 克拉左右。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now we can use <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> to create a list of many plots<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> and their eventual file paths:</p>
+<p>现在我们可以使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 来创建一个包含多个图表<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>及其最终文件路径的列表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span> <span class="op">&lt;-</span> <span class="va">by_clarity</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -1399,7 +1398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    path <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"clarity-{clarity}.png"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then use <code><a href="https://purrr.tidyverse.org/reference/map2.html">walk2()</a></code> with <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> to save each plot:</p>
+<p>然后使用 <code><a href="https://purrr.tidyverse.org/reference/map2.html">walk2()</a></code> 配合 <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> 来保存每个图表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">walk2</a></span><span class="op">(</span></span>
 <span>  <span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span>,</span>
@@ -1407,7 +1406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  \<span class="op">(</span><span class="va">path</span>, <span class="va">plot</span><span class="op">)</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">plot</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is shorthand for:</p>
+<p>这是以下代码的简写：</p>
 <div class="cell">
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
@@ -1415,26 +1414,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">...</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">by_clarity</span><span class="op">$</span><span class="va">path</span><span class="op">[[</span><span class="fl">8</span><span class="op">]</span><span class="op">]</span>, <span class="va">by_clarity</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">8</span><span class="op">]</span><span class="op">]</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- 
-### Exercises
 
-1.  Imagine you have a table of student data containing (amongst other variables) `school_name` and `student_id`. Sketch out what code you'd write if you want to save all the information for each student in file called `{student_id}.csv` in the `{school}` directory.
--->
-</section></section><section id="summary" class="level2" data-number="26.5"><h2 data-number="26.5" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">26.5</span> Summary</h2>
-<p>In this chapter, you’ve seen how to use explicit iteration to solve three problems that come up frequently when doing data science: manipulating multiple columns, reading multiple files, and saving multiple outputs. But in general, iteration is a super power: if you know the right iteration technique, you can easily go from fixing one problem to fixing all the problems. Once you’ve mastered the techniques in this chapter, we highly recommend learning more by reading the <a href="https://adv-r.hadley.nz/functionals.html">Functionals chapter</a> of <em>Advanced R</em> and consulting the <a href="https://purrr.tidyverse.org">purrr website</a>.</p>
-<p>If you know much about iteration in other languages, you might be surprised that we didn’t discuss the <code>for</code> loop. That’s because R’s orientation towards data analysis changes how we iterate: in most cases you can rely on an existing idiom to do something to each columns or each group. And when you can’t, you can often use a functional programming tool like <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> that does something to each element of a list. However, you will see <code>for</code> loops in wild-caught code, so you’ll learn about them in the next chapter where we’ll discuss some important base R tools.</p>
+</section></section><section id="总结" class="level2" data-number="26.5"><h2 data-number="26.5" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">26.5</span> 总结</h2>
+<p>在本章中，你已经看到了如何使用显式迭代来解决数据科学中经常出现的三个问题：操作多个列、读取多个文件以及保存多个输出。但总的来说，迭代是一种超能力：如果你知道正确的迭代技巧，你可以轻松地从解决一个问题扩展到解决所有问题。一旦你掌握了本章中的技术，我们强烈建议你通过阅读《<em>Advanced R</em>》的 <a href="https://adv-r.hadley.nz/functionals.html">Functionals 章节</a>和查阅 <a href="https://purrr.tidyverse.org">purrr 网站</a>来学习更多内容。</p>
+<p>如果你对其他语言中的迭代有很多了解，你可能会惊讶于我们没有讨论 <code>for</code> 循环。这是因为 R 面向数据分析的特性改变了我们迭代的方式：在大多数情况下，你可以依赖现有的惯用法来对每一列或每个组执行操作。而当你无法这样做时，你通常可以使用像 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 这样的函数式编程工具，它对列表的每个元素执行操作。然而，你会在野外捕获的代码中看到 <code>for</code> 循环，所以你将在下一章中学习它们，届时我们将讨论一些重要的基础 R 工具。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>Anonymous, because we never explicitly gave it a name with <code>&lt;-</code>. Another term programmers use for this is “lambda function”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>In older code you might see syntax that looks like <code>~ .x + 1</code>. This is another way to write anonymous functions but it only works inside tidyverse functions and always uses the variable name <code>.x</code>. We now recommend the base syntax, <code>\(x) x + 1</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>You can’t currently change the order of the columns, but you could reorder them after the fact using <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> or similar.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Maybe there will be one day, but currently we don’t see how.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>If you instead had a directory of csv files with the same format, you can use the technique from <a href="data-import.html#sec-readr-directory" class="quarto-xref"><span>Section 7.4</span></a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>We’re not going to explain how it works, but if you look at the docs for the functions used, you should be able to puzzle it out.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>You can print <code>by_clarity$plot</code> to get a crude animation — you’ll get one plot for each element of <code>plots</code>. NOTE: this didn’t happen for me.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>匿名，因为我们从未用 <code>&lt;-</code> 明确地给它命名。程序员们使用的另一个术语是“lambda 函数”。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>在旧代码中，你可能会看到类似 <code>~ .x + 1</code> 的语法。这是编写匿名函数的另一种方式，但它只在 tidyverse 函数内部有效，并且总是使用变量名 <code>.x</code>。我们现在推荐使用基础语法 <code>\(x) x + 1</code>。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>你目前无法更改列的顺序，但可以在事后使用 <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> 或类似函数重新排序。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>也许有一天会有，但目前我们还没看到如何实现。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>如果你有一个包含相同格式的 csv 文件的目录，你可以使用 <a href="data-import.html#sec-readr-directory" class="quarto-xref"><span>Section 7.4</span></a> 中的技术。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>我们不打算解释它是如何工作的，但如果你查看所用函数的文档，你应该能弄明白。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>你可以打印 <code>by_clarity$plot</code> 来获得一个粗略的动画——你会为 <code>plots</code> 的每个元素得到一个图。注意：这在我这里没有发生。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1834,13 +1829,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./functions.html" class="pagination-link" aria-label="Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></span>
+      <a href="./functions.html" class="pagination-link" aria-label="函数">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./base-R.html" class="pagination-link" aria-label="A field guide to base R">
-        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./base-R.html" class="pagination-link" aria-label="Base R 实战指南">
+        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

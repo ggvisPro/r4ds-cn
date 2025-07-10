@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>25&nbsp; Functions – R 数据科学 2e
+<title>25&nbsp; 函数 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Program</span></a>
+ <span class="menu-text">编程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -357,19 +357,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iteration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./base-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">沟通</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto-formats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto 格式</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,52 +406,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">25.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">25.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">25.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">25.1.1</span> 先决条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#vector-functions" id="toc-vector-functions" class="nav-link" data-scroll-target="#vector-functions"><span class="header-section-number">25.2</span> Vector functions</a>
+<a href="#%E5%90%91%E9%87%8F%E5%87%BD%E6%95%B0" id="toc-向量函数" class="nav-link" data-scroll-target="#%E5%90%91%E9%87%8F%E5%87%BD%E6%95%B0"><span class="header-section-number">25.2</span> 向量函数</a>
   <ul class="collapse">
-<li><a href="#writing-a-function" id="toc-writing-a-function" class="nav-link" data-scroll-target="#writing-a-function"><span class="header-section-number">25.2.1</span> Writing a function</a></li>
-  <li><a href="#improving-our-function" id="toc-improving-our-function" class="nav-link" data-scroll-target="#improving-our-function"><span class="header-section-number">25.2.2</span> Improving our function</a></li>
-  <li><a href="#mutate-functions" id="toc-mutate-functions" class="nav-link" data-scroll-target="#mutate-functions"><span class="header-section-number">25.2.3</span> Mutate functions</a></li>
-  <li><a href="#summary-functions" id="toc-summary-functions" class="nav-link" data-scroll-target="#summary-functions"><span class="header-section-number">25.2.4</span> Summary functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">25.2.5</span> Exercises</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0" id="toc-编写一个函数" class="nav-link" data-scroll-target="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="header-section-number">25.2.1</span> 编写一个函数</a></li>
+  <li><a href="#%E6%94%B9%E8%BF%9B%E6%88%91%E4%BB%AC%E7%9A%84%E5%87%BD%E6%95%B0" id="toc-改进我们的函数" class="nav-link" data-scroll-target="#%E6%94%B9%E8%BF%9B%E6%88%91%E4%BB%AC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="header-section-number">25.2.2</span> 改进我们的函数</a></li>
+  <li><a href="#%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0-mutate-functions" id="toc-修改函数-mutate-functions" class="nav-link" data-scroll-target="#%E4%BF%AE%E6%94%B9%E5%87%BD%E6%95%B0-mutate-functions"><span class="header-section-number">25.2.3</span> 修改函数 (Mutate functions)</a></li>
+  <li><a href="#%E6%B1%87%E6%80%BB%E5%87%BD%E6%95%B0-summary-functions" id="toc-汇总函数-summary-functions" class="nav-link" data-scroll-target="#%E6%B1%87%E6%80%BB%E5%87%BD%E6%95%B0-summary-functions"><span class="header-section-number">25.2.4</span> 汇总函数 (Summary functions)</a></li>
   </ul>
 </li>
-  <li>
-<a href="#data-frame-functions" id="toc-data-frame-functions" class="nav-link" data-scroll-target="#data-frame-functions"><span class="header-section-number">25.3</span> Data frame functions</a>
-  <ul class="collapse">
-<li><a href="#indirection-and-tidy-evaluation" id="toc-indirection-and-tidy-evaluation" class="nav-link" data-scroll-target="#indirection-and-tidy-evaluation"><span class="header-section-number">25.3.1</span> Indirection and tidy evaluation</a></li>
-  <li><a href="#sec-embracing" id="toc-sec-embracing" class="nav-link" data-scroll-target="#sec-embracing"><span class="header-section-number">25.3.2</span> When to embrace?</a></li>
-  <li><a href="#common-use-cases" id="toc-common-use-cases" class="nav-link" data-scroll-target="#common-use-cases"><span class="header-section-number">25.3.3</span> Common use cases</a></li>
-  <li><a href="#data-masking-vs.-tidy-selection" id="toc-data-masking-vs.-tidy-selection" class="nav-link" data-scroll-target="#data-masking-vs.-tidy-selection"><span class="header-section-number">25.3.4</span> Data-masking vs.&nbsp;tidy-selection</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">25.3.5</span> Exercises</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#plot-functions" id="toc-plot-functions" class="nav-link" data-scroll-target="#plot-functions"><span class="header-section-number">25.4</span> Plot functions</a>
-  <ul class="collapse">
-<li><a href="#more-variables" id="toc-more-variables" class="nav-link" data-scroll-target="#more-variables"><span class="header-section-number">25.4.1</span> More variables</a></li>
-  <li><a href="#combining-with-other-tidyverse" id="toc-combining-with-other-tidyverse" class="nav-link" data-scroll-target="#combining-with-other-tidyverse"><span class="header-section-number">25.4.2</span> Combining with other tidyverse</a></li>
-  <li><a href="#labeling" id="toc-labeling" class="nav-link" data-scroll-target="#labeling"><span class="header-section-number">25.4.3</span> Labeling</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">25.4.4</span> Exercises</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style"><span class="header-section-number">25.5</span> Style</a>
-  <ul class="collapse">
-<li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3"><span class="header-section-number">25.5.1</span> Exercises</a></li>
-  </ul>
-</li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">25.6</span> Summary</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/functions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-functions" class="quarto-section-identifier"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-functions" class="quarto-section-identifier"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></span></h1>
 </div>
 
 
@@ -465,32 +438,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">25.1</span> Introduction</h2>
-<p>One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has four big advantages over using copy-and-paste:</p>
+</header><section id="引言" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">25.1</span> 引言</h2>
+<p>提升你作为数据科学家的影响力最好的方法之一就是编写函数。函数能让你以比复制粘贴更强大、更通用的方式自动化常见任务。与使用复制粘贴相比，编写函数有四大优势：</p>
 <ol type="1">
-<li><p>You can give a function an evocative name that makes your code easier to understand.</p></li>
-<li><p>As requirements change, you only need to update code in one place, instead of many.</p></li>
-<li><p>You eliminate the chance of making incidental mistakes when you copy and paste (i.e.&nbsp;updating a variable name in one place, but not in another).</p></li>
-<li><p>It makes it easier to reuse work from project-to-project, increasing your productivity over time.</p></li>
+<li><p>你可以给函数起一个富有表现力的名字，让你的代码更容易理解。</p></li>
+<li><p>当需求变化时，你只需要在一个地方更新代码，而不是多处。</p></li>
+<li><p>你消除了在复制粘贴时犯下偶然错误的机会（例如，在一个地方更新了变量名，但在另一个地方没有）。</p></li>
+<li><p>它让你更容易在项目之间重用工作，随着时间的推移提高你的生产力。</p></li>
 </ol>
-<p>A good rule of thumb is to consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e.&nbsp;you now have three copies of the same code). In this chapter, you’ll learn about three useful types of functions:</p>
+<p>一个好的经验法则是，当你复制粘贴一个代码块超过两次时（即你现在有三份相同的代码），就应该考虑编写一个函数。在本章中，你将学习三种有用的函数类型：</p>
 <ul>
-<li>Vector functions take one or more vectors as input and return a vector as output.</li>
-<li>Data frame functions take a data frame as input and return a data frame as output.</li>
-<li>Plot functions that take a data frame as input and return a plot as output.</li>
+<li>向量函数 (Vector functions) 将一个或多个向量作为输入，并返回一个向量作为输出。</li>
+<li>数据框函数 (Data frame functions) 将一个数据框作为输入，并返回一个数据框作为输出。</li>
+<li>绘图函数 (Plot functions) 将一个数据框作为输入，并返回一个图表作为输出。</li>
 </ul>
-<p>Each of these sections includes many examples to help you generalize the patterns that you see. These examples wouldn’t be possible without the help of folks of twitter, and we encourage you to follow the links in the comments to see the original inspirations. You might also want to read the original motivating tweets for <a href="https://twitter.com/hadleywickham/status/1571603361350164486">general functions</a> and <a href="https://twitter.com/hadleywickham/status/1574373127349575680">plotting functions</a> to see even more functions.</p>
-<section id="prerequisites" class="level3" data-number="25.1.1"><h3 data-number="25.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">25.1.1</span> Prerequisites</h3>
-<p>We’ll wrap up a variety of functions from around the tidyverse. We’ll also use nycflights13 as a source of familiar data to use our functions with.</p>
+<p>这些部分中的每一节都包含许多示例，以帮助你归纳所看到的模式。没有 Twitter 上朋友们的帮助，这些示例是不可能完成的。我们鼓励你点击注释中的链接，查看原始的灵感来源。你可能还想阅读关于<a href="https://twitter.com/hadleywickham/status/1571603361350164486">通用函数</a>和<a href="https://twitter.com/hadleywickham/status/1574373127349575680">绘图函数</a>的原始激励推文，以看到更多函数。</p>
+<section id="先决条件" class="level3" data-number="25.1.1"><h3 data-number="25.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">25.1.1</span> 先决条件</h3>
+<p>我们将封装来自 tidyverse 各处的多种函数。我们还将使用 nycflights13 作为熟悉的数据源来应用我们的函数。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="vector-functions" class="level2" data-number="25.2"><h2 data-number="25.2" class="anchored" data-anchor-id="vector-functions">
-<span class="header-section-number">25.2</span> Vector functions</h2>
-<p>We’ll begin with vector functions: functions that take one or more vectors and return a vector result. For example, take a look at this code. What does it do?</p>
+</section></section><section id="向量函数" class="level2" data-number="25.2"><h2 data-number="25.2" class="anchored" data-anchor-id="向量函数">
+<span class="header-section-number">25.2</span> 向量函数</h2>
+<p>我们将从向量函数开始：即接收一个或多个向量并返回一个向量结果的函数。例如，看看这段代码。它做了什么？</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>,</span>
@@ -518,46 +491,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 0.795 -0.0822 0     1    </span></span>
 <span><span class="co">#&gt; 5 1     -0.0952 0.580 0.394</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You might be able to puzzle out that this rescales each column to have a range from 0 to 1. But did you spot the mistake? When Hadley wrote this code he made an error when copying-and-pasting and forgot to change an <code>a</code> to a <code>b</code>. Preventing this type of mistake is one very good reason to learn how to write functions.</p>
-<section id="writing-a-function" class="level3" data-number="25.2.1"><h3 data-number="25.2.1" class="anchored" data-anchor-id="writing-a-function">
-<span class="header-section-number">25.2.1</span> Writing a function</h3>
-<p>To write a function you need to first analyse your repeated code to figure what parts are constant and what parts vary. If we take the code above and pull it outside of <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, it’s a little easier to see the pattern because each repetition is now one line:</p>
+<p>你也许能琢磨出这是在重新缩放每一列，使其范围从 0 到 1。但你发现错误了吗？Hadley 在写这段代码时，因为复制粘贴而犯了一个错误，忘记把一个 <code>a</code> 改成 <code>b</code>。防止这类错误是学习如何编写函数的一个非常好的理由。</p>
+<section id="编写一个函数" class="level3" data-number="25.2.1"><h3 data-number="25.2.1" class="anchored" data-anchor-id="编写一个函数">
+<span class="header-section-number">25.2.1</span> 编写一个函数</h3>
+<p>要编写一个函数，你首先需要分析你重复的代码，找出哪些部分是固定不变的，哪些部分是变化的。如果我们将上面的代码从 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 中拿出来，模式会看得更清楚一些，因为现在每次重复都只有一行：</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">a</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">a</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">a</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">a</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">b</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">b</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">b</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">b</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">c</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">c</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">c</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">c</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">d</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">d</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">d</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">d</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To make this a bit clearer we can replace the bit that varies with <code>█</code>:</p>
+<p>为了让这一点更清晰，我们可以用 <code>█</code> 替换变化的部分：</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(█ <span class="sc">-</span> <span class="fu">min</span>(█, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> (<span class="fu">max</span>(█, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(█, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To turn this into a function you need three things:</p>
+<p>要把它变成一个函数，你需要三样东西：</p>
 <ol type="1">
-<li><p>A <strong>name</strong>. Here we’ll use <code>rescale01</code> because this function rescales a vector to lie between 0 and 1.</p></li>
-<li><p>The <strong>arguments</strong>. The arguments are things that vary across calls and our analysis above tells us that we have just one. We’ll call it <code>x</code> because this is the conventional name for a numeric vector.</p></li>
-<li><p>The <strong>body</strong>. The body is the code that’s repeated across all the calls.</p></li>
+<li><p>一个<strong>名称</strong> (name)。这里我们将使用 <code>rescale01</code>，因为这个函数将一个向量重新缩放到 0 和 1 之间。</p></li>
+<li><p><strong>参数</strong> (arguments)。参数是在不同调用中变化的东西，我们上面的分析告诉我们只有一个。我们称之为 <code>x</code>，因为这是一个数值向量的常规名称。</p></li>
+<li><p><strong>函数体</strong> (body)。函数体是在所有调用中重复的代码。</p></li>
 </ol>
-<p>Then you create a function by following the template:</p>
+<p>然后你按照模板创建一个函数：</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arguments</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">body</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For this case that leads to:</p>
+<p>对于这个例子，我们得到：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rescale01</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>At this point you might test with a few simple inputs to make sure you’ve captured the logic correctly:</p>
+<p>此时，你可能会用一些简单的输入来测试，以确保你已经正确地捕捉到了逻辑：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">rescale01</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.0 0.5 1.0</span></span>
 <span><span class="fu">rescale01</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.00 0.25 0.50   NA 1.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then you can rewrite the call to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> as:</p>
+<p>然后你可以将对 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 的调用重写为：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="fu">rescale01</span><span class="op">(</span><span class="va">a</span><span class="op">)</span>,</span>
@@ -574,23 +547,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 0.795 0.531 0     1    </span></span>
 <span><span class="co">#&gt; 5 1     0.518 0.580 0.394</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(In <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a>, you’ll learn how to use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> to reduce the duplication even further so all you need is <code>df |&gt; mutate(across(a:d, rescale01))</code>).</p>
-</section><section id="improving-our-function" class="level3" data-number="25.2.2"><h3 data-number="25.2.2" class="anchored" data-anchor-id="improving-our-function">
-<span class="header-section-number">25.2.2</span> Improving our function</h3>
-<p>You might notice that the <code>rescale01()</code> function does some unnecessary work — instead of computing <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> twice and <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> once we could instead compute both the minimum and maximum in one step with <code><a href="https://rdrr.io/r/base/range.html">range()</a></code>:</p>
+<p>（在 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中，你将学习如何使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 来进一步减少重复，这样你只需要 <code>df |&gt; mutate(across(a:d, rescale01))</code> 即可）。</p>
+</section><section id="改进我们的函数" class="level3" data-number="25.2.2"><h3 data-number="25.2.2" class="anchored" data-anchor-id="改进我们的函数">
+<span class="header-section-number">25.2.2</span> 改进我们的函数</h3>
+<p>你可能会注意到 <code>rescale01()</code> 函数做了一些不必要的工作 — 与其计算两次 <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> 和一次 <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>，我们不如用 <code><a href="https://rdrr.io/r/base/range.html">range()</a></code> 一步计算出最小值和最大值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rescale01</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">rng</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">rng</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">rng</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="va">rng</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or you might try this function on a vector that includes an infinite value:</p>
+<p>或者你可能在一个包含无限值的向量上尝试这个函数：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="cn">Inf</span><span class="op">)</span></span>
 <span><span class="fu">rescale01</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]   0   0   0   0   0   0   0   0   0   0 NaN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That result is not particularly useful so we could ask <code><a href="https://rdrr.io/r/base/range.html">range()</a></code> to ignore infinite values:</p>
+<p>这个结果不是特别有用，所以我们可以让 <code><a href="https://rdrr.io/r/base/range.html">range()</a></code> 忽略无限值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rescale01</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">rng</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, finite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -601,17 +574,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667</span></span>
 <span><span class="co">#&gt;  [8] 0.7777778 0.8888889 1.0000000       Inf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>These changes illustrate an important benefit of functions: because we’ve moved the repeated code into a function, we only need to make the change in one place.</p>
-</section><section id="mutate-functions" class="level3" data-number="25.2.3"><h3 data-number="25.2.3" class="anchored" data-anchor-id="mutate-functions">
-<span class="header-section-number">25.2.3</span> Mutate functions</h3>
-<p>Now that you’ve got the basic idea of functions, let’s take a look at a whole bunch of examples. We’ll start by looking at “mutate” functions, i.e.&nbsp;functions that work well inside of <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> because they return an output of the same length as the input.</p>
-<p>Let’s start with a simple variation of <code>rescale01()</code>. Maybe you want to compute the Z-score, rescaling a vector to have a mean of zero and a standard deviation of one:</p>
+<p>这些更改说明了函数的一个重要好处：因为我们已经将重复的代码移入一个函数中，我们只需要在一个地方进行更改。</p>
+</section><section id="修改函数-mutate-functions" class="level3" data-number="25.2.3"><h3 data-number="25.2.3" class="anchored" data-anchor-id="修改函数-mutate-functions">
+<span class="header-section-number">25.2.3</span> 修改函数 (Mutate functions)</h3>
+<p>现在你已经掌握了函数的基本概念，让我们来看一大堆例子。我们将从“修改”函数开始，也就是那些在 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 中工作得很好的函数，因为它们返回的输出与输入的长度相同。</p>
+<p>让我们从 <code>rescale01()</code> 的一个简单变体开始。也许你想要计算 Z-score，将一个向量重新缩放，使其均值为零，标准差为一：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">z_score</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or maybe you want to wrap up a straightforward <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> and give it a useful name. For example, this <code>clamp()</code> function ensures all values of a vector lie in between a minimum or a maximum:</p>
+<p>或者你可能想把一个简单的 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 包装起来，并给它一个有用的名字。例如，这个 <code>clamp()</code> 函数确保一个向量的所有值都位于一个最小值和一个最大值之间：</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clamp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">min</span>, <span class="va">max</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
@@ -624,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">clamp</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, min <span class="op">=</span> <span class="fl">3</span>, max <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] 3 3 3 4 5 6 7 7 7 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Of course functions don’t just need to work with numeric variables. You might want to do some repeated string manipulation. Maybe you need to make the first character upper case:</p>
+<p>当然，函数不一定只处理数值变量。你可能想做一些重复的字符串操作。也许你需要将第一个字符大写：</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">first_upper</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
@@ -634,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">first_upper</span><span class="op">(</span><span class="st">"hello"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or maybe you want to strip percent signs, commas, and dollar signs from a string before converting it into a number:</p>
+<p>或者，你可能想在将字符串转换为数字之前，去掉百分号、逗号和美元符号：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/NVlabormarket/status/1571939851922198530</span></span>
 <span><span class="va">clean_number</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -652,16 +625,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">clean_number</span><span class="op">(</span><span class="st">"45%"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Sometimes your functions will be highly specialized for one data analysis step. For example, if you have a bunch of variables that record missing values as 997, 998, or 999, you might want to write a function to replace them with <code>NA</code>:</p>
+<p>有时你的函数会为一个数据分析步骤高度特化。例如，如果你有一堆变量将缺失值记录为 997、998 或 999，你可能想写一个函数将它们替换为 <code>NA</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fix_na</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">997</span>, <span class="fl">998</span>, <span class="fl">999</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’ve focused on examples that take a single vector because we think they’re the most common. But there’s no reason that your function can’t take multiple vector inputs.</p>
-</section><section id="summary-functions" class="level3" data-number="25.2.4"><h3 data-number="25.2.4" class="anchored" data-anchor-id="summary-functions">
-<span class="header-section-number">25.2.4</span> Summary functions</h3>
-<p>Another important family of vector functions is summary functions, functions that return a single value for use in <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>. Sometimes this can just be a matter of setting a default argument or two:</p>
+<p>我们专注于接收单个向量的例子，因为我们认为它们是最常见的。但是，你的函数没有理由不能接收多个向量输入。</p>
+</section><section id="汇总函数-summary-functions" class="level3" data-number="25.2.4"><h3 data-number="25.2.4" class="anchored">
+<span class="header-section-number">25.2.4</span> 汇总函数 (Summary functions)</h3>
+<p>另一类重要的向量函数是汇总函数，即返回单个值以在 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 中使用的函数。有时这可能只是设置一两个默认参数的问题：</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">commas</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="va">x</span>, collapse <span class="op">=</span> <span class="st">", "</span>, last <span class="op">=</span> <span class="st">" and "</span><span class="op">)</span></span>
@@ -670,7 +643,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">commas</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"pigeon"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "cat, dog and pigeon"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or you might wrap up a simple computation, like for the coefficient of variation, which divides the standard deviation by the mean:</p>
+<p>或者你可能想封装一个简单的计算，比如变异系数，它用标准差除以均值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cv</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">na.rm</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="va">na.rm</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="va">na.rm</span><span class="op">)</span></span>
@@ -681,14 +654,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu">cv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.5652554</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Or maybe you just want to make a common pattern easier to remember by giving it a memorable name:</p>
+<p>或者你可能只是想通过给一个常见的模式起一个好记的名字来让它更容易记住：</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/gbganalyst/status/1571619641390252033</span></span>
 <span><span class="va">n_missing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can also write functions with multiple vector inputs. For example, maybe you want to compute the mean absolute percentage error to help you compare model predictions with actual values:</p>
+<p>你也可以编写具有多个向量输入的函数。例如，也许你想计算平均绝对百分比误差，以帮助你比较模型预测与实际值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/neilgcurrie/status/1571607727255834625</span></span>
 <span><span class="va">mape</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">{</span></span>
@@ -705,18 +678,19 @@ RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Once you start writing functions, there are two RStudio shortcuts that are super useful:</p>
+<p>一旦你开始编写函数，有两个 RStudio 快捷键非常有用：</p>
 <ul>
-<li><p>To find the definition of a function that you’ve written, place the cursor on the name of the function and press <code>F2</code>.</p></li>
-<li><p>To quickly jump to a function, press <code>Ctrl + .</code> to open the fuzzy file and function finder and type the first few letters of your function name. You can also navigate to files, Quarto sections, and more, making it a very handy navigation tool.</p></li>
+<li><p>要找到你编写的函数的定义，将光标放在函数名上，然后按 <code>F2</code>。</p></li>
+<li>
+<p>要快速跳转到一个函数，按 <code>Ctrl + .</code> 打开模糊文件和函数查找器，然后输入你的函数名的前几个字母。你还可以导航到文件、Quarto 章节等，使其成为一个非常方便的导航工具。</p>
+<p>:::</p>
+</li>
 </ul>
-</div>
-</div>
-</section><section id="exercises" class="level3" data-number="25.2.5"><h3 data-number="25.2.5" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">25.2.5</span> Exercises</h3>
+<section id="练习" class="level3" data-number="25.2.5"><h3 data-number="25.2.5" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">25.2.5</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Practice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?</p>
+<p>练习将以下代码片段转化为函数。思考每个函数的作用。你会怎么称呼它？它需要多少个参数？</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
@@ -731,12 +705,12 @@ RStudio
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">z</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">z</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-<li><p>In the second variant of <code>rescale01()</code>, infinite values are left unchanged. Can you rewrite <code>rescale01()</code> so that <code>-Inf</code> is mapped to 0, and <code>Inf</code> is mapped to 1?</p></li>
-<li><p>Given a vector of birthdates, write a function to compute the age in years.</p></li>
-<li><p>Write your own functions to compute the variance and skewness of a numeric vector. You can look up the definitions on Wikipedia or elsewhere.</p></li>
-<li><p>Write <code>both_na()</code>, a summary function that takes two vectors of the same length and returns the number of positions that have an <code>NA</code> in both vectors.</p></li>
+<li><p>在 <code>rescale01()</code> 的第二个变体中，无限值保持不变。你能重写 <code>rescale01()</code>，使得 <code>-Inf</code> 被映射到 0，而 <code>Inf</code> 被映射到 1 吗？</p></li>
+<li><p>给定一个出生日期的向量，编写一个函数来计算以年为单位的年龄。</p></li>
+<li><p>编写你自己的函数来计算数值向量的方差和偏度。你可以在维基百科或其他地方查找定义。</p></li>
+<li><p>编写 <code>both_na()</code>，一个汇总函数，它接收两个相同长度的向量，并返回两个向量中都为 <code>NA</code> 的位置数量。</p></li>
 <li>
-<p>Read the documentation to figure out what the following functions do. Why are they useful even though they are so short?</p>
+<p>阅读文档，找出以下函数的作用。为什么尽管它们如此简短，却仍然有用？</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_directory</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/file.info.html">file.info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">$</span><span class="va">isdir</span></span>
@@ -746,13 +720,13 @@ RStudio
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-</ol></section></section><section id="data-frame-functions" class="level2" data-number="25.3"><h2 data-number="25.3" class="anchored" data-anchor-id="data-frame-functions">
-<span class="header-section-number">25.3</span> Data frame functions</h2>
-<p>Vector functions are useful for pulling out code that’s repeated within a dplyr verb. But you’ll often also repeat the verbs themselves, particularly within a large pipeline. When you notice yourself copying and pasting multiple verbs multiple times, you might think about writing a data frame function. Data frame functions work like dplyr verbs: they take a data frame as the first argument, some extra arguments that say what to do with it, and return a data frame or a vector.</p>
-<p>To let you write a function that uses dplyr verbs, we’ll first introduce you to the challenge of indirection and how you can overcome it with embracing, <code>{{ }}</code>. With this theory under your belt, we’ll then show you a bunch of examples to illustrate what you might do with it.</p>
-<section id="indirection-and-tidy-evaluation" class="level3" data-number="25.3.1"><h3 data-number="25.3.1" class="anchored" data-anchor-id="indirection-and-tidy-evaluation">
-<span class="header-section-number">25.3.1</span> Indirection and tidy evaluation</h3>
-<p>When you start writing functions that use dplyr verbs you rapidly hit the problem of indirection. Let’s illustrate the problem with a very simple function: <code>grouped_mean()</code>. The goal of this function is to compute the mean of <code>mean_var</code> grouped by <code>group_var</code>:</p>
+</ol></section><section id="数据框函数" class="level2" data-number="25.3"><h2 data-number="25.3" class="anchored" data-anchor-id="数据框函数">
+<span class="header-section-number">25.3</span> 数据框函数</h2>
+<p>向量函数对于提取在 dplyr 动词内部重复的代码很有用。但是你通常也会重复动词本身，尤其是在一个大型的管道中。当你注意到自己多次复制粘贴多个动词时，你可能会考虑编写一个数据框函数。数据框函数的工作方式类似于 dplyr 动词：它们接收一个数据框作为第一个参数，一些额外的参数来说明如何处理它，并返回一个数据框或一个向量。</p>
+<p>为了让你能够编写使用 dplyr 动词的函数，我们首先向你介绍间接引用 (indirection) 的挑战，以及如何通过拥抱 (embracing) <code>{{ }}</code> 来克服它。掌握了这个理论之后，我们将向你展示一大堆例子，来说明你可以用它做什么。</p>
+<section id="间接引用和整洁评估-tidy-evaluation" class="level3" data-number="25.3.1"><h3 data-number="25.3.1" class="anchored" data-anchor-id="间接引用和整洁评估-tidy-evaluation">
+<span class="header-section-number">25.3.1</span> 间接引用和整洁评估 (tidy evaluation)</h3>
+<p>当你开始编写使用 dplyr 动词的函数时，你很快就会遇到间接引用的问题。让我们用一个非常简单的函数 <code>grouped_mean()</code> 来说明这个问题。这个函数的目的是计算按 <code>group_var</code> 分组的 <code>mean_var</code> 的均值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">grouped_mean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">group_var</span>, <span class="va">mean_var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -760,14 +734,14 @@ RStudio
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mean_var</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If we try and use it, we get an error:</p>
+<p>如果我们尝试使用它，我们会得到一个错误：</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">grouped_mean</span><span class="op">(</span><span class="va">cut</span>, <span class="va">carat</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `group_by()`:</span></span>
 <span><span class="co">#&gt; ! Must group by variables found in `.data`.</span></span>
 <span><span class="co">#&gt; ✖ Column `group_var` is not found.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To make the problem a bit more clear, we can use a made up data frame:</p>
+<p>为了让问题更清楚一点，我们可以使用一个虚构的数据框：</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  mean_var <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -788,10 +762,10 @@ RStudio
 <span><span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 g                        1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Regardless of how we call <code>grouped_mean()</code> it always does <code>df |&gt; group_by(group_var) |&gt; summarize(mean(mean_var))</code>, instead of <code>df |&gt; group_by(group) |&gt; summarize(mean(x))</code> or <code>df |&gt; group_by(group) |&gt; summarize(mean(y))</code>. This is a problem of indirection, and it arises because dplyr uses <strong>tidy evaluation</strong> to allow you to refer to the names of variables inside your data frame without any special treatment.</p>
-<p>Tidy evaluation is great 95% of the time because it makes your data analyses very concise as you never have to say which data frame a variable comes from; it’s obvious from the context. The downside of tidy evaluation comes when we want to wrap up repeated tidyverse code into a function. Here we need some way to tell <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> not to treat <code>group_var</code> and <code>mean_var</code> as the name of the variables, but instead look inside them for the variable we actually want to use.</p>
-<p>Tidy evaluation includes a solution to this problem called <strong>embracing</strong> 🤗. Embracing a variable means to wrap it in braces so (e.g.) <code>var</code> becomes <code>{{ var }}</code>. Embracing a variable tells dplyr to use the value stored inside the argument, not the argument as the literal variable name. One way to remember what’s happening is to think of <code>{{ }}</code> as looking down a tunnel — <code>{{ var }}</code> will make a dplyr function look inside of <code>var</code> rather than looking for a variable called <code>var</code>.</p>
-<p>So to make <code>grouped_mean()</code> work, we need to surround <code>group_var</code> and <code>mean_var</code> with <code>{{ }}</code>:</p>
+<p>无论我们如何调用 <code>grouped_mean()</code>，它总是执行 <code>df |&gt; group_by(group_var) |&gt; summarize(mean(mean_var))</code>，而不是 <code>df |&gt; group_by(group) |&gt; summarize(mean(x))</code> 或 <code>df |&gt; group_by(group) |&gt; summarize(mean(y))</code>。这是一个间接引用的问题，它之所以出现，是因为 dplyr 使用<strong>整洁评估</strong> (tidy evaluation) 来允许你引用数据框内的变量名而无需任何特殊处理。</p>
+<p>整洁评估在 95% 的情况下都很棒，因为它使你的数据分析非常简洁，你永远不必说一个变量来自哪个数据框；从上下文中看这是显而易见的。整洁评估的缺点在于，当我们想将重复的 tidyverse 代码包装成一个函数时。在这里，我们需要一种方法来告诉 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 不要将 <code>group_var</code> 和 <code>mean_var</code> 视为变量的名称，而是查看它们内部以找到我们实际想要使用的变量。</p>
+<p>整洁评估包含一个解决这个问题的方案，叫做<strong>拥抱</strong> (embracing) 🤗。拥抱一个变量意味着用大括号将其包裹起来，所以（例如）<code>var</code> 变成了 <code>{{ var }}</code>。拥抱一个变量告诉 dplyr 使用存储在参数内部的值，而不是将参数作为字面上的变量名。记住正在发生什么的一种方法是将 <code>{{ }}</code> 想象成看向一个隧道 — <code>{{ var }}</code> 会让一个 dplyr 函数看向 <code>var</code> 的内部，而不是寻找一个名为 <code>var</code> 的变量。</p>
+<p>所以为了让 <code>grouped_mean()</code> 工作，我们需要用 <code>{{ }}</code> 包围 <code>group_var</code> 和 <code>mean_var</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">grouped_mean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">group_var</span>, <span class="va">mean_var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -805,19 +779,19 @@ RStudio
 <span><span class="co">#&gt;   &lt;dbl&gt;     &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     1        10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Success!</p>
+<p>成功了！</p>
 </section><section id="sec-embracing" class="level3" data-number="25.3.2"><h3 data-number="25.3.2" class="anchored" data-anchor-id="sec-embracing">
-<span class="header-section-number">25.3.2</span> When to embrace?</h3>
-<p>So the key challenge in writing data frame functions is figuring out which arguments need to be embraced. Fortunately, this is easy because you can look it up from the documentation 😄. There are two terms to look for in the docs which correspond to the two most common sub-types of tidy evaluation:</p>
+<span class="header-section-number">25.3.2</span> 何时拥抱？</h3>
+<p>因此，编写数据框函数的主要挑战是弄清楚哪些参数需要被拥抱。幸运的是，这很容易，因为你可以从文档中查到 😄。在文档中有两个术语需要注意，它们对应于整洁评估的两个最常见的子类型：</p>
 <ul>
-<li><p><strong>Data-masking</strong>: this is used in functions like <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> that compute with variables.</p></li>
-<li><p><strong>Tidy-selection</strong>: this is used for functions like <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> that select variables.</p></li>
+<li><p><strong>数据掩码</strong> (Data-masking)：用于像 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 这样用变量进行计算的函数。</p></li>
+<li><p><strong>整洁选择</strong> (Tidy-selection)：用于像 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> 这样选择变量的函数。</p></li>
 </ul>
-<p>Your intuition about which arguments use tidy evaluation should be good for many common functions — just think about whether you can compute (e.g., <code>x + 1</code>) or select (e.g., <code>a:x</code>).</p>
-<p>In the following sections, we’ll explore the sorts of handy functions you might write once you understand embracing.</p>
-</section><section id="common-use-cases" class="level3" data-number="25.3.3"><h3 data-number="25.3.3" class="anchored" data-anchor-id="common-use-cases">
-<span class="header-section-number">25.3.3</span> Common use cases</h3>
-<p>If you commonly perform the same set of summaries when doing initial data exploration, you might consider wrapping them up in a helper function:</p>
+<p>对于许多常见的函数，你关于哪些参数使用整洁评估的直觉应该是好的 — 只要想一想你是否可以计算（例如 <code>x + 1</code>）或选择（例如 <code>a:x</code>）。</p>
+<p>在接下来的部分中，我们将探讨一旦你理解了拥抱，你可能会编写的各种方便的函数。</p>
+</section><section id="常见用例" class="level3" data-number="25.3.3"><h3 data-number="25.3.3" class="anchored" data-anchor-id="常见用例">
+<span class="header-section-number">25.3.3</span> 常见用例</h3>
+<p>如果你在进行初步数据探索时经常执行相同的汇总集，你可能会考虑将它们包装在一个辅助函数中：</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summary6</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -837,8 +811,8 @@ RStudio
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1   0.2 0.798    0.7  5.01 53940      0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(Whenever you wrap <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> in a helper, we think it’s good practice to set <code>.groups = "drop"</code> to both avoid the message and leave the data in an ungrouped state.)</p>
-<p>The nice thing about this function is, because it wraps <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, you can use it on grouped data:</p>
+<p>（每当你将 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 包装在辅助函数中时，我们认为设置 <code>.groups = "drop"</code> 是一个好习惯，这样既可以避免消息，又可以让数据处于未分组状态。）</p>
+<p>这个函数的好处是，因为它包装了 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>，你可以在分组数据上使用它：</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -852,7 +826,7 @@ RStudio
 <span><span class="co">#&gt; 4 Premium    0.2  0.892   0.86  4.01 13791      0</span></span>
 <span><span class="co">#&gt; 5 Ideal      0.2  0.703   0.54  3.5  21551      0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Furthermore, since the arguments to summarize are data-masking, so is the <code>var</code> argument to <code>summary6()</code>. That means you can also summarize computed variables:</p>
+<p>此外，由于 <code>summarize</code> 的参数是数据掩码，<code>summary6()</code> 的 <code>var</code> 参数也是如此。这意味着你也可以对计算出的变量进行汇总：</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -866,8 +840,8 @@ RStudio
 <span><span class="co">#&gt; 4 Premium   -0.699 -0.125  -0.0655 0.603 13791      0</span></span>
 <span><span class="co">#&gt; 5 Ideal     -0.699 -0.225  -0.268  0.544 21551      0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To summarize multiple variables, you’ll need to wait until <a href="iteration.html#sec-across" class="quarto-xref"><span>Section 26.2</span></a>, where you’ll learn how to use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>.</p>
-<p>Another popular <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> helper function is a version of <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> that also computes proportions:</p>
+<p>要汇总多个变量，你需要等到 <a href="iteration.html#sec-across" class="quarto-xref"><span>Section 26.2</span></a>，在那里你将学习如何使用 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>。</p>
+<p>另一个流行的 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 辅助函数是一个版本的 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>，它也计算比例：</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/Diabb6/status/1571635146658402309</span></span>
 <span><span class="va">count_prop</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span>, <span class="va">sort</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
@@ -888,8 +862,8 @@ RStudio
 <span><span class="co">#&gt; 6 VVS2     5066 0.0939</span></span>
 <span><span class="co">#&gt; # ℹ 2 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This function has three arguments: <code>df</code>, <code>var</code>, and <code>sort</code>, and only <code>var</code> needs to be embraced because it’s passed to <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> which uses data-masking for all variables. Note that we use a default value for <code>sort</code> so that if the user doesn’t supply their own value it will default to <code>FALSE</code>.</p>
-<p>Or maybe you want to find the sorted unique values of a variable for a subset of the data. Rather than supplying a variable and a value to do the filtering, we’ll allow the user to supply a condition:</p>
+<p>这个函数有三个参数：<code>df</code>、<code>var</code> 和 <code>sort</code>，只有 <code>var</code> 需要被拥抱，因为它被传递给了 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>，而 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> 对所有变量都使用数据掩码。请注意，我们为 <code>sort</code> 使用了一个默认值，这样如果用户不提供自己的值，它将默认为 <code>FALSE</code>。</p>
+<p>或者，你可能想为数据的子集找到一个变量的已排序唯一值。与其提供一个变量和一个值来进行过滤，我们将允许用户提供一个条件：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unique_where</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -898,7 +872,7 @@ RStudio
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">var</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># Find all the destinations in December</span></span>
+<span><span class="co"># 查找十二月份的所有目的地</span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu">unique_where</span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">12</span>, <span class="va">dest</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 96 × 1</span></span>
 <span><span class="co">#&gt;   dest </span></span>
@@ -911,8 +885,8 @@ RStudio
 <span><span class="co">#&gt; 6 BDL  </span></span>
 <span><span class="co">#&gt; # ℹ 90 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here we embrace <code>condition</code> because it’s passed to <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> and <code>var</code> because it’s passed to <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>.</p>
-<p>We’ve made all these examples to take a data frame as the first argument, but if you’re working repeatedly with the same data, it can make sense to hardcode it. For example, the following function always works with the flights dataset and always selects <code>time_hour</code>, <code>carrier</code>, and <code>flight</code> since they form the compound primary key that allows you to identify a row.</p>
+<p>这里我们拥抱 <code>condition</code> 是因为它被传递给了 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>，拥抱 <code>var</code> 是因为它被传递给了 <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>。</p>
+<p>我们已经将所有这些例子都设置为接收一个数据框作为第一个参数，但如果你反复使用相同的数据，硬编码它可能是有意义的。例如，下面的函数总是与 <code>flights</code> 数据集一起工作，并且总是选择 <code>time_hour</code>、<code>carrier</code> 和 <code>flight</code>，因为它们构成了允许你识别一行的复合主键。</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">subset_flights</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">rows</span>, <span class="va">cols</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">flights</span> <span class="op">|&gt;</span> </span>
@@ -920,9 +894,9 @@ RStudio
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">time_hour</span>, <span class="va">carrier</span>, <span class="va">flight</span>, <span class="op">{</span><span class="op">{</span> <span class="va">cols</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="data-masking-vs.-tidy-selection" class="level3" data-number="25.3.4"><h3 data-number="25.3.4" class="anchored" data-anchor-id="data-masking-vs.-tidy-selection">
-<span class="header-section-number">25.3.4</span> Data-masking vs.&nbsp;tidy-selection</h3>
-<p>Sometimes you want to select variables inside a function that uses data-masking. For example, imagine you want to write a <code>count_missing()</code> that counts the number of missing observations in rows. You might try writing something like:</p>
+</section><section id="数据掩码-vs.-整洁选择" class="level3" data-number="25.3.4"><h3 data-number="25.3.4" class="anchored" data-anchor-id="数据掩码-vs.-整洁选择">
+<span class="header-section-number">25.3.4</span> 数据掩码 vs.&nbsp;整洁选择</h3>
+<p>有时你想在一个使用数据掩码的函数内部选择变量。例如，假设你想编写一个 <code>count_missing()</code> 来计算行中缺失观测值的数量。你可能会尝试写成这样：</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">count_missing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">group_vars</span>, <span class="va">x_var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -940,7 +914,7 @@ RStudio
 <span><span class="co">#&gt; Caused by error:</span></span>
 <span><span class="co">#&gt; ! `c(year, month, day)` must be size 336776 or 1, not 1010328.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This doesn’t work because <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> uses data-masking, not tidy-selection. We can work around that problem by using the handy <code><a href="https://dplyr.tidyverse.org/reference/pick.html">pick()</a></code> function, which allows you to use tidy-selection inside data-masking functions:</p>
+<p>这行不通，因为 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 使用的是数据掩码，而不是整洁选择。我们可以通过使用方便的 <code><a href="https://dplyr.tidyverse.org/reference/pick.html">pick()</a></code> 函数来解决这个问题，它允许你在数据掩码函数内部使用整洁选择：</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">count_missing</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">group_vars</span>, <span class="va">x_var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -948,7 +922,7 @@ RStudio
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>      n_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">x_var</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>      .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
@@ -964,7 +938,7 @@ RStudio
 <span><span class="co">#&gt; 6  2013     1     6      1</span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another convenient use of <code><a href="https://dplyr.tidyverse.org/reference/pick.html">pick()</a></code> is to make a 2d table of counts. Here we count using all the variables in the <code>rows</code> and <code>columns</code>, then use <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> to rearrange the counts into a grid:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/pick.html">pick()</a></code> 的另一个方便用途是制作一个二维的计数表。这里我们使用 <code>rows</code> 和 <code>columns</code> 中的所有变量进行计数，然后使用 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 将计数重新排列成一个网格：</p>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/pollicipes/status/1571606508944719876</span></span>
 <span><span class="va">count_wide</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">rows</span>, <span class="va">cols</span><span class="op">)</span> <span class="op">{</span></span>
@@ -990,48 +964,48 @@ RStudio
 <span><span class="co">#&gt; 6 I1      I        34     9           8      24    17</span></span>
 <span><span class="co">#&gt; # ℹ 50 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>While our examples have mostly focused on dplyr, tidy evaluation also underpins tidyr, and if you look at the <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> docs you can see that <code>names_from</code> uses tidy-selection.</p>
-</section><section id="exercises-1" class="level3" data-number="25.3.5"><h3 data-number="25.3.5" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">25.3.5</span> Exercises</h3>
+<p>虽然我们的例子主要集中在 dplyr 上，但整洁评估也支撑着 tidyr，如果你查看 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 的文档，你会看到 <code>names_from</code> 使用了整洁选择。</p>
+</section><section id="练习-1" class="level3" data-number="25.3.5"><h3 data-number="25.3.5" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">25.3.5</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Using the datasets from nycflights13, write a function that:</p>
+<p>使用 nycflights13 的数据集，编写一个函数：</p>
 <ol type="1">
 <li>
-<p>Finds all flights that were cancelled (i.e.&nbsp;<code>is.na(arr_time)</code>) or delayed by more than an hour.</p>
+<p>找到所有被取消（即 <code>is.na(arr_time)</code>）或延误超过一小时的航班。</p>
 <div class="cell">
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu">filter_severe</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p>Counts the number of cancelled flights and the number of flights delayed by more than an hour.</p>
+<p>计算被取消的航班数量和延误超过一小时的航班数量。</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">summarize_severe</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p>Finds all flights that were cancelled or delayed by more than a user supplied number of hours:</p>
+<p>找到所有被取消或延误超过用户提供的小时数的航班：</p>
 <div class="cell">
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu">filter_severe</span><span class="op">(</span>hours <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p>Summarizes the weather to compute the minimum, mean, and maximum, of a user supplied variable:</p>
+<p>总结天气，计算用户提供的变量的最小值、平均值和最大值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">weather</span> <span class="op">|&gt;</span> <span class="fu">summarize_weather</span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p>Converts the user supplied variable that uses clock time (e.g., <code>dep_time</code>, <code>arr_time</code>, etc.) into a decimal time (i.e.&nbsp;hours + (minutes / 60)).</p>
+<p>将用户提供的、使用时钟时间（例如 <code>dep_time</code>、<code>arr_time</code> 等）的变量转换为十进制时间（即 小时 + (分钟 / 60)）。</p>
 <div class="cell">
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu">standardize_time</span><span class="op">(</span><span class="va">sched_dep_time</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 </ol>
 </li>
-<li><p>For each of the following functions list all arguments that use tidy evaluation and describe whether they use data-masking or tidy-selection: <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code>.</p></li>
+<li><p>对于以下每个函数，列出所有使用整洁评估的参数，并描述它们是使用数据掩码还是整洁选择：<code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code>。</p></li>
 <li>
-<p>Generalize the following function so that you can supply any number of variables to count.</p>
+<p>泛化以下函数，以便你可以提供任意数量的变量进行计数。</p>
 <div class="cell">
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">count_prop</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span>, <span class="va">sort</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span></span>
@@ -1040,9 +1014,9 @@ RStudio
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-</ol></section></section><section id="plot-functions" class="level2" data-number="25.4"><h2 data-number="25.4" class="anchored" data-anchor-id="plot-functions">
-<span class="header-section-number">25.4</span> Plot functions</h2>
-<p>Instead of returning a data frame, you might want to return a plot. Fortunately, you can use the same techniques with ggplot2, because <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> is a data-masking function. For example, imagine that you’re making a lot of histograms:</p>
+</ol></section></section><section id="绘图函数" class="level2" data-number="25.4"><h2 data-number="25.4" class="anchored" data-anchor-id="绘图函数">
+<span class="header-section-number">25.4</span> 绘图函数</h2>
+<p>你可能不想返回一个数据框，而是想返回一个图。幸运的是，你可以在 ggplot2 中使用相同的技术，因为 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> 是一个数据掩码函数。例如，假设你正在制作大量的直方图：</p>
 <div class="cell">
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1052,7 +1026,7 @@ RStudio
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Wouldn’t it be nice if you could wrap this up into a histogram function? This is easy as pie once you know that <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> is a data-masking function and you need to embrace:</p>
+<p>如果你能把这个包装成一个直方图函数，那不是很好吗？一旦你知道 <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> 是一个数据掩码函数并且你需要使用拥抱，这就易如反掌了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span>, <span class="va">binwidth</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -1063,20 +1037,20 @@ RStudio
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">histogram</span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" alt="A histogram of carats of diamonds, ranging from 0 to 5, showing a unimodal,  right-skewed distribution with a peak between 0 to 1 carats." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" alt="钻石克拉数的直方图，范围从 0 到 5，显示了一个单峰、 右偏的分布，峰值在 0 到 1 克拉之间。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Note that <code>histogram()</code> returns a ggplot2 plot, meaning you can still add on additional components if you want. Just remember to switch from <code>|&gt;</code> to <code>+</code>:</p>
+<p>注意，<code>histogram()</code> 返回一个 ggplot2 图，这意味着你仍然可以根据需要添加额外的组件。只需记住从 <code>|&gt;</code> 切换到 <code>+</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">histogram</span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Size (in carats)"</span>, y <span class="op">=</span> <span class="st">"Number of diamonds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"大小 (克拉)"</span>, y <span class="op">=</span> <span class="st">"钻石数量"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="more-variables" class="level3" data-number="25.4.1"><h3 data-number="25.4.1" class="anchored" data-anchor-id="more-variables">
-<span class="header-section-number">25.4.1</span> More variables</h3>
-<p>It’s straightforward to add more variables to the mix. For example, maybe you want an easy way to eyeball whether or not a dataset is linear by overlaying a smooth line and a straight line:</p>
+<section id="更多变量" class="level3" data-number="25.4.1"><h3 data-number="25.4.1" class="anchored" data-anchor-id="更多变量">
+<span class="header-section-number">25.4.1</span> 更多变量</h3>
+<p>在组合中添加更多变量是很直接的。例如，也许你想要一个简单的方法来目测一个数据集是否是线性的，方法是覆盖一条平滑线和一条直线：</p>
 <div class="cell">
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/tyler_js_smith/status/1574377116988104704</span></span>
 <span><span class="va">linearity_check</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
@@ -1092,19 +1066,19 @@ RStudio
 <span>  <span class="fu">linearity_check</span><span class="op">(</span><span class="va">mass</span>, <span class="va">height</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" alt="Scatterplot of height vs. mass of StarWars characters showing a positive  relationship. A smooth curve of the relationship is plotted in red, and  the best fit line is ploted in blue." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" alt="星球大战角色身高与体重的散点图，显示出正相关关系。 关系的平滑曲线用红色绘制，最佳拟合线用蓝色绘制。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Or maybe you want an alternative to colored scatterplots for very large datasets where overplotting is a problem:</p>
+<p>或者，对于点重叠严重的大型数据集，你可能想要一种替代彩色散点图的方法：</p>
 <div class="cell">
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># https://twitter.com/ppaxisa/status/1574398423175921665</span></span>
 <span><span class="va">hex_plot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span>, <span class="va">bins</span> <span class="op">=</span> <span class="fl">20</span>, <span class="va">fun</span> <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">x</span> <span class="op">}</span><span class="op">}</span>, y <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">y</span> <span class="op">}</span><span class="op">}</span>, z <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">z</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_hex</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_scale</a></span><span class="op">(</span><span class="va">fill</span><span class="op">)</span><span class="op">)</span>, <span class="co"># make border same color as fill</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_scale</a></span><span class="op">(</span><span class="va">fill</span><span class="op">)</span><span class="op">)</span>, <span class="co"># 使边框颜色与填充色相同</span></span>
 <span>      bins <span class="op">=</span> <span class="va">bins</span>, </span>
 <span>      fun <span class="op">=</span> <span class="va">fun</span>,</span>
 <span>    <span class="op">)</span></span>
@@ -1113,14 +1087,14 @@ RStudio
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">hex_plot</span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span>, <span class="va">depth</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" alt="Hex plot of price vs. carat of diamonds showing a positive relationship.  There are more diamonds that are less than 2 carats than more than 2 carats." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" alt="钻石价格与克拉数的六边形图，显示出正相关关系。 小于 2 克拉的钻石比大于 2 克拉的要多。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-</section><section id="combining-with-other-tidyverse" class="level3" data-number="25.4.2"><h3 data-number="25.4.2" class="anchored" data-anchor-id="combining-with-other-tidyverse">
-<span class="header-section-number">25.4.2</span> Combining with other tidyverse</h3>
-<p>Some of the most useful helpers combine a dash of data manipulation with ggplot2. For example, if you might want to do a vertical bar chart where you automatically sort the bars in frequency order using <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq()</a></code>. Since the bar chart is vertical, we also need to reverse the usual order to get the highest values at the top:</p>
+</section><section id="与其他-tidyverse-函数结合" class="level3" data-number="25.4.2"><h3 data-number="25.4.2" class="anchored" data-anchor-id="与其他-tidyverse-函数结合">
+<span class="header-section-number">25.4.2</span> 与其他 tidyverse 函数结合</h3>
+<p>一些最有用的辅助函数结合了少量的数据操作和 ggplot2。例如，你可能想做一个垂直条形图，其中你使用 <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq()</a></code> 自动按频率顺序对条形进行排序。由于条形图是垂直的，我们还需要反转通常的顺序，以使最高的值在顶部：</p>
 <div class="cell">
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sorted_bars</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -1132,13 +1106,13 @@ RStudio
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">sorted_bars</span><span class="op">(</span><span class="va">clarity</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" alt="Bar plot of clarify of diamonds, where clarity is on the y-axis and counts  are on the x-axis, and the bars are ordered in order of frequency: SI1,  VS2, SI2, VS1, VVS2, VVS1, IF, I1." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" alt="钻石净度的条形图，其中净度在 y 轴上，计数在 x 轴上， 条形按频率排序：SI1、VS2、SI2、VS1、VVS2、VVS1、IF、I1。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>We have to use a new operator here, <code>:=</code> (commonly referred to as the “walrus operator”), because we are generating the variable name based on user-supplied data. Variable names go on the left hand side of <code>=</code>, but R’s syntax doesn’t allow anything to the left of <code>=</code> except for a single literal name. To work around this problem, we use the special operator <code>:=</code> which tidy evaluation treats in exactly the same way as <code>=</code>.</p>
-<p>Or maybe you want to make it easy to draw a bar plot just for a subset of the data:</p>
+<p>我们在这里必须使用一个新的操作符 <code>:=</code>（通常被称为“海象操作符”），因为我们正在根据用户提供的数据生成变量名。变量名位于 <code>=</code> 的左侧，但 R 的语法不允许在 <code>=</code> 的左侧有除了单个字面名称之外的任何东西。为了解决这个问题，我们使用特殊的操作符 <code>:=</code>，整洁评估会将其与 <code>=</code> 完全相同地处理。</p>
+<p>或者，你可能想让为数据的子集绘制条形图变得容易：</p>
 <div class="cell">
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">conditional_bars</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">condition</span>, <span class="va">var</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -1150,16 +1124,16 @@ RStudio
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">conditional_bars</span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Good"</span>, <span class="va">clarity</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" alt="Bar plot of clarity of diamonds. The most common is SI1, then SI2, then  VS2, then VS1, then VVS2, then VVS1, then I1, then lastly IF." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" alt="钻石净度的条形图。最常见的是 SI1，然后是 SI2，然后是 VS2，然后是 VS1，然后是 VVS2，然后是 VVS1，然后是 I1，最后是 IF。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>You can also get creative and display data summaries in other ways. You can find a cool application at <a href="https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b" class="uri">https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b</a>; it uses the axis labels to display the highest value. As you learn more about ggplot2, the power of your functions will continue to increase.</p>
-<p>We’ll finish with a more complicated case: labelling the plots you create.</p>
-</section><section id="labeling" class="level3" data-number="25.4.3"><h3 data-number="25.4.3" class="anchored" data-anchor-id="labeling">
-<span class="header-section-number">25.4.3</span> Labeling</h3>
-<p>Remember the histogram function we showed you earlier?</p>
+<p>你也可以发挥创意，用其他方式展示数据摘要。你可以在 <a href="https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b">https://gist.github.com/GShotwell/b19ef520b6d56f61a830fabb3454965b</a> 找到一个很酷的应用；它使用轴标签来显示最高值。随着你对 ggplot2 的了解越来越多，你的函数的功能将继续增强。</p>
+<p>我们将以一个更复杂的案例结束：为你创建的图表添加标签。</p>
+</section><section id="添加标签" class="level3" data-number="25.4.3"><h3 data-number="25.4.3" class="anchored" data-anchor-id="添加标签">
+<span class="header-section-number">25.4.3</span> 添加标签</h3>
+<p>还记得我们之前给你展示的直方图函数吗？</p>
 <div class="cell">
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span>, <span class="va">binwidth</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -1167,8 +1141,8 @@ RStudio
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="va">binwidth</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Wouldn’t it be nice if we could label the output with the variable and the bin width that was used? To do so, we’re going to have to go under the covers of tidy evaluation and use a function from the package we haven’t talked about yet: rlang. rlang is a low-level package that’s used by just about every other package in the tidyverse because it implements tidy evaluation (as well as many other useful tools).</p>
-<p>To solve the labeling problem we can use <code><a href="https://rlang.r-lib.org/reference/englue.html">rlang::englue()</a></code>. This works similarly to <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>, so any value wrapped in <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code> will be inserted into the string. But it also understands <code>{{ }}</code>, which automatically inserts the appropriate variable name:</p>
+<p>如果我们能用所使用的变量和箱宽来标记输出，那不是很好吗？为此，我们将不得不深入了解整洁评估的内部，并使用一个我们尚未谈及的包中的函数：rlang。rlang 是一个底层包，几乎 tidyverse 中的所有其他包都使用它，因为它实现了整洁评估（以及许多其他有用的工具）。</p>
+<p>为了解决标签问题，我们可以使用 <code><a href="https://rlang.r-lib.org/reference/englue.html">rlang::englue()</a></code>。这与 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> 的工作方式类似，所以任何用 <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code> 包装的值都将被插入到字符串中。但它也理解 <code>{{ }}</code>，它会自动插入适当的变量名：</p>
 <div class="cell">
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">var</span>, <span class="va">binwidth</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">label</span> <span class="op">&lt;-</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/englue.html">englue</a></span><span class="op">(</span><span class="st">"A histogram of {{var}} with binwidth {binwidth}"</span><span class="op">)</span></span>
@@ -1182,37 +1156,37 @@ RStudio
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu">histogram</span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" alt="Histogram of carats of diamonds, ranging from 0 to 5. The distribution is  unimodal and right skewed with a peak between 0 to 1 carats." width="576"></p>
+<figure class="figure"><p><img src="functions_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" alt="钻石克拉数的直方图，范围从 0 到 5。分布是单峰且右偏的， 峰值在 0 到 1 克拉之间。" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>You can use the same approach in any other place where you want to supply a string in a ggplot2 plot.</p>
-</section><section id="exercises-2" class="level3" data-number="25.4.4"><h3 data-number="25.4.4" class="anchored" data-anchor-id="exercises-2">
-<span class="header-section-number">25.4.4</span> Exercises</h3>
-<p>Build up a rich plotting function by incrementally implementing each of the steps below:</p>
+<p>你可以在任何其他想要在 ggplot2 图中提供字符串的地方使用相同的方法。</p>
+</section><section id="练习-2" class="level3" data-number="25.4.4"><h3 data-number="25.4.4" class="anchored" data-anchor-id="练习-2">
+<span class="header-section-number">25.4.4</span> 练习</h3>
+<p>通过逐步实现以下每个步骤，构建一个丰富的绘图函数：</p>
 <ol type="1">
-<li><p>Draw a scatterplot given dataset and <code>x</code> and <code>y</code> variables.</p></li>
-<li><p>Add a line of best fit (i.e.&nbsp;a linear model with no standard errors).</p></li>
-<li><p>Add a title.</p></li>
-</ol></section></section><section id="style" class="level2" data-number="25.5"><h2 data-number="25.5" class="anchored" data-anchor-id="style">
-<span class="header-section-number">25.5</span> Style</h2>
-<p>R doesn’t care what your function or arguments are called but the names make a big difference for humans. Ideally, the name of your function will be short, but clearly evoke what the function does. That’s hard! But it’s better to be clear than short, as RStudio’s autocomplete makes it easy to type long names.</p>
-<p>Generally, function names should be verbs, and arguments should be nouns. There are some exceptions: nouns are ok if the function computes a very well known noun (i.e.&nbsp;<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> is better than <code>compute_mean()</code>), or accessing some property of an object (i.e.&nbsp;<code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> is better than <code>get_coefficients()</code>). Use your best judgement and don’t be afraid to rename a function if you figure out a better name later.</p>
+<li><p>给定数据集以及 <code>x</code> 和 <code>y</code> 变量，绘制一个散点图。</p></li>
+<li><p>添加一条最佳拟合线（即没有标准误差的线性模型）。</p></li>
+<li><p>添加一个标题。</p></li>
+</ol></section></section><section id="风格" class="level2" data-number="25.5"><h2 data-number="25.5" class="anchored" data-anchor-id="风格">
+<span class="header-section-number">25.5</span> 风格</h2>
+<p>R 不关心你的函数或参数叫什么名字，但这些名字对人类来说有很大的不同。理想情况下，你的函数名应该简短，但能清楚地唤起函数的作用。这很难！但清晰比简短更好，因为 RStudio 的自动完成功能使得输入长名称变得容易。</p>
+<p>通常，函数名应该是动词，参数应该是名词。也有一些例外：如果函数计算一个非常著名的名词（即 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 比 <code>compute_mean()</code> 好），或者访问对象的某个属性（即 <code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> 比 <code>get_coefficients()</code> 好），那么名词是可以的。运用你的最佳判断，如果你后来想到了更好的名字，不要害怕重命名函数。</p>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Too short</span></span>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 太短</span></span>
 <span><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Not a verb, or descriptive</span></span>
+<span><span class="co"># 不是动词，或不具描述性</span></span>
 <span><span class="fu">my_awesome_function</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Long, but clear</span></span>
+<span><span class="co"># 长，但清晰</span></span>
 <span><span class="fu">impute_missing</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">collapse_years</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>R also doesn’t care about how you use white space in your functions but future readers will. Continue to follow the rules from <a href="workflow-style.html" class="quarto-xref"><span>Chapter 4</span></a>. Additionally, <code>function()</code> should always be followed by squiggly brackets (<code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>), and the contents should be indented by an additional two spaces. This makes it easier to see the hierarchy in your code by skimming the left-hand margin.</p>
+<p>R 也不关心你在函数中如何使用空格，但未来的读者会。继续遵循 <a href="workflow-style.html" class="quarto-xref"><span>Chapter 4</span></a> 中的规则。此外，<code>function()</code> 后面应该总是跟着花括号 (<code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>)，并且内容应该额外缩进两个空格。这样通过浏览左边距，可以更容易地看到代码的层次结构。</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Missing extra two spaces</span></span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 缺少额外的两个空格</span></span>
 <span><span class="va">density</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">color</span>, <span class="va">facets</span>, <span class="va">binwidth</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span>, color <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">color</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1220,7 +1194,7 @@ RStudio
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">facets</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># Pipe indented incorrectly</span></span>
+<span><span class="co"># 管道缩进不正确</span></span>
 <span><span class="va">density</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">color</span>, <span class="va">facets</span>, <span class="va">binwidth</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span>, color <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">color</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1228,12 +1202,12 @@ RStudio
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">facets</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As you can see we recommend putting extra spaces inside of <code>{{ }}</code>. This makes it very obvious that something unusual is happening.</p>
-<section id="exercises-3" class="level3" data-number="25.5.1"><h3 data-number="25.5.1" class="anchored" data-anchor-id="exercises-3">
-<span class="header-section-number">25.5.1</span> Exercises</h3>
+<p>如你所见，我们建议在 <code>{{ }}</code> 内部留出额外的空格。这使得非常明显地看出有不寻常的事情正在发生。</p>
+<section id="练习-3" class="level3" data-number="25.5.1"><h3 data-number="25.5.1" class="anchored" data-anchor-id="练习-3">
+<span class="header-section-number">25.5.1</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Read the source code for each of the following two functions, puzzle out what they do, and then brainstorm better names.</p>
+<p>阅读以下两个函数的源代码，弄清楚它们的作用，然后集思广益想出更好的名字。</p>
 <div class="cell">
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">string</span>, <span class="va">prefix</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">string</span>, <span class="fl">1</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">prefix</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="va">prefix</span></span>
@@ -1244,21 +1218,24 @@ RStudio
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-<li><p>Take a function that you’ve written recently and spend 5 minutes brainstorming a better name for it and its arguments.</p></li>
-<li><p>Make a case for why <code>norm_r()</code>, <code>norm_d()</code> etc. would be better than <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>, <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code>. Make a case for the opposite. How could you make the names even clearer?</p></li>
-</ol></section></section><section id="summary" class="level2" data-number="25.6"><h2 data-number="25.6" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">25.6</span> Summary</h2>
-<p>In this chapter, you learned how to write functions for three useful scenarios: creating a vector, creating a data frame, or creating a plot. Along the way you saw many examples, which hopefully started to get your creative juices flowing, and gave you some ideas for where functions might help your analysis code.</p>
-<p>We have only shown you the bare minimum to get started with functions and there’s much more to learn. A few places to learn more are:</p>
+<li><p>拿一个你最近写的函数，花 5 分钟为它和它的参数想一个更好的名字。</p></li>
+<li><p>为 <code>norm_r()</code>、<code>norm_d()</code> 等比 <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>、<code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> 更好提出理由。再为相反的观点提出理由。你如何能让名字更清晰？</p></li>
+</ol></section></section><section id="总结" class="level2" data-number="25.6"><h2 data-number="25.6" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">25.6</span> 总结</h2>
+<p>在本章中，你学习了如何为三种有用的场景编写函数：创建一个向量、一个数据框或一个图。在此过程中，你看到了许多例子，希望这些例子能激发你的创造力，并为你提供一些关于函数如何帮助你进行分析代码的想法。</p>
+<p>我们只向你展示了函数入门的最低要求，还有很多东西需要学习。以下是一些可以了解更多信息的地方：</p>
 <ul>
-<li>To learn more about programming with tidy evaluation, see useful recipes in <a href="https://dplyr.tidyverse.org/articles/programming.html">programming with dplyr</a> and <a href="https://tidyr.tidyverse.org/articles/programming.html">programming with tidyr</a> and learn more about the theory in <a href="https://rlang.r-lib.org/reference/topic-data-mask.html">What is data-masking and why do I need {{?</a>.</li>
-<li>To learn more about reducing duplication in your ggplot2 code, read the <a href="https://ggplot2-book.org/programming.html" class="uri">Programming with ggplot2</a> chapter of the ggplot2 book.</li>
-<li>For more advice on function style, see the <a href="https://style.tidyverse.org/functions.html" class="uri">tidyverse style guide</a>.</li>
+<li>要了解更多关于使用整洁评估进行编程的信息，请参阅<a href="https://dplyr.tidyverse.org/articles/programming.html">使用 dplyr 编程</a>和<a href="https://tidyr.tidyverse.org/articles/programming.html">使用 tidyr 编程</a>中的有用秘诀，并在<a href="https://rlang.r-lib.org/reference/topic-data-mask.html">什么是数据掩码，为什么我需要 {{?</a> 中了解更多理论。</li>
+<li>要了解更多关于减少 ggplot2 代码中重复的信息，请阅读 ggplot2 书中的<a href="https://ggplot2-book.org/programming.html" class="uri">使用 ggplot2 编程</a>一章。</li>
+<li>有关函数风格的更多建议，请参阅 <a href="https://style.tidyverse.org/functions.html" class="uri">tidyverse 风格指南</a>。</li>
 </ul>
-<p>In the next chapter, we’ll dive into iteration which gives you further tools for reducing code duplication.</p>
+<p>在下一章中，我们将深入探讨迭代，它为你提供了进一步减少代码重复的工具。</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</div>
+</div>
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1657,13 +1634,13 @@ RStudio
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./program.html" class="pagination-link" aria-label="Program">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Program</span>
+      <a href="./program.html" class="pagination-link" aria-label="编程">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">编程</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./iteration.html" class="pagination-link" aria-label="Iteration">
-        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./iteration.html" class="pagination-link" aria-label="迭代">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

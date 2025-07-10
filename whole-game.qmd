@@ -1,4 +1,4 @@
-# 全局概览 {\#sec-whole-game-intro .unnumbered}
+# 全局概览 {#sec-whole-game-intro .unnumbered}
 
 ```{r}
 #| results: "asis"

@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>27&nbsp; A field guide to base R – R 数据科学 2e
+<title>27&nbsp; Base R 实战指南 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Program</span></a>
+ <span class="menu-text">编程</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -357,19 +357,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">函数</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iteration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./base-R.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Communicate</span></a>
+ <span class="menu-text">沟通</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto-formats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quarto 格式</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,38 +406,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">27.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">27.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">27.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" id="toc-前提条件" class="nav-link" data-scroll-target="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="header-section-number">27.1.1</span> 前提条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-subset-many" id="toc-sec-subset-many" class="nav-link" data-scroll-target="#sec-subset-many"><span class="header-section-number">27.2</span> Selecting multiple elements with <code>[</code></a>
+<a href="#sec-subset-many" id="toc-sec-subset-many" class="nav-link" data-scroll-target="#sec-subset-many"><span class="header-section-number">27.2</span> 使用 <code>[</code> 选取多个元素</a>
   <ul class="collapse">
-<li><a href="#subsetting-vectors" id="toc-subsetting-vectors" class="nav-link" data-scroll-target="#subsetting-vectors"><span class="header-section-number">27.2.1</span> Subsetting vectors</a></li>
-  <li><a href="#subsetting-data-frames" id="toc-subsetting-data-frames" class="nav-link" data-scroll-target="#subsetting-data-frames"><span class="header-section-number">27.2.2</span> Subsetting data frames</a></li>
-  <li><a href="#dplyr-equivalents" id="toc-dplyr-equivalents" class="nav-link" data-scroll-target="#dplyr-equivalents"><span class="header-section-number">27.2.3</span> dplyr equivalents</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">27.2.4</span> Exercises</a></li>
+<li><a href="#%E5%90%91%E9%87%8F%E5%AD%90%E9%9B%86%E9%80%89%E5%8F%96" id="toc-向量子集选取" class="nav-link" data-scroll-target="#%E5%90%91%E9%87%8F%E5%AD%90%E9%9B%86%E9%80%89%E5%8F%96"><span class="header-section-number">27.2.1</span> 向量子集选取</a></li>
+  <li><a href="#%E6%95%B0%E6%8D%AE%E6%A1%86%E5%AD%90%E9%9B%86%E9%80%89%E5%8F%96" id="toc-数据框子集选取" class="nav-link" data-scroll-target="#%E6%95%B0%E6%8D%AE%E6%A1%86%E5%AD%90%E9%9B%86%E9%80%89%E5%8F%96"><span class="header-section-number">27.2.2</span> 数据框子集选取</a></li>
+  <li><a href="#dplyr-%E7%AD%89%E4%BB%B7%E6%93%8D%E4%BD%9C" id="toc-dplyr-等价操作" class="nav-link" data-scroll-target="#dplyr-%E7%AD%89%E4%BB%B7%E6%93%8D%E4%BD%9C"><span class="header-section-number">27.2.3</span> dplyr 等价操作</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">27.2.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-subset-one" id="toc-sec-subset-one" class="nav-link" data-scroll-target="#sec-subset-one"><span class="header-section-number">27.3</span> Selecting a single element with <code>$</code> and <code>[[</code></a>
+<a href="#sec-subset-one" id="toc-sec-subset-one" class="nav-link" data-scroll-target="#sec-subset-one"><span class="header-section-number">27.3</span> 使用 <code>$</code> 和 <code>[[</code> 选取单个元素</a>
   <ul class="collapse">
-<li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">27.3.1</span> Data frames</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%A1%86" id="toc-数据框" class="nav-link" data-scroll-target="#%E6%95%B0%E6%8D%AE%E6%A1%86"><span class="header-section-number">27.3.1</span> 数据框</a></li>
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"><span class="header-section-number">27.3.2</span> Tibbles</a></li>
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">27.3.3</span> Lists</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">27.3.4</span> Exercises</a></li>
+  <li><a href="#%E5%88%97%E8%A1%A8" id="toc-列表" class="nav-link" data-scroll-target="#%E5%88%97%E8%A1%A8"><span class="header-section-number">27.3.3</span> 列表</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-1" id="toc-练习-1" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-1"><span class="header-section-number">27.3.4</span> 练习</a></li>
   </ul>
 </li>
-  <li><a href="#apply-family" id="toc-apply-family" class="nav-link" data-scroll-target="#apply-family"><span class="header-section-number">27.4</span> Apply family</a></li>
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="header-section-number">27.5</span> <code>for</code> loops</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">27.6</span> Plots</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">27.7</span> Summary</a></li>
+  <li><a href="#apply-%E5%87%BD%E6%95%B0%E6%97%8F" id="toc-apply-函数族" class="nav-link" data-scroll-target="#apply-%E5%87%BD%E6%95%B0%E6%97%8F"><span class="header-section-number">27.4</span> Apply 函数族</a></li>
+  <li><a href="#for-%E5%BE%AA%E7%8E%AF" id="toc-for-循环" class="nav-link" data-scroll-target="#for-%E5%BE%AA%E7%8E%AF"><span class="header-section-number">27.5</span> <code>for</code> 循环</a></li>
+  <li><a href="#%E5%9B%BE%E5%BD%A2" id="toc-图形" class="nav-link" data-scroll-target="#%E5%9B%BE%E5%BD%A2"><span class="header-section-number">27.6</span> 图形</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">27.7</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/base-R.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Program</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-base-r" class="quarto-section-identifier"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">A field guide to base R</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">编程</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-base-r" class="quarto-section-identifier"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Base R 实战指南</span></span></h1>
 </div>
 
 
@@ -451,92 +451,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="27.1"><h2 data-number="27.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">27.1</span> Introduction</h2>
-<p>To finish off the programming section, we’re going to give you a quick tour of the most important base R functions that we don’t otherwise discuss in the book. These tools are particularly useful as you do more programming and will help you read code you’ll encounter in the wild.</p>
-<p>This is a good place to remind you that the tidyverse is not the only way to solve data science problems. We teach the tidyverse in this book because tidyverse packages share a common design philosophy, increasing the consistency across functions, and making each new function or package a little easier to learn and use. It’s not possible to use the tidyverse without using base R, so we’ve actually already taught you a <strong>lot</strong> of base R functions: from <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> to load packages, to <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> and <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> for numeric summaries, to the factor, date, and POSIXct data types, and of course all the basic operators like <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, <code>|</code>, <code>&amp;</code>, and <code>!</code>. What we haven’t focused on so far is base R workflows, so we will highlight a few of those in this chapter.</p>
-<p>After you read this book, you’ll learn other approaches to the same problems using base R, data.table, and other packages. You’ll undoubtedly encounter these other approaches when you start reading R code written by others, particularly if you’re using StackOverflow. It’s 100% okay to write code that uses a mix of approaches, and don’t let anyone tell you otherwise!</p>
-<p>In this chapter, we’ll focus on four big topics: subsetting with <code>[</code>, subsetting with <code>[[</code> and <code>$</code>, the apply family of functions, and <code>for</code> loops. To finish off, we’ll briefly discuss two essential plotting functions.</p>
-<section id="prerequisites" class="level3" data-number="27.1.1"><h3 data-number="27.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">27.1.1</span> Prerequisites</h3>
-<p>This package focuses on base R so doesn’t have any real prerequisites, but we’ll load the tidyverse in order to explain some of the differences.</p>
+</header><section id="引言" class="level2" data-number="27.1"><h2 data-number="27.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">27.1</span> 引言</h2>
+<p>为了完成编程部分的学习，我们将带你快速浏览一些本书中未曾讨论但非常重要的 Base R 函数。 当你进行更多的编程工作时，这些工具会特别有用，它们也将帮助你阅读在实际工作中遇到的 R 代码。</p>
+<p>在此，我们想再次提醒你，tidyverse 并非解决数据科学问题的唯一途径。 我们在本书中教授 tidyverse，是因为 tidyverse 系列包共享一套通用的设计理念，这增加了函数之间的一致性，使得学习和使用每一个新函数或包都变得更加容易。 不使用 Base R 是不可能使用 tidyverse 的，所以我们实际上已经教了你<strong>大量</strong>的 Base R 函数：从用于加载包的 <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>，到用于数值摘要的 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> 和 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>，再到因子 (factor)、日期 (date) 和 POSIXct 数据类型，当然还有所有基本运算符，如 <code>+</code>、<code>-</code>、<code>/</code>、<code>*</code>、<code>|</code>、<code>&amp;</code> 和 <code>!</code>。 到目前为止，我们还没有重点介绍 Base R 的工作流程，因此在本章中，我们将重点介绍其中的一些。</p>
+<p>读完本书后，你将学习到使用 Base R、data.table 和其他包来解决同样问题的其他方法。 当你开始阅读他人编写的 R 代码时，尤其是在使用 StackOverflow 时，你无疑会遇到这些其他方法。 编写混合使用多种方法的代码是完全可以的，不要让任何人告诉你这有什么不对！</p>
+<p>在本章中，我们将重点关注四个主要主题：使用 <code>[</code> 进行子集选取，使用 <code>[[</code> 和 <code>$</code> 进行子集选取，apply 函数族，以及 <code>for</code> 循环。 最后，我们将简要讨论两个必不可少的绘图函数。</p>
+<section id="前提条件" class="level3" data-number="27.1.1"><h3 data-number="27.1.1" class="anchored" data-anchor-id="前提条件">
+<span class="header-section-number">27.1.1</span> 前提条件</h3>
+<p>这个包侧重于 Base R，因此没有真正的前提条件，但我们将加载 tidyverse 以便解释一些差异。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="sec-subset-many" class="level2" data-number="27.2"><h2 data-number="27.2" class="anchored" data-anchor-id="sec-subset-many">
-<span class="header-section-number">27.2</span> Selecting multiple elements with <code>[</code>
-</h2>
-<p><code>[</code> is used to extract sub-components from vectors and data frames, and is called like <code>x[i]</code> or <code>x[i, j]</code>. In this section, we’ll introduce you to the power of <code>[</code>, first showing you how you can use it with vectors, then how the same principles extend in a straightforward way to two-dimensional (2d) structures like data frames. We’ll then help you cement that knowledge by showing how various dplyr verbs are special cases of <code>[</code>.</p>
-<section id="subsetting-vectors" class="level3" data-number="27.2.1"><h3 data-number="27.2.1" class="anchored" data-anchor-id="subsetting-vectors">
-<span class="header-section-number">27.2.1</span> Subsetting vectors</h3>
-<p>There are five main types of things that you can subset a vector with, i.e., that can be the <code>i</code> in <code>x[i]</code>:</p>
+<span class="header-section-number">27.2</span> 使用 <code>[</code> 选取多个元素</h2>
+<p><code>[</code> 用于从向量和数据框中提取子组件，调用形式为 <code>x[i]</code> 或 <code>x[i, j]</code>。 在本节中，我们将向你介绍 <code>[</code> 的强大功能，首先展示如何将其用于向量，然后说明同样的原理如何直接扩展到二维 (2d) 结构，如数据框。 接着，我们将通过展示各种 dplyr 动词是如何作为 <code>[</code> 的特例，来帮助你巩固这些知识。</p>
+<section id="向量子集选取" class="level3" data-number="27.2.1"><h3 data-number="27.2.1" class="anchored" data-anchor-id="向量子集选取">
+<span class="header-section-number">27.2.1</span> 向量子集选取</h3>
+<p>你可以用五种主要类型的东西来对向量进行子集选取，即 <code>x[i]</code> 中的 <code>i</code> 可以是：</p>
 <ol type="1">
 <li>
-<p><strong>A vector of positive integers</strong>. Subsetting with positive integers keeps the elements at those positions:</p>
+<p><strong>一个正整数向量</strong>。 用正整数进行子集选取会保留这些位置上的元素：</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>, <span class="st">"four"</span>, <span class="st">"five"</span><span class="op">)</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "three" "two"   "five"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By repeating a position, you can actually make a longer output than input, making the term “subsetting” a bit of a misnomer.</p>
+<p>通过重复一个位置，你实际上可以得到比输入更长的输出，这使得“子集选取 (subsetting)”这个术语有点名不副实。</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "one"  "one"  "five" "five" "five" "two"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p><strong>A vector of negative integers</strong>. Negative values drop the elements at the specified positions:</p>
+<p><strong>一个负整数向量</strong>。 负数值会丢弃指定位置的元素：</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] "two"  "four"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 <li>
-<p><strong>A logical vector</strong>. Subsetting with a logical vector keeps all values corresponding to a <code>TRUE</code> value. This is most often useful in conjunction with the comparison functions.</p>
+<p><strong>一个逻辑向量</strong>。 用逻辑向量进行子集选取会保留所有对应 <code>TRUE</code> 值的值。 这在与比较函数结合使用时最为有用。</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># All non-missing values of x</span></span>
+<span><span class="co"># x 的所有非缺失值</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 10  3  5  8  1</span></span>
 <span></span>
-<span><span class="co"># All even (or missing!) values of x</span></span>
+<span><span class="co"># x 的所有偶数（或缺失！）值</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 10 NA  8 NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Unlike <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code>NA</code> indices will be included in the output as <code>NA</code>s.</p>
+<p>与 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 不同，<code>NA</code> 索引将在输出中作为 <code>NA</code> 包含进来。</p>
 </li>
 <li>
-<p><strong>A character vector</strong>. If you have a named vector, you can subset it with a character vector:</p>
+<p><strong>一个字符向量</strong>。 如果你有一个命名的向量，你可以用字符向量来对其进行子集选取：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>abc <span class="op">=</span> <span class="fl">1</span>, def <span class="op">=</span> <span class="fl">2</span>, xyz <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"xyz"</span>, <span class="st">"def"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; xyz def </span></span>
 <span><span class="co">#&gt;   5   2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As with subsetting with positive integers, you can use a character vector to duplicate individual entries.</p>
+<p>与使用正整数进行子集选取一样，你可以使用字符向量来复制单个条目。</p>
 </li>
-<li><p><strong>Nothing</strong>. The final type of subsetting is nothing, <code>x[]</code>, which returns the complete <code>x</code>. This is not useful for subsetting vectors, but as we’ll see shortly, it is useful when subsetting 2d structures like tibbles.</p></li>
-</ol></section><section id="subsetting-data-frames" class="level3" data-number="27.2.2"><h3 data-number="27.2.2" class="anchored" data-anchor-id="subsetting-data-frames">
-<span class="header-section-number">27.2.2</span> Subsetting data frames</h3>
-<p>There are quite a few different ways<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that you can use <code>[</code> with a data frame, but the most important way is to select rows and columns independently with <code>df[rows, cols]</code>. Here <code>rows</code> and <code>cols</code> are vectors as described above. For example, <code>df[rows, ]</code> and <code>df[, cols]</code> select just rows or just columns, using the empty subset to preserve the other dimension.</p>
-<p>Here are a couple of examples:</p>
+<li><p><strong>空</strong>。 最后一种子集选取是空，即 <code>x[]</code>，它返回完整的 <code>x</code>。 这对于向量的子集选取没什么用，但我们稍后会看到，在对二维结构（如 tibble）进行子集选取时它非常有用。</p></li>
+</ol></section><section id="数据框子集选取" class="level3" data-number="27.2.2"><h3 data-number="27.2.2" class="anchored" data-anchor-id="数据框子集选取">
+<span class="header-section-number">27.2.2</span> 数据框子集选取</h3>
+<p>你可以用很多不同的方式<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 对数据框使用 <code>[</code>，但最重要的方式是使用 <code>df[rows, cols]</code> 独立地选择行和列。这里的 <code>rows</code> 和 <code>cols</code> 是如上所述的向量。 例如，<code>df[rows, ]</code> 和 <code>df[, cols]</code> 分别只选择行或只选择列，使用空子集来保留另一维度。</p>
+<p>这里有几个例子：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
-<span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
-<span>    z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, </span>
+<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>, </span>
+<span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Select first row and second column</span></span>
+<span><span class="co"># 选择第一行和第二列</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 1</span></span>
 <span><span class="co">#&gt;   y    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 a</span></span>
 <span></span>
-<span><span class="co"># Select all rows and columns x and y</span></span>
-<span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co"># 选择所有行以及 x 和 y 列</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span> , <span class="st">"y"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;       x y    </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;</span></span>
@@ -544,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2     2 e    </span></span>
 <span><span class="co">#&gt; 3     3 f</span></span>
 <span></span>
-<span><span class="co"># Select rows where `x` is greater than 1 and all columns</span></span>
+<span><span class="co"># 选择 `x` 大于 1 的行和所有列</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
 <span><span class="co">#&gt;       x y         z</span></span>
@@ -552,8 +551,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1     2 e     0.834</span></span>
 <span><span class="co">#&gt; 2     3 f     0.601</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’ll come back to <code>$</code> shortly, but you should be able to guess what <code>df$x</code> does from the context: it extracts the <code>x</code> variable from <code>df</code>. We need to use it here because <code>[</code> doesn’t use tidy evaluation, so you need to be explicit about the source of the <code>x</code> variable.</p>
-<p>There’s an important difference between tibbles and data frames when it comes to <code>[</code>. In this book, we’ve mainly used tibbles, which <em>are</em> data frames, but they tweak some behaviors to make your life a little easier. In most places, you can use “tibble” and “data frame” interchangeably, so when we want to draw particular attention to R’s built-in data frame, we’ll write <code>data.frame</code>. If <code>df</code> is a <code>data.frame</code>, then <code>df[, cols]</code> will return a vector if <code>col</code> selects a single column and a data frame if it selects more than one column. If <code>df</code> is a tibble, then <code>[</code> will always return a tibble.</p>
+<p>我们稍后会回到 <code>$</code>，但你应该能从上下文中猜出 <code>df$x</code> 的作用：它从 <code>df</code> 中提取 <code>x</code> 变量。 我们在这里需要使用它，因为 <code>[</code> 不使用整洁求值 (tidy evaluation)，所以你需要明确 <code>x</code> 变量的来源。</p>
+<p>在 <code>[</code> 的使用上，tibble 和 data frame 之间有一个重要的区别。 在本书中，我们主要使用 tibble，它<em>是</em>一种数据框，但它们调整了一些行为以使你的工作更轻松一些。 在大多数地方，你可以互换使用“tibble”和“data frame”，所以当我们想特别指出 R 的内置 data frame 时，我们会写成 <code>data.frame</code>。 如果 <code>df</code> 是一个 <code>data.frame</code>，那么如果 <code>col</code> 选择单个列，<code>df[, cols]</code> 将返回一个向量；如果它选择多个列，则返回一个数据框。 如果 <code>df</code> 是一个 tibble，那么 <code>[</code> 将始终返回一个 tibble。</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">df1</span><span class="op">[</span>, <span class="st">"x"</span><span class="op">]</span></span>
@@ -568,58 +567,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2     2</span></span>
 <span><span class="co">#&gt; 3     3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>One way to avoid this ambiguity with <code>data.frame</code>s is to explicitly specify <code>drop = FALSE</code>:</p>
+<p>一种避免与 <code>data.frame</code> 产生这种歧义的方法是明确指定 <code>drop = FALSE</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span><span class="op">[</span>, <span class="st">"x"</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span><span class="op">[</span>, <span class="st">"x"</span> , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
 <span><span class="co">#&gt;   x</span></span>
 <span><span class="co">#&gt; 1 1</span></span>
 <span><span class="co">#&gt; 2 2</span></span>
 <span><span class="co">#&gt; 3 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="dplyr-equivalents" class="level3" data-number="27.2.3"><h3 data-number="27.2.3" class="anchored" data-anchor-id="dplyr-equivalents">
-<span class="header-section-number">27.2.3</span> dplyr equivalents</h3>
-<p>Several dplyr verbs are special cases of <code>[</code>:</p>
+</section><section id="dplyr-等价操作" class="level3" data-number="27.2.3"><h3 data-number="27.2.3" class="anchored" data-anchor-id="dplyr-等价操作">
+<span class="header-section-number">27.2.3</span> dplyr 等价操作</h3>
+<p>一些 dplyr 动词是 <code>[</code> 的特例：</p>
 <ul>
 <li>
-<p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> is equivalent to subsetting the rows with a logical vector, taking care to exclude missing values:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 等价于使用逻辑向量对行进行子集选取，并注意排除缺失值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,</span>
-<span>z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, </span>
+<span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># same as</span></span>
+<span><span class="co"># 等同于</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another common technique in the wild is to use <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> for its side-effect of dropping missing values: <code>df[which(df$x &gt; 1), ]</code>.</p>
+<p>在实际应用中，另一个常见的技巧是使用 <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> 来达到丢弃缺失值的副作用：<code>df[which(df$x &gt; 1), ]</code>。</p>
 </li>
 <li>
-<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> is equivalent to subsetting the rows with an integer vector, usually created with <code><a href="https://rdrr.io/r/base/order.html">order()</a></code>:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 等价于使用整数向量对行进行子集选取，这个向量通常由 <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> 创建：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># same as</span></span>
+<span><span class="co"># 等同于</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">x</span>, <span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can use <code>order(decreasing = TRUE)</code> to sort all columns in descending order or <code>-rank(col)</code> to sort columns in decreasing order individually.</p>
+<p>你可以使用 <code>order(decreasing = TRUE)</code> 来按降序对所有列进行排序，或者使用 <code>-rank(col)</code> 来单独按降序对列进行排序。</p>
 </li>
 <li>
-<p>Both <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> are similar to subsetting the columns with a character vector:</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> 都类似于使用字符向量对列进行子集选取：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">z</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># same as</span></span>
+<span><span class="co"># 等同于</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"z"</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
 </ul>
-<p>Base R also provides a function that combines the features of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> called <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>:</p>
+<p>Base R 还提供了一个结合了 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> 功能的函数<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，名为 <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   y           z</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;</span></span>
@@ -627,46 +626,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 b     0.00740</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># same as</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 等同于</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This function was the inspiration for much of dplyr’s syntax.</p>
-</section><section id="exercises" class="level3" data-number="27.2.4"><h3 data-number="27.2.4" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">27.2.4</span> Exercises</h3>
+<p>这个函数是 dplyr 许多语法设计的灵感来源。</p>
+</section><section id="练习" class="level3" data-number="27.2.4"><h3 data-number="27.2.4" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">27.2.4</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Create functions that take a vector as input and return:</p>
+<p>创建函数，输入一个向量，然后返回：</p>
 <ol type="a">
-<li>The elements at even-numbered positions.</li>
-<li>Every element except the last value.</li>
-<li>Only even values (and no missing values).</li>
+<li>偶数位置上的元素。</li>
+<li>除了最后一个值之外的所有元素。</li>
+<li>只有偶数值（并且没有缺失值）。</li>
 </ol>
 </li>
-<li><p>Why is <code>x[-which(x &gt; 0)]</code> not the same as <code>x[x &lt;= 0]</code>? Read the documentation for <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> and do some experiments to figure it out.</p></li>
+<li><p>为什么 <code>x[-which(x &gt; 0)]</code> 和 <code>x[x &lt;= 0]</code> 不一样？ 阅读 <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> 的文档并做一些实验来找出答案。</p></li>
 </ol></section></section><section id="sec-subset-one" class="level2" data-number="27.3"><h2 data-number="27.3" class="anchored" data-anchor-id="sec-subset-one">
-<span class="header-section-number">27.3</span> Selecting a single element with <code>$</code> and <code>[[</code>
-</h2>
-<p><code>[</code>, which selects many elements, is paired with <code>[[</code> and <code>$</code>, which extract a single element. In this section, we’ll show you how to use <code>[[</code> and <code>$</code> to pull columns out of data frames, discuss a couple more differences between <code>data.frames</code> and tibbles, and emphasize some important differences between <code>[</code> and <code>[[</code> when used with lists.</p>
-<section id="data-frames" class="level3" data-number="27.3.1"><h3 data-number="27.3.1" class="anchored" data-anchor-id="data-frames">
-<span class="header-section-number">27.3.1</span> Data frames</h3>
-<p><code>[[</code> and <code>$</code> can be used to extract columns out of a data frame. <code>[[</code> can access by position or by name, and <code>$</code> is specialized for access by name:</p>
+<span class="header-section-number">27.3</span> 使用 <code>$</code> 和 <code>[[</code> 选取单个元素</h2>
+<p><code>[</code> 用于选取多个元素，与之配对的是 <code>[[</code> 和 <code>$</code>，它们用于提取单个元素。 在本节中，我们将向你展示如何使用 <code>[[</code> 和 <code>$</code> 从数据框中提取列，讨论 <code>data.frame</code> 和 tibble 之间更多的几个区别，并强调在与列表一起使用时 <code>[</code> 和 <code>[[</code> 之间的一些重要差异。</p>
+<section id="数据框" class="level3" data-number="27.3.1"><h3 data-number="27.3.1" class="anchored" data-anchor-id="数据框">
+<span class="header-section-number">27.3.1</span> 数据框</h3>
+<p><code>[[</code> 和 <code>$</code> 可以用来从数据框中提取列。 <code>[[</code> 可以通过位置或名称访问，而 <code>$</code> 专门用于按名称访问：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
-<span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">21</span><span class="op">)</span></span>
+<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
+<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">21</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># by position</span></span>
+<span><span class="co"># 按位置</span></span>
 <span><span class="va">tb</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 1 2 3 4</span></span>
 <span></span>
-<span><span class="co"># by name</span></span>
+<span><span class="co"># 按名称</span></span>
 <span><span class="va">tb</span><span class="op">[[</span><span class="st">"x"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 1 2 3 4</span></span>
 <span><span class="va">tb</span><span class="op">$</span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] 1 2 3 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>They can also be used to create new columns, the base R equivalent of <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>:</p>
+<p>它们也可以用来创建新列，这是 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 在 Base R 中的等价操作：</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span><span class="op">$</span><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">tb</span><span class="op">$</span><span class="va">x</span> <span class="op">+</span> <span class="va">tb</span><span class="op">$</span><span class="va">y</span></span>
 <span><span class="va">tb</span></span>
@@ -678,8 +676,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3     3     1     4</span></span>
 <span><span class="co">#&gt; 4     4    21    25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There are several other base R approaches to creating new columns including with <code><a href="https://rdrr.io/r/base/transform.html">transform()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, and <code><a href="https://rdrr.io/r/base/with.html">within()</a></code>. Hadley collected a few examples at <a href="https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf" class="uri">https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf</a>.</p>
-<p>Using <code>$</code> directly is convenient when performing quick summaries. For example, if you just want to find the size of the biggest diamond or the possible values of <code>cut</code>, there’s no need to use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>:</p>
+<p>还有其他几种 Base R 创建新列的方法，包括使用 <code><a href="https://rdrr.io/r/base/transform.html">transform()</a></code>、<code><a href="https://rdrr.io/r/base/with.html">with()</a></code> 和 <code><a href="https://rdrr.io/r/base/with.html">within()</a></code>。 Hadley 在 <a href="https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf">https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf</a> 收集了一些例子。</p>
+<p>在进行快速摘要时，直接使用 <code>$</code> 很方便。 例如，如果你只想找出最大钻石的克拉数或 <code>cut</code> 的可能值，就不需要使用 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 5.01</span></span>
@@ -687,21 +685,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>dplyr also provides an equivalent to <code>[[</code>/<code>$</code> that we didn’t mention in <a href="data-transform.html" class="quarto-xref"><span>Chapter 3</span></a>: <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> takes either a variable name or variable position and returns just that column. That means we could rewrite the above code to use the pipe:</p>
+<p>dplyr 也提供了一个等价于 <code>[[</code>/<code>$</code> 的函数，我们在 <a href="data-transform.html" class="quarto-xref"><span>Chapter 3</span></a> 中没有提到：<code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>。 <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> 接受一个变量名或变量位置，并只返回那一列。 这意味着我们可以重写上面的代码来使用管道：</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 5.01</span></span>
 <span></span>
-<span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="tibbles" class="level3" data-number="27.3.2"><h3 data-number="27.3.2" class="anchored" data-anchor-id="tibbles">
 <span class="header-section-number">27.3.2</span> Tibbles</h3>
-<p>There are a couple of important differences between tibbles and base <code>data.frame</code>s when it comes to <code>$</code>. Data frames match the prefix of any variable names (so-called <strong>partial matching</strong>) and don’t complain if a column doesn’t exist:</p>
+<p>在 <code>$</code> 的使用上，tibble 和 Base <code>data.frame</code> 之间有几个重要的区别。 Data frame 会匹配任何变量名的前缀（即所谓的<strong>部分匹配 (partial matching)</strong>），并且如果一列不存在也不会报错：</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">x</span></span>
@@ -709,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">df</span><span class="op">$</span><span class="va">z</span></span>
 <span><span class="co">#&gt; NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Tibbles are more strict: they only ever match variable names exactly and they will generate a warning if the column you are trying to access doesn’t exist:</p>
+<p>Tibble 更为严格：它们只精确匹配变量名，并且如果你尝试访问的列不存在，它们会生成一个警告：</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -720,21 +714,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `z`.</span></span>
 <span><span class="co">#&gt; NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For this reason we sometimes joke that tibbles are lazy and surly: they do less and complain more.</p>
-</section><section id="lists" class="level3" data-number="27.3.3"><h3 data-number="27.3.3" class="anchored" data-anchor-id="lists">
-<span class="header-section-number">27.3.3</span> Lists</h3>
-<p><code>[[</code> and <code>$</code> are also really important for working with lists, and it’s important to understand how they differ from <code>[</code>. Let’s illustrate the differences with a list named <code>l</code>:</p>
+<p>因此，我们有时开玩笑说 tibble 是“又懒又暴躁”：它们做得更少，抱怨得更多。</p>
+</section><section id="列表" class="level3" data-number="27.3.3"><h3 data-number="27.3.3" class="anchored" data-anchor-id="列表">
+<span class="header-section-number">27.3.3</span> 列表</h3>
+<p><code>[[</code> 和 <code>$</code> 在处理列表时也非常重要，理解它们与 <code>[</code> 的区别至关重要。 让我们用一个名为 <code>l</code> 的列表来说明这些差异：</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
-<span>    a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
-<span>    b <span class="op">=</span> <span class="st">"a string"</span>,</span>
-<span>    c <span class="op">=</span> <span class="va">pi</span>,</span>
-<span>    d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
+<span>  a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, </span>
+<span>  b <span class="op">=</span> <span class="st">"a string"</span>, </span>
+<span>  c <span class="op">=</span> <span class="va">pi</span>, </span>
+<span>  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>
-<p><code>[</code> extracts a sub-list. It doesn’t matter how many elements you extract, the result will always be a list.</p>
+<p><code>[</code> 提取一个子列表。 无论你提取多少个元素，结果总是一个列表。</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 2</span></span>
@@ -751,10 +745,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   ..$ : num -1</span></span>
 <span><span class="co">#&gt;   ..$ : num -5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Like with vectors, you can subset with a logical, integer, or character vector.</p>
+<p>与向量一样，你可以用逻辑、整数或字符向量进行子集选取。</p>
 </li>
 <li>
-<p><code>[[</code> and <code>$</code> extract a single component from a list. They remove a level of hierarchy from the list.</p>
+<p><code>[[</code> 和 <code>$</code> 从列表中提取单个组件。 它们会从列表中移除一个层级。</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  int [1:3] 1 2 3</span></span>
@@ -769,40 +763,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </li>
 </ul>
-<p>The difference between <code>[</code> and <code>[[</code> is particularly important for lists because <code>[[</code> drills down into the list while <code>[</code> returns a new, smaller list. To help you remember the difference, take a look at the unusual pepper shaker shown in <a href="#fig-pepper" class="quarto-xref">Figure&nbsp;<span>27.1</span></a>. If this pepper shaker is your list <code>pepper</code>, then, <code>pepper[1]</code> is a pepper shaker containing a single pepper packet. <code>pepper[2]</code> would look the same, but would contain the second packet. <code>pepper[1:2]</code> would be a pepper shaker containing two pepper packets. <code>pepper[[1]]</code> would extract the pepper packet itself.</p>
+<p><code>[</code> 和 <code>[[</code> 之间的区别对于列表尤为重要，因为 <code>[[</code> 会深入到列表中，而 <code>[</code> 返回一个新的、更小的列表。 为了帮助你记住这个区别，请看 <a href="#fig-pepper" class="quarto-xref">Figure&nbsp;<span>27.1</span></a> 中展示的那个不寻常的胡椒瓶。 如果这个胡椒瓶是你的列表 <code>pepper</code>，那么 <code>pepper[1]</code> 就是一个装有单个胡椒包的胡椒瓶。 <code>pepper[2]</code> 看起来一样，但会装有第二个胡椒包。 <code>pepper[1:2]</code> 将是一个装有两个胡椒包的胡椒瓶。 而 <code>pepper[[1]]</code> 则会提取出胡椒包本身。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pepper" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three photos. On the left is a photo of a glass pepper shaker. Instead of the pepper shaker containing pepper, it contains a single packet of pepper. In the middle is a photo of a single packet of pepper. On the right is a photo of the contents of a packet of pepper.">
+<div id="fig-pepper" class="quarto-float quarto-figure quarto-figure-center anchored" alt="三张照片。左边是一张玻璃胡椒瓶的照片。胡椒瓶里装的不是胡椒粉， 而是一小包胡椒。中间是一张单包胡椒的照片。右边是一包胡椒 里的内容物的照片。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pepper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/pepper.png" class="img-fluid figure-img" style="width:100.0%" alt="Three photos. On the left is a photo of a glass pepper shaker. Instead of the pepper shaker containing pepper, it contains a single packet of pepper. In the middle is a photo of a single packet of pepper. On the right is a photo of the contents of a packet of pepper.">
+<img src="diagrams/pepper.png" class="img-fluid figure-img" style="width:100.0%" alt="三张照片。左边是一张玻璃胡椒瓶的照片。胡椒瓶里装的不是胡椒粉， 而是一小包胡椒。中间是一张单包胡椒的照片。右边是一包胡椒 里的内容物的照片。">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pepper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27.1: (Left) A pepper shaker that Hadley once found in his hotel room. (Middle) <code>pepper[1]</code>. (Right) <code>pepper[[1]]</code>
+Figure&nbsp;27.1: (左) Hadley 曾经在他酒店房间里发现的一个胡椒瓶。 (中) <code>pepper[1]</code>。 (右) <code>pepper[[1]]</code>。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>This same principle applies when you use 1d <code>[</code> with a data frame: <code>df["x"]</code> returns a one-column data frame and <code>df[["x"]]</code> returns a vector.</p>
-</section><section id="exercises-1" class="level3" data-number="27.3.4"><h3 data-number="27.3.4" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">27.3.4</span> Exercises</h3>
+<p>当你对数据框使用一维 <code>[</code> 时，同样的原理也适用：<code>df["x"]</code> 返回一个单列数据框，而 <code>df[["x"]]</code> 返回一个向量。</p>
+</section><section id="练习-1" class="level3" data-number="27.3.4"><h3 data-number="27.3.4" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">27.3.4</span> 练习</h3>
 <ol type="1">
-<li><p>What happens when you use <code>[[</code> with a positive integer that’s bigger than the length of the vector? What happens when you subset with a name that doesn’t exist?</p></li>
-<li><p>What would <code>pepper[[1]][1]</code> be? What about <code>pepper[[1]][[1]]</code>?</p></li>
-</ol></section></section><section id="apply-family" class="level2" data-number="27.4"><h2 data-number="27.4" class="anchored" data-anchor-id="apply-family">
-<span class="header-section-number">27.4</span> Apply family</h2>
-<p>In <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a>, you learned tidyverse techniques for iteration like <code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a></code> and the map family of functions. In this section, you’ll learn about their base equivalents, the <strong>apply family</strong>. In this context apply and map are synonyms because another way of saying “map a function over each element of a vector” is “apply a function over each element of a vector”. Here we’ll give you a quick overview of this family so you can recognize them in the wild.</p>
-<p>The most important member of this family is <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, which is very similar to <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. In fact, because we haven’t used any of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>’s more advanced features, you can replace every <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> call in <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> with <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>.</p>
-<p>There’s no exact base R equivalent to <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> but you can get close by using <code>[</code> with <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>. This works because under the hood, data frames are lists of columns, so calling <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> on a data frame applies the function to each column.</p>
+<li><p>当你用一个比向量长度大的正整数对 <code>[[</code> 进行子集选取时会发生什么？ 当你用一个不存在的名称进行子集选取时会发生什么？</p></li>
+<li><p><code>pepper[[1]][1]</code> 会是什么？ <code>pepper[[1]][[1]]</code> 呢？</p></li>
+</ol></section></section><section id="apply-函数族" class="level2" data-number="27.4"><h2 data-number="27.4" class="anchored" data-anchor-id="apply-函数族">
+<span class="header-section-number">27.4</span> Apply 函数族</h2>
+<p>在 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中，你学习了 tidyverse 的迭代技术，如 <code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a></code> 和 map 系列函数。 在本节中，你将学习它们的 Base R 等价物，即 <strong>apply 函数族</strong>。 在此语境下，apply 和 map 是同义词，因为“将一个函数映射 (map) 到向量的每个元素上”的另一种说法是“将一个函数应用 (apply) 到向量的每个元素上”。 这里我们将为你简要介绍这个函数族，以便你在实际中能认出它们。</p>
+<p>这个函数族中最重要的成员是 <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>，它与 <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> 非常相似<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。 事实上，因为我们没有使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 的任何更高级的功能，你可以将 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中所有的 <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> 调用都替换为 <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>。</p>
+<p>没有完全等同于 <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> 的 Base R 函数，但你可以通过结合使用 <code>[</code> 和 <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> 来接近其功能。 这是可行的，因为在底层，数据框是列的列表，所以对数据框调用 <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> 会将函数应用于每一列。</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="st">"a"</span>, d <span class="op">=</span> <span class="st">"b"</span>, e <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># First find numeric columns</span></span>
+<span><span class="co"># 首先找到数值列</span></span>
 <span><span class="va">num_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">is.numeric</span><span class="op">)</span></span>
 <span><span class="va">num_cols</span></span>
 <span><span class="co">#&gt;     a     b     c     d     e </span></span>
 <span><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span>
 <span></span>
-<span><span class="co"># Then transform each column with lapply() then replace the original values</span></span>
+<span><span class="co"># 然后用 lapply() 转换每一列，再替换原始值</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">num_cols</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>, <span class="va">num_cols</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
@@ -810,19 +804,19 @@ Figure&nbsp;27.1: (Left) A pepper shaker that Hadley once found in his hotel roo
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     2     4 a     b         8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The code above uses a new function, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>. It’s similar to <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> but it always tries to simplify the result, hence the <code>s</code> in its name, here producing a logical vector instead of a list. We don’t recommend using it for programming, because the simplification can fail and give you an unexpected type, but it’s usually fine for interactive use. purrr has a similar function called <code><a href="https://purrr.tidyverse.org/reference/map.html">map_vec()</a></code> that we didn’t mention in <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a>.</p>
-<p>Base R provides a stricter version of <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> called <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code>, short for <strong>v</strong>ector apply. It takes an additional argument that specifies the expected type, ensuring that simplification occurs the same way regardless of the input. For example, we could replace the <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> call above with this <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> where we specify that we expect <code><a href="https://rdrr.io/r/base/numeric.html">is.numeric()</a></code> to return a logical vector of length 1:</p>
+<p>上面的代码使用了一个新函数 <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>。 它与 <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> 相似，但它总是尝试简化结果，因此其名称中的 <code>s</code> 代表简化 (simplify)，这里它产生了一个逻辑向量而不是一个列表。 我们不推荐在编程中使用它，因为简化可能会失败并给你一个意想不到的类型，但对于交互式使用来说通常没问题。 purrr 有一个类似的函数叫 <code><a href="https://purrr.tidyverse.org/reference/map.html">map_vec()</a></code>，我们在 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中没有提到。</p>
+<p>Base R 提供了一个比 <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> 更严格的版本，叫做 <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code>，是<strong>v</strong>ector apply (向量应用) 的缩写。 它接受一个额外的参数来指定预期的类型，确保无论输入如何，简化过程都以相同的方式发生。 例如，我们可以将上面的 <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> 调用替换为这个 <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code>，在这里我们指定期望 <code><a href="https://rdrr.io/r/base/numeric.html">is.numeric()</a></code> 返回一个长度为 1 的逻辑向量：</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">is.numeric</span>, <span class="fu"><a href="https://rdrr.io/r/base/logical.html">logical</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     a     b     c     d     e </span></span>
 <span><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The distinction between <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> and <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> is really important when they’re inside a function (because it makes a big difference to the function’s robustness to unusual inputs), but it doesn’t usually matter in data analysis.</p>
-<p>Another important member of the apply family is <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> which computes a single grouped summary:</p>
+<p><code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> 和 <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> 之间的区别在它们位于函数内部时非常重要（因为它对函数对异常输入的鲁棒性有很大影响），但在数据分析中通常无关紧要。</p>
+<p>apply 函数族的另一个重要成员是 <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>，它计算单个分组摘要：</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 2</span></span>
 <span><span class="co">#&gt;   cut       price</span></span>
 <span><span class="co">#&gt;   &lt;ord&gt;     &lt;dbl&gt;</span></span>
@@ -836,47 +830,47 @@ Figure&nbsp;27.1: (Left) A pepper shaker that Hadley once found in his hotel roo
 <span><span class="co">#&gt;      Fair      Good Very Good   Premium     Ideal </span></span>
 <span><span class="co">#&gt;  4358.758  3928.864  3981.760  4584.258  3457.542</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Unfortunately <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> returns its results in a named vector which requires some gymnastics if you want to collect multiple summaries and grouping variables into a data frame (it’s certainly possible to not do this and just work with free floating vectors, but in our experience that just delays the work). If you want to see how you might use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> or other base techniques to perform other grouped summaries, Hadley has collected a few techniques <a href="https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec">in a gist</a>.</p>
-<p>The final member of the apply family is the titular <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, which works with matrices and arrays. In particular, watch out for <code>apply(df, 2, something)</code>, which is a slow and potentially dangerous way of doing <code>lapply(df, something)</code>. This rarely comes up in data science because we usually work with data frames and not matrices.</p>
-</section><section id="for-loops" class="level2" data-number="27.5"><h2 data-number="27.5" class="anchored" data-anchor-id="for-loops">
-<span class="header-section-number">27.5</span> <code>for</code> loops</h2>
-<p><code>for</code> loops are the fundamental building block of iteration that both the apply and map families use under the hood. <code>for</code> loops are powerful and general tools that are important to learn as you become a more experienced R programmer. The basic structure of a <code>for</code> loop looks like this:</p>
+<p>不幸的是，<code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> 将其结果返回在一个命名的向量中，如果你想将多个摘要和分组变量收集到一个数据框中，就需要一些技巧（当然可以不这样做，直接使用自由浮动的向量，但根据我们的经验，这只是推迟了工作）。 如果你想看看如何使用 <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> 或其他 Base R 技术来执行其他分组摘要，Hadley 在一个 <a href="https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec">gist</a> 中收集了一些技巧。</p>
+<p>apply 函数族的最后一个成员是其同名函数 <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>，它用于处理矩阵和数组。 特别要注意 <code>apply(df, 2, something)</code>，这是一种缓慢且可能危险的方式来实现 <code>lapply(df, something)</code>。 这在数据科学中很少出现，因为我们通常处理的是数据框而不是矩阵。</p>
+</section><section id="for-循环" class="level2" data-number="27.5"><h2 data-number="27.5" class="anchored" data-anchor-id="for-循环">
+<span class="header-section-number">27.5</span> <code>for</code> 循环</h2>
+<p><code>for</code> 循环是 apply 和 map 家族在底层都使用的迭代基本构建块。 <code>for</code> 循环是强大而通用的工具，随着你成为更富经验的 R 程序员，学习它们非常重要。 <code>for</code> 循环的基本结构如下：</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">element</span> <span class="kw">in</span> <span class="va">vector</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="co"># do something with element</span></span>
+<span>  <span class="co"># 对 element 执行某些操作</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The most straightforward use of <code>for</code> loops is to achieve the same effect as <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>: call some function with a side-effect on each element of a list. For example, in <a href="iteration.html#sec-save-database" class="quarto-xref"><span>Section 26.4.1</span></a> instead of using <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>:</p>
+<p><code>for</code> 循环最直接的用途是实现与 <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code> 相同的效果：对列表的每个元素调用某个具有副作用的函数。 例如，在 <a href="iteration.html#sec-save-database" class="quarto-xref"><span>Section 26.4.1</span></a> 中，我们没有使用 <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">walk</a></span><span class="op">(</span><span class="va">append_file</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We could have used a <code>for</code> loop:</p>
+<p>而是可以使用 <code>for</code> 循环：</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">path</span> <span class="kw">in</span> <span class="va">paths</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu">append_file</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
+<span>  <span class="fu">append_file</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Things get a little trickier if you want to save the output of the <code>for</code> loop, for example reading all of the excel files in a directory like we did in <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a>:</p>
+<p>如果你想保存 <code>for</code> 循环的输出，事情就会变得棘手一些，例如像我们在 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中做的那样，读取一个目录中所有的 excel 文件：</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="st">"data/gapminder"</span>, pattern <span class="op">=</span> <span class="st">"\\.xlsx$"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">paths</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There are a few different techniques that you can use, but we recommend being explicit about what the output is going to look like upfront. In this case, we’re going to want a list the same length as <code>paths</code>, which we can create with <code><a href="https://rdrr.io/r/base/vector.html">vector()</a></code>:</p>
+<p>你可以使用几种不同的技术，但我们建议事先明确输出会是什么样子。 在这种情况下，我们将需要一个与 <code>paths</code> 长度相同的列表，我们可以用 <code><a href="https://rdrr.io/r/base/vector.html">vector()</a></code> 来创建它：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then instead of iterating over the elements of <code>paths</code>, we’ll iterate over their indices, using <code><a href="https://rdrr.io/r/base/seq.html">seq_along()</a></code> to generate one index for each element of paths:</p>
+<p>然后，我们不遍历 <code>paths</code> 的元素，而是遍历它们的索引，使用 <code><a href="https://rdrr.io/r/base/seq.html">seq_along()</a></code> 为 <code>paths</code> 的每个元素生成一个索引：</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Using the indices is important because it allows us to link to each position in the input with the corresponding position in the output:</p>
+<p>使用索引很重要，因为它允许我们将输入中的每个位置与输出中的相应位置联系起来：</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">files</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">files</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To combine the list of tibbles into a single tibble you can use <code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code> + <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>:</p>
+<p>要将 tibble 列表合并为单个 tibble，你可以使用 <code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code> + <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">files</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1,704 × 5</span></span>
@@ -890,45 +884,45 @@ Figure&nbsp;27.1: (Left) A pepper shaker that Hadley once found in his hotel roo
 <span><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.</span></span>
 <span><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Rather than making a list and saving the results as we go, a simpler approach is to build up the data frame piece-by-piece:</p>
+<p>与其先创建一个列表并在过程中保存结果，一个更简单的方法是逐个构建数据框：</p>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">path</span> <span class="kw">in</span> <span class="va">paths</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We recommend avoiding this pattern because it can become very slow when the vector is very long. This is the source of the persistent canard that <code>for</code> loops are slow: they’re not, but iteratively growing a vector is.</p>
-</section><section id="plots" class="level2" data-number="27.6"><h2 data-number="27.6" class="anchored" data-anchor-id="plots">
-<span class="header-section-number">27.6</span> Plots</h2>
-<p>Many R users who don’t otherwise use the tidyverse prefer ggplot2 for plotting due to helpful features like sensible defaults, automatic legends, and a modern look. However, base R plotting functions can still be useful because they’re so concise — it takes very little typing to do a basic exploratory plot.</p>
-<p>There are two main types of base plot you’ll see in the wild: scatterplots and histograms, produced with <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> respectively. Here’s a quick example from the diamonds dataset:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Left</span></span>
+<p>我们建议避免这种模式，因为当向量非常长时，它会变得非常慢。 这就是“<code>for</code> 循环很慢”这个经久不衰的谣言的来源：它们本身不慢，但迭代地增长一个向量是慢的。</p>
+</section><section id="图形" class="level2" data-number="27.6"><h2 data-number="27.6" class="anchored" data-anchor-id="图形">
+<span class="header-section-number">27.6</span> 图形</h2>
+<p>许多不常使用 tidyverse 的 R 用户也偏爱使用 ggplot2 进行绘图，因为它具有一些有用的特性，如合理的默认设置、自动生成图例和现代的外观。 然而，Base R 的绘图函数仍然很有用，因为它们非常简洁——做一个基本的探索性图表只需要很少的打字。</p>
+<p>在实际应用中，你会看到两种主要的 Base R 图形：散点图和直方图，分别由 <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> 和 <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> 生成。 这里有一个来自 <code>diamonds</code> 数据集的快速示例：</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 左图</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Right</span></span>
+<span><span class="co"># 右图</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">price</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="base-R_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" alt="On the left, histogram of carats of diamonds, ranging from 0 to 5 carats. The distribution is unimodal and right-skewed. On the right, scatter plot of price vs. carat of diamonds, showing a positive relationship that fans out as both price and carat increases. The scatter plot shows very few diamonds bigger than 3 carats compared to diamonds between 0 to 3 carats." width="384"></p>
+<p><img src="base-R_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" alt="左图是钻石克拉数的直方图，范围从 0 到 5 克拉。分布是单峰且右偏的。 右图是钻石价格与克拉数的散点图，显示出一种正相关关系， 随着价格和克拉数的增加，散点呈扇形散开。散点图显示， 与 0 到 3 克拉的钻石相比，大于 3 克拉的钻石非常少。" width="384"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="base-R_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid" alt="On the left, histogram of carats of diamonds, ranging from 0 to 5 carats. The distribution is unimodal and right-skewed. On the right, scatter plot of price vs. carat of diamonds, showing a positive relationship that fans out as both price and carat increases. The scatter plot shows very few diamonds bigger than 3 carats compared to diamonds between 0 to 3 carats." width="384"></p>
+<p><img src="base-R_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid" alt="左图是钻石克拉数的直方图，范围从 0 到 5 克拉。分布是单峰且右偏的。 右图是钻石价格与克拉数的散点图，显示出一种正相关关系， 随着价格和克拉数的增加，散点呈扇形散开。散点图显示， 与 0 到 3 克拉的钻石相比，大于 3 克拉的钻石非常少。" width="384"></p>
 </div>
 </div>
 </div>
-<p>Note that base plotting functions work with vectors, so you need to pull columns out of the data frame using <code>$</code> or some other technique.</p>
-</section><section id="summary" class="level2" data-number="27.7"><h2 data-number="27.7" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">27.7</span> Summary</h2>
-<p>In this chapter, we’ve shown you a selection of base R functions useful for subsetting and iteration. Compared to approaches discussed elsewhere in the book, these functions tend to have more of a “vector” flavor than a “data frame” flavor because base R functions tend to take individual vectors, rather than a data frame and some column specification. This often makes life easier for programming and so becomes more important as you write more functions and begin to write your own packages.</p>
-<p>This chapter concludes the programming section of the book. You’ve made a solid start on your journey to becoming not just a data scientist who uses R, but a data scientist who can <em>program</em> in R. We hope these chapters have sparked your interest in programming and that you’re looking forward to learning more outside of this book.</p>
+<p>请注意，Base R 的绘图函数作用于向量，所以你需要使用 <code>$</code> 或其他技术从数据框中提取列。</p>
+</section><section id="总结" class="level2" data-number="27.7"><h2 data-number="27.7" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">27.7</span> 总结</h2>
+<p>在本章中，我们向你展示了一系列用于子集选取和迭代的 Base R 函数。 与本书其他地方讨论的方法相比，这些函数更倾向于“向量”风格，而不是“数据框”风格，因为 Base R 函数倾向于接受单个向量，而不是一个数据框和一些列的规范。 这通常使编程工作更容易，因此当你编写更多函数并开始编写自己的包时，它变得更加重要。</p>
+<p>本章结束了本书的编程部分。 你已经在成为一名不仅使用 R 的数据科学家，而且是能够用 R <em>编程</em> 的数据科学家的道路上迈出了坚实的一步。 我们希望这些章节激发了你对编程的兴趣，并期待你在本书之外学习更多内容。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>Read <a href="https://adv-r.hadley.nz/subsetting.html#subset-multiple" class="uri">https://adv-r.hadley.nz/subsetting.html#subset-multiple</a> to see how you can also subset a data frame like it is a 1d object and how you can subset it with a matrix.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>But it doesn’t handle grouped data frames differently and it doesn’t support selection helper functions like <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>It just lacks convenient features like progress bars and reporting which element caused the problem if there’s an error.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>阅读 <a href="https://adv-r.hadley.nz/subsetting.html#subset-multiple">https://adv-r.hadley.nz/subsetting.html#subset-multiple</a> 来了解如何像处理一维对象一样对数据框进行子集选取，以及如何使用矩阵对其进行子集选取。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>但它不会对分组的数据框进行特殊处理，也不支持像 <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> 这样的选择辅助函数。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>它只是缺少了一些方便的功能，比如进度条和在出错时报告是哪个元素导致了问题。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1328,13 +1322,13 @@ Figure&nbsp;27.1: (Left) A pepper shaker that Hadley once found in his hotel roo
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./iteration.html" class="pagination-link" aria-label="Iteration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteration</span></span>
+      <a href="./iteration.html" class="pagination-link" aria-label="迭代">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">迭代</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./communicate.html" class="pagination-link" aria-label="Communicate">
-        <span class="nav-page-text">Communicate</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./communicate.html" class="pagination-link" aria-label="沟通">
+        <span class="nav-page-text">沟通</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
