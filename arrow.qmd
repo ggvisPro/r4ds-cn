@@ -8,7 +8,6 @@ freeze: true
 #| echo: false
 
 source("_common.R")
-showtext::showtext_auto()
 ```
 
 ## 引言
@@ -26,7 +25,6 @@ arrow 和 dbplyr 都提供了 dplyr 后端，所以你可能会想知道何时�
 在本章中，我们将继续使用 tidyverse，特别是 dplyr，但我们会将其与专门为处理大数据而设计的 arrow 包配对使用。
 
 ```{r setup}
-#| eval: false
 #| message: false
 #| warning: false
 library(tidyverse)
@@ -36,7 +34,6 @@ library(arrow)
 在本章的后面，我们还会看到 arrow 和 duckdb 之间的一些联系，所以我们还需要 dbplyr 和 duckdb。
 
 ```{r}
-#| eval: false
 library(dbplyr, warn.conflicts = FALSE)
 library(duckdb)
 ```
@@ -48,7 +45,6 @@ library(duckdb)
 以下代码将为你获取该数据的缓存副本。数据是一个 9GB 的 CSV 文件，所以下载需要一些时间。我强烈推荐使用 `curl::multi_download()` 来获取非常大的文件，因为它正是为此目的而构建的：它会给你一个进度条，并且如果下载中断，它可以恢复下载。
 
 ```{r}
-#| eval: false
 # eval: !expr "!file.exists('data/seattle-library-checkouts.csv')"
 dir.create("data", showWarnings = FALSE)
 
@@ -64,7 +60,6 @@ curl::multi_download(
 让我们先来看看数据。这个文件有 9 GB，足够大，我们可能不想把整个文件都加载到内存中。一个好的经验法则是，你通常需要至少是数据大小两倍的内存，而许多笔记本电脑的内存上限是 16 GB。这意味着我们想避免使用 `read_csv()`，而是使用 `arrow::open_dataset()`：
 
 ```{r open-dataset}
-#| eval: false
 seattle_csv <- open_dataset(
     sources = "data/seattle-library-checkouts.csv",
     col_types = schema(ISBN = string()),
@@ -75,7 +70,6 @@ seattle_csv <- open_dataset(
 当这段代码运行时发生了什么？`open_dataset()` 会扫描几千行来确定数据集的结构。`ISBN` 列在前 80,000 行包含空白值，所以我们必须指定列类型来帮助 arrow 确定数据结构。一旦数据被 `open_dataset()` 扫描过，它会记录下它所发现的内容然后停止；它只会在你明确请求时才读取更多的行。这个元数据就是我们打印 `seattle_csv` 时看到的内容：
 
 ```{r}
-#| eval: false
 seattle_csv
 ```
 
@@ -84,7 +78,6 @@ seattle_csv
 我们可以用 `glimpse()` 来看实际内容。这揭示了有大约 4100 万行和 12 列，并向我们展示了几个值。
 
 ```{r glimpse-data}
-#| eval: false
 #| cache: true
 seattle_csv |> glimpse()
 ```
@@ -92,7 +85,6 @@ seattle_csv |> glimpse()
 我们可以开始用 dplyr 动词来使用这个数据集，并用 `collect()` 来强制 arrow 执行计算并返回一些数据。例如，这段代码告诉我们每年的总借阅量：
 
 ```{r}
-#| eval: false
 #| cache: true
 seattle_csv |>
     group_by(CheckoutYear) |>
@@ -134,12 +126,10 @@ parquet 文件有一个主要缺点：它们不再是“人类可读的”，也
 为了重写数据，我们使用 `dplyr::group_by()` 定义分区，然后用 `arrow::write_dataset()` 将分区保存到一个目录中。`write_dataset()` 有两个重要的参数：一个是我们将在其中创建文件的目录，另一个是我们使用的格式。
 
 ```{r}
-#| eval: false
 pq_path <- "data/seattle-library-checkouts"
 ```
 
 ```{r write-dataset}
-#| eval: false
 ## | eval: !expr "!file.exists(pq_path)"
 
 seattle_csv |>
@@ -152,7 +142,6 @@ seattle_csv |>
 让我们看看我们刚刚产生了什么：
 
 ```{r show-parquet-files}
-#| eval: false
 tibble(
     files = list.files(pq_path, recursive = TRUE),
     size_MB = file.size(file.path(pq_path, files)) / 1024^2
@@ -166,14 +155,12 @@ tibble(
 现在我们已经创建了这些 parquet 文件，我们需要再次读取它们。我们再次使用 `open_dataset()`，但这次我们给它一个目录：
 
 ```{r}
-#| eval: false
 seattle_pq <- open_dataset(pq_path)
 ```
 
 现在我们可以编写我们的 dplyr 管道了。例如，我们可以计算过去五年中每个月借出的图书总数：
 
 ```{r books-by-year-query}
-#| eval: false
 query <- seattle_pq |>
     filter(CheckoutYear >= 2018, MaterialType == "BOOK") |>
     group_by(CheckoutYear, CheckoutMonth) |>
@@ -184,14 +171,12 @@ query <- seattle_pq |>
 为 arrow 数据编写 dplyr 代码在概念上与 dbplyr 类似，@sec-import-databases：你编写 dplyr 代码，它被自动转换为 Apache Arrow C++ 库能理解的查询，然后在你调用 `collect()` 时执行。如果我们打印出 `query` 对象，我们可以看到一些关于我们期望 Arrow 在执行发生时返回什么的信息：
 
 ```{r}
-#| eval: false
 query
 ```
 
 我们可以通过调用 `collect()` 来得到结果：
 
 ```{r books-by-year}
-#| eval: false
 #| echo: false
 query |> collect()
 ```
@@ -203,7 +188,6 @@ query |> collect()
 让我们快速看一下从 CSV 切换到 parquet 对性能的影响。首先，让我们计时计算 2021 年每个月借出的图书数量需要多长时间，当数据存储为单个大型 csv 时：
 
 ```{r dataset-performance-csv}
-#| eval: false
 #| cache: true
 
 seattle_csv |>
@@ -218,7 +202,6 @@ seattle_csv |>
 现在让我们使用我们新版本的数据集，其中西雅图图书馆的借阅数据被分成了 18 个较小的 parquet 文件：
 
 ```{r dataset-performance-multiple-parquet}
-#| eval: false
 #| cache: true
 
 seattle_pq |>
@@ -242,7 +225,6 @@ seattle_pq |>
 parquet 和 arrow 还有一个最后的优势——通过调用 `arrow::to_duckdb()`，将 arrow 数据集转换为 DuckDB 数据库（@sec-import-databases）非常容易：
 
 ```{r use-duckdb}
-#| eval: false
 seattle_pq |>
     to_duckdb() |>
     filter(CheckoutYear >= 2018, MaterialType == "BOOK") |>
