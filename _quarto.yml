@@ -6,13 +6,6 @@ book:
   title: "R 数据科学 2e\n（中文版）"
   reader-mode: true
 
-  page-footer:
-    left: |
-      R 数据科学 (2e) 是一本由 Hadley Wickham, Mine
-      Çetinkaya-Rundel 和 Garrett Grolemund 合著的书。
-      这是汉化项目。
-    right: |
-      本书由 <a href="https://quarto.org/">Quarto</a> 构建。
   cover-image: cover.jpg
   favicon: cover.jpg
   site-url: https://ggvispro.github.io/r4ds-cn/

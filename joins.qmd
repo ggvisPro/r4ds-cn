@@ -1,28 +1,22 @@
-# Joins {#sec-joins}
+# 连接 {#sec-joins}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-It's rare that a data analysis involves only a single data frame.
-Typically you have many data frames, and you must **join** them together to answer the questions that you're interested in.
-This chapter will introduce you to two important types of joins:
+数据分析很少只涉及单个数据框。通常你会有多个数据框，并且必须将它们**连接 (join)** 在一起以回答你感兴趣的问题。本章将向你介绍两种重要的连接类型：
 
--   Mutating joins, which add new variables to one data frame from matching observations in another.
--   Filtering joins, which filter observations from one data frame based on whether or not they match an observation in another.
+  - 变连接 (Mutating joins)，它将一个数据框中的匹配观测值的新变量添加到另一个数据框中。
+  - 过滤连接 (Filtering joins)，它根据一个数据框中的观测值是否与另一个数据框中的观测值匹配来过滤该数据框中的观测值。
 
-We'll begin by discussing keys, the variables used to connect a pair of data frames in a join.
-We cement the theory with an examination of the keys in the datasets from the nycflights13 package, then use that knowledge to start joining data frames together.
-Next we'll discuss how joins work, focusing on their action on the rows.
-We'll finish up with a discussion of non-equi joins, a family of joins that provide a more flexible way of matching keys than the default equality relationship.
+我们将首先讨论键 (keys)，即用于在连接中连接一对数据框的变量。我们将通过检查 nycflights13 包中数据集的键来巩固理论，然后利用这些知识开始连接数据框。接下来，我们将讨论连接的工作原理，重点关注它们对行的操作。最后，我们将讨论非等值连接 (non-equi joins)，这是一类连接，它提供了一种比默认的相等关系更灵活的键匹配方式。
 
-### Prerequisites
+### 前提条件
 
-In this chapter, we'll explore the five related datasets from nycflights13 using the join functions from dplyr.
+在本章中，我们将使用 dplyr 中的连接函数来探索 nycflights13 中的五个相关数据集。
 
 ```{r}
 #| label: setup
@@ -31,398 +25,324 @@ library(tidyverse)
 library(nycflights13)
 ```
 
-## Keys
+## 键
 
-To understand joins, you need to first understand how two tables can be connected through a pair of keys, within each table.
-In this section, you'll learn about the two types of key and see examples of both in the datasets of the nycflights13 package.
-You'll also learn how to check that your keys are valid, and what to do if your table lacks a key.
+要理解连接，你首先需要了解两个表如何通过每个表内的一对键连接起来。在本节中，你将学习两种类型的键，并在 nycflights13 包的数据集中看到这两种键的示例。你还将学习如何检查你的键是否有效，以及当你的表缺少键时该怎么办。
 
-### Primary and foreign keys
+### 主键和外键
 
-Every join involves a pair of keys: a primary key and a foreign key.
-A **primary key** is a variable or set of variables that uniquely identifies each observation.
-When more than one variable is needed, the key is called a **compound key.** For example, in nycflights13:
+每个连接都涉及一对键：一个主键和一个外键。
+**主键 (primary key)** 是一个或一组唯一标识每个观测值的变量。当需要多个变量时，该键称为**复合键 (compound key)**。例如，在 nycflights13 中：
 
--   `airlines` records two pieces of data about each airline: its carrier code and its full name.
-    You can identify an airline with its two letter carrier code, making `carrier` the primary key.
+  - `airlines` 记录了关于每家航空公司的两条数据：其航空公司代码和全名。你可以用它的两个字母的航空公司代码来识别一家航空公司，这使得 `carrier` 成为主键。
 
     ```{r}
-airlines
+    airlines
     ```
 
--   `airports` records data about each airport.
-    You can identify each airport by its three letter airport code, making `faa` the primary key.
+  - `airports` 记录了关于每个机场的数据。你可以用它的三个字母的机场代码来识别每个机场，这使得 `faa` 成为主键。
 
     ```{r}
-#| R.options:
-#|   width: 67
-airports
+    #| R.options:
+    #|   width: 67
+    airports
     ```
 
--   `planes` records data about each plane.
-    You can identify a plane by its tail number, making `tailnum` the primary key.
+  - `planes` 记录了关于每架飞机的数据。你可以用它的尾号来识别一架飞机，这使得 `tailnum` 成为主键。
 
     ```{r}
-#| R.options:
-#|   width: 67
-planes
+    #| R.options:
+    #|   width: 67
+    planes
     ```
 
--   `weather` records data about the weather at the origin airports.
-    You can identify each observation by the combination of location and time, making `origin` and `time_hour` the compound primary key.
+  - `weather` 记录了始发机场的天气数据。你可以通过位置和时间的组合来识别每个观测值，这使得 `origin` 和 `time_hour` 成为复合主键。
 
     ```{r}
-#| R.options:
-#|   width: 67
-weather
+    #| R.options:
+    #|   width: 67
+    weather
     ```
 
-A **foreign key** is a variable (or set of variables) that corresponds to a primary key in another table.
-For example:
+**外键 (foreign key)** 是一个（或一组）与另一个表中的主键相对应的变量。例如：
 
--   `flights$tailnum` is a foreign key that corresponds to the primary key `planes$tailnum`.
--   `flights$carrier` is a foreign key that corresponds to the primary key `airlines$carrier`.
--   `flights$origin` is a foreign key that corresponds to the primary key `airports$faa`.
--   `flights$dest` is a foreign key that corresponds to the primary key `airports$faa`.
--   `flights$origin`-`flights$time_hour` is a compound foreign key that corresponds to the compound primary key `weather$origin`-`weather$time_hour`.
+  - `flights$tailnum` 是一个外键，对应于主键 `planes$tailnum`。
+  - `flights$carrier` 是一个外键，对应于主键 `airlines$carrier`。
+  - `flights$origin` 是一个外键，对应于主键 `airports$faa`。
+  - `flights$dest` 是一个外键，对应于主键 `airports$faa`。
+  - `flights$origin`-`flights$time_hour` 是一个复合外键，对应于复合主键 `weather$origin`-`weather$time_hour`。
 
-These relationships are summarized visually in @fig-flights-relationships.
+这些关系在 @fig-flights-relationships 中进行了可视化总结。
 
 ```{r}
 #| label: fig-flights-relationships
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   Connections between all five data frames in the nycflights13 package.
-#|   Variables making up a primary key are colored grey, and are connected
-#|   to their corresponding foreign keys with arrows.
+#|   nycflights13 包中所有五个数据框之间的连接。构成主键的变量用灰色着色，并通过箭头连接到它们对应的外键。
 #| fig-alt: |
-#|   The relationships between airports, planes, flights, weather, and
-#|   airlines datasets from the nycflights13 package. airports$faa
-#|   connected to the flights$origin and flights$dest. planes$tailnum
-#|   is connected to the flights$tailnum. weather$time_hour and
-#|   weather$origin are jointly connected to flights$time_hour and
-#|   flights$origin. airlines$carrier is connected to flights$carrier.
-#|   There are no direct connections between airports, planes, airlines,
-#|   and weather data frames.
+#|   nycflights13 包中 airports、planes、flights、weather 和 airlines 数据集之间的关系。airports$faa 连接到 flights$origin 和 flights$dest。planes$tailnum 连接到 flights$tailnum。weather$time_hour 和 weather$origin 联合连接到 flights$time_hour 和 flights$origin。airlines$carrier 连接到 flights$carrier。airports、planes、airlines 和 weather 数据框之间没有直接连接。
 knitr::include_graphics("diagrams/relational.png", dpi = 270)
 ```
 
-You'll notice a nice feature in the design of these keys: the primary and foreign keys almost always have the same names, which, as you'll see shortly, will make your joining life much easier.
-It's also worth noting the opposite relationship: almost every variable name used in multiple tables has the same meaning in each place.
-There's only one exception: `year` means year of departure in `flights` and year manufactured in `planes`.
-This will become important when we start actually joining tables together.
+你会注意到这些键的设计中有一个很好的特性：主键和外键几乎总是有相同的名称，正如你稍后将看到的，这将使你的连接工作变得容易得多。同样值得注意的是相反的关系：几乎每个在多个表中使用的变量名在每个地方都有相同的含义。只有一个例外：在 `flights` 中 `year` 表示出发年份，在 `planes` 中表示制造年份。当我们开始实际连接表时，这将变得很重要。
 
-### Checking primary keys
+### 检查主键
 
-Now that that we've identified the primary keys in each table, it's good practice to verify that they do indeed uniquely identify each observation.
-One way to do that is to `count()` the primary keys and look for entries where `n` is greater than one.
-This reveals that `planes` and `weather` both look good:
+既然我们已经确定了每个表中的主键，一个好的做法是验证它们确实唯一地标识了每个观测值。一种方法是 `count()` 主键，并查找 `n` 大于 1 的条目。这表明 `planes` 和 `weather` 都看起来不错：
 
 ```{r}
-planes |>
-    count(tailnum) |>
-    filter(n > 1)
+planes |> 
+  count(tailnum) |> 
+  filter(n > 1)
 
-weather |>
-    count(time_hour, origin) |>
-    filter(n > 1)
+weather |> 
+  count(time_hour, origin) |> 
+  filter(n > 1)
 ```
 
-You should also check for missing values in your primary keys --- if a value is missing then it can't identify an observation!
+你还应该检查主键中是否有缺失值——如果一个值是缺失的，那么它就不能标识一个观测值！
 
 ```{r}
-planes |>
-    filter(is.na(tailnum))
+planes |> 
+  filter(is.na(tailnum))
 
-weather |>
-    filter(is.na(time_hour) | is.na(origin))
+weather |> 
+  filter(is.na(time_hour) | is.na(origin))
 ```
 
-### Surrogate keys
+### 代理键
 
-So far we haven't talked about the primary key for `flights`.
-It's not super important here, because there are no data frames that use it as a foreign key, but it's still useful to consider because it's easier to work with observations if we have some way to describe them to others.
+到目前为止，我们还没有讨论 `flights` 的主键。它在这里不是非常重要，因为没有数据框使用它作为外键，但考虑它仍然是有用的，因为如果我们有某种方式向他人描述观测值，那么处理观测值会更容易。
 
-After a little thinking and experimentation, we determined that there are three variables that together uniquely identify each flight:
+经过一番思考和实验，我们确定有三个变量可以共同唯一地标识每个航班：
 
 ```{r}
-flights |>
-    count(time_hour, carrier, flight) |>
-    filter(n > 1)
+flights |> 
+  count(time_hour, carrier, flight) |> 
+  filter(n > 1)
 ```
 
-Does the absence of duplicates automatically make `time_hour`-`carrier`-`flight` a primary key?
-It's certainly a good start, but it doesn't guarantee it.
-For example, are altitude and latitude a good primary key for `airports`?
+没有重复值是否自动使 `time_hour`-`carrier`-`flight` 成为一个主键？这当然是一个好的开始，但并不能保证它。例如，海拔和纬度是 `airports` 的一个好的主键吗？
 
 ```{r}
 airports |>
-    count(alt, lat) |>
-    filter(n > 1)
+  count(alt, lat) |> 
+  filter(n > 1)
 ```
 
-Identifying an airport by its altitude and latitude is clearly a bad idea, and in general it's not possible to know from the data alone whether or not a combination of variables makes a good a primary key.
-But for flights, the combination of `time_hour`, `carrier`, and `flight` seems reasonable because it would be really confusing for an airline and its customers if there were multiple flights with the same flight number in the air at the same time.
+通过海拔和纬度来识别一个机场显然是一个坏主意，而且总的来说，仅从数据本身不可能知道一个变量组合是否构成一个好的主键。但对于航班来说，`time_hour`、`carrier` 和 `flight` 的组合似乎是合理的，因为如果同一时间同一家航空公司有多个相同航班号的航班在空中，那对航空公司及其客户来说会非常混乱。
 
-That said, we might be better off introducing a simple numeric surrogate key using the row number:
+话虽如此，我们最好还是引入一个简单的数字代理键，使用行号：
 
 ```{r}
-flights2 <- flights |>
-    mutate(id = row_number(), .before = 1)
+flights2 <- flights |> 
+  mutate(id = row_number(), .before = 1)
 flights2
 ```
 
-Surrogate keys can be particularly useful when communicating to other humans: it's much easier to tell someone to take a look at flight 2001 than to say look at UA430 which departed 9am 2013-01-03.
+代理键在与他人交流时特别有用：告诉某人查看航班 2001 比告诉他们查看 2013 年 1 月 3 日上午 9 点出发的 UA430 要容易得多。
 
-### Exercises
+### 练习
 
-1.  We forgot to draw the relationship between `weather` and `airports` in @fig-flights-relationships.
-    What is the relationship and how should it appear in the diagram?
+1.  我们在 @fig-flights-relationships 中忘记绘制 `weather` 和 `airports` 之间的关系了。这个关系是什么？它应该如何在图中显示？
 
-2.  `weather` only contains information for the three origin airports in NYC.
-    If it contained weather records for all airports in the USA, what additional connection would it make to `flights`?
+2.  `weather` 只包含纽约市三个始发机场的信息。如果它包含了美国所有机场的天气记录，它会与 `flights` 建立什么额外的连接？
 
-3.  The `year`, `month`, `day`, `hour`, and `origin` variables almost form a compound key for `weather`, but there's one hour that has duplicate observations.
-    Can you figure out what's special about that hour?
+3.  `year`、`month`、`day`、`hour` 和 `origin` 变量几乎构成了 `weather` 的一个复合键，但有一个小时有重复的观测值。你能找出那个小时有什么特别之处吗？
 
-4.  We know that some days of the year are special and fewer people than usual fly on them (e.g., Christmas eve and Christmas day).
-    How might you represent that data as a data frame?
-    What would be the primary key?
-    How would it connect to the existing data frames?
+4.  我们知道一年中的某些日子是特殊的，飞行的人比平时少（例如，平安夜和圣诞节）。你如何将这些数据表示为一个数据框？主键会是什么？它将如何与现有的数据框连接？
 
-5.  Draw a diagram illustrating the connections between the `Batting`, `People`, and `Salaries` data frames in the Lahman package.
-    Draw another diagram that shows the relationship between `People`, `Managers`, `AwardsManagers`.
-    How would you characterize the relationship between the `Batting`, `Pitching`, and `Fielding` data frames?
+5.  在 Lahman 包中，绘制一个图表来说明 `Batting`、`People` 和 `Salaries` 数据框之间的连接。再绘制一个图表来显示 `People`、`Managers` 和 `AwardsManagers` 之间的关系。你将如何描述 `Batting`、`Pitching` 和 `Fielding` 数据框之间的关系？
 
-## Basic joins {#sec-mutating-joins}
+## 基本连接 {#sec-mutating-joins}
 
-Now that you understand how data frames are connected via keys, we can start using joins to better understand the `flights` dataset.
-dplyr provides six join functions: `left_join()`, `inner_join()`, `right_join()`, `full_join()`, `semi_join()`, and `anti_join().` They all have the same interface: they take a pair of data frames (`x` and `y`) and return a data frame.
-The order of the rows and columns in the output is primarily determined by `x`.
+既然你已经了解了数据框如何通过键连接，我们就可以开始使用连接来更好地理解 `flights` 数据集了。dplyr 提供了六个连接函数：`left_join()`、`inner_join()`、`right_join()`、`full_join()`、`semi_join()` 和 `anti_join()`。它们都有相同的接口：它们接受一对数据框（`x` 和 `y`），并返回一个数据框。输出的行和列的顺序主要由 `x` 决定。
 
-In this section, you'll learn how to use one mutating join, `left_join()`, and two filtering joins, `semi_join()` and `anti_join()`.
-In the next section, you'll learn exactly how these functions work, and about the remaining `inner_join()`, `right_join()` and `full_join()`.
+在本节中，你将学习如何使用一个变连接 `left_join()` 和两个过滤连接 `semi_join()` 和 `anti_join()`。在下一节中，你将确切地学习这些函数如何工作，以及剩下的 `inner_join()`、`right_join()` 和 `full_join()`。
 
-### Mutating joins
+### 变连接
 
-A **mutating join** allows you to combine variables from two data frames: it first matches observations by their keys, then copies across variables from one data frame to the other.
-Like `mutate()`, the join functions add variables to the right, so if your dataset has many variables, you won't see the new ones.
-For these examples, we'll make it easier to see what's going on by creating a narrower dataset with just six variables[^joins-1]:
-
-[^joins-1]: Remember that in RStudio you can also use `View()` to avoid this problem.
+**变连接 (mutating join)** 允许你组合两个数据框中的变量：它首先通过它们的键来匹配观测值，然后将一个数据框中的变量复制到另一个数据框中。像 `mutate()` 一样，连接函数在右侧添加变量，所以如果你的数据集有很多变量，你将看不到新的变量。对于这些例子，我们将通过创建一个只有六个变量的较窄的数据集来使其更容易看清发生了什么[^1]：
 
 ```{r}
-flights2 <- flights |>
-    select(year, time_hour, origin, dest, tailnum, carrier)
+flights2 <- flights |> 
+  select(year, time_hour, origin, dest, tailnum, carrier)
 flights2
 ```
 
-There are four types of mutating join, but there's one that you'll use almost all of the time: `left_join()`.
-It's special because the output will always have the same rows as `x`, the data frame you're joining to[^joins-2].
-The primary use of `left_join()` is to add in additional metadata.
-For example, we can use `left_join()` to add the full airline name to the `flights2` data:
-
-[^joins-2]: That's not 100% true, but you'll get a warning whenever it isn't.
+有四种类型的变连接，但有一种你几乎总是会使用：`left_join()`。它很特别，因为输出将始终与 `x`（你正在连接的数据框）具有相同的行[^2]。`left_join()` 的主要用途是添加额外的元数据。例如，我们可以使用 `left_join()` 将完整的航空公司名称添加到 `flights2` 数据中：
 
 ```{r}
 flights2 |>
-    left_join(airlines)
+  left_join(airlines)
 ```
 
-Or we could find out the temperature and wind speed when each plane departed:
+或者我们可以找出每架飞机起飞时的温度和风速：
+
+```{r}
+flights2 |> 
+  left_join(weather |> select(origin, time_hour, temp, wind_speed))
+```
+
+或者是什么尺寸的飞机在飞行：
+
+```{r}
+flights2 |> 
+  left_join(planes |> select(tailnum, type, engines, seats))
+```
+
+当 `left_join()` 未能为 `x` 中的某一行找到匹配项时，它会用缺失值填充新变量。例如，没有关于尾号为 `N3ALAA` 的飞机的信息，所以 `type`、`engines` 和 `seats` 将是缺失的：
+
+```{r}
+flights2 |> 
+  filter(tailnum == "N3ALAA") |> 
+  left_join(planes |> select(tailnum, type, engines, seats))
+```
+
+我们将在本章的其余部分几次回到这个问题。
+
+### 指定连接键
+
+默认情况下，`left_join()` 将使用同时出现在两个数据框中的所有变量作为连接键，这被称为**自然 (natural)** 连接。这是一个有用的启发式方法，但它并不总是有效。例如，如果我们尝试将 `flights2` 与完整的 `planes` 数据集连接会发生什么？
+
+```{r}
+flights2 |> 
+  left_join(planes)
+```
+
+我们得到了很多缺失的匹配，因为我们的连接正在尝试使用 `tailnum` 和 `year` 作为复合键。`flights` 和 `planes` 都有一个 `year` 列，但它们的含义不同：`flights$year` 是航班发生的年份，而 `planes$year` 是飞机制造的年份。我们只想在 `tailnum`上连接，所以我们需要使用 `join_by()` 提供一个明确的规范：
+
+```{r}
+flights2 |> 
+  left_join(planes, join_by(tailnum))
+```
+
+请注意，`year` 变量在输出中通过后缀（`year.x` 和 `year.y`）进行了区分，这告诉你变量是来自 `x` 参数还是 `y` 参数。你可以使用 `suffix` 参数覆盖默认的后缀。
+
+`join_by(tailnum)` 是 `join_by(tailnum == tailnum)` 的简写。了解这种更完整的形式很重要，原因有二。首先，它描述了两个表之间的关系：键必须相等。这就是为什么这种类型的连接通常被称为**等值连接 (equi join)**。你将在 @sec-non-equi-joins 中学习非等值连接。
+
+其次，这是你在每个表中指定不同连接键的方式。例如，有两种方法可以连接 `flight2` 和 `airports` 表：通过 `dest` 或 `origin`：
+
+```{r}
+flights2 |> 
+  left_join(airports, join_by(dest == faa))
+
+flights2 |> 
+  left_join(airports, join_by(origin == faa))
+```
+
+在旧代码中，你可能会看到一种不同的指定连接键的方式，使用一个字符向量：
+
+  - `by = "x"` 对应于 `join_by(x)`。
+  - `by = c("a" = "x")` 对应于 `join_by(a == x)`。
+
+既然 `join_by()` 已经存在，我们更喜欢使用它，因为它提供了更清晰和更灵活的规范。
+
+`inner_join()`、`right_join()`、`full_join()` 的接口与 `left_join()` 相同。区别在于它们保留哪些行：左连接保留 `x` 中的所有行，右连接保留 `y` 中的所有行，全连接保留 `x` 或 `y` 中的所有行，而内连接只保留同时出现在 `x` 和 `y` 中的行。我们稍后会更详细地回到这些。
+
+### 过滤连接
+
+你可能猜到，**过滤连接 (filtering join)** 的主要作用是过滤行。有两种类型：半连接 (semi-joins) 和反连接 (anti-joins)。
+**半连接**保留 `x` 中所有在 `y` 中有匹配的行。例如，我们可以使用半连接来过滤 `airports` 数据集，只显示始发机场：
+
+```{r}
+airports |> 
+  semi_join(flights2, join_by(faa == origin))
+```
+
+或者只显示目的地：
+
+```{r}
+airports |> 
+  semi_join(flights2, join_by(faa == dest))
+```
+
+**反连接**则相反：它们返回 `x` 中所有在 `y` 中没有匹配的行。它们对于查找数据中**隐式**的缺失值很有用，这是 @sec-missing-implicit 的主题。隐式缺失值不会显示为 `NA`，而是仅仅以缺席的形式存在。例如，我们可以通过查找没有匹配目的地机场的航班来找到 `airports` 中缺失的行：
+
+```{r}
+flights2 |> 
+  anti_join(airports, join_by(dest == faa)) |> 
+  distinct(dest)
+```
+
+或者我们可以找出哪些 `tailnum` 在 `planes` 中是缺失的：
 
 ```{r}
 flights2 |>
-    left_join(weather |> select(origin, time_hour, temp, wind_speed))
+  anti_join(planes, join_by(tailnum)) |> 
+  distinct(tailnum)
 ```
 
-Or what size of plane was flying:
+### 练习
 
-```{r}
-flights2 |>
-    left_join(planes |> select(tailnum, type, engines, seats))
-```
+1.  找出（全年）延误最严重的 48 个小时。与 `weather` 数据进行交叉引用。你能看到任何模式吗？
 
-When `left_join()` fails to find a match for a row in `x`, it fills in the new variables with missing values.
-For example, there's no information about the plane with tail number `N3ALAA` so the `type`, `engines`, and `seats` will be missing:
-
-```{r}
-flights2 |>
-    filter(tailnum == "N3ALAA") |>
-    left_join(planes |> select(tailnum, type, engines, seats))
-```
-
-We'll come back to this problem a few times in the rest of the chapter.
-
-### Specifying join keys
-
-By default, `left_join()` will use all variables that appear in both data frames as the join key, the so called **natural** join.
-This is a useful heuristic, but it doesn't always work.
-For example, what happens if we try to join `flights2` with the complete `planes` dataset?
-
-```{r}
-flights2 |>
-    left_join(planes)
-```
-
-We get a lot of missing matches because our join is trying to use `tailnum` and `year` as a compound key.
-Both `flights` and `planes` have a `year` column but they mean different things: `flights$year` is the year the flight occurred and `planes$year` is the year the plane was built.
-We only want to join on `tailnum` so we need to provide an explicit specification with `join_by()`:
-
-```{r}
-flights2 |>
-    left_join(planes, join_by(tailnum))
-```
-
-Note that the `year` variables are disambiguated in the output with a suffix (`year.x` and `year.y`), which tells you whether the variable came from the `x` or `y` argument.
-You can override the default suffixes with the `suffix` argument.
-
-`join_by(tailnum)` is short for `join_by(tailnum == tailnum)`.
-It's important to know about this fuller form for two reasons.
-Firstly, it describes the relationship between the two tables: the keys must be equal.
-That's why this type of join is often called an **equi join**.
-You'll learn about non-equi joins in @sec-non-equi-joins.
-
-Secondly, it's how you specify different join keys in each table.
-For example, there are two ways to join the `flight2` and `airports` table: either by `dest` or `origin`:
-
-```{r}
-flights2 |>
-    left_join(airports, join_by(dest == faa))
-
-flights2 |>
-    left_join(airports, join_by(origin == faa))
-```
-
-In older code you might see a different way of specifying the join keys, using a character vector:
-
--   `by = "x"` corresponds to `join_by(x)`.
--   `by = c("a" = "x")` corresponds to `join_by(a == x)`.
-
-Now that it exists, we prefer `join_by()` since it provides a clearer and more flexible specification.
-
-`inner_join()`, `right_join()`, `full_join()` have the same interface as `left_join()`.
-The difference is which rows they keep: left join keeps all the rows in `x`, the right join keeps all rows in `y`, the full join keeps all rows in either `x` or `y`, and the inner join only keeps rows that occur in both `x` and `y`.
-We'll come back to these in more detail later.
-
-### Filtering joins
-
-As you might guess the primary action of a **filtering join** is to filter the rows.
-There are two types: semi-joins and anti-joins.
-**Semi-joins** keep all rows in `x` that have a match in `y`.
-For example, we could use a semi-join to filter the `airports` dataset to show just the origin airports:
-
-```{r}
-airports |>
-    semi_join(flights2, join_by(faa == origin))
-```
-
-Or just the destinations:
-
-```{r}
-airports |>
-    semi_join(flights2, join_by(faa == dest))
-```
-
-**Anti-joins** are the opposite: they return all rows in `x` that don't have a match in `y`.
-They're useful for finding missing values that are **implicit** in the data, the topic of @sec-missing-implicit.
-Implicitly missing values don't show up as `NA`s but instead only exist as an absence.
-For example, we can find rows that are missing from `airports` by looking for flights that don't have a matching destination airport:
-
-```{r}
-flights2 |>
-    anti_join(airports, join_by(dest == faa)) |>
-    distinct(dest)
-```
-
-Or we can find which `tailnum`s are missing from `planes`:
-
-```{r}
-flights2 |>
-    anti_join(planes, join_by(tailnum)) |>
-    distinct(tailnum)
-```
-
-### Exercises
-
-1.  Find the 48 hours (over the course of the whole year) that have the worst delays.
-    Cross-reference it with the `weather` data.
-    Can you see any patterns?
-
-2.  Imagine you've found the top 10 most popular destinations using this code:
+2.  想象你已经用这段代码找到了排名前 10 的最受欢迎的目的地：
 
     ```{r}
-top_dest <- flights2 |>
-    count(dest, sort = TRUE) |>
-    head(10)
+    top_dest <- flights2 |>
+      count(dest, sort = TRUE) |>
+      head(10)
     ```
 
-    How can you find all flights to those destinations?
+    你如何找到所有飞往这些目的地的航班？
 
-3.  Does every departing flight have corresponding weather data for that hour?
+3.  每个出发的航班都有对应那个小时的天气数据吗？
 
-4.  What do the tail numbers that don't have a matching record in `planes` have in common?
-    (Hint: one variable explains \~90% of the problems.)
+4.  那些在 `planes` 中没有匹配记录的尾号有什么共同点？（提示：一个变量解释了约 90% 的问题。）
 
-5.  Add a column to `planes` that lists every `carrier` that has flown that plane.
-    You might expect that there's an implicit relationship between plane and airline, because each plane is flown by a single airline.
-    Confirm or reject this hypothesis using the tools you've learned in previous chapters.
+5.  向 `planes` 添加一列，列出飞过那架飞机的每个 `carrier`。你可能期望飞机和航空公司之间存在一种隐式关系，因为每架飞机都由一家航空公司运营。使用你在前面章节中学到的工具来证实或否定这个假设。
 
-6.  Add the latitude and the longitude of the origin *and* destination airport to `flights`.
-    Is it easier to rename the columns before or after the join?
+6.  将始发地*和*目的地机场的纬度和经度添加到 `flights` 中。是在连接之前还是之后重命名列更容易？
 
-7.  Compute the average delay by destination, then join on the `airports` data frame so you can show the spatial distribution of delays.
-    Here's an easy way to draw a map of the United States:
+7.  按目的地计算平均延误，然后与 `airports` 数据框连接，这样你就可以显示延误的空间分布。这里有一个绘制美国地图的简单方法：
 
     ```{r}
-#| eval: false
-airports |>
-    semi_join(flights, join_by(faa == dest)) |>
-    ggplot(aes(x = lon, y = lat)) +
-    borders("state") +
-    geom_point() +
-    coord_quickmap()
+    #| eval: false
+    airports |>
+      semi_join(flights, join_by(faa == dest)) |>
+      ggplot(aes(x = lon, y = lat)) +
+        borders("state") +
+        geom_point() +
+        coord_quickmap()
     ```
 
-    You might want to use the `size` or `color` of the points to display the average delay for each airport.
+    你可能想用点的大小或颜色来显示每个机场的平均延误。
 
-8.  What happened on June 13 2013?
-    Draw a map of the delays, and then use Google to cross-reference with the weather.
+8.  2013 年 6 月 13 日发生了什么？绘制一张延误地图，然后用谷歌与天气进行交叉引用。
 
     ```{r}
-#| eval: false
-#| include: false
-worst <- filter(flights, !is.na(dep_time), month == 6, day == 13)
-worst |>
-    group_by(dest) |>
-    summarize(delay = mean(arr_delay), n = n()) |>
-    filter(n > 5) |>
-    inner_join(airports, join_by(dest == faa)) |>
-    ggplot(aes(x = lon, y = lat)) +
-    borders("state") +
-    geom_point(aes(size = n, color = delay)) +
-    coord_quickmap()
+    #| eval: false
+    #| include: false
+    worst <- filter(flights, !is.na(dep_time), month == 6, day == 13)
+    worst |>
+      group_by(dest) |>
+      summarize(delay = mean(arr_delay), n = n()) |>
+      filter(n > 5) |>
+      inner_join(airports, join_by(dest == faa)) |>
+      ggplot(aes(x = lon, y = lat)) +
+        borders("state") +
+        geom_point(aes(size = n, color = delay)) +
+        coord_quickmap()
     ```
 
-## How do joins work?
+## 连接如何工作？
 
-Now that you've used joins a few times it's time to learn more about how they work, focusing on how each row in `x` matches rows in `y`.
-We'll begin by introducing a visual representation of joins, using the simple tibbles defined below and shown in @fig-join-setup.
-In these examples we'll use a single key called `key` and a single value column (`val_x` and `val_y`), but the ideas all generalize to multiple keys and multiple values.
+既然你已经使用过几次连接了，是时候学习更多关于它们如何工作的知识了，重点是 `x` 中的每一行如何与 `y` 中的行匹配。我们将首先介绍一种连接的可视化表示法，使用下面定义的简单 tibble，并如 @fig-join-setup 所示。在这些例子中，我们将使用一个名为 `key` 的单个键和一个单个值列（`val_x` 和 `val_y`），但这些思想都适用于多个键和多个值。
 
 ```{r}
 x <- tribble(
-    ~key, ~val_x,
-    1, "x1",
-    2, "x2",
-    3, "x3"
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
 )
 y <- tribble(
-    ~key, ~val_y,
-    1, "y1",
-    2, "y2",
-    4, "y3"
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
 )
 ```
 
@@ -431,209 +351,148 @@ y <- tribble(
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   Graphical representation of two simple tables. The colored `key`
-#|   columns map background color to key value. The grey columns represent
-#|   the "value" columns that are carried along for the ride.
+#|   两个简单表格的图形表示。带颜色的 `key` 列将背景色映射到键值。灰色列代表被“携带”的值列。
 #| fig-alt: |
-#|   x and y are two data frames with 2 columns and 3 rows, with contents
-#|   as described in the text. The values of the keys are colored:
-#|   1 is green, 2 is purple, 3 is orange, and 4 is yellow.
+#|   x 和 y 是两个数据框，各有 2 列 3 行，内容如文中所述。键的值被着色：1 是绿色，2 是紫色，3 是橙色，4 是黄色。
 knitr::include_graphics("diagrams/join/setup.png", dpi = 270)
 ```
 
-@fig-join-setup2 introduces the foundation for our visual representation.
-It shows all potential matches between `x` and `y` as the intersection between lines drawn from each row of `x` and each row of `y`.
-The rows and columns in the output are primarily determined by `x`, so the `x` table is horizontal and lines up with the output.
+@fig-join-setup2 介绍了我们可视化表示法的基础。它将 `x` 和 `y` 之间的所有潜在匹配显示为从 `x` 的每一行和 `y` 的每一行画出的线的交点。输出中的行和列主要由 `x` 决定，所以 `x` 表是水平的，并与输出对齐。
 
 ```{r}
 #| label: fig-join-setup2
 #| echo: false
 #| out-width: ~
-#| fig-cap: |
-#|   To understand how joins work, it's useful to think of every possible
-#|   match. Here we show that with a grid of connecting lines.
+#| fig-cap: | 
+#|   要理解连接如何工作，将每种可能的匹配都考虑进去是很有用的。这里我们用一个连接线的网格来展示这一点。
 #| fig-alt: |
-#|   x and y are placed at right-angles, with horizonal lines extending
-#|   from x and vertical lines extending from y. There are 3 rows in x and
-#|   3 rows in y, which leads to nine intersections representing nine
-#|   potential matches.
+#|   x 和 y 被放置成直角，水平线从 x 延伸，垂直线从 y 延伸。x 中有 3 行，y 中有 3 行，这导致了九个交点，代表九个潜在的匹配。
 knitr::include_graphics("diagrams/join/setup2.png", dpi = 270)
 ```
 
-To describe a specific type of join, we indicate matches with dots.
-The matches determine the rows in the output, a new data frame that contains the key, the x values, and the y values.
-For example, @fig-join-inner shows an inner join, where rows are retained if and only if the keys are equal.
+为了描述一种特定类型的连接，我们用点来表示匹配。匹配决定了输出中的行，这是一个新的数据框，包含键、x 值和 y 值。例如，@fig-join-inner 展示了一个内连接，当且仅当键相等时，行才被保留。
 
 ```{r}
 #| label: fig-join-inner
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   An inner join matches each row in `x` to the row in `y` that has the
-#|   same value of `key`. Each match becomes a row in the output.
+#|   内连接将 `x` 中的每一行与 `y` 中具有相同 `key` 值的行进行匹配。每个匹配都成为输出中的一行。
 #| fig-alt: |
-#|   x and y are placed at right-angles with lines forming a grid of
-#|   potential matches. Keys 1 and 2 appear in both x and y, so we
-#|   get a match, indicated by a dot. Each dot corresponds to a row
-#|   in the output, so the resulting joined data frame has two rows.
+#|   x 和 y 被放置成直角，线形成一个潜在匹配的网格。键 1 和 2 同时出现在 x 和 y 中，所以我们得到了匹配，用一个点表示。每个点对应输出中的一行，所以最终的连接数据框有两行。
 knitr::include_graphics("diagrams/join/inner.png", dpi = 270)
 ```
 
-We can apply the same principles to explain the **outer joins**, which keep observations that appear in at least one of the data frames.
-These joins work by adding an additional "virtual" observation to each data frame.
-This observation has a key that matches if no other key matches, and values filled with `NA`.
-There are three types of outer joins:
+我们可以应用相同的原则来解释**外连接 (outer joins)**，它保留出现在至少一个数据框中的观测值。这些连接通过向每个数据框添加一个额外的“虚拟”观测值来工作。这个观测值有一个在没有其他键匹配时能够匹配的键，并且值用 `NA` 填充。有三种类型的外连接：
 
--   A **left join** keeps all observations in `x`, @fig-join-left.
-    Every row of `x` is preserved in the output because it can fall back to matching a row of `NA`s in `y`.
+  - **左连接 (left join)** 保留 `x` 中的所有观测值，@fig-join-left。`x` 的每一行都在输出中被保留，因为它可以回退到匹配 `y` 中的一行 `NA`。
 
     ```{r}
-#| label: fig-join-left
-#| echo: false
-#| out-width: ~
-#| fig-cap: |
-#|   A visual representation of the left join where every row in `x`
-#|   appears in the output.
-#| fig-alt: |
-#|   Compared to the previous diagram showing an inner join, the y table
-#|   gets a new virtual row containin NA that will match any row in x
-#|   that didn't otherwise match. This means that the output now has
-#|   three rows. For key = 3, which matches this virtual row, val_y takes
-#|   value NA.
-knitr::include_graphics("diagrams/join/left.png", dpi = 270)
+    #| label: fig-join-left
+    #| echo: false
+    #| out-width: ~
+    #| fig-cap: | 
+    #|   左连接的可视化表示，其中 `x` 中的每一行都出现在输出中。
+    #| fig-alt: |
+    #|   与之前显示内连接的图相比，y 表现在多了一个包含 NA 的虚拟行，它将匹配任何在 x 中没有其他匹配的行。这意味着输出现在有三行。对于 key = 3，它匹配这个虚拟行，val_y 的值为 NA。
+    knitr::include_graphics("diagrams/join/left.png", dpi = 270)
     ```
 
--   A **right join** keeps all observations in `y`, @fig-join-right.
-    Every row of `y` is preserved in the output because it can fall back to matching a row of `NA`s in `x`.
-    The output still matches `x` as much as possible; any extra rows from `y` are added to the end.
+  - **右连接 (right join)** 保留 `y` 中的所有观测值，@fig-join-right。`y` 的每一行都在输出中被保留，因为它可以回退到匹配 `x` 中的一行 `NA`。输出仍然尽可能地与 `x` 匹配；来自 `y` 的任何多余的行都被添加到末尾。
 
     ```{r}
-#| label: fig-join-right
-#| echo: false
-#| out-width: ~
-#| fig-cap: |
-#|   A visual representation of the right join where every row of `y`
-#|   appears in the output.
-#| fig-alt: |
-#|   Compared to the previous diagram showing an left join, the x table
-#|   now gains a virtual row so that every row in y gets a match in x.
-#|   val_x contains NA for the row in y that didn't match x.
-knitr::include_graphics("diagrams/join/right.png", dpi = 270)
+    #| label: fig-join-right
+    #| echo: false
+    #| out-width: ~
+    #| fig-cap: | 
+    #|   右连接的可视化表示，其中 `y` 的每一行都出现在输出中。
+    #| fig-alt: |
+    #|   与之前显示左连接的图相比，x 表现在增加了一个虚拟行，以便 y 中的每一行都能在 x 中找到匹配。对于 y 中没有匹配 x 的行，val_x 包含 NA。
+    knitr::include_graphics("diagrams/join/right.png", dpi = 270)
     ```
 
--   A **full join** keeps all observations that appear in `x` or `y`, @fig-join-full.
-    Every row of `x` and `y` is included in the output because both `x` and `y` have a fall back row of `NA`s.
-    Again, the output starts with all rows from `x`, followed by the remaining unmatched `y` rows.
+  - **全连接 (full join)** 保留出现在 `x` 或 `y` 中的所有观测值，@fig-join-full。`x` 和 `y` 的每一行都包含在输出中，因为 `x` 和 `y` 都有一个回退的 `NA` 行。同样，输出以 `x` 的所有行开始，然后是剩余的未匹配的 `y` 行。
 
     ```{r}
-#| label: fig-join-full
-#| echo: false
-#| out-width: ~
-#| fig-cap: |
-#|   A visual representation of the full join where every row in `x`
-#|   and `y` appears in the output.
-#| fig-alt: |
-#|   Now both x and y have a virtual row that always matches.
-#|   The result has 4 rows: keys 1, 2, 3, and 4 with all values
-#|   from val_x and val_y, however key 2, val_y and key 4, val_x are NAs
-#|   since those keys don't have a match in the other data frames.
-knitr::include_graphics("diagrams/join/full.png", dpi = 270)
+    #| label: fig-join-full
+    #| echo: false
+    #| out-width: ~
+    #| fig-cap: | 
+    #|   全连接的可视化表示，其中 `x` 和 `y` 中的每一行都出现在输出中。
+    #| fig-alt: |
+    #|   现在 x 和 y 都有一个总是匹配的虚拟行。结果有 4 行：键 1、2、3 和 4，以及来自 val_x 和 val_y 的所有值，然而键 2 的 val_y 和键 4 的 val_x 是 NA，因为这些键在其他数据框中没有匹配。
+    knitr::include_graphics("diagrams/join/full.png", dpi = 270)
     ```
 
-Another way to show how the types of outer join differ is with a Venn diagram, as in @fig-join-venn.
-However, this is not a great representation because while it might jog your memory about which rows are preserved, it fails to illustrate what's happening with the columns.
+另一种显示外连接类型差异的方法是使用维恩图，如 @fig-join-venn 所示。然而，这不是一个很好的表示方法，因为尽管它可能会让你记起哪些行被保留了，但它未能说明列发生了什么。
 
 ```{r}
 #| label: fig-join-venn
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   Venn diagrams showing the difference between inner, left, right, and
-#|   full joins.
+#|   维恩图显示内连接、左连接、右连接和全连接之间的差异。
 #| fig-alt: |
-#|   Venn diagrams for inner, full, left, and right joins. Each join
-#|   represented with two intersecting circles representing data frames x
-#|   and y, with x on the right and y on the left. Shading indicates the
-#|   result of the join.
+#|   内连接、全连接、左连接和右连接的维恩图。每个连接由两个相交的圆表示，代表数据框 x 和 y，x 在右边，y 在左边。阴影表示连接的结果。
 #|
-#|   Inner join: the intersection is shaded.
-#|   Full join: Everything is shaded.
-#|   Left join: All of x is shaded.
-#|   Right join: All of y is shaded.
+#|   内连接：交集部分被着色。
+#|   全连接：所有部分都被着色。
+#|   左连接：x 的所有部分都被着色。
+#|   右连接：y 的所有部分都被着色。
 knitr::include_graphics("diagrams/join/venn.png", dpi = 270)
 ```
 
-The joins shown here are the so-called **equi** **joins**, where rows match if the keys are equal.
-Equi joins are the most common type of join, so we'll typically omit the equi prefix, and just say "inner join" rather than "equi inner join".
-We'll come back to non-equi joins in @sec-non-equi-joins.
+这里显示的连接是所谓的**等值 (equi)** 连接，其中如果键相等则行匹配。等值连接是最常见的连接类型，所以我们通常会省略等值前缀，只说“内连接”而不是“等值内连接”。我们将在 @sec-non-equi-joins 中回到非等值连接。
 
-### Row matching
+### 行匹配
 
-So far we've explored what happens if a row in `x` matches zero or one row in `y`.
-What happens if it matches more than one row?
-To understand what's going on let's first narrow our focus to the `inner_join()` and then draw a picture, @fig-join-match-types.
+到目前为止，我们已经探讨了如果 `x` 中的一行与 `y` 中的零行或一行匹配会发生什么。如果它匹配多于一行会发生什么？要理解发生了什么，让我们首先将焦点缩小到 `inner_join()`，然后画一幅图，@fig-join-match-types。
 
 ```{r}
 #| label: fig-join-match-types
 #| echo: false
 #| out-width: ~
-#| fig-cap: |
-#|   The three ways a row in `x` can match. `x1` matches
-#|   one row in `y`, `x2` matches two rows in `y`, `x3` matches
-#|   zero rows in y. Note that while there are three rows in
-#|   `x` and three rows in the output, there isn't a direct
-#|   correspondence between the rows.
+#| fig-cap: | 
+#|   `x` 中的一行可以有三种匹配方式。`x1` 匹配 `y` 中的一行，`x2` 匹配 `y` 中的两行，`x3` 匹配 `y` 中的零行。注意，虽然 `x` 中有三行，输出中也有三行，但这些行之间没有直接的对应关系。
 #| fig-alt: |
-#|   A join diagram where x has key values 1, 2, and 3, and y has
-#|   key values 1, 2, 2. The output has three rows because key 1 matches
-#|   one row, key 2 matches two rows, and key 3 matches zero rows.
+#|   一个连接图，其中 x 的键值为 1、2 和 3，y 的键值为 1、2、2。输出有三行，因为键 1 匹配一行，键 2 匹配两行，键 3 匹配零行。
 knitr::include_graphics("diagrams/join/match-types.png", dpi = 270)
 ```
 
-There are three possible outcomes for a row in `x`:
+`x` 中的一行有三种可能的结果：
 
--   If it doesn't match anything, it's dropped.
--   If it matches 1 row in `y`, it's preserved.
--   If it matches more than 1 row in `y`, it's duplicated once for each match.
+  - 如果它不匹配任何东西，它就会被丢弃。
+  - 如果它匹配 `y` 中的 1 行，它就会被保留。
+  - 如果它匹配 `y` 中的多于 1 行，它会为每个匹配复制一次。
 
-In principle, this means that there's no guaranteed correspondence between the rows in the output and the rows in `x`, but in practice, this rarely causes problems.
-There is, however, one particularly dangerous case which can cause a combinatorial explosion of rows.
-Imagine joining the following two tables:
+原则上，这意味着输出中的行与 `x` 中的行之间没有保证的对应关系，但在实践中，这很少引起问题。然而，有一个特别危险的情况可能会导致行的组合爆炸。想象一下连接以下两个表：
 
 ```{r}
 df1 <- tibble(key = c(1, 2, 2), val_x = c("x1", "x2", "x3"))
 df2 <- tibble(key = c(1, 2, 2), val_y = c("y1", "y2", "y3"))
 ```
 
-While the first row in `df1` only matches one row in `df2`, the second and third rows both match two rows.
-This is sometimes called a `many-to-many` join, and will cause dplyr to emit a warning:
+虽然 `df1` 中的第一行只匹配 `df2` 中的一行，但第二行和第三行都匹配两行。这有时被称为`多对多 (many-to-many)`连接，并且会导致 dplyr 发出警告：
 
 ```{r}
-df1 |>
-    inner_join(df2, join_by(key))
+df1 |> 
+  inner_join(df2, join_by(key))
 ```
 
-If you are doing this deliberately, you can set `relationship = "many-to-many"`, as the warning suggests.
+如果你是故意这样做的，你可以设置 `relationship = "many-to-many"`，正如警告所建议的那样。
 
-### Filtering joins
+### 过滤连接
 
-The number of matches also determines the behavior of the filtering joins.
-The semi-join keeps rows in `x` that have one or more matches in `y`, as in @fig-join-semi.
-The anti-join keeps rows in `x` that match zero rows in `y`, as in @fig-join-anti.
-In both cases, only the existence of a match is important; it doesn't matter how many times it matches.
-This means that filtering joins never duplicate rows like mutating joins do.
+匹配的数量也决定了过滤连接的行为。半连接保留 `x` 中在 `y` 中有一个或多个匹配的行，如 @fig-join-semi 所示。反连接保留 `x` 中匹配 `y` 中零行的行，如 @fig-join-anti 所示。在这两种情况下，只有匹配的存在是重要的；它匹配多少次并不重要。这意味着过滤连接从不像变连接那样复制行。
 
 ```{r}
 #| label: fig-join-semi
 #| echo: false
 #| out-width: null
 #| fig-cap: |
-#|   In a semi-join it only matters that there is a match; otherwise
-#|   values in `y` don't affect the output.
+#|   在半连接中，重要的是存在匹配；否则 `y` 中的值不会影响输出。
 #| fig-alt: |
-#|   A join diagram with old friends x and y. In a semi join, only the
-#|   presence of a match matters so the output contains the same columns
-#|   as x.
+#|   一个连接图，其中有老朋友 x 和 y。在半连接中，只有匹配的存在才重要，所以输出包含与 x 相同的列。
 knitr::include_graphics("diagrams/join/semi.png", dpi = 270)
 ```
 
@@ -642,22 +501,17 @@ knitr::include_graphics("diagrams/join/semi.png", dpi = 270)
 #| echo: false
 #| out-width: null
 #| fig-cap: |
-#|   An anti-join is the inverse of a semi-join, dropping rows from `x`
-#|   that have a match in `y`.
+#|   反连接是半连接的逆操作，从 `x` 中删除在 `y` 中有匹配的行。
 #| fig-alt: |
-#|   An anti-join is the inverse of a semi-join so matches are drawn with
-#|   red lines indicating that they will be dropped from the output.
+#|   反连接是半连接的逆操作，所以匹配用红线画出，表示它们将从输出中被删除。
 knitr::include_graphics("diagrams/join/anti.png", dpi = 270)
 ```
 
-## Non-equi joins {#sec-non-equi-joins}
+## 非等值连接 {#sec-non-equi-joins}
 
-So far you've only seen equi joins, joins where the rows match if the `x` key equals the `y` key.
-Now we're going to relax that restriction and discuss other ways of determining if a pair of rows match.
+到目前为止，你只看到了等值连接，即如果 `x` 键等于 `y` 键，行就匹配。现在我们将放宽这个限制，讨论确定一对行是否匹配的其他方法。
 
-But before we can do that, we need to revisit a simplification we made above.
-In equi joins the `x` keys and `y` are always equal, so we only need to show one in the output.
-We can request that dplyr keep both keys with `keep = TRUE`, leading to the code below and the re-drawn `inner_join()` in @fig-inner-both.
+但在此之前，我们需要重新审视我们上面做的一个简化。在等值连接中，`x` 键和 `y` 键总是相等的，所以我们只需要在输出中显示一个。我们可以通过 `keep = TRUE` 来请求 dplyr 保留两个键，这导致了下面的代码和 @fig-inner-both 中重新绘制的 `inner_join()`。
 
 ```{r}
 x |> inner_join(y, join_by(key == key), keep = TRUE)
@@ -666,92 +520,73 @@ x |> inner_join(y, join_by(key == key), keep = TRUE)
 ```{r}
 #| label: fig-inner-both
 #| fig-cap: |
-#|   An inner join showing both `x` and `y` keys in the output.
+#|   一个内连接，在输出中显示 `x` 和 `y` 的键。
 #| fig-alt: |
-#|   A join diagram showing an inner join betwen x and y. The result
-#|   now includes four columns: key.x, val_x, key.y, and val_y. The
-#|   values of key.x and key.y are identical, which is why we usually
-#|   only show one.
+#|   一个显示 x 和 y 之间内连接的连接图。结果现在包括四列：key.x、val_x、key.y 和 val_y。key.x 和 key.y 的值是相同的，这就是为什么我们通常只显示一个。
 #| echo: false
 #| out-width: ~
 knitr::include_graphics("diagrams/join/inner-both.png", dpi = 270)
 ```
 
-When we move away from equi joins we'll always show the keys, because the key values will often be different.
-For example, instead of matching only when the `x$key` and `y$key` are equal, we could match whenever the `x$key` is greater than or equal to the `y$key`, leading to @fig-join-gte.
-dplyr's join functions understand this distinction equi and non-equi joins so will always show both keys when you perform a non-equi join.
+当我们从等值连接转向其他类型时，我们将总是显示键，因为键值通常会不同。例如，我们可以不再仅仅在 `x$key` 和 `y$key` 相等时匹配，而是在 `x$key` 大于或等于 `y$key` 时匹配，这导致了 @fig-join-gte。dplyr 的连接函数理解等值连接和非等值连接之间的这种区别，所以当你执行非等值连接时，它总是会显示两个键。
 
 ```{r}
 #| label: fig-join-gte
 #| echo: false
 #| fig-cap: |
-#|   A non-equi join where the `x` key must be greater than or equal to
-#|   the `y` key. Many rows generate multiple matches.
+#|   一个非等值连接，其中 `x` 键必须大于或等于 `y` 键。许多行会产生多个匹配。
 #| fig-alt: |
-#|   A join diagram illustrating join_by(key >= key). The first row
-#|   of x matches one row of y and the second and thirds rows each match
-#|   two rows. This means the output has five rows containing each of the
-#|   following (key.x, key.y) pairs: (1, 1), (2, 1), (2, 2), (3, 1),
-#|   (3, 2).
+#|   一个说明 join_by(key >= key) 的连接图。x 的第一行匹配 y 的一行，第二行和第三行各匹配两行。这意味着输出有五行，包含以下每一对 (key.x, key.y)：(1, 1), (2, 1), (2, 2), (3, 1), (3, 2)。
 knitr::include_graphics("diagrams/join/gte.png", dpi = 270)
 ```
 
-Non-equi join isn't a particularly useful term because it only tells you what the join is not, not what it is. dplyr helps by identifying four particularly useful types of non-equi join:
+非等值连接不是一个特别有用的术语，因为它只告诉你连接不是什么，而不是它是什么。dplyr 通过识别四种特别有用的非等值连接类型来提供帮助：
 
--   **Cross joins** match every pair of rows.
--   **Inequality joins** use `<`, `<=`, `>`, and `>=` instead of `==`.
--   **Rolling joins** are similar to inequality joins but only find the closest match.
--   **Overlap joins** are a special type of inequality join designed to work with ranges.
+  - **交叉连接 (Cross joins)** 匹配每一对行。
+  - **不等连接 (Inequality joins)** 使用 `<`、`<=`、`>` 和 `>=` 而不是 `==`。
+  - **滚动连接 (Rolling joins)** 类似于不等连接，但只找到最接近的匹配。
+  - **重叠连接 (Overlap joins)** 是一种特殊类型的不等连接，旨在处理范围。
 
-Each of these is described in more detail in the following sections.
+以下各节将更详细地描述这些类型中的每一种。
 
-### Cross joins
+### 交叉连接
 
-A cross join matches everything, as in @fig-join-cross, generating the Cartesian product of rows.
-This means the output will have `nrow(x) * nrow(y)` rows.
+交叉连接匹配所有内容，如 @fig-join-cross 所示，生成行的笛卡尔积。这意味着输出将有 `nrow(x) * nrow(y)` 行。
 
 ```{r}
 #| label: fig-join-cross
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   A cross join matches each row in `x` with every row in `y`.
+#|   交叉连接将 `x` 中的每一行与 `y` 中的每一行进行匹配。
 #| fig-alt: |
-#|   A join diagram showing a dot for every combination of x and y.
+#|   一个连接图，为 x 和 y 的每个组合都显示一个点。
 knitr::include_graphics("diagrams/join/cross.png", dpi = 270)
 ```
 
-Cross joins are useful when generating permutations.
-For example, the code below generates every possible pair of names.
-Since we're joining `df` to itself, this is sometimes called a **self-join**.
-Cross joins use a different join function because there's no distinction between inner/left/right/full when you're matching every row.
+交叉连接在生成排列时很有用。例如，下面的代码生成了所有可能的名字对。由于我们将 `df` 与自身连接，这有时被称为**自连接 (self-join)**。交叉连接使用一个不同的连接函数，因为当你匹配每一行时，内/左/右/全连接之间没有区别。
 
 ```{r}
 df <- tibble(name = c("John", "Simon", "Tracy", "Max"))
 df |> cross_join(df)
 ```
 
-### Inequality joins
+### 不等连接
 
-Inequality joins use `<`, `<=`, `>=`, or `>` to restrict the set of possible matches, as in @fig-join-gte and @fig-join-lt.
+不等连接使用 `<`、`<=`、`>=` 或 `>` 来限制可能的匹配集，如 @fig-join-gte 和 @fig-join-lt 所示。
 
 ```{r}
 #| label: fig-join-lt
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   An inequality join where `x` is joined to `y` on rows where the key
-#|   of `x` is less than the key of `y`. This makes a triangular
-#|   shape in the top-left corner.
+#|   一个不等连接，其中 `x` 与 `y` 在 `x` 的键小于 `y` 的键的行上连接。这在左上角形成了一个三角形。
 #| fig-alt: |
-#|   A diagram depicting an inequality join where a data frame x is joined by
-#|   a data frame y where the key of x is less than the key of y, resulting
-#|   in a triangular shape in the top-left corner.
+#|   一个描述不等连接的图，其中数据框 x 通过数据框 y 连接，x 的键小于 y 的键，导致左上角形成一个三角形。
 knitr::include_graphics("diagrams/join/lt.png", dpi = 270)
 ```
 
-Inequality joins are extremely general, so general that it's hard to come up with meaningful specific use cases.
-One small useful technique is to use them to restrict the cross join so that instead of generating all permutations, we generate all combinations:
+不等连接非常通用，以至于很难想出有意义的具体用例。一个有用的小技巧是使用它们来限制交叉连接，这样我们就可以生成所有组合而不是所有排列：
 
 ```{r}
 df <- tibble(id = 1:4, name = c("John", "Simon", "Tracy", "Max"))
@@ -759,141 +594,127 @@ df <- tibble(id = 1:4, name = c("John", "Simon", "Tracy", "Max"))
 df |> inner_join(df, join_by(id < id))
 ```
 
-### Rolling joins
+### 滚动连接
 
-Rolling joins are a special type of inequality join where instead of getting *every* row that satisfies the inequality, you get just the closest row, as in @fig-join-closest.
-You can turn any inequality join into a rolling join by adding `closest()`.
-For example `join_by(closest(x <= y))` matches the smallest `y` that's greater than or equal to x, and `join_by(closest(x > y))` matches the biggest `y` that's less than `x`.
+滚动连接是一种特殊类型的不等连接，在这种连接中，你得到的不是满足不等式的*每一*行，而只是最接近的那一行，如 @fig-join-closest 所示。你可以通过添加 `closest()` 将任何不等连接变成滚动连接。例如，`join_by(closest(x <= y))` 匹配大于或等于 x 的最小的 `y`，而 `join_by(closest(x > y))` 匹配小于 `x` 的最大的 `y`。
 
 ```{r}
 #| label: fig-join-closest
 #| echo: false
 #| out-width: ~
 #| fig-cap: |
-#|   A rolling join is similar to a greater-than-or-equal inequality join
-#|   but only matches the first value.
+#|   滚动连接类似于大于或等于的不等连接，但只匹配第一个值。
 #| fig-alt: |
-#|   A rolling join is a subset of an inequality join so some matches are
-#|   grayed out indicating that they're not used because they're not the
-#|   "closest".
+#|   滚动连接是不等连接的一个子集，所以一些匹配被灰色显示，表示它们没有被使用，因为它们不是“最接近”的。
 knitr::include_graphics("diagrams/join/closest.png", dpi = 270)
 ```
 
-Rolling joins are particularly useful when you have two tables of dates that don't perfectly line up and you want to find (e.g.) the closest date in table 1 that comes before (or after) some date in table 2.
+当你有两个日期表不能完美对齐，并且你想找到（例如）表 1 中在表 2 中某个日期之前（或之后）的最接近的日期时，滚动连接特别有用。
 
-For example, imagine that you're in charge of the party planning commission for your office.
-Your company is rather cheap so instead of having individual parties, you only have a party once each quarter.
-The rules for determining when a party will be held are a little complex: parties are always on a Monday, you skip the first week of January since a lot of people are on holiday, and the first Monday of Q3 2022 is July 4, so that has to be pushed back a week.
-That leads to the following party days:
+例如，假设你负责你办公室的派对策划委员会。你的公司相当吝啬，所以你们不是举办单独的派对，而是每个季度只举办一次派对。确定派对何时举行的规则有点复杂：派对总是在星期一，你跳过一月的第一周，因为很多人都在度假，而 2022 年第三季度的第一个星期一是 7 月 4 日，所以那必须推迟一周。这导致了以下的派对日期：
 
 ```{r}
 parties <- tibble(
-    q = 1:4,
-    party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03"))
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03"))
 )
 ```
 
-Now imagine that you have a table of employee birthdays:
+现在假设你有一张员工生日表：
 
 ```{r}
 set.seed(123)
 employees <- tibble(
-    name = sample(babynames::babynames$name, 100),
-    birthday = ymd("2022-01-01") + (sample(365, 100, replace = TRUE) - 1)
+  name = sample(babynames::babynames$name, 100),
+  birthday = ymd("2022-01-01") + (sample(365, 100, replace = TRUE) - 1)
 )
 employees
 ```
 
-And for each employee we want to find the last party date that comes before (or on) their birthday.
-We can express that with a rolling join:
+对于每个员工，我们想找到在他们生日前（或生日当天）的最后一个派对日期。我们可以用一个滚动连接来表示这一点：
 
 ```{r}
-employees |>
-    left_join(parties, join_by(closest(birthday >= party)))
+employees |> 
+  left_join(parties, join_by(closest(birthday >= party)))
 ```
 
-There is, however, one problem with this approach: the folks with birthdays before January 10 don't get a party:
+然而，这种方法有一个问题：生日在 1 月 10 日之前的员工没有派对：
 
 ```{r}
-employees |>
-    anti_join(parties, join_by(closest(birthday >= party)))
+employees |> 
+  anti_join(parties, join_by(closest(birthday >= party)))
 ```
 
-To resolve that issue we'll need to tackle the problem a different way, with overlap joins.
+为了解决这个问题，我们需要用一种不同的方式来处理问题，即使用重叠连接。
 
-### Overlap joins
+### 重叠连接
 
-Overlap joins provide three helpers that use inequality joins to make it easier to work with intervals:
+重叠连接提供了三个使用不等连接来简化处理区间的辅助函数：
 
--   `between(x, y_lower, y_upper)` is short for `x >= y_lower, x <= y_upper`.
--   `within(x_lower, x_upper, y_lower, y_upper)` is short for `x_lower >= y_lower, x_upper <= y_upper`.
--   `overlaps(x_lower, x_upper, y_lower, y_upper)` is short for `x_lower <= y_upper, x_upper >= y_lower`.
+  - `between(x, y_lower, y_upper)` 是 `x >= y_lower, x <= y_upper` 的简写。
+  - `within(x_lower, x_upper, y_lower, y_upper)` 是 `x_lower >= y_lower, x_upper <= y_upper` 的简写。
+  - `overlaps(x_lower, x_upper, y_lower, y_upper)` 是 `x_lower <= y_upper, x_upper >= y_lower` 的简写。
 
-Let's continue the birthday example to see how you might use them.
-There's one problem with the strategy we used above: there's no party preceding the birthdays Jan 1-9.
-So it might be better to be explicit about the date ranges that each party spans, and make a special case for those early birthdays:
+让我们继续生日的例子，看看你可能会如何使用它们。我们上面使用的策略有一个问题：在 1 月 1-9 日的生日前没有派对。所以，明确每个派对跨越的日期范围，并为那些早生的生日做一个特殊情况处理可能会更好：
 
 ```{r}
 parties <- tibble(
-    q = 1:4,
-    party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
-    start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
-    end = ymd(c("2022-04-03", "2022-07-11", "2022-10-02", "2022-12-31"))
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
+  start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
+  end = ymd(c("2022-04-03", "2022-07-11", "2022-10-02", "2022-12-31"))
 )
 parties
 ```
 
-Hadley is hopelessly bad at data entry so he also wanted to check that the party periods don't overlap.
-One way to do this is by using a self-join to check if any start-end interval overlap with another:
+Hadley 在数据录入方面非常糟糕，所以他还想检查派对期间是否有重叠。一种方法是使用自连接来检查是否有任何开始-结束区间与另一个重叠：
 
 ```{r}
-parties |>
-    inner_join(parties, join_by(overlaps(start, end, start, end), q < q)) |>
-    select(start.x, end.x, start.y, end.y)
+parties |> 
+  inner_join(parties, join_by(overlaps(start, end, start, end), q < q)) |> 
+  select(start.x, end.x, start.y, end.y)
 ```
 
-Ooops, there is an overlap, so let's fix that problem and continue:
+哎呀，有重叠，所以让我们解决这个问题然后继续：
 
 ```{r}
 parties <- tibble(
-    q = 1:4,
-    party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
-    start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
-    end = ymd(c("2022-04-03", "2022-07-10", "2022-10-02", "2022-12-31"))
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
+  start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
+  end = ymd(c("2022-04-03", "2022-07-10", "2022-10-02", "2022-12-31"))
 )
 ```
 
-Now we can match each employee to their party.
-This is a good place to use `unmatched = "error"` because we want to quickly find out if any employees didn't get assigned a party.
+现在我们可以将每个员工与他们的派对匹配起来了。这是一个使用 `unmatched = "error"` 的好地方，因为我们想快速发现是否有任何员工没有被分配到派对。
 
 ```{r}
-employees |>
-    inner_join(parties, join_by(between(birthday, start, end)), unmatched = "error")
+employees |> 
+  inner_join(parties, join_by(between(birthday, start, end)), unmatched = "error")
 ```
 
-### Exercises
+### 练习
 
-1.  Can you explain what's happening with the keys in this equi join?
-    Why are they different?
+1.  你能解释一下在这个等值连接中键发生了什么吗？为什么它们不同？
 
     ```{r}
-x |> full_join(y, join_by(key == key))
+    x |> full_join(y, join_by(key == key))
 
-x |> full_join(y, join_by(key == key), keep = TRUE)
+    x |> full_join(y, join_by(key == key), keep = TRUE)
     ```
 
-2.  When finding if any party period overlapped with another party period we used `q < q` in the `join_by()`?
-    Why?
-    What happens if you remove this inequality?
+2.  在查找是否有任何派对期间与另一个派对期间重叠时，我们在 `join_by()` 中使用了 `q < q`？为什么？如果移除这个不等式会发生什么？
 
-## Summary
+## 总结
 
-In this chapter, you've learned how to use mutating and filtering joins to combine data from a pair of data frames.
-Along the way you learned how to identify keys, and the difference between primary and foreign keys.
-You also understand how joins work and how to figure out how many rows the output will have.
-Finally, you've gained a glimpse into the power of non-equi joins and seen a few interesting use cases.
+在本章中，你学习了如何使用变连接和过滤连接来组合来自一对数据框的数据。在此过程中，你学习了如何识别键，以及主键和外键之间的区别。你也理解了连接如何工作以及如何计算输出将有多少行。最后，你对非等值连接的力量有了初步的了解，并看到了一些有趣的用例。
 
-This chapter concludes the "Transform" part of the book where the focus was on the tools you could use with individual columns and tibbles.
-You learned about dplyr and base functions for working with logical vectors, numbers, and complete tables, stringr functions for working with strings, lubridate functions for working with date-times, and forcats functions for working with factors.
+本章结束了本书的“转换”部分，该部分的重点是你可以用于单个列和 tibble 的工具。你学习了用于处理逻辑向量、数字和完整表格的 dplyr 和基础函数，用于处理字符串的 stringr 函数，用于处理日期时间的 lubridate 函数，以及用于处理因子的 forcats 函数。
 
-In the next part of the book, you'll learn more about getting various types of data into R in a tidy form.
+在本书的下一部分，你将学习更多关于如何将各种类型的数据以整洁的形式导入 R 的知识。
+
+[^1]:
+    记住，在 RStudio 中你也可以使用 `View()` 来避免这个问题。
+
+[^2]:
+    这并非 100% 正确，但每当不是这样时你都会收到一个警告。

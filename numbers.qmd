@@ -1,25 +1,19 @@
-# Numbers {#sec-numbers}
+# 数值 {#sec-numbers}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-Numeric vectors are the backbone of data science, and you've already used them a bunch of times earlier in the book.
-Now it's time to systematically survey what you can do with them in R, ensuring that you're well situated to tackle any future problem involving numeric vectors.
+数值向量是数据科学的支柱，在本书的前面部分你已经多次使用过它们。现在是时候系统地审视一下在 R 中你能用它们做什么，以确保你能够很好地应对未来任何涉及数值向量的问题。
 
-We'll start by giving you a couple of tools to make numbers if you have strings, and then going into a little more detail of `count()`.
-Then we'll dive into various numeric transformations that pair well with `mutate()`, including more general transformations that can be applied to other types of vectors, but are often used with numeric vectors.
-We'll finish off by covering the summary functions that pair well with `summarize()` and show you how they can also be used with `mutate()`.
+我们将首先为你提供一些工具，以便在你有字符串的情况下创建数值，然后更详细地介绍 `count()`。接着，我们将深入探讨与 `mutate()` 搭配使用的各种数值转换，包括那些可以应用于其他类型向量但常用于数值向量的更通用的转换。最后，我们将介绍与 `summarize()` 搭配使用的汇总函数，并向你展示它们如何也能与 `mutate()` 一起使用。
 
-### Prerequisites
+### 先决条件
 
-This chapter mostly uses functions from base R, which are available without loading any packages.
-But we still need the tidyverse because we'll use these base R functions inside of tidyverse functions like `mutate()` and `filter()`.
-Like in the last chapter, we'll use real examples from nycflights13, as well as toy examples made with `c()` and `tribble()`.
+本章主要使用 R base 中的函数，这些函数无需加载任何包即可使用。但我们仍然需要 tidyverse，因为我们将在 `mutate()` 和 `filter()` 等 tidyverse 函数内部使用这些 R base 函数。与上一章一样，我们将使用 nycflights13 中的真实示例，以及用 `c()` 和 `tribble()` 创建的玩具示例。
 
 ```{r}
 #| label: setup
@@ -28,272 +22,238 @@ library(tidyverse)
 library(nycflights13)
 ```
 
-## Making numbers
+## 创建数值
 
-In most cases, you'll get numbers already recorded in one of R's numeric types: integer or double.
-In some cases, however, you'll encounter them as strings, possibly because you've created them by pivoting from column headers or because something has gone wrong in your data import process.
+在大多数情况下，你得到的数值已经是 R 的数值类型之一：整数（integer）或双精度浮点数（double）。然而，在某些情况下，你会遇到以字符串形式存在的数值，这可能是因为你通过列标题进行透视操作创建了它们，或者是在数据导入过程中出了问题。
 
-readr provides two useful functions for parsing strings into numbers: `parse_double()` and `parse_number()`.
-Use `parse_double()` when you have numbers that have been written as strings:
+readr 提供了两个有用的函数来将字符串解析为数值：`parse_double()` 和 `parse_number()`。当你有名为字符串的数字时，使用 `parse_double()`：
 
 ```{r}
 x <- c("1.2", "5.6", "1e3")
 parse_double(x)
 ```
 
-Use `parse_number()` when the string contains non-numeric text that you want to ignore.
-This is particularly useful for currency data and percentages:
+当字符串中包含你想要忽略的非数值文本时，使用 `parse_number()`。这对于处理货币数据和百分比特别有用：
 
 ```{r}
 x <- c("$1,234", "USD 3,513", "59%")
 parse_number(x)
 ```
 
-## Counts {#sec-counts}
+## 计数 {#sec-counts}
 
-It's surprising how much data science you can do with just counts and a little basic arithmetic, so dplyr strives to make counting as easy as possible with `count()`.
-This function is great for quick exploration and checks during analysis:
+仅凭计数和一些基本算术就能完成如此多的数据科学工作，这着实令人惊讶，因此 dplyr 致力于通过 `count()` 使计数尽可能简单。这个函数非常适合在分析过程中进行快速探索和检查：
 
 ```{r}
 flights |> count(dest)
 ```
 
-(Despite the advice in @sec-workflow-style, we usually put `count()` on a single line because it's usually used at the console for a quick check that a calculation is working as expected.)
+（尽管在 @sec-workflow-style 中有相关建议，我们通常将 `count()` 写在单行上，因为它通常在控制台中使用，用于快速检查计算是否按预期工作。）
 
-If you want to see the most common values, add `sort = TRUE`:
+如果你想查看最常见的值，可以添加 `sort = TRUE`：
 
 ```{r}
 flights |> count(dest, sort = TRUE)
 ```
 
-And remember that if you want to see all the values, you can use `|> View()` or `|> print(n = Inf)`.
+请记住，如果你想查看所有值，可以使用 `|> View()` 或 `|> print(n = Inf)`。
 
-You can perform the same computation "by hand" with `group_by()`, `summarize()` and `n()`.
-This is useful because it allows you to compute other summaries at the same time:
+你可以使用 `group_by()`、`summarize()` 和 `n()` 来“手动”执行相同的计算。这很有用，因为它允许你同时计算其他汇总统计量：
 
 ```{r}
-flights |>
-    group_by(dest) |>
-    summarize(
-        n = n(),
-        delay = mean(arr_delay, na.rm = TRUE)
-    )
+flights |> 
+  group_by(dest) |> 
+  summarize(
+    n = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  )
 ```
 
-`n()` is a special summary function that doesn't take any arguments and instead accesses information about the "current" group.
-This means that it only works inside dplyr verbs:
+`n()` 是一个特殊的汇总函数，它不接受任何参数，而是访问关于“当前”组的信息。这意味着它只能在 dplyr 的动词（verb）内部工作：
 
 ```{r}
 #| error: true
 n()
 ```
 
-There are a couple of variants of `n()` and `count()` that you might find useful:
+`n()` 和 `count()` 有几个你可能会觉得有用的变体：
 
--   `n_distinct(x)` counts the number of distinct (unique) values of one or more variables.
-    For example, we could figure out which destinations are served by the most carriers:
-
-    ```{r}
-flights |>
-    group_by(dest) |>
-    summarize(carriers = n_distinct(carrier)) |>
-    arrange(desc(carriers))
-    ```
-
--   A weighted count is a sum.
-    For example you could "count" the number of miles each plane flew:
+  - `n_distinct(x)` 计算一个或多个变量的不同（唯一）值的数量。例如，我们可以找出哪些目的地由最多的航空公司提供服务：
 
     ```{r}
-flights |>
-    group_by(tailnum) |>
-    summarize(miles = sum(distance))
+    flights |> 
+      group_by(dest) |> 
+      summarize(carriers = n_distinct(carrier)) |> 
+      arrange(desc(carriers))
     ```
 
-    Weighted counts are a common problem so `count()` has a `wt` argument that does the same thing:
+  - 加权计数就是求和。例如，你可以“计算”每架飞机飞行的总英里数：
 
     ```{r}
-#| results: false
-flights |> count(tailnum, wt = distance)
+    flights |> 
+      group_by(tailnum) |> 
+      summarize(miles = sum(distance))
     ```
 
--   You can count missing values by combining `sum()` and `is.na()`.
-    In the `flights` dataset this represents flights that are cancelled:
+    加权计数是一个常见的问题，所以 `count()` 有一个 `wt` 参数可以做同样的事情：
 
     ```{r}
-flights |>
-    group_by(dest) |>
-    summarize(n_cancelled = sum(is.na(dep_time)))
+    #| results: false
+    flights |> count(tailnum, wt = distance)
     ```
 
-### Exercises
+  - 你可以通过组合 `sum()` 和 `is.na()` 来计算缺失值的数量。在 `flights` 数据集中，这代表了被取消的航班：
 
-1.  How can you use `count()` to count the number of rows with a missing value for a given variable?
-2.  Expand the following calls to `count()` to instead use `group_by()`, `summarize()`, and `arrange()`:
+    ```{r}
+    flights |> 
+      group_by(dest) |> 
+      summarize(n_cancelled = sum(is.na(dep_time))) 
+    ```
+
+### 练习
+
+1.  你如何使用 `count()` 来计算给定变量中含有缺失值的行数？
+2.  将以下 `count()` 调用展开，改用 `group_by()`、`summarize()` 和 `arrange()` 来实现：
     1.  `flights |> count(dest, sort = TRUE)`
 
     2.  `flights |> count(tailnum, wt = distance)`
 
-## Numeric transformations
+## 数值转换
 
-Transformation functions work well with `mutate()` because their output is the same length as the input.
-The vast majority of transformation functions are already built into base R.
-It's impractical to list them all so this section will show the most useful ones.
-As an example, while R provides all the trigonometric functions that you might dream of, we don't list them here because they're rarely needed for data science.
+转换函数与 `mutate()` 配合得很好，因为它们的输出与输入长度相同。绝大多数转换函数已经内置于 R base 中。列出所有这些函数是不切实际的，所以本节将展示最有用的那些。例如，虽然 R 提供了你可能梦想到的所有三角函数，但我们在这里不列出它们，因为它们在数据科学中很少需要。
 
-### Arithmetic and recycling rules {#sec-recycling}
+### 算术和循环补齐规则 {#sec-recycling}
 
-We introduced the basics of arithmetic (`+`, `-`, `*`, `/`, `^`) in @sec-workflow-basics and have used them a bunch since.
-These functions don't need a huge amount of explanation because they do what you learned in grade school.
-But we need to briefly talk about the **recycling rules** which determine what happens when the left and right hand sides have different lengths.
-This is important for operations like `flights |> mutate(air_time = air_time / 60)` because there are 336,776 numbers on the left of `/` but only one on the right.
+我们在 @sec-workflow-basics 中介绍了算术（`+`, `-`, `*`, `/`, `^`）的基础知识，并且从那以后已经多次使用它们。这些函数不需要太多的解释，因为它们做的就是你在小学学到的东西。但是我们需要简要地谈谈**循环补齐规则**（recycling rules），它决定了当左右两边的长度不同时会发生什么。这对于像 `flights |> mutate(air_time = air_time / 60)` 这样的操作很重要，因为 `/` 的左边有 336,776 个数字，而右边只有一个。
 
-R handles mismatched lengths by **recycling,** or repeating, the short vector.
-We can see this in operation more easily if we create some vectors outside of a data frame:
+R 通过**循环补齐**（recycling）或重复较短的向量来处理长度不匹配的问题。如果我们在数据框之外创建一些向量，我们可以更容易地看到这个操作：
 
 ```{r}
 x <- c(1, 2, 10, 20)
 x / 5
-# is shorthand for
+# 是下面写法的简写
 x / c(5, 5, 5, 5)
 ```
 
-Generally, you only want to recycle single numbers (i.e. vectors of length 1), but R will recycle any shorter length vector.
-It usually (but not always) gives you a warning if the longer vector isn't a multiple of the shorter:
+通常，你只想循环补齐单个数字（即长度为 1 的向量），但 R 会循环补齐任何较短长度的向量。如果较长的向量不是较短向量的倍数，它通常（但并非总是）会给你一个警告：
 
 ```{r}
 x * c(1, 2)
 x * c(1, 2, 3)
 ```
 
-These recycling rules are also applied to logical comparisons (`==`, `<`, `<=`, `>`, `>=`, `!=`) and can lead to a surprising result if you accidentally use `==` instead of `%in%` and the data frame has an unfortunate number of rows.
-For example, take this code which attempts to find all flights in January and February:
+这些循环补齐规则也适用于逻辑比较（`==`, `<`, `<=`, `>`, `>=`, `!=`），如果你不小心用了 `==` 而不是 `%in%`，并且数据框的行数碰巧很凑巧，可能会导致令人惊讶的结果。例如，看这段试图找出所有一月和二月航班的代码：
 
 ```{r}
-flights |>
-    filter(month == c(1, 2))
+flights |> 
+  filter(month == c(1, 2))
 ```
 
-The code runs without error, but it doesn't return what you want.
-Because of the recycling rules it finds flights in odd numbered rows that departed in January and flights in even numbered rows that departed in February.
-And unfortunately there's no warning because `flights` has an even number of rows.
+这段代码运行没有错误，但它没有返回你想要的结果。由于循环补齐规则，它找到了奇数行中一月份出发的航班和偶数行中二月份出发的航班。而且不幸的是，因为 `flights` 的行数是偶数，所以没有警告。
 
-To protect you from this type of silent failure, most tidyverse functions use a stricter form of recycling that only recycles single values.
-Unfortunately that doesn't help here, or in many other cases, because the key computation is performed by the base R function `==`, not `filter()`.
+为了保护你免受这种静默失败的影响，大多数 tidyverse 函数使用一种更严格的循环补齐形式，只循环补齐单个值。不幸的是，这在这里或许多其他情况下没有帮助，因为关键的计算是由 R base 函数 `==` 执行的，而不是 `filter()`。
 
-### Minimum and maximum
+### 最小值和最大值
 
-The arithmetic functions work with pairs of variables.
-Two closely related functions are `pmin()` and `pmax()`, which when given two or more variables will return the smallest or largest value in each row:
+算术函数处理成对的变量。两个密切相关的函数是 `pmin()` 和 `pmax()`，当给定两个或更多变量时，它们将返回每行中的最小值或最大值：
 
 ```{r}
 df <- tribble(
-    ~x, ~y,
-    1, 3,
-    5, 2,
-    7, NA,
+  ~x, ~y,
+  1,  3,
+  5,  2,
+  7, NA,
 )
 
-df |>
-    mutate(
-        min = pmin(x, y, na.rm = TRUE),
-        max = pmax(x, y, na.rm = TRUE)
-    )
+df |> 
+  mutate(
+    min = pmin(x, y, na.rm = TRUE),
+    max = pmax(x, y, na.rm = TRUE)
+  )
 ```
 
-Note that these are different to the summary functions `min()` and `max()` which take multiple observations and return a single value.
-You can tell that you've used the wrong form when all the minimums and all the maximums have the same value:
+请注意，这些不同于汇总函数 `min()` 和 `max()`，后者接受多个观测值并返回单个值。当你发现所有的最小值和所有的最大值都相同时，你就知道你用错了形式：
 
 ```{r}
-df |>
-    mutate(
-        min = min(x, y, na.rm = TRUE),
-        max = max(x, y, na.rm = TRUE)
-    )
+df |> 
+  mutate(
+    min = min(x, y, na.rm = TRUE),
+    max = max(x, y, na.rm = TRUE)
+  )
 ```
 
-### Modular arithmetic
+### 模运算
 
-Modular arithmetic is the technical name for the type of math you did before you learned about decimal places, i.e. division that yields a whole number and a remainder.
-In R, `%/%` does integer division and `%%` computes the remainder:
+模运算（Modular arithmetic）是你学会小数之前所做的那种数学的专业名称，即产生一个整数和一个余数的除法。在 R 中，`%/%` 进行整除，`%%` 计算余数：
 
 ```{r}
 1:10 %/% 3
 1:10 %% 3
 ```
 
-Modular arithmetic is handy for the `flights` dataset, because we can use it to unpack the `sched_dep_time` variable into `hour` and `minute`:
+模运算对 `flights` 数据集很方便，因为我们可以用它来将 `sched_dep_time` 变量分解为 `hour` 和 `minute`：
 
 ```{r}
-flights |>
-    mutate(
-        hour = sched_dep_time %/% 100,
-        minute = sched_dep_time %% 100,
-        .keep = "used"
-    )
+flights |> 
+  mutate(
+    hour = sched_dep_time %/% 100,
+    minute = sched_dep_time %% 100,
+    .keep = "used"
+  )
 ```
 
-We can combine that with the `mean(is.na(x))` trick from @sec-logical-summaries to see how the proportion of cancelled flights varies over the course of the day.
-The results are shown in @fig-prop-cancelled.
+我们可以将其与 @sec-logical-summaries 中的 `mean(is.na(x))` 技巧结合起来，看看取消航班的比例在一天中是如何变化的。结果显示在 @fig-prop-cancelled 中。
 
 ```{r}
 #| label: fig-prop-cancelled
-#| fig-cap: |
-#|   A line plot with scheduled departure hour on the x-axis, and proportion
-#|   of cancelled flights on the y-axis. Cancellations seem to accumulate
-#|   over the course of the day until 8pm, very late flights are much
-#|   less likely to be cancelled.
+#| fig-cap: | 
+#|   一张线图，x 轴为计划出发小时，y 轴为取消航班的比例。
+#|   取消似乎在一天中不断累积，直到晚上 8 点，很晚的航班
+#|   被取消的可能性要小得多。
 #| fig-alt: |
-#|   A line plot showing how proportion of cancelled flights changes over
-#|   the course of the day. The proportion starts low at around 0.5% at
-#|   5am, then steadily increases over the course of the day until peaking
-#|   at 4% at 7pm. The proportion of cancelled flights then drops rapidly
-#|   getting down to around 1% by midnight.
-flights |>
-    group_by(hour = sched_dep_time %/% 100) |>
-    summarize(prop_cancelled = mean(is.na(dep_time)), n = n()) |>
-    filter(hour > 1) |>
-    ggplot(aes(x = hour, y = prop_cancelled)) +
-    geom_line(color = "grey50") +
-    geom_point(aes(size = n))
+#|   一张线图，显示取消航班的比例在一天中的变化情况。
+#|   比例从早上 5 点的约 0.5% 开始，然后在一天中稳步增加，
+#|   到晚上 7 点达到 4% 的峰值。然后取消航班的比例迅速下降，
+#|   到午夜时降至约 1%。
+flights |> 
+  group_by(hour = sched_dep_time %/% 100) |> 
+  summarize(prop_cancelled = mean(is.na(dep_time)), n = n()) |> 
+  filter(hour > 1) |> 
+  ggplot(aes(x = hour, y = prop_cancelled)) +
+  geom_line(color = "grey50") + 
+  geom_point(aes(size = n))
 ```
 
-### Logarithms
+### 对数
 
-Logarithms are an incredibly useful transformation for dealing with data that ranges across multiple orders of magnitude and converting exponential growth to linear growth.
-In R, you have a choice of three logarithms: `log()` (the natural log, base e), `log2()` (base 2), and `log10()` (base 10).
-We recommend using `log2()` or `log10()`.
-`log2()` is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving; whereas `log10()` is easy to back-transform because (e.g.) 3 is 10\^3 = 1000.
-The inverse of `log()` is `exp()`; to compute the inverse of `log2()` or `log10()` you'll need to use `2^` or `10^`.
+对数是一种非常有用的转换，用于处理跨越多个数量级的数据，并将指数增长转换为线性增长。在 R 中，你可以选择三种对数：`log()`（自然对数，以 e 为底）、`log2()`（以 2 为底）和 `log10()`（以 10 为底）。我们建议使用 `log2()` 或 `log10()`。`log2()` 很容易解释，因为对数尺度上 1 的差异对应于原始尺度上的加倍，而 -1 的差异对应于减半；而 `log10()` 很容易反向转换，因为（例如）3 是 10^3 = 1000。`log()` 的逆运算是 `exp()`；要计算 `log2()` 或 `log10()` 的逆运算，你需要使用 `2^` 或 `10^`。
 
-### Rounding {#sec-rounding}
+### 四舍五入 {#sec-rounding}
 
-Use `round(x)` to round a number to the nearest integer:
+使用 `round(x)` 将一个数四舍五入到最近的整数：
 
 ```{r}
 round(123.456)
 ```
 
-You can control the precision of the rounding with the second argument, `digits`.
-`round(x, digits)` rounds to the nearest `10^-n` so `digits = 2` will round to the nearest 0.01.
-This definition is useful because it implies `round(x, -3)` will round to the nearest thousand, which indeed it does:
+你可以用第二个参数 `digits` 来控制四舍五入的精度。`round(x, digits)` 四舍五入到最近的 `10^-n`，所以 `digits = 2` 会四舍五入到最近的 0.01。这个定义很有用，因为它意味着 `round(x, -3)` 会四舍五入到最近的千位，事实也确实如此：
 
 ```{r}
-round(123.456, 2) # two digits
-round(123.456, 1) # one digit
-round(123.456, -1) # round to nearest ten
-round(123.456, -2) # round to nearest hundred
+round(123.456, 2)  # 两位小数
+round(123.456, 1)  # 一位小数
+round(123.456, -1) # 四舍五入到最近的十位
+round(123.456, -2) # 四舍五入到最近的百位
 ```
 
-There's one weirdness with `round()` that seems surprising at first glance:
+`round()` 有一个初看起来很奇怪的特性：
 
 ```{r}
 round(c(1.5, 2.5))
 ```
 
-`round()` uses what's known as "round half to even" or Banker's rounding: if a number is half way between two integers, it will be rounded to the **even** integer.
-This is a good strategy because it keeps the rounding unbiased: half of all 0.5s are rounded up, and half are rounded down.
+`round()` 使用的是所谓的“四舍五入到偶数”或“银行家舍入法”（Banker's rounding）：如果一个数恰好在两个整数的中间，它将被舍入到**偶数**。这是一个很好的策略，因为它能保持舍入的无偏性：所有 0.5 的一半向上舍入，一半向下舍入。
 
-`round()` is paired with `floor()` which always rounds down and `ceiling()` which always rounds up:
+`round()` 与 `floor()`（总是向下取整）和 `ceiling()`（总是向上取整）配对使用：
 
 ```{r}
 x <- 123.456
@@ -302,153 +262,139 @@ floor(x)
 ceiling(x)
 ```
 
-These functions don't have a `digits` argument, so you can instead scale down, round, and then scale back up:
+这些函数没有 `digits` 参数，所以你可以先缩小，再取整，然后再放大回去：
 
 ```{r}
-# Round down to nearest two digits
+# 向下取整到最近的两位小数
 floor(x / 0.01) * 0.01
-# Round up to nearest two digits
+# 向上取整到最近的两位小数
 ceiling(x / 0.01) * 0.01
 ```
 
-You can use the same technique if you want to `round()` to a multiple of some other number:
+如果你想将数字 `round()` 到某个其他数的倍数，也可以使用同样的技术：
 
 ```{r}
-# Round to nearest multiple of 4
+# 四舍五入到最近的 4 的倍数
 round(x / 4) * 4
 
-# Round to nearest 0.25
+# 四舍五入到最近的 0.25
 round(x / 0.25) * 0.25
 ```
 
-### Cutting numbers into ranges
+### 将数值切割成范围
 
-Use `cut()`[^numbers-1] to break up (aka bin) a numeric vector into discrete buckets:
-
-[^numbers-1]: ggplot2 provides some helpers for common cases in `cut_interval()`, `cut_number()`, and `cut_width()`.
-    ggplot2 is an admittedly weird place for these functions to live, but they are useful as part of histogram computation and were written before any other parts of the tidyverse existed.
+使用 `cut()`[^1] 将一个数值向量分割（即分箱）成离散的桶：
 
 ```{r}
 x <- c(1, 2, 5, 10, 15, 20)
 cut(x, breaks = c(0, 5, 10, 15, 20))
 ```
 
-The breaks don't need to be evenly spaced:
+分割点不必是等距的：
 
 ```{r}
 cut(x, breaks = c(0, 5, 10, 100))
 ```
 
-You can optionally supply your own `labels`.
-Note that there should be one less `labels` than `breaks`.
+你可以选择性地提供自己的 `labels`。注意 `labels` 的数量应该比 `breaks` 少一个。
 
 ```{r}
-cut(x,
-    breaks = c(0, 5, 10, 15, 20),
-    labels = c("sm", "md", "lg", "xl")
+cut(x, 
+  breaks = c(0, 5, 10, 15, 20), 
+  labels = c("sm", "md", "lg", "xl")
 )
 ```
 
-Any values outside of the range of the breaks will become `NA`:
+任何超出分割点范围的值都会变成 `NA`：
 
 ```{r}
 y <- c(NA, -10, 5, 10, 30)
 cut(y, breaks = c(0, 5, 10, 15, 20))
 ```
 
-See the documentation for other useful arguments like `right` and `include.lowest`, which control if the intervals are `[a, b)` or `(a, b]` and if the lowest interval should be `[a, b]`.
+请参阅文档以了解其他有用的参数，如 `right` 和 `include.lowest`，它们控制区间是 `[a, b)` 还是 `(a, b]`，以及最低的区间是否应为 `[a, b]`。
 
-### Cumulative and rolling aggregates {#sec-cumulative-and-rolling-aggregates}
+### 累积和滚动聚合 {#sec-cumulative-and-rolling-aggregates}
 
-Base R provides `cumsum()`, `cumprod()`, `cummin()`, `cummax()` for running, or cumulative, sums, products, mins and maxes.
-dplyr provides `cummean()` for cumulative means.
-Cumulative sums tend to come up the most in practice:
+R base 提供了 `cumsum()`、`cumprod()`、`cummin()`、`cummax()` 用于运行或累积的求和、求积、最小值和最大值。dplyr 提供了 `cummean()` 用于累积均值。累积和在实践中最为常见：
 
 ```{r}
 x <- 1:10
 cumsum(x)
 ```
 
-If you need more complex rolling or sliding aggregates, try the [slider](https://slider.r-lib.org/) package.
+如果你需要更复杂的滚动或滑动聚合，可以试试 [slider](https://slider.r-lib.org/) 包。
 
-### Exercises
+### 练习
 
-1.  Explain in words what each line of the code used to generate @fig-prop-cancelled does.
+1.  用语言解释用于生成 @fig-prop-cancelled 的代码每一行都在做什么。
 
-2.  What trigonometric functions does R provide?
-    Guess some names and look up the documentation.
-    Do they use degrees or radians?
+2.  R 提供了哪些三角函数？猜一些名字并查阅文档。它们是使用度还是弧度？
 
-3.  Currently `dep_time` and `sched_dep_time` are convenient to look at, but hard to compute with because they're not really continuous numbers.
-    You can see the basic problem by running the code below: there's a gap between each hour.
+3.  目前 `dep_time` 和 `sched_dep_time` 便于查看，但难以进行计算，因为它们并不是真正的连续数值。你可以通过运行下面的代码看到基本问题：每个小时之间都存在一个间隙。
 
     ```{r}
-#| eval: false
-flights |>
-    filter(month == 1, day == 1) |>
-    ggplot(aes(x = sched_dep_time, y = dep_delay)) +
-    geom_point()
+    #| eval: false
+    flights |> 
+      filter(month == 1, day == 1) |> 
+      ggplot(aes(x = sched_dep_time, y = dep_delay)) +
+      geom_point()
     ```
 
-    Convert them to a more truthful representation of time (either fractional hours or minutes since midnight).
+    将它们转换为更真实的时间表示（可以是小数小时或自午夜以来的分钟数）。
 
-4.  Round `dep_time` and `arr_time` to the nearest five minutes.
+4.  将 `dep_time` 和 `arr_time` 四舍五入到最近的五分钟。
 
-## General transformations
+## 通用转换
 
-The following sections describe some general transformations which are often used with numeric vectors, but can be applied to all other column types.
+以下各节描述了一些通常用于数值向量但也适用于所有其他列类型的通用转换。
 
-### Ranks
+### 排名
 
-dplyr provides a number of ranking functions inspired by SQL, but you should always start with `dplyr::min_rank()`.
-It uses the typical method for dealing with ties, e.g., 1st, 2nd, 2nd, 4th.
+dplyr 提供了许多受 SQL 启发的排名函数，但你应始终从 `dplyr::min_rank()` 开始。它使用处理并列名次的典型方法，例如，第 1 名、第 2 名、第 2 名、第 4 名。
 
 ```{r}
 x <- c(1, 2, 2, 3, 4, NA)
 min_rank(x)
 ```
 
-Note that the smallest values get the lowest ranks; use `desc(x)` to give the largest values the smallest ranks:
+注意，最小值获得最低的排名；使用 `desc(x)` 可以让最大值获得最低的排名：
 
 ```{r}
 min_rank(desc(x))
 ```
 
-If `min_rank()` doesn't do what you need, look at the variants `dplyr::row_number()`, `dplyr::dense_rank()`, `dplyr::percent_rank()`, and `dplyr::cume_dist()`.
-See the documentation for details.
+如果 `min_rank()` 不能满足你的需求，可以看看它的变体 `dplyr::row_number()`、`dplyr::dense_rank()`、`dplyr::percent_rank()` 和 `dplyr::cume_dist()`。详情请参阅文档。
 
 ```{r}
 df <- tibble(x = x)
-df |>
-    mutate(
-        row_number = row_number(x),
-        dense_rank = dense_rank(x),
-        percent_rank = percent_rank(x),
-        cume_dist = cume_dist(x)
-    )
+df |> 
+  mutate(
+    row_number = row_number(x),
+    dense_rank = dense_rank(x),
+    percent_rank = percent_rank(x),
+    cume_dist = cume_dist(x)
+  )
 ```
 
-You can achieve many of the same results by picking the appropriate `ties.method` argument to base R's `rank()`; you'll probably also want to set `na.last = "keep"` to keep `NA`s as `NA`.
+你可以通过为 R base 的 `rank()` 函数选择合适的 `ties.method` 参数来达到许多相同的结果；你可能还想设置 `na.last = "keep"` 以将 `NA` 保留为 `NA`。
 
-`row_number()` can also be used without any arguments when inside a dplyr verb.
-In this case, it'll give the number of the "current" row.
-When combined with `%%` or `%/%` this can be a useful tool for dividing data into similarly sized groups:
+`row_number()` 也可以在 dplyr 动词内部不带任何参数使用。在这种情况下，它会给出“当前”行的行号。当与 `%%` 或 `%/%` 结合使用时，这可以成为将数据分成大小相似的组的有用工具：
 
 ```{r}
 df <- tibble(id = 1:10)
 
-df |>
-    mutate(
-        row0 = row_number() - 1,
-        three_groups = row0 %% 3,
-        three_in_each_group = row0 %/% 3
-    )
+df |> 
+  mutate(
+    row0 = row_number() - 1,
+    three_groups = row0 %% 3,
+    three_in_each_group = row0 %/% 3
+  )
 ```
 
-### Offsets
+### 偏移
 
-`dplyr::lead()` and `dplyr::lag()` allow you to refer to the values just before or just after the "current" value.
-They return a vector of the same length as the input, padded with `NA`s at the start or end:
+`dplyr::lead()` 和 `dplyr::lag()` 允许你引用“当前”值之前或之后的值。它们返回一个与输入长度相同的向量，在开头或结尾用 `NA` 填充：
 
 ```{r}
 x <- c(2, 5, 11, 11, 19, 35)
@@ -456,320 +402,265 @@ lag(x)
 lead(x)
 ```
 
--   `x - lag(x)` gives you the difference between the current and previous value.
+  - `x - lag(x)` 给出当前值与前一个值之间的差值。
 
     ```{r}
-x - lag(x)
+    x - lag(x)
     ```
 
--   `x == lag(x)` tells you when the current value changes.
+  - `x == lag(x)` 告诉你当前值何时发生变化。
 
     ```{r}
-x == lag(x)
+    x == lag(x)
     ```
 
-You can lead or lag by more than one position by using the second argument, `n`.
+你可以通过使用第二个参数 `n` 来向前或向后偏移超过一个位置。
 
-### Consecutive identifiers
+### 连续标识符
 
-Sometimes you want to start a new group every time some event occurs.
-For example, when you're looking at website data, it's common to want to break up events into sessions, where you begin a new session after a gap of more than `x` minutes since the last activity.
-For example, imagine you have the times when someone visited a website:
+有时你希望在每次某个事件发生时开始一个新的组。例如，在查看网站数据时，通常希望将事件分成会话（session），即在距离上次活动超过 `x` 分钟的间隙后开始一个新的会话。例如，假设你有一个人访问网站的时间记录：
 
 ```{r}
 events <- tibble(
-    time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
+  time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
 )
 
 ```
 
-And you've computed the time between each event, and figured out if there's a gap that's big enough to qualify:
+并且你已经计算了每个事件之间的时间，并判断是否存在足够大的间隙：
 
 ```{r}
-events <- events |>
-    mutate(
-        diff = time - lag(time, default = first(time)),
-        has_gap = diff >= 5
-    )
+events <- events |> 
+  mutate(
+    diff = time - lag(time, default = first(time)),
+    has_gap = diff >= 5
+  )
 events
 ```
 
-But how do we go from that logical vector to something that we can `group_by()`?
-`cumsum()`, from @sec-cumulative-and-rolling-aggregates, comes to the rescue as gap, i.e. `has_gap` is `TRUE`, will increment `group` by one (@sec-numeric-summaries-of-logicals):
+但是我们如何从那个逻辑向量得到一个可以用于 `group_by()` 的东西呢？来自 @sec-cumulative-and-rolling-aggregates 的 `cumsum()` 派上了用场，因为间隙，即 `has_gap` 为 `TRUE`时，会将 `group` 增加一（@sec-numeric-summaries-of-logicals）：
 
 ```{r}
 events |> mutate(
-    group = cumsum(has_gap)
+  group = cumsum(has_gap)
 )
 ```
 
-Another approach for creating grouping variables is `consecutive_id()`, which starts a new group every time one of its arguments changes.
-For example, inspired by [this stackoverflow question](https://stackoverflow.com/questions/27482712), imagine you have a data frame with a bunch of repeated values:
+另一种创建分组变量的方法是 `consecutive_id()`，它在每次其参数之一发生变化时开始一个新组。例如，受 [这个 Stack Overflow 问题](https://stackoverflow.com/questions/27482712) 的启发，假设你有一个包含大量重复值的数据框：
 
 ```{r}
 df <- tibble(
-    x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
-    y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
+  x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
+  y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
 )
 ```
 
-If you want to keep the first row from each repeated `x`, you could use `group_by()`, `consecutive_id()`, and `slice_head()`:
+如果你想保留每个重复的 `x` 的第一行，你可以使用 `group_by()`、`consecutive_id()` 和 `slice_head()`：
 
 ```{r}
-df |>
-    group_by(id = consecutive_id(x)) |>
-    slice_head(n = 1)
+df |> 
+  group_by(id = consecutive_id(x)) |> 
+  slice_head(n = 1)
 ```
 
-### Exercises
+### 练习
 
-1.  Find the 10 most delayed flights using a ranking function.
-    How do you want to handle ties?
-    Carefully read the documentation for `min_rank()`.
+1.  使用排名函数找出延误最严重的 10 个航班。你希望如何处理并列排名？仔细阅读 `min_rank()` 的文档。
 
-2.  Which plane (`tailnum`) has the worst on-time record?
+2.  哪架飞机（`tailnum`）的准点记录最差？
 
-3.  What time of day should you fly if you want to avoid delays as much as possible?
+3.  如果你想尽可能避免延误，应该在一天中的什么时间飞行？
 
-4.  What does `flights |> group_by(dest) |> filter(row_number() < 4)` do?
-    What does `flights |> group_by(dest) |> filter(row_number(dep_delay) < 4)` do?
+4.  `flights |> group_by(dest) |> filter(row_number() < 4)` 会做什么？`flights |> group_by(dest) |> filter(row_number(dep_delay) < 4)` 又会做什么？
 
-5.  For each destination, compute the total minutes of delay.
-    For each flight, compute the proportion of the total delay for its destination.
+5.  对于每个目的地，计算总的延误分钟数。对于每个航班，计算其延误占其目的地总延误的比例。
 
-6.  Delays are typically temporally correlated: even once the problem that caused the initial delay has been resolved, later flights are delayed to allow earlier flights to leave.
-    Using `lag()`, explore how the average flight delay for an hour is related to the average delay for the previous hour.
+6.  延误通常在时间上是相关的：即使导致初始延误的问题已经解决，后续的航班也会被延误，以便让较早的航班先行离开。使用 `lag()`，探讨一个小时的平均航班延误与前一个小时的平均延误之间的关系。
 
     ```{r}
-#| results: false
-flights |>
-    mutate(hour = dep_time %/% 100) |>
-    group_by(year, month, day, hour) |>
-    summarize(
+    #| results: false
+    flights |> 
+      mutate(hour = dep_time %/% 100) |> 
+      group_by(year, month, day, hour) |> 
+      summarize(
         dep_delay = mean(dep_delay, na.rm = TRUE),
         n = n(),
         .groups = "drop"
-    ) |>
-    filter(n > 5)
+      ) |> 
+      filter(n > 5)
     ```
 
-7.  Look at each destination.
-    Can you find flights that are suspiciously fast (i.e. flights that represent a potential data entry error)?
-    Compute the air time of a flight relative to the shortest flight to that destination.
-    Which flights were most delayed in the air?
+7.  查看每个目的地。你能找到飞行速度可疑的航班吗（即可能代表数据输入错误的航班）？计算一个航班的飞行时间相对于到该目的地的最短飞行时间的比例。哪些航班在空中延误最严重？
 
-8.  Find all destinations that are flown by at least two carriers.
-    Use those destinations to come up with a relative ranking of the carriers based on their performance for the same destination.
+8.  找出所有由至少两家航空公司执飞的目的地。使用这些目的地，根据它们在同一目的地的表现，为航空公司创建一个相对排名。
 
-## Numeric summaries
+## 数值汇总
 
-Just using the counts, means, and sums that we've introduced already can get you a long way, but R provides many other useful summary functions.
-Here is a selection that you might find useful.
+仅使用我们已经介绍过的计数、均值和总和就可以让你走得很远，但 R 提供了许多其他有用的汇总函数。这里是一些你可能会觉得有用的选择。
 
-### Center
+### 中心位置
 
-So far, we've mostly used `mean()` to summarize the center of a vector of values.
-As we've seen in @sec-sample-size, because the mean is the sum divided by the count, it is sensitive to even just a few unusually high or low values.
-An alternative is to use the `median()`, which finds a value that lies in the "middle" of the vector, i.e. 50% of the values are above it and 50% are below it.
-Depending on the shape of the distribution of the variable you're interested in, mean or median might be a better measure of center.
-For example, for symmetric distributions we generally report the mean while for skewed distributions we usually report the median.
+到目前为止，我们主要使用 `mean()` 来概括一个数值向量的中心位置。正如我们在 @sec-sample-size 中看到的，因为均值是总和除以计数，所以它对少数异常高或低的值很敏感。一个替代方法是使用 `median()`，它找到一个位于向量“中间”的值，即 50% 的值在它之上，50% 的值在它之下。根据你感兴趣的变量的分布形状，均值或中位数可能是衡量中心位置的更好指标。例如，对于对称分布，我们通常报告均值，而对于偏态分布，我们通常报告中位数。
 
-@fig-mean-vs-median compares the mean vs. the median departure delay (in minutes) for each destination.
-The median delay is always smaller than the mean delay because flights sometimes leave multiple hours late, but never leave multiple hours early.
+@fig-mean-vs-median 比较了每个目的地出发延误（分钟）的均值与中位数。中位数延误总是小于均值延误，因为航班有时会晚点数小时，但从不会提早数小时出发。
 
 ```{r}
 #| label: fig-mean-vs-median
 #| fig-cap: |
-#|   A scatterplot showing the differences of summarizing daily departure
-#|   delay with median instead of mean.
+#|   一张散点图，显示了用中位数代替均值来汇总每日出发延误的差异。
 #| fig-alt: |
-#|   All points fall below a 45° line, meaning that the median delay is
-#|   always less than the mean delay. Most points are clustered in a
-#|   dense region of mean [0, 20] and median [-5, 5]. As the mean delay
-#|   increases, the spread of the median also increases. There are two
-#|   outlying points with mean ~60, median ~30, and mean ~85, median ~55.
+#|   所有点都落在 45° 线以下，意味着中位数延误总是小于均值延误。
+#|   大多数点聚集在均值为 [0, 20]、中位数为 [-5, 5] 的密集区域。
+#|   随着均值延误的增加，中位数的散布范围也随之增加。
+#|   有两个离群点，均值约为 60，中位数约为 30；以及均值约为 85，中位数约为 55。
 flights |>
-    group_by(year, month, day) |>
-    summarize(
-        mean = mean(dep_delay, na.rm = TRUE),
-        median = median(dep_delay, na.rm = TRUE),
-        n = n(),
-        .groups = "drop"
-    ) |>
-    ggplot(aes(x = mean, y = median)) +
-    geom_abline(slope = 1, intercept = 0, color = "white", linewidth = 2) +
-    geom_point()
+  group_by(year, month, day) |>
+  summarize(
+    mean = mean(dep_delay, na.rm = TRUE),
+    median = median(dep_delay, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  ) |> 
+  ggplot(aes(x = mean, y = median)) + 
+  geom_abline(slope = 1, intercept = 0, color = "white", linewidth = 2) +
+  geom_point()
 ```
 
-You might also wonder about the **mode**, or the most common value.
-This is a summary that only works well for very simple cases (which is why you might have learned about it in high school), but it doesn't work well for many real datasets.
-If the data is discrete, there may be multiple most common values, and if the data is continuous, there might be no most common value because every value is ever so slightly different.
-For these reasons, the mode tends not to be used by statisticians and there's no mode function included in base R[^numbers-2].
+你可能也想知道**众数**（mode），即最常见的值。这是一个只在非常简单的情况下才好用的汇总统计量（这可能是你在高中学到它的原因），但它对许多真实数据集效果不佳。如果数据是离散的，可能会有多个最常见的值；如果数据是连续的，可能根本没有最常见的值，因为每个值都略有不同。由于这些原因，统计学家倾向于不使用众数，R base 中也没有包含众数函数[^2]。
 
-[^numbers-2]: The `mode()` function does something quite different!
+### 最小值、最大值和分位数 {#sec-min-max-summary}
 
-### Minimum, maximum, and quantiles {#sec-min-max-summary}
+如果你感兴趣的不是中心位置呢？`min()` 和 `max()` 会给你最大值和最小值。另一个强大的工具是 `quantile()`，它是中位数的推广：`quantile(x, 0.25)` 会找到 `x` 中大于 25% 值的值，`quantile(x, 0.5)` 等同于中位数，而 `quantile(x, 0.95)` 会找到大于 95% 值的值。
 
-What if you're interested in locations other than the center?
-`min()` and `max()` will give you the largest and smallest values.
-Another powerful tool is `quantile()` which is a generalization of the median: `quantile(x, 0.25)` will find the value of `x` that is greater than 25% of the values, `quantile(x, 0.5)` is equivalent to the median, and `quantile(x, 0.95)` will find the value that's greater than 95% of the values.
-
-For the `flights` data, you might want to look at the 95% quantile of delays rather than the maximum, because it will ignore the 5% of most delayed flights which can be quite extreme.
+对于 `flights` 数据，你可能想查看延误的 95% 分位数，而不是最大值，因为它会忽略那 5% 最为极端的延误航班。
 
 ```{r}
 flights |>
-    group_by(year, month, day) |>
-    summarize(
-        max = max(dep_delay, na.rm = TRUE),
-        q95 = quantile(dep_delay, 0.95, na.rm = TRUE),
-        .groups = "drop"
-    )
+  group_by(year, month, day) |>
+  summarize(
+    max = max(dep_delay, na.rm = TRUE),
+    q95 = quantile(dep_delay, 0.95, na.rm = TRUE),
+    .groups = "drop"
+  )
 ```
 
-### Spread
+### 离散程度
 
-Sometimes you're not so interested in where the bulk of the data lies, but in how it is spread out.
-Two commonly used summaries are the standard deviation, `sd(x)`, and the inter-quartile range, `IQR()`.
-We won't explain `sd()` here since you're probably already familiar with it, but `IQR()` might be new --- it's `quantile(x, 0.75) - quantile(x, 0.25)` and gives you the range that contains the middle 50% of the data.
+有时你不太关心数据的主体在哪里，而是关心它是如何分布的。两个常用的汇总统计量是标准差 `sd(x)` 和四分位距 `IQR()`。我们在这里不解释 `sd()`，因为你可能已经熟悉它了，但 `IQR()` 可能对你来说是新的——它是 `quantile(x, 0.75) - quantile(x, 0.25)`，并告诉你包含中间 50% 数据的范围。
 
-We can use this to reveal a small oddity in the `flights` data.
-You might expect the spread of the distance between origin and destination to be zero, since airports are always in the same place.
-But the code below reveals a data oddity for airport [EGE](https://en.wikipedia.org/wiki/Eagle_County_Regional_Airport):
+我们可以用它来揭示 `flights` 数据中的一个小小的奇特之处。你可能期望始发地和目的地之间的距离离散程度为零，因为机场总是在同一个地方。但下面的代码揭示了机场 [EGE](https://en.wikipedia.org/wiki/Eagle_County_Regional_Airport) 的一个数据奇特之处：
 
 ```{r}
-flights |>
-    group_by(origin, dest) |>
-    summarize(
-        distance_iqr = IQR(distance),
-        n = n(),
-        .groups = "drop"
-    ) |>
-    filter(distance_iqr > 0)
+flights |> 
+  group_by(origin, dest) |> 
+  summarize(
+    distance_iqr = IQR(distance), 
+    n = n(),
+    .groups = "drop"
+  ) |> 
+  filter(distance_iqr > 0)
 ```
 
-### Distributions
+### 分布
 
-It's worth remembering that all of the summary statistics described above are a way of reducing the distribution down to a single number.
-This means that they're fundamentally reductive, and if you pick the wrong summary, you can easily miss important differences between groups.
-That's why it's always a good idea to visualize the distribution before committing to your summary statistics.
+值得记住的是，上面描述的所有汇总统计量都是将分布简化为单个数字的一种方式。这意味着它们从根本上是简化的，如果你选择了错误的汇总统计量，你很容易会忽略组间的重要差异。这就是为什么在确定你的汇总统计量之前，总是先将分布可视化是一个好主意。
 
-@fig-flights-dist shows the overall distribution of departure delays.
-The distribution is so skewed that we have to zoom in to see the bulk of the data.
-This suggests that the mean is unlikely to be a good summary and we might prefer the median instead.
+@fig-flights-dist 显示了出发延误的总体分布。分布非常偏斜，以至于我们必须放大才能看到数据的主体部分。这表明均值不太可能是一个好的汇总指标，我们可能更倾向于使用中位数。
 
 ```{r}
 #| echo: false
 #| label: fig-flights-dist
 #| fig-cap: |
-#|   (Left) The histogram of the full data is extremely skewed making it
-#|   hard to get any details. (Right) Zooming into delays of less than two
-#|   hours makes it possible to see what's happening with the bulk of the
-#|   observations.
+#|   （左图）完整数据的直方图极度偏斜，很难看清任何细节。
+#|   （右图）放大到延误小于两小时的范围，可以看清大部分观测值的情况。
 #| fig-alt: |
-#|   Two histograms of `dep_delay`. On the left, it's very hard to see
-#|   any pattern except that there's a very large spike around zero, the
-#|   bars rapidly decay in height, and for most of the plot, you can't
-#|   see any bars because they are too short to see. On the right,
-#|   where we've discarded delays of greater than two hours, we can
-#|   see that the spike occurs slightly below zero (i.e. most flights
-#|   leave a couple of minutes early), but there's still a very steep
-#|   decay after that.
+#|   `dep_delay` 的两个直方图。在左图中，除了在零附近有一个非常大的尖峰外，很难看到任何模式，
+#|   条形图的高度迅速衰减，在图的大部分区域，你看不到任何条形，因为它们太短了。
+#|   在右图中，我们舍弃了大于两小时的延误，可以看到尖峰出现在略低于零的位置
+#|   （即大多数航班会提早几分钟出发），但之后仍然有一个非常陡峭的衰减。
 #| fig-asp: 0.5
 library(patchwork)
 
 full <- flights |>
-    ggplot(aes(x = dep_delay)) +
-    geom_histogram(binwidth = 15, na.rm = TRUE)
+  ggplot(aes(x = dep_delay)) + 
+  geom_histogram(binwidth = 15, na.rm = TRUE)
 
 delayed120 <- flights |>
-    filter(dep_delay < 120) |>
-    ggplot(aes(x = dep_delay)) +
-    geom_histogram(binwidth = 5)
+  filter(dep_delay < 120) |> 
+  ggplot(aes(x = dep_delay)) + 
+  geom_histogram(binwidth = 5)
 
 full + delayed120
 ```
 
-It's also a good idea to check that distributions for subgroups resemble the whole.
-In the following plot 365 frequency polygons of `dep_delay`, one for each day, are overlaid.
-The distributions seem to follow a common pattern, suggesting it's fine to use the same summary for each day.
+检查子组的分布是否与整体相似也是一个好主意。在下面的图中，叠加了 365 个 `dep_delay` 的频率多边形图，每天一个。这些分布似乎遵循一个共同的模式，这表明对每天使用相同的汇总统计量是可以的。
 
 ```{r}
 #| fig-alt: |
-#|   The distribution of `dep_delay` is highly right skewed with a strong
-#|   peak slightly less than 0. The 365 frequency polygons are mostly
-#|   overlapping forming a thick black band.
+#|   `dep_delay` 的分布是高度右偏的，在略小于 0 的位置有一个强烈的峰值。
+#|   365 个频率多边形图大部分重叠在一起，形成一条粗黑的带。
 flights |>
-    filter(dep_delay < 120) |>
-    ggplot(aes(x = dep_delay, group = interaction(day, month))) +
-    geom_freqpoly(binwidth = 5, alpha = 1 / 5)
+  filter(dep_delay < 120) |> 
+  ggplot(aes(x = dep_delay, group = interaction(day, month))) + 
+  geom_freqpoly(binwidth = 5, alpha = 1/5)
 ```
 
-Don't be afraid to explore your own custom summaries specifically tailored for the data that you're working with.
-In this case, that might mean separately summarizing the flights that left early vs. the flights that left late, or given that the values are so heavily skewed, you might try a log-transformation.
-Finally, don't forget what you learned in @sec-sample-size: whenever creating numerical summaries, it's a good idea to include the number of observations in each group.
+不要害怕探索专门为你正在处理的数据量身定制的自定义汇总。在这种情况下，这可能意味着分别汇总提早出发的航班和晚点出发的航班，或者鉴于数值偏斜严重，你可能会尝试对数转换。最后，不要忘记你在 @sec-sample-size 中学到的：在创建数值汇总时，最好包含每个组中的观测数量。
 
-### Positions
+### 位置
 
-There's one final type of summary that's useful for numeric vectors, but also works with every other type of value: extracting a value at a specific position: `first(x)`, `last(x)`, and `nth(x, n)`.
+还有最后一种对数值向量很有用，但也适用于所有其他类型值的汇总：提取特定位置的值：`first(x)`、`last(x)` 和 `nth(x, n)`。
 
-For example, we can find the first, fifth and last departure for each day:
+例如，我们可以找到每天的第一次、第五次和最后一次出发：
 
 ```{r}
-flights |>
-    group_by(year, month, day) |>
-    summarize(
-        first_dep = first(dep_time, na_rm = TRUE),
-        fifth_dep = nth(dep_time, 5, na_rm = TRUE),
-        last_dep = last(dep_time, na_rm = TRUE)
-    )
+flights |> 
+  group_by(year, month, day) |> 
+  summarize(
+    first_dep = first(dep_time, na_rm = TRUE), 
+    fifth_dep = nth(dep_time, 5, na_rm = TRUE),
+    last_dep = last(dep_time, na_rm = TRUE)
+  )
 ```
 
-(NB: Because dplyr functions use `_` to separate components of function and arguments names, these functions use `na_rm` instead of `na.rm`.)
+（注意：因为 dplyr 函数使用 `_` 来分隔函数和参数名称的组成部分，所以这些函数使用 `na_rm` 而不是 `na.rm`。）
 
-If you're familiar with `[`, which we'll come back to in @sec-subset-many, you might wonder if you ever need these functions.
-There are three reasons: the `default` argument allows you to provide a default if the specified position doesn't exist, the `order_by` argument allows you to locally override the order of the rows, and the `na_rm` argument allows you to drop missing values.
+如果你熟悉 `[`（我们将在 @sec-subset-many 中回过头来讨论），你可能会想知道你是否真的需要这些函数。有三个原因：`default` 参数允许你在指定位置不存在时提供一个默认值，`order_by` 参数允许你局部覆盖行的顺序，而 `na_rm` 参数允许你删除缺失值。
 
-Extracting values at positions is complementary to filtering on ranks.
-Filtering gives you all variables, with each observation in a separate row:
+提取位置上的值与按排名筛选是互补的。筛选会给你所有的变量，每个观测值占一行：
 
 ```{r}
-flights |>
-    group_by(year, month, day) |>
-    mutate(r = min_rank(sched_dep_time)) |>
-    filter(r %in% c(1, max(r)))
+flights |> 
+  group_by(year, month, day) |> 
+  mutate(r = min_rank(sched_dep_time)) |> 
+  filter(r %in% c(1, max(r)))
 ```
 
-### With `mutate()`
+### 与 `mutate()` 结合使用
 
-As the names suggest, the summary functions are typically paired with `summarize()`.
-However, because of the recycling rules we discussed in @sec-recycling they can also be usefully paired with `mutate()`, particularly when you want do some sort of group standardization.
-For example:
+顾名思义，汇总函数通常与 `summarize()` 配对使用。然而，由于我们在 @sec-recycling 中讨论的循环补齐规则，它们也可以与 `mutate()` 有效地配对使用，特别是当你想要进行某种分组标准化时。例如：
 
--   `x / sum(x)` calculates the proportion of a total.
--   `(x - mean(x)) / sd(x)` computes a Z-score (standardized to mean 0 and sd 1).
--   `(x - min(x)) / (max(x) - min(x))` standardizes to range \[0, 1\].
--   `x / first(x)` computes an index based on the first observation.
+  - `x / sum(x)` 计算占总数的比例。
+  - `(x - mean(x)) / sd(x)` 计算一个 Z 分数（标准化为均值为 0，标准差为 1）。
+  - `(x - min(x)) / (max(x) - min(x))` 标准化到 [0, 1] 的范围。
+  - `x / first(x)` 计算一个基于第一个观测值的指数。
 
-### Exercises
+### 练习
 
-1.  Brainstorm at least 5 different ways to assess the typical delay characteristics of a group of flights.
-    When is `mean()` useful?
-    When is `median()` useful?
-    When might you want to use something else?
-    Should you use arrival delay or departure delay?
-    Why might you want to use data from `planes`?
+1.  集思广益，想出至少 5 种不同的方法来评估一组航班的典型延误特征。什么时候 `mean()` 有用？什么时候 `median()` 有用？什么时候你可能想用别的方法？你应该使用到达延误还是出发延误？为什么你可能想使用来自 `planes` 的数据？
 
-2.  Which destinations show the greatest variation in air speed?
+2.  哪些目的地的空速变化最大？
 
-3.  Create a plot to further explore the adventures of EGE.
-    Can you find any evidence that the airport moved locations?
-    Can you find another variable that might explain the difference?
+3.  创建一个图表来进一步探索 EGE 的奇遇。你能找到任何证据表明机场搬迁了吗？你能找到另一个可能解释这种差异的变量吗？
 
-## Summary
+## 总结
 
-You're already familiar with many tools for working with numbers, and after reading this chapter you now know how to use them in R.
-You've also learned a handful of useful general transformations that are commonly, but not exclusively, applied to numeric vectors like ranks and offsets.
-Finally, you worked through a number of numeric summaries, and discussed a few of the statistical challenges that you should consider.
+你已经熟悉了许多处理数值的工具，在阅读本章后，你现在知道如何在 R 中使用它们。你还学到了一些有用的通用转换，这些转换通常（但不仅限于）应用于数值向量，如排名和偏移。最后，你详细研究了一些数值汇总方法，并讨论了你应该考虑的一些统计挑战。
 
-Over the next two chapters, we'll dive into working with strings with the stringr package.
-Strings are a big topic so they get two chapters, one on the fundamentals of strings and one on regular expressions.
+在接下来的两章中，我们将深入探讨使用 stringr 包处理字符串。字符串是一个很大的主题，所以它们占了两章，一章是关于字符串的基础知识，另一章是关于正则表达式。
+
+[^1]:
+    ggplot2 在 `cut_interval()`、`cut_number()` 和 `cut_width()` 中为常见情况提供了一些辅助函数。承认 ggplot2 是这些函数存在的一个奇怪的地方，但它们作为直方图计算的一部分很有用，并且在 tidyverse 的任何其他部分存在之前就已经编写好了。
+
+[^2]:
+    `mode()` 函数做的是完全不同的事情！

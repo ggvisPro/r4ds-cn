@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform</span></a>
+ <span class="menu-text">数据转换</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -257,49 +257,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./numbers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./strings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regexps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regular expressions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">正则表达式</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因子</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datetimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dates and times</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">日期和时间</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">连接</span></span></a>
   </div>
 </li>
       </ul>
@@ -872,7 +872,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <p>Practice your <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> skills by:</p>
 <ol type="1">
-<li><p>Computing the number of unique values in each column of <code><a href="https://rdrr.io/pkg/palmerpenguins/man/penguins.html">palmerpenguins::penguins</a></code>.</p></li>
+<li><p>Computing the number of unique values in each column of <code><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">palmerpenguins::penguins</a></code>.</p></li>
 <li><p>Computing the mean of every column in <code>mtcars</code>.</p></li>
 <li><p>Grouping <code>diamonds</code> by <code>cut</code>, <code>clarity</code>, and <code>color</code> then counting the number of observations and computing the mean of each numeric column.</p></li>
 </ol>
@@ -1180,7 +1180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_types</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>    col_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>, </span>
-<span>    col_type <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu">vctrs</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/vctrs/man/vec_ptype_full.html">vec_ptype_full</a></span><span class="op">)</span>,</span>
+<span>    col_type <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu">vctrs</span><span class="fu">::</span><span class="va"><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vec_ptype_full</a></span><span class="op">)</span>,</span>
 <span>    n_miss <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">df</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -1306,11 +1306,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;    year     n</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  1967   142</span></span>
-<span><span class="co">#&gt; 2  1972   142</span></span>
-<span><span class="co">#&gt; 3  1992   142</span></span>
-<span><span class="co">#&gt; 4  1997   142</span></span>
-<span><span class="co">#&gt; 5  2007   142</span></span>
-<span><span class="co">#&gt; 6  1987   142</span></span>
+<span><span class="co">#&gt; 2  1987   142</span></span>
+<span><span class="co">#&gt; 3  2007   142</span></span>
+<span><span class="co">#&gt; 4  1952   142</span></span>
+<span><span class="co">#&gt; 5  1957   142</span></span>
+<span><span class="co">#&gt; 6  1977   142</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="writing-csv-files" class="level3" data-number="26.4.2"><h3 data-number="26.4.2" class="anchored" data-anchor-id="writing-csv-files">
@@ -1346,10 +1346,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  1.04 Premium   G      62.2    58  2801  6.46  6.41  4   </span></span>
 <span><span class="co">#&gt; # ℹ 735 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>While we’re here, let’s create a column that gives the name of output file, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/pkg/stringr/man/str_glue.html">str_glue()</a></code>:</p>
+<p>While we’re here, let’s create a column that gives the name of output file, using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span> <span class="op">&lt;-</span> <span class="va">by_clarity</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"diamonds-{clarity}.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"diamonds-{clarity}.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">by_clarity</span></span>
 <span><span class="co">#&gt; # A tibble: 8 × 3</span></span>
@@ -1396,7 +1396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">by_clarity</span> <span class="op">&lt;-</span> <span class="va">by_clarity</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    plot <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">carat_histogram</span><span class="op">)</span>,</span>
-<span>    path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"clarity-{clarity}.png"</span><span class="op">)</span></span>
+<span>    path <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"clarity-{clarity}.png"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then use <code><a href="https://purrr.tidyverse.org/reference/map2.html">walk2()</a></code> with <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> to save each plot:</p>
@@ -1845,18 +1845,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">
-<p>R 数据科学 (2e) 是一本由 Hadley Wickham, Mine Çetinkaya-Rundel 和 Garrett Grolemund 合著的书。 这是汉化项目。</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/iteration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>本书由 <a href="https://quarto.org/">Quarto</a> 构建。</p>
-</div>
-  </div>
-</footer>
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/iteration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

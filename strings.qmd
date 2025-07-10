@@ -1,27 +1,21 @@
-# Strings {#sec-strings}
+# 字符串 {#sec-strings}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-So far, you've used a bunch of strings without learning much about the details.
-Now it's time to dive into them, learn what makes strings tick, and master some of the powerful string manipulation tools you have at your disposal.
+到目前为止，你已经使用了很多字符串，但对细节知之甚少。现在是时候深入了解它们，学习字符串的运作原理，并掌握一些你可以使用的强大字符串处理工具。
 
-We'll begin with the details of creating strings and character vectors.
-You'll then dive into creating strings from data, then the opposite: extracting strings from data.
-We'll then discuss tools that work with individual letters.
-The chapter finishes with functions that work with individual letters and a brief discussion of where your expectations from English might steer you wrong when working with other languages.
+我们将从创建字符串和字符向量的细节开始。然后，你将深入学习如何从数据创建字符串，以及反过来：如何从数据中提取字符串。接着，我们将讨论处理单个字母的工具。本章最后会介绍处理单个字母的函数，并简要讨论在处理其他语言时，你从英语中获得的期望可能会如何误导你。
 
-We'll keep working with strings in the next chapter, where you'll learn more about the power of regular expressions.
+我们将在下一章继续学习字符串，届时你将学到更多关于正则表达式的强大功能。
 
-### Prerequisites
+### 先决条件
 
-In this chapter, we'll use functions from the stringr package, which is part of the core tidyverse.
-We'll also use the babynames data since it provides some fun strings to manipulate.
+在本章中，我们将使用 stringr 包中的函数，它是核心 tidyverse 的一部分。我们还将使用 babynames 数据，因为它提供了一些有趣的字符串供我们操作。
 
 ```{r}
 #| label: setup
@@ -30,60 +24,53 @@ library(tidyverse)
 library(babynames)
 ```
 
-You can quickly tell when you're using a stringr function because all stringr functions start with `str_`.
-This is particularly useful if you use RStudio because typing `str_` will trigger autocomplete, allowing you to jog your memory of the available functions.
+你可以很快分辨出你正在使用的是一个 stringr 函数，因为所有 stringr 函数都以 `str_` 开头。如果你使用 RStudio，这一点特别有用，因为输入 `str_` 会触发自动补全，让你回想起可用的函数。
 
 ```{r}
 #| echo: false
 #| fig-alt: |
-#|   str_c typed into the RStudio console with the autocomplete tooltip shown
-#|   on top, which lists functions beginning with str_c. The funtion signature
-#|   and beginning of the man page for the highlighted function from the
-#|   autocomplete list are shown in a panel to its right.
+#|   在 RStudio 控制台中输入 str_c，上方显示了自动补全的提示框，
+#|   其中列出了以 str_c 开头的函数。自动补全列表中高亮显示的函数
+#|   的函数签名和帮助文档的开头部分显示在其右侧的面板中。
 knitr::include_graphics("screenshots/stringr-autocomplete.png")
 ```
 
-## Creating a string
+## 创建字符串
 
-We've created strings in passing earlier in the book but didn't discuss the details.
-Firstly, you can create a string using either single quotes (`'`) or double quotes (`"`).
-There's no difference in behavior between the two, so in the interests of consistency, the [tidyverse style guide](https://style.tidyverse.org/syntax.html#character-vectors) recommends using `"`, unless the string contains multiple `"`.
+我们在本书的前面部分已经顺便创建过字符串，但没有讨论细节。首先，你可以使用单引号 (`'`) 或双引号 (`"`) 来创建字符串。这两者在行为上没有区别，因此为了保持一致性，[tidyverse 风格指南](https://style.tidyverse.org/syntax.html#character-vectors) 建议使用 `"`，除非字符串中包含多个 `"`。
 
 ```{r}
 string1 <- "This is a string"
 string2 <- 'If I want to include a "quote" inside a string, I use single quotes'
 ```
 
-If you forget to close a quote, you'll see `+`, the continuation prompt:
+如果你忘记关闭引号，你会看到 `+`，即续行提示符：
 
-```         
+```
 > "This is a string without a closing quote
 + 
 + 
 + HELP I'M STUCK IN A STRING
 ```
 
-If this happens to you and you can't figure out which quote to close, press Escape to cancel and try again.
+如果发生这种情况，而你又不知道该关闭哪个引号，可以按 `Escape` 键取消并重试。
 
-### Escapes
+### 转义
 
-To include a literal single or double quote in a string, you can use `\` to "escape" it:
+要在字符串中包含字面意义上的单引号或双引号，你可以使用 `\` 来“转义”它：
 
 ```{r}
-double_quote <- "\"" # or '"'
-single_quote <- "'" # or "'"
+double_quote <- "\"" # 或者 '"'
+single_quote <- '\'' # 或者 "'"
 ```
 
-So if you want to include a literal backslash in your string, you'll need to escape it: `"\\"`:
+所以，如果你想在字符串中包含一个字面意义上的反斜杠，你需要对它进行转义：`"\\"`：
 
 ```{r}
 backslash <- "\\"
 ```
 
-Beware that the printed representation of a string is not the same as the string itself because the printed representation shows the escapes (in other words, when you print a string, you can copy and paste the output to recreate that string).
-To see the raw contents of the string, use `str_view()`[^strings-1]:
-
-[^strings-1]: Or use the base R function `writeLines()`.
+请注意，字符串的打印表示形式与字符串本身不同，因为打印表示形式会显示转义符（换句话说，当你打印一个字符串时，你可以复制并粘贴输出来重新创建那个字符串）。要查看字符串的原始内容，请使用 `str_view()`[^1]：
 
 ```{r}
 x <- c(single_quote, double_quote, backslash)
@@ -91,10 +78,9 @@ x
 str_view(x)
 ```
 
-### Raw strings {#sec-raw-strings}
+### 原始字符串 {#sec-raw-strings}
 
-Creating a string with multiple quotes or backslashes gets confusing quickly.
-To illustrate the problem, let's create a string that contains the contents of the code block where we define the `double_quote` and `single_quote` variables:
+创建一个包含多个引号或反斜杠的字符串很快就会变得混乱。为了说明这个问题，让我们创建一个字符串，它包含我们定义 `double_quote` 和 `single_quote` 变量的代码块的内容：
 
 ```{r}
 tricky <- "double_quote <- \"\\\"\" # or '\"'
@@ -102,10 +88,7 @@ single_quote <- '\\'' # or \"'\""
 str_view(tricky)
 ```
 
-That's a lot of backslashes!
-(This is sometimes called [leaning toothpick syndrome](https://en.wikipedia.org/wiki/Leaning_toothpick_syndrome).) To eliminate the escaping, you can instead use a **raw string**[^strings-2]:
-
-[^strings-2]: Available in R 4.0.0 and above.
+这可真是一大堆反斜杠！（这有时被称为[倾斜的牙签综合症 (leaning toothpick syndrome)](https://en.wikipedia.org/wiki/Leaning_toothpick_syndrome)。）为了消除转义，你可以改用**原始字符串 (raw string)**[^2]：
 
 ```{r}
 tricky <- r"(double_quote <- "\"" # or '"'
@@ -113,12 +96,11 @@ single_quote <- '\'' # or "'")"
 str_view(tricky)
 ```
 
-A raw string usually starts with `r"(` and finishes with `)"`.
-But if your string contains `)"` you can instead use `r"[]"` or `r"{}"`, and if that's still not enough, you can insert any number of dashes to make the opening and closing pairs unique, e.g., `r"--()--"`, `r"---()---"`, etc. Raw strings are flexible enough to handle any text.
+原始字符串通常以 `r"(` 开始，以 `)"` 结束。但是，如果你的字符串包含 `)"`，你可以改用 `r"[]"` 或 `r"{}"`，如果这还不够，你可以插入任意数量的破折号来使开始和结束对唯一，例如 `r"--()--"`、`r"---()---"` 等。原始字符串足够灵活，可以处理任何文本。
 
-### Other special characters
+### 其他特殊字符
 
-As well as `\"`, `\'`, and `\\`, there are a handful of other special characters that may come in handy. The most common are `\n`, a new line, and `\t`, tab. You'll also sometimes see strings containing Unicode escapes that start with `\u` or `\U`. This is a way of writing non-English characters that work on all systems. You can see the complete list of other special characters in `?Quotes`.
+除了 `\"`、`\'` 和 `\\`，还有一些其他特殊字符可能会派上用场。最常见的是 `\n`（换行符）和 `\t`（制表符）。你有时还会看到包含以 `\u` 或 `\U` 开头的 Unicode 转义的字符串。这是一种书写非英文字符的方法，能在所有系统上工作。你可以在 `?Quotes` 中看到其他特殊字符的完整列表。
 
 ```{r}
 x <- c("one\ntwo", "one\ttwo", "\u00b5", "\U0001f604")
@@ -126,15 +108,11 @@ x
 str_view(x)
 ```
 
-Note that `str_view()` uses curly braces for tabs to make them easier to spot[^strings-3].
-One of the challenges of working with text is that there's a variety of ways that white space can end up in the text, so this background helps you recognize that something strange is going on.
+请注意，`str_view()` 对制表符使用花括号，以便更容易发现它们[^3]。处理文本的挑战之一是，空白字符有多种方式进入文本，所以这个背景能帮助你识别出有异常情况正在发生。
 
-[^strings-3]: `str_view()` also uses color to bring tabs, spaces, matches, etc. to your attention.
-    The colors don't currently show up in the book, but you'll notice them when running code interactively.
+### 练习
 
-### Exercises
-
-1.  Create strings that contain the following values:
+1.  创建包含以下值的字符串：
 
     1.  `He said "That's amazing!"`
 
@@ -142,26 +120,19 @@ One of the challenges of working with text is that there's a variety of ways tha
 
     3.  `\\\\\\`
 
-2.  Create the string in your R session and print it.
-    What happens to the special "\\u00a0"?
-    How does `str_view()` display it?
-    Can you do a little googling to figure out what this special character is?
+2.  在你的 R 会话中创建以下字符串并打印它。特殊的 `\u00a0` 发生了什么？`str_view()` 如何显示它？你能用 Google 搜索一下，找出这个特殊字符是什么吗？
 
     ```{r}
-x <- "This\u00a0is\u00a0tricky"
+    x <- "This\u00a0is\u00a0tricky"
     ```
 
-## Creating many strings from data
+## 从数据创建多个字符串
 
-Now that you've learned the basics of creating a string or two by "hand", we'll go into the details of creating strings from other strings.
-This will help you solve the common problem where you have some text you wrote that you want to combine with strings from a data frame.
-For example, you might combine "Hello" with a `name` variable to create a greeting.
-We'll show you how to do this with `str_c()` and `str_glue()` and how you can use them with `mutate()`.
-That naturally raises the question of what stringr functions you might use with `summarize()`, so we'll finish this section with a discussion of `str_flatten()`, which is a summary function for strings.
+现在你已经学会了“手动”创建一个或两个字符串的基础知识，我们将深入探讨从其他字符串创建字符串的细节。这将帮助你解决一个常见问题：你有一些自己写的文本，想把它与数据框中的字符串结合起来。例如，你可能会将 "Hello" 与一个 `name` 变量结合起来，创建一个问候语。我们将向你展示如何使用 `str_c()` 和 `str_glue()` 来做到这一点，以及如何将它们与 `mutate()` 一起使用。这自然会引出一个问题：你可能会在 `summarize()` 中使用哪些 stringr 函数？因此，我们将在本节最后讨论 `str_flatten()`，这是一个用于字符串的汇总函数。
 
 ### `str_c()`
 
-`str_c()` takes any number of vectors as arguments and returns a character vector:
+`str_c()` 接受任意数量的向量作为参数，并返回一个字符向量：
 
 ```{r}
 str_c("x", "y")
@@ -169,39 +140,34 @@ str_c("x", "y", "z")
 str_c("Hello ", c("John", "Susan"))
 ```
 
-`str_c()` is very similar to the base `paste0()`, but is designed to be used with `mutate()` by obeying the usual tidyverse rules for recycling and propagating missing values:
+`str_c()` 与 R base 的 `paste0()` 非常相似，但它被设计为与 `mutate()` 一起使用，遵循了 tidyverse 的常规规则，即循环补齐和传播缺失值：
 
 ```{r}
 df <- tibble(name = c("Flora", "David", "Terra", NA))
 df |> mutate(greeting = str_c("Hi ", name, "!"))
 ```
 
-If you want missing values to display in another way, use `coalesce()` to replace them.
-Depending on what you want, you might use it either inside or outside of `str_c()`:
+如果你希望缺失值以另一种方式显示，可以使用 `coalesce()` 来替换它们。根据你的需求，你可以在 `str_c()` 内部或外部使用它：
 
 ```{r}
-df |>
-    mutate(
-        greeting1 = str_c("Hi ", coalesce(name, "you"), "!"),
-        greeting2 = coalesce(str_c("Hi ", name, "!"), "Hi!")
-    )
+df |> 
+  mutate(
+    greeting1 = str_c("Hi ", coalesce(name, "you"), "!"),
+    greeting2 = coalesce(str_c("Hi ", name, "!"), "Hi!")
+  )
 ```
 
 ### `str_glue()` {#sec-glue}
 
-If you are mixing many fixed and variable strings with `str_c()`, you'll notice that you type a lot of `"`s, making it hard to see the overall goal of the code. An alternative approach is provided by the [glue package](https://glue.tidyverse.org) via `str_glue()`[^strings-4]. You give it a single string that has a special feature: anything inside `{}` will be evaluated like it's outside of the quotes:
-
-[^strings-4]: If you're not using stringr, you can also access it directly with `glue::glue()`.
+如果你用 `str_c()` 混合许多固定的和可变的字符串，你会注意到你输入了大量的 `"`，这使得代码的整体目标难以看清。另一种方法是由 [glue 包](https://glue.tidyverse.org) 通过 `str_glue()`[^4] 提供的。你给它一个具有特殊功能的单一字符串：`{}` 里的任何东西都会像在引号外面一样被求值：
 
 ```{r}
 df |> mutate(greeting = str_glue("Hi {name}!"))
 ```
 
-As you can see, `str_glue()` currently converts missing values to the string `"NA"`, unfortunately making it inconsistent with `str_c()`.
+如你所见，`str_glue()` 目前将缺失值转换为字符串 `"NA"`，不幸的是，这与 `str_c()` 不一致。
 
-You also might wonder what happens if you need to include a regular `{` or `}` in your string.
-You're on the right track if you guess you'll need to escape it somehow.
-The trick is that glue uses a slightly different escaping technique: instead of prefixing with special character like `\`, you double up the special characters:
+你可能还会想，如果需要在字符串中包含一个常规的 `{` 或 `}`，会发生什么。如果你猜到需要以某种方式转义它，那你的思路是正确的。诀窍在于 glue 使用了一种稍微不同的转义技术：不是用像 `\` 这样的特殊字符作为前缀，而是将特殊字符加倍：
 
 ```{r}
 df |> mutate(greeting = str_glue("{{Hi {name}!}}"))
@@ -209,11 +175,7 @@ df |> mutate(greeting = str_glue("{{Hi {name}!}}"))
 
 ### `str_flatten()`
 
-`str_c()` and `str_glue()` work well with `mutate()` because their output is the same length as their inputs.
-What if you want a function that works well with `summarize()`, i.e. something that always returns a single string?
-That's the job of `str_flatten()`[^strings-5]: it takes a character vector and combines each element of the vector into a single string:
-
-[^strings-5]: The base R equivalent is `paste()` used with the `collapse` argument.
+`str_c()` 和 `str_glue()` 与 `mutate()` 配合得很好，因为它们的输出与输入长度相同。如果你想要一个能与 `summarize()` 很好配合的函数，即一个总是返回单个字符串的东西呢？这就是 `str_flatten()`[^5] 的工作：它接受一个字符向量，并将向量的每个元素组合成一个单一的字符串：
 
 ```{r}
 str_flatten(c("x", "y", "z"))
@@ -221,37 +183,36 @@ str_flatten(c("x", "y", "z"), ", ")
 str_flatten(c("x", "y", "z"), ", ", last = ", and ")
 ```
 
-This makes it work well with `summarize()`:
+这使得它能与 `summarize()` 很好地配合工作：
 
 ```{r}
 df <- tribble(
-    ~name, ~fruit,
-    "Carmen", "banana",
-    "Carmen", "apple",
-    "Marvin", "nectarine",
-    "Terence", "cantaloupe",
-    "Terence", "papaya",
-    "Terence", "mandarin"
+  ~ name, ~ fruit,
+  "Carmen", "banana",
+  "Carmen", "apple",
+  "Marvin", "nectarine",
+  "Terence", "cantaloupe",
+  "Terence", "papaya",
+  "Terence", "mandarin"
 )
 df |>
-    group_by(name) |>
-    summarize(fruits = str_flatten(fruit, ", "))
+  group_by(name) |> 
+  summarize(fruits = str_flatten(fruit, ", "))
 ```
 
-### Exercises
+### 练习
 
-1.  Compare and contrast the results of `paste0()` with `str_c()` for the following inputs:
+1.  对于以下输入，比较并对比 `paste0()` 与 `str_c()` 的结果：
 
     ```{r}
-#| eval: false
-str_c("hi ", NA)
-str_c(letters[1:2], letters[1:3])
+    #| eval: false
+    str_c("hi ", NA)
+    str_c(letters[1:2], letters[1:3])
     ```
 
-2.  What's the difference between `paste()` and `paste0()`?
-    How can you recreate the equivalent of `paste()` with `str_c()`?
+2.  `paste()` 和 `paste0()` 有什么区别？你如何用 `str_c()` 重现与 `paste()` 等价的功能？
 
-3.  Convert the following expressions from `str_c()` to `str_glue()` or vice versa:
+3.  将以下表达式从 `str_c()` 转换为 `str_glue()`，或反之：
 
     a.  `str_c("The price of ", food, " is ", price)`
 
@@ -259,296 +220,254 @@ str_c(letters[1:2], letters[1:3])
 
     c.  `str_c("\\section{", title, "}")`
 
-## Extracting data from strings
+## 从字符串中提取数据
 
-It's very common for multiple variables to be crammed together into a single string.
-In this section, you'll learn how to use four tidyr functions to extract them:
+将多个变量塞进一个字符串中是很常见的。在本节中，你将学习如何使用四个 tidyr 函数来提取它们：
 
--   `df |> separate_longer_delim(col, delim)`
--   `df |> separate_longer_position(col, width)`
--   `df |> separate_wider_delim(col, delim, names)`
--   `df |> separate_wider_position(col, widths)`
+  - `df |> separate_longer_delim(col, delim)`
+  - `df |> separate_longer_position(col, width)`
+  - `df |> separate_wider_delim(col, delim, names)`
+  - `df |> separate_wider_position(col, widths)`
 
-If you look closely, you can see there's a common pattern here: `separate_`, then `longer` or `wider`, then `_`, then by `delim` or `position`.
-That's because these four functions are composed of two simpler primitives:
+如果你仔细观察，你会发现这里有一个共同的模式：`separate_`，然后是 `longer` 或 `wider`，然后是 `_`，然后是 `delim` 或 `position`。这是因为这四个函数是由两个更简单的原语组成的：
 
--   Just like with `pivot_longer()` and `pivot_wider()`, `_longer` functions make the input data frame longer by creating new rows and `_wider` functions make the input data frame wider by generating new columns.
--   `delim` splits up a string with a delimiter like `", "` or `" "`; `position` splits at specified widths, like `c(3, 5, 2)`.
+  - 就像 `pivot_longer()` 和 `pivot_wider()` 一样，`_longer` 函数通过创建新行来使输入的数据框变长，而 `_wider` 函数通过生成新列来使输入的数据框变宽。
+  - `delim` 用像 `", "` 或 `" "` 这样的分隔符来分割字符串；`position` 在指定的宽度处分割，比如 `c(3, 5, 2)`。
 
-We'll return to the last member of this family, `separate_wider_regex()`, in @sec-regular-expressions.
-It's the most flexible of the `wider` functions, but you need to know something about regular expressions before you can use it.
+我们将在 @sec-regular-expressions 中回到这个家族的最后一个成员，`separate_wider_regex()`。它是 `wider` 函数中最灵活的一个，但在使用它之前，你需要对正则表达式有所了解。
 
-The following two sections will give you the basic idea behind these separate functions, first separating into rows (which is a little simpler) and then separating into columns.
-We'll finish off by discussing the tools that the `wider` functions give you to diagnose problems.
+接下来的两节将为你介绍这些 `separate` 函数背后的基本思想，首先是分成行（这稍微简单一些），然后是分成列。最后，我们将讨论 `wider` 函数为你提供的诊断问题的工具。
 
-### Separating into rows
+### 分成行
 
-Separating a string into rows tends to be most useful when the number of components varies from row to row.
-The most common case is requiring `separate_longer_delim()` to split based on a delimiter:
+当不同行中组件的数量不同时，将字符串分成行通常最有用。最常见的情况是需要 `separate_longer_delim()` 根据分隔符进行分割：
 
 ```{r}
 df1 <- tibble(x = c("a,b,c", "d,e", "f"))
-df1 |>
-    separate_longer_delim(x, delim = ",")
+df1 |> 
+  separate_longer_delim(x, delim = ",")
 ```
 
-It's rarer to see `separate_longer_position()` in the wild, but some older datasets do use a very compact format where each character is used to record a value:
+`separate_longer_position()` 在实践中比较少见，但一些较老的数据集确实使用一种非常紧凑的格式，其中每个字符都用来记录一个值：
 
 ```{r}
 df2 <- tibble(x = c("1211", "131", "21"))
-df2 |>
-    separate_longer_position(x, width = 1)
+df2 |> 
+  separate_longer_position(x, width = 1)
 ```
 
-### Separating into columns {#sec-string-columns}
+### 分成列 {#sec-string-columns}
 
-Separating a string into columns tends to be most useful when there are a fixed number of components in each string, and you want to spread them into columns.
-They are slightly more complicated than their `longer` equivalents because you need to name the columns.
-For example, in this following dataset, `x` is made up of a code, an edition number, and a year, separated by `"."`.
-To use `separate_wider_delim()`, we supply the delimiter and the names in two arguments:
+当每个字符串中都有固定数量的组件，并且你希望将它们分散到列中时，将字符串分成列通常最有用。它们比它们的 `longer` 等价物稍微复杂一些，因为你需要命名这些列。例如，在下面的数据集中，`x` 由一个代码、一个版本号和一个年份组成，用 `.` 分隔。要使用 `separate_wider_delim()`，我们需要在两个参数中提供分隔符和名称：
 
 ```{r}
 df3 <- tibble(x = c("a10.1.2022", "b10.2.2011", "e15.1.2015"))
-df3 |>
-    separate_wider_delim(
-        x,
-        delim = ".",
-        names = c("code", "edition", "year")
-    )
+df3 |> 
+  separate_wider_delim(
+    x,
+    delim = ".",
+    names = c("code", "edition", "year")
+  )
 ```
 
-If a specific piece is not useful you can use an `NA` name to omit it from the results:
+如果某个特定的部分没有用，你可以使用 `NA` 名称来从结果中省略它：
 
 ```{r}
-df3 |>
-    separate_wider_delim(
-        x,
-        delim = ".",
-        names = c("code", NA, "year")
-    )
+df3 |> 
+  separate_wider_delim(
+    x,
+    delim = ".",
+    names = c("code", NA, "year")
+  )
 ```
 
-`separate_wider_position()` works a little differently because you typically want to specify the width of each column.
-So you give it a named integer vector, where the name gives the name of the new column, and the value is the number of characters it occupies.
-You can omit values from the output by not naming them:
+`separate_wider_position()` 的工作方式略有不同，因为你通常需要指定每列的宽度。所以你给它一个命名的整数向量，其中名称给出新列的名称，值是它占用的字符数。你可以通过不命名来从输出中省略值：
 
 ```{r}
-df4 <- tibble(x = c("202215TX", "202122LA", "202325CA"))
-df4 |>
-    separate_wider_position(
-        x,
-        widths = c(year = 4, age = 2, state = 2)
-    )
+df4 <- tibble(x = c("202215TX", "202122LA", "202325CA")) 
+df4 |> 
+  separate_wider_position(
+    x,
+    widths = c(year = 4, age = 2, state = 2)
+  )
 ```
 
-### Diagnosing widening problems
+### 诊断变宽问题
 
-`separate_wider_delim()`[^strings-6] requires a fixed and known set of columns.
-What happens if some of the rows don't have the expected number of pieces?
-There are two possible problems, too few or too many pieces, so `separate_wider_delim()` provides two arguments to help: `too_few` and `too_many`. Let's first look at the `too_few` case with the following sample dataset:
-
-[^strings-6]: The same principles apply to `separate_wider_position()` and `separate_wider_regex()`.
+`separate_wider_delim()`[^6] 需要一个固定的、已知的列集合。如果某些行没有预期的片段数量，会发生什么？可能存在两种问题：片段太少或太多，所以 `separate_wider_delim()` 提供了两个参数来帮助解决：`too_few` 和 `too_many`。我们首先用下面的示例数据集来看一下 `too_few` 的情况：
 
 ```{r}
 #| error: true
 df <- tibble(x = c("1-1-1", "1-1-2", "1-3", "1-3-2", "1"))
 
-df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z")
-    )
+df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z")
+  )
 ```
 
-You'll notice that we get an error, but the error gives us some suggestions on how you might proceed.
-Let's start by debugging the problem:
+你会注意到我们得到了一个错误，但错误信息给了我们一些关于如何继续的建议。让我们从调试问题开始：
 
 ```{r}
-debug <- df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z"),
-        too_few = "debug"
-    )
+debug <- df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_few = "debug"
+  )
 debug
 ```
 
-When you use the debug mode, you get three extra columns added to the output: `x_ok`, `x_pieces`, and `x_remainder` (if you separate a variable with a different name, you'll get a different prefix).
-Here, `x_ok` lets you quickly find the inputs that failed:
+当你使用调试模式时，输出中会增加三列：`x_ok`、`x_pieces` 和 `x_remainder`（如果你分离一个不同名称的变量，你会得到一个不同的前缀）。在这里，`x_ok` 让你能够快速找到失败的输入：
 
 ```{r}
 debug |> filter(!x_ok)
 ```
 
-`x_pieces` tells us how many pieces were found, compared to the expected 3 (the length of `names`).
-`x_remainder` isn't useful when there are too few pieces, but we'll see it again shortly.
+`x_pieces` 告诉我们找到了多少个片段，而预期是 3 个（`names` 的长度）。当片段太少时，`x_remainder` 没有用，但我们很快会再次看到它。
 
-Sometimes looking at this debugging information will reveal a problem with your delimiter strategy or suggest that you need to do more preprocessing before separating.
-In that case, fix the problem upstream and make sure to remove `too_few = "debug"` to ensure that new problems become errors.
+有时，查看这些调试信息会揭示你的分隔符策略存在问题，或者表明你需要在分离前进行更多的预处理。在这种情况下，修复上游的问题，并确保移除 `too_few = "debug"`，以确保新问题会变成错误。
 
-In other cases, you may want to fill in the missing pieces with `NA`s and move on.
-That's the job of `too_few = "align_start"` and `too_few = "align_end"` which allow you to control where the `NA`s should go:
+在其他情况下，你可能希望用 `NA` 填充缺失的片段然后继续。这就是 `too_few = "align_start"` 和 `too_few = "align_end"` 的工作，它们允许你控制 `NA` 应该放在哪里：
 
 ```{r}
-df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z"),
-        too_few = "align_start"
-    )
+df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_few = "align_start"
+  )
 ```
 
-The same principles apply if you have too many pieces:
+如果你有太多的片段，同样的原则也适用：
 
 ```{r}
 #| error: true
 df <- tibble(x = c("1-1-1", "1-1-2", "1-3-5-6", "1-3-2", "1-3-5-7-9"))
 
-df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z")
-    )
+df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z")
+  )
 ```
 
-But now, when we debug the result, you can see the purpose of `x_remainder`:
+但是现在，当我们调试结果时，你可以看到 `x_remainder` 的用途：
 
 ```{r}
-debug <- df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z"),
-        too_many = "debug"
-    )
+debug <- df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "debug"
+  )
 debug |> filter(!x_ok)
 ```
 
-You have a slightly different set of options for handling too many pieces: you can either silently "drop" any additional pieces or "merge" them all into the final column:
+对于处理过多的片段，你有一套略有不同的选项：你可以静默地“drop”（丢弃）任何额外的片段，或者将它们全部“merge”（合并）到最后一列：
 
 ```{r}
-df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z"),
-        too_many = "drop"
-    )
+df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "drop"
+  )
 
 
-df |>
-    separate_wider_delim(
-        x,
-        delim = "-",
-        names = c("x", "y", "z"),
-        too_many = "merge"
-    )
+df |> 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "merge"
+  )
 ```
 
-## Letters
+## 字母
 
-In this section, we'll introduce you to functions that allow you to work with the individual letters within a string.
-You'll learn how to find the length of a string, extract substrings, and handle long strings in plots and tables.
+在本节中，我们将向你介绍一些函数，让你能够处理字符串中的单个字母。你将学习如何找到字符串的长度，提取子字符串，以及在图表和表格中处理长字符串。
 
-### Length
+### 长度
 
-`str_length()` tells you the number of letters in the string:
+`str_length()` 告诉你字符串中有多少个字母：
 
 ```{r}
 str_length(c("a", "R for data science", NA))
 ```
 
-You could use this with `count()` to find the distribution of lengths of US babynames and then with `filter()` to look at the longest names, which happen to have 15 letters[^strings-7]:
-
-[^strings-7]: Looking at these entries, we'd guess that the babynames data drops spaces or hyphens and truncates after 15 letters.
+你可以将此与 `count()` 一起使用，以找出美国婴儿姓名长度的分布，然后用 `filter()` 查看最长的名字，这些名字恰好有 15 个字母[^7]：
 
 ```{r}
 babynames |>
-    count(length = str_length(name), wt = n)
+  count(length = str_length(name), wt = n)
 
-babynames |>
-    filter(str_length(name) == 15) |>
-    count(name, wt = n, sort = TRUE)
+babynames |> 
+  filter(str_length(name) == 15) |> 
+  count(name, wt = n, sort = TRUE)
 ```
 
-### Subsetting
+### 子集
 
-You can extract parts of a string using `str_sub(string, start, end)`, where `start` and `end` are the positions where the substring should start and end.
-The `start` and `end` arguments are inclusive, so the length of the returned string will be `end - start + 1`:
+你可以使用 `str_sub(string, start, end)` 来提取字符串的一部分，其中 `start` 和 `end` 是子字符串应该开始和结束的位置。`start` 和 `end` 参数是包含性的，所以返回的字符串长度将是 `end - start + 1`：
 
 ```{r}
 x <- c("Apple", "Banana", "Pear")
 str_sub(x, 1, 3)
 ```
 
-You can use negative values to count back from the end of the string: -1 is the last character, -2 is the second to last character, etc.
+你可以使用负值从字符串的末尾向前计数：-1 是最后一个字符，-2 是倒数第二个字符，依此类推。
 
 ```{r}
 str_sub(x, -3, -1)
 ```
 
-Note that `str_sub()` won't fail if the string is too short: it will just return as much as possible:
+请注意，如果字符串太短，`str_sub()` 不会失败：它只会返回尽可能多的内容：
 
 ```{r}
 str_sub("a", 1, 5)
 ```
 
-We could use `str_sub()` with `mutate()` to find the first and last letter of each name:
+我们可以使用 `str_sub()` 和 `mutate()` 来找出每个名字的首字母和末尾字母：
 
 ```{r}
-babynames |>
-    mutate(
-        first = str_sub(name, 1, 1),
-        last = str_sub(name, -1, -1)
-    )
+babynames |> 
+  mutate(
+    first = str_sub(name, 1, 1),
+    last = str_sub(name, -1, -1)
+  )
 ```
 
-### Exercises
+### 练习
 
-1.  When computing the distribution of the length of babynames, why did we use `wt = n`?
-2.  Use `str_length()` and `str_sub()` to extract the middle letter from each baby name. What will you do if the string has an even number of characters?
-3.  Are there any major trends in the length of babynames over time? What about the popularity of first and last letters?
+1.  在计算婴儿姓名长度的分布时，我们为什么使用 `wt = n`？
+2.  使用 `str_length()` 和 `str_sub()` 从每个婴儿名字中提取中间的字母。如果字符串有偶数个字符，你该怎么办？
+3.  婴儿姓名的长度随时间变化有任何主要趋势吗？首字母和末尾字母的流行度呢？
 
-## Non-English text {#sec-other-languages}
+## 非英文文本 {#sec-other-languages}
 
-So far, we've focused on English language text which is particularly easy to work with for two reasons.
-Firstly, the English alphabet is relatively simple: there are just 26 letters.
-Secondly (and maybe more importantly), the computing infrastructure we use today was predominantly designed by English speakers.
-Unfortunately, we don't have room for a full treatment of non-English languages.
-Still, we wanted to draw your attention to some of the biggest challenges you might encounter: encoding, letter variations, and locale-dependent functions.
+到目前为止，我们主要关注英文文本，处理英文文本特别容易，原因有二。首先，英文字母相对简单：只有 26 个字母。其次（也许更重要），我们今天使用的计算基础设施主要是由说英语的人设计的。不幸的是，我们没有足够的篇幅来全面处理非英文语言。尽管如此，我们还是想提醒你注意一些你可能会遇到的最大挑战：编码、字母变体和依赖于区域设置的函数。
 
-### Encoding
+### 编码
 
-When working with non-English text, the first challenge is often the **encoding**.
-To understand what's going on, we need to dive into how computers represent strings.
-In R, we can get at the underlying representation of a string using `charToRaw()`:
+在处理非英文文本时，第一个挑战通常是**编码 (encoding)**。要理解发生了什么，我们需要深入了解计算机是如何表示字符串的。在 R 中，我们可以使用 `charToRaw()` 来获取字符串的底层表示：
 
 ```{r}
 charToRaw("Hadley")
 ```
 
-Each of these six hexadecimal numbers represents one letter: `48` is H, `61` is a, and so on.
-The mapping from hexadecimal number to character is called the encoding, and in this case, the encoding is called ASCII.
-ASCII does a great job of representing English characters because it's the **American** Standard Code for Information Interchange.
+这六个十六进制数中的每一个都代表一个字母：`48` 是 H，`61` 是 a，依此类推。从十六进制数到字符的映射称为编码，在这种情况下，编码被称为 ASCII。ASCII 在表示英文字符方面做得很好，因为它是**美国**信息交换标准代码。
 
-Things aren't so easy for languages other than English.
-In the early days of computing, there were many competing standards for encoding non-English characters.
-For example, there were two different encodings for Europe: Latin1 (aka ISO-8859-1) was used for Western European languages, and Latin2 (aka ISO-8859-2) was used for Central European languages.
-In Latin1, the byte `b1` is "±", but in Latin2, it's "ą"!
-Fortunately, today there is one standard that is supported almost everywhere: UTF-8.
-UTF-8 can encode just about every character used by humans today and many extra symbols like emojis.
+对于非英语语言来说，事情就没那么简单了。在计算的早期，有许多竞争性的标准用于编码非英文字符。例如，欧洲有两种不同的编码：Latin1（又名 ISO-8859-1）用于西欧语言，而 Latin2（又名 ISO-8859-2）用于中欧语言。在 Latin1 中，字节 `b1` 是 "±"，但在 Latin2 中，它是 "ą"！幸运的是，今天有一个几乎在任何地方都支持的标准：UTF-8。UTF-8 几乎可以编码当今人类使用的所有字符，以及许多额外的符号，如表情符号。
 
-readr uses UTF-8 everywhere.
-This is a good default but will fail for data produced by older systems that don't use UTF-8.
-If this happens, your strings will look weird when you print them.
-Sometimes just one or two characters might be messed up; other times, you'll get complete gibberish.
-For example here are two inline CSVs with unusual encodings[^strings-8]:
-
-[^strings-8]: Here I'm using the special `\x` to encode binary data directly into a string.
+readr 处处使用 UTF-8。这是一个很好的默认设置，但对于由不使用 UTF-8 的旧系统产生的数据来说，这会失败。如果发生这种情况，你的字符串在打印时会看起来很奇怪。有时可能只有一两个字符出错；其他时候，你会得到完全的乱码。例如，这里是两个带有不寻常编码的内联 CSV[^8]：
 
 ```{r}
 #| eval: false
@@ -562,7 +481,7 @@ read_csv(x2)$text
 #> [1] "\x82\xb1\x82\xf1\x82ɂ\xbf\x82\xcd"
 ```
 
-To read these correctly, you specify the encoding via the `locale` argument:
+要正确读取这些内容，你需要通过 `locale` 参数指定编码：
 
 ```{r}
 #| eval: false
@@ -573,33 +492,27 @@ read_csv(x2, locale = locale(encoding = "Shift-JIS"))$text
 #> [1] "こんにちは"
 ```
 
-How do you find the correct encoding?
-If you're lucky, it'll be included somewhere in the data documentation.
-Unfortunately, that's rarely the case, so readr provides `guess_encoding()` to help you figure it out.
-It's not foolproof and works better when you have lots of text (unlike here), but it's a reasonable place to start.
-Expect to try a few different encodings before you find the right one.
+你如何找到正确的编码？如果幸运的话，它会包含在数据文档的某个地方。不幸的是，这种情况很少见，所以 readr 提供了 `guess_encoding()` 来帮助你找出它。它不是万无一失的，并且在你有很多文本时效果更好（不像这里），但它是一个合理的起点。预计你需要尝试几种不同的编码才能找到正确的那个。
 
-Encodings are a rich and complex topic; we've only scratched the surface here.
-If you'd like to learn more, we recommend reading the detailed explanation at <http://kunststube.net/encoding/>.
+编码是一个丰富而复杂的主题；我们在这里只触及了皮毛。如果你想了解更多，我们建议阅读 [http://kunststube.net/encoding/](http://kunststube.net/encoding/) 上的详细解释。
 
-### Letter variations
+### 字母变体
 
-Working in languages with accents poses a significant challenge when determining the position of letters (e.g., with `str_length()` and `str_sub()`) as accented letters might be encoded as a single individual character (e.g., ü) or as two characters by combining an unaccented letter (e.g., u) with a diacritic mark (e.g., ¨).
-For example, this code shows two ways of representing ü that look identical:
+在处理带重音的语言时，确定字母的位置（例如，使用 `str_length()` 和 `str_sub()`）会带来一个重大挑战，因为带重音的字母可能被编码为单个独立的字符（例如，ü），或者通过组合一个不带重音的字母（例如，u）和一个变音符号（例如，¨）来编码为两个字符。例如，这段代码显示了两种看起来相同的 ü 的表示方法：
 
 ```{r}
 u <- c("\u00fc", "u\u0308")
 str_view(u)
 ```
 
-But both strings differ in length, and their first characters are different:
+但这两个字符串的长度不同，并且它们的第一个字符也不同：
 
 ```{r}
 str_length(u)
 str_sub(u, 1, 1)
 ```
 
-Finally, note that a comparison of these strings with `==` interprets these strings as different, while the handy `str_equal()` function in stringr recognizes that both have the same appearance:
+最后，请注意，使用 `==` 比较这些字符串会将它们解释为不同的，而 stringr 中方便的 `str_equal()` 函数则能识别出它们俩具有相同的外观：
 
 ```{r}
 u[[1]] == u[[2]]
@@ -607,42 +520,55 @@ u[[1]] == u[[2]]
 str_equal(u[[1]], u[[2]])
 ```
 
-### Locale-dependent functions
+### 依赖于区域设置的函数
 
-Finally, there are a handful of stringr functions whose behavior depends on your **locale**.
-A locale is similar to a language but includes an optional region specifier to handle regional variations within a language.
-A locale is specified by a lower-case language abbreviation, optionally followed by a `_` and an upper-case region identifier.
-For example, "en" is English, "en_GB" is British English, and "en_US" is American English.
-If you don't already know the code for your language, [Wikipedia](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) has a good list, and you can see which are supported in stringr by looking at `stringi::stri_locale_list()`.
+最后，还有一些 stringr 函数的行为取决于你的**区域设置 (locale)**。区域设置类似于一种语言，但包含一个可选的地区说明符，以处理一种语言内部的地区差异。区域设置由一个小写的语言缩写指定，后面可以选择性地跟一个 `_` 和一个大写的地区标识符。例如，"en" 是英语，"en\_GB" 是英式英语，"en\_US" 是美式英语。如果你还不知道你语言的代码，[维基百科](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 有一个很好的列表，你可以通过查看 `stringi::stri_locale_list()` 来看看 stringr 支持哪些。
 
-Base R string functions automatically use the locale set by your operating system.
-This means that base R string functions do what you expect for your language, but your code might work differently if you share it with someone who lives in a different country.
-To avoid this problem, stringr defaults to English rules by using the "en" locale and requires you to specify the `locale` argument to override it.
-Fortunately, there are only two sets of functions where the locale really matters: changing case and sorting.
+R base 的字符串函数会自动使用你的操作系统设置的区域设置。这意味着 R base 的字符串函数会按照你期望的方式对你的语言进行操作，但如果你的代码与生活在不同国家的人共享，它可能会有不同的表现。为了避免这个问题，stringr 默认使用 "en" 区域设置的英语规则，并要求你指定 `locale` 参数来覆盖它。幸运的是，只有两组函数的区域设置真正重要：改变大小写和排序。
 
-The rules for changing cases differ among languages.
-For example, Turkish has two i's: with and without a dot.
-Since they're two distinct letters, they're capitalized differently:
+改变大小写的规则在不同语言中有所不同。例如，土耳其语中有两个 i：带点和不带点的。由于它们是两个不同的字母，它们的大小写转换也不同：
 
 ```{r}
 str_to_upper(c("i", "ı"))
 str_to_upper(c("i", "ı"), locale = "tr")
 ```
 
-Sorting strings depends on the order of the alphabet, and the order of the alphabet is not the same in every language[^strings-9]!
-Here's an example: in Czech, "ch" is a compound letter that appears after `h` in the alphabet.
-
-[^strings-9]: Sorting in languages that don't have an alphabet, like Chinese, is more complicated still.
+对字符串进行排序取决于字母表的顺序，而字母表的顺序在每种语言中都不尽相同[^9]！这里有一个例子：在捷克语中，"ch" 是一个复合字母，它在字母表中出现在 `h` 之后。
 
 ```{r}
 str_sort(c("a", "c", "ch", "h", "z"))
 str_sort(c("a", "c", "ch", "h", "z"), locale = "cs")
 ```
 
-This also comes up when sorting strings with `dplyr::arrange()`, which is why it also has a `locale` argument.
+这在使用 `dplyr::arrange()` 对字符串进行排序时也会出现，这就是为什么它也有一个 `locale` 参数。
 
-## Summary
+## 总结
 
-In this chapter, you've learned about some of the power of the stringr package: how to create, combine, and extract strings, and about some of the challenges you might face with non-English strings.
-Now it's time to learn one of the most important and powerful tools for working with strings: regular expressions.
-Regular expressions are a very concise but very expressive language for describing patterns within strings and are the topic of the next chapter.
+在本章中，你已经了解了 stringr 包的一些强大功能：如何创建、组合和提取字符串，以及在处理非英语字符串时可能面临的一些挑战。现在是时候学习一个处理字符串最重要、最强大的工具之一了：正则表达式。正则表达式是一种非常简洁但表达能力极强的语言，用于描述字符串内的模式，它是下一章的主题。
+
+[^1]:
+    或者使用 R base 函数 `writeLines()`。
+
+[^2]:
+    R 4.0.0 及以上版本可用。
+
+[^3]:
+    `str_view()` 还使用颜色来提请你注意制表符、空格、匹配项等。这些颜色目前在书中不显示，但你在交互式运行代码时会注意到它们。
+
+[^4]:
+    如果你没有使用 stringr，你也可以直接用 `glue::glue()` 来访问它。
+
+[^5]:
+    R base 中与之等价的是使用 `collapse` 参数的 `paste()`。
+
+[^6]:
+    同样的原则也适用于 `separate_wider_position()` 和 `separate_wider_regex()`。
+
+[^7]:
+    查看这些条目，我们猜测 babynames 数据丢弃了空格或连字符，并在 15 个字母后截断。
+
+[^8]:
+    在这里，我使用特殊的 `\x` 将二进制数据直接编码到字符串中。
+
+[^9]:
+    在没有字母表的语言（如中文）中排序则更为复杂。

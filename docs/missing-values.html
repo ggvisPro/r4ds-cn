@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>18&nbsp; Missing values – R 数据科学 2e
+<title>18&nbsp; 缺失值 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform</span></a>
+ <span class="menu-text">数据转换</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -257,49 +257,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./numbers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./strings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regexps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regular expressions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">正则表达式</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因子</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datetimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dates and times</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">日期和时间</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">连接</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,35 +406,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">18.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">18.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">18.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" id="toc-前提条件" class="nav-link" data-scroll-target="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="header-section-number">18.1.1</span> 前提条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#explicit-missing-values" id="toc-explicit-missing-values" class="nav-link" data-scroll-target="#explicit-missing-values"><span class="header-section-number">18.2</span> Explicit missing values</a>
+<a href="#%E6%98%BE%E5%BC%8F%E7%BC%BA%E5%A4%B1%E5%80%BC" id="toc-显式缺失值" class="nav-link" data-scroll-target="#%E6%98%BE%E5%BC%8F%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="header-section-number">18.2</span> 显式缺失值</a>
   <ul class="collapse">
-<li><a href="#last-observation-carried-forward" id="toc-last-observation-carried-forward" class="nav-link" data-scroll-target="#last-observation-carried-forward"><span class="header-section-number">18.2.1</span> Last observation carried forward</a></li>
-  <li><a href="#fixed-values" id="toc-fixed-values" class="nav-link" data-scroll-target="#fixed-values"><span class="header-section-number">18.2.2</span> Fixed values</a></li>
+<li><a href="#%E6%9C%AB%E6%AC%A1%E8%A7%82%E6%B5%8B%E5%80%BC%E7%BB%93%E8%BD%AC" id="toc-末次观测值结转" class="nav-link" data-scroll-target="#%E6%9C%AB%E6%AC%A1%E8%A7%82%E6%B5%8B%E5%80%BC%E7%BB%93%E8%BD%AC"><span class="header-section-number">18.2.1</span> 末次观测值结转</a></li>
+  <li><a href="#%E5%9B%BA%E5%AE%9A%E5%80%BC" id="toc-固定值" class="nav-link" data-scroll-target="#%E5%9B%BA%E5%AE%9A%E5%80%BC"><span class="header-section-number">18.2.2</span> 固定值</a></li>
   <li><a href="#nan" id="toc-nan" class="nav-link" data-scroll-target="#nan"><span class="header-section-number">18.2.3</span> NaN</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-missing-implicit" id="toc-sec-missing-implicit" class="nav-link" data-scroll-target="#sec-missing-implicit"><span class="header-section-number">18.3</span> Implicit missing values</a>
+<a href="#sec-missing-implicit" id="toc-sec-missing-implicit" class="nav-link" data-scroll-target="#sec-missing-implicit"><span class="header-section-number">18.3</span> 隐式缺失值</a>
   <ul class="collapse">
-<li><a href="#pivoting" id="toc-pivoting" class="nav-link" data-scroll-target="#pivoting"><span class="header-section-number">18.3.1</span> Pivoting</a></li>
-  <li><a href="#complete" id="toc-complete" class="nav-link" data-scroll-target="#complete"><span class="header-section-number">18.3.2</span> Complete</a></li>
-  <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins"><span class="header-section-number">18.3.3</span> Joins</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">18.3.4</span> Exercises</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91-pivoting" id="toc-数据重塑-pivoting" class="nav-link" data-scroll-target="#%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91-pivoting"><span class="header-section-number">18.3.1</span> 数据重塑 (Pivoting)</a></li>
+  <li><a href="#%E8%A1%A5%E5%85%A8-complete" id="toc-补全-complete" class="nav-link" data-scroll-target="#%E8%A1%A5%E5%85%A8-complete"><span class="header-section-number">18.3.2</span> 补全 (Complete)</a></li>
+  <li><a href="#%E8%BF%9E%E6%8E%A5-joins" id="toc-连接-joins" class="nav-link" data-scroll-target="#%E8%BF%9E%E6%8E%A5-joins"><span class="header-section-number">18.3.3</span> 连接 (Joins)</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">18.3.4</span> 练习</a></li>
   </ul>
 </li>
-  <li><a href="#factors-and-empty-groups" id="toc-factors-and-empty-groups" class="nav-link" data-scroll-target="#factors-and-empty-groups"><span class="header-section-number">18.4</span> Factors and empty groups</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">18.5</span> Summary</a></li>
+  <li><a href="#%E5%9B%A0%E5%AD%90%E5%92%8C%E7%A9%BA%E7%BB%84" id="toc-因子和空组" class="nav-link" data-scroll-target="#%E5%9B%A0%E5%AD%90%E5%92%8C%E7%A9%BA%E7%BB%84"><span class="header-section-number">18.4</span> 因子和空组</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">18.5</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/missing-values.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-missing-values" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-missing-values" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></span></h1>
 </div>
 
 
@@ -448,35 +448,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="18.1"><h2 data-number="18.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">18.1</span> Introduction</h2>
-<p>You’ve already learned the basics of missing values earlier in the book. You first saw them in <a href="data-visualize.html" class="quarto-xref"><span>Chapter 1</span></a> where they resulted in a warning when making a plot as well as in <a href="data-transform.html#sec-summarize" class="quarto-xref"><span>Section 3.5.2</span></a> where they interfered with computing summary statistics, and you learned about their infectious nature and how to check for their presence in <a href="logicals.html#sec-na-comparison" class="quarto-xref"><span>Section 12.2.2</span></a>. Now we’ll come back to them in more depth, so you can learn more of the details.</p>
-<p>We’ll start by discussing some general tools for working with missing values recorded as <code>NA</code>s. We’ll then explore the idea of implicitly missing values, values that are simply absent from your data, and show some tools you can use to make them explicit. We’ll finish off with a related discussion of empty groups, caused by factor levels that don’t appear in the data.</p>
-<section id="prerequisites" class="level3" data-number="18.1.1"><h3 data-number="18.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">18.1.1</span> Prerequisites</h3>
-<p>The functions for working with missing data mostly come from dplyr and tidyr, which are core members of the tidyverse.</p>
+</header><section id="引言" class="level2" data-number="18.1"><h2 data-number="18.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">18.1</span> 引言</h2>
+<p>你在本书的前面部分已经学习了关于缺失值的基础知识。你第一次见到它们是在 <a href="data-visualize.html" class="quarto-xref"><span>Chapter 1</span></a>，当时它们在绘图时导致了一个警告；在 <a href="data-transform.html#sec-summarize" class="quarto-xref"><span>Section 3.5.2</span></a>，它们干扰了汇总统计的计算；在 <a href="logicals.html#sec-na-comparison" class="quarto-xref"><span>Section 12.2.2</span></a>，你了解了它们的传染性以及如何检查它们的存在。现在，我们将更深入地探讨它们，以便你学习更多细节。</p>
+<p>我们将首先讨论一些处理记录为 <code>NA</code> 的缺失值的通用工具。然后，我们将探讨隐式缺失值的概念，即那些仅仅在你的数据中不存在的值，并展示一些你可以用来使它们显式化的工具。最后，我们将以一个相关的话题——空组来结束，这是由数据中未出现的因子水平引起的。</p>
+<section id="前提条件" class="level3" data-number="18.1.1"><h3 data-number="18.1.1" class="anchored" data-anchor-id="前提条件">
+<span class="header-section-number">18.1.1</span> 前提条件</h3>
+<p>处理缺失数据的函数主要来自 dplyr 和 tidyr，它们是 tidyverse 的核心成员。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="explicit-missing-values" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="explicit-missing-values">
-<span class="header-section-number">18.2</span> Explicit missing values</h2>
-<p>To begin, let’s explore a few handy tools for creating or eliminating missing explicit values, i.e.&nbsp;cells where you see an <code>NA</code>.</p>
-<section id="last-observation-carried-forward" class="level3" data-number="18.2.1"><h3 data-number="18.2.1" class="anchored" data-anchor-id="last-observation-carried-forward">
-<span class="header-section-number">18.2.1</span> Last observation carried forward</h3>
-<p>A common use for missing values is as a data entry convenience. When data is entered by hand, missing values sometimes indicate that the value in the previous row has been repeated (or carried forward):</p>
+</section></section><section id="显式缺失值" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="显式缺失值">
+<span class="header-section-number">18.2</span> 显式缺失值</h2>
+<p>首先，让我们探讨一些用于创建或消除显式缺失值（即你看到 <code>NA</code> 的单元格）的便捷工具。</p>
+<section id="末次观测值结转" class="level3" data-number="18.2.1"><h3 data-number="18.2.1" class="anchored" data-anchor-id="末次观测值结转">
+<span class="header-section-number">18.2.1</span> 末次观测值结转</h3>
+<p>缺失值的一个常见用途是作为数据录入的便利手段。当数据是手动输入时，缺失值有时表示前一行中的值被重复（或结转）了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>    <span class="op">~</span><span class="va">person</span>, <span class="op">~</span><span class="va">treatment</span>, <span class="op">~</span><span class="va">response</span>,</span>
-<span>    <span class="st">"Derrick Whitmore"</span>, <span class="fl">1</span>, <span class="fl">7</span>,</span>
-<span>    <span class="cn">NA</span>, <span class="fl">2</span>, <span class="fl">10</span>,</span>
-<span>    <span class="cn">NA</span>, <span class="fl">3</span>, <span class="cn">NA</span>,</span>
-<span>    <span class="st">"Katherine Burke"</span>, <span class="fl">1</span>, <span class="fl">4</span></span>
+<span>  <span class="op">~</span><span class="va">person</span>,          <span class="op">~</span><span class="va">treatment</span>, <span class="op">~</span><span class="va">response</span>,</span>
+<span>  <span class="st">"Derrick Whitmore"</span>, <span class="fl">1</span>,          <span class="fl">7</span>,</span>
+<span>  <span class="cn">NA</span>,                 <span class="fl">2</span>,          <span class="fl">10</span>,</span>
+<span>  <span class="cn">NA</span>,                 <span class="fl">3</span>,          <span class="cn">NA</span>,</span>
+<span>  <span class="st">"Katherine Burke"</span>,  <span class="fl">1</span>,          <span class="fl">4</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can fill in these missing values with <code><a href="https://tidyr.tidyverse.org/reference/fill.html">tidyr::fill()</a></code>. It works like <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, taking a set of columns:</p>
+<p>你可以使用 <code><a href="https://tidyr.tidyverse.org/reference/fill.html">tidyr::fill()</a></code> 来填充这些缺失值。它的工作方式类似于 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>，接受一组列：</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/fill.html">fill</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/fill.html">fill</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
 <span><span class="co">#&gt;   person           treatment response</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;</span></span>
@@ -485,17 +485,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 Derrick Whitmore         3       10</span></span>
 <span><span class="co">#&gt; 4 Katherine Burke          1        4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This treatment is sometimes called “last observation carried forward”, or <strong>locf</strong> for short. You can use the <code>.direction</code> argument to fill in missing values that have been generated in more exotic ways.</p>
-</section><section id="fixed-values" class="level3" data-number="18.2.2"><h3 data-number="18.2.2" class="anchored" data-anchor-id="fixed-values">
-<span class="header-section-number">18.2.2</span> Fixed values</h3>
-<p>Some times missing values represent some fixed and known value, most commonly 0. You can use <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">dplyr::coalesce()</a></code> to replace them:</p>
+<p>这种处理方法有时被称为“末次观测值结转”(last observation carried forward)，简称 <strong>locf</strong>。你可以使用 <code>.direction</code> 参数来填充以更奇特方式产生的缺失值。</p>
+</section><section id="固定值" class="level3" data-number="18.2.2"><h3 data-number="18.2.2" class="anchored" data-anchor-id="固定值">
+<span class="header-section-number">18.2.2</span> 固定值</h3>
+<p>有时缺失值代表某个固定的已知值，最常见的是 0。你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">dplyr::coalesce()</a></code> 来替换它们：</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1 4 5 7 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Sometimes you’ll hit the opposite problem where some concrete value actually represents a missing value. This typically arises in data generated by older software that doesn’t have a proper way to represent missing values, so it must instead use some special value like 99 or -999.</p>
-<p>If possible, handle this when reading in the data, for example, by using the <code>na</code> argument to <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code>, e.g., <code>read_csv(path, na = "99")</code>. If you discover the problem later, or your data source doesn’t provide a way to handle it on read, you can use <code><a href="https://dplyr.tidyverse.org/reference/na_if.html">dplyr::na_if()</a></code>:</p>
+<p>有时你会遇到相反的问题，即某个具体值实际上代表一个缺失值。这通常出现在由没有适当方式表示缺失值的旧软件生成的数据中，因此它必须使用一些特殊值，如 99 或 -999。</p>
+<p>如果可能，在读入数据时处理这个问题，例如，使用 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code> 的 <code>na</code> 参数，例如 <code>read_csv(path, na = "99")</code>。如果你后来才发现这个问题，或者你的数据源没有提供在读取时处理它的方法，你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/na_if.html">dplyr::na_if()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="op">-</span><span class="fl">99</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span><span class="op">(</span><span class="va">x</span>, <span class="op">-</span><span class="fl">99</span><span class="op">)</span></span>
@@ -503,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="nan" class="level3" data-number="18.2.3"><h3 data-number="18.2.3" class="anchored" data-anchor-id="nan">
 <span class="header-section-number">18.2.3</span> NaN</h3>
-<p>Before we continue, there’s one special type of missing value that you’ll encounter from time to time: a <code>NaN</code> (pronounced “nan”), or <strong>n</strong>ot <strong>a</strong> <strong>n</strong>umber. It’s not that important to know about because it generally behaves just like <code>NA</code>:</p>
+<p>在我们继续之前，有一种特殊类型的缺失值你偶尔会遇到：<code>NaN</code>（读作 “nan”），即<strong>非数值 (not a number)</strong>。了解它并不那么重要，因为它通常的行为就像 <code>NA</code> 一样：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">*</span> <span class="fl">10</span></span>
@@ -513,10 +513,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In the rare case you need to distinguish an <code>NA</code> from a <code>NaN</code>, you can use <code>is.nan(x)</code>.</p>
-<p>You’ll generally encounter a <code>NaN</code> when you perform a mathematical operation that has an indeterminate result:</p>
+<p>在极少数情况下，如果你需要区分 <code>NA</code> 和 <code>NaN</code>，你可以使用 <code>is.nan(x)</code>。</p>
+<p>当你执行一个结果不确定的数学运算时，通常会遇到 <code>NaN</code>：</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span> <span class="op">/</span> <span class="fl">0</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span> <span class="op">/</span> <span class="fl">0</span> </span>
 <span><span class="co">#&gt; [1] NaN</span></span>
 <span><span class="fl">0</span> <span class="op">*</span> <span class="cn">Inf</span></span>
 <span><span class="co">#&gt; [1] NaN</span></span>
@@ -527,48 +527,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] NaN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="sec-missing-implicit" class="level2" data-number="18.3"><h2 data-number="18.3" class="anchored" data-anchor-id="sec-missing-implicit">
-<span class="header-section-number">18.3</span> Implicit missing values</h2>
-<p>So far we’ve talked about missing values that are <strong>explicitly</strong> missing, i.e.&nbsp;you can see an <code>NA</code> in your data. But missing values can also be <strong>implicitly</strong> missing, if an entire row of data is simply absent from the data. Let’s illustrate the difference with a simple dataset that records the price of some stock each quarter:</p>
+<span class="header-section-number">18.3</span> 隐式缺失值</h2>
+<p>到目前为止，我们讨论的缺失值都是<strong>显式</strong>缺失的，也就是说，你可以在数据中看到一个 <code>NA</code>。但缺失值也可能是<strong>隐式</strong>缺失的，如果一整行数据根本就不存在于数据中。让我们用一个记录某支股票每个季度价格的简单数据集来说明这两者的区别：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    year  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2021</span>, <span class="fl">2021</span><span class="op">)</span>,</span>
-<span>    qtr   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span>    price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.35</span>, <span class="cn">NA</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>, <span class="fl">2.66</span><span class="op">)</span></span>
+<span>  year  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2021</span>, <span class="fl">2021</span><span class="op">)</span>,</span>
+<span>  qtr   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>   <span class="fl">1</span>,    <span class="fl">2</span>,    <span class="fl">3</span>,    <span class="fl">4</span>,    <span class="fl">2</span>,    <span class="fl">3</span>,    <span class="fl">4</span><span class="op">)</span>,</span>
+<span>  price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.35</span>,   <span class="cn">NA</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>, <span class="fl">2.66</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This dataset has two missing observations:</p>
+<p>这个数据集中有两个缺失的观测值：</p>
 <ul>
-<li><p>The <code>price</code> in the fourth quarter of 2020 is explicitly missing, because its value is <code>NA</code>.</p></li>
-<li><p>The <code>price</code> for the first quarter of 2021 is implicitly missing, because it simply does not appear in the dataset.</p></li>
+<li><p>2020 年第四季度的 <code>price</code> 是显式缺失的，因为它的值是 <code>NA</code>。</p></li>
+<li><p>2021 年第一季度的 <code>price</code> 是隐式缺失的，因为它根本没有出现在数据集中。</p></li>
 </ul>
-<p>One way to think about the difference is with this Zen-like koan:</p>
+<p>思考这两者区别的一种方式是这个富有禅意的公案：</p>
 <blockquote class="blockquote">
-<p>An explicit missing value is the presence of an absence.<br></p>
-<p>An implicit missing value is the absence of a presence.</p>
+<p>显式缺失值是一种存在着的“缺失”。</p>
+<p>隐式缺失值是一种不存在着的“存在”。</p>
 </blockquote>
-<p>Sometimes you want to make implicit missings explicit in order to have something physical to work with. In other cases, explicit missings are forced upon you by the structure of the data and you want to get rid of them. The following sections discuss some tools for moving between implicit and explicit missingness.</p>
-<section id="pivoting" class="level3" data-number="18.3.1"><h3 data-number="18.3.1" class="anchored" data-anchor-id="pivoting">
-<span class="header-section-number">18.3.1</span> Pivoting</h3>
-<p>You’ve already seen one tool that can make implicit missings explicit and vice versa: pivoting. Making data wider can make implicit missing values explicit because every combination of the rows and new columns must have some value. For example, if we pivot <code>stocks</code> to put the <code>quarter</code> in the columns, both missing values become explicit:</p>
+<p>有时你想让隐式缺失变得显式，以便有一个可以操作的实体。在其他情况下，显式缺失是由数据结构强加给你的，而你想摆脱它们。以下各节讨论了一些在隐式和显式缺失之间转换的工具。</p>
+<section id="数据重塑-pivoting" class="level3" data-number="18.3.1"><h3 data-number="18.3.1" class="anchored" data-anchor-id="数据重塑-pivoting">
+<span class="header-section-number">18.3.1</span> 数据重塑 (Pivoting)</h3>
+<p>你已经见过一个可以使隐式缺失变显式以及反之亦然的工具：数据重塑 (pivoting)。将数据变宽可以使隐式缺失值变得显式，因为行和新列的每种组合都必须有某个值。例如，如果我们重塑 <code>stocks</code> 数据，把 <code>quarter</code> 放到列中，两个缺失值都变得显式了：</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>        names_from <span class="op">=</span> <span class="va">qtr</span>,</span>
-<span>        values_from <span class="op">=</span> <span class="va">price</span></span>
-<span>    <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
+<span>    names_from <span class="op">=</span> <span class="va">qtr</span>, </span>
+<span>    values_from <span class="op">=</span> <span class="va">price</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 5</span></span>
 <span><span class="co">#&gt;    year   `1`   `2`   `3`   `4`</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  2020  1.88  0.59  0.35 NA   </span></span>
 <span><span class="co">#&gt; 2  2021 NA     0.92  0.17  2.66</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By default, making data longer preserves explicit missing values, but if they are structurally missing values that only exist because the data is not tidy, you can drop them (make them implicit) by setting <code>values_drop_na = TRUE</code>. See the examples in <a href="data-tidy.html#sec-tidy-data" class="quarto-xref"><span>Section 5.2</span></a> for more details.</p>
-</section><section id="complete" class="level3" data-number="18.3.2"><h3 data-number="18.3.2" class="anchored" data-anchor-id="complete">
-<span class="header-section-number">18.3.2</span> Complete</h3>
-<p><code><a href="https://tidyr.tidyverse.org/reference/complete.html">tidyr::complete()</a></code> allows you to generate explicit missing values by providing a set of variables that define the combination of rows that should exist. For example, we know that all combinations of <code>year</code> and <code>qtr</code> should exist in the <code>stocks</code> data:</p>
+<p>默认情况下，将数据变长会保留显式缺失值，但如果它们是仅因数据不整洁而存在的结构性缺失值，你可以通过设置 <code>values_drop_na = TRUE</code> 来丢弃它们（使它们变为隐式）。更多细节请参见 <a href="data-tidy.html#sec-tidy-data" class="quarto-xref"><span>Section 5.2</span></a> 中的示例。</p>
+</section><section id="补全-complete" class="level3" data-number="18.3.2"><h3 data-number="18.3.2" class="anchored" data-anchor-id="补全-complete">
+<span class="header-section-number">18.3.2</span> 补全 (Complete)</h3>
+<p><code><a href="https://tidyr.tidyverse.org/reference/complete.html">tidyr::complete()</a></code> 允许你通过提供一组定义了应该存在的行组合的变量来生成显式缺失值。例如，我们知道 <code>year</code> 和 <code>qtr</code> 的所有组合都应该存在于 <code>stocks</code> 数据中：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">qtr</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">qtr</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8 × 3</span></span>
 <span><span class="co">#&gt;    year   qtr price</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -580,10 +580,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  2021     2  0.92</span></span>
 <span><span class="co">#&gt; # ℹ 2 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Typically, you’ll call <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> with names of existing variables, filling in the missing combinations. However, sometimes the individual variables are themselves incomplete, so you can instead provide your own data. For example, you might know that the <code>stocks</code> dataset is supposed to run from 2019 to 2021, so you could explicitly supply those values for <code>year</code>:</p>
+<p>通常，你会用现有变量的名称来调用 <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code>，以填充缺失的组合。然而，有时单个变量本身就是不完整的，所以你可以提供自己的数据。例如，你可能知道 <code>stocks</code> 数据集应该从 2019 年到 2021 年，所以你可以为 <code>year</code> 明确提供这些值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2019</span><span class="op">:</span><span class="fl">2021</span>, <span class="va">qtr</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2019</span><span class="op">:</span><span class="fl">2021</span>, <span class="va">qtr</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 12 × 3</span></span>
 <span><span class="co">#&gt;    year   qtr price</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -595,18 +595,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  2020     2  0.59</span></span>
 <span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If the range of a variable is correct, but not all values are present, you could use <code>full_seq(x, 1)</code> to generate all values from <code>min(x)</code> to <code>max(x)</code> spaced out by 1.</p>
-<p>In some cases, the complete set of observations can’t be generated by a simple combination of variables. In that case, you can do manually what <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> does for you: create a data frame that contains all the rows that should exist (using whatever combination of techniques you need), then combine it with your original dataset with <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">dplyr::full_join()</a></code>.</p>
-</section><section id="joins" class="level3" data-number="18.3.3"><h3 data-number="18.3.3" class="anchored" data-anchor-id="joins">
-<span class="header-section-number">18.3.3</span> Joins</h3>
-<p>This brings us to another important way of revealing implicitly missing observations: joins. You’ll learn more about joins in <a href="joins.html" class="quarto-xref"><span>Chapter 19</span></a>, but we wanted to quickly mention them to you here since you can often only know that values are missing from one dataset when you compare it to another.</p>
-<p><code>dplyr::anti_join(x, y)</code> is a particularly useful tool here because it selects only the rows in <code>x</code> that don’t have a match in <code>y</code>. For example, we can use two <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>s to reveal that we’re missing information for four airports and 722 planes mentioned in <code>flights</code>:</p>
+<p>如果一个变量的范围是正确的，但并非所有值都存在，你可以使用 <code>full_seq(x, 1)</code> 来生成从 <code>min(x)</code> 到 <code>max(x)</code> 之间以 1 为间隔的所有值。</p>
+<p>在某些情况下，完整的观测集合不能通过变量的简单组合生成。在这种情况下，你可以手动完成 <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> 为你做的事情：创建一个包含所有应该存在的行的数据框（使用你需要的任何技术组合），然后用 <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">dplyr::full_join()</a></code> 将它与你的原始数据集结合起来。</p>
+</section><section id="连接-joins" class="level3" data-number="18.3.3"><h3 data-number="18.3.3" class="anchored" data-anchor-id="连接-joins">
+<span class="header-section-number">18.3.3</span> 连接 (Joins)</h3>
+<p>这引出了揭示隐式缺失观测值的另一种重要方式：连接 (joins)。你将在 <a href="joins.html" class="quarto-xref"><span>Chapter 19</span></a> 中学习更多关于连接的知识，但我们想在这里快速提及它们，因为你通常只有在将一个数据集与另一个数据集进行比较时，才能知道值是缺失的。</p>
+<p><code>dplyr::anti_join(x, y)</code> 在这里是一个特别有用的工具，因为它只选择 <code>x</code> 中在 <code>y</code> 中没有匹配的行。例如，我们可以使用两个 <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code> 来揭示我们缺少 <code>flights</code> 中提到的四个机场和 722 架飞机的信息：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span>faa <span class="op">=</span> <span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span></span>
+<span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span>faa <span class="op">=</span> <span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">airports</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(faa)`</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 1</span></span>
 <span><span class="co">#&gt;   faa  </span></span>
@@ -616,9 +616,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 STT  </span></span>
 <span><span class="co">#&gt; 4 PSE</span></span>
 <span></span>
-<span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">tailnum</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">planes</span><span class="op">)</span></span>
+<span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">tailnum</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">planes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(tailnum)`</span></span>
 <span><span class="co">#&gt; # A tibble: 722 × 1</span></span>
 <span><span class="co">#&gt;   tailnum</span></span>
@@ -631,21 +631,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 N532UA </span></span>
 <span><span class="co">#&gt; # ℹ 716 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercises" class="level3" data-number="18.3.4"><h3 data-number="18.3.4" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">18.3.4</span> Exercises</h3>
+</section><section id="练习" class="level3" data-number="18.3.4"><h3 data-number="18.3.4" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">18.3.4</span> 练习</h3>
 <ol type="1">
-<li>Can you find any relationship between the carrier and the rows that appear to be missing from <code>planes</code>?</li>
-</ol></section></section><section id="factors-and-empty-groups" class="level2" data-number="18.4"><h2 data-number="18.4" class="anchored" data-anchor-id="factors-and-empty-groups">
-<span class="header-section-number">18.4</span> Factors and empty groups</h2>
-<p>A final type of missingness is the empty group, a group that doesn’t contain any observations, which can arise when working with factors. For example, imagine we have a dataset that contains some health information about people:</p>
+<li>你能找到航空公司和那些似乎从 <code>planes</code> 数据集中缺失的行之间的任何关系吗？</li>
+</ol></section></section><section id="因子和空组" class="level2" data-number="18.4"><h2 data-number="18.4" class="anchored" data-anchor-id="因子和空组">
+<span class="header-section-number">18.4</span> 因子和空组</h2>
+<p>最后一种缺失类型是空组 (empty group)，即不包含任何观测值的组，这在处理因子时可能出现。例如，假设我们有一个包含一些人健康信息的数据集：</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    name   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ikaia"</span>, <span class="st">"Oletta"</span>, <span class="st">"Leriah"</span>, <span class="st">"Dashay"</span>, <span class="st">"Tresaun"</span><span class="op">)</span>,</span>
-<span>    smoker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"no"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    age    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">88</span>, <span class="fl">75</span>, <span class="fl">47</span>, <span class="fl">56</span><span class="op">)</span>,</span>
+<span>  name   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ikaia"</span>, <span class="st">"Oletta"</span>, <span class="st">"Leriah"</span>, <span class="st">"Dashay"</span>, <span class="st">"Tresaun"</span><span class="op">)</span>,</span>
+<span>  smoker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"no"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  age    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">88</span>, <span class="fl">75</span>, <span class="fl">47</span>, <span class="fl">56</span><span class="op">)</span>,</span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And we want to count the number of smokers with <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code>:</p>
+<p>我们想用 <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code> 来计算吸烟者的数量：</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 2</span></span>
@@ -653,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 no         5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This dataset only contains non-smokers, but we know that smokers exist; the group of non-smokers is empty. We can request <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> to keep all the groups, even those not seen in the data by using <code>.drop = FALSE</code>:</p>
+<p>这个数据集只包含非吸烟者，但我们知道吸烟者是存在的；非吸烟者组是空的。我们可以通过使用 <code>.drop = FALSE</code> 来要求 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> 保留所有的组，即使是那些在数据中未见到的组：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
@@ -662,82 +662,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1 yes        0</span></span>
 <span><span class="co">#&gt; 2 no         5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The same principle applies to ggplot2’s discrete axes, which will also drop levels that don’t have any values. You can force them to display by supplying <code>drop = FALSE</code> to the appropriate discrete axis:</p>
+<p>同样的原则也适用于 ggplot2 的离散坐标轴，它也会丢弃没有任何值的水平。你可以通过向相应的离散坐标轴提供 <code>drop = FALSE</code> 来强制它们显示：</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">health</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">health</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="missing-values_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" alt="A bar chart with a single value on the x-axis, &quot;no&quot;." width="288"></p>
+<p><img src="missing-values_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" alt="一个条形图，x 轴上只有一个值 &quot;no&quot;。" width="288"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="missing-values_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" alt="The same bar chart as the last plot, but now with two values on the x-axis, &quot;yes&quot; and &quot;no&quot;. There is no bar for the &quot;yes&quot; category." width="288"></p>
+<p><img src="missing-values_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" alt="与上一个图相同的条形图，但现在 x 轴上有两个值 &quot;yes&quot; 和 &quot;no&quot;。 &quot;yes&quot; 类别没有条形。" width="288"></p>
 </div>
 </div>
 </div>
-<p>The same problem comes up more generally with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code>. And again you can use <code>.drop = FALSE</code> to preserve all factor levels:</p>
+<p>同样的问题在 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code> 中也更普遍地出现。你同样可以使用 <code>.drop = FALSE</code> 来保留所有因子水平：</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>        mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        min_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        max_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        sd_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    min_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    max_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    sd_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 6</span></span>
 <span><span class="co">#&gt;   smoker     n mean_age min_age max_age sd_age</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 yes        0      NaN     Inf    -Inf   NA  </span></span>
 <span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We get some interesting results here because when summarizing an empty group, the summary functions are applied to zero-length vectors. There’s an important distinction between empty vectors, which have length 0, and missing values, each of which has length 1.</p>
+<p>我们在这里得到了一些有趣的结果，因为当对一个空组进行汇总时，汇总函数被应用于零长度的向量。空向量（长度为 0）和缺失值（每个长度为 1）之间有一个重要的区别。</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># A vector containing two missing values</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 一个包含两个缺失值的向量</span></span>
 <span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2</span></span>
 <span></span>
-<span><span class="co"># A vector containing nothing</span></span>
+<span><span class="co"># 一个不包含任何东西的向量</span></span>
 <span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>All summary functions work with zero-length vectors, but they may return results that are surprising at first glance. Here we see <code>mean(age)</code> returning <code>NaN</code> because <code>mean(age)</code> = <code>sum(age)/length(age)</code> which here is 0/0. <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> and <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> return -Inf and Inf for empty vectors so if you combine the results with a non-empty vector of new data and recompute you’ll get the minimum or maximum of the new data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>Sometimes a simpler approach is to perform the summary and then make the implicit missings explicit with <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code>.</p>
+<p>所有汇总函数都适用于零长度向量，但它们可能返回乍一看令人惊讶的结果。这里我们看到 <code>mean(age)</code> 返回 <code>NaN</code>，因为 <code>mean(age)</code> = <code>sum(age)/length(age)</code>，在这里是 0/0。<code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> 和 <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> 对空向量返回 -Inf 和 Inf，所以如果你将结果与一个非空的新数据向量结合并重新计算，你将得到新数据的最小值或最大值<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
+<p>有时一个更简单的方法是先执行汇总，然后用 <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> 使隐式缺失变得显式。</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>        mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        min_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        max_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
-<span>        sd_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    min_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    max_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>,</span>
+<span>    sd_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 6</span></span>
 <span><span class="co">#&gt;   smoker     n mean_age min_age max_age sd_age</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 yes       NA       NA      NA      NA   NA  </span></span>
 <span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The main drawback of this approach is that you get an <code>NA</code> for the count, even though you know that it should be zero.</p>
-</section><section id="summary" class="level2" data-number="18.5"><h2 data-number="18.5" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">18.5</span> Summary</h2>
-<p>Missing values are weird! Sometimes they’re recorded as an explicit <code>NA</code> but other times you only notice them by their absence. This chapter has given you some tools for working with explicit missing values, tools for uncovering implicit missing values, and discussed some of the ways that implicit can become explicit and vice versa.</p>
-<p>In the next chapter, we tackle the final chapter in this part of the book: joins. This is a bit of a change from the chapters so far because we’re going to discuss tools that work with data frames as a whole, not something that you put inside a data frame.</p>
+<p>这种方法的主要缺点是，你得到的计数是 <code>NA</code>，即使你知道它应该是零。</p>
+</section><section id="总结" class="level2" data-number="18.5"><h2 data-number="18.5" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">18.5</span> 总结</h2>
+<p>缺失值很奇怪！有时它们被记录为显式的 <code>NA</code>，但其他时候你只能通过它们的缺席来注意到它们。本章为你提供了一些处理显式缺失值的工具，揭示隐式缺失值的工具，并讨论了隐式如何变为显式以及反之亦然的一些方法。</p>
+<p>在下一章，我们将 affrontare 本书这一部分的最后一章：连接 (joins)。这与到目前为止的章节有些不同，因为我们将讨论作用于整个数据框的工具，而不是你放在数据框内部的东西。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>In other words, <code>min(c(x, y))</code> is always equal to <code>min(min(x), min(y))</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>换句话说，<code>min(c(x, y))</code> 总是等于 <code>min(min(x), min(y))</code>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1137,29 +1137,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./datetimes.html" class="pagination-link" aria-label="Dates and times">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dates and times</span></span>
+      <a href="./datetimes.html" class="pagination-link" aria-label="日期和时间">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">日期和时间</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./joins.html" class="pagination-link" aria-label="Joins">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Joins</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./joins.html" class="pagination-link" aria-label="连接">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">连接</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">
-<p>R 数据科学 (2e) 是一本由 Hadley Wickham, Mine Çetinkaya-Rundel 和 Garrett Grolemund 合著的书。 这是汉化项目。</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/missing-values.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>本书由 <a href="https://quarto.org/">Quarto</a> 构建。</p>
-</div>
-  </div>
-</footer>
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/missing-values.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

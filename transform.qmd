@@ -1,50 +1,38 @@
-# Transform {#sec-transform-intro .unnumbered}
+# 数据转换 {#sec-transform-intro .unnumbered}
 
 ```{r}
 #| results: "asis"
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-The second part of the book was a deep dive into data visualization.
-In this part of the book, you'll learn about the most important types of variables that you'll encounter inside a data frame and learn the tools you can use to work with them.
+本书的第二部分深入探讨了数据可视化。在本书的这一部分，你将学习数据框 (data frame) 中会遇到的最重要变量类型，以及可以用来处理它们的工具。
 
 ```{r}
 #| label: fig-ds-transform
-#| #| echo: false
+#| echo: false
 #| fig-cap: |
-#|   The options for data transformation depend heavily on the type of
-#|   data involved, the subject of this part of the book.
+#|   数据转换的选项在很大程度上取决于所涉及的数据类型，这也是本书这一部分的主题。
 #| fig-alt: |
-#|   Our data science model, with transform highlighted in blue.
+#|   我们的数据科学模型，其中“转换”部分以蓝色突出显示。
 #| out.width: NULL
 knitr::include_graphics("diagrams/data-science/transform.png", dpi = 270)
 ```
 
-You can read these chapters as you need them; they're designed to be largely standalone so that they can be read out of order.
+你可以根据需要阅读这些章节；它们的设计初衷是使其在很大程度上保持独立，因此可以不按顺序阅读。
 
--   @sec-logicals teaches you about logical vectors.
-    These are the simplest types of vectors, but are extremely powerful.
-    You'll learn how to create them with numeric comparisons, how to combine them with Boolean algebra, how to use them in summaries, and how to use them for conditional transformations.
+  - @sec-logicals 将教你有关逻辑向量的知识。这是最简单的向量类型，但功能却极其强大。你将学习如何通过数值比较来创建它们，如何用布尔代数 (Boolean algebra) 来组合它们，如何在汇总摘要中使用它们，以及如何利用它们进行条件转换。
 
--   @sec-numbers dives into tools for vectors of numbers, the powerhouse of data science.
-    You'll learn more about counting and a bunch of important transformation and summary functions.
+  - @sec-numbers 深入探讨了处理数值向量的工具，数值向量是数据科学的动力源泉。你将学到更多关于计数以及一系列重要的转换和汇总函数的知识。
 
--   @sec-strings will give you the tools to work with strings: you'll slice them, you'll dice them, and you'll stick them back together again.
-    This chapter mostly focuses on the stringr package, but you'll also learn some more tidyr functions devoted to extracting data from character strings.
+  - @sec-strings 将为你提供处理字符串的工具：你将对它们进行切片、分割，然后再将它们粘合在一起。本章主要关注 stringr 包，但你也会学到一些用于从字符串中提取数据的 tidyr 函数。
 
--   @sec-regular-expressions introduces you to regular expressions, a powerful tool for manipulating strings.
-    This chapter will take you from thinking that a cat walked over your keyboard to reading and writing complex string patterns.
+  - @sec-regular-expressions 向你介绍正则表达式 (regular expressions)，这是一种强大的字符串处理工具。本章将带你从看到它们就觉得像是猫踩过键盘一样，到能够读懂并编写复杂的字符串模式。
 
--   @sec-factors introduces factors: the data type that R uses to store categorical data.
-    You use a factor when variable has a fixed set of possible values, or when you want to use a non-alphabetical ordering of a string.
+  - @sec-factors 介绍因子 (factor)：R 用来存储分类数据的类型。当一个变量具有固定的可能值集合时，或者当你希望使用非字母顺序对字符串进行排序时，你就会使用因子。
 
--   @sec-dates-and-times will give you the key tools for working with dates and date-times.
-    Unfortunately, the more you learn about date-times, the more complicated they seem to get, but with the help of the lubridate package, you'll learn to how to overcome the most common challenges.
+  - @sec-dates-and-times 将为你提供处理日期和日期时间的关键工具。不幸的是，你对日期时间了解得越多，它们似乎就变得越复杂，但在 lubridate 包的帮助下，你将学会如何克服最常见的挑战。
 
--   @sec-missing-values discusses missing values in depth.
-    We've discussed them a couple of times in isolation, but now it's time to discuss them holistically, helping you come to grips with the difference between implicit and explicit missing values, and how and why you might convert between them.
+  - @sec-missing-values 深入讨论缺失值。我们已经单独讨论过几次缺失值，但现在是时候全面地讨论它们了，帮助你掌握隐式和显式缺失值之间的区别，以及如何在它们之间进行转换以及为什么要这样做。
 
--   @sec-joins finishes up this part of the book by giving you tools to join two (or more) data frames together.
-    Learning about joins will force you to grapple with the idea of keys, and think about how you identify each row in a dataset.
+  - @sec-joins 作为本书这一部分的收尾，为你提供了将两个 (或多个) 数据框连接在一起的工具。学习连接操作将迫使你深入理解“键” (key) 的概念，并思考如何识别数据集中的每一行。

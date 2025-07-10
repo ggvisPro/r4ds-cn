@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>12&nbsp; Logical vectors – R 数据科学 2e
+<title>12&nbsp; 逻辑向量 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./logicals.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./logicals.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform</span></a>
+ <span class="menu-text">数据转换</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -257,49 +257,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./numbers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./strings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regexps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regular expressions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">正则表达式</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因子</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datetimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dates and times</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">日期和时间</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">连接</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,53 +406,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">12.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">12.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">12.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">12.1.1</span> 先决条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#comparisons" id="toc-comparisons" class="nav-link" data-scroll-target="#comparisons"><span class="header-section-number">12.2</span> Comparisons</a>
+<a href="#%E6%AF%94%E8%BE%83" id="toc-比较" class="nav-link" data-scroll-target="#%E6%AF%94%E8%BE%83"><span class="header-section-number">12.2</span> 比较</a>
   <ul class="collapse">
-<li><a href="#sec-fp-comparison" id="toc-sec-fp-comparison" class="nav-link" data-scroll-target="#sec-fp-comparison"><span class="header-section-number">12.2.1</span> Floating point comparison</a></li>
-  <li><a href="#sec-na-comparison" id="toc-sec-na-comparison" class="nav-link" data-scroll-target="#sec-na-comparison"><span class="header-section-number">12.2.2</span> Missing values</a></li>
+<li><a href="#sec-fp-comparison" id="toc-sec-fp-comparison" class="nav-link" data-scroll-target="#sec-fp-comparison"><span class="header-section-number">12.2.1</span> 浮点数比较</a></li>
+  <li><a href="#sec-na-comparison" id="toc-sec-na-comparison" class="nav-link" data-scroll-target="#sec-na-comparison"><span class="header-section-number">12.2.2</span> 缺失值</a></li>
   <li><a href="#is.na" id="toc-is.na" class="nav-link" data-scroll-target="#is.na"><span class="header-section-number">12.2.3</span> <code>is.na()</code></a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.2.4</span> Exercises</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">12.2.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#boolean-algebra" id="toc-boolean-algebra" class="nav-link" data-scroll-target="#boolean-algebra"><span class="header-section-number">12.3</span> Boolean algebra</a>
+<a href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0" id="toc-布尔代数" class="nav-link" data-scroll-target="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="header-section-number">12.3</span> 布尔代数</a>
   <ul class="collapse">
-<li><a href="#sec-na-boolean" id="toc-sec-na-boolean" class="nav-link" data-scroll-target="#sec-na-boolean"><span class="header-section-number">12.3.1</span> Missing values</a></li>
-  <li><a href="#sec-order-operations-boolean" id="toc-sec-order-operations-boolean" class="nav-link" data-scroll-target="#sec-order-operations-boolean"><span class="header-section-number">12.3.2</span> Order of operations</a></li>
+<li><a href="#sec-na-boolean" id="toc-sec-na-boolean" class="nav-link" data-scroll-target="#sec-na-boolean"><span class="header-section-number">12.3.1</span> 缺失值</a></li>
+  <li><a href="#sec-order-operations-boolean" id="toc-sec-order-operations-boolean" class="nav-link" data-scroll-target="#sec-order-operations-boolean"><span class="header-section-number">12.3.2</span> 运算顺序</a></li>
   <li><a href="#in" id="toc-in" class="nav-link" data-scroll-target="#in"><span class="header-section-number">12.3.3</span> <code>%in%</code></a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">12.3.4</span> Exercises</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-1" id="toc-练习-1" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-1"><span class="header-section-number">12.3.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-logical-summaries" id="toc-sec-logical-summaries" class="nav-link" data-scroll-target="#sec-logical-summaries"><span class="header-section-number">12.4</span> Summaries</a>
+<a href="#sec-logical-summaries" id="toc-sec-logical-summaries" class="nav-link" data-scroll-target="#sec-logical-summaries"><span class="header-section-number">12.4</span> 汇总</a>
   <ul class="collapse">
-<li><a href="#logical-summaries" id="toc-logical-summaries" class="nav-link" data-scroll-target="#logical-summaries"><span class="header-section-number">12.4.1</span> Logical summaries</a></li>
-  <li><a href="#sec-numeric-summaries-of-logicals" id="toc-sec-numeric-summaries-of-logicals" class="nav-link" data-scroll-target="#sec-numeric-summaries-of-logicals"><span class="header-section-number">12.4.2</span> Numeric summaries of logical vectors</a></li>
-  <li><a href="#logical-subsetting" id="toc-logical-subsetting" class="nav-link" data-scroll-target="#logical-subsetting"><span class="header-section-number">12.4.3</span> Logical subsetting</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">12.4.4</span> Exercises</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E6%B1%87%E6%80%BB" id="toc-逻辑汇总" class="nav-link" data-scroll-target="#%E9%80%BB%E8%BE%91%E6%B1%87%E6%80%BB"><span class="header-section-number">12.4.1</span> 逻辑汇总</a></li>
+  <li><a href="#sec-numeric-summaries-of-logicals" id="toc-sec-numeric-summaries-of-logicals" class="nav-link" data-scroll-target="#sec-numeric-summaries-of-logicals"><span class="header-section-number">12.4.2</span> 逻辑向量的数值汇总</a></li>
+  <li><a href="#%E9%80%BB%E8%BE%91%E5%AD%90%E9%9B%86" id="toc-逻辑子集" class="nav-link" data-scroll-target="#%E9%80%BB%E8%BE%91%E5%AD%90%E9%9B%86"><span class="header-section-number">12.4.3</span> 逻辑子集</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-2" id="toc-练习-2" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-2"><span class="header-section-number">12.4.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#conditional-transformations" id="toc-conditional-transformations" class="nav-link" data-scroll-target="#conditional-transformations"><span class="header-section-number">12.5</span> Conditional transformations</a>
+<a href="#%E6%9D%A1%E4%BB%B6%E8%BD%AC%E6%8D%A2" id="toc-条件转换" class="nav-link" data-scroll-target="#%E6%9D%A1%E4%BB%B6%E8%BD%AC%E6%8D%A2"><span class="header-section-number">12.5</span> 条件转换</a>
   <ul class="collapse">
 <li><a href="#if_else" id="toc-if_else" class="nav-link" data-scroll-target="#if_else"><span class="header-section-number">12.5.1</span> <code>if_else()</code></a></li>
   <li><a href="#case_when" id="toc-case_when" class="nav-link" data-scroll-target="#case_when"><span class="header-section-number">12.5.2</span> <code>case_when()</code></a></li>
-  <li><a href="#compatible-types" id="toc-compatible-types" class="nav-link" data-scroll-target="#compatible-types"><span class="header-section-number">12.5.3</span> Compatible types</a></li>
-  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3"><span class="header-section-number">12.5.4</span> Exercises</a></li>
+  <li><a href="#%E5%85%BC%E5%AE%B9%E7%9A%84%E7%B1%BB%E5%9E%8B" id="toc-兼容的类型" class="nav-link" data-scroll-target="#%E5%85%BC%E5%AE%B9%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="header-section-number">12.5.3</span> 兼容的类型</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-3" id="toc-练习-3" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-3"><span class="header-section-number">12.5.4</span> 练习</a></li>
   </ul>
 </li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.6</span> Summary</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">12.6</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/logicals.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./logicals.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-logicals" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./logicals.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-logicals" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></span></h1>
 </div>
 
 
@@ -466,28 +466,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">12.1</span> Introduction</h2>
-<p>In this chapter, you’ll learn tools for working with logical vectors. Logical vectors are the simplest type of vector because each element can only be one of three possible values: <code>TRUE</code>, <code>FALSE</code>, and <code>NA</code>. It’s relatively rare to find logical vectors in your raw data, but you’ll create and manipulate them in the course of almost every analysis.</p>
-<p>We’ll begin by discussing the most common way of creating logical vectors: with numeric comparisons. Then you’ll learn about how you can use Boolean algebra to combine different logical vectors, as well as some useful summaries. We’ll finish off with <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>, two useful functions for making conditional changes powered by logical vectors.</p>
-<section id="prerequisites" class="level3" data-number="12.1.1"><h3 data-number="12.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">12.1.1</span> Prerequisites</h3>
-<p>Most of the functions you’ll learn about in this chapter are provided by base R, so we don’t need the tidyverse, but we’ll still load it so we can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, and friends to work with data frames. We’ll also continue to draw examples from the <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code> dataset.</p>
+</header><section id="引言" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">12.1</span> 引言</h2>
+<p>在本章中，你将学习处理逻辑向量的工具。逻辑向量是最简单的向量类型，因为每个元素只能是三个可能的值之一：<code>TRUE</code>、<code>FALSE</code> 和 <code>NA</code>。在原始数据中很少会遇到逻辑向量，但在几乎每一次分析的过程中，你都会创建和操作它们。</p>
+<p>我们将首先讨论创建逻辑向量最常用的方法：使用数值比较。然后，你将学习如何使用布尔代数来组合不同的逻辑向量，以及一些有用的汇总方法。最后，我们将介绍 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>，这是两个非常有用的函数，可以利用逻辑向量进行条件性更改。</p>
+<section id="先决条件" class="level3" data-number="12.1.1"><h3 data-number="12.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">12.1.1</span> 先决条件</h3>
+<p>本章中你将学到的大部分函数都由 R base 提供，所以我们并不需要 tidyverse，但我们仍然会加载它，以便使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>、<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 等函数来处理数据框。我们也将继续使用 <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code> 数据集中的示例。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>However, as we start to cover more tools, there won’t always be a perfect real example. So we’ll start making up some dummy data with <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>:</p>
+<p>然而，随着我们开始涉及更多的工具，并不总能找到一个完美的真实示例。因此，我们将开始使用 <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> 来创建一些虚拟数据：</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">*</span> <span class="fl">2</span></span>
 <span><span class="co">#&gt; [1]  2  4  6 10 14 22 26</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This makes it easier to explain individual functions at the cost of making it harder to see how it might apply to your data problems. Just remember that any manipulation we do to a free-floating vector, you can do to a variable inside a data frame with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and friends.</p>
+<p>这样做虽然更容易解释单个函数，但代价是更难看出它如何应用于你的数据问题。只需记住，我们对一个独立向量进行的任何操作，你都可以通过 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 及相关函数对数据框中的变量进行同样的操作。</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 2</span></span>
 <span><span class="co">#&gt;       x     y</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -499,12 +499,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6    11    22</span></span>
 <span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="comparisons" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="comparisons">
-<span class="header-section-number">12.2</span> Comparisons</h2>
-<p>A very common way to create a logical vector is via a numeric comparison with <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, and <code>==</code>. So far, we’ve mostly created logical variables transiently within <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> — they are computed, used, and then thrown away. For example, the following filter finds all daytime departures that arrive roughly on time:</p>
+</section></section><section id="比较" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="比较">
+<span class="header-section-number">12.2</span> 比较</h2>
+<p>创建逻辑向量的一种非常常见的方法是通过数值比较运算符：<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>!=</code> 和 <code>==</code>。到目前为止，我们主要是在 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 中临时创建逻辑变量——它们被计算、使用，然后被丢弃。例如，下面的筛选器会找出所有在白天出发且大致准点到达的航班：</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 172,286 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -517,14 +517,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 172,280 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It’s useful to know that this is a shortcut and you can explicitly create the underlying logical variables with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>:</p>
+<p>知道这其实是一种简便写法是很有用的，你完全可以使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 显式地创建底层的逻辑变量：</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
-<span>        approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
-<span>        .keep <span class="op">=</span> <span class="st">"used"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
+<span>    approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
+<span>    .keep <span class="op">=</span> <span class="st">"used"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 336,776 × 4</span></span>
 <span><span class="co">#&gt;   dep_time arr_delay daytime approx_ontime</span></span>
 <span><span class="co">#&gt;      &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt;   &lt;lgl&gt;        </span></span>
@@ -536,80 +536,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6      554        12 FALSE   TRUE         </span></span>
 <span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is particularly useful for more complicated logic because naming the intermediate steps makes it easier to both read your code and check that each step has been computed correctly.</p>
-<p>All up, the initial filter is equivalent to:</p>
+<p>这对于更复杂的逻辑尤其有用，因为给中间步骤命名能让你的代码更易于阅读，也更容易检查每一步是否计算正确。</p>
+<p>总而言之，最初的筛选器等同于：</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
-<span>        approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">daytime</span> <span class="op">&amp;</span> <span class="va">approx_ontime</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
+<span>    approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">daytime</span> <span class="op">&amp;</span> <span class="va">approx_ontime</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sec-fp-comparison" class="level3" data-number="12.2.1"><h3 data-number="12.2.1" class="anchored" data-anchor-id="sec-fp-comparison">
-<span class="header-section-number">12.2.1</span> Floating point comparison</h3>
-<p>Beware of using <code>==</code> with numbers. For example, it looks like this vector contains the numbers 1 and 2:</p>
+<span class="header-section-number">12.2.1</span> 浮点数比较</h3>
+<p>注意不要对数值使用 <code>==</code>。例如，看起来这个向量包含了数字 1 和 2：</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">49</span> <span class="op">*</span> <span class="fl">49</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">49</span> <span class="op">*</span> <span class="fl">49</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] 1 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But if you test them for equality, you get <code>FALSE</code>:</p>
+<p>但如果你测试它们是否相等，会得到 <code>FALSE</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>What’s going on? Computers store numbers with a fixed number of decimal places so there’s no way to exactly represent 1/49 or <code>sqrt(2)</code> and subsequent computations will be very slightly off. We can see the exact values by calling <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> with the <code>digits</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> argument:</p>
+<p>这是怎么回事？计算机使用固定的小数位数来存储数字，所以无法精确表示 1/49 或 <code>sqrt(2)</code>，后续的计算会有非常微小的偏差。我们可以通过调用 <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> 并使用 <code>digits</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 参数来查看确切的值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.9999999999999999 2.0000000000000004</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can see why R defaults to rounding these numbers; they really are very close to what you expect.</p>
-<p>Now that you’ve seen why <code>==</code> is failing, what can you do about it? One option is to use <code><a href="https://dplyr.tidyverse.org/reference/near.html">dplyr::near()</a></code> which ignores small differences:</p>
+<p>你可以看到为什么 R 默认会对这些数字进行四舍五入；它们确实非常接近你期望的值。</p>
+<p>既然你已经明白了 <code>==</code> 为什么会失效，那你该怎么办呢？一个选项是使用 <code><a href="https://dplyr.tidyverse.org/reference/near.html">dplyr::near()</a></code>，它会忽略微小的差异：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/near.html">near</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-na-comparison" class="level3" data-number="12.2.2"><h3 data-number="12.2.2" class="anchored" data-anchor-id="sec-na-comparison">
-<span class="header-section-number">12.2.2</span> Missing values</h3>
-<p>Missing values represent the unknown so they are “contagious”: almost any operation involving an unknown value will also be unknown:</p>
+<span class="header-section-number">12.2.2</span> 缺失值</h3>
+<p>缺失值代表未知，所以它们是“会传染的”：几乎任何涉及未知值的操作，其结果也将是未知的：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">&gt;</span> <span class="fl">5</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="fl">10</span> <span class="op">==</span> <span class="cn">NA</span></span>
 <span><span class="co">#&gt; [1] NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The most confusing result is this one:</p>
+<p>最令人困惑的结果是这一个：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">==</span> <span class="cn">NA</span></span>
 <span><span class="co">#&gt; [1] NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It’s easiest to understand why this is true if we artificially supply a little more context:</p>
+<p>如果我们人为地提供一些上下文，就最容易理解为什么会这样：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># We don't know how old Mary is</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 我们不知道 Mary 的年龄</span></span>
 <span><span class="va">age_mary</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span></span>
-<span><span class="co"># We don't know how old John is</span></span>
+<span><span class="co"># 我们不知道 John 的年龄</span></span>
 <span><span class="va">age_john</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span></span>
-<span><span class="co"># Are Mary and John the same age?</span></span>
+<span><span class="co"># Mary 和 John 同龄吗？</span></span>
 <span><span class="va">age_mary</span> <span class="op">==</span> <span class="va">age_john</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
-<span><span class="co"># We don't know!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># 我们不知道！</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So if you want to find all flights where <code>dep_time</code> is missing, the following code doesn’t work because <code>dep_time == NA</code> will yield <code>NA</code> for every single row, and <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> automatically drops missing values:</p>
+<p>所以，如果你想找出 <code>dep_time</code> 缺失的所有航班，下面的代码是行不通的，因为 <code>dep_time == NA</code> 对每一行都会产生 <code>NA</code>，而 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 会自动丢弃缺失值：</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">==</span> <span class="cn">NA</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">==</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 0 × 19</span></span>
 <span><span class="co">#&gt; # ℹ 19 variables: year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, dep_time &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   sched_dep_time &lt;int&gt;, dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Instead we’ll need a new tool: <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>.</p>
+<p>为此，我们需要一个新工具：<code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>。</p>
 </section><section id="is.na" class="level3" data-number="12.2.3"><h3 data-number="12.2.3" class="anchored" data-anchor-id="is.na">
 <span class="header-section-number">12.2.3</span> <code>is.na()</code>
 </h3>
-<p><code>is.na(x)</code> works with any type of vector and returns <code>TRUE</code> for missing values and <code>FALSE</code> for everything else:</p>
+<p><code>is.na(x)</code> 适用于任何类型的向量，它对缺失值返回 <code>TRUE</code>，对其他所有值返回 <code>FALSE</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">NA</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span>
@@ -618,10 +618,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can use <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> to find all the rows with a missing <code>dep_time</code>:</p>
+<p>我们可以使用 <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 来找到 <code>dep_time</code> 缺失的所有行：</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8,255 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -634,11 +634,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 8,249 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> can also be useful in <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> usually puts all the missing values at the end but you can override this default by first sorting by <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>:</p>
+<p><code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 在 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 中也很有用。<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> 通常将所有缺失值放在末尾，但你可以通过先按 <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 排序来覆盖这个默认行为：</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 842 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -651,9 +651,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 836 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span>
 <span></span>
-<span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span>, <span class="va">dep_time</span><span class="op">)</span></span>
+<span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span>, <span class="va">dep_time</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 842 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -666,39 +666,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 836 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’ll come back to cover missing values in more depth in <a href="missing-values.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
-</section><section id="exercises" class="level3" data-number="12.2.4"><h3 data-number="12.2.4" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">12.2.4</span> Exercises</h3>
+<p>我们将在 <a href="missing-values.html" class="quarto-xref"><span>Chapter 18</span></a> 中更深入地探讨缺失值。</p>
+</section><section id="练习" class="level3" data-number="12.2.4"><h3 data-number="12.2.4" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">12.2.4</span> 练习</h3>
 <ol type="1">
-<li>How does <code><a href="https://dplyr.tidyverse.org/reference/near.html">dplyr::near()</a></code> work? Type <code>near</code> to see the source code. Is <code>sqrt(2)^2</code> near 2?</li>
-<li>Use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> together to describe how the missing values in <code>dep_time</code>, <code>sched_dep_time</code> and <code>dep_delay</code> are connected.</li>
-</ol></section></section><section id="boolean-algebra" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="boolean-algebra">
-<span class="header-section-number">12.3</span> Boolean algebra</h2>
-<p>Once you have multiple logical vectors, you can combine them together using Boolean algebra. In R, <code>&amp;</code> is “and”, <code>|</code> is “or”, <code>!</code> is “not”, and <code><a href="https://rdrr.io/r/base/Logic.html">xor()</a></code> is exclusive or<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. For example, <code>df |&gt; filter(!is.na(x))</code> finds all rows where <code>x</code> is not missing and <code>df |&gt; filter(x &lt; -10 | x &gt; 0)</code> finds all rows where <code>x</code> is smaller than -10 or bigger than 0. <a href="#fig-bool-ops" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> shows the complete set of Boolean operations and how they work.</p>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/near.html">dplyr::near()</a></code> 是如何工作的？输入 <code>near</code> 查看源代码。<code>sqrt(2)^2</code> 是否接近 2？</li>
+<li>结合使用 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>、<code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> 来描述 <code>dep_time</code>、<code>sched_dep_time</code> 和 <code>dep_delay</code> 中的缺失值是如何相互关联的。</li>
+</ol></section></section><section id="布尔代数" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="布尔代数">
+<span class="header-section-number">12.3</span> 布尔代数</h2>
+<p>一旦你有了多个逻辑向量，你就可以使用布尔代数将它们组合起来。在 R 中，<code>&amp;</code> 是“与”，<code>|</code> 是“或”，<code>!</code> 是“非”，而 <code><a href="https://rdrr.io/r/base/Logic.html">xor()</a></code> 是“异或”<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。例如，<code>df |&gt; filter(!is.na(x))</code> 会找出 <code>x</code> 不缺失的所有行，而 <code>df |&gt; filter(x &lt; -10 | x &gt; 0)</code> 会找出 <code>x</code> 小于 -10 或大于 0 的所有行。<a href="#fig-bool-ops" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> 展示了完整的布尔运算集合及其工作方式。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-bool-ops" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Seven Venn diagrams, each explaining a given logical operator. The circles (sets) in each of the Venn diagrams represent x and y. x &amp; !y is x but none of y; x &amp; y is the intersection of x and y; !x &amp; y is y but none of x; x is all of x; xor(x, y) is everything except the intersection of x and y; y is all of y; and x | y is everything.">
+<div id="fig-bool-ops" class="quarto-float quarto-figure quarto-figure-center anchored" alt="七个维恩图，每个图解释一个给定的逻辑运算符。每个维恩图中的圆圈（集合）代表 x 和 y。x &amp; !y 是 x 但不包含任何 y 的部分；x &amp; y 是 x 和 y 的交集；!x &amp; y 是 y 但不包含任何 x 的部分；x 是 x 的全部；xor(x, y) 是除了 x 和 y 交集之外的所有部分；y 是 y 的全部；而 x | y 是所有部分。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bool-ops-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/transform.png" class="img-fluid figure-img" alt="Seven Venn diagrams, each explaining a given logical operator. The circles (sets) in each of the Venn diagrams represent x and y. x &amp; !y is x but none of y; x &amp; y is the intersection of x and y; !x &amp; y is y but none of x; x is all of x; xor(x, y) is everything except the intersection of x and y; y is all of y; and x | y is everything." width="395">
+<img src="diagrams/transform.png" class="img-fluid figure-img" alt="七个维恩图，每个图解释一个给定的逻辑运算符。每个维恩图中的圆圈（集合）代表 x 和 y。x &amp; !y 是 x 但不包含任何 y 的部分；x &amp; y 是 x 和 y 的交集；!x &amp; y 是 y 但不包含任何 x 的部分；x 是 x 的全部；xor(x, y) 是除了 x 和 y 交集之外的所有部分；y 是 y 的全部；而 x | y 是所有部分。" width="395">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bool-ops-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the left-hand circle, <code>y</code> is the right-hand circle, and the shaded regions show which parts each operator selects.
+Figure&nbsp;12.1: 完整的布尔运算集合。<code>x</code> 是左边的圆，<code>y</code> 是右边的圆， 阴影区域显示了每个运算符选择的部分。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>As well as <code>&amp;</code> and <code>|</code>, R also has <code>&amp;&amp;</code> and <code>||</code>. Don’t use them in dplyr functions! These are called short-circuiting operators and only ever return a single <code>TRUE</code> or <code>FALSE</code>. They’re important for programming, not data science.</p>
+<p>除了 <code>&amp;</code> 和 <code>|</code>，R 还有 <code>&amp;&amp;</code> 和 <code>||</code>。不要在 dplyr 函数中使用它们！这些被称为短路运算符，它们只返回单个 <code>TRUE</code> 或 <code>FALSE</code>。它们对于编程很重要，但对于数据科学则不然。</p>
 <section id="sec-na-boolean" class="level3" data-number="12.3.1"><h3 data-number="12.3.1" class="anchored" data-anchor-id="sec-na-boolean">
-<span class="header-section-number">12.3.1</span> Missing values</h3>
-<p>The rules for missing values in Boolean algebra are a little tricky to explain because they seem inconsistent at first glance:</p>
+<span class="header-section-number">12.3.1</span> 缺失值</h3>
+<p>布尔代数中关于缺失值的规则解释起来有点棘手，因为它们初看起来似乎不一致：</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        and <span class="op">=</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="cn">NA</span>,</span>
-<span>        or <span class="op">=</span> <span class="va">x</span> <span class="op">|</span> <span class="cn">NA</span></span>
-<span>    <span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    and <span class="op">=</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="cn">NA</span>,</span>
+<span>    or <span class="op">=</span> <span class="va">x</span> <span class="op">|</span> <span class="cn">NA</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;   x     and   or   </span></span>
 <span><span class="co">#&gt;   &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;</span></span>
@@ -706,18 +707,18 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 2 FALSE FALSE NA   </span></span>
 <span><span class="co">#&gt; 3 NA    NA    NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To understand what’s going on, think about <code>NA | TRUE</code> (<code>NA</code> or <code>TRUE</code>). A missing value in a logical vector means that the value could either be <code>TRUE</code> or <code>FALSE</code>. <code>TRUE | TRUE</code> and <code>FALSE | TRUE</code> are both <code>TRUE</code> because at least one of them is <code>TRUE</code>. <code>NA | TRUE</code> must also be <code>TRUE</code> because <code>NA</code> can either be <code>TRUE</code> or <code>FALSE</code>. However, <code>NA | FALSE</code> is <code>NA</code> because we don’t know if <code>NA</code> is <code>TRUE</code> or <code>FALSE</code>. Similar reasoning applies for <code>&amp;</code> considering that both conditions must be fulfilled. Therefore <code>NA &amp; TRUE</code> is <code>NA</code> because <code>NA</code> can either be <code>TRUE</code> or <code>FALSE</code> and <code>NA &amp; FALSE</code> is <code>FALSE</code> because at least one of the conditions is <code>FALSE</code>.</p>
+<p>要理解发生了什么，可以思考一下 <code>NA | TRUE</code>（<code>NA</code> 或 <code>TRUE</code>）。逻辑向量中的一个缺失值意味着这个值可能是 <code>TRUE</code> 或 <code>FALSE</code>。<code>TRUE | TRUE</code> 和 <code>FALSE | TRUE</code> 都为 <code>TRUE</code>，因为至少有一个是 <code>TRUE</code>。因此 <code>NA | TRUE</code> 也必须是 <code>TRUE</code>，因为 <code>NA</code> 可能是 <code>TRUE</code> 或 <code>FALSE</code>。然而，<code>NA | FALSE</code> 的结果是 <code>NA</code>，因为我们不知道 <code>NA</code> 是 <code>TRUE</code> 还是 <code>FALSE</code>。类似的推理也适用于 <code>&amp;</code>，考虑到 <code>&amp;</code> 要求两个条件都必须满足。因此，<code>NA &amp; TRUE</code> 的结果是 <code>NA</code>，因为 <code>NA</code> 可能是 <code>TRUE</code> 或 <code>FALSE</code>；而 <code>NA &amp; FALSE</code> 的结果是 <code>FALSE</code>，因为至少有一个条件是 <code>FALSE</code>。</p>
 </section><section id="sec-order-operations-boolean" class="level3" data-number="12.3.2"><h3 data-number="12.3.2" class="anchored" data-anchor-id="sec-order-operations-boolean">
-<span class="header-section-number">12.3.2</span> Order of operations</h3>
-<p>Note that the order of operations doesn’t work like English. Take the following code that finds all flights that departed in November or December:</p>
+<span class="header-section-number">12.3.2</span> 运算顺序</h3>
+<p>请注意，运算顺序不像英语那样。看下面这段代码，它用于查找所有在十一月或十二月出发的航班：</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You might be tempted to write it like you’d say in English: “Find all flights that departed in November or December.”:</p>
+<p>你可能会想当然地像说英语一样写它：“查找所有在十一月或十二月出发的航班。”：</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="fl">12</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -730,14 +731,14 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This code doesn’t error but it also doesn’t seem to have worked. What’s going on? Here, R first evaluates <code>month == 11</code> creating a logical vector, which we call <code>nov</code>. It computes <code>nov | 12</code>. When you use a number with a logical operator it converts everything apart from 0 to <code>TRUE</code>, so this is equivalent to <code>nov | TRUE</code> which will always be <code>TRUE</code>, so every row will be selected:</p>
+<p>这段代码不会报错，但似乎也没有起作用。这是怎么回事？在这里，R 首先评估 <code>month == 11</code>，创建了一个我们称之为 <code>nov</code> 的逻辑向量。然后它计算 <code>nov | 12</code>。当你对一个逻辑运算符使用数字时，它会把除了 0 之外的所有数都转换为 <code>TRUE</code>，所以这等价于 <code>nov | TRUE</code>，结果将永远是 <code>TRUE</code>，因此每一行都会被选中：</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        nov <span class="op">=</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">11</span>,</span>
-<span>        final <span class="op">=</span> <span class="va">nov</span> <span class="op">|</span> <span class="fl">12</span>,</span>
-<span>        .keep <span class="op">=</span> <span class="st">"used"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    nov <span class="op">=</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">11</span>,</span>
+<span>    final <span class="op">=</span> <span class="va">nov</span> <span class="op">|</span> <span class="fl">12</span>,</span>
+<span>    .keep <span class="op">=</span> <span class="st">"used"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 336,776 × 3</span></span>
 <span><span class="co">#&gt;   month nov   final</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;</span></span>
@@ -752,29 +753,29 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 </section><section id="in" class="level3" data-number="12.3.3"><h3 data-number="12.3.3" class="anchored" data-anchor-id="in">
 <span class="header-section-number">12.3.3</span> <code>%in%</code>
 </h3>
-<p>An easy way to avoid the problem of getting your <code>==</code>s and <code>|</code>s in the right order is to use <code>%in%</code>. <code>x %in% y</code> returns a logical vector the same length as <code>x</code> that is <code>TRUE</code> whenever a value in <code>x</code> is anywhere in <code>y</code> .</p>
+<p>避免 <code>==</code> 和 <code>|</code> 顺序出错的一个简单方法是使用 <code>%in%</code>。<code>x %in% y</code> 返回一个与 <code>x</code> 长度相同的逻辑向量，当 <code>x</code> 中的值出现在 <code>y</code> 中的任何位置时，该向量对应位置的值为 <code>TRUE</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">11</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</span></span>
 <span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"i"</span>, <span class="st">"o"</span>, <span class="st">"u"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So to find all flights in November and December we could write:</p>
+<p>因此，要查找所有十一月和十二月的航班，我们可以这样写：</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that <code>%in%</code> obeys different rules for <code>NA</code> to <code>==</code>, as <code>NA %in% NA</code> is <code>TRUE</code>.</p>
+<p>注意，<code>%in%</code> 对于 <code>NA</code> 的处理规则与 <code>==</code> 不同，因为 <code>NA %in% NA</code> 的结果是 <code>TRUE</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op">==</span> <span class="cn">NA</span></span>
 <span><span class="co">#&gt; [1] NA NA NA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="cn">NA</span></span>
 <span><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This can make for a useful shortcut:</p>
+<p>这可以成为一个有用的简便写法：</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0800</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0800</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8,803 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;</span></span>
@@ -787,27 +788,27 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; # ℹ 8,797 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercises-1" class="level3" data-number="12.3.4"><h3 data-number="12.3.4" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">12.3.4</span> Exercises</h3>
+</section><section id="练习-1" class="level3" data-number="12.3.4"><h3 data-number="12.3.4" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">12.3.4</span> 练习</h3>
 <ol type="1">
-<li>Find all flights where <code>arr_delay</code> is missing but <code>dep_delay</code> is not. Find all flights where neither <code>arr_time</code> nor <code>sched_arr_time</code> are missing, but <code>arr_delay</code> is.</li>
-<li>How many flights have a missing <code>dep_time</code>? What other variables are missing in these rows? What might these rows represent?</li>
-<li>Assuming that a missing <code>dep_time</code> implies that a flight is cancelled, look at the number of cancelled flights per day. Is there a pattern? Is there a connection between the proportion of cancelled flights and the average delay of non-cancelled flights?</li>
+<li>找出所有 <code>arr_delay</code> 缺失但 <code>dep_delay</code> 不缺失的航班。找出所有 <code>arr_time</code> 和 <code>sched_arr_time</code> 都不缺失，但 <code>arr_delay</code> 缺失的航班。</li>
+<li>有多少航班的 <code>dep_time</code> 是缺失的？这些行中还有哪些其他变量是缺失的？这些行可能代表什么？</li>
+<li>假设缺失的 <code>dep_time</code> 意味着航班被取消了，查看每天被取消航班的数量。是否存在某种模式？被取消航班的比例与未取消航班的平均延误之间是否存在联系？</li>
 </ol></section></section><section id="sec-logical-summaries" class="level2" data-number="12.4"><h2 data-number="12.4" class="anchored" data-anchor-id="sec-logical-summaries">
-<span class="header-section-number">12.4</span> Summaries</h2>
-<p>The following sections describe some useful techniques for summarizing logical vectors. As well as functions that only work specifically with logical vectors, you can also use functions that work with numeric vectors.</p>
-<section id="logical-summaries" class="level3" data-number="12.4.1"><h3 data-number="12.4.1" class="anchored" data-anchor-id="logical-summaries">
-<span class="header-section-number">12.4.1</span> Logical summaries</h3>
-<p>There are two main logical summaries: <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> and <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>. <code>any(x)</code> is the equivalent of <code>|</code>; it’ll return <code>TRUE</code> if there are any <code>TRUE</code>’s in <code>x</code>. <code>all(x)</code> is equivalent of <code>&amp;</code>; it’ll return <code>TRUE</code> only if all values of <code>x</code> are <code>TRUE</code>’s. Like most summary functions, you can make the missing values go away with <code>na.rm = TRUE</code>.</p>
-<p>For example, we could use <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> and <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> to find out if every flight was delayed on departure by at most an hour or if any flights were delayed on arrival by five hours or more. And using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> allows us to do that by day:</p>
+<span class="header-section-number">12.4</span> 汇总</h2>
+<p>以下各节描述了一些用于汇总逻辑向量的有用技术。除了专门用于逻辑向量的函数外，你也可以使用那些适用于数值向量的函数。</p>
+<section id="逻辑汇总" class="level3" data-number="12.4.1"><h3 data-number="12.4.1" class="anchored" data-anchor-id="逻辑汇总">
+<span class="header-section-number">12.4.1</span> 逻辑汇总</h3>
+<p>有两个主要的逻辑汇总函数：<code><a href="https://rdrr.io/r/base/any.html">any()</a></code> 和 <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>。<code>any(x)</code> 相当于 <code>|</code>；如果 <code>x</code> 中有任何 <code>TRUE</code>，它将返回 <code>TRUE</code>。<code>all(x)</code> 相当于 <code>&amp;</code>；只有当 <code>x</code> 的所有值都是 <code>TRUE</code> 时，它才会返回 <code>TRUE</code>。与大多数汇总函数一样，你可以通过 <code>na.rm = TRUE</code> 来忽略缺失值。</p>
+<p>例如，我们可以使用 <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> 和 <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> 来查看是否每天的所有航班出发延误都不超过一小时，或者是否有任何航班到达延误达到五小时或更长。并且，使用 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> 允许我们按天来进行这种分析：</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        all_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        any_long_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;=</span> <span class="fl">300</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    all_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    any_long_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;=</span> <span class="fl">300</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 365 × 5</span></span>
 <span><span class="co">#&gt;    year month   day all_delayed any_long_delay</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt;       &lt;lgl&gt;         </span></span>
@@ -819,19 +820,19 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 6  2013     1     6 FALSE       FALSE         </span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In most cases, however, <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> and <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> are a little too crude, and it would be nice to be able to get a little more detail about how many values are <code>TRUE</code> or <code>FALSE</code>. That leads us to the numeric summaries.</p>
+<p>然而，在大多数情况下，<code><a href="https://rdrr.io/r/base/any.html">any()</a></code> 和 <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> 有点过于粗略，如果能获得更多关于有多少值是 <code>TRUE</code> 或 <code>FALSE</code> 的细节会更好。这就引出了数值汇总。</p>
 </section><section id="sec-numeric-summaries-of-logicals" class="level3" data-number="12.4.2"><h3 data-number="12.4.2" class="anchored" data-anchor-id="sec-numeric-summaries-of-logicals">
-<span class="header-section-number">12.4.2</span> Numeric summaries of logical vectors</h3>
-<p>When you use a logical vector in a numeric context, <code>TRUE</code> becomes 1 and <code>FALSE</code> becomes 0. This makes <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> and <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> very useful with logical vectors because <code>sum(x)</code> gives the number of <code>TRUE</code>s and <code>mean(x)</code> gives the proportion of <code>TRUE</code>s (because <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> is just <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> divided by <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>).</p>
-<p>That, for example, allows us to see the proportion of flights that were delayed on departure by at most an hour and the number of flights that were delayed on arrival by five hours or more:</p>
+<span class="header-section-number">12.4.2</span> 逻辑向量的数值汇总</h3>
+<p>当你在数值上下文中使用逻辑向量时，<code>TRUE</code> 会变成 1，<code>FALSE</code> 会变成 0。这使得 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> 和 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 在处理逻辑向量时非常有用，因为 <code>sum(x)</code> 给出 <code>TRUE</code> 的数量，而 <code>mean(x)</code> 给出 <code>TRUE</code> 的比例（因为 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 就是 <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> 除以 <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>）。</p>
+<p>例如，这可以让我们看到出发延误不超过一小时的航班比例，以及到达延误五小时或更长时间的航班数量：</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        proportion_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        count_long_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;=</span> <span class="fl">300</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    proportion_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    count_long_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;=</span> <span class="fl">300</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 365 × 5</span></span>
 <span><span class="co">#&gt;    year month   day proportion_delayed count_long_delay</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;              &lt;dbl&gt;            &lt;int&gt;</span></span>
@@ -843,19 +844,19 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 6  2013     1     6              0.959                0</span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="logical-subsetting" class="level3" data-number="12.4.3"><h3 data-number="12.4.3" class="anchored" data-anchor-id="logical-subsetting">
-<span class="header-section-number">12.4.3</span> Logical subsetting</h3>
-<p>There’s one final use for logical vectors in summaries: you can use a logical vector to filter a single variable to a subset of interest. This makes use of the base <code>[</code> (pronounced subset) operator, which you’ll learn more about in <a href="base-R.html#sec-subset-many" class="quarto-xref"><span>Section 27.2</span></a>.</p>
-<p>Imagine we wanted to look at the average delay just for flights that were actually delayed. One way to do so would be to first filter the flights and then calculate the average delay:</p>
+</section><section id="逻辑子集" class="level3" data-number="12.4.3"><h3 data-number="12.4.3" class="anchored" data-anchor-id="逻辑子集">
+<span class="header-section-number">12.4.3</span> 逻辑子集</h3>
+<p>在汇总中，逻辑向量还有最后一个用途：你可以使用一个逻辑向量来将单个变量筛选到感兴趣的子集。这利用了 R base 的 <code>[</code>（读作 subset）运算符，你将在 <a href="base-R.html#sec-subset-many" class="quarto-xref"><span>Section 27.2</span></a> 中学到更多相关内容。</p>
+<p>假设我们想查看仅仅是那些实际延误了的航班的平均延误。一种方法是先筛选出航班，然后计算平均延误：</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        behind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span>,</span>
-<span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>        .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    behind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span>,</span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 365 × 5</span></span>
 <span><span class="co">#&gt;    year month   day behind     n</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;int&gt;</span></span>
@@ -867,17 +868,17 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 6  2013     1     6   24.4   381</span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This works, but what if we wanted to also compute the average delay for flights that arrived early? We’d need to perform a separate filter step, and then figure out how to combine the two data frames together<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Instead you could use <code>[</code> to perform an inline filtering: <code>arr_delay[arr_delay &gt; 0]</code> will yield only the positive arrival delays.</p>
-<p>This leads to:</p>
+<p>这行得通，但如果我们还想计算那些提早到达航班的平均延误呢？我们就需要执行一个单独的筛选步骤，然后想办法将这两个数据框合并在一起<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。相反，你可以使用 <code>[</code> 来执行内联筛选：<code>arr_delay[arr_delay &gt; 0]</code> 将只产生正的到达延误值。</p>
+<p>这样就会得到：</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>        behind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">[</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        ahead <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">[</span><span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>        .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    behind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">[</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    ahead <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">[</span><span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 365 × 6</span></span>
 <span><span class="co">#&gt;    year month   day behind ahead     n</span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
@@ -889,103 +890,104 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 6  2013     1     6   24.4 -13.6   832</span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Also note the difference in the group size: in the first chunk <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> gives the number of delayed flights per day; in the second, <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> gives the total number of flights.</p>
-</section><section id="exercises-2" class="level3" data-number="12.4.4"><h3 data-number="12.4.4" class="anchored" data-anchor-id="exercises-2">
-<span class="header-section-number">12.4.4</span> Exercises</h3>
+<p>同时请注意组大小的差异：在第一个代码块中，<code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> 给出的是每天延误的航班数量；在第二个代码块中，<code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> 给出的是总航班数。</p>
+</section><section id="练习-2" class="level3" data-number="12.4.4"><h3 data-number="12.4.4" class="anchored" data-anchor-id="练习-2">
+<span class="header-section-number">12.4.4</span> 练习</h3>
 <ol type="1">
-<li>What will <code>sum(is.na(x))</code> tell you? How about <code>mean(is.na(x))</code>?</li>
-<li>What does <code><a href="https://rdrr.io/r/base/prod.html">prod()</a></code> return when applied to a logical vector? What logical summary function is it equivalent to? What does <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> return when applied to a logical vector? What logical summary function is it equivalent to? Read the documentation and perform a few experiments.</li>
-</ol></section></section><section id="conditional-transformations" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="conditional-transformations">
-<span class="header-section-number">12.5</span> Conditional transformations</h2>
-<p>One of the most powerful features of logical vectors are their use for conditional transformations, i.e.&nbsp;doing one thing for condition x, and something different for condition y. There are two important tools for this: <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>.</p>
+<li>
+<code>sum(is.na(x))</code> 会告诉你什么？<code>mean(is.na(x))</code> 呢？</li>
+<li>当 <code><a href="https://rdrr.io/r/base/prod.html">prod()</a></code> 应用于逻辑向量时返回什么？它等同于哪个逻辑汇总函数？当 <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> 应用于逻辑向量时返回什么？它等同于哪个逻辑汇总函数？阅读文档并进行一些实验。</li>
+</ol></section></section><section id="条件转换" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="条件转换">
+<span class="header-section-number">12.5</span> 条件转换</h2>
+<p>逻辑向量最强大的特性之一是它们在条件转换中的应用，即对条件 x 做一件事，对条件 y 做另一件事。有两个重要的工具可以实现这一点：<code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>。</p>
 <section id="if_else" class="level3" data-number="12.5.1"><h3 data-number="12.5.1" class="anchored" data-anchor-id="if_else">
 <span class="header-section-number">12.5.1</span> <code>if_else()</code>
 </h3>
-<p>If you want to use one value when a condition is <code>TRUE</code> and another value when it’s <code>FALSE</code>, you can use <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">dplyr::if_else()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. You’ll always use the first three argument of <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>. The first argument, <code>condition</code>, is a logical vector, the second, <code>true</code>, gives the output when the condition is true, and the third, <code>false</code>, gives the output if the condition is false.</p>
-<p>Let’s begin with a simple example of labeling a numeric vector as either “+ve” (positive) or “-ve” (negative):</p>
+<p>如果你想在条件为 <code>TRUE</code> 时使用一个值，而在条件为 <code>FALSE</code> 时使用另一个值，你可以使用 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">dplyr::if_else()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。你总是会使用 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 的前三个参数。第一个参数 <code>condition</code> 是一个逻辑向量；第二个参数 <code>true</code> 给出条件为真时的输出；第三个参数 <code>false</code> 给出条件为假时的输出。</p>
+<p>我们从一个简单的例子开始，将一个数值向量标记为 “+ve” (正数) 或 “-ve” (负数)：</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"+ve"</span>, <span class="st">"-ve"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There’s an optional fourth argument, <code>missing</code> which will be used if the input is <code>NA</code>:</p>
+<p>还有一个可选的第四个参数 <code>missing</code>，如果输入是 <code>NA</code>，就会使用这个值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"+ve"</span>, <span class="st">"-ve"</span>, <span class="st">"???"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can also use vectors for the <code>true</code> and <code>false</code> arguments. For example, this allows us to create a minimal implementation of <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code>:</p>
+<p>你也可以为 <code>true</code> 和 <code>false</code> 参数使用向量。例如，这允许我们创建一个 <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code> 的最小化实现：</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="op">-</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  3  2  1  0  1  2  3 NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So far all the arguments have used the same vectors, but you can of course mix and match. For example, you could implement a simple version of <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> like this:</p>
+<p>到目前为止，所有的参数都使用了相同的向量，但你当然可以混合搭配。例如，你可以像这样实现一个 <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> 的简单版本：</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>, <span class="va">y1</span>, <span class="va">x1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 3 1 2 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You might have noticed a small infelicity in our labeling example above: zero is neither positive nor negative. We could resolve this by adding an additional <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>:</p>
+<p>你可能已经注意到我们上面标签示例中的一个小瑕疵：零既不是正数也不是负数。我们可以通过添加一个额外的 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 来解决这个问题：</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>, <span class="st">"0"</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="st">"-ve"</span>, <span class="st">"+ve"</span><span class="op">)</span>, <span class="st">"???"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is already a little hard to read, and you can imagine it would only get harder if you have more conditions. Instead, you can switch to <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code>.</p>
+<p>这已经有点难读了，你可以想象如果你有更多的条件，情况只会变得更糟。此时，你可以转而使用 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code>。</p>
 </section><section id="case_when" class="level3" data-number="12.5.2"><h3 data-number="12.5.2" class="anchored" data-anchor-id="case_when">
 <span class="header-section-number">12.5.2</span> <code>case_when()</code>
 </h3>
-<p>dplyr’s <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> is inspired by SQL’s <code>CASE</code> statement and provides a flexible way of performing different computations for different conditions. It has a special syntax that unfortunately looks like nothing else you’ll use in the tidyverse. It takes pairs that look like <code>condition ~ output</code>. <code>condition</code> must be a logical vector; when it’s <code>TRUE</code>, <code>output</code> will be used.</p>
-<p>This means we could recreate our previous nested <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> as follows:</p>
+<p>dplyr 的 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 受到 SQL 的 <code>CASE</code> 语句的启发，提供了一种为不同条件执行不同计算的灵活方式。它有一种特殊的语法，不幸的是，它看起来与你在 tidyverse 中使用的其他任何东西都不一样。它接受形如 <code>condition ~ output</code> 的配对。<code>condition</code> 必须是一个逻辑向量；当它为 <code>TRUE</code> 时，将使用 <code>output</code>。</p>
+<p>这意味着我们可以像下面这样重新创建我们之前的嵌套 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"0"</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">~</span> <span class="st">"???"</span></span>
+<span>  <span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>   <span class="op">~</span> <span class="st">"0"</span>,</span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>    <span class="op">~</span> <span class="st">"-ve"</span>, </span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>    <span class="op">~</span> <span class="st">"+ve"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">~</span> <span class="st">"???"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is more code, but it’s also more explicit.</p>
-<p>To explain how <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> works, let’s explore some simpler cases. If none of the cases match, the output gets an <code>NA</code>:</p>
+<p>这代码量更多，但也更明确。</p>
+<p>为了解释 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 的工作原理，让我们来探讨一些更简单的情况。如果没有一个条件匹配，输出会得到一个 <code>NA</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" NA    "+ve" "+ve" "+ve" NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Use <code>.default</code> if you want to create a “default”/catch all value:</p>
+<p>如果你想创建一个“默认”或“全收”的值，可以使用 <code>.default</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
-<span>    .default <span class="op">=</span> <span class="st">"???"</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
+<span>  .default <span class="op">=</span> <span class="st">"???"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "???" "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And note that if multiple conditions match, only the first will be used:</p>
+<p>并且请注意，如果多个条件匹配，只有第一个会被使用：</p>
 <div class="cell">
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"big"</span></span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"big"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] NA    NA    NA    NA    "+ve" "+ve" "+ve" NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Just like with <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> you can use variables on both sides of the <code>~</code> and you can mix and match variables as needed for your problem. For example, we could use <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> to provide some human readable labels for the arrival delay:</p>
+<p>就像 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 一样，你可以在 <code>~</code> 的两边都使用变量，并且可以根据你的问题需要混合搭配变量。例如，我们可以使用 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 为到达延误提供一些人类可读的标签：</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        status <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">~</span> <span class="st">"cancelled"</span>,</span>
-<span>            <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">30</span> <span class="op">~</span> <span class="st">"very early"</span>,</span>
-<span>            <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">15</span> <span class="op">~</span> <span class="st">"early"</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">15</span> <span class="op">~</span> <span class="st">"on time"</span>,</span>
-<span>            <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">60</span> <span class="op">~</span> <span class="st">"late"</span>,</span>
-<span>            <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="cn">Inf</span> <span class="op">~</span> <span class="st">"very late"</span>,</span>
-<span>        <span class="op">)</span>,</span>
-<span>        .keep <span class="op">=</span> <span class="st">"used"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    status <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span>    <span class="op">~</span> <span class="st">"cancelled"</span>,</span>
+<span>      <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">30</span>     <span class="op">~</span> <span class="st">"very early"</span>,</span>
+<span>      <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">15</span>     <span class="op">~</span> <span class="st">"early"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">15</span> <span class="op">~</span> <span class="st">"on time"</span>,</span>
+<span>      <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">60</span>      <span class="op">~</span> <span class="st">"late"</span>,</span>
+<span>      <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="cn">Inf</span>     <span class="op">~</span> <span class="st">"very late"</span>,</span>
+<span>    <span class="op">)</span>,</span>
+<span>    .keep <span class="op">=</span> <span class="st">"used"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 336,776 × 2</span></span>
 <span><span class="co">#&gt;   arr_delay status </span></span>
 <span><span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;  </span></span>
@@ -997,50 +999,50 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
 <span><span class="co">#&gt; 6        12 on time</span></span>
 <span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Be wary when writing this sort of complex <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> statement; my first two attempts used a mix of <code>&lt;</code> and <code>&gt;</code> and I kept accidentally creating overlapping conditions.</p>
-</section><section id="compatible-types" class="level3" data-number="12.5.3"><h3 data-number="12.5.3" class="anchored" data-anchor-id="compatible-types">
-<span class="header-section-number">12.5.3</span> Compatible types</h3>
-<p>Note that both <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> require <strong>compatible</strong> types in the output. If they’re not compatible, you’ll see errors like this:</p>
+<p>在编写这类复杂的 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 语句时要小心；我前两次的尝试混合使用了 <code>&lt;</code> 和 <code>&gt;</code>，结果不小心创建了重叠的条件。</p>
+</section><section id="兼容的类型" class="level3" data-number="12.5.3"><h3 data-number="12.5.3" class="anchored" data-anchor-id="兼容的类型">
+<span class="header-section-number">12.5.3</span> 兼容的类型</h3>
+<p>请注意，<code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 都要求输出中的类型是<strong>兼容的</strong>。如果它们不兼容，你会看到类似这样的错误：</p>
 <div class="cell">
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"a"</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `if_else()`:</span></span>
 <span><span class="co">#&gt; ! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1</span> <span class="op">~</span> <span class="cn">TRUE</span>,</span>
-<span>    <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1</span> <span class="op">~</span> <span class="cn">TRUE</span>,  </span>
+<span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>  <span class="op">~</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `case_when()`:</span></span>
 <span><span class="co">#&gt; ! Can't combine `..1 (right)` &lt;logical&gt; and `..2 (right)` &lt;datetime&lt;local&gt;&gt;.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Overall, relatively few types are compatible, because automatically converting one type of vector to another is a common source of errors. Here are the most important cases that are compatible:</p>
+<p>总的来说，相对较少的类型是兼容的，因为自动将一种类型的向量转换为另一种是常见的错误来源。以下是兼容的最重要的几种情况：</p>
 <ul>
-<li>Numeric and logical vectors are compatible, as we discussed in <a href="#sec-numeric-summaries-of-logicals" class="quarto-xref"><span>Section 12.4.2</span></a>.</li>
-<li>Strings and factors (<a href="factors.html" class="quarto-xref"><span>Chapter 16</span></a>) are compatible, because you can think of a factor as a string with a restricted set of values.</li>
-<li>Dates and date-times, which we’ll discuss in <a href="datetimes.html" class="quarto-xref"><span>Chapter 17</span></a>, are compatible because you can think of a date as a special case of date-time.</li>
+<li>数值和逻辑向量是兼容的，正如我们在 <a href="#sec-numeric-summaries-of-logicals" class="quarto-xref"><span>Section 12.4.2</span></a> 中讨论的那样。</li>
+<li>字符串和因子 (<a href="factors.html" class="quarto-xref"><span>Chapter 16</span></a>) 是兼容的，因为你可以把因子看作是具有一组受限值的字符串。</li>
+<li>日期和日期时间，我们将在 <a href="datetimes.html" class="quarto-xref"><span>Chapter 17</span></a> 中讨论，是兼容的，因为你可以把日期看作是日期时间的一种特殊情况。</li>
 <li>
-<code>NA</code>, which is technically a logical vector, is compatible with everything because every vector has some way of representing a missing value.</li>
+<code>NA</code>，技术上是一个逻辑向量，与所有类型都兼容，因为每个向量都有某种方式来表示缺失值。</li>
 </ul>
-<p>We don’t expect you to memorize these rules, but they should become second nature over time because they are applied consistently throughout the tidyverse.</p>
-</section><section id="exercises-3" class="level3" data-number="12.5.4"><h3 data-number="12.5.4" class="anchored" data-anchor-id="exercises-3">
-<span class="header-section-number">12.5.4</span> Exercises</h3>
+<p>我们不期望你记住这些规则，但它们应该会随着时间的推移成为你的第二天性，因为它们在整个 tidyverse 中都是一致应用的。</p>
+</section><section id="练习-3" class="level3" data-number="12.5.4"><h3 data-number="12.5.4" class="anchored" data-anchor-id="练习-3">
+<span class="header-section-number">12.5.4</span> 练习</h3>
 <ol type="1">
-<li><p>A number is even if it’s divisible by two, which in R you can find out with <code>x %% 2 == 0</code>. Use this fact and <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> to determine whether each number between 0 and 20 is even or odd.</p></li>
-<li><p>Given a vector of days like <code>x &lt;- c("Monday", "Saturday", "Wednesday")</code>, use an <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> statement to label them as weekends or weekdays.</p></li>
-<li><p>Use <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> to compute the absolute value of a numeric vector called <code>x</code>.</p></li>
-<li><p>Write a <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> statement that uses the <code>month</code> and <code>day</code> columns from <code>flights</code> to label a selection of important US holidays (e.g., New Years Day, 4th of July, Thanksgiving, and Christmas). First create a logical column that is either <code>TRUE</code> or <code>FALSE</code>, and then create a character column that either gives the name of the holiday or is <code>NA</code>.</p></li>
-</ol></section></section><section id="summary" class="level2" data-number="12.6"><h2 data-number="12.6" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">12.6</span> Summary</h2>
-<p>The definition of a logical vector is simple because each value must be either <code>TRUE</code>, <code>FALSE</code>, or <code>NA</code>. But logical vectors provide a huge amount of power. In this chapter, you learned how to create logical vectors with <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, and <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>, how to combine them with <code>!</code>, <code>&amp;</code>, and <code>|</code>, and how to summarize them with <code><a href="https://rdrr.io/r/base/any.html">any()</a></code>, <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>, <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, and <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>. You also learned the powerful <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> functions that allow you to return values depending on the value of a logical vector.</p>
-<p>We’ll see logical vectors again and again in the following chapters. For example in <a href="strings.html" class="quarto-xref"><span>Chapter 14</span></a> you’ll learn about <code>str_detect(x, pattern)</code> which returns a logical vector that’s <code>TRUE</code> for the elements of <code>x</code> that match the <code>pattern</code>, and in <a href="datetimes.html" class="quarto-xref"><span>Chapter 17</span></a> you’ll create logical vectors from the comparison of dates and times. But for now, we’re going to move onto the next most important type of vector: numeric vectors.</p>
+<li><p>一个数如果是偶数，那么它能被 2 整除，在 R 中你可以用 <code>x %% 2 == 0</code> 来判断。利用这个事实和 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 来判断 0 到 20 之间的每个数是奇数还是偶数。</p></li>
+<li><p>给定一个像 <code>x &lt;- c("Monday", "Saturday", "Wednesday")</code> 这样的日期向量，使用一个 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 语句将它们标记为周末或工作日。</p></li>
+<li><p>使用 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 来计算一个名为 <code>x</code> 的数值向量的绝对值。</p></li>
+<li><p>编写一个 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 语句，使用 <code>flights</code> 数据集中的 <code>month</code> 和 <code>day</code> 列来标记一些重要的美国节日（例如，元旦、7月4日独立日、感恩节和圣诞节）。首先创建一个值为 <code>TRUE</code> 或 <code>FALSE</code> 的逻辑列，然后创建一个字符列，该列要么给出节日的名称，要么是 <code>NA</code>。</p></li>
+</ol></section></section><section id="总结" class="level2" data-number="12.6"><h2 data-number="12.6" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">12.6</span> 总结</h2>
+<p>逻辑向量的定义很简单，因为每个值必须是 <code>TRUE</code>、<code>FALSE</code> 或 <code>NA</code> 之一。但逻辑向量提供了巨大的能力。在本章中，你学习了如何使用 <code>&gt;</code>、<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code> 和 <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> 创建逻辑向量，如何使用 <code>!</code>、<code>&amp;</code> 和 <code>|</code> 组合它们，以及如何使用 <code><a href="https://rdrr.io/r/base/any.html">any()</a></code>、<code><a href="https://rdrr.io/r/base/all.html">all()</a></code>、<code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> 和 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> 汇总它们。你还学习了强大的 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> 函数，它们允许你根据逻辑向量的值返回不同的结果。</p>
+<p>在接下来的章节中，我们将一次又一次地看到逻辑向量。例如，在 <a href="strings.html" class="quarto-xref"><span>Chapter 14</span></a> 中，你将学习 <code>str_detect(x, pattern)</code>，它返回一个逻辑向量，对于 <code>x</code> 中匹配 <code>pattern</code> 的元素为 <code>TRUE</code>；在 <a href="datetimes.html" class="quarto-xref"><span>Chapter 17</span></a> 中，你将通过比较日期和时间来创建逻辑向量。但现在，我们将转向下一个最重要的向量类型：数值向量。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>R normally calls print for you (i.e.&nbsp;<code>x</code> is a shortcut for <code>print(x)</code>), but calling it explicitly is useful if you want to provide other arguments.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>That is, <code>xor(x, y)</code> is true if x is true, or y is true, but not both. This is how we usually use “or” In English. “Both” is not usually an acceptable answer to the question “would you like ice cream or cake?”.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>We’ll cover this in <a href="joins.html" class="quarto-xref"><span>Chapter 19</span></a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>dplyr’s <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> is very similar to base R’s <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. There are two main advantages of <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>over <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>: you can choose what should happen to missing values, and <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> is much more likely to give you a meaningful error if your variables have incompatible types.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>R 通常会为你调用 print（即 <code>x</code> 是 <code>print(x)</code> 的简写），但如果你想提供其他参数，显式调用它会很有用。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>也就是说，如果 x 为真，或者 y 为真，但不是两者都为真，那么 <code>xor(x, y)</code> 就为真。这与我们在英语中通常使用“or”的方式类似。“两者都”通常不是“你想要冰淇淋还是蛋糕？”这个问题的可接受答案。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>我们将在 <a href="joins.html" class="quarto-xref"><span>Chapter 19</span></a> 中讨论这个问题。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>dplyr 的 <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 与 R base 的 <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> 非常相似。<code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 相对于 <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> 有两个主要优点：你可以选择如何处理缺失值，并且如果你的变量类型不兼容，<code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> 更有可能给出有意义的错误信息。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1440,29 +1442,18 @@ Figure&nbsp;12.1: The complete set of Boolean operations. <code>x</code> is the 
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./transform.html" class="pagination-link" aria-label="Transform">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transform</span>
+      <a href="./transform.html" class="pagination-link" aria-label="数据转换">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">数据转换</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./numbers.html" class="pagination-link" aria-label="Numbers">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./numbers.html" class="pagination-link" aria-label="数值">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">
-<p>R 数据科学 (2e) 是一本由 Hadley Wickham, Mine Çetinkaya-Rundel 和 Garrett Grolemund 合著的书。 这是汉化项目。</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/logicals.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>本书由 <a href="https://quarto.org/">Quarto</a> 构建。</p>
-</div>
-  </div>
-</footer>
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/logicals.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

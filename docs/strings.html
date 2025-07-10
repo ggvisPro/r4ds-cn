@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>14&nbsp; Strings – R 数据科学 2e
+<title>14&nbsp; 字符串 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./strings.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./strings.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transform</span></a>
+ <span class="menu-text">数据转换</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -257,49 +257,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Logical vectors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">逻辑向量</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./numbers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./strings.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regexps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regular expressions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">正则表达式</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">因子</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datetimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Dates and times</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">日期和时间</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Missing values</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">缺失值</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">连接</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,59 +406,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">14.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">14.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">14.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">14.1.1</span> 先决条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#creating-a-string" id="toc-creating-a-string" class="nav-link" data-scroll-target="#creating-a-string"><span class="header-section-number">14.2</span> Creating a string</a>
+<a href="#%E5%88%9B%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2" id="toc-创建字符串" class="nav-link" data-scroll-target="#%E5%88%9B%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="header-section-number">14.2</span> 创建字符串</a>
   <ul class="collapse">
-<li><a href="#escapes" id="toc-escapes" class="nav-link" data-scroll-target="#escapes"><span class="header-section-number">14.2.1</span> Escapes</a></li>
-  <li><a href="#sec-raw-strings" id="toc-sec-raw-strings" class="nav-link" data-scroll-target="#sec-raw-strings"><span class="header-section-number">14.2.2</span> Raw strings</a></li>
-  <li><a href="#other-special-characters" id="toc-other-special-characters" class="nav-link" data-scroll-target="#other-special-characters"><span class="header-section-number">14.2.3</span> Other special characters</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.2.4</span> Exercises</a></li>
+<li><a href="#%E8%BD%AC%E4%B9%89" id="toc-转义" class="nav-link" data-scroll-target="#%E8%BD%AC%E4%B9%89"><span class="header-section-number">14.2.1</span> 转义</a></li>
+  <li><a href="#sec-raw-strings" id="toc-sec-raw-strings" class="nav-link" data-scroll-target="#sec-raw-strings"><span class="header-section-number">14.2.2</span> 原始字符串</a></li>
+  <li><a href="#%E5%85%B6%E4%BB%96%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6" id="toc-其他特殊字符" class="nav-link" data-scroll-target="#%E5%85%B6%E4%BB%96%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="header-section-number">14.2.3</span> 其他特殊字符</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">14.2.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#creating-many-strings-from-data" id="toc-creating-many-strings-from-data" class="nav-link" data-scroll-target="#creating-many-strings-from-data"><span class="header-section-number">14.3</span> Creating many strings from data</a>
+<a href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2" id="toc-从数据创建多个字符串" class="nav-link" data-scroll-target="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="header-section-number">14.3</span> 从数据创建多个字符串</a>
   <ul class="collapse">
 <li><a href="#str_c" id="toc-str_c" class="nav-link" data-scroll-target="#str_c"><span class="header-section-number">14.3.1</span> <code>str_c()</code></a></li>
   <li><a href="#sec-glue" id="toc-sec-glue" class="nav-link" data-scroll-target="#sec-glue"><span class="header-section-number">14.3.2</span> <code>str_glue()</code></a></li>
   <li><a href="#str_flatten" id="toc-str_flatten" class="nav-link" data-scroll-target="#str_flatten"><span class="header-section-number">14.3.3</span> <code>str_flatten()</code></a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">14.3.4</span> Exercises</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-1" id="toc-练习-1" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-1"><span class="header-section-number">14.3.4</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#extracting-data-from-strings" id="toc-extracting-data-from-strings" class="nav-link" data-scroll-target="#extracting-data-from-strings"><span class="header-section-number">14.4</span> Extracting data from strings</a>
+<a href="#%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE" id="toc-从字符串中提取数据" class="nav-link" data-scroll-target="#%E4%BB%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="header-section-number">14.4</span> 从字符串中提取数据</a>
   <ul class="collapse">
-<li><a href="#separating-into-rows" id="toc-separating-into-rows" class="nav-link" data-scroll-target="#separating-into-rows"><span class="header-section-number">14.4.1</span> Separating into rows</a></li>
-  <li><a href="#sec-string-columns" id="toc-sec-string-columns" class="nav-link" data-scroll-target="#sec-string-columns"><span class="header-section-number">14.4.2</span> Separating into columns</a></li>
-  <li><a href="#diagnosing-widening-problems" id="toc-diagnosing-widening-problems" class="nav-link" data-scroll-target="#diagnosing-widening-problems"><span class="header-section-number">14.4.3</span> Diagnosing widening problems</a></li>
+<li><a href="#%E5%88%86%E6%88%90%E8%A1%8C" id="toc-分成行" class="nav-link" data-scroll-target="#%E5%88%86%E6%88%90%E8%A1%8C"><span class="header-section-number">14.4.1</span> 分成行</a></li>
+  <li><a href="#sec-string-columns" id="toc-sec-string-columns" class="nav-link" data-scroll-target="#sec-string-columns"><span class="header-section-number">14.4.2</span> 分成列</a></li>
+  <li><a href="#%E8%AF%8A%E6%96%AD%E5%8F%98%E5%AE%BD%E9%97%AE%E9%A2%98" id="toc-诊断变宽问题" class="nav-link" data-scroll-target="#%E8%AF%8A%E6%96%AD%E5%8F%98%E5%AE%BD%E9%97%AE%E9%A2%98"><span class="header-section-number">14.4.3</span> 诊断变宽问题</a></li>
   </ul>
 </li>
   <li>
-<a href="#letters" id="toc-letters" class="nav-link" data-scroll-target="#letters"><span class="header-section-number">14.5</span> Letters</a>
+<a href="#%E5%AD%97%E6%AF%8D" id="toc-字母" class="nav-link" data-scroll-target="#%E5%AD%97%E6%AF%8D"><span class="header-section-number">14.5</span> 字母</a>
   <ul class="collapse">
-<li><a href="#length" id="toc-length" class="nav-link" data-scroll-target="#length"><span class="header-section-number">14.5.1</span> Length</a></li>
-  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting"><span class="header-section-number">14.5.2</span> Subsetting</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">14.5.3</span> Exercises</a></li>
+<li><a href="#%E9%95%BF%E5%BA%A6" id="toc-长度" class="nav-link" data-scroll-target="#%E9%95%BF%E5%BA%A6"><span class="header-section-number">14.5.1</span> 长度</a></li>
+  <li><a href="#%E5%AD%90%E9%9B%86" id="toc-子集" class="nav-link" data-scroll-target="#%E5%AD%90%E9%9B%86"><span class="header-section-number">14.5.2</span> 子集</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-2" id="toc-练习-2" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-2"><span class="header-section-number">14.5.3</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#sec-other-languages" id="toc-sec-other-languages" class="nav-link" data-scroll-target="#sec-other-languages"><span class="header-section-number">14.6</span> Non-English text</a>
+<a href="#sec-other-languages" id="toc-sec-other-languages" class="nav-link" data-scroll-target="#sec-other-languages"><span class="header-section-number">14.6</span> 非英文文本</a>
   <ul class="collapse">
-<li><a href="#encoding" id="toc-encoding" class="nav-link" data-scroll-target="#encoding"><span class="header-section-number">14.6.1</span> Encoding</a></li>
-  <li><a href="#letter-variations" id="toc-letter-variations" class="nav-link" data-scroll-target="#letter-variations"><span class="header-section-number">14.6.2</span> Letter variations</a></li>
-  <li><a href="#locale-dependent-functions" id="toc-locale-dependent-functions" class="nav-link" data-scroll-target="#locale-dependent-functions"><span class="header-section-number">14.6.3</span> Locale-dependent functions</a></li>
+<li><a href="#%E7%BC%96%E7%A0%81" id="toc-编码" class="nav-link" data-scroll-target="#%E7%BC%96%E7%A0%81"><span class="header-section-number">14.6.1</span> 编码</a></li>
+  <li><a href="#%E5%AD%97%E6%AF%8D%E5%8F%98%E4%BD%93" id="toc-字母变体" class="nav-link" data-scroll-target="#%E5%AD%97%E6%AF%8D%E5%8F%98%E4%BD%93"><span class="header-section-number">14.6.2</span> 字母变体</a></li>
+  <li><a href="#%E4%BE%9D%E8%B5%96%E4%BA%8E%E5%8C%BA%E5%9F%9F%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%87%BD%E6%95%B0" id="toc-依赖于区域设置的函数" class="nav-link" data-scroll-target="#%E4%BE%9D%E8%B5%96%E4%BA%8E%E5%8C%BA%E5%9F%9F%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%87%BD%E6%95%B0"><span class="header-section-number">14.6.3</span> 依赖于区域设置的函数</a></li>
   </ul>
 </li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">14.7</span> Summary</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">14.7</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/strings.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transform</a></li><li class="breadcrumb-item"><a href="./strings.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-strings" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Strings</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">数据转换</a></li><li class="breadcrumb-item"><a href="./strings.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-strings" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">字符串</span></span></h1>
 </div>
 
 
@@ -472,52 +472,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">14.1</span> Introduction</h2>
-<p>So far, you’ve used a bunch of strings without learning much about the details. Now it’s time to dive into them, learn what makes strings tick, and master some of the powerful string manipulation tools you have at your disposal.</p>
-<p>We’ll begin with the details of creating strings and character vectors. You’ll then dive into creating strings from data, then the opposite: extracting strings from data. We’ll then discuss tools that work with individual letters. The chapter finishes with functions that work with individual letters and a brief discussion of where your expectations from English might steer you wrong when working with other languages.</p>
-<p>We’ll keep working with strings in the next chapter, where you’ll learn more about the power of regular expressions.</p>
-<section id="prerequisites" class="level3" data-number="14.1.1"><h3 data-number="14.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">14.1.1</span> Prerequisites</h3>
-<p>In this chapter, we’ll use functions from the stringr package, which is part of the core tidyverse. We’ll also use the babynames data since it provides some fun strings to manipulate.</p>
+</header><section id="引言" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">14.1</span> 引言</h2>
+<p>到目前为止，你已经使用了很多字符串，但对细节知之甚少。现在是时候深入了解它们，学习字符串的运作原理，并掌握一些你可以使用的强大字符串处理工具。</p>
+<p>我们将从创建字符串和字符向量的细节开始。然后，你将深入学习如何从数据创建字符串，以及反过来：如何从数据中提取字符串。接着，我们将讨论处理单个字母的工具。本章最后会介绍处理单个字母的函数，并简要讨论在处理其他语言时，你从英语中获得的期望可能会如何误导你。</p>
+<p>我们将在下一章继续学习字符串，届时你将学到更多关于正则表达式的强大功能。</p>
+<section id="先决条件" class="level3" data-number="14.1.1"><h3 data-number="14.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">14.1.1</span> 先决条件</h3>
+<p>在本章中，我们将使用 stringr 包中的函数，它是核心 tidyverse 的一部分。我们还将使用 babynames 数据，因为它提供了一些有趣的字符串供我们操作。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can quickly tell when you’re using a stringr function because all stringr functions start with <code>str_</code>. This is particularly useful if you use RStudio because typing <code>str_</code> will trigger autocomplete, allowing you to jog your memory of the available functions.</p>
+<p>你可以很快分辨出你正在使用的是一个 stringr 函数，因为所有 stringr 函数都以 <code>str_</code> 开头。如果你使用 RStudio，这一点特别有用，因为输入 <code>str_</code> 会触发自动补全，让你回想起可用的函数。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/stringr-autocomplete.png" class="img-fluid figure-img" alt="str_c typed into the RStudio console with the autocomplete tooltip shown on top, which lists functions beginning with str_c. The funtion signature and beginning of the man page for the highlighted function from the autocomplete list are shown in a panel to its right." width="678"></p>
+<figure class="figure"><p><img src="screenshots/stringr-autocomplete.png" class="img-fluid figure-img" alt="在 RStudio 控制台中输入 str_c，上方显示了自动补全的提示框， 其中列出了以 str_c 开头的函数。自动补全列表中高亮显示的函数 的函数签名和帮助文档的开头部分显示在其右侧的面板中。" width="678"></p>
 </figure>
 </div>
 </div>
 </div>
-</section></section><section id="creating-a-string" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="creating-a-string">
-<span class="header-section-number">14.2</span> Creating a string</h2>
-<p>We’ve created strings in passing earlier in the book but didn’t discuss the details. Firstly, you can create a string using either single quotes (<code>'</code>) or double quotes (<code>"</code>). There’s no difference in behavior between the two, so in the interests of consistency, the <a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse style guide</a> recommends using <code>"</code>, unless the string contains multiple <code>"</code>.</p>
+</section></section><section id="创建字符串" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="创建字符串">
+<span class="header-section-number">14.2</span> 创建字符串</h2>
+<p>我们在本书的前面部分已经顺便创建过字符串，但没有讨论细节。首先，你可以使用单引号 (<code>'</code>) 或双引号 (<code>"</code>) 来创建字符串。这两者在行为上没有区别，因此为了保持一致性，<a href="https://style.tidyverse.org/syntax.html#character-vectors">tidyverse 风格指南</a> 建议使用 <code>"</code>，除非字符串中包含多个 <code>"</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">string1</span> <span class="op">&lt;-</span> <span class="st">"This is a string"</span></span>
 <span><span class="va">string2</span> <span class="op">&lt;-</span> <span class="st">'If I want to include a "quote" inside a string, I use single quotes'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you forget to close a quote, you’ll see <code>+</code>, the continuation prompt:</p>
+<p>如果你忘记关闭引号，你会看到 <code>+</code>，即续行提示符：</p>
 <pre><code>&gt; "This is a string without a closing quote
 + 
 + 
 + HELP I'M STUCK IN A STRING</code></pre>
-<p>If this happens to you and you can’t figure out which quote to close, press Escape to cancel and try again.</p>
-<section id="escapes" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="escapes">
-<span class="header-section-number">14.2.1</span> Escapes</h3>
-<p>To include a literal single or double quote in a string, you can use <code>\</code> to “escape” it:</p>
+<p>如果发生这种情况，而你又不知道该关闭哪个引号，可以按 <code>Escape</code> 键取消并重试。</p>
+<section id="转义" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="转义">
+<span class="header-section-number">14.2.1</span> 转义</h3>
+<p>要在字符串中包含字面意义上的单引号或双引号，你可以使用 <code>\</code> 来“转义”它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">double_quote</span> <span class="op">&lt;-</span> <span class="st">"\""</span> <span class="co"># or '"'</span></span>
-<span><span class="va">single_quote</span> <span class="op">&lt;-</span> <span class="st">"'"</span> <span class="co"># or "'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">double_quote</span> <span class="op">&lt;-</span> <span class="st">"\""</span> <span class="co"># 或者 '"'</span></span>
+<span><span class="va">single_quote</span> <span class="op">&lt;-</span> <span class="st">'\''</span> <span class="co"># 或者 "'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>So if you want to include a literal backslash in your string, you’ll need to escape it: <code>"\\"</code>:</p>
+<p>所以，如果你想在字符串中包含一个字面意义上的反斜杠，你需要对它进行转义：<code>"\\"</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">backslash</span> <span class="op">&lt;-</span> <span class="st">"\\"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Beware that the printed representation of a string is not the same as the string itself because the printed representation shows the escapes (in other words, when you print a string, you can copy and paste the output to recreate that string). To see the raw contents of the string, use <code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<p>请注意，字符串的打印表示形式与字符串本身不同，因为打印表示形式会显示转义符（换句话说，当你打印一个字符串时，你可以复制并粘贴输出来重新创建那个字符串）。要查看字符串的原始内容，请使用 <code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">single_quote</span>, <span class="va">double_quote</span>, <span class="va">backslash</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
@@ -528,8 +528,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [3] │ \</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-raw-strings" class="level3" data-number="14.2.2"><h3 data-number="14.2.2" class="anchored" data-anchor-id="sec-raw-strings">
-<span class="header-section-number">14.2.2</span> Raw strings</h3>
-<p>Creating a string with multiple quotes or backslashes gets confusing quickly. To illustrate the problem, let’s create a string that contains the contents of the code block where we define the <code>double_quote</code> and <code>single_quote</code> variables:</p>
+<span class="header-section-number">14.2.2</span> 原始字符串</h3>
+<p>创建一个包含多个引号或反斜杠的字符串很快就会变得混乱。为了说明这个问题，让我们创建一个字符串，它包含我们定义 <code>double_quote</code> 和 <code>single_quote</code> 变量的代码块的内容：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tricky</span> <span class="op">&lt;-</span> <span class="st">"double_quote &lt;- \"\\\"\" # or '\"'</span></span>
 <span><span class="st">single_quote &lt;- '\\'' # or \"'\""</span></span>
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] │ double_quote &lt;- "\"" # or '"'</span></span>
 <span><span class="co">#&gt;     │ single_quote &lt;- '\'' # or "'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That’s a lot of backslashes! (This is sometimes called <a href="https://en.wikipedia.org/wiki/Leaning_toothpick_syndrome">leaning toothpick syndrome</a>.) To eliminate the escaping, you can instead use a <strong>raw string</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<p>这可真是一大堆反斜杠！（这有时被称为<a href="https://en.wikipedia.org/wiki/Leaning_toothpick_syndrome">倾斜的牙签综合症 (leaning toothpick syndrome)</a>。）为了消除转义，你可以改用<strong>原始字符串 (raw string)</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tricky</span> <span class="op">&lt;-</span> <span class="st">r"(double_quote &lt;- "\"" # or '"'</span></span>
 <span><span class="st">single_quote &lt;- '\'' # or "'")"</span></span>
@@ -545,10 +545,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] │ double_quote &lt;- "\"" # or '"'</span></span>
 <span><span class="co">#&gt;     │ single_quote &lt;- '\'' # or "'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A raw string usually starts with <code>r"(</code> and finishes with <code>)"</code>. But if your string contains <code>)"</code> you can instead use <code>r"[]"</code> or <code>r"{}"</code>, and if that’s still not enough, you can insert any number of dashes to make the opening and closing pairs unique, e.g., <code>r"--()--"</code>, <code>r"---()---"</code>, etc. Raw strings are flexible enough to handle any text.</p>
-</section><section id="other-special-characters" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="other-special-characters">
-<span class="header-section-number">14.2.3</span> Other special characters</h3>
-<p>As well as <code>\"</code>, <code>\'</code>, and <code>\\</code>, there are a handful of other special characters that may come in handy. The most common are <code>\n</code>, a new line, and <code>\t</code>, tab. You’ll also sometimes see strings containing Unicode escapes that start with <code>\u</code> or <code>\U</code>. This is a way of writing non-English characters that work on all systems. You can see the complete list of other special characters in <code><a href="https://rdrr.io/r/base/Quotes.html">?Quotes</a></code>.</p>
+<p>原始字符串通常以 <code>r"(</code> 开始，以 <code>)"</code> 结束。但是，如果你的字符串包含 <code>)"</code>，你可以改用 <code>r"[]"</code> 或 <code>r"{}"</code>，如果这还不够，你可以插入任意数量的破折号来使开始和结束对唯一，例如 <code>r"--()--"</code>、<code>r"---()---"</code> 等。原始字符串足够灵活，可以处理任何文本。</p>
+</section><section id="其他特殊字符" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="其他特殊字符">
+<span class="header-section-number">14.2.3</span> 其他特殊字符</h3>
+<p>除了 <code>\"</code>、<code>\'</code> 和 <code>\\</code>，还有一些其他特殊字符可能会派上用场。最常见的是 <code>\n</code>（换行符）和 <code>\t</code>（制表符）。你有时还会看到包含以 <code>\u</code> 或 <code>\U</code> 开头的 Unicode 转义的字符串。这是一种书写非英文字符的方法，能在所有系统上工作。你可以在 <code><a href="https://rdrr.io/r/base/Quotes.html">?Quotes</a></code> 中看到其他特殊字符的完整列表。</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"one\ntwo"</span>, <span class="st">"one\ttwo"</span>, <span class="st">"\u00b5"</span>, <span class="st">"\U0001f604"</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
@@ -560,12 +560,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [3] │ µ</span></span>
 <span><span class="co">#&gt; [4] │ 😄</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that <code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> uses curly braces for tabs to make them easier to spot<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. One of the challenges of working with text is that there’s a variety of ways that white space can end up in the text, so this background helps you recognize that something strange is going on.</p>
-</section><section id="exercises" class="level3" data-number="14.2.4"><h3 data-number="14.2.4" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">14.2.4</span> Exercises</h3>
+<p>请注意，<code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> 对制表符使用花括号，以便更容易发现它们<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。处理文本的挑战之一是，空白字符有多种方式进入文本，所以这个背景能帮助你识别出有异常情况正在发生。</p>
+</section><section id="练习" class="level3" data-number="14.2.4"><h3 data-number="14.2.4" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">14.2.4</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Create strings that contain the following values:</p>
+<p>创建包含以下值的字符串：</p>
 <ol type="1">
 <li><p><code>He said "That's amazing!"</code></p></li>
 <li><p><code>\a\b\c\d</code></p></li>
@@ -573,18 +573,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </li>
 <li>
-<p>Create the string in your R session and print it. What happens to the special “\u00a0”? How does <code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> display it? Can you do a little googling to figure out what this special character is?</p>
+<p>在你的 R 会话中创建以下字符串并打印它。特殊的 <code>\u00a0</code> 发生了什么？<code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> 如何显示它？你能用 Google 搜索一下，找出这个特殊字符是什么吗？</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"This\u00a0is\u00a0tricky"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-</ol></section></section><section id="creating-many-strings-from-data" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="creating-many-strings-from-data">
-<span class="header-section-number">14.3</span> Creating many strings from data</h2>
-<p>Now that you’ve learned the basics of creating a string or two by “hand”, we’ll go into the details of creating strings from other strings. This will help you solve the common problem where you have some text you wrote that you want to combine with strings from a data frame. For example, you might combine “Hello” with a <code>name</code> variable to create a greeting. We’ll show you how to do this with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> and how you can use them with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. That naturally raises the question of what stringr functions you might use with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, so we’ll finish this section with a discussion of <code><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten()</a></code>, which is a summary function for strings.</p>
+</ol></section></section><section id="从数据创建多个字符串" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="从数据创建多个字符串">
+<span class="header-section-number">14.3</span> 从数据创建多个字符串</h2>
+<p>现在你已经学会了“手动”创建一个或两个字符串的基础知识，我们将深入探讨从其他字符串创建字符串的细节。这将帮助你解决一个常见问题：你有一些自己写的文本，想把它与数据框中的字符串结合起来。例如，你可能会将 “Hello” 与一个 <code>name</code> 变量结合起来，创建一个问候语。我们将向你展示如何使用 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 和 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> 来做到这一点，以及如何将它们与 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 一起使用。这自然会引出一个问题：你可能会在 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 中使用哪些 stringr 函数？因此，我们将在本节最后讨论 <code><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten()</a></code>，这是一个用于字符串的汇总函数。</p>
 <section id="str_c" class="level3" data-number="14.3.1"><h3 data-number="14.3.1" class="anchored" data-anchor-id="str_c">
 <span class="header-section-number">14.3.1</span> <code>str_c()</code>
 </h3>
-<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> takes any number of vectors as arguments and returns a character vector:</p>
+<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 接受任意数量的向量作为参数，并返回一个字符向量：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "xy"</span></span>
@@ -593,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hello "</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John"</span>, <span class="st">"Susan"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Hello John"  "Hello Susan"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> is very similar to the base <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>, but is designed to be used with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> by obeying the usual tidyverse rules for recycling and propagating missing values:</p>
+<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 与 R base 的 <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> 非常相似，但它被设计为与 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 一起使用，遵循了 tidyverse 的常规规则，即循环补齐和传播缺失值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Flora"</span>, <span class="st">"David"</span>, <span class="st">"Terra"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>greeting <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hi "</span>, <span class="va">name</span>, <span class="st">"!"</span><span class="op">)</span><span class="op">)</span></span>
@@ -605,13 +605,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 Terra Hi Terra!</span></span>
 <span><span class="co">#&gt; 4 &lt;NA&gt;  &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you want missing values to display in another way, use <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> to replace them. Depending on what you want, you might use it either inside or outside of <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code>:</p>
+<p>如果你希望缺失值以另一种方式显示，可以使用 <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> 来替换它们。根据你的需求，你可以在 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 内部或外部使用它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        greeting1 <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hi "</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"you"</span><span class="op">)</span>, <span class="st">"!"</span><span class="op">)</span>,</span>
-<span>        greeting2 <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hi "</span>, <span class="va">name</span>, <span class="st">"!"</span><span class="op">)</span>, <span class="st">"Hi!"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    greeting1 <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hi "</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"you"</span><span class="op">)</span>, <span class="st">"!"</span><span class="op">)</span>,</span>
+<span>    greeting2 <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Hi "</span>, <span class="va">name</span>, <span class="st">"!"</span><span class="op">)</span>, <span class="st">"Hi!"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
 <span><span class="co">#&gt;   name  greeting1 greeting2</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    </span></span>
@@ -623,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="sec-glue" class="level3" data-number="14.3.2"><h3 data-number="14.3.2" class="anchored" data-anchor-id="sec-glue">
 <span class="header-section-number">14.3.2</span> <code>str_glue()</code>
 </h3>
-<p>If you are mixing many fixed and variable strings with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code>, you’ll notice that you type a lot of <code>"</code>s, making it hard to see the overall goal of the code. An alternative approach is provided by the <a href="https://glue.tidyverse.org">glue package</a> via <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. You give it a single string that has a special feature: anything inside <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> will be evaluated like it’s outside of the quotes:</p>
+<p>如果你用 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 混合许多固定的和可变的字符串，你会注意到你输入了大量的 <code>"</code>，这使得代码的整体目标难以看清。另一种方法是由 <a href="https://glue.tidyverse.org">glue 包</a> 通过 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 提供的。你给它一个具有特殊功能的单一字符串：<code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> 里的任何东西都会像在引号外面一样被求值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>greeting <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"Hi {name}!"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 2</span></span>
@@ -634,8 +634,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 3 Terra Hi Terra!</span></span>
 <span><span class="co">#&gt; 4 &lt;NA&gt;  Hi NA!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As you can see, <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> currently converts missing values to the string <code>"NA"</code>, unfortunately making it inconsistent with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code>.</p>
-<p>You also might wonder what happens if you need to include a regular <code>{</code> or <code>}</code> in your string. You’re on the right track if you guess you’ll need to escape it somehow. The trick is that glue uses a slightly different escaping technique: instead of prefixing with special character like <code>\</code>, you double up the special characters:</p>
+<p>如你所见，<code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> 目前将缺失值转换为字符串 <code>"NA"</code>，不幸的是，这与 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 不一致。</p>
+<p>你可能还会想，如果需要在字符串中包含一个常规的 <code>{</code> 或 <code>}</code>，会发生什么。如果你猜到需要以某种方式转义它，那你的思路是正确的。诀窍在于 glue 使用了一种稍微不同的转义技术：不是用像 <code>\</code> 这样的特殊字符作为前缀，而是将特殊字符加倍：</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>greeting <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{{Hi {name}!}}"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 2</span></span>
@@ -649,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="str_flatten" class="level3" data-number="14.3.3"><h3 data-number="14.3.3" class="anchored" data-anchor-id="str_flatten">
 <span class="header-section-number">14.3.3</span> <code>str_flatten()</code>
 </h3>
-<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> work well with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> because their output is the same length as their inputs. What if you want a function that works well with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, i.e.&nbsp;something that always returns a single string? That’s the job of <code><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten()</a></code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>: it takes a character vector and combines each element of the vector into a single string:</p>
+<p><code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 和 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> 与 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 配合得很好，因为它们的输出与输入长度相同。如果你想要一个能与 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 很好配合的函数，即一个总是返回单个字符串的东西呢？这就是 <code><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten()</a></code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 的工作：它接受一个字符向量，并将向量的每个元素组合成一个单一的字符串：</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "xyz"</span></span>
@@ -658,20 +658,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>, <span class="st">", "</span>, last <span class="op">=</span> <span class="st">", and "</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "x, y, and z"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This makes it work well with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>:</p>
+<p>这使得它能与 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> 很好地配合工作：</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>    <span class="op">~</span><span class="va">name</span>, <span class="op">~</span><span class="va">fruit</span>,</span>
-<span>    <span class="st">"Carmen"</span>, <span class="st">"banana"</span>,</span>
-<span>    <span class="st">"Carmen"</span>, <span class="st">"apple"</span>,</span>
-<span>    <span class="st">"Marvin"</span>, <span class="st">"nectarine"</span>,</span>
-<span>    <span class="st">"Terence"</span>, <span class="st">"cantaloupe"</span>,</span>
-<span>    <span class="st">"Terence"</span>, <span class="st">"papaya"</span>,</span>
-<span>    <span class="st">"Terence"</span>, <span class="st">"mandarin"</span></span>
+<span>  <span class="op">~</span> <span class="va">name</span>, <span class="op">~</span> <span class="va">fruit</span>,</span>
+<span>  <span class="st">"Carmen"</span>, <span class="st">"banana"</span>,</span>
+<span>  <span class="st">"Carmen"</span>, <span class="st">"apple"</span>,</span>
+<span>  <span class="st">"Marvin"</span>, <span class="st">"nectarine"</span>,</span>
+<span>  <span class="st">"Terence"</span>, <span class="st">"cantaloupe"</span>,</span>
+<span>  <span class="st">"Terence"</span>, <span class="st">"papaya"</span>,</span>
+<span>  <span class="st">"Terence"</span>, <span class="st">"mandarin"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>fruits <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>fruits <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;   name    fruits                      </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                       </span></span>
@@ -679,49 +679,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 Marvin  nectarine                   </span></span>
 <span><span class="co">#&gt; 3 Terence cantaloupe, papaya, mandarin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercises-1" class="level3" data-number="14.3.4"><h3 data-number="14.3.4" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">14.3.4</span> Exercises</h3>
+</section><section id="练习-1" class="level3" data-number="14.3.4"><h3 data-number="14.3.4" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">14.3.4</span> 练习</h3>
 <ol type="1">
 <li>
-<p>Compare and contrast the results of <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> for the following inputs:</p>
+<p>对于以下输入，比较并对比 <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> 与 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 的结果：</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"hi "</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </li>
-<li><p>What’s the difference between <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> and <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>? How can you recreate the equivalent of <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> with <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code>?</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> 和 <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> 有什么区别？你如何用 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 重现与 <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> 等价的功能？</p></li>
 <li>
-<p>Convert the following expressions from <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> to <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code> or vice versa:</p>
+<p>将以下表达式从 <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> 转换为 <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>，或反之：</p>
 <ol type="a">
 <li><p><code>str_c("The price of ", food, " is ", price)</code></p></li>
 <li><p><code>str_glue("I'm {age} years old and live in {country}")</code></p></li>
 <li><p><code>str_c("\\section{", title, "}")</code></p></li>
 </ol>
 </li>
-</ol></section></section><section id="extracting-data-from-strings" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="extracting-data-from-strings">
-<span class="header-section-number">14.4</span> Extracting data from strings</h2>
-<p>It’s very common for multiple variables to be crammed together into a single string. In this section, you’ll learn how to use four tidyr functions to extract them:</p>
+</ol></section></section><section id="从字符串中提取数据" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="从字符串中提取数据">
+<span class="header-section-number">14.4</span> 从字符串中提取数据</h2>
+<p>将多个变量塞进一个字符串中是很常见的。在本节中，你将学习如何使用四个 tidyr 函数来提取它们：</p>
 <ul>
 <li><code>df |&gt; separate_longer_delim(col, delim)</code></li>
 <li><code>df |&gt; separate_longer_position(col, width)</code></li>
 <li><code>df |&gt; separate_wider_delim(col, delim, names)</code></li>
 <li><code>df |&gt; separate_wider_position(col, widths)</code></li>
 </ul>
-<p>If you look closely, you can see there’s a common pattern here: <code>separate_</code>, then <code>longer</code> or <code>wider</code>, then <code>_</code>, then by <code>delim</code> or <code>position</code>. That’s because these four functions are composed of two simpler primitives:</p>
+<p>如果你仔细观察，你会发现这里有一个共同的模式：<code>separate_</code>，然后是 <code>longer</code> 或 <code>wider</code>，然后是 <code>_</code>，然后是 <code>delim</code> 或 <code>position</code>。这是因为这四个函数是由两个更简单的原语组成的：</p>
 <ul>
-<li>Just like with <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>, <code>_longer</code> functions make the input data frame longer by creating new rows and <code>_wider</code> functions make the input data frame wider by generating new columns.</li>
+<li>就像 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> 和 <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> 一样，<code>_longer</code> 函数通过创建新行来使输入的数据框变长，而 <code>_wider</code> 函数通过生成新列来使输入的数据框变宽。</li>
 <li>
-<code>delim</code> splits up a string with a delimiter like <code>", "</code> or <code>" "</code>; <code>position</code> splits at specified widths, like <code>c(3, 5, 2)</code>.</li>
+<code>delim</code> 用像 <code>", "</code> 或 <code>" "</code> 这样的分隔符来分割字符串；<code>position</code> 在指定的宽度处分割，比如 <code>c(3, 5, 2)</code>。</li>
 </ul>
-<p>We’ll return to the last member of this family, <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code>, in <a href="regexps.html" class="quarto-xref"><span>Chapter 15</span></a>. It’s the most flexible of the <code>wider</code> functions, but you need to know something about regular expressions before you can use it.</p>
-<p>The following two sections will give you the basic idea behind these separate functions, first separating into rows (which is a little simpler) and then separating into columns. We’ll finish off by discussing the tools that the <code>wider</code> functions give you to diagnose problems.</p>
-<section id="separating-into-rows" class="level3" data-number="14.4.1"><h3 data-number="14.4.1" class="anchored" data-anchor-id="separating-into-rows">
-<span class="header-section-number">14.4.1</span> Separating into rows</h3>
-<p>Separating a string into rows tends to be most useful when the number of components varies from row to row. The most common case is requiring <code><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_delim()</a></code> to split based on a delimiter:</p>
+<p>我们将在 <a href="regexps.html" class="quarto-xref"><span>Chapter 15</span></a> 中回到这个家族的最后一个成员，<code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code>。它是 <code>wider</code> 函数中最灵活的一个，但在使用它之前，你需要对正则表达式有所了解。</p>
+<p>接下来的两节将为你介绍这些 <code>separate</code> 函数背后的基本思想，首先是分成行（这稍微简单一些），然后是分成列。最后，我们将讨论 <code>wider</code> 函数为你提供的诊断问题的工具。</p>
+<section id="分成行" class="level3" data-number="14.4.1"><h3 data-number="14.4.1" class="anchored" data-anchor-id="分成行">
+<span class="header-section-number">14.4.1</span> 分成行</h3>
+<p>当不同行中组件的数量不同时，将字符串分成行通常最有用。最常见的情况是需要 <code><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_delim()</a></code> 根据分隔符进行分割：</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a,b,c"</span>, <span class="st">"d,e"</span>, <span class="st">"f"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">df1</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_delim</a></span><span class="op">(</span><span class="va">x</span>, delim <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
+<span><span class="va">df1</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_delim</a></span><span class="op">(</span><span class="va">x</span>, delim <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 1</span></span>
 <span><span class="co">#&gt;   x    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;</span></span>
@@ -732,11 +732,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5 e    </span></span>
 <span><span class="co">#&gt; 6 f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It’s rarer to see <code><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_position()</a></code> in the wild, but some older datasets do use a very compact format where each character is used to record a value:</p>
+<p><code><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_position()</a></code> 在实践中比较少见，但一些较老的数据集确实使用一种非常紧凑的格式，其中每个字符都用来记录一个值：</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1211"</span>, <span class="st">"131"</span>, <span class="st">"21"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">df2</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_position</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">df2</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_longer_delim.html">separate_longer_position</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 1</span></span>
 <span><span class="co">#&gt;   x    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;</span></span>
@@ -749,16 +749,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; # ℹ 3 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-string-columns" class="level3" data-number="14.4.2"><h3 data-number="14.4.2" class="anchored" data-anchor-id="sec-string-columns">
-<span class="header-section-number">14.4.2</span> Separating into columns</h3>
-<p>Separating a string into columns tends to be most useful when there are a fixed number of components in each string, and you want to spread them into columns. They are slightly more complicated than their <code>longer</code> equivalents because you need to name the columns. For example, in this following dataset, <code>x</code> is made up of a code, an edition number, and a year, separated by <code>"."</code>. To use <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code>, we supply the delimiter and the names in two arguments:</p>
+<span class="header-section-number">14.4.2</span> 分成列</h3>
+<p>当每个字符串中都有固定数量的组件，并且你希望将它们分散到列中时，将字符串分成列通常最有用。它们比它们的 <code>longer</code> 等价物稍微复杂一些，因为你需要命名这些列。例如，在下面的数据集中，<code>x</code> 由一个代码、一个版本号和一个年份组成，用 <code>.</code> 分隔。要使用 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code>，我们需要在两个参数中提供分隔符和名称：</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a10.1.2022"</span>, <span class="st">"b10.2.2011"</span>, <span class="st">"e15.1.2015"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">df3</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"edition"</span>, <span class="st">"year"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<span><span class="va">df3</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"edition"</span>, <span class="st">"year"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;   code  edition year </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
@@ -766,14 +766,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 b10   2       2011 </span></span>
 <span><span class="co">#&gt; 3 e15   1       2015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If a specific piece is not useful you can use an <code>NA</code> name to omit it from the results:</p>
+<p>如果某个特定的部分没有用，你可以使用 <code>NA</code> 名称来从结果中省略它：</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df3</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="cn">NA</span>, <span class="st">"year"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df3</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="cn">NA</span>, <span class="st">"year"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;   code  year </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -781,14 +781,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 b10   2011 </span></span>
 <span><span class="co">#&gt; 3 e15   2015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position()</a></code> works a little differently because you typically want to specify the width of each column. So you give it a named integer vector, where the name gives the name of the new column, and the value is the number of characters it occupies. You can omit values from the output by not naming them:</p>
+<p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position()</a></code> 的工作方式略有不同，因为你通常需要指定每列的宽度。所以你给它一个命名的整数向量，其中名称给出新列的名称，值是它占用的字符数。你可以通过不命名来从输出中省略值：</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"202215TX"</span>, <span class="st">"202122LA"</span>, <span class="st">"202325CA"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">df4</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        widths <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">4</span>, age <span class="op">=</span> <span class="fl">2</span>, state <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"202215TX"</span>, <span class="st">"202122LA"</span>, <span class="st">"202325CA"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="va">df4</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    widths <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">4</span>, age <span class="op">=</span> <span class="fl">2</span>, state <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;   year  age   state</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -796,33 +796,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 2021  22    LA   </span></span>
 <span><span class="co">#&gt; 3 2023  25    CA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="diagnosing-widening-problems" class="level3" data-number="14.4.3"><h3 data-number="14.4.3" class="anchored" data-anchor-id="diagnosing-widening-problems">
-<span class="header-section-number">14.4.3</span> Diagnosing widening problems</h3>
-<p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> requires a fixed and known set of columns. What happens if some of the rows don’t have the expected number of pieces? There are two possible problems, too few or too many pieces, so <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> provides two arguments to help: <code>too_few</code> and <code>too_many</code>. Let’s first look at the <code>too_few</code> case with the following sample dataset:</p>
+</section><section id="诊断变宽问题" class="level3" data-number="14.4.3"><h3 data-number="14.4.3" class="anchored" data-anchor-id="诊断变宽问题">
+<span class="header-section-number">14.4.3</span> 诊断变宽问题</h3>
+<p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 需要一个固定的、已知的列集合。如果某些行没有预期的片段数量，会发生什么？可能存在两种问题：片段太少或太多，所以 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> 提供了两个参数来帮助解决：<code>too_few</code> 和 <code>too_many</code>。我们首先用下面的示例数据集来看一下 <code>too_few</code> 的情况：</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `separate_wider_delim()`:</span></span>
 <span><span class="co">#&gt; ! Expected 3 pieces in each element of `x`.</span></span>
 <span><span class="co">#&gt; ! 2 values were too short.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_few = "debug"` to diagnose the problem.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_few = "align_start"/"align_end"` to silence this message.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You’ll notice that we get an error, but the error gives us some suggestions on how you might proceed. Let’s start by debugging the problem:</p>
+<p>你会注意到我们得到了一个错误，但错误信息给了我们一些关于如何继续的建议。让我们从调试问题开始：</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
-<span>        too_few <span class="op">=</span> <span class="st">"debug"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
+<span>    too_few <span class="op">=</span> <span class="st">"debug"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Debug mode activated: adding variables `x_ok`, `x_pieces`, and</span></span>
 <span><span class="co">#&gt; `x_remainder`.</span></span>
 <span><span class="va">debug</span></span>
@@ -835,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 1-3-2 3     2     TRUE         3 ""         </span></span>
 <span><span class="co">#&gt; 5 1     &lt;NA&gt;  &lt;NA&gt;  FALSE        1 ""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When you use the debug mode, you get three extra columns added to the output: <code>x_ok</code>, <code>x_pieces</code>, and <code>x_remainder</code> (if you separate a variable with a different name, you’ll get a different prefix). Here, <code>x_ok</code> lets you quickly find the inputs that failed:</p>
+<p>当你使用调试模式时，输出中会增加三列：<code>x_ok</code>、<code>x_pieces</code> 和 <code>x_remainder</code>（如果你分离一个不同名称的变量，你会得到一个不同的前缀）。在这里，<code>x_ok</code> 让你能够快速找到失败的输入：</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">x_ok</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 6</span></span>
@@ -844,17 +844,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1 1-3   3     &lt;NA&gt;  FALSE        2 ""         </span></span>
 <span><span class="co">#&gt; 2 1     &lt;NA&gt;  &lt;NA&gt;  FALSE        1 ""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>x_pieces</code> tells us how many pieces were found, compared to the expected 3 (the length of <code>names</code>). <code>x_remainder</code> isn’t useful when there are too few pieces, but we’ll see it again shortly.</p>
-<p>Sometimes looking at this debugging information will reveal a problem with your delimiter strategy or suggest that you need to do more preprocessing before separating. In that case, fix the problem upstream and make sure to remove <code>too_few = "debug"</code> to ensure that new problems become errors.</p>
-<p>In other cases, you may want to fill in the missing pieces with <code>NA</code>s and move on. That’s the job of <code>too_few = "align_start"</code> and <code>too_few = "align_end"</code> which allow you to control where the <code>NA</code>s should go:</p>
+<p><code>x_pieces</code> 告诉我们找到了多少个片段，而预期是 3 个（<code>names</code> 的长度）。当片段太少时，<code>x_remainder</code> 没有用，但我们很快会再次看到它。</p>
+<p>有时，查看这些调试信息会揭示你的分隔符策略存在问题，或者表明你需要在分离前进行更多的预处理。在这种情况下，修复上游的问题，并确保移除 <code>too_few = "debug"</code>，以确保新问题会变成错误。</p>
+<p>在其他情况下，你可能希望用 <code>NA</code> 填充缺失的片段然后继续。这就是 <code>too_few = "align_start"</code> 和 <code>too_few = "align_end"</code> 的工作，它们允许你控制 <code>NA</code> 应该放在哪里：</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
-<span>        too_few <span class="op">=</span> <span class="st">"align_start"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
+<span>    too_few <span class="op">=</span> <span class="st">"align_start"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span><span class="co">#&gt;   x     y     z    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -864,31 +864,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 1     3     2    </span></span>
 <span><span class="co">#&gt; 5 1     &lt;NA&gt;  &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The same principles apply if you have too many pieces:</p>
+<p>如果你有太多的片段，同样的原则也适用：</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3-5-6"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1-3-5-7-9"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `separate_wider_delim()`:</span></span>
 <span><span class="co">#&gt; ! Expected 3 pieces in each element of `x`.</span></span>
 <span><span class="co">#&gt; ! 2 values were too long.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_many = "debug"` to diagnose the problem.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_many = "drop"/"merge"` to silence this message.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But now, when we debug the result, you can see the purpose of <code>x_remainder</code>:</p>
+<p>但是现在，当我们调试结果时，你可以看到 <code>x_remainder</code> 的用途：</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
-<span>        too_many <span class="op">=</span> <span class="st">"debug"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
+<span>    too_many <span class="op">=</span> <span class="st">"debug"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Debug mode activated: adding variables `x_ok`, `x_pieces`, and</span></span>
 <span><span class="co">#&gt; `x_remainder`.</span></span>
 <span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">x_ok</span><span class="op">)</span></span>
@@ -898,15 +898,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1 1-3-5-6   3     5     FALSE        4 -6         </span></span>
 <span><span class="co">#&gt; 2 1-3-5-7-9 3     5     FALSE        5 -7-9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You have a slightly different set of options for handling too many pieces: you can either silently “drop” any additional pieces or “merge” them all into the final column:</p>
+<p>对于处理过多的片段，你有一套略有不同的选项：你可以静默地“drop”（丢弃）任何额外的片段，或者将它们全部“merge”（合并）到最后一列：</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
-<span>        too_many <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
+<span>    too_many <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span><span class="co">#&gt;   x     y     z    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -917,13 +917,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5 1     3     5</span></span>
 <span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>        <span class="va">x</span>,</span>
-<span>        delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
-<span>        too_many <span class="op">=</span> <span class="st">"merge"</span></span>
-<span>    <span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>,</span>
+<span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
+<span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
+<span>    too_many <span class="op">=</span> <span class="st">"merge"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span><span class="co">#&gt;   x     y     z    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -933,20 +933,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 1     3     2    </span></span>
 <span><span class="co">#&gt; 5 1     3     5-7-9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="letters" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="letters">
-<span class="header-section-number">14.5</span> Letters</h2>
-<p>In this section, we’ll introduce you to functions that allow you to work with the individual letters within a string. You’ll learn how to find the length of a string, extract substrings, and handle long strings in plots and tables.</p>
-<section id="length" class="level3" data-number="14.5.1"><h3 data-number="14.5.1" class="anchored" data-anchor-id="length">
-<span class="header-section-number">14.5.1</span> Length</h3>
-<p><code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> tells you the number of letters in the string:</p>
+</section></section><section id="字母" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="字母">
+<span class="header-section-number">14.5</span> 字母</h2>
+<p>在本节中，我们将向你介绍一些函数，让你能够处理字符串中的单个字母。你将学习如何找到字符串的长度，提取子字符串，以及在图表和表格中处理长字符串。</p>
+<section id="长度" class="level3" data-number="14.5.1"><h3 data-number="14.5.1" class="anchored" data-anchor-id="长度">
+<span class="header-section-number">14.5.1</span> 长度</h3>
+<p><code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> 告诉你字符串中有多少个字母：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"R for data science"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  1 18 NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You could use this with <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> to find the distribution of lengths of US babynames and then with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to look at the longest names, which happen to have 15 letters<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>:</p>
+<p>你可以将此与 <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> 一起使用，以找出美国婴儿姓名长度的分布，然后用 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> 查看最长的名字，这些名字恰好有 15 个字母<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span>length <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span>, wt <span class="op">=</span> <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span>length <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span>, wt <span class="op">=</span> <span class="va">n</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 14 × 2</span></span>
 <span><span class="co">#&gt;   length        n</span></span>
 <span><span class="co">#&gt;    &lt;int&gt;    &lt;int&gt;</span></span>
@@ -958,9 +958,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6      7 72120767</span></span>
 <span><span class="co">#&gt; # ℹ 8 more rows</span></span>
 <span></span>
-<span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">==</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">name</span>, wt <span class="op">=</span> <span class="va">n</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">babynames</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">==</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">name</span>, wt <span class="op">=</span> <span class="va">n</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 34 × 2</span></span>
 <span><span class="co">#&gt;   name                n</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;           &lt;int&gt;</span></span>
@@ -972,31 +972,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Ryanchristopher    45</span></span>
 <span><span class="co">#&gt; # ℹ 28 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="subsetting" class="level3" data-number="14.5.2"><h3 data-number="14.5.2" class="anchored" data-anchor-id="subsetting">
-<span class="header-section-number">14.5.2</span> Subsetting</h3>
-<p>You can extract parts of a string using <code>str_sub(string, start, end)</code>, where <code>start</code> and <code>end</code> are the positions where the substring should start and end. The <code>start</code> and <code>end</code> arguments are inclusive, so the length of the returned string will be <code>end - start + 1</code>:</p>
+</section><section id="子集" class="level3" data-number="14.5.2"><h3 data-number="14.5.2" class="anchored" data-anchor-id="子集">
+<span class="header-section-number">14.5.2</span> 子集</h3>
+<p>你可以使用 <code>str_sub(string, start, end)</code> 来提取字符串的一部分，其中 <code>start</code> 和 <code>end</code> 是子字符串应该开始和结束的位置。<code>start</code> 和 <code>end</code> 参数是包含性的，所以返回的字符串长度将是 <code>end - start + 1</code>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Banana"</span>, <span class="st">"Pear"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "App" "Ban" "Pea"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can use negative values to count back from the end of the string: -1 is the last character, -2 is the second to last character, etc.</p>
+<p>你可以使用负值从字符串的末尾向前计数：-1 是最后一个字符，-2 是倒数第二个字符，依此类推。</p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "ple" "ana" "ear"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> won’t fail if the string is too short: it will just return as much as possible:</p>
+<p>请注意，如果字符串太短，<code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> 不会失败：它只会返回尽可能多的内容：</p>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We could use <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to find the first and last letter of each name:</p>
+<p>我们可以使用 <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> 和 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> 来找出每个名字的首字母和末尾字母：</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        first <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">name</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>        last <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">name</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    first <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">name</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    last <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">name</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1,924,665 × 7</span></span>
 <span><span class="co">#&gt;    year sex   name          n   prop first last </span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
@@ -1008,25 +1008,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6  1880 F     Margaret   1578 0.0162 M     t    </span></span>
 <span><span class="co">#&gt; # ℹ 1,924,659 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercises-2" class="level3" data-number="14.5.3"><h3 data-number="14.5.3" class="anchored" data-anchor-id="exercises-2">
-<span class="header-section-number">14.5.3</span> Exercises</h3>
+</section><section id="练习-2" class="level3" data-number="14.5.3"><h3 data-number="14.5.3" class="anchored" data-anchor-id="练习-2">
+<span class="header-section-number">14.5.3</span> 练习</h3>
 <ol type="1">
-<li>When computing the distribution of the length of babynames, why did we use <code>wt = n</code>?</li>
-<li>Use <code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> to extract the middle letter from each baby name. What will you do if the string has an even number of characters?</li>
-<li>Are there any major trends in the length of babynames over time? What about the popularity of first and last letters?</li>
+<li>在计算婴儿姓名长度的分布时，我们为什么使用 <code>wt = n</code>？</li>
+<li>使用 <code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> 和 <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code> 从每个婴儿名字中提取中间的字母。如果字符串有偶数个字符，你该怎么办？</li>
+<li>婴儿姓名的长度随时间变化有任何主要趋势吗？首字母和末尾字母的流行度呢？</li>
 </ol></section></section><section id="sec-other-languages" class="level2" data-number="14.6"><h2 data-number="14.6" class="anchored" data-anchor-id="sec-other-languages">
-<span class="header-section-number">14.6</span> Non-English text</h2>
-<p>So far, we’ve focused on English language text which is particularly easy to work with for two reasons. Firstly, the English alphabet is relatively simple: there are just 26 letters. Secondly (and maybe more importantly), the computing infrastructure we use today was predominantly designed by English speakers. Unfortunately, we don’t have room for a full treatment of non-English languages. Still, we wanted to draw your attention to some of the biggest challenges you might encounter: encoding, letter variations, and locale-dependent functions.</p>
-<section id="encoding" class="level3" data-number="14.6.1"><h3 data-number="14.6.1" class="anchored" data-anchor-id="encoding">
-<span class="header-section-number">14.6.1</span> Encoding</h3>
-<p>When working with non-English text, the first challenge is often the <strong>encoding</strong>. To understand what’s going on, we need to dive into how computers represent strings. In R, we can get at the underlying representation of a string using <code><a href="https://rdrr.io/r/base/rawConversion.html">charToRaw()</a></code>:</p>
+<span class="header-section-number">14.6</span> 非英文文本</h2>
+<p>到目前为止，我们主要关注英文文本，处理英文文本特别容易，原因有二。首先，英文字母相对简单：只有 26 个字母。其次（也许更重要），我们今天使用的计算基础设施主要是由说英语的人设计的。不幸的是，我们没有足够的篇幅来全面处理非英文语言。尽管如此，我们还是想提醒你注意一些你可能会遇到的最大挑战：编码、字母变体和依赖于区域设置的函数。</p>
+<section id="编码" class="level3" data-number="14.6.1"><h3 data-number="14.6.1" class="anchored" data-anchor-id="编码">
+<span class="header-section-number">14.6.1</span> 编码</h3>
+<p>在处理非英文文本时，第一个挑战通常是<strong>编码 (encoding)</strong>。要理解发生了什么，我们需要深入了解计算机是如何表示字符串的。在 R 中，我们可以使用 <code><a href="https://rdrr.io/r/base/rawConversion.html">charToRaw()</a></code> 来获取字符串的底层表示：</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">charToRaw</a></span><span class="op">(</span><span class="st">"Hadley"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 48 61 64 6c 65 79</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Each of these six hexadecimal numbers represents one letter: <code>48</code> is H, <code>61</code> is a, and so on. The mapping from hexadecimal number to character is called the encoding, and in this case, the encoding is called ASCII. ASCII does a great job of representing English characters because it’s the <strong>American</strong> Standard Code for Information Interchange.</p>
-<p>Things aren’t so easy for languages other than English. In the early days of computing, there were many competing standards for encoding non-English characters. For example, there were two different encodings for Europe: Latin1 (aka ISO-8859-1) was used for Western European languages, and Latin2 (aka ISO-8859-2) was used for Central European languages. In Latin1, the byte <code>b1</code> is “±”, but in Latin2, it’s “ą”! Fortunately, today there is one standard that is supported almost everywhere: UTF-8. UTF-8 can encode just about every character used by humans today and many extra symbols like emojis.</p>
-<p>readr uses UTF-8 everywhere. This is a good default but will fail for data produced by older systems that don’t use UTF-8. If this happens, your strings will look weird when you print them. Sometimes just one or two characters might be messed up; other times, you’ll get complete gibberish. For example here are two inline CSVs with unusual encodings<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>:</p>
+<p>这六个十六进制数中的每一个都代表一个字母：<code>48</code> 是 H，<code>61</code> 是 a，依此类推。从十六进制数到字符的映射称为编码，在这种情况下，编码被称为 ASCII。ASCII 在表示英文字符方面做得很好，因为它是<strong>美国</strong>信息交换标准代码。</p>
+<p>对于非英语语言来说，事情就没那么简单了。在计算的早期，有许多竞争性的标准用于编码非英文字符。例如，欧洲有两种不同的编码：Latin1（又名 ISO-8859-1）用于西欧语言，而 Latin2（又名 ISO-8859-2）用于中欧语言。在 Latin1 中，字节 <code>b1</code> 是 “±”，但在 Latin2 中，它是 “ą”！幸运的是，今天有一个几乎在任何地方都支持的标准：UTF-8。UTF-8 几乎可以编码当今人类使用的所有字符，以及许多额外的符号，如表情符号。</p>
+<p>readr 处处使用 UTF-8。这是一个很好的默认设置，但对于由不使用 UTF-8 的旧系统产生的数据来说，这会失败。如果发生这种情况，你的字符串在打印时会看起来很奇怪。有时可能只有一两个字符出错；其他时候，你会得到完全的乱码。例如，这里是两个带有不寻常编码的内联 CSV<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>：</p>
 <div class="cell">
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="st">"text\nEl Ni\xf1o was particularly bad this year"</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span><span class="op">$</span><span class="va">text</span></span>
@@ -1036,7 +1036,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span><span class="op">$</span><span class="va">text</span></span>
 <span><span class="co">#&gt; [1] "\x82\xb1\x82\xf1\x82ɂ\xbf\x82\xcd"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To read these correctly, you specify the encoding via the <code>locale</code> argument:</p>
+<p>要正确读取这些内容，你需要通过 <code>locale</code> 参数指定编码：</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">x1</span>, locale <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/locale.html">locale</a></span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">"Latin1"</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">text</span></span>
 <span><span class="co">#&gt; [1] "El Niño was particularly bad this year"</span></span>
@@ -1044,25 +1044,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">x2</span>, locale <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/locale.html">locale</a></span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">"Shift-JIS"</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">text</span></span>
 <span><span class="co">#&gt; [1] "こんにちは"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>How do you find the correct encoding? If you’re lucky, it’ll be included somewhere in the data documentation. Unfortunately, that’s rarely the case, so readr provides <code><a href="https://readr.tidyverse.org/reference/encoding.html">guess_encoding()</a></code> to help you figure it out. It’s not foolproof and works better when you have lots of text (unlike here), but it’s a reasonable place to start. Expect to try a few different encodings before you find the right one.</p>
-<p>Encodings are a rich and complex topic; we’ve only scratched the surface here. If you’d like to learn more, we recommend reading the detailed explanation at <a href="http://kunststube.net/encoding/" class="uri">http://kunststube.net/encoding/</a>.</p>
-</section><section id="letter-variations" class="level3" data-number="14.6.2"><h3 data-number="14.6.2" class="anchored" data-anchor-id="letter-variations">
-<span class="header-section-number">14.6.2</span> Letter variations</h3>
-<p>Working in languages with accents poses a significant challenge when determining the position of letters (e.g., with <code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> and <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code>) as accented letters might be encoded as a single individual character (e.g., ü) or as two characters by combining an unaccented letter (e.g., u) with a diacritic mark (e.g., ¨). For example, this code shows two ways of representing ü that look identical:</p>
+<p>你如何找到正确的编码？如果幸运的话，它会包含在数据文档的某个地方。不幸的是，这种情况很少见，所以 readr 提供了 <code><a href="https://readr.tidyverse.org/reference/encoding.html">guess_encoding()</a></code> 来帮助你找出它。它不是万无一失的，并且在你有很多文本时效果更好（不像这里），但它是一个合理的起点。预计你需要尝试几种不同的编码才能找到正确的那个。</p>
+<p>编码是一个丰富而复杂的主题；我们在这里只触及了皮毛。如果你想了解更多，我们建议阅读 <a href="http://kunststube.net/encoding/">http://kunststube.net/encoding/</a> 上的详细解释。</p>
+</section><section id="字母变体" class="level3" data-number="14.6.2"><h3 data-number="14.6.2" class="anchored" data-anchor-id="字母变体">
+<span class="header-section-number">14.6.2</span> 字母变体</h3>
+<p>在处理带重音的语言时，确定字母的位置（例如，使用 <code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code> 和 <code><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub()</a></code>）会带来一个重大挑战，因为带重音的字母可能被编码为单个独立的字符（例如，ü），或者通过组合一个不带重音的字母（例如，u）和一个变音符号（例如，¨）来编码为两个字符。例如，这段代码显示了两种看起来相同的 ü 的表示方法：</p>
 <div class="cell">
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"\u00fc"</span>, <span class="st">"u\u0308"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] │ ü</span></span>
 <span><span class="co">#&gt; [2] │ ü</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But both strings differ in length, and their first characters are different:</p>
+<p>但这两个字符串的长度不同，并且它们的第一个字符也不同：</p>
 <div class="cell">
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1 2</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">u</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "ü" "u"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, note that a comparison of these strings with <code>==</code> interprets these strings as different, while the handy <code><a href="https://stringr.tidyverse.org/reference/str_equal.html">str_equal()</a></code> function in stringr recognizes that both have the same appearance:</p>
+<p>最后，请注意，使用 <code>==</code> 比较这些字符串会将它们解释为不同的，而 stringr 中方便的 <code><a href="https://stringr.tidyverse.org/reference/str_equal.html">str_equal()</a></code> 函数则能识别出它们俩具有相同的外观：</p>
 <div class="cell">
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="va">u</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span>
@@ -1070,41 +1070,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_equal.html">str_equal</a></span><span class="op">(</span><span class="va">u</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">u</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="locale-dependent-functions" class="level3" data-number="14.6.3"><h3 data-number="14.6.3" class="anchored" data-anchor-id="locale-dependent-functions">
-<span class="header-section-number">14.6.3</span> Locale-dependent functions</h3>
-<p>Finally, there are a handful of stringr functions whose behavior depends on your <strong>locale</strong>. A locale is similar to a language but includes an optional region specifier to handle regional variations within a language. A locale is specified by a lower-case language abbreviation, optionally followed by a <code>_</code> and an upper-case region identifier. For example, “en” is English, “en_GB” is British English, and “en_US” is American English. If you don’t already know the code for your language, <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">Wikipedia</a> has a good list, and you can see which are supported in stringr by looking at <code><a href="https://rdrr.io/pkg/stringi/man/stri_locale_list.html">stringi::stri_locale_list()</a></code>.</p>
-<p>Base R string functions automatically use the locale set by your operating system. This means that base R string functions do what you expect for your language, but your code might work differently if you share it with someone who lives in a different country. To avoid this problem, stringr defaults to English rules by using the “en” locale and requires you to specify the <code>locale</code> argument to override it. Fortunately, there are only two sets of functions where the locale really matters: changing case and sorting.</p>
-<p>The rules for changing cases differ among languages. For example, Turkish has two i’s: with and without a dot. Since they’re two distinct letters, they’re capitalized differently:</p>
+</section><section id="依赖于区域设置的函数" class="level3" data-number="14.6.3"><h3 data-number="14.6.3" class="anchored" data-anchor-id="依赖于区域设置的函数">
+<span class="header-section-number">14.6.3</span> 依赖于区域设置的函数</h3>
+<p>最后，还有一些 stringr 函数的行为取决于你的<strong>区域设置 (locale)</strong>。区域设置类似于一种语言，但包含一个可选的地区说明符，以处理一种语言内部的地区差异。区域设置由一个小写的语言缩写指定，后面可以选择性地跟一个 <code>_</code> 和一个大写的地区标识符。例如，“en” 是英语，“en_GB” 是英式英语，“en_US” 是美式英语。如果你还不知道你语言的代码，<a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">维基百科</a> 有一个很好的列表，你可以通过查看 <code><a href="https://rdrr.io/pkg/stringi/man/stri_locale_list.html">stringi::stri_locale_list()</a></code> 来看看 stringr 支持哪些。</p>
+<p>R base 的字符串函数会自动使用你的操作系统设置的区域设置。这意味着 R base 的字符串函数会按照你期望的方式对你的语言进行操作，但如果你的代码与生活在不同国家的人共享，它可能会有不同的表现。为了避免这个问题，stringr 默认使用 “en” 区域设置的英语规则，并要求你指定 <code>locale</code> 参数来覆盖它。幸运的是，只有两组函数的区域设置真正重要：改变大小写和排序。</p>
+<p>改变大小写的规则在不同语言中有所不同。例如，土耳其语中有两个 i：带点和不带点的。由于它们是两个不同的字母，它们的大小写转换也不同：</p>
 <div class="cell">
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"i"</span>, <span class="st">"ı"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "I" "I"</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"i"</span>, <span class="st">"ı"</span><span class="op">)</span>, locale <span class="op">=</span> <span class="st">"tr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "İ" "I"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Sorting strings depends on the order of the alphabet, and the order of the alphabet is not the same in every language<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>! Here’s an example: in Czech, “ch” is a compound letter that appears after <code>h</code> in the alphabet.</p>
+<p>对字符串进行排序取决于字母表的顺序，而字母表的顺序在每种语言中都不尽相同<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>！这里有一个例子：在捷克语中，“ch” 是一个复合字母，它在字母表中出现在 <code>h</code> 之后。</p>
 <div class="cell">
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_order.html">str_sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"ch"</span>, <span class="st">"h"</span>, <span class="st">"z"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a"  "c"  "ch" "h"  "z"</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_order.html">str_sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"ch"</span>, <span class="st">"h"</span>, <span class="st">"z"</span><span class="op">)</span>, locale <span class="op">=</span> <span class="st">"cs"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a"  "c"  "h"  "ch" "z"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This also comes up when sorting strings with <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">dplyr::arrange()</a></code>, which is why it also has a <code>locale</code> argument.</p>
-</section></section><section id="summary" class="level2" data-number="14.7"><h2 data-number="14.7" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">14.7</span> Summary</h2>
-<p>In this chapter, you’ve learned about some of the power of the stringr package: how to create, combine, and extract strings, and about some of the challenges you might face with non-English strings. Now it’s time to learn one of the most important and powerful tools for working with strings: regular expressions. Regular expressions are a very concise but very expressive language for describing patterns within strings and are the topic of the next chapter.</p>
+<p>这在使用 <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">dplyr::arrange()</a></code> 对字符串进行排序时也会出现，这就是为什么它也有一个 <code>locale</code> 参数。</p>
+</section></section><section id="总结" class="level2" data-number="14.7"><h2 data-number="14.7" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">14.7</span> 总结</h2>
+<p>在本章中，你已经了解了 stringr 包的一些强大功能：如何创建、组合和提取字符串，以及在处理非英语字符串时可能面临的一些挑战。现在是时候学习一个处理字符串最重要、最强大的工具之一了：正则表达式。正则表达式是一种非常简洁但表达能力极强的语言，用于描述字符串内的模式，它是下一章的主题。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>Or use the base R function <code><a href="https://rdrr.io/r/base/writeLines.html">writeLines()</a></code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Available in R 4.0.0 and above.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> also uses color to bring tabs, spaces, matches, etc. to your attention. The colors don’t currently show up in the book, but you’ll notice them when running code interactively.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>If you’re not using stringr, you can also access it directly with <code><a href="https://glue.tidyverse.org/reference/glue.html">glue::glue()</a></code>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The base R equivalent is <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> used with the <code>collapse</code> argument.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>The same principles apply to <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>Looking at these entries, we’d guess that the babynames data drops spaces or hyphens and truncates after 15 letters.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Here I’m using the special <code>\x</code> to encode binary data directly into a string.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Sorting in languages that don’t have an alphabet, like Chinese, is more complicated still.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>或者使用 R base 函数 <code><a href="https://rdrr.io/r/base/writeLines.html">writeLines()</a></code>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>R 4.0.0 及以上版本可用。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><code><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view()</a></code> 还使用颜色来提请你注意制表符、空格、匹配项等。这些颜色目前在书中不显示，但你在交互式运行代码时会注意到它们。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>如果你没有使用 stringr，你也可以直接用 <code><a href="https://glue.tidyverse.org/reference/glue.html">glue::glue()</a></code> 来访问它。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>R base 中与之等价的是使用 <code>collapse</code> 参数的 <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>同样的原则也适用于 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_position()</a></code> 和 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code>。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>查看这些条目，我们猜测 babynames 数据丢弃了空格或连字符，并在 15 个字母后截断。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>在这里，我使用特殊的 <code>\x</code> 将二进制数据直接编码到字符串中。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>在没有字母表的语言（如中文）中排序则更为复杂。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1504,29 +1504,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./numbers.html" class="pagination-link" aria-label="Numbers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Numbers</span></span>
+      <a href="./numbers.html" class="pagination-link" aria-label="数值">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">数值</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./regexps.html" class="pagination-link" aria-label="Regular expressions">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regular expressions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./regexps.html" class="pagination-link" aria-label="正则表达式">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">正则表达式</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">
-<p>R 数据科学 (2e) 是一本由 Hadley Wickham, Mine Çetinkaya-Rundel 和 Garrett Grolemund 合著的书。 这是汉化项目。</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/strings.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>本书由 <a href="https://quarto.org/">Quarto</a> 构建。</p>
-</div>
-  </div>
-</footer>
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/strings.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
