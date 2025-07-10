@@ -1,25 +1,19 @@
-# Hierarchical data {#sec-rectangling}
+# 层级数据 {#sec-rectangling}
 
 ```{r}
 #| echo: false
 source("_common.R")
-showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-In this chapter, you'll learn the art of data **rectangling**: taking data that is fundamentally hierarchical, or tree-like, and converting it into a rectangular data frame made up of rows and columns.
-This is important because hierarchical data is surprisingly common, especially when working with data that comes from the web.
+在本章中，你将学习数据 **矩形化** (rectangling) 的艺术：将本质上是层级结构或树状结构的数据，转换为由行和列组成的矩形数据框。这一点非常重要，因为层级数据非常普遍，尤其是在处理来自网络的数据时。
 
-To learn about rectangling, you'll need to first learn about lists, the data structure that makes hierarchical data possible.
-Then you'll learn about two crucial tidyr functions: `tidyr::unnest_longer()` and `tidyr::unnest_wider()`.
-We'll then show you a few case studies, applying these simple functions again and again to solve real problems.
-We'll finish off by talking about JSON, the most frequent source of hierarchical datasets and a common format for data exchange on the web.
+要学习数据矩形化，你首先需要了解列表 (list)，这种数据结构使得层级数据成为可能。然后，你将学习两个关键的 tidyr 函数：`tidyr::unnest_longer()` 和 `tidyr::unnest_wider()`。接着，我们将通过几个案例研究，反复应用这些简单的函数来解决实际问题。最后，我们将讨论 JSON，它是层级数据集最常见的来源，也是网络上一种常用的数据交换格式。
 
-### Prerequisites
+### 先决条件
 
-In this chapter, we'll use many functions from tidyr, a core member of the tidyverse.
-We'll also use repurrrsive to provide some interesting datasets for rectangling practice, and we'll finish by using jsonlite to read JSON files into R lists.
+在本章中，我们将使用 tidyr 包中的许多函数，它是 tidyverse 的核心成员。我们还将使用 repurrrsive 包来提供一些有趣的数据集用于矩形化练习，最后我们将使用 jsonlite 包将 JSON 文件读入 R 列表。
 
 ```{r}
 #| label: setup
@@ -29,46 +23,41 @@ library(repurrrsive)
 library(jsonlite)
 ```
 
-## Lists
+## 列表
 
-So far you've worked with data frames that contain simple vectors like integers, numbers, characters, date-times, and factors.
-These vectors are simple because they're homogeneous: every element is of the same data type.
-If you want to store elements of different types in the same vector, you'll need a **list**, which you create with `list()`:
+到目前为止，你所处理的数据框都包含简单的向量，如整数、数字、字符、日期时间和因子。这些向量之所以简单，是因为它们是同质的 (homogeneous)：每个元素都具有相同的数据类型。如果你想在同一个向量中存储不同类型的元素，你就需要一个 **列表** (list)，你可以用 `list()` 来创建它：
 
 ```{r}
 x1 <- list(1:4, "a", TRUE)
 x1
 ```
 
-It's often convenient to name the components, or **children**, of a list, which you can do in the same way as naming the columns of a tibble:
+为列表的组件 (component) 或 **子元素** (children) 命名通常很方便，这和为 tibble 的列命名的方式相同：
 
 ```{r}
 x2 <- list(a = 1:2, b = 1:3, c = 1:4)
 x2
 ```
 
-Even for these very simple lists, printing takes up quite a lot of space.
-A useful alternative is `str()`, which generates a compact display of the **str**ucture, de-emphasizing the contents:
+即使对于这些非常简单的列表，打印出来也会占用相当大的空间。一个有用的替代方法是 `str()`，它会生成一个紧凑的 **结构** (structure) 展示，淡化其内容：
 
 ```{r}
 str(x1)
 str(x2)
 ```
 
-As you can see, `str()` displays each child of the list on its own line.
-It displays the name, if present, then an abbreviation of the type, then the first few values.
+如你所见，`str()` 将列表的每个子元素显示在单独的一行上。它会显示名称 (如果存在)，然后是类型的缩写，最后是前几个值。
 
-### Hierarchy
+### 层级结构
 
-Lists can contain any type of object, including other lists.
-This makes them suitable for representing hierarchical (tree-like) structures:
+列表可以包含任何类型的对象，包括其他列表。这使得它们非常适合表示层级 (树状) 结构：
 
 ```{r}
 x3 <- list(list(1, 2), list(3, 4))
 str(x3)
 ```
 
-This is notably different to `c()`, which generates a flat vector:
+这与 `c()` 有显著不同，`c()` 会生成一个扁平的向量：
 
 ```{r}
 c(c(1, 2), c(3, 4))
@@ -77,28 +66,24 @@ x4 <- c(list(1, 2), list(3, 4))
 str(x4)
 ```
 
-As lists get more complex, `str()` gets more useful, as it lets you see the hierarchy at a glance:
+随着列表变得越来越复杂，`str()` 的作用也越来越大，因为它能让你一目了然地看到层级结构：
 
 ```{r}
 x5 <- list(1, list(2, list(3, list(4, list(5)))))
 str(x5)
 ```
 
-As lists get even larger and more complex, `str()` eventually starts to fail, and you'll need to switch to `View()`[^rectangling-1].
-@fig-view-collapsed shows the result of calling `View(x5)`. The viewer starts by showing just the top level of the list, but you can interactively expand any of the components to see more, as in @fig-view-expand-1. RStudio will also show you the code you need to access that element, as in @fig-view-expand-2. We'll come back to how this code works in @sec-subset-one.
-
-[^rectangling-1]: This is an RStudio feature.
+当列表变得更大、更复杂时，`str()` 最终会开始失效，这时你就需要切换到 `View()`[^1]。@fig-view-collapsed 展示了调用 `View(x5)` 的结果。查看器开始只显示列表的顶层，但你可以交互地展开任何组件以查看更多内容，如 @fig-view-expand-1 所示。RStudio 还会显示访问该元素所需写的代码，如 @fig-view-expand-2 所示。我们将在 @sec-subset-one 回顾这段代码是如何工作的。
 
 ```{r}
 #| label: fig-view-collapsed
 #| fig.cap: >
-#|   The RStudio view lets you interactively explore a complex list.
-#|   The viewer opens showing only the top level of the list.
+#|   RStudio 的视图让你能够交互式地探索一个复杂的列表。
+#|   查看器打开时只显示列表的顶层。
 #| fig.alt: >
-#|   A screenshot of RStudio showing the list-viewer. It shows the
-#|   two children of x5: the first child is a double vector and the
-#|   second child is a list. A rightward facing triable indicates that the
-#|   second child itself has children but you can't see them.
+#|   一张 RStudio 的截图，显示了列表查看器。它显示了 x5 的两个子元素：
+#|   第一个子元素是一个双精度向量，第二个子元素是一个列表。一个朝右的三角形表示
+#|   第二个子元素本身有子元素，但你看不到它们。
 #| echo: false
 #| out-width: NULL
 knitr::include_graphics("screenshots/View-1.png", dpi = 220)
@@ -107,12 +92,10 @@ knitr::include_graphics("screenshots/View-1.png", dpi = 220)
 ```{r}
 #| label: fig-view-expand-1
 #| fig.cap: >
-#|   Clicking on the rightward facing triangle expands that component
-#|   of the list so that you can also see its children.
+#|   点击朝右的三角形会展开该列表组件，这样你也可以看到它的子元素。
 #| fig.alt: >
-#|   Another screenshot of the list-viewer having expand the second
-#|   child of x5. It also has two children, a double vector and another
-#|   list.
+#|   另一张列表查看器的截图，已经展开了 x5 的第二个子元素。
+#|   它也有两个子元素，一个双精度向量和另一个列表。
 #| echo: false
 #| out-width: NULL
 knitr::include_graphics("screenshots/View-2.png", dpi = 220)
@@ -121,553 +104,478 @@ knitr::include_graphics("screenshots/View-2.png", dpi = 220)
 ```{r}
 #| label: fig-view-expand-2
 #| fig.cap: >
-#|   You can repeat this operation as many times as needed to get to the
-#|   data you're interested in. Note the bottom-left corner: if you click
-#|   an element of the list, RStudio will give you the subsetting code
-#|   needed to access it, in this case `x5[[2]][[2]][[2]]`.
+#|   你可以根据需要重复此操作多次，以找到你感兴趣的数据。注意左下角：
+#|   如果你点击列表中的一个元素，RStudio 会给你提供访问它所需的子集代码，
+#|   在本例中是 `x5[[2]][[2]][[2]]`。
 #| fig.alt: >
-#|   Another screenshot, having expanded the grandchild of x5 to see its
-#|   two children, again a double vector and a list.
+#|   另一张截图，已经展开了 x5 的孙子元素以查看其两个子元素，
+#|   同样是一个双精度向量和一个列表。
 #| echo: false
 #| out-width: NULL
 knitr::include_graphics("screenshots/View-3.png", dpi = 220)
 ```
 
-### List-columns
+### 列表列
 
-Lists can also live inside a tibble, where we call them list-columns.
-List-columns are useful because they allow you to place objects in a tibble that wouldn't usually belong in there.
-In particular, list-columns are used a lot in the [tidymodels](https://www.tidymodels.org) ecosystem, because they allow you to store things like model outputs or resamples in a data frame.
+列表也可以存在于 tibble 中，我们称之为列表列 (list-columns)。列表列很有用，因为它们允许你将通常不属于数据框的对象放入其中。特别地，列表列在 [tidymodels](https://www.tidymodels.org) 生态系统中使用很多，因为它们允许你将模型输出或重采样等内容存储在数据框中。
 
-Here's a simple example of a list-column:
+下面是列表列的一个简单示例：
 
 ```{r}
 df <- tibble(
-    x = 1:2,
-    y = c("a", "b"),
-    z = list(list(1, 2), list(3, 4, 5))
+  x = 1:2, 
+  y = c("a", "b"),
+  z = list(list(1, 2), list(3, 4, 5))
 )
 df
 ```
 
-There's nothing special about lists in a tibble; they behave like any other column:
+tibble 中的列表没有什么特别之处；它们的行为就像任何其他列一样：
 
 ```{r}
-df |>
-    filter(x == 1)
+df |> 
+  filter(x == 1)
 ```
 
-Computing with list-columns is harder, but that's because computing with lists is harder in general; we'll come back to that in @sec-iteration.
-In this chapter, we'll focus on unnesting list-columns out into regular variables so you can use your existing tools on them.
+使用列表列进行计算更加困难，但这是因为通常使用列表进行计算就更困难；我们将在 @sec-iteration 中再讨论这个问题。在本章中，我们将专注于将列表列展开 (unnest) 为常规变量，以便你可以使用现有的工具来处理它们。
 
-The default print method just displays a rough summary of the contents.
-The list column could be arbitrarily complex, so there's no good way to print it.
-If you want to see it, you'll need to pull out just the one list-column and apply one of the techniques that you've learned above, like `df |> pull(z) |> str()` or `df |> pull(z) |> View()`.
+默认的打印方法只显示内容的粗略摘要。列表列可能任意复杂，所以没有很好的方法来打印它。如果你想查看它，你需要单独抽取出那个列表列，并应用你上面学到的技术之一，比如 `df |> pull(z) |> str()` 或 `df |> pull(z) |> View()`。
 
 ::: callout-note
-## Base R
 
-It's possible to put a list in a column of a `data.frame`, but it's a lot fiddlier because `data.frame()` treats a list as a list of columns:
+## 基础 R
+
+可以将列表放入 `data.frame` 的一列中，但这要麻烦得多，因为 `data.frame()` 将列表视为列的列表：
 
 ```{r}
 data.frame(x = list(1:3, 3:5))
 ```
 
-You can force `data.frame()` to treat a list as a list of rows by wrapping it in list `I()`, but the result doesn't print particularly well:
+你可以通过将其包装在 `I()` 中来强制 `data.frame()` 将列表视为行的列表，但结果打印得不是很好：
 
 ```{r}
 data.frame(
-    x = I(list(1:2, 3:5)),
-    y = c("1, 2", "3, 4, 5")
+  x = I(list(1:2, 3:5)), 
+  y = c("1, 2", "3, 4, 5")
 )
 ```
 
-It's easier to use list-columns with tibbles because `tibble()` treats lists like vectors and the print method has been designed with lists in mind.
+使用 tibble 的列表列更容易，因为 `tibble()` 将列表视为向量，并且其打印方法是为列表设计的。
 :::
 
-## Unnesting
+## 展开
 
-Now that you've learned the basics of lists and list-columns, let's explore how you can turn them back into regular rows and columns.
-Here we'll use very simple sample data so you can get the basic idea; in the next section we'll switch to real data.
+既然你已经学习了列表和列表列的基础知识，让我们来探讨如何将它们变回常规的行和列。这里我们将使用非常简单的示例数据，以便你了解基本思想；在下一节中，我们将切换到真实数据。
 
-List-columns tend to come in two basic forms: named and unnamed.
-When the children are **named**, they tend to have the same names in every row.
-For example, in `df1`, every element of list-column `y` has two elements named `a` and `b`.
-Named list-columns naturally unnest into columns: each named element becomes a new named column.
+列表列倾向于以两种基本形式出现：命名的和未命名的。当子元素是 **命名** 的时，它们在每一行中往往具有相同的名称。例如，在 `df1` 中，列表列 `y` 的每个元素都有两个名为 `a` 和 `b` 的元素。命名的列表列很自然地展开为列：每个命名元素都成为一个新的命名列。
 
 ```{r}
 df1 <- tribble(
-    ~x, ~y,
-    1, list(a = 11, b = 12),
-    2, list(a = 21, b = 22),
-    3, list(a = 31, b = 32),
+  ~x, ~y,
+  1, list(a = 11, b = 12),
+  2, list(a = 21, b = 22),
+  3, list(a = 31, b = 32),
 )
 ```
 
-When the children are **unnamed**, the number of elements tends to vary from row-to-row.
-For example, in `df2`, the elements of list-column `y` are unnamed and vary in length from one to three.
-Unnamed list-columns naturally unnest into rows: you'll get one row for each child.
+当子元素是 **未命名** 的时，元素的数量往往因行而异。例如，在 `df2` 中，列表列 `y` 的元素是未命名的，长度从一到三不等。未命名的列表列很自然地展开为行：每个子元素将得到一行。
 
 ```{r}
 df2 <- tribble(
-    ~x, ~y,
-    1, list(11, 12, 13),
-    2, list(21),
-    3, list(31, 32),
+  ~x, ~y,
+  1, list(11, 12, 13),
+  2, list(21),
+  3, list(31, 32),
 )
 ```
 
-tidyr provides two functions for these two cases: `unnest_wider()` and `unnest_longer()`.
-The following sections explain how they work.
+tidyr 为这两种情况提供了两个函数：`unnest_wider()` 和 `unnest_longer()`。以下各节将解释它们如何工作。
 
 ### `unnest_wider()`
 
-When each row has the same number of elements with the same names, like `df1`, it's natural to put each component into its own column with `unnest_wider()`:
+当每一行都有相同数量且名称相同的元素时，比如 `df1`，很自然地可以用 `unnest_wider()` 将每个组件放入其自己的列中：
 
 ```{r}
-df1 |>
-    unnest_wider(y)
+df1 |> 
+  unnest_wider(y)
 ```
 
-By default, the names of the new columns come exclusively from the names of the list elements, but you can use the `names_sep` argument to request that they combine the column name and the element name.
-This is useful for disambiguating repeated names.
+默认情况下，新列的名称完全来自列表元素的名称，但你可以使用 `names_sep` 参数来要求它们将列名和元素名组合起来。这对于消除重复的名称很有用。
 
 ```{r}
-df1 |>
-    unnest_wider(y, names_sep = "_")
+df1 |> 
+  unnest_wider(y, names_sep = "_")
 ```
 
 ### `unnest_longer()`
 
-When each row contains an unnamed list, it's most natural to put each element into its own row with `unnest_longer()`:
+当每一行都包含一个未命名的列表时，最自然的方式是用 `unnest_longer()` 将每个元素放入其自己的行中：
 
 ```{r}
-df2 |>
-    unnest_longer(y)
+df2 |> 
+  unnest_longer(y)
 ```
 
-Note how `x` is duplicated for each element inside of `y`: we get one row of output for each element inside the list-column.
-But what happens if one of the elements is empty, as in the following example?
+请注意 `x` 是如何为 `y` 中的每个元素复制的：对于列表列中的每个元素，我们都会得到一行输出。但是，如果其中一个元素是空的，如下面的例子所示，会发生什么呢？
 
 ```{r}
 df6 <- tribble(
-    ~x, ~y,
-    "a", list(1, 2),
-    "b", list(3),
-    "c", list()
+  ~x, ~y,
+  "a", list(1, 2),
+  "b", list(3),
+  "c", list()
 )
 df6 |> unnest_longer(y)
 ```
 
-We get zero rows in the output, so the row effectively disappears.
-If you want to preserve that row, adding `NA` in `y`, set `keep_empty = TRUE`.
+我们在输出中得到零行，所以该行实际上消失了。如果你想保留那一行，并在 `y` 中添加 `NA`，请设置 `keep_empty = TRUE`。
 
-### Inconsistent types
+### 类型不一致
 
-What happens if you unnest a list-column that contains different types of vector?
-For example, take the following dataset where the list-column `y` contains two numbers, a character, and a logical, which can't normally be mixed in a single column.
+如果你展开一个包含不同类型向量的列表列，会发生什么？例如，看下面的数据集，其中列表列 `y` 包含两个数字、一个字符和一个逻辑值，这些通常不能混合在单个列中。
 
 ```{r}
 df4 <- tribble(
-    ~x, ~y,
-    "a", list(1),
-    "b", list("a", TRUE, 5)
+  ~x, ~y,
+  "a", list(1),
+  "b", list("a", TRUE, 5)
 )
 ```
 
-`unnest_longer()` always keeps the set of columns unchanged, while changing the number of rows.
-So what happens?
-How does `unnest_longer()` produce five rows while keeping everything in `y`?
+`unnest_longer()` 总是保持列集合不变，同时改变行的数量。那么会发生什么呢？`unnest_longer()` 如何在保持 `y` 中所有内容的同时产生五行？
 
 ```{r}
-df4 |>
-    unnest_longer(y)
+df4 |> 
+  unnest_longer(y)
 ```
 
-As you can see, the output contains a list-column, but every element of the list-column contains a single element.
-Because `unnest_longer()` can't find a common type of vector, it keeps the original types in a list-column.
-You might wonder if this breaks the commandment that every element of a column must be the same type.
-It doesn't: every element is a list, even though the contents are of different types.
+如你所见，输出包含一个列表列，但该列表列的每个元素都包含一个单一元素。因为 `unnest_longer()` 找不到一个通用的向量类型，它将原始类型保留在一个列表列中。你可能会想，这是否违反了列的每个元素必须是相同类型的规定。并没有：每个元素都是一个列表，尽管其内容是不同类型的。
 
-Dealing with inconsistent types is challenging and the details depend on the precise nature of the problem and your goals, but you'll most likely need tools from @sec-iteration.
+处理不一致的类型具有挑战性，具体细节取决于问题的确切性质和你的目标，但你很可能需要来自 @sec-iteration 的工具。
 
-### Other functions
+### 其他函数
 
-tidyr has a few other useful rectangling functions that we're not going to cover in this book:
+tidyr 还有一些其他有用的矩形化函数，我们在这本书中不会涉及：
 
--   `unnest_auto()` automatically picks between `unnest_longer()` and `unnest_wider()` based on the structure of the list-column. It's great for rapid exploration, but ultimately it's a bad idea because it doesn't force you to understand how your data is structured, and makes your code harder to understand.
--   `unnest()` expands both rows and columns. It's useful when you have a list-column that contains a 2d structure like a data frame, which you don't see in this book, but you might encounter if you use the [tidymodels](https://www.tmwr.org/base-r.html#combining-base-r-models-and-the-tidyverse) ecosystem.
+  - `unnest_auto()` 会根据列表列的结构自动在 `unnest_longer()` 和 `unnest_wider()` 之间进行选择。它对于快速探索非常棒，但最终这不是一个好主意，因为它没有强迫你理解你的数据是如何组织的，并使你的代码更难理解。
+  - `unnest()` 会同时扩展行和列。当你有一个包含二维结构（如数据框）的列表列时，它很有用，这在这本书中你看不到，但如果你使用 [tidymodels](https://www.tmwr.org/base-r.html#combining-base-r-models-and-the-tidyverse) 生态系统，你可能会遇到。
 
-These functions are good to know about as you might encounter them when reading other people's code or tackling rarer rectangling challenges yourself.
+了解这些函数是很好的，因为你在阅读他人的代码或自己处理更罕见的矩形化挑战时可能会遇到它们。
 
-### Exercises
+### 练习
 
-1.  What happens when you use `unnest_wider()` with unnamed list-columns like `df2`?
-    What argument is now necessary?
-    What happens to missing values?
+1.  当你对像 `df2` 这样的未命名列表列使用 `unnest_wider()` 时会发生什么？现在需要哪个参数？缺失值会发生什么变化？
 
-2.  What happens when you use `unnest_longer()` with named list-columns like `df1`?
-    What additional information do you get in the output?
-    How can you suppress that extra detail?
+2.  当你对像 `df1` 这样的命名列表列使用 `unnest_longer()` 时会发生什么？你在输出中得到了哪些额外的信息？你如何抑制这些额外的细节？
 
-3.  From time-to-time you encounter data frames with multiple list-columns with aligned values.
-    For example, in the following data frame, the values of `y` and `z` are aligned (i.e. `y` and `z` will always have the same length within a row, and the first value of `y` corresponds to the first value of `z`).
-    What happens if you apply two `unnest_longer()` calls to this data frame?
-    How can you preserve the relationship between `x` and `y`?
-    (Hint: carefully read the docs).
+3.  你有时会遇到具有多个值对齐的列表列的数据框。例如，在下面的数据框中，`y` 和 `z` 的值是对齐的（即在一行内 `y` 和 `z` 的长度总是相同的，并且 `y` 的第一个值对应于 `z` 的第一个值）。如果你对这个数据框应用两次 `unnest_longer()` 调用会发生什么？你如何保留 `x` 和 `y` 之间的关系？（提示：仔细阅读文档）。
 
     ```{r}
-df4 <- tribble(
-    ~x, ~y, ~z,
-    "a", list("y-a-1", "y-a-2"), list("z-a-1", "z-a-2"),
-    "b", list("y-b-1", "y-b-2", "y-b-3"), list("z-b-1", "z-b-2", "z-b-3")
-)
+    df4 <- tribble(
+      ~x, ~y, ~z,
+      "a", list("y-a-1", "y-a-2"), list("z-a-1", "z-a-2"),
+      "b", list("y-b-1", "y-b-2", "y-b-3"), list("z-b-1", "z-b-2", "z-b-3")
+    )
     ```
 
-## Case studies
+## 案例研究
 
-The main difference between the simple examples we used above and real data is that real data typically contains multiple levels of nesting that require multiple calls to `unnest_longer()` and/or `unnest_wider()`.
-To show that in action, this section works through three real rectangling challenges using datasets from the repurrrsive package.
+我们上面使用的简单示例与真实数据之间的主要区别在于，真实数据通常包含多层嵌套，需要多次调用 `unnest_longer()` 和/或 `unnest_wider()`。为了展示这一点，本节将使用 repurrrsive 包中的数据集来解决三个真实的矩形化挑战。
 
-### Very wide data
+### 非常宽的数据
 
-We'll start with `gh_repos`.
-This is a list that contains data about a collection of GitHub repositories retrieved using the GitHub API. It's a very deeply nested list so it's difficult to show the structure in this book; we recommend exploring a little on your own with `View(gh_repos)` before we continue.
+我们从 `gh_repos` 开始。这是一个列表，包含了从 GitHub API 检索到的一系列 GitHub 仓库的数据。这是一个非常深层嵌套的列表，因此很难在本书中展示其结构；我们建议在继续之前，先用 `View(gh_repos)` 自己探索一下。
 
-`gh_repos` is a list, but our tools work with list-columns, so we'll begin by putting it into a tibble.
-We call this column `json` for reasons we'll get to later.
+`gh_repos` 是一个列表，但我们的工具是针对列表列的，所以我们首先将它放入一个 tibble 中。由于我们稍后会讲到的原因，我们称此列为 `json`。
 
 ```{r}
 repos <- tibble(json = gh_repos)
 repos
 ```
 
-This tibble contains 6 rows, one row for each child of `gh_repos`.
-Each row contains an unnamed list with either 26 or 30 rows.
-Since these are unnamed, we'll start with `unnest_longer()` to put each child in its own row:
+这个 tibble 包含 6 行，每行对应 `gh_repos` 的一个子元素。每一行都包含一个未命名的列表，有 26 或 30 行。由于这些是未命名的，我们将从 `unnest_longer()` 开始，将每个子元素放入其自己的行中：
 
 ```{r}
-repos |>
-    unnest_longer(json)
+repos |> 
+  unnest_longer(json)
 ```
 
-At first glance, it might seem like we haven't improved the situation: while we have more rows (176 instead of 6) each element of `json` is still a list.
-However, there's an important difference: now each element is a **named** list so we can use `unnest_wider()` to put each element into its own column:
+乍一看，似乎我们并没有改善情况：虽然我们有了更多的行（176 而不是 6），但 `json` 的每个元素仍然是一个列表。然而，有一个重要的区别：现在每个元素都是一个 **命名** 列表，所以我们可以使用 `unnest_wider()` 将每个元素放入其自己的列中：
 
 ```{r}
-repos |>
-    unnest_longer(json) |>
-    unnest_wider(json)
+repos |> 
+  unnest_longer(json) |> 
+  unnest_wider(json) 
 ```
 
-This has worked but the result is a little overwhelming: there are so many columns that tibble doesn't even print all of them!
-We can see them all with `names()`; and here we look at the first 10:
+这已经成功了，但结果有点让人不知所措：列太多了，以至于 tibble 甚至没有打印出所有的列！我们可以用 `names()` 看到所有的列；这里我们看一下前 10 个：
 
 ```{r}
-repos |>
-    unnest_longer(json) |>
-    unnest_wider(json) |>
-    names() |>
-    head(10)
+repos |> 
+  unnest_longer(json) |> 
+  unnest_wider(json) |> 
+  names() |> 
+  head(10)
 ```
 
-Let's pull out a few that look interesting:
+让我们挑出一些看起来有趣的列：
 
 ```{r}
-repos |>
-    unnest_longer(json) |>
-    unnest_wider(json) |>
-    select(id, full_name, owner, description)
+repos |> 
+  unnest_longer(json) |> 
+  unnest_wider(json) |> 
+  select(id, full_name, owner, description)
 ```
 
-You can use this to work back to understand how `gh_repos` was structured: each child was a GitHub user containing a list of up to 30 GitHub repositories that they created.
+你可以利用这个来回溯理解 `gh_repos` 的结构：每个子元素都是一个 GitHub 用户，包含一个他们创建的最多 30 个 GitHub 仓库的列表。
 
-`owner` is another list-column, and since it contains a named list, we can use `unnest_wider()` to get at the values:
+`owner` 是另一个列表列，由于它包含一个命名的列表，我们可以使用 `unnest_wider()` 来获取其值：
 
 ```{r}
 #| error: true
-repos |>
-    unnest_longer(json) |>
-    unnest_wider(json) |>
-    select(id, full_name, owner, description) |>
-    unnest_wider(owner)
+repos |> 
+  unnest_longer(json) |> 
+  unnest_wider(json) |> 
+  select(id, full_name, owner, description) |> 
+  unnest_wider(owner)
 ```
 
-Uh oh, this list column also contains an `id` column and we can't have two `id` columns in the same data frame.
-As suggested, lets use `names_sep` to resolve the problem:
+哦哦，这个列表列也包含一个 `id` 列，我们不能在同一个数据框中有两个 `id` 列。如建议的那样，让我们使用 `names_sep` 来解决这个问题：
 
 ```{r}
-repos |>
-    unnest_longer(json) |>
-    unnest_wider(json) |>
-    select(id, full_name, owner, description) |>
-    unnest_wider(owner, names_sep = "_")
+repos |> 
+  unnest_longer(json) |> 
+  unnest_wider(json) |> 
+  select(id, full_name, owner, description) |> 
+  unnest_wider(owner, names_sep = "_")
 ```
 
-This gives another wide dataset, but you can get the sense that `owner` appears to contain a lot of additional data about the person who "owns" the repository.
+这又得到了一个很宽的数据集，但你可以感觉到 `owner` 似乎包含了大量关于“拥有”该仓库的人的额外数据。
 
-### Relational data
+### 关系数据
 
-Nested data is sometimes used to represent data that we'd usually spread across multiple data frames.
-For example, take `got_chars` which contains data about characters that appear in the Game of Thrones books and TV series.
-Like `gh_repos` it's a list, so we start by turning it into a list-column of a tibble:
+嵌套数据有时用于表示我们通常会分散在多个数据框中的数据。例如，`got_chars` 包含了关于《权力的游戏》书籍和电视剧中出现的角色的数据。和 `gh_repos` 一样，它是一个列表，所以我们首先将它转换成一个 tibble 的列表列：
 
 ```{r}
 chars <- tibble(json = got_chars)
 chars
 ```
 
-The `json` column contains named elements, so we'll start by widening it:
+`json` 列包含命名的元素，所以我们先用 `unnest_wider()` 将其展开：
 
 ```{r}
-chars |>
-    unnest_wider(json)
+chars |> 
+  unnest_wider(json)
 ```
 
-And selecting a few columns to make it easier to read:
+然后选择几列以便于阅读：
 
 ```{r}
-characters <- chars |>
-    unnest_wider(json) |>
-    select(id, name, gender, culture, born, died, alive)
+characters <- chars |> 
+  unnest_wider(json) |> 
+  select(id, name, gender, culture, born, died, alive)
 characters
 ```
 
-This dataset contains also many list-columns:
+这个数据集也包含许多列表列：
 
 ```{r}
-chars |>
-    unnest_wider(json) |>
-    select(id, where(is.list))
+chars |> 
+  unnest_wider(json) |> 
+  select(id, where(is.list))
 ```
 
-Let's explore the `titles` column.
-It's an unnamed list-column, so we'll unnest it into rows:
+让我们来探索 `titles` 列。它是一个未命名的列表列，所以我们把它展开成行：
 
 ```{r}
-chars |>
-    unnest_wider(json) |>
-    select(id, titles) |>
-    unnest_longer(titles)
+chars |> 
+  unnest_wider(json) |> 
+  select(id, titles) |> 
+  unnest_longer(titles)
 ```
 
-You might expect to see this data in its own table because it would be easy to join to the characters data as needed.
-Let's do that, which requires little cleaning: removing the rows containing empty strings and renaming `titles` to `title` since each row now only contains a single title.
+你可能期望看到这些数据在它自己的表中，因为这样很容易按需连接到角色数据。让我们这样做，这需要一点清理：删除包含空字符串的行，并将 `titles` 重命名为 `title`，因为现在每行只包含一个头衔。
 
 ```{r}
-titles <- chars |>
-    unnest_wider(json) |>
-    select(id, titles) |>
-    unnest_longer(titles) |>
-    filter(titles != "") |>
-    rename(title = titles)
+titles <- chars |> 
+  unnest_wider(json) |> 
+  select(id, titles) |> 
+  unnest_longer(titles) |> 
+  filter(titles != "") |> 
+  rename(title = titles)
 titles
 ```
 
-You could imagine creating a table like this for each of the list-columns, then using joins to combine them with the character data as you need it.
+你可以想象为每个列表列创建这样的一个表，然后在需要时使用连接将它们与角色数据结合起来。
 
-### Deeply nested
+### 深度嵌套
 
-We'll finish off these case studies with a list-column that's very deeply nested and requires repeated rounds of `unnest_wider()` and `unnest_longer()` to unravel: `gmaps_cities`.
-This is a two column tibble containing five city names and the results of using Google's [geocoding API](https://developers.google.com/maps/documentation/geocoding) to determine their location:
+我们将用一个非常深度嵌套的列表列来结束这些案例研究，它需要反复使用 `unnest_wider()` 和 `unnest_longer()` 来解开：`gmaps_cities`。这是一个两列的 tibble，包含五个城市名称和使用谷歌的 [地理编码 API](https://developers.google.com/maps/documentation/geocoding) 来确定它们位置的结果：
 
 ```{r}
 gmaps_cities
 ```
 
-`json` is a list-column with internal names, so we start with an `unnest_wider()`:
+`json` 是一个带有内部名称的列表列，所以我们从 `unnest_wider()` 开始：
 
 ```{r}
-gmaps_cities |>
-    unnest_wider(json)
+gmaps_cities |> 
+  unnest_wider(json)
 ```
 
-This gives us the `status` and the `results`.
-We'll drop the status column since they're all `OK`; in a real analysis, you'd also want to capture all the rows where `status != "OK"` and figure out what went wrong.
-`results` is an unnamed list, with either one or two elements (we'll see why shortly) so we'll unnest it into rows:
+这给了我们 `status` 和 `results`。我们将丢弃 status 列，因为它们都是 `OK`；在真实的分析中，你还需要捕获所有 `status != "OK"` 的行，并找出问题所在。`results` 是一个未命名的列表，有一或两个元素（我们很快会看到为什么），所以我们将它展开成行：
 
 ```{r}
-gmaps_cities |>
-    unnest_wider(json) |>
-    select(-status) |>
-    unnest_longer(results)
+gmaps_cities |> 
+  unnest_wider(json) |> 
+  select(-status) |> 
+  unnest_longer(results)
 ```
 
-Now `results` is a named list, so we'll use `unnest_wider()`:
+现在 `results` 是一个命名的列表，所以我们使用 `unnest_wider()`：
 
 ```{r}
-locations <- gmaps_cities |>
-    unnest_wider(json) |>
-    select(-status) |>
-    unnest_longer(results) |>
-    unnest_wider(results)
+locations <- gmaps_cities |> 
+  unnest_wider(json) |> 
+  select(-status) |> 
+  unnest_longer(results) |> 
+  unnest_wider(results)
 locations
 ```
 
-Now we can see why two cities got two results: Washington matched both Washington state and Washington, DC, and Arlington matched Arlington, Virginia and Arlington, Texas.
+现在我们可以看到为什么有两个城市得到了两个结果：华盛顿 (Washington) 匹配了华盛顿州 (Washington state) 和华盛顿特区 (Washington, DC)，阿灵顿 (Arlington) 匹配了弗吉尼亚州的阿灵顿 (Arlington, Virginia) 和德克萨斯州的阿灵顿 (Arlington, Texas)。
 
-There are a few different places we could go from here.
-We might want to determine the exact location of the match, which is stored in the `geometry` list-column:
-
-```{r}
-locations |>
-    select(city, formatted_address, geometry) |>
-    unnest_wider(geometry)
-```
-
-That gives us new `bounds` (a rectangular region) and `location` (a point).
-We can unnest `location` to see the latitude (`lat`) and longitude (`lng`):
+从这里我们可以走向几个不同的方向。我们可能想确定匹配的精确位置，这存储在 `geometry` 列表列中：
 
 ```{r}
-locations |>
-    select(city, formatted_address, geometry) |>
-    unnest_wider(geometry) |>
-    unnest_wider(location)
+locations |> 
+  select(city, formatted_address, geometry) |> 
+  unnest_wider(geometry)
 ```
 
-Extracting the bounds requires a few more steps:
+这给了我们新的 `bounds`（一个矩形区域）和 `location`（一个点）。我们可以展开 `location` 来查看纬度 (`lat`) 和经度 (`lng`)：
 
 ```{r}
-locations |>
-    select(city, formatted_address, geometry) |>
-    unnest_wider(geometry) |>
-    # focus on the variables of interest
-    select(!location:viewport) |>
-    unnest_wider(bounds)
+locations |> 
+  select(city, formatted_address, geometry) |> 
+  unnest_wider(geometry) |> 
+  unnest_wider(location)
 ```
 
-We then rename `southwest` and `northeast` (the corners of the rectangle) so we can use `names_sep` to create short but evocative names:
+提取边界需要更多几个步骤：
 
 ```{r}
-locations |>
-    select(city, formatted_address, geometry) |>
-    unnest_wider(geometry) |>
-    select(!location:viewport) |>
-    unnest_wider(bounds) |>
-    rename(ne = northeast, sw = southwest) |>
-    unnest_wider(c(ne, sw), names_sep = "_")
+locations |> 
+  select(city, formatted_address, geometry) |> 
+  unnest_wider(geometry) |> 
+  # 专注于感兴趣的变量
+  select(!location:viewport) |>
+  unnest_wider(bounds)
 ```
 
-Note how we unnest two columns simultaneously by supplying a vector of variable names to `unnest_wider()`.
+然后我们重命名 `southwest` 和 `northeast`（矩形的角点），这样我们就可以使用 `names_sep` 来创建简短但有意义的名称：
 
-Once you've discovered the path to get to the components you're interested in, you can extract them directly using another tidyr function, `hoist()`:
+```{r}
+locations |> 
+  select(city, formatted_address, geometry) |> 
+  unnest_wider(geometry) |> 
+  select(!location:viewport) |>
+  unnest_wider(bounds) |> 
+  rename(ne = northeast, sw = southwest) |> 
+  unnest_wider(c(ne, sw), names_sep = "_") 
+```
+
+注意我们如何通过向 `unnest_wider()` 提供一个变量名称的向量来同时展开两列。
+
+一旦你找到了到达你感兴趣的组件的路径，你可以使用另一个 tidyr 函数 `hoist()` 直接提取它们：
 
 ```{r}
 #| results: false
-locations |>
-    select(city, formatted_address, geometry) |>
-    hoist(
-        geometry,
-        ne_lat = c("bounds", "northeast", "lat"),
-        sw_lat = c("bounds", "southwest", "lat"),
-        ne_lng = c("bounds", "northeast", "lng"),
-        sw_lng = c("bounds", "southwest", "lng"),
-    )
+locations |> 
+  select(city, formatted_address, geometry) |> 
+  hoist(
+    geometry,
+    ne_lat = c("bounds", "northeast", "lat"),
+    sw_lat = c("bounds", "southwest", "lat"),
+    ne_lng = c("bounds", "northeast", "lng"),
+    sw_lng = c("bounds", "southwest", "lng"),
+  )
 ```
 
-If these case studies have whetted your appetite for more real-life rectangling, you can see a few more examples in `vignette("rectangling", package = "tidyr")`.
+如果这些案例研究激发了你对更多现实生活中的矩形化问题的兴趣，你可以在 `vignette("rectangling", package = "tidyr")` 中看到更多例子。
 
-### Exercises
+### 练习
 
-1.  Roughly estimate when `gh_repos` was created.
-    Why can you only roughly estimate the date?
+1.  粗略估计 `gh_repos` 是何时创建的。为什么你只能粗略估计日期？
 
-2.  The `owner` column of `gh_repo` contains a lot of duplicated information because each owner can have many repos.
-    Can you construct an `owners` data frame that contains one row for each owner?
-    (Hint: does `distinct()` work with `list-cols`?)
+2.  `gh_repo` 的 `owner` 列包含大量重复信息，因为每个所有者可以有多个仓库。你能否构建一个 `owners` 数据框，其中每个所有者只有一行？（提示：`distinct()` 对 `list-cols` 有效吗？）
 
-3.  Follow the steps used for `titles` to create similar tables for the aliases, allegiances, books, and TV series for the Game of Thrones characters.
+3.  按照用于 `titles` 的步骤，为《权力的游戏》角色的别名 (aliases)、效忠 (allegiances)、书籍 (books) 和电视剧集 (TV series) 创建类似的表。
 
-4.  Explain the following code line-by-line.
-    Why is it interesting?
-    Why does it work for `got_chars` but might not work in general?
+4.  逐行解释以下代码。它为什么有趣？为什么它对 `got_chars` 有效，但在一般情况下可能无效？
 
     ```{r}
-#| results: false
-tibble(json = got_chars) |>
-    unnest_wider(json) |>
-    select(id, where(is.list)) |>
-    pivot_longer(
-        where(is.list),
-        names_to = "name",
+    #| results: false
+    tibble(json = got_chars) |> 
+      unnest_wider(json) |> 
+      select(id, where(is.list)) |> 
+      pivot_longer(
+        where(is.list), 
+        names_to = "name", 
         values_to = "value"
-    ) |>
-    unnest_longer(value)
+      ) |>  
+      unnest_longer(value)
     ```
 
-5.  In `gmaps_cities`, what does `address_components` contain?
-    Why does the length vary between rows?
-    Unnest it appropriately to figure it out.
-    (Hint: `types` always appears to contain two elements. Does `unnest_wider()` make it easier to work with than `unnest_longer()`?)
-    .
+5.  在 `gmaps_cities` 中，`address_components` 包含什么？为什么行与行之间的长度不同？适当地展开它来找出答案。（提示：`types` 似乎总是包含两个元素。使用 `unnest_wider()` 是否比 `unnest_longer()` 更容易处理？）
 
 ## JSON
 
-All of the case studies in the previous section were sourced from wild-caught JSON.
-JSON is short for **j**ava**s**cript **o**bject **n**otation and is the way that most web APIs return data.
-It's important to understand it because while JSON and R's data types are pretty similar, there isn't a perfect 1-to-1 mapping, so it's good to understand a bit about JSON if things go wrong.
+上一节的所有案例研究都来源于现实世界中捕获的 JSON。JSON 是 **J**ava**S**cript **O**bject **N**otation (JavaScript 对象表示法) 的缩写，是大多数 Web API 返回数据的方式。理解它很重要，因为尽管 JSON 和 R 的数据类型非常相似，但并不存在完美的 1 对 1 映射，所以如果出现问题，了解一些关于 JSON 的知识是很有好处的。
 
-### Data types
+### 数据类型
 
-JSON is a simple format designed to be easily read and written by machines, not humans.
-It has six key data types.
-Four of them are scalars:
+JSON 是一种简单的格式，设计用于机器轻松读写，而不是人类。它有六种关键的数据类型。其中四种是标量 (scalar)：
 
--   The simplest type is a null (`null`) which plays the same role as `NA` in R. It represents the absence of data.
--   A **string** is much like a string in R, but must always use double quotes.
--   A **number** is similar to R's numbers: they can use integer (e.g., 123), decimal (e.g., 123.45), or scientific (e.g., 1.23e3) notation. JSON doesn't support `Inf`, `-Inf`, or `NaN`.
--   A **boolean** is similar to R's `TRUE` and `FALSE`, but uses lowercase `true` and `false`.
+  - 最简单的类型是空值 (`null`)，它在 R 中扮演与 `NA` 相同的角色。它表示数据的缺失。
+  - **字符串** (string) 很像 R 中的字符串，但必须始终使用双引号。
+  - **数字** (number) 类似于 R 的数字：它们可以使用整数（例如，123）、小数（例如，123.45）或科学记数法（例如，1.23e3）。JSON 不支持 `Inf`、`-Inf` 或 `NaN`。
+  - **布尔值** (boolean) 类似于 R 的 `TRUE` 和 `FALSE`，但使用小写的 `true` 和 `false`。
 
-JSON's strings, numbers, and booleans are pretty similar to R's character, numeric, and logical vectors.
-The main difference is that JSON's scalars can only represent a single value.
-To represent multiple values you need to use one of the two remaining types: arrays and objects.
+JSON 的字符串、数字和布尔值与 R 的字符、数值和逻辑向量非常相似。主要区别在于 JSON 的标量只能表示单个值。要表示多个值，你需要使用剩下的两种类型之一：数组 (array) 和对象 (object)。
 
-Both arrays and objects are similar to lists in R; the difference is whether or not they're named.
-An **array** is like an unnamed list, and is written with `[]`.
-For example `[1, 2, 3]` is an array containing 3 numbers, and `[null, 1, "string", false]` is an array that contains a null, a number, a string, and a boolean.
-An **object** is like a named list, and is written with `{}`.
-The names (keys in JSON terminology) are strings, so must be surrounded by quotes.
-For example, `{"x": 1, "y": 2}` is an object that maps `x` to 1 and `y` to 2.
+数组和对象都类似于 R 中的列表；区别在于它们是否被命名。**数组** 就像一个未命名的列表，用 `[]` 书写。例如 `[1, 2, 3]` 是一个包含 3 个数字的数组，而 `[null, 1, "string", false]` 是一个包含空值、数字、字符串和布尔值的数组。**对象** 就像一个命名的列表，用 `{}` 书写。名称（在 JSON 术语中称为键 (key)）是字符串，因此必须用引号括起来。例如，`{"x": 1, "y": 2}` 是一个将 `x` 映射到 1，`y` 映射到 2 的对象。
 
-Note that JSON doesn't have any native way to represent dates or date-times, so they're often stored as strings, and you'll need to use `readr::parse_date()` or `readr::parse_datetime()` to turn them into the correct data structure.
-Similarly, JSON's rules for representing floating point numbers in JSON are a little imprecise, so you'll also sometimes find numbers stored in strings.
-Apply `readr::parse_double()` as needed to get the correct variable type.
+请注意，JSON 没有任何表示日期或日期时间的本地方式，因此它们通常作为字符串存储，你需要使用 `readr::parse_date()` 或 `readr::parse_datetime()` 将它们转换为正确的数据结构。同样，JSON 表示浮点数的规则有点不精确，所以你有时也会发现数字存储在字符串中。根据需要应用 `readr::parse_double()` 来获得正确的变量类型。
 
 ### jsonlite
 
-To convert JSON into R data structures, we recommend the jsonlite package, by Jeroen Ooms.
-We'll use only two jsonlite functions: `read_json()` and `parse_json()`.
-In real life, you'll use `read_json()` to read a JSON file from disk.
-For example, the repurrsive package also provides the source for `gh_user` as a JSON file and you can read it with `read_json()`:
+要将 JSON 转换为 R 的数据结构，我们推荐 Jeroen Ooms 开发的 jsonlite 包。我们将只使用两个 jsonlite 函数：`read_json()` 和 `parse_json()`。在实际生活中，你会使用 `read_json()` 从磁盘读取 JSON 文件。例如，repurrrsive 包也提供了 `gh_user` 的源数据作为 JSON 文件，你可以用 `read_json()` 读取它：
 
 ```{r}
-# A path to a json file inside the package:
+# 包内一个 json 文件的路径：
 gh_users_json()
 
-# Read it with read_json()
+# 用 read_json() 读取它
 gh_users2 <- read_json(gh_users_json())
 
-# Check it's the same as the data we were using previously
+# 检查它是否与我们之前使用的数据相同
 identical(gh_users, gh_users2)
 ```
 
-In this book, we'll also use `parse_json()`, since it takes a string containing JSON, which makes it good for generating simple examples.
-To get started, here are three simple JSON datasets, starting with a number, then putting a few numbers in an array, then putting that array in an object:
+在本书中，我们还会使用 `parse_json()`，因为它接受一个包含 JSON 的字符串，这对于生成简单的例子很有用。首先，这里有三个简单的 JSON 数据集，从一个数字开始，然后将几个数字放入一个数组，再将该数组放入一个对象中：
 
 ```{r}
-str(parse_json("1"))
-str(parse_json("[1, 2, 3]"))
+str(parse_json('1'))
+str(parse_json('[1, 2, 3]'))
 str(parse_json('{"x": [1, 2, 3]}'))
 ```
 
-jsonlite has another important function called `fromJSON()`.
-We don't use it here because it performs automatic simplification (`simplifyVector = TRUE`).
-This often works well, particularly in simple cases, but we think you're better off doing the rectangling yourself so you know exactly what's happening and can more easily handle the most complicated nested structures.
+jsonlite 还有另一个重要的函数叫做 `fromJSON()`。我们在这里不使用它，因为它会执行自动简化 (`simplifyVector = TRUE`)。这在简单情况下通常效果很好，但我们认为你自己进行矩形化会更好，这样你就确切地知道发生了什么，并且可以更容易地处理最复杂的嵌套结构。
 
-### Starting the rectangling process
+### 开始矩形化过程
 
-In most cases, JSON files contain a single top-level array, because they're designed to provide data about multiple "things", e.g., multiple pages, or multiple records, or multiple results.
-In this case, you'll start your rectangling with `tibble(json)` so that each element becomes a row:
+在大多数情况下，JSON 文件包含一个单一的顶层数组，因为它们被设计用来提供关于多个“事物”的数据，例如，多个页面、多个记录或多个结果。在这种情况下，你将以 `tibble(json)` 开始你的矩形化，以便每个元素都成为一行：
 
 ```{r}
 json <- '[
@@ -677,16 +585,15 @@ json <- '[
 df <- tibble(json = parse_json(json))
 df
 
-df |>
-    unnest_wider(json)
+df |> 
+  unnest_wider(json)
 ```
 
-In rarer cases, the JSON file consists of a single top-level JSON object, representing one "thing".
-In this case, you'll need to kick off the rectangling process by wrapping it in a list, before you put it in a tibble.
+在更罕见的情况下，JSON 文件由一个单一的顶层 JSON 对象组成，代表一个“事物”。在这种情况下，你需要通过将其包装在一个列表中来启动矩形化过程，然后再将其放入 tibble 中。
 
 ```{r}
 json <- '{
-  "status": "OK",
+  "status": "OK", 
   "results": [
     {"name": "John", "age": 34},
     {"name": "Susan", "age": 27}
@@ -696,33 +603,32 @@ json <- '{
 df <- tibble(json = list(parse_json(json)))
 df
 
-df |>
-    unnest_wider(json) |>
-    unnest_longer(results) |>
-    unnest_wider(results)
+df |> 
+  unnest_wider(json) |> 
+  unnest_longer(results) |> 
+  unnest_wider(results)
 ```
 
-Alternatively, you can reach inside the parsed JSON and start with the bit that you actually care about:
+或者，你可以深入到解析后的 JSON 内部，从你真正关心的部分开始：
 
 ```{r}
 df <- tibble(results = parse_json(json)$results)
-df |>
-    unnest_wider(results)
+df |> 
+  unnest_wider(results)
 ```
 
-### Exercises
+### 练习
 
-1.  Rectangle the `df_col` and `df_row` below.
-    They represent the two ways of encoding a data frame in JSON.
+1.  将下面的 `df_col` 和 `df_row` 进行矩形化。它们代表了在 JSON 中编码数据框的两种方式。
 
     ```{r}
-json_col <- parse_json('
+    json_col <- parse_json('
       {
         "x": ["a", "x", "z"],
         "y": [10, null, 3]
       }
     ')
-json_row <- parse_json('
+    json_row <- parse_json('
       [
         {"x": "a", "y": 10},
         {"x": "x", "y": null},
@@ -730,16 +636,15 @@ json_row <- parse_json('
       ]
     ')
 
-df_col <- tibble(json = list(json_col))
-df_row <- tibble(json = json_row)
+    df_col <- tibble(json = list(json_col)) 
+    df_row <- tibble(json = json_row)
     ```
 
-## Summary
+## 总结
 
-In this chapter, you learned what lists are, how you can generate them from JSON files, and how to turn them into rectangular data frames.
-Surprisingly we only need two new functions: `unnest_longer()` to put list elements into rows and `unnest_wider()` to put list elements into columns.
-It doesn't matter how deeply nested the list-column is; all you need to do is repeatedly call these two functions.
+在本章中，你学习了什么是列表，如何从 JSON 文件生成它们，以及如何将它们转换为矩形数据框。令人惊讶的是，我们只需要两个新函数：`unnest_longer()` 用于将列表元素放入行中，`unnest_wider()` 用于将列表元素放入列中。无论列表列的嵌套有多深，你所需要做的就是重复调用这两个函数。
 
-JSON is the most common data format returned by web APIs.
-What happens if the website doesn't have an API, but you can see data you want on the website?
-That's the topic of the next chapter: web scraping, extracting data from HTML webpages.
+JSON 是 Web API 返回的最常见的数据格式。如果网站没有 API，但你可以在网站上看到你想要的数据，那该怎么办呢？这就是下一章的主题：网络抓取 (web scraping)，从 HTML 网页中提取数据。
+
+[^1]:
+    这是 RStudio 的一个功能。

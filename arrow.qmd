@@ -1,7 +1,3 @@
----
-freeze: true
----
-
 # Arrow {#sec-arrow}
 
 ```{r}
@@ -11,27 +7,19 @@ source("_common.R")
 showtext::showtext_auto()
 ```
 
-## Introduction
+## 引言
 
-CSV files are designed to be easily read by humans.
-They're a good interchange format because they're very simple and they can be read by every tool under the sun.
-But CSV files aren't very efficient: you have to do quite a lot of work to read the data into R.
-In this chapter, you'll learn about a powerful alternative: the [parquet format](https://parquet.apache.org/), an open standards-based format widely used by big data systems.
+CSV 文件被设计为易于人类阅读。它们是一种很好的交换格式，因为它们非常简单，并且几乎所有工具都能读取它们。但 CSV 文件效率不高：你需要做相当多的工作才能将数据读入 R。在本章中，你将学习一种强大的替代方案：[parquet 格式](https://parquet.apache.org/)，这是一种被大数据系统广泛使用的基于开放标准的格式。
 
-We'll pair parquet files with [Apache Arrow](https://arrow.apache.org), a multi-language toolbox designed for efficient analysis and transport of large datasets.
-We'll use Apache Arrow via the [arrow package](https://arrow.apache.org/docs/r/), which provides a dplyr backend allowing you to analyze larger-than-memory datasets using familiar dplyr syntax.
-As an additional benefit, arrow is extremely fast: you'll see some examples later in the chapter.
+我们将把 parquet 文件与 [Apache Arrow](https://arrow.apache.org) 配对使用，这是一个为高效分析和传输大型数据集而设计的多语言工具箱。我们将通过 [arrow 包](https://arrow.apache.org/docs/r/) 来使用 Apache Arrow，它提供了一个 dplyr 后端，允许你使用熟悉的 dplyr 语法来分析大于内存的数据集。另外一个好处是，arrow 非常快：你将在本章后面看到一些例子。
 
-Both arrow and dbplyr provide dplyr backends, so you might wonder when to use each.
-In many cases, the choice is made for you, as the data is already in a database or in parquet files, and you'll want to work with it as is.
-But if you're starting with your own data (perhaps CSV files), you can either load it into a database or convert it to parquet.
-In general, it's hard to know what will work best, so in the early stages of your analysis we'd encourage you to try both and pick the one that works the best for you.
+arrow 和 dbplyr 都提供了 dplyr 后端，所以你可能会想知道何时使用哪一个。在很多情况下，选择已经为你做好了，因为数据已经存在于数据库或 parquet 文件中，而你希望直接使用它。但如果你是从自己的数据（也许是 CSV 文件）开始，你可以将其加载到数据库中或转换为 parquet。总的来说，很难知道哪种方法效果最好，所以在你分析的早期阶段，我们鼓励你尝试两者，并选择最适合你的那一个。
 
-(A big thanks to Danielle Navarro who contributed the initial version of this chapter.)
+（非常感谢 Danielle Navarro，她贡献了本章的初版。）
 
-### Prerequisites
+### 前提条件
 
-In this chapter, we'll continue to use the tidyverse, particularly dplyr, but we'll pair it with the arrow package which is designed specifically for working with large data.
+在本章中，我们将继续使用 tidyverse，特别是 dplyr，但我们会将其与专门为处理大数据而设计的 arrow 包配对使用。
 
 ```{r setup}
 #| message: false
@@ -40,7 +28,7 @@ library(tidyverse)
 library(arrow)
 ```
 
-Later in the chapter, we'll also see some connections between arrow and duckdb, so we'll also need dbplyr and duckdb.
+在本章的后面，我们还会看到 arrow 和 duckdb 之间的一些联系，所以我们还需要 dbplyr 和 duckdb。
 
 ```{r}
 #| eval: false
@@ -48,14 +36,11 @@ library(dbplyr, warn.conflicts = FALSE)
 library(duckdb)
 ```
 
-## Getting the data
+## 获取数据
 
-We begin by getting a dataset worthy of these tools: a dataset of item checkouts from Seattle public libraries, available online at [data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6](https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6).
-This dataset contains 41,389,465 rows that tell you how many times each book was checked out each month from April 2005 to October 2022.
+我们首先获取一个值得使用这些工具的数据集：西雅图公共图书馆的图书借阅数据集，可在线获取：[data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6](https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6)。这个数据集包含 41,389,465 行，告诉你从 2005 年 4 月到 2022 年 10 月，每本书每月被借阅了多少次。
 
-The following code will get you a cached copy of the data.
-The data is a 9GB CSV file, so it will take some time to download.
-I highly recommend using `curl::multi_download()` to get very large files as it's built for exactly this purpose: it gives you a progress bar and it can resume the download if its interrupted.
+以下代码将为你获取该数据的缓存副本。数据是一个 9GB 的 CSV 文件，所以下载需要一些时间。我强烈推荐使用 `curl::multi_download()` 来获取非常大的文件，因为它正是为此目的而构建的：它会给你一个进度条，并且如果下载中断，它可以恢复下载。
 
 ```{r}
 #| eval: false
@@ -69,12 +54,9 @@ curl::multi_download(
 )
 ```
 
-## Opening a dataset
+## 打开数据集
 
-Let's start by taking a look at the data.
-At 9 GB, this file is large enough that we probably don't want to load the whole thing into memory.
-A good rule of thumb is that you usually want at least twice as much memory as the size of the data, and many laptops top out at 16 GB.
-This means we want to avoid `read_csv()` and instead use the `arrow::open_dataset()`:
+让我们先来看看数据。这个文件有 9 GB，足够大，我们可能不想把整个文件都加载到内存中。一个好的经验法则是，你通常需要至少是数据大小两倍的内存，而许多笔记本电脑的内存上限是 16 GB。这意味着我们想避免使用 `read_csv()`，而是使用 `arrow::open_dataset()`：
 
 ```{r open-dataset}
 seattle_csv <- open_dataset(
@@ -84,22 +66,16 @@ seattle_csv <- open_dataset(
 )
 ```
 
-What happens when this code is run?
-`open_dataset()` will scan a few thousand rows to figure out the structure of the dataset.
-The `ISBN` column contains blank values for the first 80,000 rows, so we have to specify the column type to help arrow work out the data structure.
-Once the data has been scanned by `open_dataset()`, it records what it's found and stops; it will only read further rows as you specifically request them.
-This metadata is what we see if we print `seattle_csv`:
+当这段代码运行时发生了什么？`open_dataset()` 会扫描几千行来确定数据集的结构。`ISBN` 列在前 80,000 行包含空白值，所以我们必须指定列类型来帮助 arrow 确定数据结构。一旦数据被 `open_dataset()` 扫描过，它会记录下它所发现的内容然后停止；它只会在你明确请求时才读取更多的行。这个元数据就是我们打印 `seattle_csv` 时看到的内容：
 
 ```{r}
 #| eval: false
 seattle_csv
 ```
 
-The first line in the output tells you that `seattle_csv` is stored locally on-disk as a single CSV file; it will only be loaded into memory as needed.
-The remainder of the output tells you the column type that arrow has imputed for each column.
+输出的第一行告诉你 `seattle_csv` 是作为单个 CSV 文件存储在本地磁盘上的；它只会在需要时才被加载到内存中。输出的其余部分告诉了你 arrow 为每一列推断出的列类型。
 
-We can see what's actually in with `glimpse()`.
-This reveals that there are \~41 million rows and 12 columns, and shows us a few values.
+我们可以用 `glimpse()` 来看实际内容。这揭示了有大约 4100 万行和 12 列，并向我们展示了几个值。
 
 ```{r glimpse-data}
 #| eval: false
@@ -107,8 +83,7 @@ This reveals that there are \~41 million rows and 12 columns, and shows us a few
 seattle_csv |> glimpse()
 ```
 
-We can start to use this dataset with dplyr verbs, using `collect()` to force arrow to perform the computation and return some data.
-For example, this code tells us the total number of checkouts per year:
+我们可以开始用 dplyr 动词来使用这个数据集，并用 `collect()` 来强制 arrow 执行计算并返回一些数据。例如，这段代码告诉我们每年的总借阅量：
 
 ```{r}
 #| eval: false
@@ -120,54 +95,37 @@ seattle_csv |>
     collect()
 ```
 
-Thanks to arrow, this code will work regardless of how large the underlying dataset is.
-But it's currently rather slow: on Hadley's computer, it took \~10s to run.
-That's not terrible given how much data we have, but we can make it much faster by switching to a better format.
+多亏了 arrow，无论底层数据集有多大，这段代码都能工作。但它目前相当慢：在 Hadley 的电脑上，它运行了大约 10 秒。考虑到我们拥有的数据量，这不算太糟，但我们可以通过切换到更好的格式来使其快得多。
 
-## The parquet format {#sec-parquet}
+## parquet 格式 {#sec-parquet}
 
-To make this data easier to work with, let's switch to the parquet file format and split it up into multiple files.
-The following sections will first introduce you to parquet and partitioning, and then apply what we learned to the Seattle library data.
+为了让这个数据更容易处理，让我们切换到 parquet 文件格式，并将其分割成多个文件。接下来的部分将首先向你介绍 parquet 和分区 (partitioning)，然后将我们学到的知识应用到西雅图图书馆的数据上。
 
-### Advantages of parquet
+### parquet 的优势
 
-Like CSV, parquet is used for rectangular data, but instead of being a text format that you can read with any file editor, it's a custom binary format designed specifically for the needs of big data.
-This means that:
+像 CSV 一样，parquet 用于矩形数据，但它不是一个你可以用任何文件编辑器读取的文本格式，而是一个专为大数据需求设计的自定义二进制格式。这意味着：
 
--   Parquet files are usually smaller than the equivalent CSV file.
-    Parquet relies on [efficient encodings](https://parquet.apache.org/docs/file-format/data-pages/encodings/) to keep file size down, and supports file compression.
-    This helps make parquet files fast because there's less data to move from disk to memory.
+  - Parquet 文件通常比等效的 CSV 文件小。Parquet 依赖于[高效的编码方式](https://parquet.apache.org/docs/file-format/data-pages/encodings/)来减小文件大小，并支持文件压缩。这有助于使 parquet 文件快速，因为从磁盘移动到内存的数据更少。
 
--   Parquet files have a rich type system.
-    As we talked about in @sec-col-types, a CSV file does not provide any information about column types.
-    For example, a CSV reader has to guess whether `"08-10-2022"` should be parsed as a string or a date.
-    In contrast, parquet files store data in a way that records the type along with the data.
+  - Parquet 文件有丰富的类型系统。正如我们在 @sec-col-types 中讨论的，CSV 文件不提供任何关于列类型的信息。例如，CSV 读取器必须猜测 `"08-10-2022"` 应该被解析为字符串还是日期。相比之下，parquet 文件以一种记录了类型和数据的方式存储数据。
 
--   Parquet files are "column-oriented".
-    This means that they're organized column-by-column, much like R's data frame.
-    This typically leads to better performance for data analysis tasks compared to CSV files, which are organized row-by-row.
+  - Parquet 文件是“列式”(column-oriented) 的。这意味着它们是按列组织的，很像 R 的数据框。与按行组织的 CSV 文件相比，这通常为数据分析任务带来更好的性能。
 
--   Parquet files are "chunked", which makes it possible to work on different parts of the file at the same time, and, if you're lucky, to skip some chunks altogether.
+  - Parquet 文件是“分块”(chunked) 的，这使得可以同时处理文件的不同部分，并且，如果你幸运的话，可以完全跳过一些块。
 
-There's one primary disadvantage to parquet files: they are no longer "human readable", i.e. if you look at a parquet file using `readr::read_file()`, you'll just see a bunch of gibberish.
+parquet 文件有一个主要缺点：它们不再是“人类可读的”，也就是说，如果你用 `readr::read_file()` 查看一个 parquet 文件，你只会看到一堆乱码。
 
-### Partitioning
+### 分区 (Partitioning)
 
-As datasets get larger and larger, storing all the data in a single file gets increasingly painful and it's often useful to split large datasets across many files.
-When this structuring is done intelligently, this strategy can lead to significant improvements in performance because many analyses will only require a subset of the files.
+随着数据集变得越来越大，将所有数据存储在单个文件中变得越来越痛苦，将大数据集分割到多个文件中通常很有用。当这种结构化做得巧妙时，这种策略可以带来显著的性能提升，因为许多分析只会需要文件的一个子集。
 
-There are no hard and fast rules about how to partition your dataset: the results will depend on your data, access patterns, and the systems that read the data.
-You're likely to need to do some experimentation before you find the ideal partitioning for your situation.
-As a rough guide, arrow suggests that you avoid files smaller than 20MB and larger than 2GB and avoid partitions that produce more than 10,000 files.
-You should also try to partition by variables that you filter by; as you'll see shortly, that allows arrow to skip a lot of work by reading only the relevant files.
+关于如何对你的数据集进行分区，没有硬性规定：结果将取决于你的数据、访问模式以及读取数据的系统。你可能需要做一些实验才能找到适合你情况的理想分区方式。作为一个粗略的指南，arrow 建议你避免小于 20MB 和大于 2GB 的文件，并避免产生超过 10,000 个文件的分区。你还应该尝试按你过滤时使用的变量进行分区；正如你稍后将看到的，这允许 arrow 通过只读取相关文件来跳过大量工作。
 
-### Rewriting the Seattle library data
+### 重写西雅图图书馆数据
 
-Let's apply these ideas to the Seattle library data to see how they play out in practice.
-We're going to partition by `CheckoutYear`, since it's likely some analyses will only want to look at recent data and partitioning by year yields 18 chunks of a reasonable size.
+让我们将这些想法应用到西雅图图书馆的数据上，看看它们在实践中是如何发挥作用的。我们将按 `CheckoutYear` 进行分区，因为很可能一些分析只想看最近的数据，而按年分区会产生 18 个大小合理的块。
 
-To rewrite the data we define the partition using `dplyr::group_by()` and then save the partitions to a directory with `arrow::write_dataset()`.
-`write_dataset()` has two important arguments: a directory where we'll create the files and the format we'll use.
+为了重写数据，我们使用 `dplyr::group_by()` 定义分区，然后用 `arrow::write_dataset()` 将分区保存到一个目录中。`write_dataset()` 有两个重要的参数：一个是我们将在其中创建文件的目录，另一个是我们使用的格式。
 
 ```{r}
 #| eval: false
@@ -183,9 +141,9 @@ seattle_csv |>
     write_dataset(path = pq_path, format = "parquet")
 ```
 
-This takes about a minute to run; as we'll see shortly this is an initial investment that pays off by making future operations much much faster.
+这需要大约一分钟的时间来运行；正如我们稍后将看到的，这是一项初步的投资，它通过使未来的操作快得多来得到回报。
 
-Let's take a look at what we just produced:
+让我们看看我们刚刚产生了什么：
 
 ```{r show-parquet-files}
 #| eval: false
@@ -195,24 +153,18 @@ tibble(
 )
 ```
 
-Our single 9GB CSV file has been rewritten into 18 parquet files.
-The file names use a "self-describing" convention used by the [Apache Hive](https://hive.apache.org) project.
-Hive-style partitions name folders with a "key=value" convention, so as you might guess, the `CheckoutYear=2005` directory contains all the data where `CheckoutYear` is 2005.
-Each file is between 100 and 300 MB and the total size is now around 4 GB, a little over half the size of the original CSV file.
-This is as we expect since parquet is a much more efficient format.
+我们单个 9GB 的 CSV 文件被重写成了 18 个 parquet 文件。文件名使用了 [Apache Hive](https://hive.apache.org) 项目使用的“自描述”约定。Hive 风格的分区 (Hive-style partitions) 使用“键=值”的约定来命名文件夹，所以你可能猜到，`CheckoutYear=2005` 目录包含了所有 `CheckoutYear` 是 2005 的数据。每个文件在 100 到 300 MB 之间，总大小现在约为 4 GB，略多于原始 CSV 文件的一半大小。这正如我们预期的那样，因为 parquet 是一种更高效的格式。
 
-## Using dplyr with arrow
+## 结合使用 dplyr 和 arrow
 
-Now we've created these parquet files, we'll need to read them in again.
-We use `open_dataset()` again, but this time we give it a directory:
+现在我们已经创建了这些 parquet 文件，我们需要再次读取它们。我们再次使用 `open_dataset()`，但这次我们给它一个目录：
 
 ```{r}
 #| eval: false
 seattle_pq <- open_dataset(pq_path)
 ```
 
-Now we can write our dplyr pipeline.
-For example, we could count the total number of books checked out in each month for the last five years:
+现在我们可以编写我们的 dplyr 管道了。例如，我们可以计算过去五年中每个月借出的图书总数：
 
 ```{r books-by-year-query}
 #| eval: false
@@ -223,15 +175,14 @@ query <- seattle_pq |>
     arrange(CheckoutYear, CheckoutMonth)
 ```
 
-Writing dplyr code for arrow data is conceptually similar to dbplyr, @sec-import-databases: you write dplyr code, which is automatically transformed into a query that the Apache Arrow C++ library understands, which is then executed when you call `collect()`.
-If we print out the `query` object we can see a little information about what we expect Arrow to return when the execution takes place:
+为 arrow 数据编写 dplyr 代码在概念上与 dbplyr 类似，@sec-import-databases：你编写 dplyr 代码，它被自动转换为 Apache Arrow C++ 库能理解的查询，然后在你调用 `collect()` 时执行。如果我们打印出 `query` 对象，我们可以看到一些关于我们期望 Arrow 在执行发生时返回什么的信息：
 
 ```{r}
 #| eval: false
 query
 ```
 
-And we can get the results by calling `collect()`:
+我们可以通过调用 `collect()` 来得到结果：
 
 ```{r books-by-year}
 #| eval: false
@@ -239,13 +190,11 @@ And we can get the results by calling `collect()`:
 query |> collect()
 ```
 
-Like dbplyr, arrow only understands some R expressions, so you may not be able to write exactly the same code you usually would.
-However, the list of operations and functions supported is fairly extensive and continues to grow; find a complete list of currently supported functions in `?acero`.
+像 dbplyr 一样，arrow 只理解一些 R 表达式，所以你可能无法编写与平时完全相同的代码。然而，支持的操作和函数列表相当广泛，并且在不断增长；在 `?acero` 中可以找到当前支持的函数的完整列表。
 
-### Performance {#sec-parquet-fast}
+### 性能 {#sec-parquet-fast}
 
-Let's take a quick look at the performance impact of switching from CSV to parquet.
-First, let's time how long it takes to calculate the number of books checked out in each month of 2021, when the data is stored as a single large csv:
+让我们快速看一下从 CSV 切换到 parquet 对性能的影响。首先，让我们计时计算 2021 年每个月借出的图书数量需要多长时间，当数据存储为单个大型 csv 时：
 
 ```{r dataset-performance-csv}
 #| eval: false
@@ -260,7 +209,7 @@ seattle_csv |>
     system.time()
 ```
 
-Now let's use our new version of the dataset in which the Seattle library checkout data has been partitioned into 18 smaller parquet files:
+现在让我们使用我们新版本的数据集，其中西雅图图书馆的借阅数据被分成了 18 个较小的 parquet 文件：
 
 ```{r dataset-performance-multiple-parquet}
 #| eval: false
@@ -275,16 +224,16 @@ seattle_pq |>
     system.time()
 ```
 
-The \~100x speedup in performance is attributable to two factors: the multi-file partitioning, and the format of individual files:
+性能上约 100 倍的提速归因于两个因素：多文件分区和单个文件的格式：
 
--   Partitioning improves performance because this query uses `CheckoutYear == 2021` to filter the data, and arrow is smart enough to recognize that it only needs to read 1 of the 18 parquet files.
--   The parquet format improves performance by storing data in a binary format that can be read more directly into memory. The column-wise format and rich metadata means that arrow only needs to read the four columns actually used in the query (`CheckoutYear`, `MaterialType`, `CheckoutMonth`, and `Checkouts`).
+  - 分区提高了性能，因为这个查询使用 `CheckoutYear == 2021` 来过滤数据，而 arrow 足够聪明，能识别出它只需要读取 18 个 parquet 文件中的 1 个。
+  - parquet 格式通过以二进制格式存储数据来提高性能，这种格式可以更直接地读入内存。列式格式和丰富的元数据意味着 arrow 只需要读取查询中实际使用的四列（`CheckoutYear`、`MaterialType`、`CheckoutMonth` 和 `Checkouts`）。
 
-This massive difference in performance is why it pays off to convert large CSVs to parquet!
+这种巨大的性能差异就是为什么将大型 CSV 转换为 parquet 是值得的！
 
-### Using duckdb with arrow
+### 结合使用 duckdb 和 arrow
 
-There's one last advantage of parquet and arrow --- it's very easy to turn an arrow dataset into a DuckDB database (@sec-import-databases) by calling `arrow::to_duckdb()`:
+parquet 和 arrow 还有一个最后的优势——通过调用 `arrow::to_duckdb()`，将 arrow 数据集转换为 DuckDB 数据库（@sec-import-databases）非常容易：
 
 ```{r use-duckdb}
 #| eval: false
@@ -297,20 +246,16 @@ seattle_pq |>
     collect()
 ```
 
-The neat thing about `to_duckdb()` is that the transfer doesn't involve any memory copying, and speaks to the goals of the arrow ecosystem: enabling seamless transitions from one computing environment to another.
+`to_duckdb()` 的妙处在于传输不涉及任何内存复制，这体现了 arrow 生态系统的目标：实现从一个计算环境到另一个计算环境的无缝过渡。
 
-### Exercises
+### 练习
 
-1.  Figure out the most popular book each year.
-2.  Which author has the most books in the Seattle library system?
-3.  How has checkouts of books vs ebooks changed over the last 10 years?
+1.  找出每年最受欢迎的书。
+2.  哪位作者在西雅图图书馆系统中的图书最多？
+3.  在过去 10 年中，实体书与电子书的借阅情况是如何变化的？
 
-## Summary
+## 总结
 
-In this chapter, you've been given a taste of the arrow package, which provides a dplyr backend for working with large on-disk datasets.
-It can work with CSV files, and it's much much faster if you convert your data to parquet.
-Parquet is a binary data format that's designed specifically for data analysis on modern computers.
-Far fewer tools can work with parquet files compared to CSV, but its partitioned, compressed, and columnar structure makes it much more efficient to analyze.
+在本章中，你初步了解了 arrow 包，它提供了一个用于处理大型磁盘数据集的 dplyr 后端。它可以处理 CSV 文件，但如果你将数据转换为 parquet，速度会快得多。Parquet 是一种专为现代计算机上的数据分析而设计的二进制数据格式。与 CSV 相比，能处理 parquet 文件的工具要少得多，但其分区、压缩和列式结构使其分析效率高得多。
 
-Next up you'll learn about your first non-rectangular data source, which you'll handle using tools provided by the tidyr package.
-We'll focus on data that comes from JSON files, but the general principles apply to tree-like data regardless of its source.
+接下来，你将学习你的第一个非矩形数据源，你将使用 tidyr 包提供的工具来处理它。我们将专注于来自 JSON 文件的数据，但通用原则适用于任何树状数据，无论其来源如何。

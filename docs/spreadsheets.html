@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>20&nbsp; Spreadsheets – R 数据科学 2e
+<title>20&nbsp; 电子表格 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Import</a></li><li class="breadcrumb-item"><a href="./spreadsheets.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Spreadsheets</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">导入</a></li><li class="breadcrumb-item"><a href="./spreadsheets.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">电子表格</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import</span></a>
+ <span class="menu-text">导入</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,13 +316,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Spreadsheets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">电子表格</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./databases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Databases</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">数据库</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -334,13 +334,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./rectangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hierarchical data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">层级数据</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./webscraping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Web scraping</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">网络抓取</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,38 +405,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">20.1</span> Introduction</a></li>
+<li><a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">20.1</span> 引言</a></li>
   <li>
 <a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel"><span class="header-section-number">20.2</span> Excel</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">20.2.1</span> Prerequisites</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">20.2.2</span> Getting started</a></li>
-  <li><a href="#sec-reading-spreadsheets-excel" id="toc-sec-reading-spreadsheets-excel" class="nav-link" data-scroll-target="#sec-reading-spreadsheets-excel"><span class="header-section-number">20.2.3</span> Reading Excel spreadsheets</a></li>
-  <li><a href="#reading-worksheets" id="toc-reading-worksheets" class="nav-link" data-scroll-target="#reading-worksheets"><span class="header-section-number">20.2.4</span> Reading worksheets</a></li>
-  <li><a href="#reading-part-of-a-sheet" id="toc-reading-part-of-a-sheet" class="nav-link" data-scroll-target="#reading-part-of-a-sheet"><span class="header-section-number">20.2.5</span> Reading part of a sheet</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">20.2.6</span> Data types</a></li>
-  <li><a href="#sec-writing-to-excel" id="toc-sec-writing-to-excel" class="nav-link" data-scroll-target="#sec-writing-to-excel"><span class="header-section-number">20.2.7</span> Writing to Excel</a></li>
-  <li><a href="#formatted-output" id="toc-formatted-output" class="nav-link" data-scroll-target="#formatted-output"><span class="header-section-number">20.2.8</span> Formatted output</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">20.2.9</span> Exercises</a></li>
+<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" id="toc-前提条件" class="nav-link" data-scroll-target="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="header-section-number">20.2.1</span> 前提条件</a></li>
+  <li><a href="#%E5%85%A5%E9%97%A8" id="toc-入门" class="nav-link" data-scroll-target="#%E5%85%A5%E9%97%A8"><span class="header-section-number">20.2.2</span> 入门</a></li>
+  <li><a href="#sec-reading-spreadsheets-excel" id="toc-sec-reading-spreadsheets-excel" class="nav-link" data-scroll-target="#sec-reading-spreadsheets-excel"><span class="header-section-number">20.2.3</span> 读取 Excel 电子表格</a></li>
+  <li><a href="#%E8%AF%BB%E5%8F%96%E5%B7%A5%E4%BD%9C%E8%A1%A8" id="toc-读取工作表" class="nav-link" data-scroll-target="#%E8%AF%BB%E5%8F%96%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="header-section-number">20.2.4</span> 读取工作表</a></li>
+  <li><a href="#%E8%AF%BB%E5%8F%96%E9%83%A8%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8" id="toc-读取部分工作表" class="nav-link" data-scroll-target="#%E8%AF%BB%E5%8F%96%E9%83%A8%E5%88%86%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="header-section-number">20.2.5</span> 读取部分工作表</a></li>
+  <li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" id="toc-数据类型" class="nav-link" data-scroll-target="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="header-section-number">20.2.6</span> 数据类型</a></li>
+  <li><a href="#sec-writing-to-excel" id="toc-sec-writing-to-excel" class="nav-link" data-scroll-target="#sec-writing-to-excel"><span class="header-section-number">20.2.7</span> 写入 Excel</a></li>
+  <li><a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA" id="toc-格式化输出" class="nav-link" data-scroll-target="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="header-section-number">20.2.8</span> 格式化输出</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0" id="toc-练习" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0"><span class="header-section-number">20.2.9</span> 练习</a></li>
   </ul>
 </li>
   <li>
-<a href="#google-sheets" id="toc-google-sheets" class="nav-link" data-scroll-target="#google-sheets"><span class="header-section-number">20.3</span> Google Sheets</a>
+<a href="#%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC" id="toc-谷歌表格" class="nav-link" data-scroll-target="#%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC"><span class="header-section-number">20.3</span> 谷歌表格</a>
   <ul class="collapse">
-<li><a href="#prerequisites-1" id="toc-prerequisites-1" class="nav-link" data-scroll-target="#prerequisites-1"><span class="header-section-number">20.3.1</span> Prerequisites</a></li>
-  <li><a href="#getting-started-1" id="toc-getting-started-1" class="nav-link" data-scroll-target="#getting-started-1"><span class="header-section-number">20.3.2</span> Getting started</a></li>
-  <li><a href="#reading-google-sheets" id="toc-reading-google-sheets" class="nav-link" data-scroll-target="#reading-google-sheets"><span class="header-section-number">20.3.3</span> Reading Google Sheets</a></li>
-  <li><a href="#writing-to-google-sheets" id="toc-writing-to-google-sheets" class="nav-link" data-scroll-target="#writing-to-google-sheets"><span class="header-section-number">20.3.4</span> Writing to Google Sheets</a></li>
-  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">20.3.5</span> Authentication</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">20.3.6</span> Exercises</a></li>
+<li><a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6-1" id="toc-前提条件-1" class="nav-link" data-scroll-target="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6-1"><span class="header-section-number">20.3.1</span> 前提条件</a></li>
+  <li><a href="#%E5%85%A5%E9%97%A8-1" id="toc-入门-1" class="nav-link" data-scroll-target="#%E5%85%A5%E9%97%A8-1"><span class="header-section-number">20.3.2</span> 入门</a></li>
+  <li><a href="#%E8%AF%BB%E5%8F%96%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC" id="toc-读取谷歌表格" class="nav-link" data-scroll-target="#%E8%AF%BB%E5%8F%96%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC"><span class="header-section-number">20.3.3</span> 读取谷歌表格</a></li>
+  <li><a href="#%E5%86%99%E5%85%A5%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC" id="toc-写入谷歌表格" class="nav-link" data-scroll-target="#%E5%86%99%E5%85%A5%E8%B0%B7%E6%AD%8C%E8%A1%A8%E6%A0%BC"><span class="header-section-number">20.3.4</span> 写入谷歌表格</a></li>
+  <li><a href="#%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81" id="toc-身份验证" class="nav-link" data-scroll-target="#%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><span class="header-section-number">20.3.5</span> 身份验证</a></li>
+  <li><a href="#%E7%BB%83%E4%B9%A0-1" id="toc-练习-1" class="nav-link" data-scroll-target="#%E7%BB%83%E4%B9%A0-1"><span class="header-section-number">20.3.6</span> 练习</a></li>
   </ul>
 </li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">20.4</span> Summary</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">20.4</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/spreadsheets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Import</a></li><li class="breadcrumb-item"><a href="./spreadsheets.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Spreadsheets</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-import-spreadsheets" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Spreadsheets</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">导入</a></li><li class="breadcrumb-item"><a href="./spreadsheets.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">电子表格</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-import-spreadsheets" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">电子表格</span></span></h1>
 </div>
 
 
@@ -450,53 +450,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="20.1"><h2 data-number="20.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">20.1</span> Introduction</h2>
-<p>In <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> you learned about importing data from plain text files like <code>.csv</code> and <code>.tsv</code>. Now it’s time to learn how to get data out of a spreadsheet, either an Excel spreadsheet or a Google Sheet. This will build on much of what you’ve learned in <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a>, but we will also discuss additional considerations and complexities when working with data from spreadsheets.</p>
-<p>If you or your collaborators are using spreadsheets for organizing data, we strongly recommend reading the paper “Data Organization in Spreadsheets” by Karl Broman and Kara Woo: <a href="https://doi.org/10.1080/00031305.2017.1375989" class="uri">https://doi.org/10.1080/00031305.2017.1375989</a>. The best practices presented in this paper will save you much headache when you import data from a spreadsheet into R to analyze and visualize.</p>
+</header><section id="引言" class="level2" data-number="20.1"><h2 data-number="20.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">20.1</span> 引言</h2>
+<p>在 <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> 中，你学习了如何从像 <code>.csv</code> 和 <code>.tsv</code> 这样的纯文本文件导入数据。现在是时候学习如何从电子表格中获取数据了，无论是 Excel 电子表格还是谷歌表格 (Google Sheet)。这将在你于 <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> 中学到的许多知识的基础上进行，但我们也将讨论处理来自电子表格的数据时需要考虑的额外因素和复杂性。</p>
+<p>如果你或你的合作者正在使用电子表格来组织数据，我们强烈建议阅读 Karl Broman 和 Kara Woo 的论文“电子表格中的数据组织”(Data Organization in Spreadsheets)：<a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>。这篇论文中提出的最佳实践将在你将数据从电子表格导入 R 进行分析和可视化时为你省去很多麻烦。</p>
 </section><section id="excel" class="level2" data-number="20.2"><h2 data-number="20.2" class="anchored" data-anchor-id="excel">
 <span class="header-section-number">20.2</span> Excel</h2>
-<p>Microsoft Excel is a widely used spreadsheet software program where data are organized in worksheets inside of spreadsheet files.</p>
-<section id="prerequisites" class="level3" data-number="20.2.1"><h3 data-number="20.2.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">20.2.1</span> Prerequisites</h3>
-<p>In this section, you’ll learn how to load data from Excel spreadsheets in R with the <strong>readxl</strong> package. This package is non-core tidyverse, so you need to load it explicitly, but it is installed automatically when you install the tidyverse package. Later, we’ll also use the writexl package, which allows us to create Excel spreadsheets.</p>
+<p>Microsoft Excel 是一款广泛使用的电子表格软件程序，数据在电子表格文件中的工作表 (worksheets) 里进行组织。</p>
+<section id="前提条件" class="level3" data-number="20.2.1"><h3 data-number="20.2.1" class="anchored" data-anchor-id="前提条件">
+<span class="header-section-number">20.2.1</span> 前提条件</h3>
+<p>在本节中，你将学习如何使用 <strong>readxl</strong> 包在 R 中加载来自 Excel 电子表格的数据。这个包不是 tidyverse 的核心包，所以你需要显式地加载它，但当你安装 tidyverse 包时它会自动被安装。稍后，我们还将使用 writexl 包，它允许我们创建 Excel 电子表格。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.r-universe.dev/writexl">writexl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="getting-started" class="level3" data-number="20.2.2"><h3 data-number="20.2.2" class="anchored" data-anchor-id="getting-started">
-<span class="header-section-number">20.2.2</span> Getting started</h3>
-<p>Most of readxl’s functions allow you to load Excel spreadsheets into R:</p>
+</section><section id="入门" class="level3" data-number="20.2.2"><h3 data-number="20.2.2" class="anchored" data-anchor-id="入门">
+<span class="header-section-number">20.2.2</span> 入门</h3>
+<p>readxl 的大部分函数允许你将 Excel 电子表格加载到 R 中：</p>
 <ul>
 <li>
-<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls()</a></code> reads Excel files with <code>xls</code> format.</li>
+<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls()</a></code> 读取 <code>xls</code> 格式的 Excel 文件。</li>
 <li>
-<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx()</a></code> read Excel files with <code>xlsx</code> format.</li>
+<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx()</a></code> 读取 <code>xlsx</code> 格式的 Excel 文件。</li>
 <li>
-<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> can read files with both <code>xls</code> and <code>xlsx</code> format. It guesses the file type based on the input.</li>
+<code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 可以读取 <code>xls</code> 和 <code>xlsx</code> 两种格式的文件。它会根据输入来猜测文件类型。</li>
 </ul>
-<p>These functions all have similar syntax just like other functions we have previously introduced for reading other types of files, e.g., <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>, <code><a href="https://readr.tidyverse.org/reference/read_table.html">read_table()</a></code>, etc. For the rest of the chapter we will focus on using <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>.</p>
+<p>这些函数的语法都与我们之前介绍的用于读取其他类型文件的函数类似，例如 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>、<code><a href="https://readr.tidyverse.org/reference/read_table.html">read_table()</a></code> 等。在本章的其余部分，我们将重点使用 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>。</p>
 </section><section id="sec-reading-spreadsheets-excel" class="level3" data-number="20.2.3"><h3 data-number="20.2.3" class="anchored" data-anchor-id="sec-reading-spreadsheets-excel">
-<span class="header-section-number">20.2.3</span> Reading Excel spreadsheets</h3>
-<p><a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a> shows what the spreadsheet we’re going to read into R looks like in Excel. This spreadsheet can be downloaded as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/" class="uri">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/</a>.</p>
+<span class="header-section-number">20.2.3</span> 读取 Excel 电子表格</h3>
+<p><a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a> 展示了我们即将读入 R 的电子表格在 Excel 中的样子。这个电子表格可以从 <a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/</a> 下载为 Excel 文件。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-students-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Excel. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age.">
+<div id="fig-students-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="在 Excel 中查看 students 电子表格。该电子表格包含 6 名学生的信息，包括他们的 ID、全名、最喜欢的食物、膳食计划和年龄。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-students-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Excel. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age." width="1200">
+<img src="screenshots/import-spreadsheets-students.png" class="img-fluid figure-img" alt="在 Excel 中查看 students 电子表格。该电子表格包含 6 名学生的信息，包括他们的 ID、全名、最喜欢的食物、膳食计划和年龄。" width="1200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-students-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
+Figure&nbsp;20.1: 在 Excel 中名为 students.xlsx 的电子表格。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The first argument to <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> is the path to the file to read.</p>
+<p><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 的第一个参数是要读取的文件的路径。</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/students.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> will read the file in as a tibble.</p>
+<p><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 会将文件读作一个 tibble。</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
@@ -509,14 +509,14 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We have six students in the data and five variables on each student. However there are a few things we might want to address in this dataset:</p>
+<p>数据中有六名学生，每名学生有五个变量。然而，这个数据集中有几件事情我们可能想要处理：</p>
 <ol type="1">
 <li>
-<p>The column names are all over the place. You can provide column names that follow a consistent format; we recommend <code>snake_case</code> using the <code>col_names</code> argument.</p>
+<p>列名各式各样，不统一。你可以提供遵循一致格式的列名；我们推荐使用 <code>col_names</code> 参数来指定 <code>snake_case</code> (蛇形命名法) 格式的列名。</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span><span class="st">"data/students.xlsx"</span>,</span>
-<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span></span>
+<span>  <span class="st">"data/students.xlsx"</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -529,12 +529,12 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <span><span class="co">#&gt; 6 5          Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span><span class="co">#&gt; 7 6          Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Unfortunately, this didn’t quite do the trick. We now have the variable names we want, but what was previously the header row now shows up as the first observation in the data. You can explicitly skip that row using the <code>skip</code> argument.</p>
+<p>不幸的是，这并没有完全解决问题。我们现在有了想要的变量名，但之前作为标题行的那一行现在作为第一个观测值出现在数据中。你可以使用 <code>skip</code> 参数明确跳过那一行。</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span><span class="st">"data/students.xlsx"</span>,</span>
-<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>skip <span class="op">=</span> <span class="fl">1</span></span>
+<span>  <span class="st">"data/students.xlsx"</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -548,13 +548,13 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 </div>
 </li>
 <li>
-<p>In the <code>favourite_food</code> column, one of the observations is <code>N/A</code>, which stands for “not available” but it’s currently not recognized as an <code>NA</code> (note the contrast between this <code>N/A</code> and the age of the fourth student in the list). You can specify which character strings should be recognized as <code>NA</code>s with the <code>na</code> argument. By default, only <code>""</code> (empty string, or, in the case of reading from a spreadsheet, an empty cell or a cell with the formula <code>=NA()</code>) is recognized as an <code>NA</code>.</p>
+<p>在 <code>favourite_food</code> 列中，其中一个观测值是 <code>N/A</code>，代表“不可用”(not available)，但它目前没有被识别为 <code>NA</code>（注意这个 <code>N/A</code> 和列表中第四名学生的年龄 <code>NA</code> 之间的区别）。你可以使用 <code>na</code> 参数指定哪些字符串应该被识别为 <code>NA</code>。默认情况下，只有 <code>""</code>（空字符串，或者在从电子表格读取时，是一个空单元格或带有公式 <code>=NA()</code> 的单元格）被识别为 <code>NA</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span><span class="st">"data/students.xlsx"</span>,</span>
-<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span></span>
+<span>  <span class="st">"data/students.xlsx"</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
@@ -568,14 +568,14 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 </div>
 </li>
 <li>
-<p>One other remaining issue is that <code>age</code> is read in as a character variable, but it really should be numeric. Just like with <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> and friends for reading data from flat files, you can supply a <code>col_types</code> argument to <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> and specify the column types for the variables you read in. The syntax is a bit different, though. Your options are <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code> or <code>"list"</code>.</p>
+<p>另一个遗留问题是 <code>age</code> 被读作字符变量，但它真的应该是数值型。就像使用 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 及其系列函数从平面文件读取数据一样，你可以向 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 提供一个 <code>col_types</code> 参数，并为你读入的变量指定列类型。不过，语法有点不同。你的选项是 <code>"skip"</code>、<code>"guess"</code>、<code>"logical"</code>、<code>"numeric"</code>、<code>"date"</code>、<code>"text"</code> 或 <code>"list"</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span><span class="st">"data/students.xlsx"</span>,</span>
-<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"numeric"</span><span class="op">)</span></span>
+<span>  <span class="st">"data/students.xlsx"</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"numeric"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Expecting numeric in E6 / R6C5: got 'five'</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
@@ -588,21 +588,21 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch    NA</span></span>
 <span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>However, this didn’t quite produce the desired result either. By specifying that <code>age</code> should be numeric, we have turned the one cell with the non-numeric entry (which had the value <code>five</code>) into an <code>NA</code>. In this case, we should read age in as <code>"text"</code> and then make the change once the data is loaded in R.</p>
+<p>然而，这也没有产生我们期望的结果。通过指定 <code>age</code> 应该是数值型，我们将一个带有非数值条目（其值为 <code>five</code>）的单元格变成了 <code>NA</code>。在这种情况下，我们应该将 <code>age</code> 读作 <code>"text"</code>，然后在数据加载到 R 后再进行更改。</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
-<span><span class="st">"data/students.xlsx"</span>,</span>
-<span>col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span><span class="op">)</span></span>
+<span>  <span class="st">"data/students.xlsx"</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>, <span class="st">"text"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">students</span> <span class="op">&lt;-</span> <span class="va">students</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">age</span> <span class="op">==</span> <span class="st">"five"</span>, <span class="st">"5"</span>, <span class="va">age</span><span class="op">)</span>,</span>
 <span>    age <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">students</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
@@ -617,24 +617,24 @@ Figure&nbsp;20.1: Spreadsheet called students.xlsx in Excel.
 </div>
 </li>
 </ol>
-<p>It took us multiple steps and trial-and-error to load the data in exactly the format we want, and this is not unexpected. Data science is an iterative process, and the process of iteration can be even more tedious when reading data in from spreadsheets compared to other plain text, rectangular data files because humans tend to input data into spreadsheets and use them not just for data storage but also for sharing and communication.</p>
-<p>There is no way to know exactly what the data will look like until you load it and take a look at it. Well, there is one way, actually. You can open the file in Excel and take a peek. If you’re going to do so, we recommend making a copy of the Excel file to open and browse interactively while leaving the original data file untouched and reading into R from the untouched file. This will ensure you don’t accidentally overwrite anything in the spreadsheet while inspecting it. You should also not be afraid of doing what we did here: load the data, take a peek, make adjustments to your code, load it again, and repeat until you’re happy with the result.</p>
-</section><section id="reading-worksheets" class="level3" data-number="20.2.4"><h3 data-number="20.2.4" class="anchored" data-anchor-id="reading-worksheets">
-<span class="header-section-number">20.2.4</span> Reading worksheets</h3>
-<p>An important feature that distinguishes spreadsheets from flat files is the notion of multiple sheets, called worksheets. <a href="#fig-penguins-islands" class="quarto-xref">Figure&nbsp;<span>20.2</span></a> shows an Excel spreadsheet with multiple worksheets. The data come from the <strong>palmerpenguins</strong> package, and you can download this spreadsheet as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/" class="uri">https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/</a>. Each worksheet contains information on penguins from a different island where data were collected.</p>
+<p>我们通过多个步骤和反复试错才将数据加载成我们想要的确切格式，这并不意外。数据科学是一个迭代的过程，与从其他纯文本、矩形数据文件读取数据相比，从电子表格读取数据时的迭代过程可能更加繁琐，因为人们倾向于将数据输入电子表格，并不仅将其用于数据存储，还用于共享和交流。</p>
+<p>除非你加载并查看数据，否则没有办法确切知道数据会是什么样子。嗯，实际上有一种方法。你可以在 Excel 中打开文件并看一眼。如果你打算这样做，我们建议复制一份 Excel 文件进行交互式打开和浏览，同时保持原始数据文件不变，并从这个未动过的文件中读取到 R。这将确保你在检查电子表格时不会意外覆盖任何内容。你也不应该害怕做我们在这里做的事情：加载数据，看一眼，调整你的代码，再次加载，重复这个过程直到你对结果满意为止。</p>
+</section><section id="读取工作表" class="level3" data-number="20.2.4"><h3 data-number="20.2.4" class="anchored" data-anchor-id="读取工作表">
+<span class="header-section-number">20.2.4</span> 读取工作表</h3>
+<p>电子表格与平面文件的一个重要区别是多个工作表 (sheets) 的概念。<a href="#fig-penguins-islands" class="quarto-xref">Figure&nbsp;<span>20.2</span></a> 展示了一个包含多个工作表的 Excel 电子表格。数据来自 <strong>palmerpenguins</strong> 包，你可以从 <a href="https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/">https://docs.google.com/spreadsheets/d/1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY/</a> 下载这个电子表格作为 Excel 文件。每个工作表包含了来自不同岛屿的企鹅信息，这些岛屿是数据收集的地点。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-penguins-islands" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three worksheets: Torgersen Island, Biscoe Island, and Dream Island.">
+<div id="fig-penguins-islands" class="quarto-float quarto-figure quarto-figure-center anchored" alt="在 Excel 中查看 penguins 电子表格。该电子表格包含三个工作表：Torgersen Island、Biscoe Island 和 Dream Island。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-penguins-islands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-penguins-islands.png" class="img-fluid figure-img" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three worksheets: Torgersen Island, Biscoe Island, and Dream Island." width="1514">
+<img src="screenshots/import-spreadsheets-penguins-islands.png" class="img-fluid figure-img" alt="在 Excel 中查看 penguins 电子表格。该电子表格包含三个工作表：Torgersen Island、Biscoe Island 和 Dream Island。" width="1514">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-penguins-islands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three worksheets.
+Figure&nbsp;20.2: 在 Excel 中名为 penguins.xlsx 的电子表格，包含三个工作表。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>You can read a single worksheet from a spreadsheet with the <code>sheet</code> argument in <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>. The default, which we’ve been relying on up until now, is the first sheet.</p>
+<p>你可以使用 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 中的 <code>sheet</code> 参数从电子表格中读取单个工作表。默认情况下，也就是我们到目前为止一直依赖的，是第一个工作表。</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 52 × 8</span></span>
@@ -649,7 +649,7 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;chr&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Some variables that appear to contain numerical data are read in as characters due to the character string <code>"NA"</code> not being recognized as a true <code>NA</code>.</p>
+<p>一些看起来包含数值数据的变量被读作字符型，因为字符串 <code>"NA"</code> 没有被识别为真正的 <code>NA</code>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_torgersen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
 <span></span>
@@ -666,17 +666,17 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Alternatively, you can use <code><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets()</a></code> to get information on all worksheets in an Excel spreadsheet, and then read the one(s) you’re interested in.</p>
+<p>或者，你可以使用 <code><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets()</a></code> 来获取 Excel 电子表格中所有工作表的信息，然后读取你感兴趣的一个或多个。</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Once you know the names of the worksheets, you can read them in individually with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>.</p>
+<p>一旦你知道了工作表的名称，你就可以用 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 单独读取它们。</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_biscoe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Biscoe Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
-<span><span class="va">penguins_dream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">penguins_dream</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this case the full penguins dataset is spread across three worksheets in the spreadsheet. Each worksheet has the same number of columns but different numbers of rows.</p>
+<p>在这种情况下，完整的企鹅数据集分布在电子表格的三个工作表中。每个工作表有相同的列数，但行数不同。</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_torgersen</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 52  8</span></span>
@@ -685,7 +685,7 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_dream</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 124   8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can put them together with <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows()</a></code>.</p>
+<p>我们可以用 <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows()</a></code> 将它们合并在一起。</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">penguins_torgersen</span>, <span class="va">penguins_biscoe</span>, <span class="va">penguins_dream</span><span class="op">)</span></span>
 <span><span class="va">penguins</span></span>
@@ -701,23 +701,23 @@ Figure&nbsp;20.2: Spreadsheet called penguins.xlsx in Excel containing three wor
 <span><span class="co">#&gt; # ℹ 338 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> we’ll talk about ways of doing this sort of task without repetitive code.</p>
-</section><section id="reading-part-of-a-sheet" class="level3" data-number="20.2.5"><h3 data-number="20.2.5" class="anchored" data-anchor-id="reading-part-of-a-sheet">
-<span class="header-section-number">20.2.5</span> Reading part of a sheet</h3>
-<p>Since many use Excel spreadsheets for presentation as well as for data storage, it’s quite common to find cell entries in a spreadsheet that are not part of the data you want to read into R. <a href="#fig-deaths-excel" class="quarto-xref">Figure&nbsp;<span>20.3</span></a> shows such a spreadsheet: in the middle of the sheet is what looks like a data frame but there is extraneous text in cells above and below the data.</p>
+<p>在 <a href="iteration.html" class="quarto-xref"><span>Chapter 26</span></a> 中，我们将讨论如何用不重复的代码来完成这类任务。</p>
+</section><section id="读取部分工作表" class="level3" data-number="20.2.5"><h3 data-number="20.2.5" class="anchored" data-anchor-id="读取部分工作表">
+<span class="header-section-number">20.2.5</span> 读取部分工作表</h3>
+<p>由于许多人使用 Excel 电子表格进行展示和数据存储，因此在电子表格中发现不属于你想读入 R 的数据的单元格条目是相当普遍的。<a href="#fig-deaths-excel" class="quarto-xref">Figure&nbsp;<span>20.3</span></a> 展示了这样一个电子表格：在工作表的中间看起来像一个数据框，但在数据上方和下方有无关的文本。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-deaths-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows on top that contain non-data information; the text 'For the same of consistency in the data layout, which is really a beautiful thing, I will keep making notes up here.' is spread across cells in these top four rows. Then, there is a data frame that includes information on deaths of 10 famous people, including their names, professions, ages, whether they have kids or not, date of birth and death. At the bottom, there are four more rows of non-data information; the text 'This has been really fun, but we're signing off now!' is spread across cells in these bottom four rows.">
+<div id="fig-deaths-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="在 Excel 中查看 deaths 电子表格。电子表格顶部有四行包含非数据信息；文本“为了数据布局的一致性，这真是一件美妙的事情，我会继续在这里做笔记。”分布在这些顶部四行的单元格中。然后，有一个数据框，包含了 10 位名人的死亡信息，包括他们的姓名、职业、年龄、是否有孩子、出生日期和死亡日期。在底部，还有四行非数据信息；文本“这真的很有趣，但我们现在要下线了！”分布在这些底部四行的单元格中。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-deaths-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-deaths.png" class="img-fluid figure-img" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows on top that contain non-data information; the text 'For the same of consistency in the data layout, which is really a beautiful thing, I will keep making notes up here.' is spread across cells in these top four rows. Then, there is a data frame that includes information on deaths of 10 famous people, including their names, professions, ages, whether they have kids or not, date of birth and death. At the bottom, there are four more rows of non-data information; the text 'This has been really fun, but we're signing off now!' is spread across cells in these bottom four rows." width="1614">
+<img src="screenshots/import-spreadsheets-deaths.png" class="img-fluid figure-img" alt="在 Excel 中查看 deaths 电子表格。电子表格顶部有四行包含非数据信息；文本“为了数据布局的一致性，这真是一件美妙的事情，我会继续在这里做笔记。”分布在这些顶部四行的单元格中。然后，有一个数据框，包含了 10 位名人的死亡信息，包括他们的姓名、职业、年龄、是否有孩子、出生日期和死亡日期。在底部，还有四行非数据信息；文本“这真的很有趣，但我们现在要下线了！”分布在这些底部四行的单元格中。" width="1614">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deaths-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
+Figure&nbsp;20.3: 在 Excel 中名为 deaths.xlsx 的电子表格。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>This spreadsheet is one of the example spreadsheets provided in the readxl package. You can use the <code><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example()</a></code> function to locate the spreadsheet on your system in the directory where the package is installed. This function returns the path to the spreadsheet, which you can use in <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> as usual.</p>
+<p>这个电子表格是 readxl 包中提供的示例电子表格之一。你可以使用 <code><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example()</a></code> 函数在你系统上该包安装的目录中找到这个电子表格。这个函数返回电子表格的路径，你可以像往常一样在 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 中使用它。</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="st">"deaths.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">deaths_path</span><span class="op">)</span></span>
@@ -739,8 +739,8 @@ Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
 <span><span class="co">#&gt; 6 Carrie Fisher       actor      60    TRUE     20749         42731          </span></span>
 <span><span class="co">#&gt; # ℹ 12 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The top three rows and the bottom four rows are not part of the data frame. It’s possible to eliminate these extraneous rows using the <code>skip</code> and <code>n_max</code> arguments, but we recommend using cell ranges. In Excel, the top left cell is <code>A1</code>. As you move across columns to the right, the cell label moves down the alphabet, i.e. <code>B1</code>, <code>C1</code>, etc. And as you move down a column, the number in the cell label increases, i.e. <code>A2</code>, <code>A3</code>, etc.</p>
-<p>Here the data we want to read in starts in cell <code>A5</code> and ends in cell <code>F15</code>. In spreadsheet notation, this is <code>A5:F15</code>, which we supply to the <code>range</code> argument:</p>
+<p>顶部三行和底部四行不属于数据框。可以使用 <code>skip</code> 和 <code>n_max</code> 参数来消除这些多余的行，但我们建议使用单元格范围。在 Excel 中，左上角的单元格是 <code>A1</code>。当你向右移动列时，单元格标签会沿着字母表向下移动，即 <code>B1</code>、<code>C1</code> 等。当你向下移动一列时，单元格标签中的数字会增加，即 <code>A2</code>、<code>A3</code> 等。</p>
+<p>这里我们想要读入的数据从单元格 <code>A5</code> 开始，到单元格 <code>F15</code> 结束。在电子表格表示法中，这是 <code>A5:F15</code>，我们将其提供给 <code>range</code> 参数：</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">deaths_path</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
@@ -755,36 +755,36 @@ Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
 <span><span class="co">#&gt; # ℹ 4 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="data-types" class="level3" data-number="20.2.6"><h3 data-number="20.2.6" class="anchored" data-anchor-id="data-types">
-<span class="header-section-number">20.2.6</span> Data types</h3>
-<p>In CSV files, all values are strings. This is not particularly true to the data, but it is simple: everything is a string.</p>
-<p>The underlying data in Excel spreadsheets is more complex. A cell can be one of four things:</p>
+</section><section id="数据类型" class="level3" data-number="20.2.6"><h3 data-number="20.2.6" class="anchored" data-anchor-id="数据类型">
+<span class="header-section-number">20.2.6</span> 数据类型</h3>
+<p>在 CSV 文件中，所有值都是字符串。这并不特别忠实于数据，但很简单：一切都是字符串。</p>
+<p>Excel 电子表格中的底层数据更复杂。一个单元格可以是以下四种类型之一：</p>
 <ul>
-<li><p>A boolean, like <code>TRUE</code>, <code>FALSE</code>, or <code>NA</code>.</p></li>
-<li><p>A number, like “10” or “10.5”.</p></li>
-<li><p>A datetime, which can also include time like “11/1/21” or “11/1/21 3:00 PM”.</p></li>
-<li><p>A text string, like “ten”.</p></li>
+<li><p>布尔值，如 <code>TRUE</code>、<code>FALSE</code> 或 <code>NA</code>。</p></li>
+<li><p>数字，如 “10” 或 “10.5”。</p></li>
+<li><p>日期时间，也可以包含时间，如 “11/1/21” 或 “11/1/21 3:00 PM”。</p></li>
+<li><p>文本字符串，如 “ten”。</p></li>
 </ul>
-<p>When working with spreadsheet data, it’s important to keep in mind that the underlying data can be very different than what you see in the cell. For example, Excel has no notion of an integer. All numbers are stored as floating points, but you can choose to display the data with a customizable number of decimal points. Similarly, dates are actually stored as numbers, specifically the number of seconds since January 1, 1970. You can customize how you display the date by applying formatting in Excel. Confusingly, it’s also possible to have something that looks like a number but is actually a string (e.g., type <code>'10</code> into a cell in Excel).</p>
-<p>These differences between how the underlying data are stored vs.&nbsp;how they’re displayed can cause surprises when the data are loaded into R. By default readxl will guess the data type in a given column. A recommended workflow is to let readxl guess the column types, confirm that you’re happy with the guessed column types, and if not, go back and re-import specifying <code>col_types</code> as shown in <a href="#sec-reading-spreadsheets-excel" class="quarto-xref"><span>Section 20.2.3</span></a>.</p>
-<p>Another challenge is when you have a column in your Excel spreadsheet that has a mix of these types, e.g., some cells are numeric, others text, others dates. When importing the data into R readxl has to make some decisions. In these cases you can set the type for this column to <code>"list"</code>, which will load the column as a list of length 1 vectors, where the type of each element of the vector is guessed.</p>
+<p>处理电子表格数据时，重要的是要记住，底层数据可能与你在单元格中看到的非常不同。例如，Excel 没有整数的概念。所有数字都存储为浮点数，但你可以选择以可自定义的小数位数来显示数据。同样，日期实际上是作为数字存储的，具体来说是从 1970 年 1 月 1 日以来的秒数。你可以通过在 Excel 中应用格式来自定义日期的显示方式。令人困惑的是，也可能有一个看起来像数字但实际上是字符串的东西（例如，在 Excel 单元格中输入 <code>'10</code>）。</p>
+<p>这些底层数据存储方式与显示方式之间的差异，在数据加载到 R 时可能会导致意外。默认情况下，readxl 会猜测给定列的数据类型。一个推荐的工作流程是让 readxl 猜测列类型，确认你对猜测的列类型满意，如果不满意，则返回并重新导入，并指定 <code>col_types</code>，如 <a href="#sec-reading-spreadsheets-excel" class="quarto-xref"><span>Section 20.2.3</span></a> 所示。</p>
+<p>另一个挑战是当你的 Excel 电子表格中的一列混合了这些类型时，例如，一些单元格是数值型，一些是文本，一些是日期。在将数据导入 R 时，readxl 必须做出一些决定。在这些情况下，你可以将该列的类型设置为 <code>"list"</code>，这会将该列加载为一个长度为 1 的向量列表，其中列表的每个元素的类型都会被猜测。</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Sometimes data is stored in more exotic ways, like the color of the cell background, or whether or not the text is bold. In such cases, you might find the <a href="https://nacnudus.github.io/tidyxl/">tidyxl package</a> useful. See <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/" class="uri">https://nacnudus.github.io/spreadsheet-munging-strategies/</a> for more on strategies for working with non-tabular data from Excel.</p>
+<p>有时数据以更奇特的方式存储，比如单元格背景的颜色，或者文本是否加粗。在这种情况下，你可能会发现 <a href="https://nacnudus.github.io/tidyxl/">tidyxl 包</a> 很有用。有关处理来自 Excel 的非表格数据的策略，请参见 <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/">https://nacnudus.github.io/spreadsheet-munging-strategies/</a>。</p>
 </div>
 </div>
 </div>
 </section><section id="sec-writing-to-excel" class="level3" data-number="20.2.7"><h3 data-number="20.2.7" class="anchored" data-anchor-id="sec-writing-to-excel">
-<span class="header-section-number">20.2.7</span> Writing to Excel</h3>
-<p>Let’s create a small data frame that we can then write out. Note that <code>item</code> is a factor and <code>quantity</code> is an integer.</p>
+<span class="header-section-number">20.2.7</span> 写入 Excel</h3>
+<p>让我们创建一个小的数据框，然后可以把它写出去。注意 <code>item</code> 是一个因子，<code>quantity</code> 是一个整数。</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bake_sale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    item     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brownie"</span>, <span class="st">"cupcake"</span>, <span class="st">"cookie"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span>
+<span>  item       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brownie"</span>, <span class="st">"cupcake"</span>, <span class="st">"cookie"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bake_sale</span></span>
@@ -795,24 +795,24 @@ Figure&nbsp;20.3: Spreadsheet called deaths.xlsx in Excel.
 <span><span class="co">#&gt; 2 cupcake        5</span></span>
 <span><span class="co">#&gt; 3 cookie         8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can write data back to disk as an Excel file using the <code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">write_xlsx()</a></code> function from the <a href="https://docs.ropensci.org/writexl/">writexl package</a>:</p>
+<p>你可以使用 <a href="https://docs.ropensci.org/writexl/">writexl 包</a> 中的 <code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">write_xlsx()</a></code> 函数将数据写回到磁盘上的 Excel 文件中：</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">bake_sale</span>, path <span class="op">=</span> <span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-bake-sale-excel" class="quarto-xref">Figure&nbsp;<span>20.4</span></a> shows what the data looks like in Excel. Note that column names are included and bolded. These can be turned off by setting <code>col_names</code> and <code>format_headers</code> arguments to <code>FALSE</code>.</p>
+<p><a href="#fig-bake-sale-excel" class="quarto-xref">Figure&nbsp;<span>20.4</span></a> 展示了数据在 Excel 中的样子。注意列名被包含并加粗了。可以通过将 <code>col_names</code> 和 <code>format_headers</code> 参数设置为 <code>FALSE</code> 来关闭这些功能。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-bake-sale-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bake sale data frame created earlier in Excel.">
+<div id="fig-bake-sale-excel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="之前在 Excel 中创建的烘焙销售数据框。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bake-sale-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-spreadsheets-bake-sale.png" class="img-fluid figure-img" alt="Bake sale data frame created earlier in Excel." width="917">
+<img src="screenshots/import-spreadsheets-bake-sale.png" class="img-fluid figure-img" alt="之前在 Excel 中创建的烘焙销售数据框。" width="917">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bake-sale-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
+Figure&nbsp;20.4: 在 Excel 中名为 bake-sale.xlsx 的电子表格。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Just like reading from a CSV, information on data type is lost when we read the data back in. This makes Excel files unreliable for caching interim results as well. For alternatives, see <a href="data-import.html#sec-writing-to-a-file" class="quarto-xref"><span>Section 7.5</span></a>.</p>
+<p>就像从 CSV 读取一样，当我们再次读入数据时，关于数据类型的信息会丢失。这也使得 Excel 文件不适合用于缓存中间结果。有关替代方案，请参见 <a href="data-import.html#sec-writing-to-a-file" class="quarto-xref"><span>Section 7.5</span></a>。</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
@@ -822,24 +822,24 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 <span><span class="co">#&gt; 2 cupcake        5</span></span>
 <span><span class="co">#&gt; 3 cookie         8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="formatted-output" class="level3" data-number="20.2.8"><h3 data-number="20.2.8" class="anchored" data-anchor-id="formatted-output">
-<span class="header-section-number">20.2.8</span> Formatted output</h3>
-<p>The writexl package is a light-weight solution for writing a simple Excel spreadsheet, but if you’re interested in additional features like writing to sheets within a spreadsheet and styling, you will want to use the <a href="https://ycphs.github.io/openxlsx">openxlsx package</a>. We won’t go into the details of using this package here, but we recommend reading <a href="https://ycphs.github.io/openxlsx/articles/Formatting.html" class="uri">https://ycphs.github.io/openxlsx/articles/Formatting.html</a> for an extensive discussion on further formatting functionality for data written from R to Excel with openxlsx.</p>
-<p>Note that this package is not part of the tidyverse so the functions and workflows may feel unfamiliar. For example, function names are camelCase, multiple functions can’t be composed in pipelines, and arguments are in a different order than they tend to be in the tidyverse. However, this is ok. As your R learning and usage expands outside of this book you will encounter lots of different styles used in various R packages that you might use to accomplish specific goals in R. A good way of familiarizing yourself with the coding style used in a new package is to run the examples provided in function documentation to get a feel for the syntax and the output formats as well as reading any vignettes that might come with the package.</p>
-</section><section id="exercises" class="level3" data-number="20.2.9"><h3 data-number="20.2.9" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">20.2.9</span> Exercises</h3>
+</section><section id="格式化输出" class="level3" data-number="20.2.8"><h3 data-number="20.2.8" class="anchored" data-anchor-id="格式化输出">
+<span class="header-section-number">20.2.8</span> 格式化输出</h3>
+<p>writexl 包是一个用于写入简单 Excel 电子表格的轻量级解决方案，但如果你对额外的功能感兴趣，比如写入电子表格中的工作表和设置样式，你会想使用 <a href="https://ycphs.github.io/openxlsx">openxlsx 包</a>。我们在这里不会详细介绍使用这个包的细节，但我们建议阅读 <a href="https://ycphs.github.io/openxlsx/articles/Formatting.html">https://ycphs.github.io/openxlsx/articles/Formatting.html</a>，那里有关于用 openxlsx 从 R 写入 Excel 的数据的进一步格式化功能的广泛讨论。</p>
+<p>注意，这个包不是 tidyverse 的一部分，所以函数和工作流程可能会感觉不熟悉。例如，函数名是驼峰式命名法 (camelCase)，多个函数不能用管道符组合，并且参数的顺序可能与 tidyverse 中的不同。然而，这没关系。随着你的 R 学习和使用扩展到本书之外，你会遇到各种 R 包中使用的许多不同风格，你可能会用它们来在 R 中完成特定的目标。熟悉一个新包的编码风格的一个好方法是运行函数文档中提供的示例，以感受其语法和输出格式，以及阅读包可能附带的任何小品文 (vignettes)。</p>
+</section><section id="练习" class="level3" data-number="20.2.9"><h3 data-number="20.2.9" class="anchored" data-anchor-id="练习">
+<span class="header-section-number">20.2.9</span> 练习</h3>
 <ol type="1">
 <li>
-<p>In an Excel file, create the following dataset and save it as <code>survey.xlsx</code>. Alternatively, you can download it as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1yc5gL-a2OOBr8M7B3IsDNX5uR17vBHOyWZq6xSTG2G8">here</a>.</p>
+<p>在一个 Excel 文件中，创建以下数据集并将其保存为 <code>survey.xlsx</code>。或者，你可以从<a href="https://docs.google.com/spreadsheets/d/1yc5gL-a2OOBr8M7B3IsDNX5uR17vBHOyWZq6xSTG2G8">这里</a>下载 Excel 文件。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-survey.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows. The group column has two values: 1 (spanning 7 merged rows) and 2 (spanning 5 merged rows). The subgroup column has four values: A (spanning 3 merged rows), B (spanning 4 merged rows), A (spanning 2 merged rows), and B (spanning 3 merged rows). The id column has twelve values, numbers 1 through 12." width="263"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-survey.png" class="img-fluid figure-img" alt="一个有 3 列（group、subgroup 和 id）和 12 行的电子表格。group 列有两个值：1（跨越 7 个合并的行）和 2（跨越 5 个合并的行）。subgroup 列有四个值：A（跨越 3 个合并的行）、B（跨越 4 个合并的行）、A（跨越 2 个合并的行）和 B（跨越 3 个合并的行）。id 列有十二个值，数字 1 到 12。" width="263"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Then, read it into R, with <code>survey_id</code> as a character variable and <code>n_pets</code> as a numerical variable.</p>
+<p>然后，将其读入 R，将 <code>survey_id</code> 作为字符变量，<code>n_pets</code> 作为数值变量。</p>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 6 × 2
 #&gt;   survey_id n_pets
@@ -853,16 +853,16 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 </div>
 </li>
 <li>
-<p>In another Excel file, create the following dataset and save it as <code>roster.xlsx</code>. Alternatively, you can download it as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1LgZ0Bkg9d_NK8uTdP2uHXm07kAlwx8-Ictf8NocebIE">here</a>.</p>
+<p>在另一个 Excel 文件中，创建以下数据集并将其保存为 <code>roster.xlsx</code>。或者，你可以从<a href="https://docs.google.com/spreadsheets/d/1LgZ0Bkg9d_NK8uTdP2uHXm07kAlwx8-Ictf8NocebIE">这里</a>下载 Excel 文件。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-roster.png" class="img-fluid figure-img" alt="A spreadsheet with 3 columns (group, subgroup, and id) and 12 rows. The group column has two values: 1 (spanning 7 merged rows) and 2 (spanning 5 merged rows). The subgroup column has four values: A (spanning 3 merged rows), B (spanning 4 merged rows), A (spanning 2 merged rows), and B (spanning 3 merged rows). The id column has twelve values, numbers 1 through 12." width="255"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-roster.png" class="img-fluid figure-img" alt="一个有 3 列（group、subgroup 和 id）和 12 行的电子表格。group 列有两个值：1（跨越 7 个合并的行）和 2（跨越 5 个合并的行）。subgroup 列有四个值：A（跨越 3 个合并的行）、B（跨越 4 个合并的行）、A（跨越 2 个合并的行）和 B（跨越 3 个合并的行）。id 列有十二个值，数字 1 到 12。" width="255"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Then, read it into R. The resulting data frame should be called <code>roster</code> and should look like the following.</p>
+<p>然后，将其读入 R。结果数据框应命名为 <code>roster</code>，并应如下所示。</p>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 12 × 3
 #&gt;    group subgroup    id
@@ -882,16 +882,18 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 </div>
 </li>
 <li>
-<p>In a new Excel file, create the following dataset and save it as <code>sales.xlsx</code>. Alternatively, you can download it as an Excel file from <a href="https://docs.google.com/spreadsheets/d/1oCqdXUNO8JR3Pca8fHfiz_WXWxMuZAp3YiYFaKze5V0">here</a>.</p>
+<p>在一个新的 Excel 文件中，创建以下数据集并将其保存为 <code>sales.xlsx</code>。或者，你可以从<a href="https://docs.google.com/spreadsheets/d/1oCqdXUNO8JR3Pca8fHfiz_WXWxMuZAp3YiYFaKze5V0">这里</a>下载 Excel 文件。</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="screenshots/import-spreadsheets-sales.png" class="img-fluid figure-img" alt="A spreadsheet with 2 columns and 13 rows. The first two rows have text containing information about the sheet. Row 1 says &quot;This file contains information on sales&quot;. Row 2 says &quot;Data are organized by brand name, and for each brand, we have the ID number for the item sold, and how many are sold.&quot;. Then there are two empty rows, and then 9 rows of data." width="317"></p>
+<figure class="figure"><p><img src="screenshots/import-spreadsheets-sales.png" class="img-fluid figure-img" alt="一个有 2 列 13 行的电子表格。前两行包含有关该工作表的文本信息。第 1 行说“此文件包含销售信息”。第 2 行说“数据按品牌名称组织，对于每个品牌，我们有售出商品的 ID 号以及售出数量。”然后是两个空行，接着是 9 行数据。" width="317"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>a. Read <code>sales.xlsx</code> in and save as <code>sales</code>. The data frame should look like the following, with <code>id</code> and <code>n</code> as column names and with 9 rows.</p>
+<ol type="a">
+<li>读入 <code>sales.xlsx</code> 并保存为 <code>sales</code>。数据框应如下所示，列名为 <code>id</code> 和 <code>n</code>，有 9 行。</li>
+</ol>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 9 × 2
 #&gt;   id      n    
@@ -906,7 +908,9 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 #&gt; 8 3987    6    
 #&gt; 9 3216    5</code></pre>
 </div>
-<p>b. Modify <code>sales</code> further to get it into the following tidy format with three columns (<code>brand</code>, <code>id</code>, and <code>n</code>) and 7 rows of data. Note that <code>id</code> and <code>n</code> are numeric, <code>brand</code> is a character variable.</p>
+<ol start="2" type="a">
+<li>进一步修改 <code>sales</code>，使其成为以下具有三列（<code>brand</code>、<code>id</code> 和 <code>n</code>）和 7 行数据的整洁格式。注意 <code>id</code> 和 <code>n</code> 是数值型，<code>brand</code> 是字符变量。</li>
+</ol>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 7 × 3
 #&gt;   brand      id     n
@@ -920,41 +924,41 @@ Figure&nbsp;20.4: Spreadsheet called bake-sale.xlsx in Excel.
 #&gt; 7 Brand 2  3216     5</code></pre>
 </div>
 </li>
-<li><p>Recreate the <code>bake_sale</code> data frame, write it out to an Excel file using the <code>write.xlsx()</code> function from the openxlsx package.</p></li>
-<li><p>In <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> you learned about the <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code> function to turn column names into snake case. Read the <code>students.xlsx</code> file that we introduced earlier in this section and use this function to “clean” the column names.</p></li>
-<li><p>What happens if you try to read in a file with <code>.xlsx</code> extension with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls()</a></code>?</p></li>
-</ol></section></section><section id="google-sheets" class="level2" data-number="20.3"><h2 data-number="20.3" class="anchored" data-anchor-id="google-sheets">
-<span class="header-section-number">20.3</span> Google Sheets</h2>
-<p>Google Sheets is another widely used spreadsheet program. It’s free and web-based. Just like with Excel, in Google Sheets data are organized in worksheets (also called sheets) inside of spreadsheet files.</p>
-<section id="prerequisites-1" class="level3" data-number="20.3.1"><h3 data-number="20.3.1" class="anchored" data-anchor-id="prerequisites-1">
-<span class="header-section-number">20.3.1</span> Prerequisites</h3>
-<p>This section will also focus on spreadsheets, but this time you’ll be loading data from a Google Sheet with the <strong>googlesheets4</strong> package. This package is non-core tidyverse as well, you need to load it explicitly.</p>
+<li><p>重新创建 <code>bake_sale</code> 数据框，使用 openxlsx 包中的 <code>write.xlsx()</code> 函数将其写出到一个 Excel 文件中。</p></li>
+<li><p>在 <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> 中，你学习了 <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code> 函数，可以将列名转换为蛇形命名法 (snake case)。读入我们本节前面介绍的 <code>students.xlsx</code> 文件，并使用此函数来“清理”列名。</p></li>
+<li><p>如果你尝试用 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls()</a></code> 读取一个扩展名为 <code>.xlsx</code> 的文件会发生什么？</p></li>
+</ol></section></section><section id="谷歌表格" class="level2" data-number="20.3"><h2 data-number="20.3" class="anchored" data-anchor-id="谷歌表格">
+<span class="header-section-number">20.3</span> 谷歌表格</h2>
+<p>谷歌表格 (Google Sheets) 是另一个广泛使用的电子表格程序。它是免费且基于网络的。就像 Excel 一样，在谷歌表格中，数据在电子表格文件中的工作表 (worksheets) 里进行组织。</p>
+<section id="前提条件-1" class="level3" data-number="20.3.1"><h3 data-number="20.3.1" class="anchored" data-anchor-id="前提条件-1">
+<span class="header-section-number">20.3.1</span> 前提条件</h3>
+<p>本节也将重点介绍电子表格，但这次你将使用 <strong>googlesheets4</strong> 包从谷歌表格中加载数据。这个包同样不是 tidyverse 的核心包，你需要显式地加载它。</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org">googlesheets4</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A quick note about the name of the package: googlesheets4 uses v4 of the <a href="https://developers.google.com/sheets/api/">Sheets API v4</a> to provide an R interface to Google Sheets, hence the name.</p>
-</section><section id="getting-started-1" class="level3" data-number="20.3.2"><h3 data-number="20.3.2" class="anchored" data-anchor-id="getting-started-1">
-<span class="header-section-number">20.3.2</span> Getting started</h3>
-<p>The main function of the googlesheets4 package is <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>, which reads a Google Sheet from a URL or a file id. This function also goes by the name <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">range_read()</a></code>.</p>
-<p>You can also create a brand new sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_create.html">gs4_create()</a></code> or write to an existing sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">sheet_write()</a></code> and friends.</p>
-<p>In this section we’ll work with the same datasets as the ones in the Excel section to highlight similarities and differences between workflows for reading data from Excel and Google Sheets. readxl and googlesheets4 packages are both designed to mimic the functionality of the readr package, which provides the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function you’ve seen in <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a>. Therefore, many of the tasks can be accomplished with simply swapping out <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> for <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>. However you’ll also see that Excel and Google Sheets don’t behave in exactly the same way, therefore other tasks may require further updates to the function calls.</p>
-</section><section id="reading-google-sheets" class="level3" data-number="20.3.3"><h3 data-number="20.3.3" class="anchored" data-anchor-id="reading-google-sheets">
-<span class="header-section-number">20.3.3</span> Reading Google Sheets</h3>
-<p><a href="#fig-students-googlesheets" class="quarto-xref">Figure&nbsp;<span>20.5</span></a> shows what the spreadsheet we’re going to read into R looks like in Google Sheets. This is the same dataset as in <a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a>, except it’s stored in a Google Sheet instead of Excel.</p>
+<p>关于包名的一个快速说明：googlesheets4 使用了 <a href="https://developers.google.com/sheets/api/">Sheets API v4</a> 来提供一个 R 接口到谷歌表格，因此得名。</p>
+</section><section id="入门-1" class="level3" data-number="20.3.2"><h3 data-number="20.3.2" class="anchored" data-anchor-id="入门-1">
+<span class="header-section-number">20.3.2</span> 入门</h3>
+<p>googlesheets4 包的主要函数是 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>，它从一个 URL 或文件 ID 读取一个谷歌表格。这个函数还有一个别名 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">range_read()</a></code>。</p>
+<p>你也可以用 <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_create.html">gs4_create()</a></code> 创建一个全新的表格，或者用 <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">sheet_write()</a></code> 及其系列函数写入一个现有的表格。</p>
+<p>在本节中，我们将使用与 Excel 部分相同的数据集，以突出从 Excel 和谷歌表格读取数据的工作流程之间的相似点和不同点。readxl 和 googlesheets4 包都被设计为模仿 readr 包的功能，后者提供了你在 <a href="data-import.html" class="quarto-xref"><span>Chapter 7</span></a> 中见过的 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> 函数。因此，许多任务可以通过简单地将 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 替换为 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 来完成。然而，你也会看到 Excel 和谷歌表格的行为并不完全相同，因此其他任务可能需要对函数调用进行进一步的更新。</p>
+</section><section id="读取谷歌表格" class="level3" data-number="20.3.3"><h3 data-number="20.3.3" class="anchored" data-anchor-id="读取谷歌表格">
+<span class="header-section-number">20.3.3</span> 读取谷歌表格</h3>
+<p><a href="#fig-students-googlesheets" class="quarto-xref">Figure&nbsp;<span>20.5</span></a> 展示了我们即将读入 R 的电子表格在谷歌表格中的样子。这与 <a href="#fig-students-excel" class="quarto-xref">Figure&nbsp;<span>20.1</span></a> 中的数据集相同，只是它存储在谷歌表格中而不是 Excel 中。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-students-googlesheets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age.">
+<div id="fig-students-googlesheets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="在谷歌表格中查看 students 电子表格。该电子表格包含 6 名学生的信息，包括他们的 ID、全名、最喜欢的食物、膳食计划和年龄。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-students-googlesheets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/import-googlesheets-students.png" class="img-fluid figure-img" alt="A look at the students spreadsheet in Google Sheets. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age." width="986">
+<img src="screenshots/import-googlesheets-students.png" class="img-fluid figure-img" alt="在谷歌表格中查看 students 电子表格。该电子表格包含 6 名学生的信息，包括他们的 ID、全名、最喜欢的食物、膳食计划和年龄。" width="986">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-students-googlesheets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.5: Google Sheet called students in a browser window.
+Figure&nbsp;20.5: 在浏览器窗口中名为 students 的谷歌表格。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The first argument to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> is the URL of the file to read, and it returns a tibble:<br><a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w" class="uri">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w</a>. These URLs are not pleasant to work with, so you’ll often want to identify a sheet by its ID.</p>
+<p><code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 的第一个参数是要读取的文件的 URL，它返回一个 tibble： <a href="https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w">https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w</a>。 这些 URL 不好用，所以你通常会想通过其 ID 来识别一个表格。</p>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -974,14 +978,14 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch &lt;chr&gt; </span></span>
 <span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Just like we did with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can supply column names, NA strings, and column types to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>.</p>
+<p>就像我们对 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 做的那样，我们可以向 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 提供列名、NA 字符串和列类型。</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span></span>
-<span>    <span class="va">students_sheet_id</span>,</span>
-<span>    col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
-<span>    skip <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>    na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
-<span>    col_types <span class="op">=</span> <span class="st">"dcccc"</span></span>
+<span>  <span class="va">students_sheet_id</span>,</span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"N/A"</span><span class="op">)</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="st">"dcccc"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from students.</span></span>
 <span><span class="co">#&gt; ✔ Range 2:10000000.</span></span>
@@ -997,8 +1001,8 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that we defined column types a bit differently here, using short codes. For example, “dcccc” stands for “double, character, character, character, character”.</p>
-<p>It’s also possible to read individual sheets from Google Sheets as well. Let’s read the “Torgersen Island” sheet from the <a href="https://pos.it/r4ds-penguins">penguins Google Sheet</a>:</p>
+<p>注意，我们在这里定义列类型的方式略有不同，使用了短代码。例如，“dcccc” 代表 “double, character, character, character, character”。</p>
+<p>也可以从谷歌表格中读取单个工作表。让我们从<a href="https://pos.it/r4ds-penguins">企鹅谷歌表格</a>中读取 “Torgersen Island” 工作表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"</span></span>
 <span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
@@ -1016,12 +1020,12 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;list&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can obtain a list of all sheets within a Google Sheet with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names()</a></code>:</p>
+<p>你可以使用 <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names()</a></code> 获取一个谷歌表格中所有工作表的列表：</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, just like with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, we can read in a portion of a Google Sheet by defining a <code>range</code> in <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>. Note that we’re also using the <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example()</a></code> function below to locate an example Google Sheet that comes with the googlesheets4 package.</p>
+<p>最后，就像使用 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 一样，我们可以通过在 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 中定义一个 <code>range</code> 来读取谷歌表格的一部分。注意，我们下面也使用了 <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example()</a></code> 函数来定位 googlesheets4 包附带的一个示例谷歌表格。</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span></span>
 <span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">deaths_url</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
@@ -1040,27 +1044,27 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 <span><span class="co">#&gt; # ℹ 4 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="writing-to-google-sheets" class="level3" data-number="20.3.4"><h3 data-number="20.3.4" class="anchored" data-anchor-id="writing-to-google-sheets">
-<span class="header-section-number">20.3.4</span> Writing to Google Sheets</h3>
-<p>You can write from R to Google Sheets with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code>. The first argument is the data frame to write, and the second argument is the name (or other identifier) of the Google Sheet to write to:</p>
+</section><section id="写入谷歌表格" class="level3" data-number="20.3.4"><h3 data-number="20.3.4" class="anchored" data-anchor-id="写入谷歌表格">
+<span class="header-section-number">20.3.4</span> 写入谷歌表格</h3>
+<p>你可以使用 <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code> 从 R 写入谷歌表格。第一个参数是要写入的数据框，第二个参数是要写入的谷歌表格的名称（或其他标识符）：</p>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you’d like to write your data to a specific (work)sheet inside a Google Sheet, you can specify that with the <code>sheet</code> argument as well.</p>
+<p>如果你想将数据写入谷歌表格中的特定（工作）表，你也可以使用 <code>sheet</code> 参数来指定。</p>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span>, sheet <span class="op">=</span> <span class="st">"Sales"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="authentication" class="level3" data-number="20.3.5"><h3 data-number="20.3.5" class="anchored" data-anchor-id="authentication">
-<span class="header-section-number">20.3.5</span> Authentication</h3>
-<p>While you can read from a public Google Sheet without authenticating with your Google account and with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth()</a></code>, reading a private sheet or writing to a sheet requires authentication so that googlesheets4 can view and manage <em>your</em> Google Sheets.</p>
-<p>When you attempt to read in a sheet that requires authentication, googlesheets4 will direct you to a web browser with a prompt to sign in to your Google account and grant permission to operate on your behalf with Google Sheets. However, if you want to specify a specific Google account, authentication scope, etc. you can do so with <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html">gs4_auth()</a></code>, e.g., <code>gs4_auth(email = "mine@example.com")</code>, which will force the use of a token associated with a specific email. For further authentication details, we recommend reading the documentation googlesheets4 auth vignette: <a href="https://googlesheets4.tidyverse.org/articles/auth.html" class="uri">https://googlesheets4.tidyverse.org/articles/auth.html</a>.</p>
-</section><section id="exercises-1" class="level3" data-number="20.3.6"><h3 data-number="20.3.6" class="anchored" data-anchor-id="exercises-1">
-<span class="header-section-number">20.3.6</span> Exercises</h3>
+</section><section id="身份验证" class="level3" data-number="20.3.5"><h3 data-number="20.3.5" class="anchored" data-anchor-id="身份验证">
+<span class="header-section-number">20.3.5</span> 身份验证</h3>
+<p>虽然你可以从未经身份验证的公共谷歌表格中读取数据，并使用 <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth()</a></code>，但读取私有表格或写入表格需要进行身份验证，以便 googlesheets4 可以查看和管理<em>你的</em>谷歌表格。</p>
+<p>当你尝试读取一个需要身份验证的表格时，googlesheets4 会将你引导到一个网页浏览器，提示你登录你的谷歌账户并授权其代表你操作谷歌表格。然而，如果你想指定一个特定的谷歌账户、身份验证范围等，你可以使用 <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_auth.html">gs4_auth()</a></code> 来实现，例如，<code>gs4_auth(email = "mine@example.com")</code>，这将强制使用与特定电子邮件关联的令牌。有关进一步的身份验证细节，我们建议阅读 googlesheets4 的 auth 小品文文档：<a href="https://googlesheets4.tidyverse.org/articles/auth.html">https://googlesheets4.tidyverse.org/articles/auth.html</a>。</p>
+</section><section id="练习-1" class="level3" data-number="20.3.6"><h3 data-number="20.3.6" class="anchored" data-anchor-id="练习-1">
+<span class="header-section-number">20.3.6</span> 练习</h3>
 <ol type="1">
-<li><p>Read the <code>students</code> dataset from earlier in the chapter from Excel and also from Google Sheets, with no additional arguments supplied to the <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> and <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> functions. Are the resulting data frames in R exactly the same? If not, how are they different?</p></li>
-<li><p>Read the Google Sheet titled survey from <a href="https://pos.it/r4ds-survey" class="uri">https://pos.it/r4ds-survey</a>, with <code>survey_id</code> as a character variable and <code>n_pets</code> as a numerical variable.</p></li>
+<li><p>从 Excel 和谷歌表格中读取本章早些时候的 <code>students</code> 数据集，不向 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 和 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 函数提供任何额外参数。结果在 R 中的数据框完全相同吗？如果不是，它们有何不同？</p></li>
+<li><p>从 <a href="https://pos.it/r4ds-survey">https://pos.it/r4ds-survey</a> 读取名为 survey 的谷歌表格，将 <code>survey_id</code> 作为字符变量，<code>n_pets</code> 作为数值变量。</p></li>
 <li>
-<p>Read the Google Sheet titled roster from <a href="https://pos.it/r4ds-roster" class="uri">https://pos.it/r4ds-roster</a>. The resulting data frame should be called <code>roster</code> and should look like the following.</p>
+<p>从 <a href="https://pos.it/r4ds-roster">https://pos.it/r4ds-roster</a> 读取名为 roster 的谷歌表格。结果数据框应命名为 <code>roster</code>，并应如下所示。</p>
 <div class="cell">
 <pre><code>#&gt; # A tibble: 12 × 3
 #&gt;    group subgroup    id
@@ -1079,11 +1083,11 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
 #&gt; 12     2 B           12</code></pre>
 </div>
 </li>
-</ol></section></section><section id="summary" class="level2" data-number="20.4"><h2 data-number="20.4" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">20.4</span> Summary</h2>
-<p>Microsoft Excel and Google Sheets are two of the most popular spreadsheet systems. Being able to interact with data stored in Excel and Google Sheets files directly from R is a superpower! In this chapter you learned how to read data into R from spreadsheets from Excel with <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> from the readxl package and from Google Sheets with <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> from the googlesheets4 package. These functions work very similarly to each other and have similar arguments for specifying column names, NA strings, rows to skip on top of the file you’re reading in, etc. Additionally, both functions make it possible to read a single sheet from a spreadsheet as well.</p>
-<p>On the other hand, writing to an Excel file requires a different package and function (<code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">writexl::write_xlsx()</a></code>) while you can write to a Google Sheet with the googlesheets4 package, with <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code>.</p>
-<p>In the next chapter, you’ll learn about a different data source and how to read data from that source into R: databases.</p>
+</ol></section></section><section id="总结" class="level2" data-number="20.4"><h2 data-number="20.4" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">20.4</span> 总结</h2>
+<p>Microsoft Excel 和谷歌表格是两种最流行的电子表格系统。能够直接从 R 中与存储在 Excel 和谷歌表格文件中的数据进行交互是一项超能力！在本章中，你学习了如何使用 readxl 包中的 <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> 从 Excel 的电子表格中读取数据到 R，以及如何使用 googlesheets4 包中的 <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> 从谷歌表格中读取数据。这些函数的工作方式非常相似，并且有类似的参数用于指定列名、NA 字符串、在读取文件时跳过顶部的行等。此外，这两个函数都使得可以从一个电子表格中读取单个工作表。</p>
+<p>另一方面，写入 Excel 文件需要一个不同的包和函数 (<code><a href="https://docs.ropensci.org/writexl//reference/write_xlsx.html">writexl::write_xlsx()</a></code>)，而你可以使用 googlesheets4 包中的 <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code> 来写入谷歌表格。</p>
+<p>在下一章中，你将学习一个不同的数据源以及如何从该源读取数据到 R：数据库。</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1485,13 +1489,13 @@ Figure&nbsp;20.5: Google Sheet called students in a browser window.
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./import.html" class="pagination-link" aria-label="Import">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Import</span>
+      <a href="./import.html" class="pagination-link" aria-label="导入">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">导入</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./databases.html" class="pagination-link" aria-label="Databases">
-        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Databases</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./databases.html" class="pagination-link" aria-label="数据库">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">数据库</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

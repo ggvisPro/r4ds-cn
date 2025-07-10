@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund">
-<title>24&nbsp; Web scraping – R 数据科学 2e
+<title>24&nbsp; 网络抓取 – R 数据科学 2e
 （中文版）</title>
 <style>
 code{white-space: pre-wrap;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Import</a></li><li class="breadcrumb-item"><a href="./webscraping.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Web scraping</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">导入</a></li><li class="breadcrumb-item"><a href="./webscraping.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">网络抓取</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import</span></a>
+ <span class="menu-text">导入</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,13 +316,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Spreadsheets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">电子表格</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./databases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Databases</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">数据库</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -334,13 +334,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./rectangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hierarchical data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">层级数据</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./webscraping.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Web scraping</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">网络抓取</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,50 +406,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">24.1</span> Introduction</a>
+<a href="#%E5%BC%95%E8%A8%80" id="toc-引言" class="nav-link active" data-scroll-target="#%E5%BC%95%E8%A8%80"><span class="header-section-number">24.1</span> 引言</a>
   <ul class="collapse">
-<li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">24.1.1</span> Prerequisites</a></li>
+<li><a href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6" id="toc-先决条件" class="nav-link" data-scroll-target="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="header-section-number">24.1.1</span> 先决条件</a></li>
   </ul>
 </li>
   <li>
-<a href="#scraping-ethics-and-legalities" id="toc-scraping-ethics-and-legalities" class="nav-link" data-scroll-target="#scraping-ethics-and-legalities"><span class="header-section-number">24.2</span> Scraping ethics and legalities</a>
+<a href="#%E6%8A%93%E5%8F%96%E7%9A%84%E4%BC%A6%E7%90%86%E5%92%8C%E6%B3%95%E5%BE%8B" id="toc-抓取的伦理和法律" class="nav-link" data-scroll-target="#%E6%8A%93%E5%8F%96%E7%9A%84%E4%BC%A6%E7%90%86%E5%92%8C%E6%B3%95%E5%BE%8B"><span class="header-section-number">24.2</span> 抓取的伦理和法律</a>
   <ul class="collapse">
-<li><a href="#terms-of-service" id="toc-terms-of-service" class="nav-link" data-scroll-target="#terms-of-service"><span class="header-section-number">24.2.1</span> Terms of service</a></li>
-  <li><a href="#personally-identifiable-information" id="toc-personally-identifiable-information" class="nav-link" data-scroll-target="#personally-identifiable-information"><span class="header-section-number">24.2.2</span> Personally identifiable information</a></li>
-  <li><a href="#copyright" id="toc-copyright" class="nav-link" data-scroll-target="#copyright"><span class="header-section-number">24.2.3</span> Copyright</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E6%9D%A1%E6%AC%BE" id="toc-服务条款" class="nav-link" data-scroll-target="#%E6%9C%8D%E5%8A%A1%E6%9D%A1%E6%AC%BE"><span class="header-section-number">24.2.1</span> 服务条款</a></li>
+  <li><a href="#%E4%B8%AA%E4%BA%BA%E8%BA%AB%E4%BB%BD%E4%BF%A1%E6%81%AF" id="toc-个人身份信息" class="nav-link" data-scroll-target="#%E4%B8%AA%E4%BA%BA%E8%BA%AB%E4%BB%BD%E4%BF%A1%E6%81%AF"><span class="header-section-number">24.2.2</span> 个人身份信息</a></li>
+  <li><a href="#%E7%89%88%E6%9D%83" id="toc-版权" class="nav-link" data-scroll-target="#%E7%89%88%E6%9D%83"><span class="header-section-number">24.2.3</span> 版权</a></li>
   </ul>
 </li>
   <li>
-<a href="#html-basics" id="toc-html-basics" class="nav-link" data-scroll-target="#html-basics"><span class="header-section-number">24.3</span> HTML basics</a>
+<a href="#html-%E5%9F%BA%E7%A1%80" id="toc-html-基础" class="nav-link" data-scroll-target="#html-%E5%9F%BA%E7%A1%80"><span class="header-section-number">24.3</span> HTML 基础</a>
   <ul class="collapse">
-<li><a href="#elements" id="toc-elements" class="nav-link" data-scroll-target="#elements"><span class="header-section-number">24.3.1</span> Elements</a></li>
-  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="header-section-number">24.3.2</span> Attributes</a></li>
+<li><a href="#%E5%85%83%E7%B4%A0" id="toc-元素" class="nav-link" data-scroll-target="#%E5%85%83%E7%B4%A0"><span class="header-section-number">24.3.1</span> 元素</a></li>
+  <li><a href="#%E5%B1%9E%E6%80%A7" id="toc-属性" class="nav-link" data-scroll-target="#%E5%B1%9E%E6%80%A7"><span class="header-section-number">24.3.2</span> 属性</a></li>
   </ul>
 </li>
   <li>
-<a href="#extracting-data" id="toc-extracting-data" class="nav-link" data-scroll-target="#extracting-data"><span class="header-section-number">24.4</span> Extracting data</a>
+<a href="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE" id="toc-提取数据" class="nav-link" data-scroll-target="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="header-section-number">24.4</span> 提取数据</a>
   <ul class="collapse">
-<li><a href="#find-elements" id="toc-find-elements" class="nav-link" data-scroll-target="#find-elements"><span class="header-section-number">24.4.1</span> Find elements</a></li>
-  <li><a href="#nesting-selections" id="toc-nesting-selections" class="nav-link" data-scroll-target="#nesting-selections"><span class="header-section-number">24.4.2</span> Nesting selections</a></li>
-  <li><a href="#text-and-attributes" id="toc-text-and-attributes" class="nav-link" data-scroll-target="#text-and-attributes"><span class="header-section-number">24.4.3</span> Text and attributes</a></li>
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">24.4.4</span> Tables</a></li>
+<li><a href="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0" id="toc-查找元素" class="nav-link" data-scroll-target="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="header-section-number">24.4.1</span> 查找元素</a></li>
+  <li><a href="#%E5%B5%8C%E5%A5%97%E9%80%89%E6%8B%A9" id="toc-嵌套选择" class="nav-link" data-scroll-target="#%E5%B5%8C%E5%A5%97%E9%80%89%E6%8B%A9"><span class="header-section-number">24.4.2</span> 嵌套选择</a></li>
+  <li><a href="#%E6%96%87%E6%9C%AC%E5%92%8C%E5%B1%9E%E6%80%A7" id="toc-文本和属性" class="nav-link" data-scroll-target="#%E6%96%87%E6%9C%AC%E5%92%8C%E5%B1%9E%E6%80%A7"><span class="header-section-number">24.4.3</span> 文本和属性</a></li>
+  <li><a href="#%E8%A1%A8%E6%A0%BC" id="toc-表格" class="nav-link" data-scroll-target="#%E8%A1%A8%E6%A0%BC"><span class="header-section-number">24.4.4</span> 表格</a></li>
   </ul>
 </li>
-  <li><a href="#sec-css-selectors" id="toc-sec-css-selectors" class="nav-link" data-scroll-target="#sec-css-selectors"><span class="header-section-number">24.5</span> Finding the right selectors</a></li>
+  <li><a href="#sec-css-selectors" id="toc-sec-css-selectors" class="nav-link" data-scroll-target="#sec-css-selectors"><span class="header-section-number">24.5</span> 找到正确的选择器</a></li>
   <li>
-<a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together"><span class="header-section-number">24.6</span> Putting it all together</a>
+<a href="#%E6%95%B4%E5%90%88%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9" id="toc-整合所有内容" class="nav-link" data-scroll-target="#%E6%95%B4%E5%90%88%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9"><span class="header-section-number">24.6</span> 整合所有内容</a>
   <ul class="collapse">
-<li><a href="#starwars" id="toc-starwars" class="nav-link" data-scroll-target="#starwars"><span class="header-section-number">24.6.1</span> StarWars</a></li>
-  <li><a href="#imdb-top-films" id="toc-imdb-top-films" class="nav-link" data-scroll-target="#imdb-top-films"><span class="header-section-number">24.6.2</span> IMDB top films</a></li>
+<li><a href="#%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98" id="toc-星球大战" class="nav-link" data-scroll-target="#%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98"><span class="header-section-number">24.6.1</span> 星球大战</a></li>
+  <li><a href="#imdb-%E7%83%AD%E9%97%A8%E7%94%B5%E5%BD%B1" id="toc-imdb-热门电影" class="nav-link" data-scroll-target="#imdb-%E7%83%AD%E9%97%A8%E7%94%B5%E5%BD%B1"><span class="header-section-number">24.6.2</span> IMDB 热门电影</a></li>
   </ul>
 </li>
-  <li><a href="#dynamic-sites" id="toc-dynamic-sites" class="nav-link" data-scroll-target="#dynamic-sites"><span class="header-section-number">24.7</span> Dynamic sites</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">24.8</span> Summary</a></li>
+  <li><a href="#%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99" id="toc-动态网站" class="nav-link" data-scroll-target="#%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99"><span class="header-section-number">24.7</span> 动态网站</a></li>
+  <li><a href="#%E6%80%BB%E7%BB%93" id="toc-总结" class="nav-link" data-scroll-target="#%E6%80%BB%E7%BB%93"><span class="header-section-number">24.8</span> 总结</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/ggvisPro/r4ds-cn/edit/main/webscraping.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ggvisPro/r4ds-cn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Import</a></li><li class="breadcrumb-item"><a href="./webscraping.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Web scraping</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-scraping" class="quarto-section-identifier"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Web scraping</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">导入</a></li><li class="breadcrumb-item"><a href="./webscraping.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">网络抓取</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-scraping" class="quarto-section-identifier"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">网络抓取</span></span></h1>
 </div>
 
 
@@ -463,69 +463,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level2" data-number="24.1"><h2 data-number="24.1" class="anchored" data-anchor-id="introduction">
-<span class="header-section-number">24.1</span> Introduction</h2>
-<p>This chapter introduces you to the basics of web scraping with <a href="https://rvest.tidyverse.org">rvest</a>. Web scraping is a very useful tool for extracting data from web pages. Some websites will offer an API, a set of structured HTTP requests that return data as JSON, which you handle using the techniques from <a href="rectangling.html" class="quarto-xref"><span>Chapter 23</span></a>. Where possible, you should use the API<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, because typically it will give you more reliable data. Unfortunately, however, programming with web APIs is out of scope for this book. Instead, we are teaching scraping, a technique that works whether or not a site provides an API.</p>
-<p>In this chapter, we’ll first discuss the ethics and legalities of scraping before we dive into the basics of HTML. You’ll then learn the basics of CSS selectors to locate specific elements on the page, and how to use rvest functions to get data from text and attributes out of HTML and into R. We’ll then discuss some techniques to figure out what CSS selector you need for the page you’re scraping, before finishing up with a couple of case studies, and a brief discussion of dynamic websites.</p>
-<section id="prerequisites" class="level3" data-number="24.1.1"><h3 data-number="24.1.1" class="anchored" data-anchor-id="prerequisites">
-<span class="header-section-number">24.1.1</span> Prerequisites</h3>
-<p>In this chapter, we’ll focus on tools provided by rvest. rvest is a member of the tidyverse, but is not a core member so you’ll need to load it explicitly. We’ll also load the full tidyverse since we’ll find it generally useful working with the data we’ve scraped.</p>
+</header><section id="引言" class="level2" data-number="24.1"><h2 data-number="24.1" class="anchored" data-anchor-id="引言">
+<span class="header-section-number">24.1</span> 引言</h2>
+<p>本章将向你介绍使用 <a href="https://rvest.tidyverse.org">rvest</a> 进行网络抓取 (web scraping) 的基础知识。网络抓取是从网页中提取数据的一个非常有用的工具。有些网站会提供 API，这是一组结构化的 HTTP 请求，以 JSON 格式返回数据，你可以使用 <a href="rectangling.html" class="quarto-xref"><span>Chapter 23</span></a> 中介绍的技术来处理这些数据。如果可能，你应该使用 API <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，因为它通常会为你提供更可靠的数据。然而，不幸的是，使用 Web API 进行编程超出了本书的范围。因此，我们教授的是抓取技术，无论网站是否提供 API，这种技术都适用。</p>
+<p>在本章中，我们首先会讨论抓取的伦理和法律问题，然后再深入探讨 HTML 的基础知识。接着，你将学习 CSS 选择器的基础知识，以定位页面上的特定元素，以及如何使用 rvest 函数从 HTML 中提取文本和属性数据并将其导入 R。然后，我们将讨论一些技巧，以帮助你确定所需页面的 CSS 选择器，最后通过几个案例研究结束，并简要讨论动态网站。</p>
+<section id="先决条件" class="level3" data-number="24.1.1"><h3 data-number="24.1.1" class="anchored" data-anchor-id="先决条件">
+<span class="header-section-number">24.1.1</span> 先决条件</h3>
+<p>在本章中，我们将重点介绍 rvest 提供的工具。rvest 是 tidyverse 的一个成员，但不是核心成员，所以你需要显式加载它。我们还将加载完整的 tidyverse，因为在处理我们抓取的数据时，它通常很有用。</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="scraping-ethics-and-legalities" class="level2" data-number="24.2"><h2 data-number="24.2" class="anchored" data-anchor-id="scraping-ethics-and-legalities">
-<span class="header-section-number">24.2</span> Scraping ethics and legalities</h2>
-<p>Before we get started discussing the code you’ll need to perform web scraping, we need to talk about whether it’s legal and ethical for you to do so. Overall, the situation is complicated with regards to both of these.</p>
-<p>Legalities depend a lot on where you live. However, as a general principle, if the data is public, non-personal, and factual, you’re likely to be ok<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. These three factors are important because they’re connected to the site’s terms and conditions, personally identifiable information, and copyright, as we’ll discuss below.</p>
-<p>If the data isn’t public, non-personal, or factual or you’re scraping the data specifically to make money with it, you’ll need to talk to a lawyer. In any case, you should be respectful of the resources of the server hosting the pages you are scraping. Most importantly, this means that if you’re scraping many pages, you should make sure to wait a little between each request. One easy way to do so is to use the <a href="https://dmi3kno.github.io/polite/"><strong>polite</strong></a> package by Dmytro Perepolkin. It will automatically pause between requests and cache the results so you never ask for the same page twice.</p>
-<section id="terms-of-service" class="level3" data-number="24.2.1"><h3 data-number="24.2.1" class="anchored" data-anchor-id="terms-of-service">
-<span class="header-section-number">24.2.1</span> Terms of service</h3>
-<p>If you look closely, you’ll find many websites include a “terms and conditions” or “terms of service” link somewhere on the page, and if you read that page closely you’ll often discover that the site specifically prohibits web scraping. These pages tend to be a legal land grab where companies make very broad claims. It’s polite to respect these terms of service where possible, but take any claims with a grain of salt.</p>
-<p>US courts have generally found that simply putting the terms of service in the footer of the website isn’t sufficient for you to be bound by them, e.g., <a href="https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn">HiQ Labs v. LinkedIn</a>. Generally, to be bound to the terms of service, you must have taken some explicit action like creating an account or checking a box. This is why whether or not the data is <strong>public</strong> is important; if you don’t need an account to access them, it is unlikely that you are bound to the terms of service. Note, however, the situation is rather different in Europe where courts have found that terms of service are enforceable even if you don’t explicitly agree to them.</p>
-</section><section id="personally-identifiable-information" class="level3" data-number="24.2.2"><h3 data-number="24.2.2" class="anchored" data-anchor-id="personally-identifiable-information">
-<span class="header-section-number">24.2.2</span> Personally identifiable information</h3>
-<p>Even if the data is public, you should be extremely careful about scraping personally identifiable information like names, email addresses, phone numbers, dates of birth, etc. Europe has particularly strict laws about the collection or storage of such data (<a href="https://gdpr-info.eu/">GDPR</a>), and regardless of where you live you’re likely to be entering an ethical quagmire. For example, in 2016, a group of researchers scraped public profile information (e.g., usernames, age, gender, location, etc.) about 70,000 people on the dating site OkCupid and they publicly released these data without any attempts for anonymization. While the researchers felt that there was nothing wrong with this since the data were already public, this work was widely condemned due to ethics concerns around identifiability of users whose information was released in the dataset. If your work involves scraping personally identifiable information, we strongly recommend reading about the OkCupid study<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> as well as similar studies with questionable research ethics involving the acquisition and release of personally identifiable information.</p>
-</section><section id="copyright" class="level3" data-number="24.2.3"><h3 data-number="24.2.3" class="anchored" data-anchor-id="copyright">
-<span class="header-section-number">24.2.3</span> Copyright</h3>
-<p>Finally, you also need to worry about copyright law. Copyright law is complicated, but it’s worth taking a look at the <a href="https://www.law.cornell.edu/uscode/text/17/102">US law</a> which describes exactly what’s protected: “[…] original works of authorship fixed in any tangible medium of expression, […]”. It then goes on to describe specific categories that it applies like literary works, musical works, motion pictures and more. Notably absent from copyright protection are data. This means that as long as you limit your scraping to facts, copyright protection does not apply. (But note that Europe has a separate “<a href="https://en.wikipedia.org/wiki/Database_right">sui generis</a>” right that protects databases.)</p>
-<p>As a brief example, in the US, lists of ingredients and instructions are not copyrightable, so copyright can not be used to protect a recipe. But if that list of recipes is accompanied by substantial novel literary content, that is copyrightable. This is why when you’re looking for a recipe on the internet there’s always so much content beforehand.</p>
-<p>If you do need to scrape original content (like text or images), you may still be protected under the <a href="https://en.wikipedia.org/wiki/Fair_use">doctrine of fair use</a>. Fair use is not a hard and fast rule, but weighs up a number of factors. It’s more likely to apply if you are collecting the data for research or non-commercial purposes and if you limit what you scrape to just what you need.</p>
-</section></section><section id="html-basics" class="level2" data-number="24.3"><h2 data-number="24.3" class="anchored" data-anchor-id="html-basics">
-<span class="header-section-number">24.3</span> HTML basics</h2>
-<p>To scrape webpages, you need to first understand a little bit about <strong>HTML</strong>, the language that describes web pages. HTML stands for <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage and looks something like this:</p>
+</section></section><section id="抓取的伦理和法律" class="level2" data-number="24.2"><h2 data-number="24.2" class="anchored" data-anchor-id="抓取的伦理和法律">
+<span class="header-section-number">24.2</span> 抓取的伦理和法律</h2>
+<p>在我们开始讨论执行网络抓取所需的代码之前，我们需要谈谈这样做是否合法和合乎道德。总的来说，这两种情况都很复杂。</p>
+<p>合法性在很大程度上取决于你所在的地区。然而，作为一般原则，如果数据是公开的、非个人的和事实性的，你很可能是安全的 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。这三个因素很重要，因为它们与网站的服务条款、个人身份信息和版权有关，我们将在下面讨论。</p>
+<p>如果数据不是公开的、非个人的或事实性的，或者你抓取数据的目的就是为了赚钱，那么你需要咨询律师。在任何情况下，你都应该尊重托管你正在抓取的页面的服务器资源。最重要的是，这意味着如果你要抓取许多页面，你应该确保在每个请求之间稍作等待。一个简单的方法是使用 Dmytro Perepolkin 的 <a href="https://dmi3kno.github.io/polite/"><strong>polite</strong></a> 包。它会自动在请求之间暂停，并缓存结果，这样你就永远不会两次请求同一个页面。</p>
+<section id="服务条款" class="level3" data-number="24.2.1"><h3 data-number="24.2.1" class="anchored" data-anchor-id="服务条款">
+<span class="header-section-number">24.2.1</span> 服务条款</h3>
+<p>如果你仔细观察，你会发现许多网站在页面的某个地方包含一个“条款和条件”或“服务条款”的链接，如果你仔细阅读那个页面，你通常会发现该网站明确禁止网络抓取。这些页面往往是公司提出非常宽泛主张的法律“圈地”。在可能的情况下，尊重这些服务条款是礼貌的，但对任何主张都要持保留态度。</p>
+<p>美国法院通常认为，仅仅将服务条款放在网站页脚不足以使你受其约束，例如 <a href="https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn">HiQ Labs v. LinkedIn</a>。通常，要受服务条款约束，你必须采取一些明确的行动，比如创建账户或勾选一个框。这就是为什么数据是否<strong>公开</strong>很重要的原因；如果你不需要账户就能访问它们，你就不太可能受服务条款的约束。但请注意，在欧洲情况大不相同，法院认为即使你没有明确同意，服务条款也是可执行的。</p>
+</section><section id="个人身份信息" class="level3" data-number="24.2.2"><h3 data-number="24.2.2" class="anchored" data-anchor-id="个人身份信息">
+<span class="header-section-number">24.2.2</span> 个人身份信息</h3>
+<p>即使数据是公开的，你也应该极其小心地抓取个人身份信息 (personally identifiable information)，如姓名、电子邮件地址、电话号码、出生日期等。欧洲对收集或存储此类数据有特别严格的法律 (<a href="https://gdpr-info.eu/">GDPR</a>)，无论你住在哪里，你都可能陷入道德困境。例如，2016 年，一组研究人员抓取了约会网站 OkCupid 上 70,000 人的公开个人资料信息（例如，用户名、年龄、性别、位置等），并在没有任何匿名化尝试的情况下公开发布了这些数据。虽然研究人员认为这样做没有错，因为数据已经是公开的，但这项工作因涉及用户身份可识别性的伦理问题而受到广泛谴责。如果你的工作涉及抓取个人身份信息，我们强烈建议阅读关于 OkCupid 研究 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 以及涉及获取和发布个人身份信息且研究伦理存疑的类似研究的资料。</p>
+</section><section id="版权" class="level3" data-number="24.2.3"><h3 data-number="24.2.3" class="anchored" data-anchor-id="版权">
+<span class="header-section-number">24.2.3</span> 版权</h3>
+<p>最后，你还需要担心版权法。版权法很复杂，但值得一看的是<a href="https://www.law.cornell.edu/uscode/text/17/102">美国法律</a>，它准确描述了受保护的内容：“[…] 固定在任何有形表达媒介中的原创作者作品 […]”。然后它继续描述了它适用的具体类别，如文学作品、音乐作品、电影等。值得注意的是，数据不在版权保护之列。这意味着，只要你将抓取限制在事实上，版权保护就不适用。（但请注意，欧洲有一项单独的“<a href="https://en.wikipedia.org/wiki/Database_right">特殊权利</a>” (sui generis)，用于保护数据库。）</p>
+<p>举个简单的例子，在美国，配料和说明的列表不受版权保护，所以版权不能用来保护食谱。但是，如果那份食谱列表伴随着大量新颖的文学内容，那么这些内容是受版权保护的。这就是为什么当你在互联网上寻找食谱时，总是有那么多前置内容的原因。</p>
+<p>如果你确实需要抓取原创内容（如文本或图片），你可能仍然受到<a href="https://en.wikipedia.org/wiki/Fair_use">合理使用原则</a> (doctrine of fair use) 的保护。合理使用不是一个硬性规定，而是权衡了许多因素。如果你是为了研究或非商业目的收集数据，并且你将抓取的内容限制在所需范围内，那么它更有可能适用。</p>
+</section></section><section id="html-基础" class="level2" data-number="24.3"><h2 data-number="24.3" class="anchored" data-anchor-id="html-基础">
+<span class="header-section-number">24.3</span> HTML 基础</h2>
+<p>要抓取网页，你首先需要对 <strong>HTML</strong> 有一点了解，这是一种描述网页的语言。HTML 是<strong>超文本标记语言</strong> (<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage) 的缩写，看起来像这样：</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Page title<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>页面标题<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">'first'</span><span class="dt">&gt;</span>A heading<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Some text <span class="dv">&amp;amp;</span> <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>some bold text.<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">'first'</span><span class="dt">&gt;</span>一个标题<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>一些文本 <span class="er">&amp;</span> <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>一些粗体文本。<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">'myimg.png'</span><span class="ot"> width</span><span class="op">=</span><span class="st">'100'</span><span class="ot"> height</span><span class="op">=</span><span class="st">'100'</span><span class="dt">&gt;</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>HTML has a hierarchical structure formed by <strong>elements</strong> which consist of a start tag (e.g., <code>&lt;tag&gt;</code>), optional <strong>attributes</strong> (<code>id='first'</code>), an end tag<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> (like <code>&lt;/tag&gt;</code>), and <strong>contents</strong> (everything in between the start and end tag).</p>
-<p>Since <code>&lt;</code> and <code>&gt;</code> are used for start and end tags, you can’t write them directly. Instead you have to use the HTML <strong>escapes</strong> <code>&amp;gt;</code> (greater than) and <code>&amp;lt;</code> (less than). And since those escapes use <code>&amp;</code>, if you want a literal ampersand you have to escape it as <code>&amp;amp;</code>. There are a wide range of possible HTML escapes but you don’t need to worry about them too much because rvest automatically handles them for you.</p>
-<p>Web scraping is possible because most pages that contain data that you want to scrape generally have a consistent structure.</p>
-<section id="elements" class="level3" data-number="24.3.1"><h3 data-number="24.3.1" class="anchored" data-anchor-id="elements">
-<span class="header-section-number">24.3.1</span> Elements</h3>
-<p>There are over 100 HTML elements. Some of the most important are:</p>
+<p>HTML 具有由<strong>元素</strong> (elements) 构成的层次结构，元素由一个开始标签 (start tag)（例如 <code>&lt;tag&gt;</code>）、可选的<strong>属性</strong> (attributes)（<code>id='first'</code>）、一个结束标签 (end tag) <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>（例如 <code>&lt;/tag&gt;</code>）和<strong>内容</strong> (contents)（开始和结束标签之间的所有内容）组成。</p>
+<p>由于 <code>&lt;</code> 和 <code>&gt;</code> 用于开始和结束标签，你不能直接写它们。你必须使用 HTML <strong>转义</strong> (escapes) <code>&amp;gt;</code> (大于) 和 <code>&amp;lt;</code> (小于)。并且由于这些转义使用了 <code>&amp;</code>，如果你想要一个字面上的 <code>&amp;</code> 符号，你必须将其转义为 <code>&amp;amp;</code>。有各种各样的 HTML 转义，但你不需要太担心它们，因为 rvest 会自动为你处理。</p>
+<p>网络抓取之所以可行，是因为大多数包含你想要抓取的数据的页面通常都有一个一致的结构。</p>
+<section id="元素" class="level3" data-number="24.3.1"><h3 data-number="24.3.1" class="anchored" data-anchor-id="元素">
+<span class="header-section-number">24.3.1</span> 元素</h3>
+<p>HTML 元素有 100 多种。其中一些最重要的元素是：</p>
 <ul>
-<li><p>Every HTML page must be in an <code>&lt;html&gt;</code> element, and it must have two children: <code>&lt;head&gt;</code>, which contains document metadata like the page title, and <code>&lt;body&gt;</code>, which contains the content you see in the browser.</p></li>
-<li><p>Block tags like <code>&lt;h1&gt;</code> (heading 1), <code>&lt;section&gt;</code> (section), <code>&lt;p&gt;</code> (paragraph), and <code>&lt;ol&gt;</code> (ordered list) form the overall structure of the page.</p></li>
-<li><p>Inline tags like <code>&lt;b&gt;</code> (bold), <code>&lt;i&gt;</code> (italics), and <code>&lt;a&gt;</code> (link) format text inside block tags.</p></li>
+<li><p>每个 HTML 页面都必须在一个 <code>&lt;html&gt;</code> 元素中，并且它必须有两个子元素：<code>&lt;head&gt;</code>，包含文档元数据，如页面标题；以及 <code>&lt;body&gt;</code>，包含你在浏览器中看到的内容。</p></li>
+<li><p>块级标签，如 <code>&lt;h1&gt;</code> (一级标题)、<code>&lt;section&gt;</code> (区域)、<code>&lt;p&gt;</code> (段落) 和 <code>&lt;ol&gt;</code> (有序列表)，构成了页面的整体结构。</p></li>
+<li><p>内联标签，如 <code>&lt;b&gt;</code> (粗体)、<code>&lt;i&gt;</code> (斜体) 和 <code>&lt;a&gt;</code> (链接)，用于格式化块级标签内的文本。</p></li>
 </ul>
-<p>If you encounter a tag that you’ve never seen before, you can find out what it does with a little googling. Another good place to start are the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs</a> which describe just about every aspect of web programming.</p>
-<p>Most elements can have content in between their start and end tags. This content can either be text or more elements. For example, the following HTML contains paragraph of text, with one word in bold.</p>
-<pre><code>&lt;p&gt;
-  Hi! My &lt;b&gt;name&lt;/b&gt; is Hadley.
-&lt;/p&gt;</code></pre>
-<p>The <strong>children</strong> are the elements it contains, so the <code>&lt;p&gt;</code> element above has one child, the <code>&lt;b&gt;</code> element. The <code>&lt;b&gt;</code> element has no children, but it does have contents (the text “name”).</p>
-</section><section id="attributes" class="level3" data-number="24.3.2"><h3 data-number="24.3.2" class="anchored" data-anchor-id="attributes">
-<span class="header-section-number">24.3.2</span> Attributes</h3>
-<p>Tags can have named <strong>attributes</strong> which look like <code>name1='value1' name2='value2'</code>. Two of the most important attributes are <code>id</code> and <code>class</code>, which are used in conjunction with CSS (Cascading Style Sheets) to control the visual appearance of the page. These are often useful when scraping data off a page. Attributes are also used to record the destination of links (the <code>href</code> attribute of <code>&lt;a&gt;</code> elements) and the source of images (the <code>src</code> attribute of the <code>&lt;img&gt;</code> element).</p>
-</section></section><section id="extracting-data" class="level2" data-number="24.4"><h2 data-number="24.4" class="anchored" data-anchor-id="extracting-data">
-<span class="header-section-number">24.4</span> Extracting data</h2>
-<p>To get started scraping, you’ll need the URL of the page you want to scrape, which you can usually copy from your web browser. You’ll then need to read the HTML for that page into R with <code><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html()</a></code>. This returns an <code>xml_document</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> object which you’ll then manipulate using rvest functions:</p>
+<p>如果你遇到一个你从未见过的标签，你可以通过谷歌搜索来了解它的作用。另一个好的起点是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs</a>，它描述了几乎所有 Web 编程的方面。</p>
+<p>大多数元素在其开始和结束标签之间可以有内容。这个内容可以是文本，也可以是更多的元素。例如，下面的 HTML 包含一个文本段落，其中一个词是粗体的。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  嗨！我的<span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>名字<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span>是 Hadley。</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>子元素</strong> (children) 是它包含的元素，所以上面的 <code>&lt;p&gt;</code> 元素有一个子元素，即 <code>&lt;b&gt;</code> 元素。<code>&lt;b&gt;</code> 元素没有子元素，但它有内容（文本“名字”）。</p>
+</section><section id="属性" class="level3" data-number="24.3.2"><h3 data-number="24.3.2" class="anchored" data-anchor-id="属性">
+<span class="header-section-number">24.3.2</span> 属性</h3>
+<p>标签可以有命名的<strong>属性</strong> (attributes)，看起来像 <code>name1='value1' name2='value2'</code>。两个最重要的属性是 <code>id</code> 和 <code>class</code>，它们与 CSS (Cascading Style Sheets) 结合使用，以控制页面的视觉外观。在抓取数据时，这些属性通常很有用。属性还用于记录链接的目的地（<code>&lt;a&gt;</code> 元素的 <code>href</code> 属性）和图像的来源（<code>&lt;img&gt;</code> 元素的 <code>src</code> 属性）。</p>
+</section></section><section id="提取数据" class="level2" data-number="24.4"><h2 data-number="24.4" class="anchored" data-anchor-id="提取数据">
+<span class="header-section-number">24.4</span> 提取数据</h2>
+<p>要开始抓取，你需要你想要抓取的页面的 URL，你通常可以从你的网络浏览器中复制。然后，你需要使用 <code><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html()</a></code> 将该页面的 HTML 读入 R。这将返回一个 <code>xml_document</code> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 对象，然后你将使用 rvest 函数来操作它：</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"http://rvest.tidyverse.org/"</span><span class="op">)</span></span>
 <span><span class="va">html</span></span>
@@ -534,58 +534,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UT ...</span></span>
 <span><span class="co">#&gt; [2] &lt;body&gt;\n    &lt;a href="#container" class="visually-hidden-focusable"&gt;Ski ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>rvest also includes a function that lets you write HTML inline. We’ll use this a bunch in this chapter as we teach how the various rvest functions work with simple examples.</p>
+<p>rvest 还包含一个函数，可以让你内联编写 HTML。在本章中，我们将大量使用这个函数，因为我们通过简单的例子来教授各种 rvest 函数的工作方式。</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
-<span><span class="st">  &lt;p&gt;This is a paragraph&lt;/p&gt;</span></span>
+<span><span class="st">  &lt;p&gt;这是一个段落&lt;/p&gt;</span></span>
 <span><span class="st">  &lt;ul&gt;</span></span>
-<span><span class="st">    &lt;li&gt;This is a bulleted list&lt;/li&gt;</span></span>
+<span><span class="st">    &lt;li&gt;这是一个项目符号列表&lt;/li&gt;</span></span>
 <span><span class="st">  &lt;/ul&gt;</span></span>
 <span><span class="st">"</span><span class="op">)</span></span>
 <span><span class="va">html</span></span>
 <span><span class="co">#&gt; {html_document}</span></span>
 <span><span class="co">#&gt; &lt;html&gt;</span></span>
 <span><span class="co">#&gt; [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UT ...</span></span>
-<span><span class="co">#&gt; [2] &lt;body&gt;\n&lt;p&gt;This is a paragraph&lt;/p&gt;\n  &lt;ul&gt;\n&lt;li&gt;This is a bulleted lis ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [2] &lt;body&gt;\n&lt;p&gt;这是一个段落&lt;/p&gt;\n  &lt;ul&gt;\n&lt;li&gt;这是一个项目符号列表&lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/body&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now that you have the HTML in R, it’s time to extract the data of interest. You’ll first learn about the CSS selectors that allow you to identify the elements of interest and the rvest functions that you can use to extract data from them. Then we’ll briefly cover HTML tables, which have some special tools.</p>
-<section id="find-elements" class="level3" data-number="24.4.1"><h3 data-number="24.4.1" class="anchored" data-anchor-id="find-elements">
-<span class="header-section-number">24.4.1</span> Find elements</h3>
-<p>CSS is short for cascading style sheets, and is a tool for defining the visual styling of HTML documents. CSS includes a miniature language for selecting elements on a page called <strong>CSS selectors</strong>. CSS selectors define patterns for locating HTML elements, and are useful for scraping because they provide a concise way of describing which elements you want to extract.</p>
-<p>We’ll come back to CSS selectors in more detail in <a href="#sec-css-selectors" class="quarto-xref"><span>Section 24.5</span></a>, but luckily you can get a long way with just three:</p>
+<p>现在你已经在 R 中有了 HTML，是时候提取感兴趣的数据了。你将首先学习 CSS 选择器，它允许你识别感兴趣的元素，以及你可以用来从中提取数据的 rvest 函数。然后我们将简要介绍 HTML 表格，它有一些特殊的工具。</p>
+<section id="查找元素" class="level3" data-number="24.4.1"><h3 data-number="24.4.1" class="anchored" data-anchor-id="查找元素">
+<span class="header-section-number">24.4.1</span> 查找元素</h3>
+<p>CSS 是层叠样式表 (cascading style sheets) 的缩写，是一种用于定义 HTML 文档视觉样式的工具。CSS 包括一种用于在页面上选择元素的微型语言，称为 <strong>CSS 选择器</strong> (CSS selectors)。CSS 选择器定义了定位 HTML 元素的模式，对于抓取很有用，因为它们提供了一种简洁的方式来描述你想要提取的元素。</p>
+<p>我们将在 <a href="#sec-css-selectors" class="quarto-xref"><span>Section 24.5</span></a> 中更详细地回到 CSS 选择器，但幸运的是，你只需掌握三个就可以走得很远：</p>
 <ul>
-<li><p><code>p</code> selects all <code>&lt;p&gt;</code> elements.</p></li>
-<li><p><code>.title</code> selects all elements with <code>class</code> “title”.</p></li>
-<li><p><code>#title</code> selects the element with the <code>id</code> attribute that equals “title”. Id attributes must be unique within a document, so this will only ever select a single element.</p></li>
+<li><p><code>p</code> 选择所有 <code>&lt;p&gt;</code> 元素。</p></li>
+<li><p><code>.title</code> 选择所有 <code>class</code> 为 “title” 的元素。</p></li>
+<li><p><code>#title</code> 选择 <code>id</code> 属性等于 “title” 的元素。Id 属性在文档中必须是唯一的，所以这只会选择一个元素。</p></li>
 </ul>
-<p>Let’s try out these selectors with a simple example:</p>
+<p>让我们用一个简单的例子来试试这些选择器：</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
-<span><span class="st">  &lt;h1&gt;This is a heading&lt;/h1&gt;</span></span>
-<span><span class="st">  &lt;p id='first'&gt;This is a paragraph&lt;/p&gt;</span></span>
-<span><span class="st">  &lt;p class='important'&gt;This is an important paragraph&lt;/p&gt;</span></span>
+<span><span class="st">  &lt;h1&gt;这是一个标题&lt;/h1&gt;</span></span>
+<span><span class="st">  &lt;p id='first'&gt;这是一个段落&lt;/p&gt;</span></span>
+<span><span class="st">  &lt;p class='important'&gt;这是一个重要的段落&lt;/p&gt;</span></span>
 <span><span class="st">"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to find all elements that match the selector:</p>
+<p>使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 来查找所有匹配选择器的元素：</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (2)}</span></span>
-<span><span class="co">#&gt; [1] &lt;p id="first"&gt;This is a paragraph&lt;/p&gt;</span></span>
-<span><span class="co">#&gt; [2] &lt;p class="important"&gt;This is an important paragraph&lt;/p&gt;</span></span>
+<span><span class="co">#&gt; [1] &lt;p id="first"&gt;这是一个段落&lt;/p&gt;</span></span>
+<span><span class="co">#&gt; [2] &lt;p class="important"&gt;这是一个重要的段落&lt;/p&gt;</span></span>
 <span><span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">".important"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (1)}</span></span>
-<span><span class="co">#&gt; [1] &lt;p class="important"&gt;This is an important paragraph&lt;/p&gt;</span></span>
+<span><span class="co">#&gt; [1] &lt;p class="important"&gt;这是一个重要的段落&lt;/p&gt;</span></span>
 <span><span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"#first"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (1)}</span></span>
-<span><span class="co">#&gt; [1] &lt;p id="first"&gt;This is a paragraph&lt;/p&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] &lt;p id="first"&gt;这是一个段落&lt;/p&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another important function is <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> which always returns the same number of outputs as inputs. If you apply it to a whole document it’ll give you the first match:</p>
+<p>另一个重要的函数是 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code>，它总是返回与输入相同数量的输出。如果你将它应用于整个文档，它会给你第一个匹配项：</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {html_node}</span></span>
 <span><span class="co">#&gt; &lt;p id="first"&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There’s an important difference between <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> when you use a selector that doesn’t match any elements. <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> returns a vector of length 0, where <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> returns a missing value. This will be important shortly.</p>
+<p>当你使用一个不匹配任何元素的选择器时，<code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 和 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 之间有一个重要的区别。<code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 返回一个长度为 0 的向量，而 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 返回一个缺失值。这一点很快就会变得很重要。</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (0)}</span></span>
@@ -593,30 +593,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; {xml_missing}</span></span>
 <span><span class="co">#&gt; &lt;NA&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="nesting-selections" class="level3" data-number="24.4.2"><h3 data-number="24.4.2" class="anchored" data-anchor-id="nesting-selections">
-<span class="header-section-number">24.4.2</span> Nesting selections</h3>
-<p>In most cases, you’ll use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> together, typically using <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to identify elements that will become observations then using <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> to find elements that will become variables. Let’s see this in action using a simple example. Here we have an unordered list (<code>&lt;ul&gt;)</code> where each list item (<code>&lt;li&gt;</code>) contains some information about four characters from StarWars:</p>
+</section><section id="嵌套选择" class="level3" data-number="24.4.2"><h3 data-number="24.4.2" class="anchored" data-anchor-id="嵌套选择">
+<span class="header-section-number">24.4.2</span> 嵌套选择</h3>
+<p>在大多数情况下，你会一起使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 和 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code>，通常使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 来识别将成为观测值的元素，然后使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 来查找将成为变量的元素。让我们通过一个简单的例子来看看这个过程。这里我们有一个无序列表 (<code>&lt;ul&gt;</code>)，其中每个列表项 (<code>&lt;li&gt;</code>) 都包含一些关于星球大战中四个角色的信息：</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">  &lt;ul&gt;</span></span>
-<span><span class="st">    &lt;li&gt;&lt;b&gt;C-3PO&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class='weight'&gt;167 kg&lt;/span&gt;&lt;/li&gt;</span></span>
-<span><span class="st">    &lt;li&gt;&lt;b&gt;R4-P17&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt;&lt;/li&gt;</span></span>
-<span><span class="st">    &lt;li&gt;&lt;b&gt;R2-D2&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class='weight'&gt;96 kg&lt;/span&gt;&lt;/li&gt;</span></span>
-<span><span class="st">    &lt;li&gt;&lt;b&gt;Yoda&lt;/b&gt; weighs &lt;span class='weight'&gt;66 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span><span class="st">    &lt;li&gt;&lt;b&gt;C-3PO&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;，重 &lt;span class='weight'&gt;167 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span><span class="st">    &lt;li&gt;&lt;b&gt;R4-P17&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;&lt;/li&gt;</span></span>
+<span><span class="st">    &lt;li&gt;&lt;b&gt;R2-D2&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;，重 &lt;span class='weight'&gt;96 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span><span class="st">    &lt;li&gt;&lt;b&gt;Yoda&lt;/b&gt; 重 &lt;span class='weight'&gt;66 kg&lt;/span&gt;&lt;/li&gt;</span></span>
 <span><span class="st">  &lt;/ul&gt;</span></span>
 <span><span class="st">  "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to make a vector where each element corresponds to a different character:</p>
+<p>我们可以使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 来创建一个向量，其中每个元素对应一个不同的角色：</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"li"</span><span class="op">)</span></span>
 <span><span class="va">characters</span></span>
 <span><span class="co">#&gt; {xml_nodeset (4)}</span></span>
-<span><span class="co">#&gt; [1] &lt;li&gt;\n&lt;b&gt;C-3PO&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class="weight"&gt; ...</span></span>
-<span><span class="co">#&gt; [2] &lt;li&gt;\n&lt;b&gt;R4-P17&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt;\n&lt;/li&gt;</span></span>
-<span><span class="co">#&gt; [3] &lt;li&gt;\n&lt;b&gt;R2-D2&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class="weight"&gt; ...</span></span>
-<span><span class="co">#&gt; [4] &lt;li&gt;\n&lt;b&gt;Yoda&lt;/b&gt; weighs &lt;span class="weight"&gt;66 kg&lt;/span&gt;\n&lt;/li&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] &lt;li&gt;\n&lt;b&gt;C-3PO&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;，重 &lt;span class="weight"&gt;167 kg&lt;/span&gt;\ ...</span></span>
+<span><span class="co">#&gt; [2] &lt;li&gt;\n&lt;b&gt;R4-P17&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;\n&lt;/li&gt;</span></span>
+<span><span class="co">#&gt; [3] &lt;li&gt;\n&lt;b&gt;R2-D2&lt;/b&gt; 是一个&lt;i&gt;机器人&lt;/i&gt;，重 &lt;span class="weight"&gt;96 kg&lt;/span&gt;\n ...</span></span>
+<span><span class="co">#&gt; [4] &lt;li&gt;\n&lt;b&gt;Yoda&lt;/b&gt; 重 &lt;span class="weight"&gt;66 kg&lt;/span&gt;\n&lt;/li&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To extract the name of each character, we use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code>, because when applied to the output of <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> it’s guaranteed to return one response per element:</p>
+<p>要提取每个角色的名字，我们使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code>，因为当它应用于 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 的输出时，它保证为每个元素返回一个响应：</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (4)}</span></span>
@@ -625,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [3] &lt;b&gt;R2-D2&lt;/b&gt;</span></span>
 <span><span class="co">#&gt; [4] &lt;b&gt;Yoda&lt;/b&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The distinction between <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> and <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> isn’t important for name, but it is important for weight. We want to get one weight for each character, even if there’s no weight <code>&lt;span&gt;</code>. That’s what <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> does:</p>
+<p><code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 和 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 之间的区别对于名字来说并不重要，但对于体重来说很重要。我们希望为每个角色获得一个体重，即使没有体重 <code>&lt;span&gt;</code>。这就是 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 所做的：</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (4)}</span></span>
@@ -634,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [3] &lt;span class="weight"&gt;96 kg&lt;/span&gt;</span></span>
 <span><span class="co">#&gt; [4] &lt;span class="weight"&gt;66 kg&lt;/span&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> finds all weight <code>&lt;span&gt;</code>s that are children of <code>characters</code>. There’s only three of these, so we lose the connection between names and weights:</p>
+<p><code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 查找所有作为 <code>characters</code> 子元素的体重 <code>&lt;span&gt;</code>。这里只有三个，所以我们失去了名字和体重之间的联系：</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; {xml_nodeset (3)}</span></span>
@@ -642,55 +642,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [2] &lt;span class="weight"&gt;96 kg&lt;/span&gt;</span></span>
 <span><span class="co">#&gt; [3] &lt;span class="weight"&gt;66 kg&lt;/span&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now that you’ve selected the elements of interest, you’ll need to extract the data, either from the text contents or some attributes.</p>
-</section><section id="text-and-attributes" class="level3" data-number="24.4.3"><h3 data-number="24.4.3" class="anchored" data-anchor-id="text-and-attributes">
-<span class="header-section-number">24.4.3</span> Text and attributes</h3>
-<p><code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> extracts the plain text contents of an HTML element:</p>
+<p>现在你已经选择了感兴趣的元素，你需要提取数据，可以从文本内容或某些属性中提取。</p>
+</section><section id="文本和属性" class="level3" data-number="24.4.3"><h3 data-number="24.4.3" class="anchored" data-anchor-id="文本和属性">
+<span class="header-section-number">24.4.3</span> 文本和属性</h3>
+<p><code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 提取 HTML 元素的纯文本内容：</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "C-3PO"  "R4-P17" "R2-D2"  "Yoda"</span></span>
 <span></span>
-<span><span class="va">characters</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">characters</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".weight"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "167 kg" NA       "96 kg"  "66 kg"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that any escapes will be automatically handled; you’ll only ever see HTML escapes in the source HTML, not in the data returned by rvest.</p>
-<p><code><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr()</a></code> extracts data from attributes:</p>
+<p>注意，任何转义都会被自动处理；你只会在源 HTML 中看到 HTML 转义，而不会在 rvest 返回的数据中看到。</p>
+<p><code><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr()</a></code> 从属性中提取数据：</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
-<span><span class="st">  &lt;p&gt;&lt;a href='https://en.wikipedia.org/wiki/Cat'&gt;cats&lt;/a&gt;&lt;/p&gt;</span></span>
-<span><span class="st">  &lt;p&gt;&lt;a href='https://en.wikipedia.org/wiki/Dog'&gt;dogs&lt;/a&gt;&lt;/p&gt;</span></span>
+<span><span class="st">  &lt;p&gt;&lt;a href='https://en.wikipedia.org/wiki/Cat'&gt;猫&lt;/a&gt;&lt;/p&gt;</span></span>
+<span><span class="st">  &lt;p&gt;&lt;a href='https://en.wikipedia.org/wiki/Dog'&gt;狗&lt;/a&gt;&lt;/p&gt;</span></span>
 <span><span class="st">"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">html</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span></span>
+<span><span class="va">html</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "https://en.wikipedia.org/wiki/Cat" "https://en.wikipedia.org/wiki/Dog"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr()</a></code> always returns a string, so if you’re extracting numbers or dates, you’ll need to do some post-processing.</p>
-</section><section id="tables" class="level3" data-number="24.4.4"><h3 data-number="24.4.4" class="anchored" data-anchor-id="tables">
-<span class="header-section-number">24.4.4</span> Tables</h3>
-<p>If you’re lucky, your data will be already stored in an HTML table, and it’ll be a matter of just reading it from that table. It’s usually straightforward to recognize a table in your browser: it’ll have a rectangular structure of rows and columns, and you can copy and paste it into a tool like Excel.</p>
-<p>HTML tables are built up from four main elements: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (table row), <code>&lt;th&gt;</code> (table heading), and <code>&lt;td&gt;</code> (table data). Here’s a simple HTML table with two columns and three rows:</p>
+<p><code><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr()</a></code> 总是返回一个字符串，所以如果你正在提取数字或日期，你需要进行一些后处理。</p>
+</section><section id="表格" class="level3" data-number="24.4.4"><h3 data-number="24.4.4" class="anchored" data-anchor-id="表格">
+<span class="header-section-number">24.4.4</span> 表格</h3>
+<p>如果幸运的话，你的数据已经存储在 HTML 表格中，那么只需要从该表格中读取即可。在浏览器中识别表格通常很简单：它会有一个行和列的矩形结构，你可以将其复制并粘贴到像 Excel 这样的工具中。</p>
+<p>HTML 表格由四个主要元素构成：<code>&lt;table&gt;</code>、<code>&lt;tr&gt;</code>（表格行）、<code>&lt;th&gt;</code>（表格标题）和 <code>&lt;td&gt;</code>（表格数据）。这是一个简单的 HTML 表格，有两列三行：</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/minimal_html.html">minimal_html</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">  &lt;table class='mytable'&gt;</span></span>
-<span><span class="st">    &lt;tr&gt;&lt;th&gt;x&lt;/th&gt;   &lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;</span></span>
+<span><span class="st">    &lt;tr&gt;&lt;th&gt;x&lt;/th&gt;    &lt;th&gt;y&lt;/th&gt;&lt;/tr&gt;</span></span>
 <span><span class="st">    &lt;tr&gt;&lt;td&gt;1.5&lt;/td&gt; &lt;td&gt;2.7&lt;/td&gt;&lt;/tr&gt;</span></span>
 <span><span class="st">    &lt;tr&gt;&lt;td&gt;4.9&lt;/td&gt; &lt;td&gt;1.3&lt;/td&gt;&lt;/tr&gt;</span></span>
 <span><span class="st">    &lt;tr&gt;&lt;td&gt;7.2&lt;/td&gt; &lt;td&gt;8.1&lt;/td&gt;&lt;/tr&gt;</span></span>
 <span><span class="st">  &lt;/table&gt;</span></span>
 <span><span class="st">  "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>rvest provides a function that knows how to read this sort of data: <code><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table()</a></code>. It returns a list containing one tibble for each table found on the page. Use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> to identify the table you want to extract:</p>
+<p>rvest 提供了一个知道如何读取这类数据的函数：<code><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table()</a></code>。它返回一个列表，其中包含页面上找到的每个表格的一个 tibble。使用 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element()</a></code> 来识别你想要提取的表格：</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".mytable"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".mytable"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;       x     y</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -698,21 +698,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2   4.9   1.3</span></span>
 <span><span class="co">#&gt; 3   7.2   8.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that <code>x</code> and <code>y</code> have automatically been converted to numbers. This automatic conversion doesn’t always work, so in more complex scenarios you may want to turn it off with <code>convert = FALSE</code> and then do your own conversion.</p>
+<p>注意 <code>x</code> 和 <code>y</code> 已经自动转换为数字。这种自动转换并不总是有效，所以在更复杂的场景中，你可能需要使用 <code>convert = FALSE</code> 关闭它，然后自己进行转换。</p>
 </section></section><section id="sec-css-selectors" class="level2" data-number="24.5"><h2 data-number="24.5" class="anchored" data-anchor-id="sec-css-selectors">
-<span class="header-section-number">24.5</span> Finding the right selectors</h2>
-<p>Figuring out the selector you need for your data is typically the hardest part of the problem. You’ll often need to do some experimenting to find a selector that is both specific (i.e.&nbsp;it doesn’t select things you don’t care about) and sensitive (i.e.&nbsp;it does select everything you care about). Lots of trial and error is a normal part of the process! There are two main tools that are available to help you with this process: SelectorGadget and your browser’s developer tools.</p>
-<p><a href="https://rvest.tidyverse.org/articles/selectorgadget.html">SelectorGadget</a> is a javascript bookmarklet that automatically generates CSS selectors based on the positive and negative examples that you provide. It doesn’t always work, but when it does, it’s magic! You can learn how to install and use SelectorGadget either by reading <a href="https://rvest.tidyverse.org/articles/selectorgadget.html" class="uri">https://rvest.tidyverse.org/articles/selectorgadget.html</a> or watching Mine’s video at <a href="https://www.youtube.com/watch?v=PetWV5g1Xsc" class="uri">https://www.youtube.com/watch?v=PetWV5g1Xsc</a>.</p>
-<p>Every modern browser comes with some toolkit for developers, but we recommend Chrome, even if it isn’t your regular browser: its web developer tools are some of the best and they’re immediately available. Right click on an element on the page and click <code>Inspect</code>. This will open an expandable view of the complete HTML page, centered on the element that you just clicked. You can use this to explore the page and get a sense of what selectors might work. Pay particular attention to the class and id attributes, since these are often used to form the visual structure of the page, and hence make for good tools to extract the data that you’re looking for.</p>
-<p>Inside the Elements view, you can also right click on an element and choose <code>Copy as Selector</code> to generate a selector that will uniquely identify the element of interest.</p>
-<p>If either SelectorGadget or Chrome DevTools have generated a CSS selector that you don’t understand, try <a href="https://kittygiraudel.github.io/selectors-explained/" class="uri">Selectors Explained</a> which translates CSS selectors into plain English. If you find yourself doing this a lot, you might want to learn more about CSS selectors generally. We recommend starting with the fun <a href="https://flukeout.github.io/">CSS dinner</a> tutorial and then referring to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN web docs</a>.</p>
-</section><section id="putting-it-all-together" class="level2" data-number="24.6"><h2 data-number="24.6" class="anchored" data-anchor-id="putting-it-all-together">
-<span class="header-section-number">24.6</span> Putting it all together</h2>
-<p>Let’s put this all together to scrape some websites. There’s some risk that these examples may no longer work when you run them — that’s the fundamental challenge of web scraping; if the structure of the site changes, then you’ll have to change your scraping code.</p>
-<section id="starwars" class="level3" data-number="24.6.1"><h3 data-number="24.6.1" class="anchored" data-anchor-id="starwars">
-<span class="header-section-number">24.6.1</span> StarWars</h3>
-<p>rvest includes a very simple example in <code><a href="https://rvest.tidyverse.org/articles/starwars.html">vignette("starwars")</a></code>. This is a simple page with minimal HTML so it’s a good place to start. I’d encourage you to navigate to that page now and use “Inspect Element” to inspect one of the headings that’s the title of a Star Wars movie. Use the keyboard or mouse to explore the hierarchy of the HTML and see if you can get a sense of the shared structure used by each movie.</p>
-<p>You should be able to see that each movie has a shared structure that looks like this:</p>
+<span class="header-section-number">24.5</span> 找到正确的选择器</h2>
+<p>找出你需要的数据的选择器通常是问题中最难的部分。你通常需要进行一些实验，才能找到一个既具体（即它不选择你不在乎的东西）又敏感（即它确实选择了你关心的所有东西）的选择器。大量的反复试验是这个过程的正常部分！有两个主要工具可以帮助你完成这个过程：SelectorGadget 和你浏览器的开发者工具。</p>
+<p><a href="https://rvest.tidyverse.org/articles/selectorgadget.html">SelectorGadget</a> 是一个 javascript 书签工具，它会根据你提供的正面和负面例子自动生成 CSS 选择器。它并不总是有效，但当它有效时，简直是魔法！你可以通过阅读 <a href="https://rvest.tidyverse.org/articles/selectorgadget.html">https://rvest.tidyverse.org/articles/selectorgadget.html</a> 或观看 Mine 在 <a href="https://www.youtube.com/watch?v=PetWV5g1Xsc">https://www.youtube.com/watch?v=PetWV5g1Xsc</a> 上的视频来学习如何安装和使用 SelectorGadget。</p>
+<p>每个现代浏览器都带有一些面向开发者的工具包，但我们推荐 Chrome，即使它不是你的常规浏览器：它的 Web 开发者工具是最好的之一，而且立即可用。在页面上的一个元素上右键单击，然后点击 <code>Inspect</code> (检查)。这将打开一个可展开的完整 HTML 页面视图，并以你刚刚点击的元素为中心。你可以用它来探索页面，并了解哪些选择器可能有效。要特别注意 class 和 id 属性，因为它们通常用于形成页面的视觉结构，因此是提取你正在寻找的数据的好工具。</p>
+<p>在 Elements (元素) 视图中，你还可以右键单击一个元素并选择 <code>Copy as Selector</code> (复制为选择器)，以生成一个将唯一标识感兴趣元素的选择器。</p>
+<p>如果 SelectorGadget 或 Chrome DevTools 生成了一个你看不懂的 CSS 选择器，可以试试 <a href="https://kittygiraudel.github.io/selectors-explained/" class="uri">Selectors Explained</a>，它将 CSS 选择器翻译成通俗易懂的英语。如果你发现自己经常这样做，你可能想更多地了解 CSS 选择器。我们推荐从有趣的 <a href="https://flukeout.github.io/">CSS dinner</a> 教程开始，然后参考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN web docs</a>。</p>
+</section><section id="整合所有内容" class="level2" data-number="24.6"><h2 data-number="24.6" class="anchored" data-anchor-id="整合所有内容">
+<span class="header-section-number">24.6</span> 整合所有内容</h2>
+<p>让我们把所有这些整合起来，抓取一些网站。当你运行这些例子时，它们可能不再有效——这是网络抓取的根本挑战；如果网站的结构改变了，你就必须改变你的抓取代码。</p>
+<section id="星球大战" class="level3" data-number="24.6.1"><h3 data-number="24.6.1" class="anchored" data-anchor-id="星球大战">
+<span class="header-section-number">24.6.1</span> 星球大战</h3>
+<p>rvest 在 <code><a href="https://rvest.tidyverse.org/articles/starwars.html">vignette("starwars")</a></code> 中包含了一个非常简单的例子。这是一个简单的页面，HTML 最少，所以是一个很好的起点。我鼓励你现在就导航到那个页面，并使用“检查元素”来检查一个作为星球大战电影标题的标题。使用键盘或鼠标来探索 HTML 的层次结构，看看你是否能感觉到每部电影使用的共享结构。</p>
+<p>你应该能看到每部电影都有一个共享的结构，看起来像这样：</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">section</span><span class="dt">&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">h2</span><span class="ot"> data-id</span><span class="op">=</span><span class="st">"1"</span><span class="dt">&gt;</span>The Phantom Menace<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Released: 1999-05-19<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
@@ -724,7 +724,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Our goal is to turn this data into a 7 row data frame with variables <code>title</code>, <code>year</code>, <code>director</code>, and <code>intro</code>. We’ll start by reading the HTML and extracting all the <code>&lt;section&gt;</code> elements:</p>
+<p>我们的目标是将这些数据转换成一个 7 行的数据框，包含 <code>title</code>、<code>year</code>、<code>director</code> 和 <code>intro</code> 变量。我们将从读取 HTML 并提取所有 <code>&lt;section&gt;</code> 元素开始：</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://rvest.tidyverse.org/articles/starwars.html"</span></span>
 <span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
@@ -740,40 +740,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [6] &lt;section&gt;&lt;h2 data-id="6"&gt;\nReturn of the Jedi\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 1 ...</span></span>
 <span><span class="co">#&gt; [7] &lt;section&gt;&lt;h2 data-id="7"&gt;\nThe Force Awakens\n&lt;/h2&gt;\n&lt;p&gt;\nReleased: 20 ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This retrieves seven elements matching the seven movies found on that page, suggesting that using <code>section</code> as a selector is good. Extracting the individual elements is straightforward since the data is always found in the text. It’s just a matter of finding the right selector:</p>
+<p>这检索到了七个元素，与该页面上找到的七部电影相匹配，这表明使用 <code>section</code> 作为选择器是好的。提取单个元素很简单，因为数据总是可以在文本中找到。只需要找到正确的选择器：</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"h2"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">section</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"h2"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "The Phantom Menace"      "Attack of the Clones"   </span></span>
 <span><span class="co">#&gt; [3] "Revenge of the Sith"     "A New Hope"             </span></span>
 <span><span class="co">#&gt; [5] "The Empire Strikes Back" "Return of the Jedi"     </span></span>
 <span><span class="co">#&gt; [7] "The Force Awakens"</span></span>
 <span></span>
-<span><span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".director"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">section</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".director"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "George Lucas"     "George Lucas"     "George Lucas"    </span></span>
 <span><span class="co">#&gt; [4] "George Lucas"     "Irvin Kershner"   "Richard Marquand"</span></span>
 <span><span class="co">#&gt; [7] "J. J. Abrams"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Once we’ve done that for each component, we can wrap all the results up into a tibble:</p>
+<p>一旦我们为每个组件都这样做了，我们就可以将所有结果包装成一个 tibble：</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"h2"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    released <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"Released: "</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">parse_date</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    director <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".director"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    intro <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".crawl"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  title <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"h2"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  released <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"p"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"Released: "</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">parse_date</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  director <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".director"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  intro <span class="op">=</span> <span class="va">section</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">".crawl"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 4</span></span>
 <span><span class="co">#&gt;   title                   released   director         intro                  </span></span>
@@ -786,30 +782,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 6 Return of the Jedi      1983-05-25 Richard Marquand "Luke Skywalker has re…</span></span>
 <span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We did a little more processing of <code>released</code> to get a variable that will be easy to use later in our analysis.</p>
-</section><section id="imdb-top-films" class="level3" data-number="24.6.2"><h3 data-number="24.6.2" class="anchored" data-anchor-id="imdb-top-films">
-<span class="header-section-number">24.6.2</span> IMDB top films</h3>
-<p>For our next task we’ll tackle something a little trickier, extracting the top 250 movies from the internet movie database (IMDb). At the time we wrote this chapter, the page looked like <a href="#fig-scraping-imdb" class="quarto-xref">Figure&nbsp;<span>24.1</span></a>.</p>
+<p>我们对 <code>released</code> 做了一点额外的处理，以得到一个在我们后续分析中易于使用的变量。</p>
+</section><section id="imdb-热门电影" class="level3" data-number="24.6.2"><h3 data-number="24.6.2" class="anchored" data-anchor-id="imdb-热门电影">
+<span class="header-section-number">24.6.2</span> IMDB 热门电影</h3>
+<p>对于我们的下一个任务，我们将处理一个稍微棘手一点的问题，从互联网电影数据库 (IMDb) 中提取前 250 部电影。在我们写这一章的时候，页面看起来像 <a href="#fig-scraping-imdb" class="quarto-xref">Figure&nbsp;<span>24.1</span></a>。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-scraping-imdb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The screenshot shows a table with columns &quot;Rank and Title&quot;, &quot;IMDb Rating&quot;, and &quot;Your Rating&quot;. 9 movies out of the top 250 are shown. The top 5 are the Shawshank Redemption, The Godfather, The Dark Knight, The Godfather: Part II, and 12 Angry Men.">
+<div id="fig-scraping-imdb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="截图显示了一个表格，列有“排名和标题”、“IMDb 评分”和“你的评分”。 显示了前 250 部电影中的 9 部。前 5 部是《肖申克的救赎》、《教父》、 《黑暗骑士》、《教父2》和《十二怒汉》。">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scraping-imdb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshots/scraping-imdb.png" class="img-fluid figure-img" alt="The screenshot shows a table with columns &quot;Rank and Title&quot;, &quot;IMDb Rating&quot;, and &quot;Your Rating&quot;. 9 movies out of the top 250 are shown. The top 5 are the Shawshank Redemption, The Godfather, The Dark Knight, The Godfather: Part II, and 12 Angry Men." width="418">
+<img src="screenshots/scraping-imdb.png" class="img-fluid figure-img" alt="截图显示了一个表格，列有“排名和标题”、“IMDb 评分”和“你的评分”。 显示了前 250 部电影中的 9 部。前 5 部是《肖申克的救赎》、《教父》、 《黑暗骑士》、《教父2》和《十二怒汉》。" width="418">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scraping-imdb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05.
+Figure&nbsp;24.1: 2022-12-05 拍摄的 IMDb 热门电影网页截图。
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>This data has a clear tabular structure so it’s worth starting with <code><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table()</a></code>:</p>
+<p>这个数据有清晰的表格结构，所以值得从 <code><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table()</a></code> 开始：</p>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"</span></span>
 <span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">table</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">table</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">table</span></span>
 <span><span class="co">#&gt; # A tibble: 250 × 5</span></span>
 <span><span class="co">#&gt;   ``    `Rank &amp; Title`                    `IMDb Rating` `Your Rating`   ``   </span></span>
@@ -822,24 +818,24 @@ Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05
 <span><span class="co">#&gt; 6 NA    "6.\n      Schindler's List\n   …           8.9 "12345678910\n… NA   </span></span>
 <span><span class="co">#&gt; # ℹ 244 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This includes a few empty columns, but overall does a good job of capturing the information from the table. However, we need to do some more processing to make it easier to use. First, we’ll rename the columns to be easier to work with, and remove the extraneous whitespace in rank and title. We will do this with <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> (instead of <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code>) to do the renaming and selecting of just these two columns in one step. Then we’ll remove the new lines and extra spaces, and then apply <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code> (from <a href="regexps.html#sec-extract-variables" class="quarto-xref"><span>Section 15.3.4</span></a>) to pull out the title, year, and rank into their own variables.</p>
+<p>这包含了一些空列，但总的来说，它很好地捕捉了表格中的信息。然而，我们需要做一些更多的处理，使其更易于使用。首先，我们将重命名列，使其更易于使用，并删除排名和标题中多余的空格。我们将使用 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>（而不是 <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code>）一步完成重命名和选择这两列。然后我们将删除换行符和多余的空格，然后应用 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code>（来自 <a href="regexps.html#sec-extract-variables" class="quarto-xref"><span>Section 15.3.4</span></a>）将标题、年份和排名提取到它们自己的变量中。</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ratings</span> <span class="op">&lt;-</span> <span class="va">table</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
-<span>        rank_title_year <span class="op">=</span> <span class="va">`Rank &amp; Title`</span>,</span>
-<span>        rating <span class="op">=</span> <span class="va">`IMDb Rating`</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        rank_title_year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">rank_title_year</span>, <span class="st">"\n +"</span>, <span class="st">" "</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex</a></span><span class="op">(</span></span>
-<span>        <span class="va">rank_title_year</span>,</span>
-<span>        patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>            rank <span class="op">=</span> <span class="st">"\\d+"</span>, <span class="st">"\\. "</span>,</span>
-<span>            title <span class="op">=</span> <span class="st">".+"</span>, <span class="st">" +\\("</span>,</span>
-<span>            year <span class="op">=</span> <span class="st">"\\d+"</span>, <span class="st">"\\)"</span></span>
-<span>        <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
+<span>    rank_title_year <span class="op">=</span> <span class="va">`Rank &amp; Title`</span>,</span>
+<span>    rating <span class="op">=</span> <span class="va">`IMDb Rating`</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    rank_title_year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">rank_title_year</span>, <span class="st">"\n +"</span>, <span class="st">" "</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex</a></span><span class="op">(</span></span>
+<span>    <span class="va">rank_title_year</span>,</span>
+<span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      rank <span class="op">=</span> <span class="st">"\\d+"</span>, <span class="st">"\\. "</span>,</span>
+<span>      title <span class="op">=</span> <span class="st">".+"</span>, <span class="st">" +\\("</span>,</span>
+<span>      year <span class="op">=</span> <span class="st">"\\d+"</span>, <span class="st">"\\)"</span></span>
 <span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="va">ratings</span></span>
 <span><span class="co">#&gt; # A tibble: 250 × 4</span></span>
 <span><span class="co">#&gt;   rank  title                    year  rating</span></span>
@@ -852,12 +848,12 @@ Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05
 <span><span class="co">#&gt; 6 6     Schindler's List         1993     8.9</span></span>
 <span><span class="co">#&gt; # ℹ 244 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Even in this case where most of the data comes from table cells, it’s still worth looking at the raw HTML. If you do so, you’ll discover that we can add a little extra data by using one of the attributes. This is one of the reasons it’s worth spending a little time spelunking the source of the page; you might find extra data, or might find a parsing route that’s slightly easier.</p>
+<p>即使在这种大部分数据来自表格单元格的情况下，查看原始 HTML 仍然是值得的。如果你这样做，你会发现我们可以通过使用其中一个属性来添加一些额外的数据。这是值得花点时间探索页面源代码的原因之一；你可能会找到额外的数据，或者找到一个稍微容易一些的解析路径。</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"td strong"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"title"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">html</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"td strong"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"title"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "9.2 based on 2,536,415 user ratings"</span></span>
 <span><span class="co">#&gt; [2] "9.1 based on 1,745,675 user ratings"</span></span>
 <span><span class="co">#&gt; [3] "9.0 based on 1,211,032 user ratings"</span></span>
@@ -865,23 +861,23 @@ Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05
 <span><span class="co">#&gt; [5] "8.9 based on 749,563 user ratings"  </span></span>
 <span><span class="co">#&gt; [6] "8.9 based on 1,295,705 user ratings"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can combine this with the tabular data and again apply <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code> to extract out the bit of data we care about:</p>
+<p>我们可以将此与表格数据结合起来，并再次应用 <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code> 来提取我们关心的数据：</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ratings</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        rating_n <span class="op">=</span> <span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"td strong"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"title"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex</a></span><span class="op">(</span></span>
-<span>        <span class="va">rating_n</span>,</span>
-<span>        patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>            <span class="st">"[0-9.]+ based on "</span>,</span>
-<span>            number <span class="op">=</span> <span class="st">"[0-9,]+"</span>,</span>
-<span>            <span class="st">" user ratings"</span></span>
-<span>        <span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>        number <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">number</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    rating_n <span class="op">=</span> <span class="va">html</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"td strong"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"title"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex</a></span><span class="op">(</span></span>
+<span>    <span class="va">rating_n</span>,</span>
+<span>    patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"[0-9.]+ based on "</span>,</span>
+<span>      number <span class="op">=</span> <span class="st">"[0-9,]+"</span>,</span>
+<span>      <span class="st">" user ratings"</span></span>
 <span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    number <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">number</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 250 × 5</span></span>
 <span><span class="co">#&gt;   rank  title                    year  rating  number</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                    &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
@@ -893,25 +889,25 @@ Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05
 <span><span class="co">#&gt; 6 6     Schindler's List         1993     8.9 1295705</span></span>
 <span><span class="co">#&gt; # ℹ 244 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="dynamic-sites" class="level2" data-number="24.7"><h2 data-number="24.7" class="anchored" data-anchor-id="dynamic-sites">
-<span class="header-section-number">24.7</span> Dynamic sites</h2>
-<p>So far we have focused on websites where <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> returns what you see in the browser and discussed how to parse what it returns and how to organize that information in tidy data frames. From time-to-time, however, you’ll hit a site where <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> and friends don’t return anything like what you see in the browser. In many cases, that’s because you’re trying to scrape a website that dynamically generates the content of the page with javascript. This doesn’t currently work with rvest, because rvest downloads the raw HTML and doesn’t run any javascript.</p>
-<p>It’s still possible to scrape these types of sites, but rvest needs to use a more expensive process: fully simulating the web browser including running all javascript. This functionality is not available at the time of writing, but it’s something we’re actively working on and might be available by the time you read this. It uses the <a href="https://rstudio.github.io/chromote/index.html">chromote package</a> which actually runs the Chrome browser in the background, and gives you additional tools to interact with the site, like a human typing text and clicking buttons. Check out the <a href="http://rvest.tidyverse.org/">rvest website</a> for more details.</p>
-</section><section id="summary" class="level2" data-number="24.8"><h2 data-number="24.8" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">24.8</span> Summary</h2>
-<p>In this chapter, you’ve learned about the why, the why not, and the how of scraping data from web pages. First, you’ve learned about the basics of HTML and using CSS selectors to refer to specific elements, then you’ve learned about using the rvest package to get data out of HTML into R. We then demonstrated web scraping with two case studies: a simpler scenario on scraping data on StarWars films from the rvest package website and a more complex scenario on scraping the top 250 films from IMDB.</p>
-<p>Technical details of scraping data off the web can be complex, particularly when dealing with sites, however legal and ethical considerations can be even more complex. It’s important for you to educate yourself about both of these before setting out to scrape data.</p>
-<p>This brings us to the end of the import part of the book where you’ve learned techniques to get data from where it lives (spreadsheets, databases, JSON files, and web sites) into a tidy form in R. Now it’s time to turn our sights to a new topic: making the most of R as a programming language.</p>
+</section></section><section id="动态网站" class="level2" data-number="24.7"><h2 data-number="24.7" class="anchored" data-anchor-id="动态网站">
+<span class="header-section-number">24.7</span> 动态网站</h2>
+<p>到目前为止，我们专注于那些 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 返回你在浏览器中看到的内容的网站，并讨论了如何解析其返回的内容以及如何将这些信息组织成整洁的数据框。然而，有时你会遇到一个网站，其中 <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> 和相关函数返回的内容与你在浏览器中看到的完全不同。在许多情况下，这是因为你试图抓取一个用 javascript 动态生成页面内容的网站。这目前不适用于 rvest，因为 rvest 下载的是原始 HTML，不运行任何 javascript。</p>
+<p>抓取这类网站仍然是可能的，但 rvest 需要使用一个更昂贵的过程：完全模拟网络浏览器，包括运行所有 javascript。在撰写本文时，此功能尚不可用，但这是我们正在积极开发的内容，可能在你阅读本文时已经可用。它使用了 <a href="https://rstudio.github.io/chromote/index.html">chromote 包</a>，该包实际上在后台运行 Chrome 浏览器，并为你提供了与网站交互的额外工具，就像人类输入文本和点击按钮一样。查看 <a href="http://rvest.tidyverse.org/">rvest 网站</a>了解更多详情。</p>
+</section><section id="总结" class="level2" data-number="24.8"><h2 data-number="24.8" class="anchored" data-anchor-id="总结">
+<span class="header-section-number">24.8</span> 总结</h2>
+<p>在本章中，你学习了为什么、为什么不以及如何从网页上抓取数据。首先，你学习了 HTML 的基础知识和使用 CSS 选择器来引用特定元素，然后你学习了使用 rvest 包将数据从 HTML 中提取到 R。接着，我们通过两个案例研究演示了网络抓取：一个是在 rvest 包网站上抓取星球大战电影数据的简单场景，另一个是从 IMDB 抓取前 250 部电影的更复杂场景。</p>
+<p>从网络上抓取数据的技术细节可能很复杂，尤其是在处理网站时，然而法律和伦理方面的考虑可能更为复杂。在你开始抓取数据之前，了解这两方面的情况对你来说很重要。</p>
+<p>这就结束了本书的导入部分，你已经学习了将数据从它所在的地方（电子表格、数据库、JSON 文件和网站）导入到 R 中的整洁形式的技术。现在是时候将我们的目光转向一个新的主题：充分利用 R 作为一种编程语言。</p>
 
 
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>And many popular APIs already have CRAN packages that wrap them, so start with a little research first!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Obviously we’re not lawyers, and this is not legal advice. But this is the best summary we can give having read a bunch about this topic.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>One example of an article on the OkCupid study was published by Wired, <a href="https://www.wired.com/2016/05/okcupid-study-reveals-perils-big-data-science" class="uri">https://www.wired.com/2016/05/okcupid-study-reveals-perils-big-data-science</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>A number of tags (including <code>&lt;p&gt;</code> and <code>&lt;li&gt;)</code> don’t require end tags, but we think it’s best to include them because it makes seeing the structure of the HTML a little easier.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>This class comes from the <a href="https://xml2.r-lib.org">xml2</a> package. xml2 is a low-level package that rvest builds on top of.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>rvest also provides <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code> but you should almost always use <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> since it does a better job of converting nested HTML to text.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>许多流行的 API 已经有对应的 CRAN 包，所以可以先做一些研究！<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>显然我们不是律师，这也不是法律建议。但这是我们在阅读了大量关于这个主题的资料后能给出的最好总结。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>《连线》杂志发表了一篇关于 OkCupid 研究的文章，<a href="https://www.wired.com/2016/05/okcupid-study-reveals-perils-big-data-science">https://www.wired.com/2016/05/okcupid-study-reveals-perils-big-data-science</a>。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>许多标签（包括 <code>&lt;p&gt;</code> 和 <code>&lt;li&gt;</code>）不需要结束标签，但我们认为最好还是加上，因为这能让 HTML 的结构看得更清楚一些。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>这个类来自 <a href="https://xml2.r-lib.org">xml2</a> 包。xml2 是一个底层包，rvest 在其之上构建。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>rvest 也提供了 <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text()</a></code>，但你几乎总是应该使用 <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code>，因为它在将嵌套的 HTML 转换为文本方面做得更好。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1311,8 +1307,8 @@ Figure&nbsp;24.1: Screenshot of the IMDb top movies web page taken on 2022-12-05
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./rectangling.html" class="pagination-link" aria-label="Hierarchical data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hierarchical data</span></span>
+      <a href="./rectangling.html" class="pagination-link" aria-label="层级数据">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">层级数据</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
